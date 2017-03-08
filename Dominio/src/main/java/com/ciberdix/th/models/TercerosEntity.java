@@ -89,6 +89,7 @@ public class TercerosEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+
     @Id
     @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
@@ -327,16 +328,6 @@ public class TercerosEntity {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
-    }
-
-    @Basic
-    @Column(name = "IdLocalizacion", nullable = true)
-    public Integer getIdLocalizacion() {
-        return idLocalizacion;
-    }
-
-    public void setIdLocalizacion(Integer idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
     }
 
     @Basic
