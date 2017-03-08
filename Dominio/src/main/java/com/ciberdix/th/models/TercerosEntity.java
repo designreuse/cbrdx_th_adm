@@ -47,6 +47,48 @@ public class TercerosEntity {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public TercerosEntity() {
+    }
+
+    public TercerosEntity(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, String factorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Integer idLocalizacion, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idTercero = idTercero;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.imagen = imagen;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.fechaDocumento = fechaDocumento;
+        this.idCiudadExpDocumento = idCiudadExpDocumento;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idCiudadNacimiento = idCiudadNacimiento;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+        this.idFactorRh = idFactorRh;
+        this.factorRh = factorRh;
+        this.nroHijos = nroHijos;
+        this.idLateralidad = idLateralidad;
+        this.idTipoVivienda = idTipoVivienda;
+        this.estrato = estrato;
+        this.tallaCamisa = tallaCamisa;
+        this.tallaPantalon = tallaPantalon;
+        this.tallaCalzado = tallaCalzado;
+        this.correoElectronico = correoElectronico;
+        this.idLocalizacion = idLocalizacion;
+        this.fechaCreacion = fechaCreacion;
+        this.idTipoPersona = idTipoPersona;
+        this.razonSocial = razonSocial;
+        this.talla = talla;
+        this.peso = peso;
+        this.imc = imc;
+        this.idProfesion = idProfesion;
+        this.idNivelEducacion = idNivelEducacion;
+        this.idVehiculo = idVehiculo;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = auditoriaFecha;
+    }
+
     @Id
     @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
