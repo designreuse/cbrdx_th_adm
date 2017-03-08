@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @Transactional
 @RequestMapping("/employees")
 public class TercerosController {
@@ -21,9 +22,9 @@ public class TercerosController {
         return (List<TercerosEntity>) tercerosRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
-    TercerosEntity findList(@PathVariable Integer idLista) {
-        return tercerosRepository.findOne(idLista);
+    @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
+    TercerosEntity verConstante(@PathVariable Integer IdParametro) {
+        return tercerosRepository.findOne(IdParametro);
     }
 
     @RequestMapping(method = RequestMethod.POST)
