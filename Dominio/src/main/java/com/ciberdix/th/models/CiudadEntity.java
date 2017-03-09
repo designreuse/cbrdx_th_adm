@@ -22,7 +22,7 @@ public class CiudadEntity {
    private boolean indicadorHabilitado;
    private int auditoriaUsuario;
    private Timestamp auditoriaFecha;
-
+   //private Timestamp auditoriaFecha;
 
 
     public CiudadEntity() {

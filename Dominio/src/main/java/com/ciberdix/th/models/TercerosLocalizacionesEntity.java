@@ -11,19 +11,20 @@ import java.sql.Timestamp;
 public class TercerosLocalizacionesEntity {
     private int idTerceroLocalizacion;
     private int idTercero;
-    private int idLocalizacion;
+    //private int idLocalizacion;
     private boolean indicadorHabilitado;
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private LocalizacionesEntity localizacion;
 
-    public TercerosLocalizacionesEntity(int idTerceroLocalizacion, int idTercero, int idLocalizacion, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+    /*public TercerosLocalizacionesEntity(int idTerceroLocalizacion, int idTercero, int idLocalizacion, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
         this.idTercero = idTercero;
         this.idLocalizacion = idLocalizacion;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
-    }
+    }*/
 
     public TercerosLocalizacionesEntity() {
     }
@@ -48,7 +49,7 @@ public class TercerosLocalizacionesEntity {
         this.idTercero = idTercero;
     }
 
-    @Basic
+    /*@Basic
     @Column(name = "IdLocalizacion", nullable = true, length = 64)
     public int getIdLocalizacion() {
         return idLocalizacion;
@@ -56,7 +57,7 @@ public class TercerosLocalizacionesEntity {
 
     public void setIdLocalizacion(int idLocalizacion) {
         this.idLocalizacion = idLocalizacion;
-    }
+    }*/
 
     @Basic
     @Column(name = "IndicadorHabilitado", nullable = true, length = 64)
@@ -86,5 +87,15 @@ public class TercerosLocalizacionesEntity {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    @ManyToOne(targetEntity = LocalizacionesEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdLocalizacion", nullable=true)
+    public LocalizacionesEntity getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(LocalizacionesEntity localizacion) {
+        this.localizacion = localizacion;
     }
 }

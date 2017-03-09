@@ -99,4 +99,6 @@ public class AreaEstudioEntity {
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
+
+
 }

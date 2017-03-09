@@ -91,6 +91,7 @@ public class TercerosEntity {
 
 
     @Id
+    @Basic
     @Column(name = "IdTercero", nullable = false)
     public Integer getIdTercero() {
         return idTercero;
