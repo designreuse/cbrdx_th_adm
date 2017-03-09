@@ -29,7 +29,7 @@ public class TipoDireccionController {
 
     @RequestMapping(method = RequestMethod.POST)
     TipoDireccionEntity createList(@RequestBody TipoDireccionEntity c) {
-        return tipoDireccionRepository.save(new TipoDireccionEntity(c.getIdListaTipoDirecciones(),c.getCodigoListaTipoDirecciones(),c.getNombreListaTipoDirecciones(),c.getOrdenListaTipoDirecciones(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+        return tipoDireccionRepository.save(new TipoDireccionEntity(c.getValue(),c.getCodigoListaTipoDirecciones(),c.getLabel(),c.getOrdenListaTipoDirecciones(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

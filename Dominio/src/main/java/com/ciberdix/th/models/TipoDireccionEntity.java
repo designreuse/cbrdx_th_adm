@@ -9,18 +9,18 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposDirecciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class TipoDireccionEntity {
-    private int idListaTipoDirecciones;
+    private int value;
     private String codigoListaTipoDirecciones;
-    private String nombreListaTipoDirecciones;
+    private String label;
     private int ordenListaTipoDirecciones;
     private boolean indicadorHabilitado;
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TipoDireccionEntity(int idListaTipoDirecciones, String codigoListaTipoDirecciones, String nombreListaTipoDirecciones, int ordenListaTipoDirecciones, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idListaTipoDirecciones = idListaTipoDirecciones;
+    public TipoDireccionEntity(int value, String codigoListaTipoDirecciones, String label, int ordenListaTipoDirecciones, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.value = value;
         this.codigoListaTipoDirecciones = codigoListaTipoDirecciones;
-        this.nombreListaTipoDirecciones = nombreListaTipoDirecciones;
+        this.label = label;
         this.ordenListaTipoDirecciones = ordenListaTipoDirecciones;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
@@ -32,12 +32,12 @@ public class TipoDireccionEntity {
 
     @Id
     @Column(name = "IdListaTipoDireccion", nullable = false)
-    public int getIdListaTipoDirecciones() {
-        return idListaTipoDirecciones;
+    public int getValue() {
+        return value;
     }
 
-    public void setIdListaTipoDirecciones(int idListaTipoDirecciones) {
-        this.idListaTipoDirecciones = idListaTipoDirecciones;
+    public void setValue(int value) {
+        this.value = value;
     }
 
     @Basic
@@ -52,12 +52,12 @@ public class TipoDireccionEntity {
 
     @Basic
     @Column(name = "NombreListaTipoDireccion", nullable = false)
-    public String getNombreListaTipoDirecciones() {
-        return nombreListaTipoDirecciones;
+    public String getLabel() {
+        return label;
     }
 
-    public void setNombreListaTipoDirecciones(String nombreListaTipoDirecciones) {
-        this.nombreListaTipoDirecciones = nombreListaTipoDirecciones;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     @Basic
