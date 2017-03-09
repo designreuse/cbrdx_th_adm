@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/documenttype")
+@CrossOrigin
 public class TipoDocumentoController {
 
     @Autowired

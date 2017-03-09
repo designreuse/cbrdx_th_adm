@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/companysector")
+@RequestMapping("/companySector")
+@CrossOrigin
 public class SectorEmpresaController {
 
     @Autowired

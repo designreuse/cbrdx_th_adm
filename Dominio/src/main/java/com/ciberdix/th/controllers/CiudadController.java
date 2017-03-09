@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/cities")
+@CrossOrigin
 public class CiudadController {
 
     @Autowired

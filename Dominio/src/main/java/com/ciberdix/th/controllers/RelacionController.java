@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/relationship")
+@CrossOrigin
 public class RelacionController {
 
     @Autowired

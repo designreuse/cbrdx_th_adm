@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/studylevel")
+@RequestMapping("/studyLevel")
+@CrossOrigin
 public class NivelEstudioController {
 
     @Autowired

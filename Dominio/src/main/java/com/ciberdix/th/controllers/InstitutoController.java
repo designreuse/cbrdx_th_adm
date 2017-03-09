@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/institutes")
+@CrossOrigin
 public class InstitutoController {
 
     @Autowired

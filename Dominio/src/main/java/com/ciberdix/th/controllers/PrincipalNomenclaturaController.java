@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/principalnomenclature")
+@RequestMapping("/principalNomenclature")
+@CrossOrigin
 public class PrincipalNomenclaturaController {
 
     @Autowired

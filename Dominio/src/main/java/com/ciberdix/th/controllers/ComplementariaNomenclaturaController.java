@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/complementarynomenclature")
+@RequestMapping("/complementaryNomenclature")
+@CrossOrigin
 public class ComplementariaNomenclaturaController {
 
     @Autowired

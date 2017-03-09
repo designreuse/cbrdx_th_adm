@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/studytype")
+@CrossOrigin
 public class TipoEstudioController {
 
     @Autowired

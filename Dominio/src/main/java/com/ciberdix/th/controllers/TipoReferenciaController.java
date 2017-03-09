@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @RequestMapping("/references")
+@CrossOrigin
 public class TipoReferenciaController {
 
     @Autowired

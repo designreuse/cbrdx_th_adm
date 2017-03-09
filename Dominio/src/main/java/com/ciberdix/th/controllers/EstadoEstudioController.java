@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/studystate")
+@RequestMapping("/studyState")
+@CrossOrigin
 public class EstadoEstudioController {
 
     @Autowired

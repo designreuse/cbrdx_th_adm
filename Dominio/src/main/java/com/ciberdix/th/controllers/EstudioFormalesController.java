@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @Transactional
 @CrossOrigin
-@RequestMapping("/fstudies")
+@RequestMapping("/formalStudies")
 public class EstudioFormalesController {
 
     @Autowired
