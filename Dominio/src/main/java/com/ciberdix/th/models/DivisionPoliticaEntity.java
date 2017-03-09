@@ -8,27 +8,27 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
-public class CiudadEntity {
-   private int idDivisionPolitica;
-   private int idDivisionPoliticaPadre;
+public class DivisionPoliticaEntity {
+   private Integer idDivisionPolitica;
+   private Integer idDivisionPoliticaPadre;
    private String codigoDivisionPolitica;
    private String descripcionDivisionPolitica;
-   private int indicativoDivisionPolitica;
+   private Integer indicativoDivisionPolitica;
    private String codigoPostalDivisionPolitica;
-   private int idDivisionPoliticaTipo;
-   private int idDivisionPoliticaArea;
-   private int idDivisionPoliticaResguardo;
-   private int idEstratooDivisionPolitica;
+   private Integer idDivisionPoliticaTipo;
+   private Integer idDivisionPoliticaArea;
+   private Integer idDivisionPoliticaResguardo;
+   private Integer idEstratooDivisionPolitica;
    private boolean indicadorHabilitado;
-   private int auditoriaUsuario;
+   private Integer auditoriaUsuario;
    private Timestamp auditoriaFecha;
    //private Timestamp auditoriaFecha;
 
 
-    public CiudadEntity() {
+    public DivisionPoliticaEntity() {
     }
 
-    public CiudadEntity(int idDivisionPolitica, int idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisionPolitica, int indicativoDivisionPolitica, String codigoPostalDivisionPolitica, int idDivisionPoliticaTipo, int idDivisionPoliticaArea, int idDivisionPoliticaResguardo, int idEstratooDivisionPolitica, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+    public DivisionPoliticaEntity(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisionPolitica, Integer indicativoDivisionPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratooDivisionPolitica, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idDivisionPolitica = idDivisionPolitica;
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
@@ -43,27 +43,33 @@ public class CiudadEntity {
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
     }
-
     @Id
     @Column(name = "IdDivisionPolitica", nullable = false)
-    public int getIdDivisionPolitica() {
+    public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
 
-    public void setIdDivisionPolitica(int idDivisionPolitica) {
+    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
         this.idDivisionPolitica = idDivisionPolitica;
     }
-
     @Basic
     @Column(name = "IdDivisionPoliticaPadre", nullable = false)
-    public int getIdDivisionPoliticaPadre() {
+    public Integer getIdDivisionPoliticaPadre() {
         return idDivisionPoliticaPadre;
     }
 
-    public void setIdDivisionPoliticaPadre(int idDivisionPoliticaPadre) {
+    public void setIdDivisionPoliticaPadre(Integer idDivisionPoliticaPadre) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
     }
+    @Basic
+    @Column(name = "CodigoDivisionPolitica", nullable = false)
+    public String getCodigoDivisionPolitica() {
+        return codigoDivisionPolitica;
+    }
 
+    public void setCodigoDivisionPolitica(String codigoDivisionPolitica) {
+        this.codigoDivisionPolitica = codigoDivisionPolitica;
+    }
     @Basic
     @Column(name = "DescripcionDivisonPolitica", nullable = false)
     public String getDescripcionDivisionPolitica() {
@@ -73,17 +79,15 @@ public class CiudadEntity {
     public void setDescripcionDivisionPolitica(String descripcionDivisionPolitica) {
         this.descripcionDivisionPolitica = descripcionDivisionPolitica;
     }
-
     @Basic
     @Column(name = "IndicativoDivisonPolitica", nullable = false)
-    public int getIndicativoDivisionPolitica() {
+    public Integer getIndicativoDivisionPolitica() {
         return indicativoDivisionPolitica;
     }
 
-    public void setIndicativoDivisionPolitica(int indicativoDivisionPolitica) {
+    public void setIndicativoDivisionPolitica(Integer indicativoDivisionPolitica) {
         this.indicativoDivisionPolitica = indicativoDivisionPolitica;
     }
-
     @Basic
     @Column(name = "CodigoPostalDivisionPolitica", nullable = false)
     public String getCodigoPostalDivisionPolitica() {
@@ -93,47 +97,42 @@ public class CiudadEntity {
     public void setCodigoPostalDivisionPolitica(String codigoPostalDivisionPolitica) {
         this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
     }
-
     @Basic
     @Column(name = "IdDivisionPoliticaTipo", nullable = false)
-    public int getIdDivisionPoliticaTipo() {
+    public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
 
-    public void setIdDivisionPoliticaTipo(int idDivisionPoliticaTipo) {
+    public void setIdDivisionPoliticaTipo(Integer idDivisionPoliticaTipo) {
         this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
     }
-
     @Basic
     @Column(name = "IdDivisionPoliticaArea", nullable = false)
-    public int getIdDivisionPoliticaArea() {
+    public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
 
-    public void setIdDivisionPoliticaArea(int idDivisionPoliticaArea) {
+    public void setIdDivisionPoliticaArea(Integer idDivisionPoliticaArea) {
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
     }
-
     @Basic
     @Column(name = "IdDivisionPoliticaResguardo", nullable = false)
-    public int getIdDivisionPoliticaResguardo() {
+    public Integer getIdDivisionPoliticaResguardo() {
         return idDivisionPoliticaResguardo;
     }
 
-    public void setIdDivisionPoliticaResguardo(int idDivisionPoliticaResguardo) {
+    public void setIdDivisionPoliticaResguardo(Integer idDivisionPoliticaResguardo) {
         this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
     }
-
     @Basic
     @Column(name = "IdEstratoDivisionPolitica", nullable = false)
-    public int getIdEstratooDivisionPolitica() {
+    public Integer getIdEstratooDivisionPolitica() {
         return idEstratooDivisionPolitica;
     }
 
-    public void setIdEstratooDivisionPolitica(int idEstratooDivisionPolitica) {
+    public void setIdEstratooDivisionPolitica(Integer idEstratooDivisionPolitica) {
         this.idEstratooDivisionPolitica = idEstratooDivisionPolitica;
     }
-
     @Basic
     @Column(name = "IndicadorHabilitado", nullable = false)
     public boolean isIndicadorHabilitado() {
@@ -143,17 +142,15 @@ public class CiudadEntity {
     public void setIndicadorHabilitado(boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
     }
-
     @Basic
     @Column(name = "AuditoriaUsuario", nullable = false)
-    public int getAuditoriaUsuario() {
+    public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
 
-    public void setAuditoriaUsuario(int auditoriaUsuario) {
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
-
     @Basic
     @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
@@ -164,13 +161,4 @@ public class CiudadEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Basic
-    @Column(name = "CodigoDivisionPolitica", nullable = false)
-    public String getCodigoDivisionPolitica() {
-        return codigoDivisionPolitica;
-    }
-
-    public void setCodigoDivisionPolitica(String codigoDivisionPolitica) {
-        this.codigoDivisionPolitica = codigoDivisionPolitica;
-    }
 }

@@ -12,7 +12,6 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RequestMapping("/employees")
-
 public class TercerosController {
 
     @Autowired

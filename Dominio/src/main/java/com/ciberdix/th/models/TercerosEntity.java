@@ -34,7 +34,6 @@ public class TercerosEntity {
     private Integer tallaPantalon;
     private Integer tallaCalzado;
     private String correoElectronico;
-    private Integer idLocalizacion;
     private Date fechaCreacion;
     private Integer idTipoPersona;
     private String razonSocial;
@@ -47,51 +46,7 @@ public class TercerosEntity {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosEntity() {
-    }
-
-    public TercerosEntity(Integer idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, String factorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Integer idLocalizacion, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idTercero = idTercero;
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.imagen = imagen;
-        this.idTipoDocumento = idTipoDocumento;
-        this.numeroDocumento = numeroDocumento;
-        this.fechaDocumento = fechaDocumento;
-        this.idCiudadExpDocumento = idCiudadExpDocumento;
-        this.fechaNacimiento = fechaNacimiento;
-        this.idCiudadNacimiento = idCiudadNacimiento;
-        this.idGenero = idGenero;
-        this.idEstadoCivil = idEstadoCivil;
-        this.idFactorRh = idFactorRh;
-        this.factorRh = factorRh;
-        this.nroHijos = nroHijos;
-        this.idLateralidad = idLateralidad;
-        this.idTipoVivienda = idTipoVivienda;
-        this.estrato = estrato;
-        this.tallaCamisa = tallaCamisa;
-        this.tallaPantalon = tallaPantalon;
-        this.tallaCalzado = tallaCalzado;
-        this.correoElectronico = correoElectronico;
-        this.idLocalizacion = idLocalizacion;
-        this.fechaCreacion = fechaCreacion;
-        this.idTipoPersona = idTipoPersona;
-        this.razonSocial = razonSocial;
-        this.talla = talla;
-        this.peso = peso;
-        this.imc = imc;
-        this.idProfesion = idProfesion;
-        this.idNivelEducacion = idNivelEducacion;
-        this.idVehiculo = idVehiculo;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = auditoriaFecha;
-    }
-
-
     @Id
-    @Basic
     @Column(name = "IdTercero", nullable = false)
     public Integer getIdTercero() {
         return idTercero;
@@ -331,6 +286,7 @@ public class TercerosEntity {
         this.correoElectronico = correoElectronico;
     }
 
+
     @Basic
     @Column(name = "FechaCreacion", nullable = true)
     public Date getFechaCreacion() {
@@ -486,8 +442,8 @@ public class TercerosEntity {
         if (tallaCalzado != null ? !tallaCalzado.equals(that.tallaCalzado) : that.tallaCalzado != null) return false;
         if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null)
             return false;
-        if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
-            return false;
+        /*if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
+            return false;*/
         if (fechaCreacion != null ? !fechaCreacion.equals(that.fechaCreacion) : that.fechaCreacion != null)
             return false;
         if (idTipoPersona != null ? !idTipoPersona.equals(that.idTipoPersona) : that.idTipoPersona != null)
@@ -534,7 +490,7 @@ public class TercerosEntity {
         result = 31 * result + (tallaPantalon != null ? tallaPantalon.hashCode() : 0);
         result = 31 * result + (tallaCalzado != null ? tallaCalzado.hashCode() : 0);
         result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
-        result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
+       // result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
         result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
         result = 31 * result + (idTipoPersona != null ? idTipoPersona.hashCode() : 0);
         result = 31 * result + (razonSocial != null ? razonSocial.hashCode() : 0);

@@ -9,15 +9,15 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposDocumentos", schema = "crz_th", catalog = "CREZCAMOS")
 public class TipoDocumentoEntity {
-    private int idListaTipoDocumentos;
+    private Integer idListaTipoDocumentos;
     private String codigoListaTipoDocumentos;
     private String nombreListaTipoDocumentos;
-    private int ordenListaTipoDocumentos;
+    private Integer ordenListaTipoDocumentos;
     private boolean indicadorHabilitado;
-    private int auditoriaUsuario;
+    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 	
-	public TipoDocumentoEntity(int idListaTipoDocumentos, String codigoListaTipoDocumentos, String nombreListaTipoDocumentos, int ordenListaTipoDocumentos, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+	public TipoDocumentoEntity(Integer idListaTipoDocumentos, String codigoListaTipoDocumentos, String nombreListaTipoDocumentos, Integer ordenListaTipoDocumentos, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idListaTipoDocumentos = idListaTipoDocumentos;
         this.codigoListaTipoDocumentos = codigoListaTipoDocumentos;
         this.nombreListaTipoDocumentos = nombreListaTipoDocumentos;
@@ -32,11 +32,11 @@ public class TipoDocumentoEntity {
 	
 	@Id
     @Column(name = "IdListaTipoDocumento", nullable = false)
-    public int getIdListaTipoDocumentos() {
+    public Integer getIdListaTipoDocumentos() {
         return idListaTipoDocumentos;
     }
 
-    public void setIdListaTipoDocumentos(int idListaTipoDocumentos) {
+    public void setIdListaTipoDocumentos(Integer idListaTipoDocumentos) {
         this.idListaTipoDocumentos = idListaTipoDocumentos;
     }
 
@@ -62,11 +62,11 @@ public class TipoDocumentoEntity {
 
     @Basic
     @Column(name = "OrdenListaTipoDocumento", nullable = false)
-    public int getOrdenListaTipoDocumentos() {
+    public Integer getOrdenListaTipoDocumentos() {
         return ordenListaTipoDocumentos;
     }
 
-    public void setOrdenListaTipoDocumentos(int ordenListaTipoDocumentos) {
+    public void setOrdenListaTipoDocumentos(Integer ordenListaTipoDocumentos) {
         this.ordenListaTipoDocumentos = ordenListaTipoDocumentos;
     }
 
@@ -82,11 +82,11 @@ public class TipoDocumentoEntity {
 
     @Basic
     @Column(name = "AuditoriaUsuario", nullable = false)
-    public int getAuditoriaUsuario() {
+    public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
 
-    public void setAuditoriaUsuario(int auditoriaUsuario) {
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
 

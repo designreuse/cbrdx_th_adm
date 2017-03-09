@@ -27,6 +27,11 @@ public class TercerosLocalizacionesController {
         return tercerosLocalizacionesRepository.findOne(IdParametro);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "employees/{IdParametro}")
+    List<TercerosLocalizacionesEntity> verConstante1(@PathVariable Integer IdParametro) {
+        return  tercerosLocalizacionesRepository.findByIdTercero(IdParametro);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosLocalizacionesEntity createList(@RequestBody TercerosLocalizacionesEntity c) {
         return tercerosLocalizacionesRepository.save(new TercerosLocalizacionesEntity());
