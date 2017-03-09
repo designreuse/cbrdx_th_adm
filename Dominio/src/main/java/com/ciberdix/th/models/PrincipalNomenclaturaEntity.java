@@ -1,30 +1,102 @@
 package com.ciberdix.th.models;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
 /**
  * Created by ingjj on 8/03/2017.
  */
+@Entity
+@Table(name = "ListasTiposNomenclaturas", schema = "crz_th", catalog = "CREZCAMOS")
 public class PrincipalNomenclaturaEntity {
-    private String Nombre;
-    private Integer id;
+    private int idListaTipoNomenclatura;
+    private String codigoListaTipoNomenclatura;
+    private String nombreListaTipoNomenclatura;
+    private int ordenListaTipoNomenclatura;
+    private boolean indicadorHabilitado;
+    private int auditoriaUsuario;
+    private Timestamp auditoriaFecha;
 
-    public PrincipalNomenclaturaEntity(String nombre, Integer id) {
-        Nombre = nombre;
-        this.id = id;
+    public PrincipalNomenclaturaEntity(int idListaTipoNomenclatura, String codigoListaTipoNomenclatura, String nombreListaTipoNomenclatura, int ordenListaTipoNomenclatura, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
+        this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
+        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+        this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = auditoriaFecha;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public PrincipalNomenclaturaEntity() {
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    @Id
+    @Column(name = "IdListaTipoNomenclatura", nullable = false)
+    public int getIdListaTipoNomenclatura() {
+        return idListaTipoNomenclatura;
     }
 
-    public Integer getId() {
-        return id;
+    public void setIdListaTipoNomenclatura(int idListaTipoNomenclatura) {
+        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Basic
+    @Column(name = "CodigoListaTipoNomenclatura", nullable = false)
+    public String getCodigoListaTipoNomenclatura() {
+        return codigoListaTipoNomenclatura;
+    }
+
+    public void setCodigoListaTipoNomenclatura(String codigoListaTipoNomenclatura) {
+        this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "NombreListaTipoNomenclatura", nullable = false)
+    public String getNombreListaTipoNomenclatura() {
+        return nombreListaTipoNomenclatura;
+    }
+
+    public void setNombreListaTipoNomenclatura(String nombreListaTipoNomenclatura) {
+        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "OrdenListaTipoNomenclatura", nullable = false)
+    public int getOrdenListaTipoNomenclatura() {
+        return ordenListaTipoNomenclatura;
+    }
+
+    public void setOrdenListaTipoNomenclatura(int ordenListaTipoNomenclatura) {
+        this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = false)
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario", nullable = false)
+    public int getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(int auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaFecha", nullable = false)
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 }

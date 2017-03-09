@@ -1,30 +1,102 @@
 package com.ciberdix.th.models;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
 /**
  * Created by ingjj on 8/03/2017.
  */
+@Entity
+@Table(name = "ListasSectoresEmpresas", schema = "crz_th", catalog = "CREZCAMOS")
 public class SectorEmpresaEntity {
-    private String Nombre;
-    private Integer id;
+     private int idListaSectorEmpresa;
+    private String codigoListaSectorEmpresa;
+    private String nombreListaSectorEmpresa;
+    private int ordenListaSectorEmpresa;
+    private boolean indicadorHabilitado;
+    private int auditoriaUsuario;
+    private Timestamp auditoriaFecha;
 
-    public SectorEmpresaEntity(String nombre, Integer id) {
-        Nombre = nombre;
-        this.id = id;
+    public SectorEmpresaEntity(int idListaSectorEmpresa, String codigoListaSectorEmpresa, String nombreListaSectorEmpresa, int ordenListaSectorEmpresa, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idListaSectorEmpresa = idListaSectorEmpresa;
+        this.codigoListaSectorEmpresa = codigoListaSectorEmpresa;
+        this.nombreListaSectorEmpresa = nombreListaSectorEmpresa;
+        this.ordenListaSectorEmpresa = ordenListaSectorEmpresa;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = auditoriaFecha;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public SectorEmpresaEntity() {
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    @Id
+    @Column(name = "IdListaSectorEmpresa", nullable = false)
+    public int getIdListaSectorEmpresa() {
+        return idListaSectorEmpresa;
     }
 
-    public Integer getId() {
-        return id;
+    public void setIdListaSectorEmpresa(int idListaSectorEmpresa) {
+        this.idListaSectorEmpresa = idListaSectorEmpresa;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @Basic
+    @Column(name = "CodigoListaSectorEmpresa", nullable = false)
+    public String getCodigoListaSectorEmpresa() {
+        return codigoListaSectorEmpresa;
+    }
+
+    public void setCodigoListaSectorEmpresa(String codigoListaSectorEmpresa) {
+        this.codigoListaSectorEmpresa = codigoListaSectorEmpresa;
+    }
+
+    @Basic
+    @Column(name = "NombreListaSectorEmpresa", nullable = false)
+    public String getNombreListaSectorEmpresa() {
+        return nombreListaSectorEmpresa;
+    }
+
+    public void setNombreListaSectorEmpresa(String nombreListaSectorEmpresa) {
+        this.nombreListaSectorEmpresa = nombreListaSectorEmpresa;
+    }
+
+    @Basic
+    @Column(name = "OrdenListaSectorEmpresa", nullable = false)
+    public int getOrdenListaSectorEmpresa() {
+        return ordenListaSectorEmpresa;
+    }
+
+    public void setOrdenListaSectorEmpresa(int ordenListaSectorEmpresa) {
+        this.ordenListaSectorEmpresa = ordenListaSectorEmpresa;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = false)
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario", nullable = false)
+    public int getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(int auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaFecha", nullable = false)
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 }

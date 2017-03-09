@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "Terceros", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosEntity {
-    private Long idTercero;
+    private Integer idTercero;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -50,7 +50,7 @@ public class TercerosEntity {
     public TercerosEntity() {
     }
 
-    public TercerosEntity(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, String factorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Integer idLocalizacion, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+    public TercerosEntity(Integer idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, String factorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Integer idLocalizacion, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idTercero = idTercero;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -92,11 +92,11 @@ public class TercerosEntity {
 
     @Id
     @Column(name = "IdTercero", nullable = false)
-    public Long getIdTercero() {
+    public Integer getIdTercero() {
         return idTercero;
     }
 
-    public void setIdTercero(Long idTercero) {
+    public void setIdTercero(Integer idTercero) {
         this.idTercero = idTercero;
     }
 

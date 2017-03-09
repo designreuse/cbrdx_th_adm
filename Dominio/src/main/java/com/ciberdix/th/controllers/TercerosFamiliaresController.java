@@ -1,9 +1,7 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.models.EstructuraAreasEntity;
 import com.ciberdix.th.models.TercerosFamiliaresEntity;
 import com.ciberdix.th.repositories.TercerosFamiliaresRepository;
-import com.ciberdix.th.repositories.TipoAreaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +10,7 @@ import java.util.List;
 
 @RestController
 @Transactional
+@CrossOrigin
 @RequestMapping("/family")
 public class TercerosFamiliaresController {
 
