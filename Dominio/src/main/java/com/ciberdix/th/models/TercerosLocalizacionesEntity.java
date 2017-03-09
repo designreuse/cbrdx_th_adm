@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "TercerosLocalizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosLocalizacionesEntity {
-    private int id;
     private int idTerceroLocalizacion;
     private int idTercero;
     //private int idLocalizacion;
@@ -101,15 +100,6 @@ public class TercerosLocalizacionesEntity {
         this.localizacion = localizacion;
     }
 
-    @Basic
-    @Column(name = "IdTerceroLocalizacion", nullable = false, insertable = false, updatable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @ManyToOne(targetEntity = TercerosEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="IdTercero", nullable=true,  insertable = false , updatable = false)
