@@ -29,7 +29,7 @@ public class PrincipalNomenclaturaController {
 
     @RequestMapping(method = RequestMethod.POST)
     PrincipalNomenclaturaEntity createList(@RequestBody PrincipalNomenclaturaEntity c) {
-        return principalNomenclaturaRepository.save(new PrincipalNomenclaturaEntity(c.getIdListaTipoNomenclatura(),c.getCodigoListaTipoNomenclatura(),c.getNombreListaTipoNomenclatura(),c.getOrdenListaTipoNomenclatura(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+        return principalNomenclaturaRepository.save(new PrincipalNomenclaturaEntity(c.getValue(),c.getCodigoListaTipoNomenclatura(),c.getLabel(),c.getOrdenListaTipoNomenclatura(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
