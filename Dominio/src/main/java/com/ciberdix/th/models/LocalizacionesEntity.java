@@ -18,16 +18,16 @@ public class LocalizacionesEntity {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private TipoDireccionEntity TipoDireccion;
-    private DivisionPoliticaEntity idDivisionPolitica;
+    private DivPoliticaEntity idDivPolitica;
 
-    public LocalizacionesEntity(Integer idLocalizacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivisionPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
+    public LocalizacionesEntity(Integer idLocalizacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
         this.idLocalizacion = idLocalizacion;
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.idDivisionPolitica = idDivisionPolitica;
+        this.idDivPolitica = idDivisionPolitica;
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
         TipoDireccion = tipoDireccion;
@@ -144,7 +144,7 @@ public class LocalizacionesEntity {
         if (comoLlegar != null ? !comoLlegar.equals(that.comoLlegar) : that.comoLlegar != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (idDivisionPolitica != null ? !idDivisionPolitica.equals(that.idDivisionPolitica) : that.idDivisionPolitica != null) return false;
+        if (idDivPolitica != null ? !idDivPolitica.equals(that.idDivPolitica) : that.idDivPolitica != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -162,20 +162,20 @@ public class LocalizacionesEntity {
         result = 31 * result + (longitud != null ? longitud.hashCode() : 0);
         result = 31 * result + (comoLlegar != null ? comoLlegar.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (idDivisionPolitica != null ? idDivisionPolitica.hashCode() : 0);
+        result = 31 * result + (idDivPolitica != null ? idDivPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
     }
 
 
-    @ManyToOne(targetEntity = DivisionPoliticaEntity.class)
+    @ManyToOne(targetEntity = DivPoliticaEntity.class)
     @JoinColumn(name="IdDivisionPolitica")
-    public DivisionPoliticaEntity getIdDivisionPolitica() {
-        return idDivisionPolitica;
+    public DivPoliticaEntity getIdDivisionPolitica() {
+        return idDivPolitica;
     }
 
-    public void setIdDivisionPolitica(DivisionPoliticaEntity idDivisionPolitica) {
-        this.idDivisionPolitica = idDivisionPolitica;
+    public void setIdDivisionPolitica(DivPoliticaEntity idDivisionPolitica) {
+        this.idDivPolitica = idDivisionPolitica;
     }
 }

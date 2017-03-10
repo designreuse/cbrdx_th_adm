@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
-public class DivisionPoliticaEntity {
+public class DivPoliticaEntity {
    private Integer idDivisionPolitica;
    private Integer idDivisionPoliticaPadre;
    private String codigoDivisionPolitica;
@@ -25,10 +25,10 @@ public class DivisionPoliticaEntity {
    //private Timestamp auditoriaFecha;
 
 
-    public DivisionPoliticaEntity() {
+    public DivPoliticaEntity() {
     }
 
-    public DivisionPoliticaEntity(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisionPolitica, Integer indicativoDivisionPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratooDivisionPolitica, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+    public DivPoliticaEntity(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisionPolitica, Integer indicativoDivisionPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratooDivisionPolitica, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idDivisionPolitica = idDivisionPolitica;
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
