@@ -9,35 +9,41 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "Localizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class LocalizacionesEntity {
-    private Integer idLocalizacion;
-    private Integer idTipoDireccion;
+    private Integer idUbicacion;
     private String direccion;
     private String latitud;
     private Integer longitud;
     private String comoLlegar;
     private Boolean indicadorHabilitado;
-    private Integer idZona;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private TipoDireccionEntity TipoDireccion;
+    private DivPoliticaEntity idDivPolitica;
+
+    public LocalizacionesEntity(Integer idUbicacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
+        this.idUbicacion = idUbicacion;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.comoLlegar = comoLlegar;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.idDivPolitica = idDivisionPolitica;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = auditoriaFecha;
+        TipoDireccion = tipoDireccion;
+    }
+
+    public LocalizacionesEntity() {
+    }
 
     @Id
     @Column(name = "IdLocalizacion", nullable = false)
-    public Integer getIdLocalizacion() {
-        return idLocalizacion;
+    public Integer getIdUbicacion() {
+        return idUbicacion;
     }
 
-    public void setIdLocalizacion(Integer idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
-    }
-
-    @Basic
-    @Column(name = "IdTipoDireccion", nullable = true)
-    public Integer getIdTipoDireccion() {
-        return idTipoDireccion;
-    }
-
-    public void setIdTipoDireccion(Integer idTipoDireccion) {
-        this.idTipoDireccion = idTipoDireccion;
+    public void setIdUbicacion(Integer idUbicacion) {
+        this.idUbicacion = idUbicacion;
     }
 
     @Basic
@@ -90,15 +96,7 @@ public class LocalizacionesEntity {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    @Basic
-    @Column(name = "IdZona", nullable = true)
-    public Integer getIdZona() {
-        return idZona;
-    }
 
-    public void setIdZona(Integer idZona) {
-        this.idZona = idZona;
-    }
 
     @Basic
     @Column(name = "AuditoriaUsuario", nullable = false)
@@ -120,6 +118,15 @@ public class LocalizacionesEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @ManyToOne(targetEntity = TipoDireccionEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdTipoDireccion", nullable=true)
+    public TipoDireccionEntity getTipoDireccion() {
+        return TipoDireccion;
+    }
+
+    public void setTipoDireccion(TipoDireccionEntity tipoDireccion) {
+        TipoDireccion = tipoDireccion;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -127,9 +134,9 @@ public class LocalizacionesEntity {
 
         LocalizacionesEntity that = (LocalizacionesEntity) o;
 
-        if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
+        if (idUbicacion != null ? !idUbicacion.equals(that.idUbicacion) : that.idUbicacion != null)
             return false;
-        if (idTipoDireccion != null ? !idTipoDireccion.equals(that.idTipoDireccion) : that.idTipoDireccion != null)
+        if (TipoDireccion != null ? !TipoDireccion.equals(that.TipoDireccion) : that.TipoDireccion != null)
             return false;
         if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
         if (latitud != null ? !latitud.equals(that.latitud) : that.latitud != null) return false;
@@ -137,7 +144,7 @@ public class LocalizacionesEntity {
         if (comoLlegar != null ? !comoLlegar.equals(that.comoLlegar) : that.comoLlegar != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (idZona != null ? !idZona.equals(that.idZona) : that.idZona != null) return false;
+        if (idDivPolitica != null ? !idDivPolitica.equals(that.idDivPolitica) : that.idDivPolitica != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -148,16 +155,27 @@ public class LocalizacionesEntity {
 
     @Override
     public int hashCode() {
-        int result = idLocalizacion != null ? idLocalizacion.hashCode() : 0;
-        result = 31 * result + (idTipoDireccion != null ? idTipoDireccion.hashCode() : 0);
+        int result = idUbicacion != null ? idUbicacion.hashCode() : 0;
+        result = 31 * result + (TipoDireccion != null ? TipoDireccion.hashCode() : 0);
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + (latitud != null ? latitud.hashCode() : 0);
         result = 31 * result + (longitud != null ? longitud.hashCode() : 0);
         result = 31 * result + (comoLlegar != null ? comoLlegar.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (idZona != null ? idZona.hashCode() : 0);
+        result = 31 * result + (idDivPolitica != null ? idDivPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+
+    @ManyToOne(targetEntity = DivPoliticaEntity.class)
+    @JoinColumn(name="IdDivisionPolitica")
+    public DivPoliticaEntity getIdDivisionPolitica() {
+        return idDivPolitica;
+    }
+
+    public void setIdDivisionPolitica(DivPoliticaEntity idDivisionPolitica) {
+        this.idDivPolitica = idDivisionPolitica;
     }
 }

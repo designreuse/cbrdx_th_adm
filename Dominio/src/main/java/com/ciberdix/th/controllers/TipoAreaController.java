@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @Transactional
+@CrossOrigin
 @RequestMapping("/tipoArea")
 public class TipoAreaController {
 
