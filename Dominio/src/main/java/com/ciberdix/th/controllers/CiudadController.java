@@ -27,10 +27,10 @@ public class CiudadController {
         return ciudadRepository.findOne(idLista);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    /*@RequestMapping(method = RequestMethod.POST)
     DivPoliticaEntity createList(@RequestBody DivPoliticaEntity c) {
         return ciudadRepository.save(new DivPoliticaEntity(c.getIdDivisionPolitica(),c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(),c.getDescripcionDivisionPolitica(),c.getIndicativoDivisionPolitica(),c.getCodigoPostalDivisionPolitica(),c.getIdDivisionPoliticaTipo(),c.getIdDivisionPoliticaArea(),c.getIdDivisionPoliticaResguardo(),c.getIdEstratooDivisionPolitica(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
-    }
+    }*/
 
     @RequestMapping(method = RequestMethod.PUT)
     DivPoliticaEntity updateList(@RequestBody DivPoliticaEntity centrosCostosEntity) {

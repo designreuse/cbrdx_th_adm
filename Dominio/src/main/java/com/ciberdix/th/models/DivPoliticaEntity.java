@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
 public class DivPoliticaEntity {
    private Integer idDivisionPolitica;
-   private Integer idDivisionPoliticaPadre;
+   //private Integer idDivisionPoliticaPadre;
    private String codigoDivisionPolitica;
    private String descripcionDivisionPolitica;
    private Integer indicativoDivisionPolitica;
@@ -22,12 +22,11 @@ public class DivPoliticaEntity {
    private boolean indicadorHabilitado;
    private Integer auditoriaUsuario;
    private Timestamp auditoriaFecha;
-   //private Timestamp auditoriaFecha;
-
 
     public DivPoliticaEntity() {
     }
 
+    /*
     public DivPoliticaEntity(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisionPolitica, Integer indicativoDivisionPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratooDivisionPolitica, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idDivisionPolitica = idDivisionPolitica;
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
@@ -42,7 +41,7 @@ public class DivPoliticaEntity {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
-    }
+    }*/
     @Id
     @Column(name = "IdDivisionPolitica", nullable = false)
     public Integer getIdDivisionPolitica() {
@@ -52,6 +51,7 @@ public class DivPoliticaEntity {
     public void setIdDivisionPolitica(Integer idDivisionPolitica) {
         this.idDivisionPolitica = idDivisionPolitica;
     }
+    /*
     @Basic
     @Column(name = "IdDivisionPoliticaPadre", nullable = false)
     public Integer getIdDivisionPoliticaPadre() {
@@ -60,7 +60,7 @@ public class DivPoliticaEntity {
 
     public void setIdDivisionPoliticaPadre(Integer idDivisionPoliticaPadre) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
-    }
+    }*/
     @Basic
     @Column(name = "CodigoDivisionPolitica", nullable = false)
     public String getCodigoDivisionPolitica() {
@@ -160,5 +160,7 @@ public class DivPoliticaEntity {
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
+
+
 
 }

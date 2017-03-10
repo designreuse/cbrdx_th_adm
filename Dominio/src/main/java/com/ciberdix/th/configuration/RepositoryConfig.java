@@ -2,7 +2,6 @@ package com.ciberdix.th.configuration;
 
 import com.ciberdix.th.models.EstructuraAreasEntity;
 import com.ciberdix.th.models.TercerosFamiliaresEntity;
-import com.ciberdix.th.models.TipoDireccionEntity;
 import com.ciberdix.th.models.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
