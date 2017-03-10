@@ -1,6 +1,5 @@
 package com.ciberdix.th.repositories;
 
-import com.ciberdix.th.models.EstructuraAreasEntity;
 import com.ciberdix.th.models.TipoDireccionEntity;
 import org.springframework.data.repository.CrudRepository;
 

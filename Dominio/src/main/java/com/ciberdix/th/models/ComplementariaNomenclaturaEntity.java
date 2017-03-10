@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 /**
  * Created by ingjj on 8/03/2017.
@@ -9,65 +9,65 @@ import java.security.Timestamp;
 @Entity
 @Table(name = "ListasTiposNomenclaturasComplementarias", schema = "crz_th", catalog = "CREZCAMOS")
 public class ComplementariaNomenclaturaEntity {
-    private int idListaTipoNomenclaturaComplementaria;
-    private String codigoListaTipoNomenclaturaComplementaria;
-    private String nombreListaTipoNomenclaturaComplementaria;
-    private int ordenListaTipoNomenclaturaComplementaria;
+    private int idListaTipoNomenclatura;
+    private String codigoListaTipoNomenclatura;
+    private String nombreListaTipoNomenclatura;
+    private int ordenListaTipoNomenclatura;
     private boolean indicadorHabilitado;
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public ComplementariaNomenclaturaEntity() {
-    }
-
-    public ComplementariaNomenclaturaEntity(int idListaTipoNomenclaturaComplementaria, String codigoListaTipoNomenclaturaComplementaria, String nombreListaTipoNomenclaturaComplementaria, int ordenListaTipoNomenclaturaComplementaria, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idListaTipoNomenclaturaComplementaria = idListaTipoNomenclaturaComplementaria;
-        this.codigoListaTipoNomenclaturaComplementaria = codigoListaTipoNomenclaturaComplementaria;
-        this.nombreListaTipoNomenclaturaComplementaria = nombreListaTipoNomenclaturaComplementaria;
-        this.ordenListaTipoNomenclaturaComplementaria = ordenListaTipoNomenclaturaComplementaria;
+    public ComplementariaNomenclaturaEntity(int idListaTipoNomenclatura, String codigoListaTipoNomenclatura, String nombreListaTipoNomenclatura, int ordenListaTipoNomenclatura, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
+        this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
+        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+        this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Id
-    @Column(name = "IdListaTipoNomenclaturaComplementaria", nullable = false)
-    public int getIdListaTipoNomenclaturaComplementaria() {
-        return idListaTipoNomenclaturaComplementaria;
+    public ComplementariaNomenclaturaEntity() {
     }
 
-    public void setIdListaTipoNomenclaturaComplementaria(int idListaTipoNomenclaturaComplementaria) {
-        this.idListaTipoNomenclaturaComplementaria = idListaTipoNomenclaturaComplementaria;
+    @Id
+    @Column(name = "IdListaTipoNomenclaturaComplementaria", nullable = false)
+    public int getIdListaTipoNomenclatura() {
+        return idListaTipoNomenclatura;
+    }
+
+    public void setIdListaTipoNomenclatura(int idListaTipoNomenclatura) {
+        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
     }
 
     @Basic
     @Column(name = "CodigoListaTipoNomenclaturaComplementaria", nullable = false)
-    public String getCodigoListaTipoNomenclaturaComplementaria() {
-        return codigoListaTipoNomenclaturaComplementaria;
+    public String getCodigoListaTipoNomenclatura() {
+        return codigoListaTipoNomenclatura;
     }
 
-    public void setCodigoListaTipoNomenclaturaComplementaria(String codigoListaTipoNomenclaturaComplementaria) {
-        this.codigoListaTipoNomenclaturaComplementaria = codigoListaTipoNomenclaturaComplementaria;
+    public void setCodigoListaTipoNomenclatura(String codigoListaTipoNomenclatura) {
+        this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
     }
 
     @Basic
     @Column(name = "NombreListaTipoNomenclaturaComplementaria", nullable = false)
-    public String getNombreListaTipoNomenclaturaComplementaria() {
-        return nombreListaTipoNomenclaturaComplementaria;
+    public String getNombreListaTipoNomenclatura() {
+        return nombreListaTipoNomenclatura;
     }
 
-    public void setNombreListaTipoNomenclaturaComplementaria(String nombreListaTipoNomenclaturaComplementaria) {
-        this.nombreListaTipoNomenclaturaComplementaria = nombreListaTipoNomenclaturaComplementaria;
+    public void setNombreListaTipoNomenclatura(String nombreListaTipoNomenclatura) {
+        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
     }
 
     @Basic
     @Column(name = "OrdenListaTipoNomenclaturaComplementaria", nullable = false)
-    public int getOrdenListaTipoNomenclaturaComplementaria() {
-        return ordenListaTipoNomenclaturaComplementaria;
+    public int getOrdenListaTipoNomenclatura() {
+        return ordenListaTipoNomenclatura;
     }
 
-    public void setOrdenListaTipoNomenclaturaComplementaria(int ordenListaTipoNomenclaturaComplementaria) {
-        this.ordenListaTipoNomenclaturaComplementaria = ordenListaTipoNomenclaturaComplementaria;
+    public void setOrdenListaTipoNomenclatura(int ordenListaTipoNomenclatura) {
+        this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
     }
 
     @Basic

@@ -9,18 +9,18 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposDirecciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class TipoDireccionEntity {
-    private int value;
+    private Integer idListaTipoDirecciones;
     private String codigoListaTipoDirecciones;
-    private String label;
-    private int ordenListaTipoDirecciones;
+    private String nombreListaTipoDirecciones;
+    private Integer ordenListaTipoDirecciones;
     private boolean indicadorHabilitado;
-    private int auditoriaUsuario;
+    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TipoDireccionEntity(int value, String codigoListaTipoDirecciones, String label, int ordenListaTipoDirecciones, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.value = value;
+    public TipoDireccionEntity(Integer idListaTipoDirecciones, String codigoListaTipoDirecciones, String nombreListaTipoDirecciones, Integer ordenListaTipoDirecciones, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idListaTipoDirecciones = idListaTipoDirecciones;
         this.codigoListaTipoDirecciones = codigoListaTipoDirecciones;
-        this.label = label;
+        this.nombreListaTipoDirecciones = nombreListaTipoDirecciones;
         this.ordenListaTipoDirecciones = ordenListaTipoDirecciones;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
@@ -32,12 +32,12 @@ public class TipoDireccionEntity {
 
     @Id
     @Column(name = "IdListaTipoDireccion", nullable = false)
-    public int getValue() {
-        return value;
+    public Integer getIdListaTipoDirecciones() {
+        return idListaTipoDirecciones;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setIdListaTipoDirecciones(Integer idListaTipoDirecciones) {
+        this.idListaTipoDirecciones = idListaTipoDirecciones;
     }
 
     @Basic
@@ -52,21 +52,21 @@ public class TipoDireccionEntity {
 
     @Basic
     @Column(name = "NombreListaTipoDireccion", nullable = false)
-    public String getLabel() {
-        return label;
+    public String getNombreListaTipoDirecciones() {
+        return nombreListaTipoDirecciones;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setNombreListaTipoDirecciones(String nombreListaTipoDirecciones) {
+        this.nombreListaTipoDirecciones = nombreListaTipoDirecciones;
     }
 
     @Basic
     @Column(name = "OrdenListaTipoDireccion", nullable = false)
-    public int getOrdenListaTipoDirecciones() {
+    public Integer getOrdenListaTipoDirecciones() {
         return ordenListaTipoDirecciones;
     }
 
-    public void setOrdenListaTipoDirecciones(int ordenListaTipoDirecciones) {
+    public void setOrdenListaTipoDirecciones(Integer ordenListaTipoDirecciones) {
         this.ordenListaTipoDirecciones = ordenListaTipoDirecciones;
     }
 
@@ -82,11 +82,11 @@ public class TipoDireccionEntity {
 
     @Basic
     @Column(name = "AuditoriaUsuario", nullable = false)
-    public int getAuditoriaUsuario() {
+    public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
 
-    public void setAuditoriaUsuario(int auditoriaUsuario) {
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
 

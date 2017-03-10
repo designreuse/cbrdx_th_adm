@@ -27,10 +27,10 @@ public class ComplementariaNomenclaturaController {
         return complementariaNomenclaturaRepository.findOne(idLista);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    /*@RequestMapping(method = RequestMethod.POST)
     ComplementariaNomenclaturaEntity createList(@RequestBody ComplementariaNomenclaturaEntity c) {
-        return complementariaNomenclaturaRepository.save(new ComplementariaNomenclaturaEntity(c.getIdListaTipoNomenclaturaComplementaria(),c.getCodigoListaTipoNomenclaturaComplementaria(),c.getNombreListaTipoNomenclaturaComplementaria(),c.getOrdenListaTipoNomenclaturaComplementaria(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
-    }
+        return complementariaNomenclaturaRepository.save();
+    }*/
 
     @RequestMapping(method = RequestMethod.PUT)
     ComplementariaNomenclaturaEntity updateList(@RequestBody ComplementariaNomenclaturaEntity centrosCostosEntity) {

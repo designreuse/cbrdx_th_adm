@@ -11,21 +11,12 @@ import java.sql.Timestamp;
 public class TercerosLocalizacionesEntity {
     private int idTerceroLocalizacion;
     private int idTercero;
-    //private int idLocalizacion;
     private boolean indicadorHabilitado;
-    //private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private LocalizacionesEntity localizacion;
     private TercerosEntity terceros;
     private UsuariosEntity usuarios;
-    /*public TercerosLocalizacionesEntity(int idTerceroLocalizacion, int idTercero, int idLocalizacion, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idTerceroLocalizacion = idTerceroLocalizacion;
-        this.idTercero = idTercero;
-        this.idLocalizacion = idLocalizacion;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = auditoriaFecha;
-    }*/
+
 
     public TercerosLocalizacionesEntity() {
     }
@@ -49,16 +40,7 @@ public class TercerosLocalizacionesEntity {
     public void setIdTercero(int idTercero) {
         this.idTercero = idTercero;
     }
-    /*
-    @Basic
-    @Column(name = "IdLocalizacion", nullable = true, length = 64)
-    public int getIdLocalizacion() {
-        return idLocalizacion;
-    }
 
-    public void setIdLocalizacion(int idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
-    }*/
 
     @Basic
     @Column(name = "IndicadorHabilitado", nullable = true, length = 64)
@@ -69,17 +51,7 @@ public class TercerosLocalizacionesEntity {
     public void setIndicadorHabilitado(boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
     }
-/*
-    @Basic
-    @Column(name = "AuditoriaUsuario", nullable = true, length = 64)
-    public int getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
 
-    public void setAuditoriaUsuario(int auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
-    }
-*/
     @Basic
     @Column(name = "AuditoriaFecha", nullable = true, length = 64)
     public Timestamp getAuditoriaFecha() {
