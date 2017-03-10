@@ -62,7 +62,7 @@ public class TercerosFamiliaresEntity {
         this.idFamiliar = idFamiliar;
     }
     @Basic
-    @Column(name = "IdParentezco", nullable = true)
+    @Column(name = "IdParentesco", nullable = true)
     public int getIdParentezco() {
         return idParentezco;
     }
