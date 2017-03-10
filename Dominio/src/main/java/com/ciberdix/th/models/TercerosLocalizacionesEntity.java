@@ -13,10 +13,11 @@ public class TercerosLocalizacionesEntity {
     private int idTercero;
     //private int idLocalizacion;
     private boolean indicadorHabilitado;
-    private int auditoriaUsuario;
+    //private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private LocalizacionesEntity localizacion;
-
+    private TercerosEntity terceros;
+    private UsuariosEntity usuarios;
     /*public TercerosLocalizacionesEntity(int idTerceroLocalizacion, int idTercero, int idLocalizacion, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
         this.idTercero = idTercero;
@@ -48,8 +49,8 @@ public class TercerosLocalizacionesEntity {
     public void setIdTercero(int idTercero) {
         this.idTercero = idTercero;
     }
-
-    /*@Basic
+    /*
+    @Basic
     @Column(name = "IdLocalizacion", nullable = true, length = 64)
     public int getIdLocalizacion() {
         return idLocalizacion;
@@ -68,7 +69,7 @@ public class TercerosLocalizacionesEntity {
     public void setIndicadorHabilitado(boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
     }
-
+/*
     @Basic
     @Column(name = "AuditoriaUsuario", nullable = true, length = 64)
     public int getAuditoriaUsuario() {
@@ -78,7 +79,7 @@ public class TercerosLocalizacionesEntity {
     public void setAuditoriaUsuario(int auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
-
+*/
     @Basic
     @Column(name = "AuditoriaFecha", nullable = true, length = 64)
     public Timestamp getAuditoriaFecha() {
@@ -97,5 +98,26 @@ public class TercerosLocalizacionesEntity {
 
     public void setLocalizacion(LocalizacionesEntity localizacion) {
         this.localizacion = localizacion;
+    }
+
+
+    @ManyToOne(targetEntity = TercerosEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdTercero", nullable=true,  insertable = false , updatable = false)
+    public TercerosEntity getTerceros() {
+        return terceros;
+    }
+
+    public void setTerceros(TercerosEntity terceros) {
+        this.terceros = terceros;
+    }
+
+    @ManyToOne(targetEntity = UsuariosEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="AuditoriaUsuario", nullable=true)
+    public UsuariosEntity getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(UsuariosEntity usuarios) {
+        this.usuarios = usuarios;
     }
 }

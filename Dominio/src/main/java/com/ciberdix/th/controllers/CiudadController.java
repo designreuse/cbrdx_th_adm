@@ -1,6 +1,6 @@
 package com.ciberdix.th.controllers;
 
-        import com.ciberdix.th.models.CiudadEntity;
+        import com.ciberdix.th.models.DivisionPoliticaEntity;
 import com.ciberdix.th.repositories.CiudadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,22 +18,22 @@ public class CiudadController {
     private CiudadRepository ciudadRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<CiudadEntity> getLists() {
-        return (List<CiudadEntity>) ciudadRepository.findAll();
+    List<DivisionPoliticaEntity> getLists() {
+        return (List<DivisionPoliticaEntity>) ciudadRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
-    CiudadEntity findList(@PathVariable Integer idLista) {
+    DivisionPoliticaEntity findList(@PathVariable Integer idLista) {
         return ciudadRepository.findOne(idLista);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    CiudadEntity createList(@RequestBody CiudadEntity c) {
-        return ciudadRepository.save(new CiudadEntity(c.getIdDivisionPolitica(),c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(),c.getDescripcionDivisionPolitica(),c.getIndicativoDivisionPolitica(),c.getCodigoPostalDivisionPolitica(),c.getIdDivisionPoliticaTipo(),c.getIdDivisionPoliticaArea(),c.getIdDivisionPoliticaResguardo(),c.getIdEstratooDivisionPolitica(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+    DivisionPoliticaEntity createList(@RequestBody DivisionPoliticaEntity c) {
+        return ciudadRepository.save(new DivisionPoliticaEntity(c.getIdDivisionPolitica(),c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(),c.getDescripcionDivisionPolitica(),c.getIndicativoDivisionPolitica(),c.getCodigoPostalDivisionPolitica(),c.getIdDivisionPoliticaTipo(),c.getIdDivisionPoliticaArea(),c.getIdDivisionPoliticaResguardo(),c.getIdEstratooDivisionPolitica(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    CiudadEntity updateList(@RequestBody CiudadEntity centrosCostosEntity) {
+    DivisionPoliticaEntity updateList(@RequestBody DivisionPoliticaEntity centrosCostosEntity) {
         return ciudadRepository.save(centrosCostosEntity);
     }
 }
