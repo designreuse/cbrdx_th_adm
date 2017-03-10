@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "Localizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class LocalizacionesEntity {
-    private Integer idLocalizacion;
+    private Integer idUbicacion;
     private String direccion;
     private String latitud;
     private Integer longitud;
@@ -20,8 +20,8 @@ public class LocalizacionesEntity {
     private TipoDireccionEntity TipoDireccion;
     private DivPoliticaEntity idDivPolitica;
 
-    public LocalizacionesEntity(Integer idLocalizacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
-        this.idLocalizacion = idLocalizacion;
+    public LocalizacionesEntity(Integer idUbicacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
+        this.idUbicacion = idUbicacion;
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
@@ -38,12 +38,12 @@ public class LocalizacionesEntity {
 
     @Id
     @Column(name = "IdLocalizacion", nullable = false)
-    public Integer getIdLocalizacion() {
-        return idLocalizacion;
+    public Integer getIdUbicacion() {
+        return idUbicacion;
     }
 
-    public void setIdLocalizacion(Integer idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
+    public void setIdUbicacion(Integer idUbicacion) {
+        this.idUbicacion = idUbicacion;
     }
 
     @Basic
@@ -134,7 +134,7 @@ public class LocalizacionesEntity {
 
         LocalizacionesEntity that = (LocalizacionesEntity) o;
 
-        if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
+        if (idUbicacion != null ? !idUbicacion.equals(that.idUbicacion) : that.idUbicacion != null)
             return false;
         if (TipoDireccion != null ? !TipoDireccion.equals(that.TipoDireccion) : that.TipoDireccion != null)
             return false;
@@ -155,7 +155,7 @@ public class LocalizacionesEntity {
 
     @Override
     public int hashCode() {
-        int result = idLocalizacion != null ? idLocalizacion.hashCode() : 0;
+        int result = idUbicacion != null ? idUbicacion.hashCode() : 0;
         result = 31 * result + (TipoDireccion != null ? TipoDireccion.hashCode() : 0);
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + (latitud != null ? latitud.hashCode() : 0);
