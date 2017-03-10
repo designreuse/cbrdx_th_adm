@@ -22,6 +22,12 @@ public class TercerosFamiliaresController {
         return (List<TercerosFamiliaresEntity>) tercerosFamiliaresRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/employee/{employe}")
+    List<TercerosFamiliaresEntity> getListsByEmployee(@PathVariable Integer employe) {
+        return  List<TercerosFamiliaresEntity> tercerosFamiliaresRepository.findAllByIdTercero(employe);
+
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
     TercerosFamiliaresEntity findList(@PathVariable Integer idLista) {
         return tercerosFamiliaresRepository.findOne(idLista);
