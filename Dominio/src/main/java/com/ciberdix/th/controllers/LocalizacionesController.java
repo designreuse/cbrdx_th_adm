@@ -22,10 +22,10 @@ public class LocalizacionesController {
         return (List<LocalizacionesEntity>) localizacionesRepository.findAll();
     }
 
-    /*@RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     LocalizacionesEntity createList(@RequestBody LocalizacionesEntity c) {
-        return localizacionesRepository.save(new LocalizacionesEntity(c.getIdLocalizacion(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha(),c.getIdDivisionPolitica()));
-    }*/
+        return localizacionesRepository.save(new LocalizacionesEntity(c.getIdTipoDireccion(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getIdDivisionPolitica(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+    }
 
     @RequestMapping(method = RequestMethod.PUT)
     LocalizacionesEntity updateList(@RequestBody LocalizacionesEntity centrosCostosEntity) {
