@@ -1,8 +1,10 @@
 package com.ciberdix.th.controllers;
 
         import com.ciberdix.th.models.DivPoliticaEntity;
-import com.ciberdix.th.repositories.CiudadRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+        import com.ciberdix.th.models.VistaDivisionPoliticaEntity;
+        import com.ciberdix.th.repositories.CiudadRepository;
+        import com.ciberdix.th.repositories.VistaDivisionPoliticaRepository;
+        import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,9 @@ public class CiudadController {
     @Autowired
     private CiudadRepository ciudadRepository;
 
+    @Autowired
+    private VistaDivisionPoliticaRepository vistaDivisionPoliticaController;
+
     @RequestMapping(method = RequestMethod.GET)
     List<DivPoliticaEntity> getLists() {
         return (List<DivPoliticaEntity>) ciudadRepository.findAll();
@@ -25,6 +30,11 @@ public class CiudadController {
     @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
     DivPoliticaEntity findList(@PathVariable Integer idLista) {
         return ciudadRepository.findOne(idLista);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/location/{idLista}")
+    List<VistaDivisionPoliticaEntity> findList1(@PathVariable Integer idLista) {
+        return vistaDivisionPoliticaController.findByidDivisionPoliticaTipo(idLista);
     }
 
     /*@RequestMapping(method = RequestMethod.POST)
