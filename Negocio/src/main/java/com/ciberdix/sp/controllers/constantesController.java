@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/constantes")
 public class constantesController {
 
-    private String serviceUrl = "http://localhost:8445/constantes/";
+    private String serviceUrl = "http://localhost:8080/constantes/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Constante> consultarParametros() {
