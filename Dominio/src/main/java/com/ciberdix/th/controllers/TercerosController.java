@@ -28,8 +28,8 @@ public class TercerosController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosEntity createList(@RequestBody TercerosEntity c) {
-        return tercerosRepository.save(new TercerosEntity());
+    TercerosEntity createList(@RequestBody TercerosEntity ter) {
+        return tercerosRepository.save(new TercerosEntity(ter.getPrimerNombre(), ter.getSegundoNombre(), ter.getPrimerApellido(), ter.getSegundoApellido(), ter.getImagen(), ter.getNumeroDocumento(), ter.getFechaDocumento(), ter.getFechaNacimiento(), ter.getIdFactorRh(), ter.getFactorRh(), ter.getNroHijos(), ter.getIdLateralidad(), ter.getIdTipoVivienda(), ter.getEstrato(), ter.getTallaCamisa(), ter.getTallaPantalon(), ter.getTallaCalzado(), ter.getCorreoElectronico(), ter.getFechaCreacion(), ter.getRazonSocial(), ter.getTalla(), ter.getPeso(), ter.getImc(), ter.getIdVehiculo(), ter.getTelefonoFijo(), ter.getTelefonoCelular(), ter.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
