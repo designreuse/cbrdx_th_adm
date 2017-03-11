@@ -1,3 +1,4 @@
+/.gitignore
 /constantesController.class
 /formularioController.class
 /formularioElementoController.class

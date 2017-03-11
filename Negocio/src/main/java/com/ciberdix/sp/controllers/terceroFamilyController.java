@@ -17,16 +17,16 @@ public class terceroFamilyController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    TerceroFamily crearParametro(@RequestBody TerceroFamily request) {
+    TerceroFamily crearTerceroFamily(@RequestBody TerceroFamily request) {
 
         Tercero tercero = new Tercero(request.getPrimerNombre(), request.getSegundoNombre(), request.getPrimerApellido(), request.getSegundoApellido(), request.getImagen(), request.getIdTipoDocumento(), request.getNumeroDocumento(),request.getIdGenero(), request.getCorreoElectronico(), request.getIdLocalizacion(), request.getFechaCreacion(), request.getIdTipoPersona(), request.getRazonSocial(), request.getTalla(), request.getPeso(), request.getImc(), request.getIdProfesion(), request.getIdOcupacion(), request.getAuditoriaUsuario());
 
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject(serviceUrl + "/employee", tercero, Tercero.class);
+        Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employee/", tercero, Tercero.class);
 
-        //TercerosFamiliares tercerosFamiliares = new TercerosFamiliares(request.getIdPadre(),rspTercero.getIdTercero(),request.getIdParentezco(),request.getIdConvivencia(), true, request.getAuditoriaUsuario());
-        //restTemplate.postForObject(serviceUrl + "/family", tercerosFamiliares, TercerosFamiliares.class);
-        //request.setIdTerceroFamiliar(rspTercero.getIdTercero());
+        TercerosFamiliares tercerosFamiliares = new TercerosFamiliares(request.getIdPadre(),rspTercero.getIdTercero(),request.getIdParentezco(),request.getIdConvivencia(), true, request.getAuditoriaUsuario());
+        restTemplate.postForObject(serviceUrl + "/family/", tercerosFamiliares, TercerosFamiliares.class);
+        request.setIdTerceroFamiliar(rspTercero.getIdTercero());
         return request;
     }
 
