@@ -30,4 +30,18 @@ public class terceroFamilyController {
         return request;
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    TerceroFamily actualizarTerceroFamily(@RequestBody TerceroFamily request) {
+
+        Tercero tercero = new Tercero(request.getPrimerNombre(), request.getSegundoNombre(), request.getPrimerApellido(), request.getSegundoApellido(), request.getImagen(), request.getIdTipoDocumento(), request.getNumeroDocumento(),request.getIdGenero(), request.getCorreoElectronico(), request.getIdLocalizacion(), request.getFechaCreacion(), request.getIdTipoPersona(), request.getRazonSocial(), request.getTalla(), request.getPeso(), request.getImc(), request.getIdProfesion(), request.getIdOcupacion(), request.getAuditoriaUsuario());
+
+        RestTemplate restTemplate = new RestTemplate();
+        Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employee/", tercero, Tercero.class);
+
+        TercerosFamiliares tercerosFamiliares = new TercerosFamiliares(request.getIdPadre(),rspTercero.getIdTercero(),request.getIdParentezco(),request.getIdConvivencia(), true, request.getAuditoriaUsuario());
+        restTemplate.postForObject(serviceUrl + "/family/", tercerosFamiliares, TercerosFamiliares.class);
+        request.setIdTerceroFamiliar(rspTercero.getIdTercero());
+        return request;
+    }
+
 }
