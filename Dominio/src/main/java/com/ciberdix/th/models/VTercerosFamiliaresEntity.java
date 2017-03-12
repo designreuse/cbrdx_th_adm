@@ -1,9 +1,6 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -28,7 +25,7 @@ public class VTercerosFamiliaresEntity {
     private int idParentesco;
     private String nombreListaParentesco;
 
-    @Basic
+    @Id
     @Column(name = "IdTerceroFamiliar")
     public int getIdTerceroFamiliar() {
         return idTerceroFamiliar;

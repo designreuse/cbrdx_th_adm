@@ -24,7 +24,7 @@ public class VTercerosFamiliaresController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/employee/{employe}")
     List<VTercerosFamiliaresEntity> getLists1(@PathVariable Integer employe) {
-        return   tercerosFamiliaresRepository.findByIdTerceros(employe);
+        return   tercerosFamiliaresRepository.findByIdTercero(employe);
 
     }
 
@@ -32,6 +32,5 @@ public class VTercerosFamiliaresController {
     VTercerosFamiliaresEntity findList(@PathVariable Integer idLista) {
         return tercerosFamiliaresRepository.findOne(idLista);
     }
-
 
 }
