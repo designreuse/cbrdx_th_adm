@@ -1,25 +1,77 @@
 package com.ciberdix.th.model;
 
+import java.sql.Timestamp;
+
 public class Localizacion {
     private Integer idUbicacion;
     private String direccion;
-    private Integer ciudad;
-    private Integer departamento;
-    private Integer pais;
-    private Integer barrio;
+    private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
+    private Integer idDivisionPolitica;
     private String longitud;
     private String latitud;
     private String comoLlegar;    
+    private Demografia barrio;
+    private Demografia ciudad;
+    private Demografia departamento;
+    private Demografia pais;
     private TipoDireccion tipoDireccion;
-    private DivisionPolitica idDivisionPolitica;
 
-    public DivisionPolitica getIdDivisionPolitica() {
+    public Demografia getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(Demografia barrio) {
+        this.barrio = barrio;
+    }
+
+    public Demografia getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Demografia ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Demografia getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Demografia departamento) {
+        this.departamento = departamento;
+    }
+
+    public Demografia getPais() {
+        return pais;
+    }
+
+    public void setPais(Demografia pais) {
+        this.pais = pais;
+    }
+
+    public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
 
-    public void setIdDivisionPolitica(DivisionPolitica idDivisionPolitica) {
+    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
         this.idDivisionPolitica = idDivisionPolitica;
-    }    
+    }
+
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
+    }
 
     public TipoDireccion getTipoDireccion() {
         return tipoDireccion;
@@ -43,38 +95,6 @@ public class Localizacion {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public Integer getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Integer ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public Integer getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Integer departamento) {
-        this.departamento = departamento;
-    }
-
-    public Integer getPais() {
-        return pais;
-    }
-
-    public void setPais(Integer pais) {
-        this.pais = pais;
-    }
-
-    public Integer getBarrio() {
-        return barrio;
-    }
-
-    public void setBarrio(Integer barrio) {
-        this.barrio = barrio;
     }
     
     public String getLongitud() {
