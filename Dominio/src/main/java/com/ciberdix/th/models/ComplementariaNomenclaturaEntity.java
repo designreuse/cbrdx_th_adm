@@ -9,18 +9,18 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposNomenclaturasComplementarias", schema = "crz_th", catalog = "CREZCAMOS")
 public class ComplementariaNomenclaturaEntity {
-    private int idListaTipoNomenclatura;
+    private int value;
     private String codigoListaTipoNomenclatura;
-    private String nombreListaTipoNomenclatura;
+    private String label;
     private int ordenListaTipoNomenclatura;
     private boolean indicadorHabilitado;
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     public ComplementariaNomenclaturaEntity(int idListaTipoNomenclatura, String codigoListaTipoNomenclatura, String nombreListaTipoNomenclatura, int ordenListaTipoNomenclatura, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
+        this.value = idListaTipoNomenclatura;
         this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
-        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+        this.label = nombreListaTipoNomenclatura;
         this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
@@ -32,12 +32,12 @@ public class ComplementariaNomenclaturaEntity {
 
     @Id
     @Column(name = "IdListaTipoNomenclaturaComplementaria", nullable = false)
-    public int getIdListaTipoNomenclatura() {
-        return idListaTipoNomenclatura;
+    public int getValue() {
+        return value;
     }
 
-    public void setIdListaTipoNomenclatura(int idListaTipoNomenclatura) {
-        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
+    public void setValue(int idListaTipoNomenclatura) {
+        this.value = idListaTipoNomenclatura;
     }
 
     @Basic
@@ -52,12 +52,12 @@ public class ComplementariaNomenclaturaEntity {
 
     @Basic
     @Column(name = "NombreListaTipoNomenclaturaComplementaria", nullable = false)
-    public String getNombreListaTipoNomenclatura() {
-        return nombreListaTipoNomenclatura;
+    public String getLabel() {
+        return label;
     }
 
-    public void setNombreListaTipoNomenclatura(String nombreListaTipoNomenclatura) {
-        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+    public void setLabel(String nombreListaTipoNomenclatura) {
+        this.label = nombreListaTipoNomenclatura;
     }
 
     @Basic
