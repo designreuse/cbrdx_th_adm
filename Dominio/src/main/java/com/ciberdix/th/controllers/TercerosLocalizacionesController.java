@@ -34,7 +34,7 @@ public class TercerosLocalizacionesController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosLocalizacionesEntity createList(@RequestBody TercerosLocalizacionesEntity c) {
-        return tercerosLocalizacionesRepository.save(new TercerosLocalizacionesEntity());
+        return tercerosLocalizacionesRepository.save(new TercerosLocalizacionesEntity(c.getIdTercero(),c.getIdLocalizacion(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

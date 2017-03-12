@@ -10,33 +10,39 @@ import java.sql.Timestamp;
 @Table(name = "Localizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class LocalizacionesEntity {
     private Integer idUbicacion;
+    private Integer idTipoDireccion;
     private String direccion;
     private String latitud;
-    private Integer longitud;
+    private String longitud;
     private String comoLlegar;
     private Boolean indicadorHabilitado;
+    private Integer idDivisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+
     private TipoDireccionEntity TipoDireccion;
     private DivPoliticaEntity idDivPolitica;
 
-    public LocalizacionesEntity(Integer idUbicacion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, DivPoliticaEntity idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha, TipoDireccionEntity tipoDireccion) {
-        this.idUbicacion = idUbicacion;
+
+
+    public LocalizacionesEntity() {
+    }
+
+    public LocalizacionesEntity( Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.idDivPolitica = idDivisionPolitica;
+        this.idDivisionPolitica = idDivisionPolitica;
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
-        TipoDireccion = tipoDireccion;
-    }
-
-    public LocalizacionesEntity() {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdLocalizacion", nullable = false)
     public Integer getIdUbicacion() {
         return idUbicacion;
@@ -68,11 +74,11 @@ public class LocalizacionesEntity {
 
     @Basic
     @Column(name = "Longitud", nullable = true)
-    public Integer getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 
@@ -119,7 +125,7 @@ public class LocalizacionesEntity {
     }
 
     @ManyToOne(targetEntity = TipoDireccionEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdTipoDireccion", nullable=true)
+    @JoinColumn(name="IdTipoDireccion", nullable=true, insertable = false , updatable = false)
     public TipoDireccionEntity getTipoDireccion() {
         return TipoDireccion;
     }
@@ -169,13 +175,23 @@ public class LocalizacionesEntity {
     }
 
 
-    @ManyToOne(targetEntity = DivPoliticaEntity.class)
-    @JoinColumn(name="IdDivisionPolitica")
-    public DivPoliticaEntity getIdDivisionPolitica() {
-        return idDivPolitica;
+    @Basic
+    @Column(name = "IdTipoDireccion", nullable = false)
+    public Integer getIdTipoDireccion() {
+        return idTipoDireccion;
     }
 
-    public void setIdDivisionPolitica(DivPoliticaEntity idDivisionPolitica) {
-        this.idDivPolitica = idDivisionPolitica;
+    public void setIdTipoDireccion(Integer idTipoDireccion) {
+        this.idTipoDireccion = idTipoDireccion;
+    }
+
+    @Basic
+    @Column(name = "IdDivisionPolitica", nullable = false)
+    public Integer getIdDivisionPolitica() {
+        return idDivisionPolitica;
+    }
+
+    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
+        this.idDivisionPolitica = idDivisionPolitica;
     }
 }

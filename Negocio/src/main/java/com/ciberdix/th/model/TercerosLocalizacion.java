@@ -3,13 +3,20 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 public class TercerosLocalizacion {
-    private Localizacion localizacion;
-    private String correoElectronico;
-    private String celular;
-    private String telefono;
+    private Integer idLocalizacion;
     private Integer idTercero;
     private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
+    private Localizacion localizacion;
+    private boolean indicadorHabilitado;
+
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     public Localizacion getLocalizacion() {
         return localizacion;
@@ -19,28 +26,12 @@ public class TercerosLocalizacion {
         this.localizacion = localizacion;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public Integer getIdLocalizacion() {
+        return idLocalizacion;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setIdLocalizacion(Integer idLocalizacion) {
+        this.idLocalizacion = idLocalizacion;
     }
 
     public Integer getIdTercero() {
@@ -66,4 +57,5 @@ public class TercerosLocalizacion {
     public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
+    
 }
