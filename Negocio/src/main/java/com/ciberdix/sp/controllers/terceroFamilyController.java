@@ -13,7 +13,9 @@ import java.util.List;
 @RequestMapping("/terceroFamily")
 public class terceroFamilyController {
 
-    private String serviceUrl = "http://localhost:8080";
+    private String serviceUrl = "http://localhost:8443";
+
+
 
 
     @RequestMapping(method = RequestMethod.POST)
@@ -44,4 +46,10 @@ public class terceroFamilyController {
         return request;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
+    UsuarioPerfil verParametro(@PathVariable Integer IdParametro) {
+        RestTemplate restTemplate = new RestTemplate();
+        UsuarioPerfil parametro = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, UsuarioPerfil.class);
+        return parametro;
+    }
 }

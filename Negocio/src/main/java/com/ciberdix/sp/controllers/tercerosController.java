@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/terceros")
 public class tercerosController {
 
-    private String serviceUrl = "http://localhost:8445/terceros/";
+    private String serviceUrl = "http://localhost:8443/terceros/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Tercero> consultarTerceros() {

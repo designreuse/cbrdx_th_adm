@@ -6,9 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Date;
 
-/**
- * Created by vladeye on 12/03/17.
- */
 @Entity
 @Table(name = "V_TercerosFamiliares", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosFamiliaresEntity {
