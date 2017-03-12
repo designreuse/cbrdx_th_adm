@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/employeesLocations")
 public class TercerosLocalizacionController {
 
-    private String serviceUrl = "http://localhost:8080/";
+    private String serviceUrl = "http://localhost:8445/";
 
     @RequestMapping(method = RequestMethod.GET, value = "employees/{id}")
     List<TercerosLocalizacion> consultarParametros(@PathVariable Integer id) {

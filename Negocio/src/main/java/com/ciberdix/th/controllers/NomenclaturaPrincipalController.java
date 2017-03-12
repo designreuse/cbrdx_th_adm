@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/nomenclatures")
 public class NomenclaturaPrincipalController {
-    private String serviceUrl = "http://localhost:8080/";
+    private String serviceUrl = "http://localhost:8445/";
     
     @RequestMapping(method = RequestMethod.GET, value = "principal")
     List<Nomenclaturas> consultarPrincipales() {

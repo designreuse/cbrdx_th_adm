@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/cities")
 public class DivisionPoliticaController {
 
-    private String serviceUrl = "http://localhost:8080/";
+    private String serviceUrl = "http://localhost:8445/";
 
     @RequestMapping(method = RequestMethod.GET, value = "s/{param}")
     List<DivisionPolitica> consultarParametros(@PathVariable String param) {
