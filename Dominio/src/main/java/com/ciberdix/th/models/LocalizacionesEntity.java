@@ -13,7 +13,7 @@ public class LocalizacionesEntity {
     private Integer idTipoDireccion;
     private String direccion;
     private String latitud;
-    private Integer longitud;
+    private String longitud;
     private String comoLlegar;
     private Boolean indicadorHabilitado;
     private Integer idDivisionPolitica;
@@ -29,7 +29,7 @@ public class LocalizacionesEntity {
     public LocalizacionesEntity() {
     }
 
-    public LocalizacionesEntity( Integer idTipoDireccion, String direccion, String latitud, Integer longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+    public LocalizacionesEntity( Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
         this.latitud = latitud;
@@ -74,11 +74,11 @@ public class LocalizacionesEntity {
 
     @Basic
     @Column(name = "Longitud", nullable = true)
-    public Integer getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 
