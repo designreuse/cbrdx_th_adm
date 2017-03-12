@@ -9,5 +9,5 @@ import java.util.List;
  * Created by felip on 2/03/2017.
  */
 public interface VTercerosFamiliaresRepository extends CrudRepository<VTercerosFamiliaresEntity, Integer> {
-    List<VTercerosFamiliaresEntity> findByIdTerceros(int idTerceros);
+    List<VTercerosFamiliaresEntity> findByIdTercero(int idTercero);
 }
