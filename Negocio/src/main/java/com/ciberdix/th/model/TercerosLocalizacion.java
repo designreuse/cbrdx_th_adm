@@ -8,6 +8,15 @@ public class TercerosLocalizacion {
     private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
     private Localizacion localizacion;
+    private boolean indicadorHabilitado;
+
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     public Localizacion getLocalizacion() {
         return localizacion;

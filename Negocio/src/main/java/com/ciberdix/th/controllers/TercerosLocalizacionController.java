@@ -134,15 +134,47 @@ public class TercerosLocalizacionController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosLocalizacion crearTerceroLocalizacion(@RequestBody TercerosLocalizacion request) {
-        TercerosLocalizacion terceroLocalizacion = new TercerosLocalizacion();
+    TercerosLocalizacion crearTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
+        
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, request, TercerosLocalizacion.class);
+        TercerosLocalizacion terceroLocalizacion = new TercerosLocalizacion();
+        Localizacion localizacion = new Localizacion();
+        Demografia barrio = new Demografia();
+        
+        barrio.setValue(Integer.MIN_VALUE);
+        barrio.setLabel((String) tl.getLocalizacion().getBarrio().getLabel());
+        
+        localizacion.setIdUbicacion(tl.getLocalizacion().getIdUbicacion());
+        localizacion.setTipoDireccion(tl.getLocalizacion().getTipoDireccion());
+        localizacion.setDireccion(tl.getLocalizacion().getDireccion());
+        localizacion.setAuditoriaFecha(tl.getLocalizacion().getAuditoriaFecha());
+        localizacion.setAuditoriaUsuario(tl.getLocalizacion().getAuditoriaUsuario());
+        localizacion.setBarrio(barrio);
+        localizacion.setCiudad(tl.getLocalizacion().getCiudad());
+        localizacion.setComoLlegar(tl.getLocalizacion().getComoLlegar());
+        localizacion.setDepartamento(tl.getLocalizacion().getDepartamento());
+        localizacion.setLatitud(tl.getLocalizacion().getLatitud());
+        localizacion.setLongitud(tl.getLocalizacion().getLongitud());
+        localizacion.setPais(tl.getLocalizacion().getPais());
+        localizacion.setIdDivisionPolitica(tl.getLocalizacion().getIdDivisionPolitica());
+        localizacion.setIndicadorHabilitado(true);
+        
+        Localizacion loc = restTemplate.postForObject(serviceUrl + "locations", localizacion, Localizacion.class);
+        
+//        terceroLocalizacion.setLocalizacion(localizacion);
+        terceroLocalizacion.setIdTercero(tl.getIdTercero());
+        terceroLocalizacion.setIdLocalizacion(loc.getIdUbicacion());
+        terceroLocalizacion.setAuditoriaFecha(tl.getAuditoriaFecha());
+        terceroLocalizacion.setAuditoriaUsuario(tl.getAuditoriaUsuario());
+        terceroLocalizacion.setIndicadorHabilitado(true);
+        
+        
+        return restTemplate.postForObject(serviceUrl + "employeesLocations", terceroLocalizacion, TercerosLocalizacion.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion request) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, TercerosLocalizacion.class);
+        restTemplate.put(serviceUrl + "employeesLocations", request, TercerosLocalizacion.class);
     }
 }

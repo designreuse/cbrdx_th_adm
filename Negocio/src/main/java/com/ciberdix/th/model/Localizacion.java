@@ -16,6 +16,15 @@ public class Localizacion {
     private Demografia departamento;
     private Demografia pais;
     private TipoDireccion tipoDireccion;
+    private boolean indicadorHabilitado;
+
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     public Demografia getBarrio() {
         return barrio;
