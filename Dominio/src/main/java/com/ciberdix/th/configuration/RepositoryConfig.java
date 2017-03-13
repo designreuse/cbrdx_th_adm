@@ -23,5 +23,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(PrincipalNomenclaturaEntity.class);
         config.exposeIdsFor(ComplementariaNomenclaturaEntity.class);
         config.exposeIdsFor(VistaDivisionPoliticaEntity.class);
+        config.exposeIdsFor(VTercerosFamiliaresEntity.class);
     }
 }
