@@ -4,6 +4,9 @@ import com.ciberdix.th.model.Demografia;
 import com.ciberdix.th.model.DivisionPolitica;
 import com.ciberdix.th.model.TercerosLocalizacion;
 import com.ciberdix.th.model.Localizacion;
+import com.ciberdix.th.model.Tercero;
+import com.ciberdix.th.model.TipoDireccion;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -139,17 +142,21 @@ public class TercerosLocalizacionController {
         RestTemplate restTemplate = new RestTemplate();
         TercerosLocalizacion terceroLocalizacion = new TercerosLocalizacion();
         Localizacion localizacion = new Localizacion();
-        Demografia barrio = new Demografia();
+        TipoDireccion td = new TipoDireccion();
         
-        barrio.setValue(Integer.MIN_VALUE);
-        barrio.setLabel((String) tl.getLocalizacion().getBarrio().getLabel());
+        td.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        td.setAuditoriaUsuario(1);
+        td.setLabel(tl.getLocalizacion().getTipoDireccion().getLabel());
+        td.setValue(tl.getLocalizacion().getTipoDireccion().getValue());
+//        Tercero tercero = new Tercero(tl.getIdTercero(),tl.getTercero().getCorreoElectronico(), tl.getTercero().getTelefonoFijo(), tl.getTercero().getTelefonoCelular());
+//        restTemplate.put(serviceUrl + "employees", tercero, Tercero.class);
         
         localizacion.setIdUbicacion(tl.getLocalizacion().getIdUbicacion());
-        localizacion.setTipoDireccion(tl.getLocalizacion().getTipoDireccion());
+        localizacion.setTipoDireccion(td);
         localizacion.setDireccion(tl.getLocalizacion().getDireccion());
-        localizacion.setAuditoriaFecha(tl.getLocalizacion().getAuditoriaFecha());
         localizacion.setAuditoriaUsuario(tl.getLocalizacion().getAuditoriaUsuario());
-        localizacion.setBarrio(barrio);
+        localizacion.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        localizacion.setBarrio(tl.getLocalizacion().getBarrio());
         localizacion.setCiudad(tl.getLocalizacion().getCiudad());
         localizacion.setComoLlegar(tl.getLocalizacion().getComoLlegar());
         localizacion.setDepartamento(tl.getLocalizacion().getDepartamento());
@@ -159,12 +166,11 @@ public class TercerosLocalizacionController {
         localizacion.setIdDivisionPolitica(tl.getLocalizacion().getIdDivisionPolitica());
         localizacion.setIndicadorHabilitado(true);
         
-        Localizacion loc = restTemplate.postForObject(serviceUrl + "locations", localizacion, Localizacion.class);
+        Localizacion resLoc = restTemplate.postForObject(serviceUrl + "locations", localizacion, Localizacion.class);
         
-//        terceroLocalizacion.setLocalizacion(localizacion);
         terceroLocalizacion.setIdTercero(tl.getIdTercero());
-        terceroLocalizacion.setIdLocalizacion(loc.getIdUbicacion());
-        terceroLocalizacion.setAuditoriaFecha(tl.getAuditoriaFecha());
+        terceroLocalizacion.setIdLocalizacion(resLoc.getIdUbicacion());
+        terceroLocalizacion.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         terceroLocalizacion.setAuditoriaUsuario(tl.getAuditoriaUsuario());
         terceroLocalizacion.setIndicadorHabilitado(true);
         
