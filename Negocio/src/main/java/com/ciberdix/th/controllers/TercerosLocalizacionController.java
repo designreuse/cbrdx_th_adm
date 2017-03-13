@@ -163,7 +163,7 @@ public class TercerosLocalizacionController {
         localizacion.setLatitud(tl.getLocalizacion().getLatitud());
         localizacion.setLongitud(tl.getLocalizacion().getLongitud());
         localizacion.setPais(tl.getLocalizacion().getPais());
-        localizacion.setIdDivisionPolitica(tl.getLocalizacion().getBarrio().getValue());
+        localizacion.setIdDivisionPolitica(tl.getLocalizacion().getIdDivisionPolitica());
         localizacion.setIndicadorHabilitado(true);
         
         Localizacion resLoc = restTemplate.postForObject(serviceUrl + "locations", localizacion, Localizacion.class);
