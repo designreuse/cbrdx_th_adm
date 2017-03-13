@@ -29,7 +29,7 @@ public class TipoDocumentoController {
 
     @RequestMapping(method = RequestMethod.POST)
     TipoDocumentoEntity createList(@RequestBody TipoDocumentoEntity c) {
-        return tipoDocumentoRepository.save(new TipoDocumentoEntity(c.getIdListaTipoDocumentos(),c.getCodigoListaTipoDocumentos(),c.getNombreListaTipoDocumentos(),c.getOrdenListaTipoDocumentos(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+        return tipoDocumentoRepository.save(new TipoDocumentoEntity(c.getValue(),c.getCodigoListaTipoDocumentos(),c.getLabel(),c.getOrdenListaTipoDocumentos(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

@@ -9,18 +9,18 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposDocumentos", schema = "crz_th", catalog = "CREZCAMOS")
 public class TipoDocumentoEntity {
-    private Integer idListaTipoDocumentos;
+    private Integer value;
     private String codigoListaTipoDocumentos;
-    private String nombreListaTipoDocumentos;
+    private String label;
     private Integer ordenListaTipoDocumentos;
     private boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 	
 	public TipoDocumentoEntity(Integer idListaTipoDocumentos, String codigoListaTipoDocumentos, String nombreListaTipoDocumentos, Integer ordenListaTipoDocumentos, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idListaTipoDocumentos = idListaTipoDocumentos;
+        this.value = idListaTipoDocumentos;
         this.codigoListaTipoDocumentos = codigoListaTipoDocumentos;
-        this.nombreListaTipoDocumentos = nombreListaTipoDocumentos;
+        this.label = nombreListaTipoDocumentos;
         this.ordenListaTipoDocumentos = ordenListaTipoDocumentos;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
@@ -32,12 +32,12 @@ public class TipoDocumentoEntity {
 	
 	@Id
     @Column(name = "IdListaTipoDocumento", nullable = false)
-    public Integer getIdListaTipoDocumentos() {
-        return idListaTipoDocumentos;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setIdListaTipoDocumentos(Integer idListaTipoDocumentos) {
-        this.idListaTipoDocumentos = idListaTipoDocumentos;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     @Basic
@@ -52,12 +52,12 @@ public class TipoDocumentoEntity {
 
     @Basic
     @Column(name = "NombreListaTipoDocumento", nullable = false)
-    public String getNombreListaTipoDocumentos() {
-        return nombreListaTipoDocumentos;
+    public String getLabel() {
+        return label;
     }
 
-    public void setNombreListaTipoDocumentos(String nombreListaTipoDocumentos) {
-        this.nombreListaTipoDocumentos = nombreListaTipoDocumentos;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     @Basic

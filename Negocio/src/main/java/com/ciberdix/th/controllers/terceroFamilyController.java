@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/terceroFamily")
 public class terceroFamilyController {
 
-    private String serviceUrl = "http://localhost:8443";
+    private String serviceUrl = "http://localhost:8445";
 
 
 
@@ -47,9 +47,19 @@ public class terceroFamilyController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
-    UsuarioPerfil verParametro(@PathVariable Integer IdParametro) {
+    TerceroFamily verParametro(@PathVariable Integer IdParametro) {
         RestTemplate restTemplate = new RestTemplate();
-        UsuarioPerfil parametro = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, UsuarioPerfil.class);
+        TerceroFamily parametro = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, TerceroFamily.class);
         return parametro;
     }
+
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "employee/{IdParametro}")
+    List<TerceroFamily> consultarParemetros(@PathVariable Integer IdParametro) {
+        RestTemplate restTemplate = new RestTemplate();
+        TerceroFamily[] parametros = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, TerceroFamily[].class);
+        return Arrays.asList(parametros);
+    }
+
 }
