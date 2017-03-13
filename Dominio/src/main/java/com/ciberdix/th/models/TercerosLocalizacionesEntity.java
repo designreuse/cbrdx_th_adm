@@ -9,10 +9,13 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "TercerosLocalizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosLocalizacionesEntity {
-    private int idTerceroLocalizacion;
-    private int idTercero;
+    private Integer idTerceroLocalizacion;
+    private Integer idTercero;
+    private Integer idLocalizacion;
     private boolean indicadorHabilitado;
+    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
     private LocalizacionesEntity localizacion;
     private TercerosEntity terceros;
     private UsuariosEntity usuarios;
@@ -21,23 +24,33 @@ public class TercerosLocalizacionesEntity {
     public TercerosLocalizacionesEntity() {
     }
 
+    public TercerosLocalizacionesEntity( Integer idTercero, Integer idLocalizacion, boolean indicadorHabilitado, Integer auditoriaUsuario, Timestamp auditoriaFecha) {
+        this.idTercero = idTercero;
+        this.idLocalizacion = idLocalizacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = auditoriaFecha;
+    }
+
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroLocalizacion", nullable = false)
-    public int getIdTerceroLocalizacion() {
+    public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;
     }
 
-    public void setIdTerceroLocalizacion(int idTerceroLocalizacion) {
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 
     @Basic
     @Column(name = "IdTercero", nullable = true, length = 64)
-    public int getIdTercero() {
+    public Integer getIdTercero() {
         return idTercero;
     }
 
-    public void setIdTercero(int idTercero) {
+    public void setIdTercero(Integer idTercero) {
         this.idTercero = idTercero;
     }
 
@@ -62,8 +75,28 @@ public class TercerosLocalizacionesEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdLocalizacion", nullable = true, length = 64)
+    public Integer getIdLocalizacion() {
+        return idLocalizacion;
+    }
+
+    public void setIdLocalizacion(Integer idLocalizacion) {
+        this.idLocalizacion = idLocalizacion;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario", nullable = true, length = 64)
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
     @ManyToOne(targetEntity = LocalizacionesEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdLocalizacion", nullable=true)
+    @JoinColumn(name="IdLocalizacion", nullable=true, insertable = false , updatable = false)
     public LocalizacionesEntity getLocalizacion() {
         return localizacion;
     }
@@ -84,7 +117,7 @@ public class TercerosLocalizacionesEntity {
     }
 
     @ManyToOne(targetEntity = UsuariosEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="AuditoriaUsuario", nullable=true)
+    @JoinColumn(name="AuditoriaUsuario", nullable=true,insertable = false , updatable = false)
     public UsuariosEntity getUsuarios() {
         return usuarios;
     }
@@ -92,4 +125,6 @@ public class TercerosLocalizacionesEntity {
     public void setUsuarios(UsuariosEntity usuarios) {
         this.usuarios = usuarios;
     }
+
+
 }
