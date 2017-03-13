@@ -54,7 +54,7 @@ public class terceroFamilyController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
-    List<TerceroFamily> verParametro(@PathVariable Integer IdParametro) {
+    List<TerceroFamily> verParametros(@PathVariable Integer IdParametro) {
         RestTemplate restTemplate = new RestTemplate();
         TerceroFamily[] parametros = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, TerceroFamily[].class);
         return Arrays.asList(parametros);
