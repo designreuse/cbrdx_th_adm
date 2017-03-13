@@ -119,6 +119,7 @@
         <mapping class="com.ciberdix.th.models.ZonasEntity"/>
         <mapping class="com.ciberdix.th.models.test.TercerosEntity"/>
         <mapping class="com.ciberdix.th.models.test.TercerosFamiliaresEntity"/>
+        <mapping class="com.ciberdix.th.models.VTercerosFamiliaresEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

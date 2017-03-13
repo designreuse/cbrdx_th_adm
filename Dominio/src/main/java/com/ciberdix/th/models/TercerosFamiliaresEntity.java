@@ -19,7 +19,7 @@ public class TercerosFamiliaresEntity {
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosFamiliaresEntity(int idTercerosFamiliar, int idTerceros, int idFamiliar, int idParentezco, int idConvivencia, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
+    public TercerosFamiliaresEntity(int idTercerosFamiliar, int idTerceros, int idFamiliar, int idParentezco, int idConvivencia, boolean indicadorHabilitado, int auditoriaUsuario) {
         this.idTercerosFamiliar = idTercerosFamiliar;
         this.idTerceros = idTerceros;
         this.idFamiliar = idFamiliar;
@@ -27,7 +27,7 @@ public class TercerosFamiliaresEntity {
         this.idConvivencia = idConvivencia;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = auditoriaFecha;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     public TercerosFamiliaresEntity() {

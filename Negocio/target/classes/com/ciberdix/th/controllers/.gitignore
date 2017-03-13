@@ -1,4 +1,6 @@
-/.gitignore
+/DivisionPoliticaController.class
+/NomenclaturaPrincipalController.class
+/TercerosLocalizacionController.class
 /constantesController.class
 /formularioController.class
 /formularioElementoController.class
@@ -7,7 +9,6 @@
 /perfilesController.class
 /perfilesMenuController.class
 /rolesController.class
-/terceroFamilyController.class
 /tercerosController.class
 /usuarioPerfilesController.class
 /usuarioRolesController.class
