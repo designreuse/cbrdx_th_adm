@@ -24,7 +24,7 @@ public class LocalizacionesController {
 
     @RequestMapping(method = RequestMethod.POST)
     LocalizacionesEntity createList(@RequestBody LocalizacionesEntity c) {
-        return localizacionesRepository.save(new LocalizacionesEntity(c.getIdTipoDireccion(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getIdDivisionPolitica(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+        return localizacionesRepository.save(new LocalizacionesEntity(c.getTipoDireccion().getValue(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getIdDivisionPolitica(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
