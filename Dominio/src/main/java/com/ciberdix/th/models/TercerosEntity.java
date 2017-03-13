@@ -18,7 +18,6 @@ public class TercerosEntity {
     private Date fechaDocumento;
     private Date fechaNacimiento;
     private Integer idFactorRh;
-    private String factorRh;
     private Integer nroHijos;
     private Integer idLateralidad;
     private Integer idTipoVivienda;
@@ -46,6 +45,8 @@ public class TercerosEntity {
     private TipoPersonaEntity TipoPersona;
     private ProfesionesEntity Profesion;
     private NivelEstudioEntity NivelEducacion;
+    private ListasItemsEntity Lateralidad;
+    private ListasItemsEntity Factorrh;
 
     @Id
     @GeneratedValue
@@ -147,17 +148,7 @@ public class TercerosEntity {
     public void setIdFactorRh(Integer idFactorRh) {
         this.idFactorRh = idFactorRh;
     }
-
-    @Basic
-    @Column(name = "FactorRh")
-    public String getFactorRh() {
-        return factorRh;
-    }
-
-    public void setFactorRh(String factorRh) {
-        this.factorRh = factorRh;
-    }
-
+  
     @Basic
     @Column(name = "NroHijos")
     public Integer getNroHijos() {
@@ -418,6 +409,26 @@ public class TercerosEntity {
         EstadoCivil = estadoCivil;
     }
 
+    @ManyToOne(targetEntity = ListasItemsEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdLateralidad", referencedColumnName="IdListaItem", nullable=true,  insertable = false , updatable = false)
+    public ListasItemsEntity getLateralidad() {
+        return Lateralidad;
+    }
+
+    public void setLateralidad(ListasItemsEntity lateralidad) {
+        Lateralidad = lateralidad;
+    }
+
+    @ManyToOne(targetEntity = ListasItemsEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdFactorRh", referencedColumnName="IdListaItem", nullable=true,  insertable = false , updatable = false)
+    public ListasItemsEntity getFactorrh() {
+        return Factorrh;
+    }
+
+    public void setFactorrh(ListasItemsEntity rh) {
+        Factorrh = rh;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -440,8 +451,7 @@ public class TercerosEntity {
             return false;
         if (fechaNacimiento != null ? !fechaNacimiento.equals(that.fechaNacimiento) : that.fechaNacimiento != null)
             return false;
-        if (idFactorRh != null ? !idFactorRh.equals(that.idFactorRh) : that.idFactorRh != null) return false;
-        if (factorRh != null ? !factorRh.equals(that.factorRh) : that.factorRh != null) return false;
+        if (idFactorRh != null ? !idFactorRh.equals(that.idFactorRh) : that.idFactorRh != null) return false;        
         if (nroHijos != null ? !nroHijos.equals(that.nroHijos) : that.nroHijos != null) return false;
         if (idLateralidad != null ? !idLateralidad.equals(that.idLateralidad) : that.idLateralidad != null)
             return false;
@@ -482,8 +492,7 @@ public class TercerosEntity {
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (fechaDocumento != null ? fechaDocumento.hashCode() : 0);
         result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
-        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
-        result = 31 * result + (factorRh != null ? factorRh.hashCode() : 0);
+        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);        
         result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
         result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
         result = 31 * result + (idTipoVivienda != null ? idTipoVivienda.hashCode() : 0);
@@ -505,7 +514,7 @@ public class TercerosEntity {
         return result;
     }
 
-    public TercerosEntity(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, String numeroDocumento, Date fechaDocumento, Date fechaNacimiento, Integer idFactorRh, String factorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, String razonSocial, Double talla, Double peso, Double imc, Integer idVehiculo, String telefonoFijo, String telefonoCelular, Integer auditoriaUsuario) {
+    public TercerosEntity(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, String numeroDocumento, Date fechaDocumento, Date fechaNacimiento, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, String razonSocial, Double talla, Double peso, Double imc, Integer idVehiculo, String telefonoFijo, String telefonoCelular, Integer auditoriaUsuario) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -515,7 +524,6 @@ public class TercerosEntity {
         this.fechaDocumento = fechaDocumento;
         this.fechaNacimiento = fechaNacimiento;
         this.idFactorRh = idFactorRh;
-        this.factorRh = factorRh;
         this.nroHijos = nroHijos;
         this.idLateralidad = idLateralidad;
         this.idTipoVivienda = idTipoVivienda;
