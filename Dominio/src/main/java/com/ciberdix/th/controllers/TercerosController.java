@@ -23,7 +23,7 @@ public class TercerosController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
-    TercerosEntity verConstante(@PathVariable Integer IdParametro) {
+    TercerosEntity verConstante(@PathVariable Long IdParametro) {
         return tercerosRepository.findOne(IdParametro);
     }
 

@@ -38,6 +38,14 @@ public class TercerosEntity {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    private TipoDocumentoEntity TipoDocumento;
+    private DivPoliticaEntity CiudadExpDocumento;
+    private DivPoliticaEntity CiudadNacimiento;
+    private GenerosEntity Genero;
+    private EstadoCivilEntity EstadoCivil;
+    private TipoPersonaEntity TipoPersona;
+    private ProfesionesEntity Profesion;
+    private NivelEstudioEntity NivelEducacion;
 
     @Id
     @GeneratedValue
@@ -328,6 +336,86 @@ public class TercerosEntity {
 
     public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @ManyToOne(targetEntity = TipoDocumentoEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdTipoDocumento", nullable=true,  insertable = false , updatable = false)
+    public TipoDocumentoEntity getTipoDocumento() {
+        return TipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumentoEntity tipoDocumento) {
+        TipoDocumento = tipoDocumento;
+    }
+
+    @ManyToOne(targetEntity = DivPoliticaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdCiudadExpDocumento", nullable=true,  insertable = false , updatable = false)
+    public DivPoliticaEntity getCiudadExpDocumento() {
+        return CiudadExpDocumento;
+    }
+
+    public void setCiudadExpDocumento(DivPoliticaEntity ciudadExpDocumento) {
+        CiudadExpDocumento = ciudadExpDocumento;
+    }
+
+    @ManyToOne(targetEntity = DivPoliticaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdCiudadNacimiento", nullable=true,  insertable = false , updatable = false)
+    public DivPoliticaEntity getCiudadNacimiento() {
+        return CiudadNacimiento;
+    }
+
+    public void setCiudadNacimiento(DivPoliticaEntity ciudadNacimiento) {
+        CiudadNacimiento = ciudadNacimiento;
+    }
+
+    @ManyToOne(targetEntity = TipoPersonaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdTipoPersona", nullable=true,  insertable = false , updatable = false)
+    public TipoPersonaEntity getTipoPersona() {
+        return TipoPersona;
+    }
+
+    public void setTipoPersona(TipoPersonaEntity tipoPersona) {
+        TipoPersona = tipoPersona;
+    }
+
+    @ManyToOne(targetEntity = ProfesionesEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdProfesion", nullable=true,  insertable = false , updatable = false)
+    public ProfesionesEntity getProfesion() {
+        return Profesion;
+    }
+
+    public void setProfesion(ProfesionesEntity profesion) {
+        Profesion = profesion;
+    }
+
+    @ManyToOne(targetEntity = NivelEstudioEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdNivelEducacion", nullable=true,  insertable = false , updatable = false)
+    public NivelEstudioEntity getNivelEducacion() {
+        return NivelEducacion;
+    }
+
+    public void setNivelEducacion(NivelEstudioEntity nivelEducacion) {
+        NivelEducacion = nivelEducacion;
+    }
+
+     @ManyToOne(targetEntity = GenerosEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdGenero", nullable=true,  insertable = false , updatable = false)
+    public GenerosEntity getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(GenerosEntity genero) {
+        Genero = genero;
+    }
+
+    @ManyToOne(targetEntity = EstadoCivilEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdEstadoCivil", nullable=true,  insertable = false , updatable = false)
+    public EstadoCivilEntity getEstadoCivil() {
+        return EstadoCivil;
+    }
+
+    public void setEstadoCivil(EstadoCivilEntity estadoCivil) {
+        EstadoCivil = estadoCivil;
     }
 
     @Override
