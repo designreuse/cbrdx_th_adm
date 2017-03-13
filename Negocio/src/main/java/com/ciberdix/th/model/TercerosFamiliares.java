@@ -1,4 +1,4 @@
-package com.ciberdix.sp.model;
+package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
 

@@ -1,6 +1,6 @@
-package com.ciberdix.sp.controllers;
+package com.ciberdix.th.controllers;
 
-import com.ciberdix.sp.model.*;
+import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
