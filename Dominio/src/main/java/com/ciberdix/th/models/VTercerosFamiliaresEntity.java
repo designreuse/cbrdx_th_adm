@@ -22,8 +22,8 @@ public class VTercerosFamiliaresEntity {
     private String telefonoCelular;
     private String direccion;
     private int idConvivencia;
-    private int idParentesco;
-    private String nombreListaParentesco;
+    private int idParentezco;
+    private String nombreListaParentezco;
     private boolean indicadorHabilitado;
 
     @Basic
@@ -198,22 +198,22 @@ public class VTercerosFamiliaresEntity {
 
     @Basic
     @Column(name = "IdParentesco")
-    public int getIdParentesco() {
-        return idParentesco;
+    public int getIdParentezco() {
+        return idParentezco;
     }
 
-    public void setIdParentesco(int idParentesco) {
-        this.idParentesco = idParentesco;
+    public void setIdParentezco(int idParentezco) {
+        this.idParentezco = idParentezco;
     }
 
     @Basic
     @Column(name = "NombreListaParentesco")
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
+    public String getNombreListaParentezco() {
+        return nombreListaParentezco;
     }
 
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
+    public void setNombreListaParentezco(String nombreListaParentezco) {
+        this.nombreListaParentezco = nombreListaParentezco;
     }
 
     @Override
@@ -227,7 +227,7 @@ public class VTercerosFamiliaresEntity {
         if (idTercero != that.idTercero) return false;
         if (idFamiliar != that.idFamiliar) return false;
         if (idConvivencia != that.idConvivencia) return false;
-        if (idParentesco != that.idParentesco) return false;
+        if (idParentezco != that.idParentezco) return false;
         if (idTipoDocumento != null ? !idTipoDocumento.equals(that.idTipoDocumento) : that.idTipoDocumento != null)
             return false;
         if (nombreListaTipoDocumento != null ? !nombreListaTipoDocumento.equals(that.nombreListaTipoDocumento) : that.nombreListaTipoDocumento != null)
@@ -249,7 +249,7 @@ public class VTercerosFamiliaresEntity {
         if (telefonoCelular != null ? !telefonoCelular.equals(that.telefonoCelular) : that.telefonoCelular != null)
             return false;
         if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
-        if (nombreListaParentesco != null ? !nombreListaParentesco.equals(that.nombreListaParentesco) : that.nombreListaParentesco != null)
+        if (nombreListaParentezco != null ? !nombreListaParentezco.equals(that.nombreListaParentezco) : that.nombreListaParentezco != null)
             return false;
 
         return true;
@@ -273,8 +273,8 @@ public class VTercerosFamiliaresEntity {
         result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + idConvivencia;
-        result = 31 * result + idParentesco;
-        result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
+        result = 31 * result + idParentezco;
+        result = 31 * result + (nombreListaParentezco != null ? nombreListaParentezco.hashCode() : 0);
         return result;
     }
 }

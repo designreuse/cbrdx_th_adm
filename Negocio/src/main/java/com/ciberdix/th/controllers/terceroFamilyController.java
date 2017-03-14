@@ -22,9 +22,20 @@ public class terceroFamilyController {
     TerceroFamily crearTerceroFamily(@RequestBody TerceroFamily request) {
 
         Tercero tercero = new Tercero(request.getIdTercero(),
+                request.getIdFamiliar(),
+                request.getIdTipoDocumento(),
+                request.getPrimerNombre(),
+                request.getSegundoNombre(),
+                request.getPrimerApellido(),
+                request.getSegundoApellido(),
+                request.getFechaNacimiento(),
                 request.getCorreoElectronico(),
+                request.getNumeroDocumento(),
+                request.getIdConvivencia(),
+                request.getIdParentezco(),
                 request.getTelefonoFijo(),
-                request.getTelefonoFijo());
+                request.getTelefonoFijo(),
+                request.getDireccion());
 
         RestTemplate restTemplate = new RestTemplate();
         Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employee/", tercero, Tercero.class);
@@ -43,7 +54,7 @@ public class terceroFamilyController {
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    List<TerceroFamily> consultarTercerosFamiliares() {
+    List<TerceroFamily> getTercerosFamiliares() {
         RestTemplate restTemplate = new RestTemplate();
         TerceroFamily[] parametro = restTemplate.getForObject(serviceUrl + "/Vfamily", TerceroFamily[].class);
         

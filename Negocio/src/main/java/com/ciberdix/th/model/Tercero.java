@@ -40,6 +40,8 @@ public class Tercero {
         this.direccion = direccion;
     }
 
+
+
     public Tercero(long idTercero, String correoElectronico, String telefonoFijo, String telefonoCelular) {
         this.idTercero = idTercero;
         this.correoElectronico = correoElectronico;
