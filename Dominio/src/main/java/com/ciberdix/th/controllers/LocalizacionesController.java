@@ -22,6 +22,11 @@ public class LocalizacionesController {
     List<LocalizacionesEntity> getLists() {
         return (List<LocalizacionesEntity>) localizacionesRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
+    LocalizacionesEntity getLocalizacion(@PathVariable Integer IdParametro){
+        return localizacionesRepository.findOne(IdParametro);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     LocalizacionesEntity createList(@RequestBody LocalizacionesEntity c) {
