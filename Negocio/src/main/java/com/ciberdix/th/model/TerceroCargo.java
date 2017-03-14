@@ -15,7 +15,21 @@ public class TerceroCargo {
     private Integer idTercero;
     private Cargo cargo;
 
-    public TerceroCargo(Integer idTerceroCargo, Integer idSede, Integer idArea, Integer idCargo, Timestamp fechaInicio, Timestamp fechaFin, Integer idTipoContrato, Integer auditoriaUsuario, Timestamp auditoriaFecha, Integer idTercero) {
+    public TerceroCargo() {        
+    }
+
+    public TerceroCargo(
+        Integer idTerceroCargo, 
+        Integer idSede, 
+        Integer idArea, 
+        Integer idCargo, 
+        Timestamp fechaInicio, 
+        Timestamp fechaFin, 
+        Integer idTipoContrato, 
+        Integer auditoriaUsuario,  
+        Timestamp auditoriaFecha,
+        Integer idTercero,
+        Cargo cargo) {
         this.idTerceroCargo = idTerceroCargo;
         this.idSede = idSede;
         this.idArea = idArea;
@@ -26,8 +40,17 @@ public class TerceroCargo {
         this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = auditoriaFecha;
         this.idTercero = idTercero;
+        this.cargo = cargo;    
     }
 
+    
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
 
     public Integer getIdTerceroCargo() {
         return idTerceroCargo;

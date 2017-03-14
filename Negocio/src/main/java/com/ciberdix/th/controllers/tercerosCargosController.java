@@ -10,7 +10,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/tercerosCargos")
-public class tercerosCargos {
+public class tercerosCargosController {
 
     private String serviceUrl = "http://localhost:8445/chargeEmployees/";
 

@@ -62,7 +62,8 @@ public class Cargo {
         this.cargaMental = cargaMental;
         this.nivelPsicoSocial = nivelPsicoSocial;
     }
-
+    
+    public Cargo(){}
 
     public Integer getIdCargo() {
         return idCargo;
