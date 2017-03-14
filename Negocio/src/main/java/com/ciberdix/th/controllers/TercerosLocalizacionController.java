@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Demografia;
 import com.ciberdix.th.model.DivisionPolitica;
 import com.ciberdix.th.model.TercerosLocalizacion;
@@ -19,9 +20,10 @@ import java.util.List;
 @RequestMapping("/employeesLocations")
 public class TercerosLocalizacionController {
 
-    private String serviceUrl = "http://localhost:8445/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl();
 
-    @RequestMapping(method = RequestMethod.GET, value = "employees/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/employees/{id}")
     List<TercerosLocalizacion> consultarParametros(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         List<TercerosLocalizacion> tl = new ArrayList<>();
@@ -81,7 +83,7 @@ public class TercerosLocalizacionController {
         return tl;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "location/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/location/{id}")
     Localizacion consultarLocalizacion(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Localizacion[] parametros = restTemplate.getForObject(serviceUrl + "locations", Localizacion[].class);

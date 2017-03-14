@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,10 +14,8 @@ import java.util.List;
 @RequestMapping("/terceroFamily")
 public class terceroFamilyController {
 
-    private String serviceUrl = "http://localhost:8445";
-
-
-
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl();
 
     @RequestMapping(method = { RequestMethod.PUT, RequestMethod.POST })
     TerceroFamily crearTerceroFamily(@RequestBody TerceroFamily request) {
