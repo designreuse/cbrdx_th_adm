@@ -46,6 +46,7 @@ public class TercerosEntity {
     private TipoPersonaEntity TipoPersona;
     private ProfesionesEntity Profesion;
     private NivelEstudioEntity NivelEducacion;
+    private VistaDivisionPoliticaEntity vistaDivisionPoliticaEntity;
 
     @Id
     @GeneratedValue
@@ -537,4 +538,5 @@ public class TercerosEntity {
     }
 
     public TercerosEntity(){}
+
 }
