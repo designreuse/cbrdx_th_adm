@@ -22,6 +22,7 @@ public class VistaDivisionPoliticaEntity {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String CAMINO;
 
     public VistaDivisionPoliticaEntity() {
     }
@@ -45,6 +46,17 @@ public class VistaDivisionPoliticaEntity {
     public void setIdDivisionPoliticaPadre(Integer idDivisionPoliticaPadre) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
     }
+
+    @Basic
+    @Column(name = "CAMINO", nullable = false)
+    public String getCAMINO() {
+        return CAMINO;
+    }
+
+    public void setCAMINO(String CAMINO) {
+        this.CAMINO = CAMINO;
+    }
+
 
     @Basic
     @Column(name = "CodigoDivisionPolitica", nullable = false)
