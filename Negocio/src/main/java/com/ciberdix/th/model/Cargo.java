@@ -1,8 +1,6 @@
 package com.ciberdix.th.model;
-
 import java.sql.Date;
 import java.sql.Timestamp;
-
 public class Cargo {
 
     private Integer idCargo;
@@ -27,14 +25,14 @@ public class Cargo {
     private String conocimientosBasicos;
     private String tiempoExperiencia;
     private String otrosRequisitos;
-    private BigInteger edad;
+    private Integer edad;
     private Integer idGenero;
     private Integer idEstadoCivil;
     private String cargaFisica;
     private String cargaMental;
     private String nivelPsicoSocial;
 
-    public Cargo(Integer idCargo, String cargo, Integer auditoriaUsuario, Timestamp auditoriaFecha, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean idRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, Integer idGenero, Integer idEstadoCivil, String cargaFisica, String cargaMental, String nivelPsicoSocial) {
+    public Cargo(Integer idCargo, String cargo, Integer auditoriaUsuario, Timestamp auditoriaFecha, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean idRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, Integer edad, Integer idGenero, Integer idEstadoCivil, String cargaFisica, String cargaMental, String nivelPsicoSocial) {
         this.idCargo = idCargo;
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario;
@@ -64,6 +62,7 @@ public class Cargo {
         this.cargaMental = cargaMental;
         this.nivelPsicoSocial = nivelPsicoSocial;
     }
+
 
     public Integer getIdCargo() {
         return idCargo;
@@ -241,11 +240,11 @@ public class Cargo {
         this.otrosRequisitos = otrosRequisitos;
     }
 
-    public BigInteger getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(BigInteger edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 

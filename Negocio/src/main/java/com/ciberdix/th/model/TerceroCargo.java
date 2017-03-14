@@ -1,5 +1,6 @@
 package com.ciberdix.th.model;
-
+import java.sql.Date;
+import java.sql.Timestamp;
 public class TerceroCargo {
 
     private Integer idTerceroCargo;

@@ -1,6 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.Tercero;
+import com.ciberdix.th.model.TerceroCargo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/tercerosCargos")
-public class tercerosController {
+public class tercerosCargos {
 
     private String serviceUrl = "http://localhost:8445/chargeEmployees/";
 
@@ -22,15 +22,15 @@ public class tercerosController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    Tercero crearTercero(@RequestBody Tercero request) {
+    TerceroCargo crearTercero(@RequestBody TerceroCargo request) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, request, Tercero.class);
+        return restTemplate.postForObject(serviceUrl, request, TerceroCargo.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarTercero(@RequestBody TerceroCargo request) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, Tercero.class);
+        restTemplate.put(serviceUrl, request, TerceroCargo.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
