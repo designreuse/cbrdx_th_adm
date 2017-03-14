@@ -179,7 +179,7 @@ public class TercerosLocalizacionController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    TercerosLocalizacion actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
+    void actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
         RestTemplate restTemplate = new RestTemplate();
         
         TipoDireccion td = new TipoDireccion();
@@ -196,7 +196,5 @@ public class TercerosLocalizacionController {
         
         tl.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         restTemplate.put(serviceUrl + "employeesLocations", tl, TercerosLocalizacion.class);
-        
-        return tl;
     }
 }
