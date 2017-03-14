@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class TerceroFamily {
-    private int idTerceroFamiliar;
+    private long idTerceroFamiliar;
     private Long idTercero;
     private Long idFamiliar;
     private Integer idTipoDocumento;
@@ -20,14 +20,15 @@ public class TerceroFamily {
     private String telefonoCelular;
     private String direccion;
     private int idConvivencia;
-    private int idParentesco;
-    private String nombreListaParentesco;
+    private int idParentezco;
+    private String nombreListaParentezco;
+    private Integer auditoriaUsuario;
 
-    public int getIdTerceroFamiliar() {
+    public long getIdTerceroFamiliar() {
         return idTerceroFamiliar;
     }
 
-    public void setIdTerceroFamiliar(int idTerceroFamiliar) {
+    public void setIdTerceroFamiliar(long idTerceroFamiliar) {
         this.idTerceroFamiliar = idTerceroFamiliar;
     }
 
@@ -151,19 +152,27 @@ public class TerceroFamily {
         this.idConvivencia = idConvivencia;
     }
 
-    public int getIdParentesco() {
-        return idParentesco;
+    public int getIdParentezco() {
+        return idParentezco;
     }
 
-    public void setIdParentesco(int idParentesco) {
-        this.idParentesco = idParentesco;
+    public void setIdParentezco(int idParentezco) {
+        this.idParentezco = idParentezco;
     }
 
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
+    public String getNombreListaParentezco() {
+        return nombreListaParentezco;
     }
 
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
+    public void setNombreListaParentezco(String nombreListaParentezco) {
+        this.nombreListaParentezco = nombreListaParentezco;
+    }
+
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
     }
 }
