@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.LocalizacionesEntity;
 import com.ciberdix.th.repositories.LocalizacionesRepository;
+import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,9 @@ public class LocalizacionesController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    LocalizacionesEntity updateList(@RequestBody LocalizacionesEntity centrosCostosEntity) {
-        return localizacionesRepository.save(centrosCostosEntity);
+    LocalizacionesEntity updateList(@RequestBody LocalizacionesEntity l) {
+        LocalizacionesEntity loc = l;
+        loc.setIdTipoDireccion(l.getTipoDireccion().getValue());
+        return localizacionesRepository.save(loc);
     }
 }
