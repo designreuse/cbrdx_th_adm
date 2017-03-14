@@ -138,19 +138,19 @@ public class TercerosLocalizacionController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosLocalizacion crearTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
-        
+
         RestTemplate restTemplate = new RestTemplate();
         TercerosLocalizacion terceroLocalizacion = new TercerosLocalizacion();
         Localizacion localizacion = new Localizacion();
         TipoDireccion td = new TipoDireccion();
-        
+
         td.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         td.setAuditoriaUsuario(1);
         td.setLabel(tl.getLocalizacion().getTipoDireccion().getLabel());
         td.setValue(tl.getLocalizacion().getTipoDireccion().getValue());
 //        Tercero tercero = new Tercero(tl.getIdTercero(),tl.getTercero().getCorreoElectronico(), tl.getTercero().getTelefonoFijo(), tl.getTercero().getTelefonoCelular());
 //        restTemplate.put(serviceUrl + "employees", tercero, Tercero.class);
-        
+
         localizacion.setIdUbicacion(tl.getLocalizacion().getIdUbicacion());
         localizacion.setTipoDireccion(td);
         localizacion.setDireccion(tl.getLocalizacion().getDireccion());
@@ -165,36 +165,41 @@ public class TercerosLocalizacionController {
         localizacion.setPais(tl.getLocalizacion().getPais());
         localizacion.setIdDivisionPolitica(tl.getLocalizacion().getIdDivisionPolitica());
         localizacion.setIndicadorHabilitado(true);
-        
+
         Localizacion resLoc = restTemplate.postForObject(serviceUrl + "locations", localizacion, Localizacion.class);
-        
+
         terceroLocalizacion.setIdTercero(tl.getIdTercero());
         terceroLocalizacion.setIdLocalizacion(resLoc.getIdUbicacion());
         terceroLocalizacion.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         terceroLocalizacion.setAuditoriaUsuario(tl.getAuditoriaUsuario());
         terceroLocalizacion.setIndicadorHabilitado(true);
-        
-        
+
         return restTemplate.postForObject(serviceUrl + "employeesLocations", terceroLocalizacion, TercerosLocalizacion.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
         RestTemplate restTemplate = new RestTemplate();
-        
+
+        TercerosLocalizacion tloc = restTemplate.getForObject(serviceUrl + "employeesLocations/" + tl.getIdTerceroLocalizacion(), TercerosLocalizacion.class);
+        Localizacion loc = restTemplate.getForObject(serviceUrl + "locations/" + tl.getLocalizacion().getIdUbicacion(), Localizacion.class);
+
         TipoDireccion td = new TipoDireccion();
-        
+
         td.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         td.setAuditoriaUsuario(1);
         td.setLabel(tl.getLocalizacion().getTipoDireccion().getLabel());
         td.setValue(tl.getLocalizacion().getTipoDireccion().getValue());
-        
-        Localizacion loc = tl.getLocalizacion();
+
+        loc = tl.getLocalizacion();
         loc.setTipoDireccion(td);
         
+
         restTemplate.put(serviceUrl + "locations", loc, Localizacion.class);
-        
-        tl.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
-        restTemplate.put(serviceUrl + "employeesLocations", tl, TercerosLocalizacion.class);
+
+        tloc.setLocalizacion(loc);
+
+        tloc.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        restTemplate.put(serviceUrl + "employeesLocations", tloc, TercerosLocalizacion.class);
     }
 }
