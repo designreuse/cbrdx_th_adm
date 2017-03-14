@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Table(name = "Cargos", schema = "crz_th", catalog = "CREZCAMOS")
 public class CargosEntity {
     private Integer idCargo;
-    private Integer cargo;
+    private String cargo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer personaACargoDir;
@@ -51,11 +51,11 @@ public class CargosEntity {
 
     @Basic
     @Column(name = "Cargo", nullable = true)
-    public Integer getCargo() {
+    public String getCargo() {
         return cargo;
     }
 
-    public void setCargo(Integer cargo) {
+    public void setCargo(String cargo) {
         this.cargo = cargo;
     }
 
