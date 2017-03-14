@@ -179,8 +179,24 @@ public class TercerosLocalizacionController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion request) {
+    TercerosLocalizacion actualizarTerceroLocalizacion(@RequestBody TercerosLocalizacion tl) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl + "employeesLocations", request, TercerosLocalizacion.class);
+        
+        TipoDireccion td = new TipoDireccion();
+        
+        td.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        td.setAuditoriaUsuario(1);
+        td.setLabel(tl.getLocalizacion().getTipoDireccion().getLabel());
+        td.setValue(tl.getLocalizacion().getTipoDireccion().getValue());
+        
+        Localizacion loc = tl.getLocalizacion();
+        loc.setTipoDireccion(td);
+        
+        restTemplate.put(serviceUrl + "locations", loc, Localizacion.class);
+        
+        tl.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        restTemplate.put(serviceUrl + "employeesLocations", tl, TercerosLocalizacion.class);
+        
+        return tl;
     }
 }
