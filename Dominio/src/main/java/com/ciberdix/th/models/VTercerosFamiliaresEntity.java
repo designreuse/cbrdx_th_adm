@@ -24,6 +24,17 @@ public class VTercerosFamiliaresEntity {
     private int idConvivencia;
     private int idParentesco;
     private String nombreListaParentesco;
+    private boolean indicadorHabilitado;
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     @Id
     @Column(name = "IdTerceroFamiliar")

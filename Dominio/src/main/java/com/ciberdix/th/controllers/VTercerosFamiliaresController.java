@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.models.TercerosFamiliaresEntity;
 import com.ciberdix.th.models.VTercerosFamiliaresEntity;
 import com.ciberdix.th.repositories.VTercerosFamiliaresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,18 @@ public class VTercerosFamiliaresController {
     VTercerosFamiliaresEntity findList(@PathVariable Integer idLista) {
         return tercerosFamiliaresRepository.findOne(idLista);
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/habilitated")
+    List<VTercerosFamiliaresEntity> getListsHabilitated() {
+        return   tercerosFamiliaresRepository.findByIndicadorHabilitado(true);
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/habilitated/{employee}")
+    List<VTercerosFamiliaresEntity> getListsEmployeeHabilitated(@PathVariable Long employee) {
+        return   tercerosFamiliaresRepository.findByIdTerceroAndIndicadorHabilitado(employee, true);
+
+    }
+
 
 }
