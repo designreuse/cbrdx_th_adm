@@ -19,7 +19,7 @@ public class terceroFamilyController {
     private String serviceUrl = globales.getUrl();
 
     @RequestMapping(method = RequestMethod.POST)
-    TerceroFamily crearTerceroFamily(@RequestBody TerceroFamily tf) {
+    Tercero crearTerceroFamily(@RequestBody TerceroFamily tf) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -50,8 +50,8 @@ public class terceroFamilyController {
         tercerosFamiliares.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
         
         restTemplate.postForObject(serviceUrl + "/family/", tercerosFamiliares, TercerosFamiliares.class);
-        tf.setIdTercero(rspTercero.getIdTercero());
-        return tf;
+//        tf.setIdTercero(rspTercero.getIdTercero());
+        return rspTercero;
     }
     
     @RequestMapping(method = RequestMethod.PUT)
@@ -63,6 +63,7 @@ public class terceroFamilyController {
         TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
         
         // se actualizan los datos del tercero
+        tercero.setIdFamiliar(tf.getIdFamiliar());
         tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
         tercero.setPrimerNombre(tf.getPrimerNombre());
         tercero.setSegundoNombre(tf.getSegundoNombre());
@@ -75,6 +76,8 @@ public class terceroFamilyController {
         tercero.setTelefonoCelular(tf.getTelefonoCelular());
         tercero.setDireccion(tf.getDireccion()); 
         tercero.setIndicadorHabilitado(tf.isIndicadorHabilitado());
+        tercero.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        tercero.setAuditoriaUsuario(1);
         
         // Se actualizan los datos del familiar
         terceroF.setIdParentezco(tf.getIdParentezco());

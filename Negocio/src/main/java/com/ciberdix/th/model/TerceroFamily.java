@@ -23,7 +23,16 @@ public class TerceroFamily {
     private int idParentezco;
     private String nombreListaParentezco;
     private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
     private boolean indicadorHabilitado;
+
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
+    }
 
     public boolean isIndicadorHabilitado() {
         return indicadorHabilitado;
