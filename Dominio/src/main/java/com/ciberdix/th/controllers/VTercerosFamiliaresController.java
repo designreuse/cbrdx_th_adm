@@ -28,9 +28,9 @@ public class VTercerosFamiliaresController {
         return   tercerosFamiliaresRepository.findByIdTercero(employe);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
-    VTercerosFamiliaresEntity findList(@PathVariable Integer idLista) {
-        return tercerosFamiliaresRepository.findOne(idLista);
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VTercerosFamiliaresEntity findList(@PathVariable Integer id) {
+        return tercerosFamiliaresRepository.findByIdTerceroFamiliar(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/habilitated")

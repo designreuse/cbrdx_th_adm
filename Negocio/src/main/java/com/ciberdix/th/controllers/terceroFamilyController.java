@@ -41,8 +41,8 @@ public class terceroFamilyController {
         
         TercerosFamiliares tercerosFamiliares = new TercerosFamiliares();
         
-        tercerosFamiliares.setIdTerceros(rspTercero.getIdTercero());
-        tercerosFamiliares.setIdFamiliar(tf.getIdFamiliar());
+        tercerosFamiliares.setIdTerceros(tf.getIdFamiliar());
+        tercerosFamiliares.setIdFamiliar(rspTercero.getIdTercero());
         tercerosFamiliares.setIdParentezco(tf.getIdParentezco());
         tercerosFamiliares.setIdConvivencia(tf.getIdConvivencia());
         tercerosFamiliares.setIndicadorHabilitado(true);

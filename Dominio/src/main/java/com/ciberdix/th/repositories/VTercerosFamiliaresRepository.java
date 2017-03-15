@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface VTercerosFamiliaresRepository extends CrudRepository<VTercerosFamiliaresEntity, Integer> {
     List<VTercerosFamiliaresEntity> findByIdTercero(Long idTercero);
+    VTercerosFamiliaresEntity findByIdTerceroFamiliar(Integer idTerceroFamiliar);
     List<VTercerosFamiliaresEntity> findByIndicadorHabilitado(boolean indicadorHabilitado);
     List<VTercerosFamiliaresEntity> findByIdTerceroAndIndicadorHabilitado(Long idTercero, boolean indicadorHabilitado);
 
