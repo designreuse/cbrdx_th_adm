@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/terceros")
+@RequestMapping("/employees")
 public class tercerosController {
 
     Globales globales = new Globales();

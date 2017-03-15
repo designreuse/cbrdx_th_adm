@@ -22,6 +22,9 @@ public class Tercero {
     private String telefonoCelular;
     private String direccion;
 
+    public Tercero() {
+    }
+
     public Tercero(long idTercero, long idFamiliar, Integer idTipoDocumento, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date fechaNacimiento, String correoElectronico, String numeroDocumento, int idConvivencia, int idParentesco, String telefonoFijo, String telefonoCelular, String direccion) {
         this.idTercero = idTercero;
         this.idFamiliar = idFamiliar;
@@ -39,8 +42,6 @@ public class Tercero {
         this.telefonoCelular = telefonoCelular;
         this.direccion = direccion;
     }
-
-
 
     public Tercero(long idTercero, String correoElectronico, String telefonoFijo, String telefonoCelular) {
         this.idTercero = idTercero;
