@@ -150,8 +150,6 @@ public class TercerosLocalizacionController {
         td.setAuditoriaUsuario(1);
         td.setLabel(tl.getLocalizacion().getTipoDireccion().getLabel());
         td.setValue(tl.getLocalizacion().getTipoDireccion().getValue());
-//        Tercero tercero = new Tercero(tl.getIdTercero(),tl.getTercero().getCorreoElectronico(), tl.getTercero().getTelefonoFijo(), tl.getTercero().getTelefonoCelular());
-//        restTemplate.put(serviceUrl + "employees", tercero, Tercero.class);
 
         localizacion.setIdUbicacion(tl.getLocalizacion().getIdUbicacion());
         localizacion.setTipoDireccion(td);
