@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.TerceroCargo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/tercerosCargos")
 public class tercerosCargosController {
-
-    private String serviceUrl = "http://localhost:8445/chargeEmployees/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl()+ "/chargeEmployees/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<TerceroCargo> consultarTercerosCargos() {
