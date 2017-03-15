@@ -1,4 +1,5 @@
 package com.ciberdix.th.controllers;
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Perfil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -10,8 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/perfiles")
 public class perfilesController {
-
-    private String serviceUrl = "http://localhost:8445/perfiles/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/perfiles/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Perfil> consultarParametros() {

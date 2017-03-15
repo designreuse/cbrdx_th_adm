@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Listas;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,8 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/listas")
 public class listasController {
-
-    private String serviceUrl = "http://localhost:8445/listas/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl()+ "/listas/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Listas> getLists() {
