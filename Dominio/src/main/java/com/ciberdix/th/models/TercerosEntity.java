@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-
 @Entity
 @Table(name = "Terceros", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosEntity {
+
     private long idTercero;
     private String primerNombre;
     private String segundoNombre;
@@ -36,6 +36,7 @@ public class TercerosEntity {
     private String telefonoCelular;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoDocumento;
 
     private TipoDocumentoEntity TipoDocumento;
     private DivPoliticaEntity CiudadExpDocumento;
@@ -47,6 +48,16 @@ public class TercerosEntity {
     private NivelEstudioEntity NivelEducacion;
     private ListasItemsEntity Lateralidad;
     private ListasItemsEntity Factorrh;
+
+    @Basic
+    @Column(name = "IdTipoDocumento")
+    public Integer getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(Integer idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+    }
 
     @Id
     @GeneratedValue
@@ -148,7 +159,7 @@ public class TercerosEntity {
     public void setIdFactorRh(Integer idFactorRh) {
         this.idFactorRh = idFactorRh;
     }
-  
+
     @Basic
     @Column(name = "NroHijos")
     public Integer getNroHijos() {
@@ -330,7 +341,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = TipoDocumentoEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdTipoDocumento", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdTipoDocumento", nullable = true, insertable = false, updatable = false)
     public TipoDocumentoEntity getTipoDocumento() {
         return TipoDocumento;
     }
@@ -340,7 +351,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = DivPoliticaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdCiudadExpDocumento", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdCiudadExpDocumento", nullable = true, insertable = false, updatable = false)
     public DivPoliticaEntity getCiudadExpDocumento() {
         return CiudadExpDocumento;
     }
@@ -350,7 +361,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = DivPoliticaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdCiudadNacimiento", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdCiudadNacimiento", nullable = true, insertable = false, updatable = false)
     public DivPoliticaEntity getCiudadNacimiento() {
         return CiudadNacimiento;
     }
@@ -360,7 +371,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = TipoPersonaEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdTipoPersona", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdTipoPersona", nullable = true, insertable = false, updatable = false)
     public TipoPersonaEntity getTipoPersona() {
         return TipoPersona;
     }
@@ -370,7 +381,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = ProfesionesEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdProfesion", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdProfesion", nullable = true, insertable = false, updatable = false)
     public ProfesionesEntity getProfesion() {
         return Profesion;
     }
@@ -380,7 +391,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = NivelEstudioEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdNivelEducacion", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdNivelEducacion", nullable = true, insertable = false, updatable = false)
     public NivelEstudioEntity getNivelEducacion() {
         return NivelEducacion;
     }
@@ -389,8 +400,8 @@ public class TercerosEntity {
         NivelEducacion = nivelEducacion;
     }
 
-     @ManyToOne(targetEntity = GenerosEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdGenero", nullable=true,  insertable = false , updatable = false)
+    @ManyToOne(targetEntity = GenerosEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name = "IdGenero", nullable = true, insertable = false, updatable = false)
     public GenerosEntity getGenero() {
         return Genero;
     }
@@ -400,7 +411,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = EstadoCivilEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdEstadoCivil", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdEstadoCivil", nullable = true, insertable = false, updatable = false)
     public EstadoCivilEntity getEstadoCivil() {
         return EstadoCivil;
     }
@@ -410,7 +421,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = ListasItemsEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdLateralidad", referencedColumnName="IdListaItem", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdLateralidad", referencedColumnName = "IdListaItem", nullable = true, insertable = false, updatable = false)
     public ListasItemsEntity getLateralidad() {
         return Lateralidad;
     }
@@ -420,7 +431,7 @@ public class TercerosEntity {
     }
 
     @ManyToOne(targetEntity = ListasItemsEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    @JoinColumn(name="IdFactorRh", referencedColumnName="IdListaItem", nullable=true,  insertable = false , updatable = false)
+    @JoinColumn(name = "IdFactorRh", referencedColumnName = "IdListaItem", nullable = true, insertable = false, updatable = false)
     public ListasItemsEntity getFactorrh() {
         return Factorrh;
     }
@@ -431,52 +442,99 @@ public class TercerosEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         TercerosEntity that = (TercerosEntity) o;
 
-        if (idTercero != that.idTercero) return false;
-        if (primerNombre != null ? !primerNombre.equals(that.primerNombre) : that.primerNombre != null) return false;
-        if (segundoNombre != null ? !segundoNombre.equals(that.segundoNombre) : that.segundoNombre != null)
+        if (idTercero != that.idTercero) {
             return false;
-        if (primerApellido != null ? !primerApellido.equals(that.primerApellido) : that.primerApellido != null)
+        }
+        if (primerNombre != null ? !primerNombre.equals(that.primerNombre) : that.primerNombre != null) {
             return false;
-        if (segundoApellido != null ? !segundoApellido.equals(that.segundoApellido) : that.segundoApellido != null)
+        }
+        if (segundoNombre != null ? !segundoNombre.equals(that.segundoNombre) : that.segundoNombre != null) {
             return false;
-        if (imagen != null ? !imagen.equals(that.imagen) : that.imagen != null) return false;
-        if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null)
+        }
+        if (primerApellido != null ? !primerApellido.equals(that.primerApellido) : that.primerApellido != null) {
             return false;
-        if (fechaDocumento != null ? !fechaDocumento.equals(that.fechaDocumento) : that.fechaDocumento != null)
+        }
+        if (segundoApellido != null ? !segundoApellido.equals(that.segundoApellido) : that.segundoApellido != null) {
             return false;
-        if (fechaNacimiento != null ? !fechaNacimiento.equals(that.fechaNacimiento) : that.fechaNacimiento != null)
+        }
+        if (imagen != null ? !imagen.equals(that.imagen) : that.imagen != null) {
             return false;
-        if (idFactorRh != null ? !idFactorRh.equals(that.idFactorRh) : that.idFactorRh != null) return false;        
-        if (nroHijos != null ? !nroHijos.equals(that.nroHijos) : that.nroHijos != null) return false;
-        if (idLateralidad != null ? !idLateralidad.equals(that.idLateralidad) : that.idLateralidad != null)
+        }
+        if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null) {
             return false;
-        if (idTipoVivienda != null ? !idTipoVivienda.equals(that.idTipoVivienda) : that.idTipoVivienda != null)
+        }
+        if (fechaDocumento != null ? !fechaDocumento.equals(that.fechaDocumento) : that.fechaDocumento != null) {
             return false;
-        if (estrato != null ? !estrato.equals(that.estrato) : that.estrato != null) return false;
-        if (tallaCamisa != null ? !tallaCamisa.equals(that.tallaCamisa) : that.tallaCamisa != null) return false;
-        if (tallaPantalon != null ? !tallaPantalon.equals(that.tallaPantalon) : that.tallaPantalon != null)
+        }
+        if (fechaNacimiento != null ? !fechaNacimiento.equals(that.fechaNacimiento) : that.fechaNacimiento != null) {
             return false;
-        if (tallaCalzado != null ? !tallaCalzado.equals(that.tallaCalzado) : that.tallaCalzado != null) return false;
-        if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null)
+        }
+        if (idFactorRh != null ? !idFactorRh.equals(that.idFactorRh) : that.idFactorRh != null) {
             return false;
-        if (fechaCreacion != null ? !fechaCreacion.equals(that.fechaCreacion) : that.fechaCreacion != null)
+        }
+        if (nroHijos != null ? !nroHijos.equals(that.nroHijos) : that.nroHijos != null) {
             return false;
-        if (razonSocial != null ? !razonSocial.equals(that.razonSocial) : that.razonSocial != null) return false;
-        if (talla != null ? !talla.equals(that.talla) : that.talla != null) return false;
-        if (peso != null ? !peso.equals(that.peso) : that.peso != null) return false;
-        if (imc != null ? !imc.equals(that.imc) : that.imc != null) return false;
-        if (idVehiculo != null ? !idVehiculo.equals(that.idVehiculo) : that.idVehiculo != null) return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+        }
+        if (idLateralidad != null ? !idLateralidad.equals(that.idLateralidad) : that.idLateralidad != null) {
             return false;
-        if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) return false;
-        if (telefonoCelular != null ? !telefonoCelular.equals(that.telefonoCelular) : that.telefonoCelular != null)
+        }
+        if (idTipoVivienda != null ? !idTipoVivienda.equals(that.idTipoVivienda) : that.idTipoVivienda != null) {
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null) return false;
+        }
+        if (estrato != null ? !estrato.equals(that.estrato) : that.estrato != null) {
+            return false;
+        }
+        if (tallaCamisa != null ? !tallaCamisa.equals(that.tallaCamisa) : that.tallaCamisa != null) {
+            return false;
+        }
+        if (tallaPantalon != null ? !tallaPantalon.equals(that.tallaPantalon) : that.tallaPantalon != null) {
+            return false;
+        }
+        if (tallaCalzado != null ? !tallaCalzado.equals(that.tallaCalzado) : that.tallaCalzado != null) {
+            return false;
+        }
+        if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null) {
+            return false;
+        }
+        if (fechaCreacion != null ? !fechaCreacion.equals(that.fechaCreacion) : that.fechaCreacion != null) {
+            return false;
+        }
+        if (razonSocial != null ? !razonSocial.equals(that.razonSocial) : that.razonSocial != null) {
+            return false;
+        }
+        if (talla != null ? !talla.equals(that.talla) : that.talla != null) {
+            return false;
+        }
+        if (peso != null ? !peso.equals(that.peso) : that.peso != null) {
+            return false;
+        }
+        if (imc != null ? !imc.equals(that.imc) : that.imc != null) {
+            return false;
+        }
+        if (idVehiculo != null ? !idVehiculo.equals(that.idVehiculo) : that.idVehiculo != null) {
+            return false;
+        }
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null) {
+            return false;
+        }
+        if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) {
+            return false;
+        }
+        if (telefonoCelular != null ? !telefonoCelular.equals(that.telefonoCelular) : that.telefonoCelular != null) {
+            return false;
+        }
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null) {
+            return false;
+        }
 
         return true;
     }
@@ -492,7 +550,7 @@ public class TercerosEntity {
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (fechaDocumento != null ? fechaDocumento.hashCode() : 0);
         result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
-        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);        
+        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
         result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
         result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
         result = 31 * result + (idTipoVivienda != null ? idTipoVivienda.hashCode() : 0);
@@ -514,7 +572,7 @@ public class TercerosEntity {
         return result;
     }
 
-    public TercerosEntity(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, String numeroDocumento, Date fechaDocumento, Date fechaNacimiento, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, String razonSocial, Double talla, Double peso, Double imc, Integer idVehiculo, String telefonoFijo, String telefonoCelular, Integer auditoriaUsuario) {
+    public TercerosEntity(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, String numeroDocumento, Date fechaDocumento, Date fechaNacimiento, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, String razonSocial, Double talla, Double peso, Double imc, Integer idVehiculo, String telefonoFijo, String telefonoCelular, Integer auditoriaUsuario, Integer tipoDocumento) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -542,7 +600,9 @@ public class TercerosEntity {
         this.telefonoCelular = telefonoCelular;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTipoDocumento = tipoDocumento;
     }
 
-    public TercerosEntity(){}
+    public TercerosEntity() {
+    }
 }
