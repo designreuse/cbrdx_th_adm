@@ -6,9 +6,9 @@ import java.sql.Date;
 @Entity
 @Table(name = "V_TercerosFamiliares", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosFamiliaresEntity {
-    private int idTerceroFamiliar;
-    private long idTercero;
-    private long idFamiliar;
+    private Integer idTerceroFamiliar;
+    private Long idTercero;
+    private Long idFamiliar;
     private Integer idTipoDocumento;
     private String nombreListaTipoDocumento;
     private String numeroDocumento;
@@ -21,10 +21,10 @@ public class VTercerosFamiliaresEntity {
     private String telefonoFijo;
     private String telefonoCelular;
     private String direccion;
-    private int idConvivencia;
-    private int idParentezco;
+    private Integer idConvivencia;
+    private Integer idParentezco;
     private String nombreListaParentezco;
-    private boolean indicadorHabilitado;
+    private Boolean indicadorHabilitado;
 
     @Basic
     @Column(name = "IndicadorHabilitado")
@@ -38,7 +38,7 @@ public class VTercerosFamiliaresEntity {
 
     @Id
     @Column(name = "IdTerceroFamiliar")
-    public int getIdTerceroFamiliar() {
+    public Integer getIdTerceroFamiliar() {
         return idTerceroFamiliar;
     }
 
@@ -48,7 +48,7 @@ public class VTercerosFamiliaresEntity {
 
     @Basic
     @Column(name = "IdTercero")
-    public long getIdTercero() {
+    public Long getIdTercero() {
         return idTercero;
     }
 
@@ -58,7 +58,7 @@ public class VTercerosFamiliaresEntity {
 
     @Basic
     @Column(name = "IdFamiliar")
-    public long getIdFamiliar() {
+    public Long getIdFamiliar() {
         return idFamiliar;
     }
 
