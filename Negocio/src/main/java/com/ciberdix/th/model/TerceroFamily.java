@@ -23,6 +23,15 @@ public class TerceroFamily {
     private int idParentezco;
     private String nombreListaParentezco;
     private Integer auditoriaUsuario;
+    private boolean indicadorHabilitado;
+
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     public long getIdTerceroFamiliar() {
         return idTerceroFamiliar;

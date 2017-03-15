@@ -19,21 +19,21 @@ public class TercerosFamiliaresEntity {
     private int auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosFamiliaresEntity(int idTercerosFamiliar, int idTerceros, int idFamiliar, int idParentezco, int idConvivencia, boolean indicadorHabilitado, int auditoriaUsuario) {
-        this.idTercerosFamiliar = idTercerosFamiliar;
+    public TercerosFamiliaresEntity(int idTerceros, int idFamiliar, int idParentezco, int idConvivencia, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
         this.idTerceros = idTerceros;
         this.idFamiliar = idFamiliar;
         this.idParentezco = idParentezco;
         this.idConvivencia = idConvivencia;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaFecha = auditoriaFecha;
     }
 
     public TercerosFamiliaresEntity() {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroFamiliar", nullable = false)
     public int getIdTercerosFamiliar() {
         return idTercerosFamiliar;
