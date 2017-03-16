@@ -120,6 +120,8 @@
         <mapping class="com.ciberdix.th.models.test.TercerosEntity"/>
         <mapping class="com.ciberdix.th.models.test.TercerosFamiliaresEntity"/>
         <mapping class="com.ciberdix.th.models.VTercerosFamiliaresEntity"/>
+        <mapping class="com.ciberdix.th.models.ListasParentescosEntity"/>
+        <mapping class="com.ciberdix.th.models.ListasTiposDocumentosEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

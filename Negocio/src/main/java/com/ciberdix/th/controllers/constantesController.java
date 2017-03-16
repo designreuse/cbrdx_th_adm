@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Constante;
 import com.ciberdix.th.model.VConstante;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/constantes")
 public class constantesController {
-
-    private String serviceUrl = "http://localhost:8445/constantes/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/constantes/";
+//    private String serviceUrl = "http://localhost:8445/constantes/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Constante> consultarParametros() {

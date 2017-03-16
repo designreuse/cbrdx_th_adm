@@ -35,7 +35,7 @@ public class TercerosFamiliaresController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosFamiliaresEntity createList(@RequestBody TercerosFamiliaresEntity c) {
-        return tercerosFamiliaresRepository.save(new TercerosFamiliaresEntity(c.getIdTercerosFamiliar(),c.getIdTerceros(),c.getIdFamiliar(),c.getIdParentezco(),c.getIdConvivencia(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario()));
+        return tercerosFamiliaresRepository.save(new TercerosFamiliaresEntity(c.getIdTerceros(),c.getIdFamiliar(),c.getIdParentezco(),c.getIdConvivencia(),c.isIndicadorHabilitado(),c.getAuditoriaUsuario(), c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

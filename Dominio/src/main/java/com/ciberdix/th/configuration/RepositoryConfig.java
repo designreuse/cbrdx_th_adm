@@ -17,9 +17,13 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(TercerosFamiliaresEntity.class);
         config.exposeIdsFor(LocalizacionesEntity.class);
         config.exposeIdsFor(TercerosLocalizacionesEntity.class);
+        config.exposeIdsFor(TipoDocumentoEntity.class);
+        config.exposeIdsFor(ListasParentescosEntity.class);
         config.exposeIdsFor(TercerosEntity.class);
         config.exposeIdsFor(PrincipalNomenclaturaEntity.class);
         config.exposeIdsFor(ComplementariaNomenclaturaEntity.class);
         config.exposeIdsFor(VistaDivisionPoliticaEntity.class);
+        config.exposeIdsFor(VTercerosFamiliaresEntity.class);
+        config.exposeIdsFor(DivPoliticaEntity.class);
     }
 }

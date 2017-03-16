@@ -18,6 +18,8 @@ public class TercerosCargosEntity {
     private Integer idTipoContrato;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTercero;
+    private CargosEntity cargo;
 
     @Id
     @Column(name = "IdTerceroCargo", nullable = false)
@@ -145,5 +147,25 @@ public class TercerosCargosEntity {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdTercero", nullable = true)
+    public Integer getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Integer idTercero) {
+        this.idTercero = idTercero;
+    }
+
+    @ManyToOne(targetEntity = CargosEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name="IdCargo", nullable=true,  insertable = false , updatable = false)
+    public CargosEntity getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargosEntity cargo) {
+        this.cargo = cargo;
     }
 }

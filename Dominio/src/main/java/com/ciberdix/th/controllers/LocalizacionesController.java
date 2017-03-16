@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.LocalizacionesEntity;
 import com.ciberdix.th.repositories.LocalizacionesRepository;
+import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +22,21 @@ public class LocalizacionesController {
     List<LocalizacionesEntity> getLists() {
         return (List<LocalizacionesEntity>) localizacionesRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
+    LocalizacionesEntity getLocalizacion(@PathVariable Integer IdParametro){
+        return localizacionesRepository.findOne(IdParametro);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     LocalizacionesEntity createList(@RequestBody LocalizacionesEntity c) {
-        return localizacionesRepository.save(new LocalizacionesEntity(c.getIdTipoDireccion(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getIdDivisionPolitica(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
+        return localizacionesRepository.save(new LocalizacionesEntity(c.getTipoDireccion().getValue(),c.getDireccion(),c.getLatitud(),c.getLongitud(),c.getComoLlegar(),c.getIndicadorHabilitado(),c.getIdDivisionPolitica(),c.getAuditoriaUsuario(),c.getAuditoriaFecha()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    LocalizacionesEntity updateList(@RequestBody LocalizacionesEntity centrosCostosEntity) {
-        return localizacionesRepository.save(centrosCostosEntity);
+    LocalizacionesEntity updateList(@RequestBody LocalizacionesEntity l) {
+        LocalizacionesEntity loc = l;
+        loc.setIdTipoDireccion(l.getTipoDireccion().getValue());
+        return localizacionesRepository.save(loc);
     }
 }

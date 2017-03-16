@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Usuario;
 import com.ciberdix.th.model.VUsuario;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,9 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class usuariosController {
 
-    private String serviceUrl = "http://localhost:8445/usuarios/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/usuarios/";     
+//    private String serviceUrl = "http://localhost:8445/usuarios/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Usuario> consultarParametros() {

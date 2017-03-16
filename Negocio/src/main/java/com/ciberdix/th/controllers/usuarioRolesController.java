@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.UsuarioRol;
 import com.ciberdix.th.model.VUsuarioRol;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,10 @@ import java.util.List;
 @RequestMapping("/usuarioRoles")
 public class usuarioRolesController {
 
-    private String serviceUrl = "http://localhost:8445/usuarioRoles/";
-    private String vserviceUrl = "http://localhost:8445/usuarioRoles/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/usuarioRoles/";     
+//    private String serviceUrl = "http://localhost:8445/usuarioRoles/";
+    private String vserviceUrl = globales.getUrl() + "/usuarioRoles/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<UsuarioRol> consultarParametros() {

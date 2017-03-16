@@ -124,7 +124,7 @@ public class LocalizacionesEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @ManyToOne(targetEntity = TipoDireccionEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = TipoDireccionEntity.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name="IdTipoDireccion", nullable=true, insertable = false , updatable = false)
     public TipoDireccionEntity getTipoDireccion() {
         return TipoDireccion;

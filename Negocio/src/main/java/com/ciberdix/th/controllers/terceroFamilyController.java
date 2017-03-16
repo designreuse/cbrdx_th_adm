@@ -1,10 +1,12 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,43 +15,130 @@ import java.util.List;
 @RequestMapping("/terceroFamily")
 public class terceroFamilyController {
 
-    private String serviceUrl = "http://localhost:8443";
-
-
-
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl();
 
     @RequestMapping(method = RequestMethod.POST)
-    TerceroFamily crearTerceroFamily(@RequestBody TerceroFamily request) {
-
-        Tercero tercero = new Tercero(request.getPrimerNombre(), request.getSegundoNombre(), request.getPrimerApellido(), request.getSegundoApellido(), request.getImagen(), request.getIdTipoDocumento(), request.getNumeroDocumento(),request.getIdGenero(), request.getCorreoElectronico(), request.getIdLocalizacion(), request.getFechaCreacion(), request.getIdTipoPersona(), request.getRazonSocial(), request.getTalla(), request.getPeso(), request.getImc(), request.getIdProfesion(), request.getIdOcupacion(), request.getAuditoriaUsuario());
+    Tercero crearTerceroFamily(@RequestBody TerceroFamily tf) {
 
         RestTemplate restTemplate = new RestTemplate();
-        Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employee/", tercero, Tercero.class);
 
-        TercerosFamiliares tercerosFamiliares = new TercerosFamiliares(request.getIdPadre(),rspTercero.getIdTercero(),request.getIdParentezco(),request.getIdConvivencia(), true, request.getAuditoriaUsuario());
+        Tercero tercero = new Tercero();
+        
+        tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
+        tercero.setPrimerNombre(tf.getPrimerNombre());
+        tercero.setSegundoNombre(tf.getSegundoNombre());
+        tercero.setPrimerApellido(tf.getPrimerApellido());
+        tercero.setSegundoApellido(tf.getSegundoApellido());
+        tercero.setFechaNacimiento(tf.getFechaNacimiento());
+        tercero.setCorreoElectronico(tf.getCorreoElectronico());
+        tercero.setNumeroDocumento(tf.getNumeroDocumento());
+        tercero.setTelefonoFijo(tf.getTelefonoFijo());
+        tercero.setTelefonoCelular(tf.getTelefonoCelular());
+        tercero.setDireccion(tf.getDireccion());
+
+        Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employees/", tercero, Tercero.class);
+        
+        TercerosFamiliares tercerosFamiliares = new TercerosFamiliares();
+        
+        tercerosFamiliares.setIdTerceros(tf.getIdFamiliar());
+        tercerosFamiliares.setIdFamiliar(rspTercero.getIdTercero());
+        tercerosFamiliares.setIdParentezco(tf.getIdParentezco());
+        tercerosFamiliares.setIdConvivencia(tf.getIdConvivencia());
+        tercerosFamiliares.setIndicadorHabilitado(true);
+        tercerosFamiliares.setAuditoriaUsuario(1);
+        tercerosFamiliares.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        
         restTemplate.postForObject(serviceUrl + "/family/", tercerosFamiliares, TercerosFamiliares.class);
-        request.setIdTerceroFamiliar(rspTercero.getIdTercero());
-        return request;
+//        tf.setIdTercero(rspTercero.getIdTercero());
+        return rspTercero;
     }
-
+    
     @RequestMapping(method = RequestMethod.PUT)
-    TerceroFamily actualizarTerceroFamily(@RequestBody TerceroFamily request) {
-
-        Tercero tercero = new Tercero(request.getPrimerNombre(), request.getSegundoNombre(), request.getPrimerApellido(), request.getSegundoApellido(), request.getImagen(), request.getIdTipoDocumento(), request.getNumeroDocumento(),request.getIdGenero(), request.getCorreoElectronico(), request.getIdLocalizacion(), request.getFechaCreacion(), request.getIdTipoPersona(), request.getRazonSocial(), request.getTalla(), request.getPeso(), request.getImc(), request.getIdProfesion(), request.getIdOcupacion(), request.getAuditoriaUsuario());
-
+    void actualizarTerceroFamiliar(@RequestBody TerceroFamily tf){
+        
         RestTemplate restTemplate = new RestTemplate();
-        Tercero rspTercero = restTemplate.postForObject(serviceUrl + "/employee/", tercero, Tercero.class);
-
-        TercerosFamiliares tercerosFamiliares = new TercerosFamiliares(request.getIdPadre(),rspTercero.getIdTercero(),request.getIdParentezco(),request.getIdConvivencia(), true, request.getAuditoriaUsuario());
-        restTemplate.postForObject(serviceUrl + "/family/", tercerosFamiliares, TercerosFamiliares.class);
-        request.setIdTerceroFamiliar(rspTercero.getIdTercero());
-        return request;
+        
+        TerceroFamily tercero = restTemplate.getForObject(serviceUrl + "/employees/" + tf.getIdFamiliar(), TerceroFamily.class);
+        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
+        
+        // se actualizan los datos del tercero        
+        tercero.setIdFamiliar(tf.getIdFamiliar());
+        tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
+        tercero.setPrimerNombre(tf.getPrimerNombre());
+        tercero.setSegundoNombre(tf.getSegundoNombre());
+        tercero.setPrimerApellido(tf.getPrimerApellido());
+        tercero.setSegundoApellido(tf.getSegundoApellido());
+        tercero.setFechaNacimiento(tf.getFechaNacimiento());
+        tercero.setCorreoElectronico(tf.getCorreoElectronico());
+        tercero.setNumeroDocumento(tf.getNumeroDocumento());
+        tercero.setTelefonoFijo(tf.getTelefonoFijo());
+        tercero.setTelefonoCelular(tf.getTelefonoCelular());
+        tercero.setDireccion(tf.getDireccion()); 
+        tercero.setIndicadorHabilitado(tf.isIndicadorHabilitado());
+        tercero.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));
+        tercero.setAuditoriaUsuario(1);
+        
+        // Se actualizan los datos del familiar
+        terceroF.setIdParentezco(tf.getIdParentezco());
+        terceroF.setIdConvivencia(tf.getIdConvivencia());
+        terceroF.setIndicadorHabilitado(tf.isIndicadorHabilitado());
+        terceroF.setAuditoriaUsuario(1);
+        terceroF.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));        
+        
+        restTemplate.put(serviceUrl + "/employees", tercero, TerceroFamily.class);
+        restTemplate.put(serviceUrl + "/family", terceroF, TercerosFamiliares.class);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT, value="delete")
+    void eliminarTerceroFamiliar(@RequestBody TerceroFamily tf){
+        
+        RestTemplate restTemplate = new RestTemplate();
+        
+        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
+        
+        // Se actualizan los datos del familiar
+        terceroF.setIndicadorHabilitado(false);
+        terceroF.setAuditoriaUsuario(1);
+        terceroF.setAuditoriaFecha(new Timestamp(System.currentTimeMillis()));        
+        
+        restTemplate.put(serviceUrl + "/family", terceroF, TercerosFamiliares.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")
-    UsuarioPerfil verParametro(@PathVariable Integer IdParametro) {
+    TerceroFamily verParametro(@PathVariable Integer IdParametro) {
         RestTemplate restTemplate = new RestTemplate();
-        UsuarioPerfil parametro = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, UsuarioPerfil.class);
+        TerceroFamily parametro = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, TerceroFamily.class);
         return parametro;
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    List<TerceroFamily> getTercerosFamiliares() {
+        RestTemplate restTemplate = new RestTemplate();
+        TerceroFamily[] parametro = restTemplate.getForObject(serviceUrl + "/Vfamily", TerceroFamily[].class);
+
+        return Arrays.asList(parametro);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "employee/{IdParametro}")
+    List<TerceroFamily> consultarParemetros(@PathVariable Integer IdParametro) {
+        RestTemplate restTemplate = new RestTemplate();
+        TerceroFamily[] parametros = restTemplate.getForObject(serviceUrl + "/Vfamily/" + IdParametro, TerceroFamily[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "employee/habilitated/{IdParametro}")
+    List<TerceroFamily> getEmployeeHabilitated(@PathVariable Integer IdParametro) {
+        RestTemplate restTemplate = new RestTemplate();
+        TerceroFamily[] parametros = restTemplate.getForObject(serviceUrl + "/Vfamily/habilitated/" + IdParametro, TerceroFamily[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "habilitated")
+    List<TerceroFamily> getHabilitated() {
+        RestTemplate restTemplate = new RestTemplate();
+        TerceroFamily[] parametros = restTemplate.getForObject(serviceUrl + "/Vfamily/habilitated", TerceroFamily[].class);
+        return Arrays.asList(parametros);
+    }
+
 }

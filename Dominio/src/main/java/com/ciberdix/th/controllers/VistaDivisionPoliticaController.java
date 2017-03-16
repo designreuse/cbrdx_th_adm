@@ -22,6 +22,12 @@ public class VistaDivisionPoliticaController {
         return (List<VistaDivisionPoliticaEntity>) vistaDivisionPoliticaRepository.findAll();
     }
 
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
+    VistaDivisionPoliticaEntity findList(@PathVariable Integer idLista) {
+        return vistaDivisionPoliticaRepository.findOne(idLista);
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
     VistaDivisionPoliticaEntity updateList(@RequestBody VistaDivisionPoliticaEntity centrosCostosEntity) {
         return vistaDivisionPoliticaRepository.save(centrosCostosEntity);

@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Tercero;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -9,10 +10,11 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/terceros")
+@RequestMapping("/employees")
 public class tercerosController {
 
-    private String serviceUrl = "http://localhost:8445/terceros/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/employees/";    
 
     @RequestMapping(method = RequestMethod.GET)
     List<Tercero> consultarTerceros() {

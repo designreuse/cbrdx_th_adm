@@ -4,46 +4,90 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class TerceroFamily {
+    private long idTerceroFamiliar;
     private Long idTercero;
-    private Long idPadre;
+    private Long idFamiliar;
+    private Integer idTipoDocumento;
+    private String nombreListaTipoDocumento;
+    private String numeroDocumento;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
-    private String imagen;
-    private Integer idTipoDocumento;
-    private String numeroDocumento;
-    private Integer idGenero;
+    private Date fechaNacimiento;
     private String correoElectronico;
-    private Integer idLocalizacion;
-    private Date fechaCreacion;
-    private Integer idTipoPersona;
-    private String razonSocial;
-    private Double talla;
-    private Double peso;
-    private Double imc;
-    private Integer idProfesion;
-    private Integer idOcupacion;
+    private String telefonoFijo;
+    private String telefonoCelular;
+    private String direccion;
+    private int idConvivencia;
+    private int idParentezco;
+    private String nombreListaParentezco;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idParentezco;
-    private Integer idConvivencia;
-    private Long idTerceroFamiliar;
+    private boolean indicadorHabilitado;
 
-    public Long getIdTercero() {
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public boolean isIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public long getIdTerceroFamiliar() {
+        return idTerceroFamiliar;
+    }
+
+    public void setIdTerceroFamiliar(long idTerceroFamiliar) {
+        this.idTerceroFamiliar = idTerceroFamiliar;
+    }
+
+    public long getIdTercero() {
         return idTercero;
     }
 
-    public void setIdTercero(Long idTercero) {
+    public void setIdTercero(long idTercero) {
         this.idTercero = idTercero;
     }
 
-    public Long getIdPadre() {
-        return idPadre;
+    public long getIdFamiliar() {
+        return idFamiliar;
     }
 
-    public void setIdPadre(Long idPadre) {
-        this.idPadre = idPadre;
+    public void setIdFamiliar(long idFamiliar) {
+        this.idFamiliar = idFamiliar;
+    }
+
+    public Integer getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(Integer idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+    }
+
+    public String getNombreListaTipoDocumento() {
+        return nombreListaTipoDocumento;
+    }
+
+    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
+        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
     public String getPrimerNombre() {
@@ -78,36 +122,12 @@ public class TerceroFamily {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getImagen() {
-        return imagen;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public Integer getIdTipoDocumento() {
-        return idTipoDocumento;
-    }
-
-    public void setIdTipoDocumento(Integer idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
-    }
-
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
-
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public Integer getIdGenero() {
-        return idGenero;
-    }
-
-    public void setIdGenero(Integer idGenero) {
-        this.idGenero = idGenero;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCorreoElectronico() {
@@ -118,76 +138,52 @@ public class TerceroFamily {
         this.correoElectronico = correoElectronico;
     }
 
-    public Integer getIdLocalizacion() {
-        return idLocalizacion;
+    public String getTelefonoFijo() {
+        return telefonoFijo;
     }
 
-    public void setIdLocalizacion(Integer idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
+    public String getTelefonoCelular() {
+        return telefonoCelular;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setTelefonoCelular(String telefonoCelular) {
+        this.telefonoCelular = telefonoCelular;
     }
 
-    public Integer getIdTipoPersona() {
-        return idTipoPersona;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setIdTipoPersona(Integer idTipoPersona) {
-        this.idTipoPersona = idTipoPersona;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    public int getIdConvivencia() {
+        return idConvivencia;
     }
 
-    public void setRazonSocial(String razonSocial) {
-        this.razonSocial = razonSocial;
+    public void setIdConvivencia(int idConvivencia) {
+        this.idConvivencia = idConvivencia;
     }
 
-    public Double getTalla() {
-        return talla;
+    public int getIdParentezco() {
+        return idParentezco;
     }
 
-    public void setTalla(Double talla) {
-        this.talla = talla;
+    public void setIdParentezco(int idParentezco) {
+        this.idParentezco = idParentezco;
     }
 
-    public Double getPeso() {
-        return peso;
+    public String getNombreListaParentezco() {
+        return nombreListaParentezco;
     }
 
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
-
-    public Double getImc() {
-        return imc;
-    }
-
-    public void setImc(Double imc) {
-        this.imc = imc;
-    }
-
-    public Integer getIdProfesion() {
-        return idProfesion;
-    }
-
-    public void setIdProfesion(Integer idProfesion) {
-        this.idProfesion = idProfesion;
-    }
-
-    public Integer getIdOcupacion() {
-        return idOcupacion;
-    }
-
-    public void setIdOcupacion(Integer idOcupacion) {
-        this.idOcupacion = idOcupacion;
+    public void setNombreListaParentezco(String nombreListaParentezco) {
+        this.nombreListaParentezco = nombreListaParentezco;
     }
 
     public Integer getAuditoriaUsuario() {
@@ -196,65 +192,5 @@ public class TerceroFamily {
 
     public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
-    }
-
-    public Timestamp getAuditoriaFecha() {
-        return auditoriaFecha;
-    }
-
-    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
-        this.auditoriaFecha = auditoriaFecha;
-    }
-
-    public Integer getIdParentezco() {
-        return idParentezco;
-    }
-
-    public void setIdParentezco(Integer idParentezco) {
-        this.idParentezco = idParentezco;
-    }
-
-    public Integer getIdConvivencia() {
-        return idConvivencia;
-    }
-
-    public void setIdConvivencia(Integer idConvivencia) {
-        this.idConvivencia = idConvivencia;
-    }
-
-    public Long getIdTerceroFamiliar() {
-        return idTerceroFamiliar;
-    }
-
-    public void setIdTerceroFamiliar(Long idTerceroFamiliar) {
-        this.idTerceroFamiliar = idTerceroFamiliar;
-    }
-
-    public TerceroFamily() {
-    }
-
-    public TerceroFamily(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Integer idGenero, String correoElectronico, Integer idLocalizacion, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idOcupacion, Integer auditoriaUsuario, Integer idParentezco, Integer idConvivencia) {
-        this.primerNombre = primerNombre;
-        this.segundoNombre = segundoNombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.imagen = imagen;
-        this.idTipoDocumento = idTipoDocumento;
-        this.numeroDocumento = numeroDocumento;
-        this.idGenero = idGenero;
-        this.correoElectronico = correoElectronico;
-        this.idLocalizacion = idLocalizacion;
-        this.fechaCreacion = fechaCreacion;
-        this.idTipoPersona = idTipoPersona;
-        this.razonSocial = razonSocial;
-        this.talla = talla;
-        this.peso = peso;
-        this.imc = imc;
-        this.idProfesion = idProfesion;
-        this.idOcupacion = idOcupacion;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.idParentezco = idParentezco;
-        this.idConvivencia = idConvivencia;
-
     }
 }

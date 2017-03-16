@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Formulario;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,8 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/formularios")
 public class formularioController {
-
-    private String serviceUrl = "http://localhost:8445/formularios/";
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl() + "/formularios/";
+//    private String serviceUrl = "http://localhost:8445/formularios/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Formulario> getForms() {

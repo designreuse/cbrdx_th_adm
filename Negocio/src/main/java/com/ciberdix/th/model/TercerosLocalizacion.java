@@ -3,12 +3,21 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 public class TercerosLocalizacion {
+    private Integer idTerceroLocalizacion;
     private Integer idLocalizacion;
     private Integer idTercero;
     private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
     private Localizacion localizacion;
     private boolean indicadorHabilitado;
+
+    public Integer getIdTerceroLocalizacion() {
+        return idTerceroLocalizacion;
+    }
+
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
+    }
 
     public boolean isIndicadorHabilitado() {
         return indicadorHabilitado;
