@@ -41,7 +41,7 @@ public class VTercerosFamiliaresController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/habilitated/{employee}")
     List<VTercerosFamiliaresEntity> getListsEmployeeHabilitated(@PathVariable Long employee) {
-        return   tercerosFamiliaresRepository.findByIdFamiliarAndIndicadorHabilitado(employee, true);
+        return   tercerosFamiliaresRepository.findByIdTerceroAndIndicadorHabilitado(employee, true);
 
     }
 
