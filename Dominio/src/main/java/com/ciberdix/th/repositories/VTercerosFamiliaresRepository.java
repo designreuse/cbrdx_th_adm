@@ -11,6 +11,6 @@ public interface VTercerosFamiliaresRepository extends CrudRepository<VTercerosF
     List<VTercerosFamiliaresEntity> findByIdTercero(Long idTercero);
     VTercerosFamiliaresEntity findByIdTerceroFamiliar(Integer idTerceroFamiliar);
     List<VTercerosFamiliaresEntity> findByIndicadorHabilitado(boolean indicadorHabilitado);
-    List<VTercerosFamiliaresEntity> findByIdFamiliarAndIndicadorHabilitado(Long idTercero, boolean indicadorHabilitado);
+    List<VTercerosFamiliaresEntity> findByIdTerceroAndIndicadorHabilitado(Long idTercero, boolean indicadorHabilitado);
 
 }

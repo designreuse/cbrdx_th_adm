@@ -59,7 +59,7 @@ public class terceroFamilyController {
         
         RestTemplate restTemplate = new RestTemplate();
         
-        TerceroFamily tercero = restTemplate.getForObject(serviceUrl + "/employees/" + tf.getIdTercero(), TerceroFamily.class);
+        TerceroFamily tercero = restTemplate.getForObject(serviceUrl + "/employees/" + tf.getIdFamiliar(), TerceroFamily.class);
         TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
         
         // se actualizan los datos del tercero        
@@ -91,11 +91,11 @@ public class terceroFamilyController {
     }
     
     @RequestMapping(method = RequestMethod.PUT, value="delete")
-    void eliminarTerceroFamiliar(@RequestBody TerceroFamily tf){
+    void eliminarTerceroFamiliar(@PathVariable Integer id){
         
         RestTemplate restTemplate = new RestTemplate();
         
-        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
+        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + id, TercerosFamiliares.class);
         
         // Se actualizan los datos del familiar
         terceroF.setIndicadorHabilitado(false);
