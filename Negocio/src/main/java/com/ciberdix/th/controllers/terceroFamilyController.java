@@ -28,7 +28,7 @@ public class terceroFamilyController {
         tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
         tercero.setPrimerNombre(tf.getPrimerNombre());
         tercero.setSegundoNombre(tf.getSegundoNombre());
-        tercero.setPrimerApellido(tf.getPrimerNombre());
+        tercero.setPrimerApellido(tf.getPrimerApellido());
         tercero.setSegundoApellido(tf.getSegundoApellido());
         tercero.setFechaNacimiento(tf.getFechaNacimiento());
         tercero.setCorreoElectronico(tf.getCorreoElectronico());
@@ -91,11 +91,11 @@ public class terceroFamilyController {
     }
     
     @RequestMapping(method = RequestMethod.PUT, value="delete")
-    void eliminarTerceroFamiliar(@PathVariable Integer id){
+    void eliminarTerceroFamiliar(@RequestBody TerceroFamily tf){
         
         RestTemplate restTemplate = new RestTemplate();
         
-        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + id, TercerosFamiliares.class);
+        TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
         
         // Se actualizan los datos del familiar
         terceroF.setIndicadorHabilitado(false);
