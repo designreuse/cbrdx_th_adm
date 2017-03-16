@@ -26,6 +26,11 @@ public class TercerosController {
     TercerosEntity verConstante(@PathVariable Long IdParametro) {
         return tercerosRepository.findOne(IdParametro);
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "wRol")
+    List<TercerosEntity> obtenerConRol() {
+        return tercerosRepository.findByIdTipoPersona(1);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosEntity createList(@RequestBody TercerosEntity ter) {
