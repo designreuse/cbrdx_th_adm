@@ -67,7 +67,7 @@ public class terceroFamilyController {
         tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
         tercero.setPrimerNombre(tf.getPrimerNombre());
         tercero.setSegundoNombre(tf.getSegundoNombre());
-        tercero.setPrimerApellido(tf.getPrimerNombre());
+        tercero.setPrimerApellido(tf.getPrimerApellido());
         tercero.setSegundoApellido(tf.getSegundoApellido());
         tercero.setFechaNacimiento(tf.getFechaNacimiento());
         tercero.setCorreoElectronico(tf.getCorreoElectronico());
