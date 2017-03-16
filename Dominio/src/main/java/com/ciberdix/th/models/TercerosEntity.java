@@ -37,6 +37,7 @@ public class TercerosEntity {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idTipoDocumento;
+    private Integer idTipoPersona;
 
     private TipoDocumentoEntity TipoDocumento;
     private DivPoliticaEntity CiudadExpDocumento;
@@ -48,6 +49,16 @@ public class TercerosEntity {
     private NivelEstudioEntity NivelEducacion;
     private ListasItemsEntity Lateralidad;
     private ListasItemsEntity Factorrh;
+
+    @Basic
+    @Column(name = "IdTipoPersona")    
+    public Integer getIdTipoPersona() {
+        return idTipoPersona;
+    }
+
+    public void setIdTipoPersona(Integer idTipoPersona) {
+        this.idTipoPersona = idTipoPersona;
+    }
 
     @Basic
     @Column(name = "IdTipoDocumento")
