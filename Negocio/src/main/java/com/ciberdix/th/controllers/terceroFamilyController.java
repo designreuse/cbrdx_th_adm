@@ -62,8 +62,8 @@ public class terceroFamilyController {
         TerceroFamily tercero = restTemplate.getForObject(serviceUrl + "/employees/" + tf.getIdTercero(), TerceroFamily.class);
         TercerosFamiliares terceroF = restTemplate.getForObject(serviceUrl + "/family/" + tf.getIdTerceroFamiliar(), TercerosFamiliares.class);
         
-        // se actualizan los datos del tercero
-        tercero.setIdFamiliar(tf.getIdFamiliar());
+        // se actualizan los datos del tercero        
+        tercero.getIdTercero(tf.getIdTercero());
         tercero.setIdTipoDocumento(tf.getIdTipoDocumento());
         tercero.setPrimerNombre(tf.getPrimerNombre());
         tercero.setSegundoNombre(tf.getSegundoNombre());
