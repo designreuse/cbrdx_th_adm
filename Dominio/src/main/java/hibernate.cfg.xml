@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:sqlserver://40.71.25.236:1433;databaseName=CREZCAMOS</property>
+        <property name="connection.url">jdbc:sqlserver://bd-ciberdix.database.windows.net:1433;databaseName=CREZCAMOS</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <mapping class="com.ciberdix.th.models.AdjuntosEntity"/>
         <mapping class="com.ciberdix.th.models.AreasEntity"/>
@@ -117,8 +117,6 @@
         <mapping class="com.ciberdix.th.models.UsuarioRolesEntity"/>
         <mapping class="com.ciberdix.th.models.UsuariosEntity"/>
         <mapping class="com.ciberdix.th.models.ZonasEntity"/>
-        <mapping class="com.ciberdix.th.models.test.TercerosEntity"/>
-        <mapping class="com.ciberdix.th.models.test.TercerosFamiliaresEntity"/>
         <mapping class="com.ciberdix.th.models.VTercerosFamiliaresEntity"/>
         <mapping class="com.ciberdix.th.models.ListasParentescosEntity"/>
         <mapping class="com.ciberdix.th.models.ListasTiposDocumentosEntity"/>

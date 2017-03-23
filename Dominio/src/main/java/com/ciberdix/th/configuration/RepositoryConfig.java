@@ -1,7 +1,5 @@
 package com.ciberdix.th.configuration;
 
-import com.ciberdix.th.models.EstructuraAreasEntity;
-import com.ciberdix.th.models.TercerosFamiliaresEntity;
 import com.ciberdix.th.models.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -24,6 +22,8 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(ComplementariaNomenclaturaEntity.class);
         config.exposeIdsFor(VistaDivisionPoliticaEntity.class);
         config.exposeIdsFor(VTercerosFamiliaresEntity.class);
+        config.exposeIdsFor(VTercerosReferenciasEntity.class);
         config.exposeIdsFor(DivPoliticaEntity.class);
+        config.exposeIdsFor(TercerosReferenciasEntity.class);
     }
 }
