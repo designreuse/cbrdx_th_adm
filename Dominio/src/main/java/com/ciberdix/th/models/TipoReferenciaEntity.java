@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "ListasTiposReferencias", schema = "crz_th", catalog = "CREZCAMOS")
 public class TipoReferenciaEntity {
-      private int idListaTipoReferencias;
+    private int idListaTipoReferencias;
     private String codigoListaTipoReferencias;
     private String nombreListaTipoReferencias;
     private int ordenListaTipoReferencias;

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/references")
+@RequestMapping("/referenceTypes")
 @CrossOrigin
 public class TipoReferenciaController {
 
