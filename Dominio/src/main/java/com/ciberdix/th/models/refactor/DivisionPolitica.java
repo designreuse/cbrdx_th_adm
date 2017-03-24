@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
 public class DivisionPolitica {
     private Integer idDivisionPolitica;
     private Integer idDivisionPoliticaPadre;
@@ -27,7 +25,28 @@ public class DivisionPolitica {
     private Integer idDivisionPoliticaComuna;
     private Integer idDivisionPoliticaLocalidad;
 
+    public DivisionPolitica() {
+    }
+
+    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, Integer indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad) {
+        this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
+        this.codigoDivisionPolitica = codigoDivisionPolitica;
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
+        this.indicativoDivisonPolitica = indicativoDivisonPolitica;
+        this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
+        this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
+        this.idDivisionPoliticaArea = idDivisionPoliticaArea;
+        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+        this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
+        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdDivisionPolitica")
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;

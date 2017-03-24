@@ -1,6 +1,8 @@
 package com.ciberdix.th.configuration;
 
 import com.ciberdix.th.models.*;
+import com.ciberdix.th.models.refactor.DivisionPolitica;
+import com.ciberdix.th.models.refactor.VDivisionPoliticaRec;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
@@ -28,5 +30,8 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(TipoReferenciaEntity.class);
 
         //Desde Aqui empezar a incluir los del Refactor
+
+        config.exposeIdsFor(DivisionPolitica.class);
+        config.exposeIdsFor(VDivisionPoliticaRec.class);
     }
 }

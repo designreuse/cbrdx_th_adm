@@ -123,7 +123,7 @@
         <mapping class="com.ciberdix.th.models.ListasTiposDocumentosEntity"/>
 
         <!-- Desde Aqui Comienza el Mapeo de los nuevos Objetos -->
-        
+
         <mapping class="com.ciberdix.th.models.refactor.Adjuntos"/>
         <mapping class="com.ciberdix.th.models.refactor.Auditorias"/>
         <mapping class="com.ciberdix.th.models.refactor.Beneficios"/>
