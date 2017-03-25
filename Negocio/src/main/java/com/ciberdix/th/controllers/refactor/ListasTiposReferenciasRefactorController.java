@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/listasTiposReferencias")
 @CrossOrigin
-public class ListasTiposReferenciasController {
+public class ListasTiposReferenciasRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/listasTiposReferencias";

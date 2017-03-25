@@ -8,6 +8,6 @@ import java.util.List;
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
-public interface DivisionPoliticaRepository extends CrudRepository<DivisionPolitica, Integer> {
+public interface DivisionPoliticaRefactorRepository extends CrudRepository<DivisionPolitica, Integer> {
     List<DivisionPolitica> findByIdDivisionPoliticaPadre(Integer idDivisionPoliticaPadre);
 }

@@ -8,6 +8,6 @@ import java.util.List;
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
-public interface VTercerosReferenciasRepository extends CrudRepository<VTercerosReferencias, Long> {
+public interface VTercerosReferenciasRefactorRepository extends CrudRepository<VTercerosReferencias, Long> {
     List<VTercerosReferencias> findByIdTercero(Long idTercero);
 }

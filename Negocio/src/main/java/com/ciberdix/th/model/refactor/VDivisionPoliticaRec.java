@@ -5,8 +5,6 @@ import java.sql.Timestamp;
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
-@Entity
-@Table(name = "V_DivisionPolitica_Rec", schema = "crz_th", catalog = "CREZCAMOS")
 public class VDivisionPoliticaRec {
     private Integer idDivisionPolitica;
     private Integer idDivisionPoliticaPadre;
@@ -23,8 +21,6 @@ public class VDivisionPoliticaRec {
     private Timestamp auditoriaFecha;
     private String camino;
 
-    @Id
-    @Column(name = "IdDivisionPolitica")
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -33,8 +29,6 @@ public class VDivisionPoliticaRec {
         this.idDivisionPolitica = idDivisionPolitica;
     }
 
-    @Basic
-    @Column(name = "IdDivisionPoliticaPadre")
     public Integer getIdDivisionPoliticaPadre() {
         return idDivisionPoliticaPadre;
     }
@@ -43,8 +37,6 @@ public class VDivisionPoliticaRec {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
     }
 
-    @Basic
-    @Column(name = "CodigoDivisionPolitica")
     public String getCodigoDivisionPolitica() {
         return codigoDivisionPolitica;
     }
@@ -53,8 +45,6 @@ public class VDivisionPoliticaRec {
         this.codigoDivisionPolitica = codigoDivisionPolitica;
     }
 
-    @Basic
-    @Column(name = "DescripcionDivisonPolitica")
     public String getDescripcionDivisonPolitica() {
         return descripcionDivisonPolitica;
     }
@@ -63,8 +53,6 @@ public class VDivisionPoliticaRec {
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 
-    @Basic
-    @Column(name = "IndicativoDivisonPolitica")
     public Integer getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
@@ -73,8 +61,6 @@ public class VDivisionPoliticaRec {
         this.indicativoDivisonPolitica = indicativoDivisonPolitica;
     }
 
-    @Basic
-    @Column(name = "CodigoPostalDivisionPolitica")
     public String getCodigoPostalDivisionPolitica() {
         return codigoPostalDivisionPolitica;
     }
@@ -83,8 +69,6 @@ public class VDivisionPoliticaRec {
         this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
     }
 
-    @Basic
-    @Column(name = "IdDivisionPoliticaTipo")
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -93,8 +77,6 @@ public class VDivisionPoliticaRec {
         this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
     }
 
-    @Basic
-    @Column(name = "IdDivisionPoliticaArea")
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
@@ -103,8 +85,6 @@ public class VDivisionPoliticaRec {
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
     }
 
-    @Basic
-    @Column(name = "IdDivisionPoliticaResguardo")
     public Integer getIdDivisionPoliticaResguardo() {
         return idDivisionPoliticaResguardo;
     }
@@ -113,8 +93,6 @@ public class VDivisionPoliticaRec {
         this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
     }
 
-    @Basic
-    @Column(name = "IdEstratoDivisionPolitica")
     public Integer getIdEstratoDivisionPolitica() {
         return idEstratoDivisionPolitica;
     }
@@ -123,8 +101,6 @@ public class VDivisionPoliticaRec {
         this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
     }
 
-    @Basic
-    @Column(name = "IndicadorHabilitado")
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -133,8 +109,6 @@ public class VDivisionPoliticaRec {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    @Basic
-    @Column(name = "AuditoriaUsuario")
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -143,8 +117,6 @@ public class VDivisionPoliticaRec {
         this.auditoriaUsuario = auditoriaUsuario;
     }
 
-    @Basic
-    @Column(name = "AuditoriaFecha")
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -153,70 +125,11 @@ public class VDivisionPoliticaRec {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Basic
-    @Column(name = "CAMINO")
     public String getCamino() {
         return camino;
     }
 
     public void setCamino(String camino) {
         this.camino = camino;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        VDivisionPoliticaRec that = (VDivisionPoliticaRec) o;
-
-        if (idDivisionPolitica != null ? !idDivisionPolitica.equals(that.idDivisionPolitica) : that.idDivisionPolitica != null)
-            return false;
-        if (idDivisionPoliticaPadre != null ? !idDivisionPoliticaPadre.equals(that.idDivisionPoliticaPadre) : that.idDivisionPoliticaPadre != null)
-            return false;
-        if (codigoDivisionPolitica != null ? !codigoDivisionPolitica.equals(that.codigoDivisionPolitica) : that.codigoDivisionPolitica != null)
-            return false;
-        if (descripcionDivisonPolitica != null ? !descripcionDivisonPolitica.equals(that.descripcionDivisonPolitica) : that.descripcionDivisonPolitica != null)
-            return false;
-        if (indicativoDivisonPolitica != null ? !indicativoDivisonPolitica.equals(that.indicativoDivisonPolitica) : that.indicativoDivisonPolitica != null)
-            return false;
-        if (codigoPostalDivisionPolitica != null ? !codigoPostalDivisionPolitica.equals(that.codigoPostalDivisionPolitica) : that.codigoPostalDivisionPolitica != null)
-            return false;
-        if (idDivisionPoliticaTipo != null ? !idDivisionPoliticaTipo.equals(that.idDivisionPoliticaTipo) : that.idDivisionPoliticaTipo != null)
-            return false;
-        if (idDivisionPoliticaArea != null ? !idDivisionPoliticaArea.equals(that.idDivisionPoliticaArea) : that.idDivisionPoliticaArea != null)
-            return false;
-        if (idDivisionPoliticaResguardo != null ? !idDivisionPoliticaResguardo.equals(that.idDivisionPoliticaResguardo) : that.idDivisionPoliticaResguardo != null)
-            return false;
-        if (idEstratoDivisionPolitica != null ? !idEstratoDivisionPolitica.equals(that.idEstratoDivisionPolitica) : that.idEstratoDivisionPolitica != null)
-            return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
-            return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-        if (camino != null ? !camino.equals(that.camino) : that.camino != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idDivisionPolitica != null ? idDivisionPolitica.hashCode() : 0;
-        result = 31 * result + (idDivisionPoliticaPadre != null ? idDivisionPoliticaPadre.hashCode() : 0);
-        result = 31 * result + (codigoDivisionPolitica != null ? codigoDivisionPolitica.hashCode() : 0);
-        result = 31 * result + (descripcionDivisonPolitica != null ? descripcionDivisonPolitica.hashCode() : 0);
-        result = 31 * result + (indicativoDivisonPolitica != null ? indicativoDivisonPolitica.hashCode() : 0);
-        result = 31 * result + (codigoPostalDivisionPolitica != null ? codigoPostalDivisionPolitica.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaTipo != null ? idDivisionPoliticaTipo.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaArea != null ? idDivisionPoliticaArea.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaResguardo != null ? idDivisionPoliticaResguardo.hashCode() : 0);
-        result = 31 * result + (idEstratoDivisionPolitica != null ? idEstratoDivisionPolitica.hashCode() : 0);
-        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (camino != null ? camino.hashCode() : 0);
-        return result;
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/divisionPolitica")
-public class DivisionPoliticaController {
+public class DivisionPoliticaRefactorController {
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/divisionPolitica";
 
