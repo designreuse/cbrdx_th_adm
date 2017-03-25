@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "TercerosReferencias")
 public class TercerosReferencias {
     private Integer idTerceroReferencia;
     private Long idTercero;
@@ -29,7 +27,30 @@ public class TercerosReferencias {
     private Boolean indicadorVerificado;
     private Timestamp fechaVerificado;
 
+    public TercerosReferencias() {
+    }
+
+    public TercerosReferencias(Long idTercero, Integer idTipoReferencia, String empresa, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String telefonoFijo, String telefonoMovil, Integer idLocalizacion, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
+        this.idTercero = idTercero;
+        this.idTipoReferencia = idTipoReferencia;
+        this.empresa = empresa;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoMovil = telefonoMovil;
+        this.idLocalizacion = idLocalizacion;
+        this.idAdjunto = idAdjunto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.indicadorVerificado = indicadorVerificado;
+        this.fechaVerificado = fechaVerificado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroReferencia")
     public Integer getIdTerceroReferencia() {
         return idTerceroReferencia;
