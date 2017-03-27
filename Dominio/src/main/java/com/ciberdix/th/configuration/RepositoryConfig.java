@@ -36,5 +36,19 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(Localizaciones.class);
         config.exposeIdsFor(TercerosReferencias.class);
         config.exposeIdsFor(VTercerosReferencias.class);
+        config.exposeIdsFor(Terceros.class);
+        config.exposeIdsFor(ListasEstadosCiviles.class);
+        config.exposeIdsFor(ListasFactoresRh.class);
+        config.exposeIdsFor(ListasGeneros.class);
+        config.exposeIdsFor(ListasNivelesEstudios.class);
+        config.exposeIdsFor(ListasSectoresEmpresas.class);
+        config.exposeIdsFor(ListasTiposAfiliacion.class);
+        config.exposeIdsFor(ListasTiposDocumentos.class);
+        config.exposeIdsFor(ListasTiposPersonas.class);
+        config.exposeIdsFor(Ocupaciones.class);
+        config.exposeIdsFor(ListasSectoresEmpresas.class);
+        config.exposeIdsFor(ListasTiposAfiliacion.class);
+        config.exposeIdsFor(ListasTiposDocumentos.class);
+        config.exposeIdsFor(ListasTiposPersonas.class);
     }
 }
