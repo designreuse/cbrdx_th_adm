@@ -27,4 +27,9 @@ public class GenerosControlador {
     List<ListasGeneros> listarTerceros() {
         return (List<ListasGeneros>) generosRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasGeneros> listEnabled() {
+        return generosRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }
