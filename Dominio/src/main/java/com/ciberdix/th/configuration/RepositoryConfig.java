@@ -1,6 +1,7 @@
 package com.ciberdix.th.configuration;
 
 import com.ciberdix.th.models.*;
+import com.ciberdix.th.models.refactor.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
@@ -26,5 +27,28 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(DivPoliticaEntity.class);
         config.exposeIdsFor(TercerosReferenciasEntity.class);
         config.exposeIdsFor(TipoReferenciaEntity.class);
+
+        //Desde Aqui empezar a incluir los del Refactor
+
+        config.exposeIdsFor(DivisionPolitica.class);
+        config.exposeIdsFor(VDivisionPoliticaRec.class);
+        config.exposeIdsFor(ListasTiposReferencias.class);
+        config.exposeIdsFor(Localizaciones.class);
+        config.exposeIdsFor(TercerosReferencias.class);
+        config.exposeIdsFor(VTercerosReferencias.class);
+        config.exposeIdsFor(Terceros.class);
+        config.exposeIdsFor(ListasEstadosCiviles.class);
+        config.exposeIdsFor(ListasFactoresRh.class);
+        config.exposeIdsFor(ListasGeneros.class);
+        config.exposeIdsFor(ListasNivelesEstudios.class);
+        config.exposeIdsFor(ListasSectoresEmpresas.class);
+        config.exposeIdsFor(ListasTiposAfiliacion.class);
+        config.exposeIdsFor(ListasTiposDocumentos.class);
+        config.exposeIdsFor(ListasTiposPersonas.class);
+        config.exposeIdsFor(Ocupaciones.class);
+        config.exposeIdsFor(ListasSectoresEmpresas.class);
+        config.exposeIdsFor(ListasTiposAfiliacion.class);
+        config.exposeIdsFor(ListasTiposDocumentos.class);
+        config.exposeIdsFor(ListasTiposPersonas.class);
     }
 }
