@@ -27,4 +27,9 @@ public class SectoresEmpresasControlador {
     List<ListasSectoresEmpresas> listarSectoresEmpresas() {
         return (List<ListasSectoresEmpresas>) sectoresEmpresasRepository.findAll();
     }    
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasSectoresEmpresas> listEnabled() {
+        return sectoresEmpresasRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }

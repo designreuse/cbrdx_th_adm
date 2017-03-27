@@ -27,4 +27,9 @@ public class EstadosCivilesControlador {
     List<ListasEstadosCiviles> listarTerceros() {
         return (List<ListasEstadosCiviles>) estadosCivilesRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasEstadosCiviles> listEnabled() {
+        return estadosCivilesRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }

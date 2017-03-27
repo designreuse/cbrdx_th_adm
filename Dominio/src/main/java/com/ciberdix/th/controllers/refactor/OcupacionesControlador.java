@@ -27,4 +27,9 @@ public class OcupacionesControlador {
     List<Ocupaciones> listarNivelAcademico() {
         return (List<Ocupaciones>) ocupacionesRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<Ocupaciones> listEnabled() {
+        return ocupacionesRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }

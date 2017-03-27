@@ -27,4 +27,9 @@ public class FactorRhControlador {
     List<ListasFactoresRh> listarGeneros() {
         return (List<ListasFactoresRh>) factorRhRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasFactoresRh> listEnabled() {
+        return factorRhRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }

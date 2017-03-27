@@ -27,4 +27,9 @@ public class TiposAfiliacionControlador {
     List<ListasTiposAfiliacion> listarTerceros() {
         return (List<ListasTiposAfiliacion>) tiposAfiliacionRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasTiposAfiliacion> listEnabled() {
+        return tiposAfiliacionRepository.findByIndicadorHabilitadoIsTrue();
+    }     
 }
