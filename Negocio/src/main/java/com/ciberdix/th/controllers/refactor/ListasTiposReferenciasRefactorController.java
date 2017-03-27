@@ -27,6 +27,13 @@ public class ListasTiposReferenciasRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasTiposReferencias> findEnabled() {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasTiposReferencias[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasTiposReferencias[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposReferencias create(@RequestBody ListasTiposReferencias request) {
         RestTemplate restTemplate = new RestTemplate();
