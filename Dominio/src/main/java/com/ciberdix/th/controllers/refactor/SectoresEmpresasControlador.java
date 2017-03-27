@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.SectoresEmpresasRepository;
+import com.ciberdix.th.repositories.refactor.SectoresEmpresasRefactorRepository;
 
 /**
  *
@@ -21,7 +21,7 @@ import com.ciberdix.th.repositories.refactor.SectoresEmpresasRepository;
 public class SectoresEmpresasControlador {
 
     @Autowired
-    private SectoresEmpresasRepository sectoresEmpresasRepository;
+    private SectoresEmpresasRefactorRepository sectoresEmpresasRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasSectoresEmpresas> listarSectoresEmpresas() {

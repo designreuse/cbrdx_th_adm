@@ -1,7 +1,6 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.Ocupaciones;
-import com.ciberdix.th.repositories.refactor.OcupacionesRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
 
 /**
  *
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OcupacionesControlador {
 
     @Autowired
-    private OcupacionesRepository ocupacionesRepository;
+    private OcupacionesRefactorRepository ocupacionesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<Ocupaciones> listarNivelAcademico() {

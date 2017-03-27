@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface TiposDocumentosRepository extends CrudRepository<ListasTiposDocumentos, Integer>{
+public interface TiposDocumentosRefactorRepository extends CrudRepository<ListasTiposDocumentos, Integer>{
     
 }

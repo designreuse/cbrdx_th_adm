@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.TercerosRepository;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.ciberdix.th.repositories.refactor.TercerosRefactorRepository;
 
 /**
  *
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class TercerosControlador {
 
     @Autowired
-    private TercerosRepository tercerosRepository;
+    private TercerosRefactorRepository tercerosRepository;
     
     @RequestMapping(method = RequestMethod.GET)
     List<Terceros> listarTerceros() {

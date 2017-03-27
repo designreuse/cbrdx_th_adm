@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface TiposAfiliacionRepository extends CrudRepository<ListasTiposAfiliacion, Integer>{
+public interface TiposAfiliacionRefactorRepository extends CrudRepository<ListasTiposAfiliacion, Integer>{
     
 }

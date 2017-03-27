@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface SectoresEmpresasRepository extends CrudRepository<ListasSectoresEmpresas, Integer> {
+public interface SectoresEmpresasRefactorRepository extends CrudRepository<ListasSectoresEmpresas, Integer> {
     
 }

@@ -13,6 +13,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface NivelAcademicoRepository extends CrudRepository<ListasNivelesEstudios, Integer>{
+public interface NivelAcademicoRefactorRepository extends CrudRepository<ListasNivelesEstudios, Integer>{
 
 }
