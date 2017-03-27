@@ -27,4 +27,9 @@ public class TiposPersonasControlador {
     List<ListasTiposPersonas> listarTiposPersonas() {
         return (List<ListasTiposPersonas>) tiposPersonaRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasTiposPersonas> listEnabled() {
+        return tiposPersonaRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 }

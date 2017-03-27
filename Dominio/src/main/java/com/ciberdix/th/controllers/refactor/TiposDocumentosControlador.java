@@ -27,4 +27,9 @@ public class TiposDocumentosControlador {
     List<ListasTiposDocumentos> listarTerceros() {
         return (List<ListasTiposDocumentos>) tiposDocumentosRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasTiposDocumentos> listEnabled() {
+        return tiposDocumentosRepository.findByIndicadorHabilitadoIsTrue();
+    }     
 }
