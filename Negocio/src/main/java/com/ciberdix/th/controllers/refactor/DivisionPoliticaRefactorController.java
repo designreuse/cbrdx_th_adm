@@ -49,17 +49,17 @@ public class DivisionPoliticaRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}/")
     List<VDivisionPoliticaRec> findLocations(@PathVariable String queryString) {
         RestTemplate restTemplate = new RestTemplate();
-        VDivisionPoliticaRec[] parametros = restTemplate.getForObject(serviceUrl + "/buscarLocalizaciones/" + queryString, VDivisionPoliticaRec[].class);
+        VDivisionPoliticaRec[] parametros = restTemplate.getForObject(serviceUrl + "/buscarLocalizaciones/" + queryString+"/", VDivisionPoliticaRec[].class);
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}/")
     List<VDivisionPoliticaRec> findCities(@PathVariable String queryString) {
         RestTemplate restTemplate = new RestTemplate();
-        VDivisionPoliticaRec[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCiudad/" + queryString, VDivisionPoliticaRec[].class);
+        VDivisionPoliticaRec[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCiudad/" + queryString+"/", VDivisionPoliticaRec[].class);
         return Arrays.asList(parametros);
     }
 
