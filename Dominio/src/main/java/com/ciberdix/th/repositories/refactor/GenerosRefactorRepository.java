@@ -1,12 +1,12 @@
 package com.ciberdix.th.repositories.refactor;
 
-import com.ciberdix.th.models.refactor.Terceros;
+import com.ciberdix.th.models.refactor.ListasGeneros;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Roberto Chajin Ortiz
  */
-public interface TercerosRepository extends CrudRepository<Terceros, Long>{
+public interface GenerosRefactorRepository extends CrudRepository<ListasGeneros, Integer>{
     
 }
