@@ -6,11 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Timestamp;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "Terceros", schema = "crz_th", catalog = "CREZCAMOS")
 public class Terceros {
     private Long idTercero;
     private String primerNombre;
@@ -51,6 +55,7 @@ public class Terceros {
     private String telefonoCelular;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTercero")
     public Long getIdTercero() {
         return idTercero;
