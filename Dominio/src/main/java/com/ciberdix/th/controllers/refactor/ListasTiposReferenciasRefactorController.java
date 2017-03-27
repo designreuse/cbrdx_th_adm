@@ -26,6 +26,11 @@ public class ListasTiposReferenciasRefactorController {
         return (List<ListasTiposReferencias>) listasTiposReferenciasRefactorRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasTiposReferencias> findEnabled() {
+        return (List<ListasTiposReferencias>) listasTiposReferenciasRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idDivisionPolitica}")
     ListasTiposReferencias findOne(@PathVariable Integer idDivisionPolitica) {
         return listasTiposReferenciasRefactorRepository.findOne(idDivisionPolitica);
