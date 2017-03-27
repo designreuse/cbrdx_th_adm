@@ -41,12 +41,17 @@ public class DivisionPoliticaRefactorController {
         return divisionPoliticaRefactorRepository.findByIdDivisionPoliticaPadre(idDivisionPoliticaPadre);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}/")
     List<VDivisionPoliticaRec> findHoods(@PathVariable String queryString) {
         return vDivisionPoliticaRecRefactorRepository.queryLocations(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizacion/{idLocalizacion}")
+    VDivisionPoliticaRec findInView(@PathVariable Integer idLocalizacion) {
+        return vDivisionPoliticaRecRefactorRepository.findOne(idLocalizacion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}/")
     List<VDivisionPoliticaRec> findCities(@PathVariable String queryString) {
         return vDivisionPoliticaRecRefactorRepository.queryAllCities(queryString);
     }
