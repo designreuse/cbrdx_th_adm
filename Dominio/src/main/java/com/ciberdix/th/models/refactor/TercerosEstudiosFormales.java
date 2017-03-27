@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "TercerosEstudiosFormales", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosEstudiosFormales {
     private Integer idTerceroEstudioFormal;
     private Long idTercero;
@@ -32,7 +30,32 @@ public class TercerosEstudiosFormales {
     private Boolean indicadorVerificado;
     private Timestamp fechaVerificado;
 
+    public TercerosEstudiosFormales() {
+    }
+
+    public TercerosEstudiosFormales(Long idTercero, Integer idNivelEstudio, Integer idAreaEstudio, String tituloEstudio, Integer idInstitucion, String otraInstitucion, Integer idPais, Integer idDepartamento, Integer idCiudad, Integer idEstado, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
+        this.idTercero = idTercero;
+        this.idNivelEstudio = idNivelEstudio;
+        this.idAreaEstudio = idAreaEstudio;
+        this.tituloEstudio = tituloEstudio;
+        this.idInstitucion = idInstitucion;
+        this.otraInstitucion = otraInstitucion;
+        this.idPais = idPais;
+        this.idDepartamento = idDepartamento;
+        this.idCiudad = idCiudad;
+        this.idEstado = idEstado;
+        this.fechaIngresa = fechaIngresa;
+        this.fechaTermina = fechaTermina;
+        this.idAdjunto = idAdjunto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.indicadorVerificado = indicadorVerificado;
+        this.fechaVerificado = fechaVerificado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroEstudioFormal")
     public Integer getIdTerceroEstudioFormal() {
         return idTerceroEstudioFormal;
