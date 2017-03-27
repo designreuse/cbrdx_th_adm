@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.NivelAcademicoRefactorRepository;
+import com.ciberdix.th.repositories.refactor.ListasNivelesEstudiosRefactorRepository;
 
 @RestController
 @CrossOrigin
@@ -17,10 +17,15 @@ import com.ciberdix.th.repositories.refactor.NivelAcademicoRefactorRepository;
 public class NivelAcademicoControlador {
     
     @Autowired
-    private NivelAcademicoRefactorRepository nivelesEstudiosRepository;
+    private ListasNivelesEstudiosRefactorRepository listasNivelesEstudiosRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasNivelesEstudios> listarNivelesEstudio() {
-        return (List<ListasNivelesEstudios>) nivelesEstudiosRepository.findAll();
-    }    
+        return (List<ListasNivelesEstudios>) listasNivelesEstudiosRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasNivelesEstudios> listEnabled() {
+        return listasNivelesEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
 }
