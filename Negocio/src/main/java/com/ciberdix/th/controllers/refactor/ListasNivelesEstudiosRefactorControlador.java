@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/nivelesEstudios")
-public class NivelAcademicoControlador {
+public class ListasNivelesEstudiosRefactorControlador {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
@@ -26,7 +26,13 @@ public class NivelAcademicoControlador {
     List<ListasNivelesEstudios> listarNivelesEstudios() {
         RestTemplate restTemplate = new RestTemplate();
         ListasNivelesEstudios[] nivelesEstudio = restTemplate.getForObject(serviceUrl + "api/nivelesEstudios", ListasNivelesEstudios[].class);
-
         return Arrays.asList(nivelesEstudio);
-    }    
+    }
+
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasNivelesEstudios> listEnabled() {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasNivelesEstudios[] nivelesEstudio = restTemplate.getForObject(serviceUrl + "api/nivelesEstudios/enabled/", ListasNivelesEstudios[].class);
+        return Arrays.asList(nivelesEstudio);
+    }
 }
