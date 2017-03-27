@@ -1,12 +1,12 @@
 package com.ciberdix.th.repositories.refactor;
 
-import com.ciberdix.th.models.refactor.ListasEstadosCiviles;
+import com.ciberdix.th.models.refactor.Terceros;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Roberto Chajin Ortiz
  */
-public interface EstadosCivilesRepository extends CrudRepository<ListasEstadosCiviles, Integer>{
+public interface TercerosRefactorRepository extends CrudRepository<Terceros, Long>{
     
 }

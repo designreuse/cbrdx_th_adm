@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface FactorRhRepository extends CrudRepository<ListasFactoresRh, Integer>{
+public interface FactorRhRefactorRepository extends CrudRepository<ListasFactoresRh, Integer>{
     
 }
