@@ -17,8 +17,6 @@ public class TercerosEstudiosFormales {
     private String tituloEstudio;
     private Integer idInstitucion;
     private String otraInstitucion;
-    private Integer idPais;
-    private Integer idDepartamento;
     private Integer idCiudad;
     private Integer idEstado;
     private Date fechaIngresa;
@@ -33,15 +31,13 @@ public class TercerosEstudiosFormales {
     public TercerosEstudiosFormales() {
     }
 
-    public TercerosEstudiosFormales(Long idTercero, Integer idNivelEstudio, Integer idAreaEstudio, String tituloEstudio, Integer idInstitucion, String otraInstitucion, Integer idPais, Integer idDepartamento, Integer idCiudad, Integer idEstado, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
+    public TercerosEstudiosFormales(Long idTercero, Integer idNivelEstudio, Integer idAreaEstudio, String tituloEstudio, Integer idInstitucion, String otraInstitucion, Integer idCiudad, Integer idEstado, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
         this.idTercero = idTercero;
         this.idNivelEstudio = idNivelEstudio;
         this.idAreaEstudio = idAreaEstudio;
         this.tituloEstudio = tituloEstudio;
         this.idInstitucion = idInstitucion;
         this.otraInstitucion = otraInstitucion;
-        this.idPais = idPais;
-        this.idDepartamento = idDepartamento;
         this.idCiudad = idCiudad;
         this.idEstado = idEstado;
         this.fechaIngresa = fechaIngresa;
@@ -123,26 +119,6 @@ public class TercerosEstudiosFormales {
 
     public void setOtraInstitucion(String otraInstitucion) {
         this.otraInstitucion = otraInstitucion;
-    }
-
-    @Basic
-    @Column(name = "IdPais")
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
-    }
-
-    @Basic
-    @Column(name = "IdDepartamento")
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 
     @Basic
@@ -265,9 +241,6 @@ public class TercerosEstudiosFormales {
             return false;
         if (otraInstitucion != null ? !otraInstitucion.equals(that.otraInstitucion) : that.otraInstitucion != null)
             return false;
-        if (idPais != null ? !idPais.equals(that.idPais) : that.idPais != null) return false;
-        if (idDepartamento != null ? !idDepartamento.equals(that.idDepartamento) : that.idDepartamento != null)
-            return false;
         if (idCiudad != null ? !idCiudad.equals(that.idCiudad) : that.idCiudad != null) return false;
         if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
         if (fechaIngresa != null ? !fechaIngresa.equals(that.fechaIngresa) : that.fechaIngresa != null) return false;
@@ -296,8 +269,6 @@ public class TercerosEstudiosFormales {
         result = 31 * result + (tituloEstudio != null ? tituloEstudio.hashCode() : 0);
         result = 31 * result + (idInstitucion != null ? idInstitucion.hashCode() : 0);
         result = 31 * result + (otraInstitucion != null ? otraInstitucion.hashCode() : 0);
-        result = 31 * result + (idPais != null ? idPais.hashCode() : 0);
-        result = 31 * result + (idDepartamento != null ? idDepartamento.hashCode() : 0);
         result = 31 * result + (idCiudad != null ? idCiudad.hashCode() : 0);
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (fechaIngresa != null ? fechaIngresa.hashCode() : 0);

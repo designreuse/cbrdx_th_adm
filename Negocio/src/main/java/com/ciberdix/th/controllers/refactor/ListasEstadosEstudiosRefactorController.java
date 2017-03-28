@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasAreasEstudios;
+import com.ciberdix.th.model.refactor.ListasEstadosEstudios;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,35 +21,35 @@ public class ListasEstadosEstudiosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/listasEstadosEstudios";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasAreasEstudios> findAll() {
+    List<ListasEstadosEstudios> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasAreasEstudios[] parametros = restTemplate.getForObject(serviceUrl, ListasAreasEstudios[].class);
+        ListasEstadosEstudios[] parametros = restTemplate.getForObject(serviceUrl, ListasEstadosEstudios[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasAreasEstudios> findEnabled() {
+    List<ListasEstadosEstudios> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasAreasEstudios[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasAreasEstudios[].class);
+        ListasEstadosEstudios[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasEstadosEstudios[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasAreasEstudios create(@RequestBody ListasAreasEstudios request) {
+    ListasEstadosEstudios create(@RequestBody ListasEstadosEstudios request) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, request, ListasAreasEstudios.class);
+        return restTemplate.postForObject(serviceUrl, request, ListasEstadosEstudios.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasAreasEstudios request) {
+    void update(@RequestBody ListasEstadosEstudios request) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, ListasAreasEstudios.class);
+        restTemplate.put(serviceUrl, request, ListasEstadosEstudios.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idLista}")
-    ListasAreasEstudios findOne(@PathVariable Integer idLista) {
+    ListasEstadosEstudios findOne(@PathVariable Integer idLista) {
         RestTemplate restTemplate = new RestTemplate();
-        ListasAreasEstudios parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasAreasEstudios.class);
+        ListasEstadosEstudios parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasEstadosEstudios.class);
         return parametro;
     }
 }

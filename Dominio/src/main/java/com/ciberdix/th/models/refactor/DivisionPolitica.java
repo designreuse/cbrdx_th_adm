@@ -24,11 +24,12 @@ public class DivisionPolitica {
     private Timestamp auditoriaFecha;
     private Integer idDivisionPoliticaComuna;
     private Integer idDivisionPoliticaLocalidad;
+    private String gentilicio;
 
     public DivisionPolitica() {
     }
 
-    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, Integer indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad) {
+    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, Integer indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad, String gentilicio) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
@@ -43,6 +44,7 @@ public class DivisionPolitica {
         this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
         this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.gentilicio = gentilicio;
     }
 
     @Id
@@ -196,6 +198,17 @@ public class DivisionPolitica {
         this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
     }
 
+    @Basic
+    @Column(name = "Gentilicio")
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -233,7 +246,8 @@ public class DivisionPolitica {
             return false;
         if (idDivisionPoliticaLocalidad != null ? !idDivisionPoliticaLocalidad.equals(that.idDivisionPoliticaLocalidad) : that.idDivisionPoliticaLocalidad != null)
             return false;
-
+        if (gentilicio != null ? !gentilicio.equals(that.gentilicio) : that.gentilicio != null)
+            return false;
         return true;
     }
 
@@ -254,6 +268,7 @@ public class DivisionPolitica {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaComuna != null ? idDivisionPoliticaComuna.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaLocalidad != null ? idDivisionPoliticaLocalidad.hashCode() : 0);
+        result = 31 * result + (gentilicio != null ? gentilicio.hashCode() : 0);
         return result;
     }
 }

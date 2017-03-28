@@ -23,8 +23,6 @@ public class TercerosExperienciasLaborales {
     private String areaCargo;
     private String jefeInmediato;
     private String tiempoExperiencia;
-    private Integer idPais;
-    private Integer idDepartamento;
     private Integer idCiudad;
     private Boolean indicadorActualmente;
     private Date fechaIngresa;
@@ -145,26 +143,6 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdPais")
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
-    }
-
-    @Basic
-    @Column(name = "IdDepartamento")
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-
-    @Basic
     @Column(name = "IdCiudad")
     public Integer getIdCiudad() {
         return idCiudad;
@@ -268,9 +246,6 @@ public class TercerosExperienciasLaborales {
             return false;
         if (tiempoExperiencia != null ? !tiempoExperiencia.equals(that.tiempoExperiencia) : that.tiempoExperiencia != null)
             return false;
-        if (idPais != null ? !idPais.equals(that.idPais) : that.idPais != null) return false;
-        if (idDepartamento != null ? !idDepartamento.equals(that.idDepartamento) : that.idDepartamento != null)
-            return false;
         if (idCiudad != null ? !idCiudad.equals(that.idCiudad) : that.idCiudad != null) return false;
         if (indicadorActualmente != null ? !indicadorActualmente.equals(that.indicadorActualmente) : that.indicadorActualmente != null)
             return false;
@@ -300,8 +275,6 @@ public class TercerosExperienciasLaborales {
         result = 31 * result + (areaCargo != null ? areaCargo.hashCode() : 0);
         result = 31 * result + (jefeInmediato != null ? jefeInmediato.hashCode() : 0);
         result = 31 * result + (tiempoExperiencia != null ? tiempoExperiencia.hashCode() : 0);
-        result = 31 * result + (idPais != null ? idPais.hashCode() : 0);
-        result = 31 * result + (idDepartamento != null ? idDepartamento.hashCode() : 0);
         result = 31 * result + (idCiudad != null ? idCiudad.hashCode() : 0);
         result = 31 * result + (indicadorActualmente != null ? indicadorActualmente.hashCode() : 0);
         result = 31 * result + (fechaIngresa != null ? fechaIngresa.hashCode() : 0);
