@@ -31,6 +31,11 @@ public class ListasInstitucionesRefactorController {
         return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarInstitucion/{nombreInstitucion}/")
+    List<ListasInstituciones> findInstitution(@PathVariable String nombreInstitucion) {
+        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrueAndNombreListaInstitucionContains(nombreInstitucion);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
     ListasInstituciones findOne(@PathVariable Integer idListaInstitucion) {
         return listasInstitucionesRefactorRepository.findOne(idListaInstitucion);
@@ -45,4 +50,6 @@ public class ListasInstitucionesRefactorController {
     ListasInstituciones update(@RequestBody ListasInstituciones divisionPolitica) {
         return listasInstitucionesRefactorRepository.save(divisionPolitica);
     }
+
+
 }
