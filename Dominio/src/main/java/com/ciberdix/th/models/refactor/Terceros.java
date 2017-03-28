@@ -53,6 +53,15 @@ public class Terceros {
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
     private String telefonoCelular;
+    private Date fechaDefuncion;
+    private Integer idTipoOcupacion;
+    private Integer idSectorEconomico;
+    private Integer idActividadEconomica;
+    private Integer idOcupacion;
+    private Integer idEstadoJuridico;
+    private Integer idCoberturaSalud;
+    private Boolean indicadorVivo;
+    private Integer idTipoAfiliacion;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -539,5 +548,95 @@ public class Terceros {
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
         result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "FechaDefuncion")
+    public Date getFechaDefuncion() {
+        return fechaDefuncion;
+    }
+
+    public void setFechaDefuncion(Date fechaDefuncion) {
+        this.fechaDefuncion = fechaDefuncion;
+    }
+
+    @Basic
+    @Column(name = "IdTipoOcupacion")
+    public Integer getIdTipoOcupacion() {
+        return idTipoOcupacion;
+    }
+
+    public void setIdTipoOcupacion(Integer idTipoOcupacion) {
+        this.idTipoOcupacion = idTipoOcupacion;
+    }
+
+    @Basic
+    @Column(name = "IdSectorEconomico")
+    public Integer getIdSectorEconomico() {
+        return idSectorEconomico;
+    }
+
+    public void setIdSectorEconomico(Integer idSectorEconomico) {
+        this.idSectorEconomico = idSectorEconomico;
+    }
+
+    @Basic
+    @Column(name = "IdActividadEconomica")
+    public Integer getIdActividadEconomica() {
+        return idActividadEconomica;
+    }
+
+    public void setIdActividadEconomica(Integer idActividadEconomica) {
+        this.idActividadEconomica = idActividadEconomica;
+    }
+
+    @Basic
+    @Column(name = "IdOcupacion")
+    public Integer getIdOcupacion() {
+        return idOcupacion;
+    }
+
+    public void setIdOcupacion(Integer idOcupacion) {
+        this.idOcupacion = idOcupacion;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoJuridico")
+    public Integer getIdEstadoJuridico() {
+        return idEstadoJuridico;
+    }
+
+    public void setIdEstadoJuridico(Integer idEstadoJuridico) {
+        this.idEstadoJuridico = idEstadoJuridico;
+    }
+
+    @Basic
+    @Column(name = "IdCoberturaSalud")
+    public Integer getIdCoberturaSalud() {
+        return idCoberturaSalud;
+    }
+
+    public void setIdCoberturaSalud(Integer idCoberturaSalud) {
+        this.idCoberturaSalud = idCoberturaSalud;
+    }
+
+    @Basic
+    @Column(name = "IndicadorVivo")
+    public Boolean getIndicadorVivo() {
+        return indicadorVivo;
+    }
+
+    public void setIndicadorVivo(Boolean indicadorVivo) {
+        this.indicadorVivo = indicadorVivo;
+    }
+
+    @Basic
+    @Column(name = "IdTipoAfiliacion")
+    public Integer getIdTipoAfiliacion() {
+        return idTipoAfiliacion;
+    }
+
+    public void setIdTipoAfiliacion(Integer idTipoAfiliacion) {
+        this.idTipoAfiliacion = idTipoAfiliacion;
     }
 }
