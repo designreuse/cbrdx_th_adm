@@ -54,6 +54,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(TercerosEstudiosFormales.class);
         config.exposeIdsFor(ListasAreasEstudios.class);
         config.exposeIdsFor(ListasEstadosEstudios.class);
+        config.exposeIdsFor(VDivisionPolitica.class);
 
     }
 }

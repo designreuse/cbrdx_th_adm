@@ -1,9 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.DivisionPolitica;
+import com.ciberdix.th.models.refactor.VDivisionPolitica;
 import com.ciberdix.th.models.refactor.VDivisionPoliticaRec;
 import com.ciberdix.th.repositories.refactor.DivisionPoliticaRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VDivisionPoliticaRecRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VDivisionPoliticaRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class DivisionPoliticaRefactorController {
 
     @Autowired
     private VDivisionPoliticaRecRefactorRepository vDivisionPoliticaRecRefactorRepository;
+
+    @Autowired
+    private VDivisionPoliticaRefactorRepository vDivisionPoliticaRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<DivisionPolitica> findAll() {
@@ -54,6 +59,11 @@ public class DivisionPoliticaRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}/")
     List<VDivisionPoliticaRec> findCities(@PathVariable String queryString) {
         return vDivisionPoliticaRecRefactorRepository.queryAllCities(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{label}/")
+    List<VDivisionPolitica> getLists(@PathVariable String label) {
+        return vDivisionPoliticaRefactorRepository.findByLabelContains(label);
     }
 
     @RequestMapping(method = RequestMethod.POST)
