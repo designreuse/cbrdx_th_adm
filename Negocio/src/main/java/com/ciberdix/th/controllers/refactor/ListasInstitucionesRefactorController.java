@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasTiposReferencias;
+import com.ciberdix.th.model.refactor.ListasInstituciones;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,35 +21,35 @@ public class ListasInstitucionesRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/listasInstituciones";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposReferencias> findAll() {
+    List<ListasInstituciones> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposReferencias[] parametros = restTemplate.getForObject(serviceUrl, ListasTiposReferencias[].class);
+        ListasInstituciones[] parametros = restTemplate.getForObject(serviceUrl, ListasInstituciones[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasTiposReferencias> findEnabled() {
+    List<ListasInstituciones> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposReferencias[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasTiposReferencias[].class);
+        ListasInstituciones[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasInstituciones[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTiposReferencias create(@RequestBody ListasTiposReferencias request) {
+    ListasInstituciones create(@RequestBody ListasInstituciones request) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, request, ListasTiposReferencias.class);
+        return restTemplate.postForObject(serviceUrl, request, ListasInstituciones.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasTiposReferencias request) {
+    void update(@RequestBody ListasInstituciones request) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, ListasTiposReferencias.class);
+        restTemplate.put(serviceUrl, request, ListasInstituciones.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idLista}")
-    ListasTiposReferencias findOne(@PathVariable Integer idLista) {
+    ListasInstituciones findOne(@PathVariable Integer idLista) {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposReferencias parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasTiposReferencias.class);
+        ListasInstituciones parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasInstituciones.class);
         return parametro;
     }
 }
