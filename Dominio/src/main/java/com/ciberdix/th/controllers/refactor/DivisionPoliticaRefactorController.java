@@ -58,7 +58,7 @@ public class DivisionPoliticaRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     DivisionPolitica create(@RequestBody DivisionPolitica divisionPolitica) {
-        return divisionPoliticaRefactorRepository.save(new DivisionPolitica(divisionPolitica.getIdDivisionPoliticaPadre(), divisionPolitica.getCodigoDivisionPolitica(), divisionPolitica.getDescripcionDivisonPolitica(), divisionPolitica.getIndicativoDivisonPolitica(), divisionPolitica.getCodigoPostalDivisionPolitica(), divisionPolitica.getIdDivisionPoliticaTipo(), divisionPolitica.getIdDivisionPoliticaArea(), divisionPolitica.getIdDivisionPoliticaResguardo(), divisionPolitica.getIdEstratoDivisionPolitica(), divisionPolitica.getIndicadorHabilitado(), divisionPolitica.getAuditoriaUsuario(), divisionPolitica.getIdDivisionPoliticaComuna(), divisionPolitica.getIdDivisionPoliticaLocalidad()));
+        return divisionPoliticaRefactorRepository.save(new DivisionPolitica(divisionPolitica.getIdDivisionPoliticaPadre(), divisionPolitica.getCodigoDivisionPolitica(), divisionPolitica.getDescripcionDivisonPolitica(), divisionPolitica.getIndicativoDivisonPolitica(), divisionPolitica.getCodigoPostalDivisionPolitica(), divisionPolitica.getIdDivisionPoliticaTipo(), divisionPolitica.getIdDivisionPoliticaArea(), divisionPolitica.getIdDivisionPoliticaResguardo(), divisionPolitica.getIdEstratoDivisionPolitica(), divisionPolitica.getIndicadorHabilitado(), divisionPolitica.getAuditoriaUsuario(), divisionPolitica.getIdDivisionPoliticaComuna(), divisionPolitica.getIdDivisionPoliticaLocalidad(),divisionPolitica.getGentilicio()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
