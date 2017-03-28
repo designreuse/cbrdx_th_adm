@@ -2,11 +2,9 @@ package com.ciberdix.th.model.refactor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 /**
- *
- * @author Roberto Chajin Ortiz
+ * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public class Terceros {
     private Long idTercero;
@@ -45,7 +43,16 @@ public class Terceros {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
-    private String telefonoCelular;    
+    private String telefonoCelular;
+    private Date fechaDefuncion;
+    private Integer idTipoOcupacion;
+    private Integer idSectorEconomico;
+    private Integer idActividadEconomica;
+    private Integer idOcupacion;
+    private Integer idEstadoJuridico;
+    private Integer idCoberturaSalud;
+    private Boolean indicadorVivo;
+    private Integer idTipoAfiliacion;
 
     public Long getIdTercero() {
         return idTercero;
@@ -343,172 +350,75 @@ public class Terceros {
         this.telefonoCelular = telefonoCelular;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.idTercero);
-        hash = 59 * hash + Objects.hashCode(this.primerNombre);
-        hash = 59 * hash + Objects.hashCode(this.segundoNombre);
-        hash = 59 * hash + Objects.hashCode(this.primerApellido);
-        hash = 59 * hash + Objects.hashCode(this.segundoApellido);
-        hash = 59 * hash + Objects.hashCode(this.imagen);
-        hash = 59 * hash + Objects.hashCode(this.idTipoDocumento);
-        hash = 59 * hash + Objects.hashCode(this.numeroDocumento);
-        hash = 59 * hash + Objects.hashCode(this.fechaDocumento);
-        hash = 59 * hash + Objects.hashCode(this.idCiudadExpDocumento);
-        hash = 59 * hash + Objects.hashCode(this.fechaNacimiento);
-        hash = 59 * hash + Objects.hashCode(this.idCiudadNacimiento);
-        hash = 59 * hash + Objects.hashCode(this.idGenero);
-        hash = 59 * hash + Objects.hashCode(this.idEstadoCivil);
-        hash = 59 * hash + Objects.hashCode(this.idFactorRh);
-        hash = 59 * hash + Objects.hashCode(this.factorRh);
-        hash = 59 * hash + Objects.hashCode(this.nroHijos);
-        hash = 59 * hash + Objects.hashCode(this.idLateralidad);
-        hash = 59 * hash + Objects.hashCode(this.idTipoVivienda);
-        hash = 59 * hash + Objects.hashCode(this.estrato);
-        hash = 59 * hash + Objects.hashCode(this.tallaCamisa);
-        hash = 59 * hash + Objects.hashCode(this.tallaPantalon);
-        hash = 59 * hash + Objects.hashCode(this.tallaCalzado);
-        hash = 59 * hash + Objects.hashCode(this.correoElectronico);
-        hash = 59 * hash + Objects.hashCode(this.fechaCreacion);
-        hash = 59 * hash + Objects.hashCode(this.idTipoPersona);
-        hash = 59 * hash + Objects.hashCode(this.razonSocial);
-        hash = 59 * hash + Objects.hashCode(this.talla);
-        hash = 59 * hash + Objects.hashCode(this.peso);
-        hash = 59 * hash + Objects.hashCode(this.imc);
-        hash = 59 * hash + Objects.hashCode(this.idProfesion);
-        hash = 59 * hash + Objects.hashCode(this.idNivelEducacion);
-        hash = 59 * hash + Objects.hashCode(this.idVehiculo);
-        hash = 59 * hash + Objects.hashCode(this.auditoriaUsuario);
-        hash = 59 * hash + Objects.hashCode(this.auditoriaFecha);
-        hash = 59 * hash + Objects.hashCode(this.telefonoFijo);
-        hash = 59 * hash + Objects.hashCode(this.telefonoCelular);
-        return hash;
+    public Date getFechaDefuncion() {
+        return fechaDefuncion;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Terceros other = (Terceros) obj;
-        if (!Objects.equals(this.primerNombre, other.primerNombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.segundoNombre, other.segundoNombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.primerApellido, other.primerApellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.segundoApellido, other.segundoApellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.imagen, other.imagen)) {
-            return false;
-        }
-        if (!Objects.equals(this.numeroDocumento, other.numeroDocumento)) {
-            return false;
-        }
-        if (!Objects.equals(this.factorRh, other.factorRh)) {
-            return false;
-        }
-        if (!Objects.equals(this.correoElectronico, other.correoElectronico)) {
-            return false;
-        }
-        if (!Objects.equals(this.razonSocial, other.razonSocial)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefonoFijo, other.telefonoFijo)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefonoCelular, other.telefonoCelular)) {
-            return false;
-        }
-        if (!Objects.equals(this.idTercero, other.idTercero)) {
-            return false;
-        }
-        if (!Objects.equals(this.idTipoDocumento, other.idTipoDocumento)) {
-            return false;
-        }
-        if (!Objects.equals(this.fechaDocumento, other.fechaDocumento)) {
-            return false;
-        }
-        if (!Objects.equals(this.idCiudadExpDocumento, other.idCiudadExpDocumento)) {
-            return false;
-        }
-        if (!Objects.equals(this.fechaNacimiento, other.fechaNacimiento)) {
-            return false;
-        }
-        if (!Objects.equals(this.idCiudadNacimiento, other.idCiudadNacimiento)) {
-            return false;
-        }
-        if (!Objects.equals(this.idGenero, other.idGenero)) {
-            return false;
-        }
-        if (!Objects.equals(this.idEstadoCivil, other.idEstadoCivil)) {
-            return false;
-        }
-        if (!Objects.equals(this.idFactorRh, other.idFactorRh)) {
-            return false;
-        }
-        if (!Objects.equals(this.nroHijos, other.nroHijos)) {
-            return false;
-        }
-        if (!Objects.equals(this.idLateralidad, other.idLateralidad)) {
-            return false;
-        }
-        if (!Objects.equals(this.idTipoVivienda, other.idTipoVivienda)) {
-            return false;
-        }
-        if (!Objects.equals(this.estrato, other.estrato)) {
-            return false;
-        }
-        if (!Objects.equals(this.tallaCamisa, other.tallaCamisa)) {
-            return false;
-        }
-        if (!Objects.equals(this.tallaPantalon, other.tallaPantalon)) {
-            return false;
-        }
-        if (!Objects.equals(this.tallaCalzado, other.tallaCalzado)) {
-            return false;
-        }
-        if (!Objects.equals(this.fechaCreacion, other.fechaCreacion)) {
-            return false;
-        }
-        if (!Objects.equals(this.idTipoPersona, other.idTipoPersona)) {
-            return false;
-        }
-        if (!Objects.equals(this.talla, other.talla)) {
-            return false;
-        }
-        if (!Objects.equals(this.peso, other.peso)) {
-            return false;
-        }
-        if (!Objects.equals(this.imc, other.imc)) {
-            return false;
-        }
-        if (!Objects.equals(this.idProfesion, other.idProfesion)) {
-            return false;
-        }
-        if (!Objects.equals(this.idNivelEducacion, other.idNivelEducacion)) {
-            return false;
-        }
-        if (!Objects.equals(this.idVehiculo, other.idVehiculo)) {
-            return false;
-        }
-        if (!Objects.equals(this.auditoriaUsuario, other.auditoriaUsuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.auditoriaFecha, other.auditoriaFecha)) {
-            return false;
-        }
-        return true;
+    public void setFechaDefuncion(Date fechaDefuncion) {
+        this.fechaDefuncion = fechaDefuncion;
+    }
+
+    public Integer getIdTipoOcupacion() {
+        return idTipoOcupacion;
+    }
+
+    public void setIdTipoOcupacion(Integer idTipoOcupacion) {
+        this.idTipoOcupacion = idTipoOcupacion;
+    }
+
+    public Integer getIdSectorEconomico() {
+        return idSectorEconomico;
+    }
+
+    public void setIdSectorEconomico(Integer idSectorEconomico) {
+        this.idSectorEconomico = idSectorEconomico;
+    }
+
+    public Integer getIdActividadEconomica() {
+        return idActividadEconomica;
+    }
+
+    public void setIdActividadEconomica(Integer idActividadEconomica) {
+        this.idActividadEconomica = idActividadEconomica;
+    }
+
+    public Integer getIdOcupacion() {
+        return idOcupacion;
+    }
+
+    public void setIdOcupacion(Integer idOcupacion) {
+        this.idOcupacion = idOcupacion;
+    }
+
+    public Integer getIdEstadoJuridico() {
+        return idEstadoJuridico;
+    }
+
+    public void setIdEstadoJuridico(Integer idEstadoJuridico) {
+        this.idEstadoJuridico = idEstadoJuridico;
+    }
+
+    public Integer getIdCoberturaSalud() {
+        return idCoberturaSalud;
+    }
+
+    public void setIdCoberturaSalud(Integer idCoberturaSalud) {
+        this.idCoberturaSalud = idCoberturaSalud;
+    }
+
+    public Boolean getIndicadorVivo() {
+        return indicadorVivo;
+    }
+
+    public void setIndicadorVivo(Boolean indicadorVivo) {
+        this.indicadorVivo = indicadorVivo;
+    }
+
+    public Integer getIdTipoAfiliacion() {
+        return idTipoAfiliacion;
+    }
+
+    public void setIdTipoAfiliacion(Integer idTipoAfiliacion) {
+        this.idTipoAfiliacion = idTipoAfiliacion;
     }
 }
