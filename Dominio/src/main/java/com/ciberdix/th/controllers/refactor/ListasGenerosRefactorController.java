@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.GenerosRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.GenerosRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/generos")
-public class GenerosControlador {
+public class ListasGenerosRefactorController {
 
     @Autowired
     private GenerosRefactorRepository generosRepository;
@@ -31,5 +32,15 @@ public class GenerosControlador {
     @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
     List<ListasGeneros> listEnabled() {
         return generosRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    ListasGeneros crearGeneros(@RequestBody ListasGeneros obj) {
+        return generosRepository.save(obj);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarGeneros(@RequestBody ListasGeneros obj){
+        generosRepository.save(obj);
     }    
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/ocupaciones")
-public class OcupacionesControlador {
+public class ListasOcupacionesRefactorController {
 
     @Autowired
     private OcupacionesRefactorRepository ocupacionesRepository;
@@ -31,5 +32,15 @@ public class OcupacionesControlador {
     @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
     List<Ocupaciones> listEnabled() {
         return ocupacionesRepository.findByIndicadorHabilitadoIsTrue();
-    }    
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    Ocupaciones crearOcupaciones(@RequestBody Ocupaciones obj) {
+        return ocupacionesRepository.save(obj);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarOcupaciones(@RequestBody Ocupaciones obj){
+        ocupacionesRepository.save(obj);
+    }     
 }

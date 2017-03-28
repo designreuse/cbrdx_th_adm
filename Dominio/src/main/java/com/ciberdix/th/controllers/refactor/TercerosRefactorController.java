@@ -20,7 +20,7 @@ import com.ciberdix.th.repositories.refactor.TercerosRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/terceros")
-public class TercerosControlador {
+public class TercerosRefactorController {
 
     @Autowired
     private TercerosRefactorRepository tercerosRepository;

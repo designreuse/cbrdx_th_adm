@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.TiposAfiliacionRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.TiposAfiliacionRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/tiposAfiliacion")
-public class TiposAfiliacionControlador {
+public class ListasTiposAfiliacionRefactorController {
 
     @Autowired
     private TiposAfiliacionRefactorRepository tiposAfiliacionRepository;
@@ -27,9 +28,19 @@ public class TiposAfiliacionControlador {
     List<ListasTiposAfiliacion> listarTerceros() {
         return (List<ListasTiposAfiliacion>) tiposAfiliacionRepository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasTiposAfiliacion> listEnabled() {
         return tiposAfiliacionRepository.findByIndicadorHabilitadoIsTrue();
-    }     
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    ListasTiposAfiliacion crearTiposAfiliacion(@RequestBody ListasTiposAfiliacion obj) {
+        return tiposAfiliacionRepository.save(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarTiposAfiliacion(@RequestBody ListasTiposAfiliacion obj) {
+        tiposAfiliacionRepository.save(obj);
+    }
 }
