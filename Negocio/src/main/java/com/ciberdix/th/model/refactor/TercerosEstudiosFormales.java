@@ -14,8 +14,6 @@ public class TercerosEstudiosFormales {
     private String tituloEstudio;
     private Integer idInstitucion;
     private String otraInstitucion;
-    private Integer idPais;
-    private Integer idDepartamento;
     private Integer idCiudad;
     private Integer idEstado;
     private Date fechaIngresa;
@@ -81,22 +79,6 @@ public class TercerosEstudiosFormales {
 
     public void setOtraInstitucion(String otraInstitucion) {
         this.otraInstitucion = otraInstitucion;
-    }
-
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
-    }
-
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 
     public Integer getIdCiudad() {
