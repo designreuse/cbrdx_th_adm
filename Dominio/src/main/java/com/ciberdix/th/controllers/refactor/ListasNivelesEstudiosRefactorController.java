@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.ListasNivelesEstudiosRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/nivelesEstudios")
-public class NivelAcademicoControlador {
+public class ListasNivelesEstudiosRefactorController {
     
     @Autowired
     private ListasNivelesEstudiosRefactorRepository listasNivelesEstudiosRefactorRepository;
@@ -28,4 +29,14 @@ public class NivelAcademicoControlador {
     List<ListasNivelesEstudios> listEnabled() {
         return listasNivelesEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    ListasNivelesEstudios crearNivelesEstudios(@RequestBody ListasNivelesEstudios obj) {
+        return listasNivelesEstudiosRefactorRepository.save(obj);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarNivelesEstudios(@RequestBody ListasNivelesEstudios obj){
+        listasNivelesEstudiosRefactorRepository.save(obj);
+    }    
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.TiposPersonaRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.TiposPersonaRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/tiposPersonas")
-public class TiposPersonasControlador {
+public class ListasTiposPersonasRefactorController {
 
     @Autowired
     TiposPersonaRefactorRepository tiposPersonaRepository;
@@ -31,5 +32,15 @@ public class TiposPersonasControlador {
     @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
     List<ListasTiposPersonas> listEnabled() {
         return tiposPersonaRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    ListasTiposPersonas crearTiposPersonas(@RequestBody ListasTiposPersonas obj) {
+        return tiposPersonaRepository.save(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarTiposPersonas(@RequestBody ListasTiposPersonas obj) {
+        tiposPersonaRepository.save(obj);
     }    
 }

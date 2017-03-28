@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.SectoresEmpresasRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.SectoresEmpresasRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/sectoresEmpresas")
-public class SectoresEmpresasControlador {
+public class ListasSectoresEmpresasRefactorController {
 
     @Autowired
     private SectoresEmpresasRefactorRepository sectoresEmpresasRepository;
@@ -31,5 +32,15 @@ public class SectoresEmpresasControlador {
     @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
     List<ListasSectoresEmpresas> listEnabled() {
         return sectoresEmpresasRepository.findByIndicadorHabilitadoIsTrue();
-    }    
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    ListasSectoresEmpresas crearSectoresEmpresas(@RequestBody ListasSectoresEmpresas obj) {
+        return sectoresEmpresasRepository.save(obj);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarSectoresEmpresas(@RequestBody ListasSectoresEmpresas obj){
+        sectoresEmpresasRepository.save(obj);
+    }     
 }

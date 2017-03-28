@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.TiposDocumentosRefactorRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -18,7 +19,7 @@ import com.ciberdix.th.repositories.refactor.TiposDocumentosRefactorRepository;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/tiposDocumentos")
-public class TiposDocumentosControlador {
+public class ListasTiposDocumentosRefactorController {
 
     @Autowired
     private TiposDocumentosRefactorRepository tiposDocumentosRepository;
@@ -31,5 +32,15 @@ public class TiposDocumentosControlador {
     @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
     List<ListasTiposDocumentos> listEnabled() {
         return tiposDocumentosRepository.findByIndicadorHabilitadoIsTrue();
-    }     
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    ListasTiposDocumentos crearTiposDocumentos(@RequestBody ListasTiposDocumentos obj) {
+        return tiposDocumentosRepository.save(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarTiposDocumentos(@RequestBody ListasTiposDocumentos obj) {
+        tiposDocumentosRepository.save(obj);
+    }    
 }
