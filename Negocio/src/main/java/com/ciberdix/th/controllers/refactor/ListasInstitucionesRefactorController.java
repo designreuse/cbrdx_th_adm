@@ -52,4 +52,11 @@ public class ListasInstitucionesRefactorController {
         ListasInstituciones parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasInstituciones.class);
         return parametro;
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarInstitucion/{nombreInstitucion}/")
+    List<ListasInstituciones> findInstitution(@PathVariable String nombreInstitucion) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasInstituciones[] parametros = restTemplate.getForObject(serviceUrl + "/buscarInstitucion/" + nombreInstitucion + "/", ListasInstituciones[].class);
+        return Arrays.asList(parametros);
+    }
 }
