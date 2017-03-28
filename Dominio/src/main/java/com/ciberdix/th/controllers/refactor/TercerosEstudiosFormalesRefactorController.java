@@ -39,7 +39,7 @@ public class TercerosEstudiosFormalesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosEstudiosFormales create(@RequestBody TercerosEstudiosFormales tercerosReferencias) {
-        return tercerosEstudiosFormalesRefactorRepository.save(new TercerosEstudiosFormales(tercerosReferencias.getIdTercero(), tercerosReferencias.getIdNivelEstudio(), tercerosReferencias.getIdAreaEstudio(), tercerosReferencias.getTituloEstudio(), tercerosReferencias.getIdInstitucion(), tercerosReferencias.getOtraInstitucion(), tercerosReferencias.getIdPais(), tercerosReferencias.getIdDepartamento(), tercerosReferencias.getIdCiudad(), tercerosReferencias.getIdEstado(), tercerosReferencias.getFechaIngresa(), tercerosReferencias.getFechaTermina(), tercerosReferencias.getIdAdjunto(), tercerosReferencias.getIndicadorHabilitado(), tercerosReferencias.getAuditoriaUsuario(), tercerosReferencias.getIndicadorVerificado(), tercerosReferencias.getFechaVerificado()));
+        return tercerosEstudiosFormalesRefactorRepository.save(new TercerosEstudiosFormales(tercerosReferencias.getIdTercero(), tercerosReferencias.getIdNivelEstudio(), tercerosReferencias.getIdAreaEstudio(), tercerosReferencias.getTituloEstudio(), tercerosReferencias.getIdInstitucion(), tercerosReferencias.getOtraInstitucion(), tercerosReferencias.getIdCiudad(), tercerosReferencias.getIdEstado(), tercerosReferencias.getFechaIngresa(), tercerosReferencias.getFechaTermina(), tercerosReferencias.getIdAdjunto(), tercerosReferencias.getIndicadorHabilitado(), tercerosReferencias.getAuditoriaUsuario(), tercerosReferencias.getIndicadorVerificado(), tercerosReferencias.getFechaVerificado()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
