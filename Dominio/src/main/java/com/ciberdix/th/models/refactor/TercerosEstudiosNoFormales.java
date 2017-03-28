@@ -21,8 +21,6 @@ public class TercerosEstudiosNoFormales {
     private String institucion;
     private Integer idIntensidadHoraria;
     private String descripcion;
-    private Integer idPais;
-    private Integer idDepartamento;
     private Integer idCiudad;
     private Boolean indicadorTerminacion;
     private Date fechaIngresa;
@@ -123,26 +121,6 @@ public class TercerosEstudiosNoFormales {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    @Basic
-    @Column(name = "IdPais")
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
-    }
-
-    @Basic
-    @Column(name = "IdDepartamento")
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 
     @Basic
@@ -276,9 +254,6 @@ public class TercerosEstudiosNoFormales {
         if (idIntensidadHoraria != null ? !idIntensidadHoraria.equals(that.idIntensidadHoraria) : that.idIntensidadHoraria != null)
             return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
-        if (idPais != null ? !idPais.equals(that.idPais) : that.idPais != null) return false;
-        if (idDepartamento != null ? !idDepartamento.equals(that.idDepartamento) : that.idDepartamento != null)
-            return false;
         if (idCiudad != null ? !idCiudad.equals(that.idCiudad) : that.idCiudad != null) return false;
         if (indicadorTerminacion != null ? !indicadorTerminacion.equals(that.indicadorTerminacion) : that.indicadorTerminacion != null)
             return false;
@@ -311,8 +286,6 @@ public class TercerosEstudiosNoFormales {
         result = 31 * result + (institucion != null ? institucion.hashCode() : 0);
         result = 31 * result + (idIntensidadHoraria != null ? idIntensidadHoraria.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
-        result = 31 * result + (idPais != null ? idPais.hashCode() : 0);
-        result = 31 * result + (idDepartamento != null ? idDepartamento.hashCode() : 0);
         result = 31 * result + (idCiudad != null ? idCiudad.hashCode() : 0);
         result = 31 * result + (indicadorTerminacion != null ? indicadorTerminacion.hashCode() : 0);
         result = 31 * result + (fechaIngresa != null ? fechaIngresa.hashCode() : 0);
