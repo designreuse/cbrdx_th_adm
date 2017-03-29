@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "TercerosEstudiosNoFormales", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosEstudiosNoFormales {
     private Integer idTerceroEstudioNoFormal;
     private Long idTercero;
@@ -33,7 +31,32 @@ public class TercerosEstudiosNoFormales {
     private Timestamp fechaVerificado;
     private Integer idEstado;
 
+    public TercerosEstudiosNoFormales() {
+    }
+
+    public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado, Integer idEstado) {
+        this.idTercero = idTercero;
+        this.idTipoEstudio = idTipoEstudio;
+        this.otroEstudio = otroEstudio;
+        this.idAreaEstudio = idAreaEstudio;
+        this.tituloEstudio = tituloEstudio;
+        this.institucion = institucion;
+        this.idIntensidadHoraria = idIntensidadHoraria;
+        this.descripcion = descripcion;
+        this.idCiudad = idCiudad;
+        this.indicadorTerminacion = indicadorTerminacion;
+        this.fechaIngresa = fechaIngresa;
+        this.fechaTermina = fechaTermina;
+        this.idAdjunto = idAdjunto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.indicadorVerificado = indicadorVerificado;
+        this.fechaVerificado = fechaVerificado;
+        this.idEstado = idEstado;
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroEstudioNoFormal")
     public Integer getIdTerceroEstudioNoFormal() {
         return idTerceroEstudioNoFormal;

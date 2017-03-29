@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.TercerosEstudiosFormales;
+import com.ciberdix.th.model.refactor.VTercerosEstudiosFormales;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,16 +41,16 @@ public class TercerosEstudiosFormalesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idTercero}")
-    TercerosEstudiosFormales findOne(@PathVariable Integer idTercero) {
+    VTercerosEstudiosFormales findOne(@PathVariable Integer idTercero) {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosEstudiosFormales parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idTercero, TercerosEstudiosFormales.class);
+        VTercerosEstudiosFormales parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idTercero, VTercerosEstudiosFormales.class);
         return parametro;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{idTercero}")
-    List<TercerosEstudiosFormales> findForTercero(@PathVariable Integer idTercero) {
+    List<VTercerosEstudiosFormales> findForTercero(@PathVariable Integer idTercero) {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosEstudiosFormales[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTercero/" + idTercero, TercerosEstudiosFormales[].class);
+        VTercerosEstudiosFormales[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTercero/" + idTercero, VTercerosEstudiosFormales[].class);
         return Arrays.asList(parametros);
     }
 }
