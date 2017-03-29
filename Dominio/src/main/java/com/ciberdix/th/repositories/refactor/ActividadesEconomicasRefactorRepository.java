@@ -11,6 +11,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ActividadesEconomicasRefactorRepository extends CrudRepository<ActividadesEconomicas, Integer> {
     
+    List<ActividadesEconomicas> findByIdActividadPadre(Integer id);
+    
     @Query("SELECT u FROM ActividadesEconomicas u "
             + "WHERE u.idActividadPadre in (SELECT idActividadEconomica FROM ActividadesEconomicas "
             + "WHERE idActividadPadre in (SELECT idActividadEconomica FROM ActividadesEconomicas "

@@ -25,6 +25,16 @@ public class ActividadesEconomicasRefactorController {
     @Autowired
     private ActividadesEconomicasRefactorRepository actividadesEconomicasRepository;
 
+    @RequestMapping(method = RequestMethod.GET)
+    List<ActividadesEconomicas> listarActividadesEconomicas() {
+        return (List<ActividadesEconomicas>) actividadesEconomicasRepository.findAll();
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value="/padre/{id}")
+    List<ActividadesEconomicas> listarActividadesEconomicas(@PathVariable Integer id) {
+        return (List<ActividadesEconomicas>) actividadesEconomicasRepository.findByIdActividadPadre(id);
+    }
+    
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ActividadesEconomicas parent(@PathVariable Integer id) {
         return actividadesEconomicasRepository.findOne(id);
