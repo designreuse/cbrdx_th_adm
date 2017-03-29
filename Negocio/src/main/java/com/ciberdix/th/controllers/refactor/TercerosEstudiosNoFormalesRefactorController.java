@@ -19,7 +19,7 @@ import java.util.List;
 public class TercerosEstudiosNoFormalesRefactorController {
 
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/TercerosEstudiosNoFormales";
+    private String serviceUrl = globales.getUrl() + "/api/tercerosEstudiosNoFormales";
 
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosEstudiosNoFormales> findAll() {
