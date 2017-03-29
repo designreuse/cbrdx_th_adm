@@ -29,6 +29,7 @@ public class VTercerosFamiliares {
     private String direccion;
     private Boolean indicadorHabilitado;
 
+    @Basic
     @Id
     @Column(name = "IdTerceroFamiliar")
     public Integer getIdTerceroFamiliar() {
