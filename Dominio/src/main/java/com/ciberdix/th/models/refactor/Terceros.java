@@ -31,7 +31,6 @@ public class Terceros {
     private Integer idGenero;
     private Integer idEstadoCivil;
     private Integer idFactorRh;
-    private String factorRh;
     private Integer nroHijos;
     private Integer idLateralidad;
     private Integer idTipoVivienda;
@@ -62,6 +61,56 @@ public class Terceros {
     private Integer idCoberturaSalud;
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
+
+    public Terceros() {
+    }
+
+    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion) {
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.imagen = imagen;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.fechaDocumento = fechaDocumento;
+        this.idCiudadExpDocumento = idCiudadExpDocumento;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idCiudadNacimiento = idCiudadNacimiento;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+        this.idFactorRh = idFactorRh;
+        this.nroHijos = nroHijos;
+        this.idLateralidad = idLateralidad;
+        this.idTipoVivienda = idTipoVivienda;
+        this.estrato = estrato;
+        this.tallaCamisa = tallaCamisa;
+        this.tallaPantalon = tallaPantalon;
+        this.tallaCalzado = tallaCalzado;
+        this.correoElectronico = correoElectronico;
+        this.fechaCreacion = fechaCreacion != null ? fechaCreacion : new Date(System.currentTimeMillis());
+        this.idTipoPersona = idTipoPersona;
+        this.razonSocial = razonSocial;
+        this.talla = talla;
+        this.peso = peso;
+        this.imc = imc;
+        this.idProfesion = idProfesion;
+        this.idNivelEducacion = idNivelEducacion;
+        this.idVehiculo = idVehiculo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoCelular = telefonoCelular;
+        this.fechaDefuncion = fechaDefuncion;
+        this.idTipoOcupacion = idTipoOcupacion;
+        this.idSectorEconomico = idSectorEconomico;
+        this.idActividadEconomica = idActividadEconomica;
+        this.idOcupacion = idOcupacion;
+        this.idEstadoJuridico = idEstadoJuridico;
+        this.idCoberturaSalud = idCoberturaSalud;
+        this.indicadorVivo = indicadorVivo;
+        this.idTipoAfiliacion = idTipoAfiliacion;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -212,16 +261,6 @@ public class Terceros {
 
     public void setIdFactorRh(Integer idFactorRh) {
         this.idFactorRh = idFactorRh;
-    }
-
-    @Basic
-    @Column(name = "FactorRh")
-    public String getFactorRh() {
-        return factorRh;
-    }
-
-    public void setFactorRh(String factorRh) {
-        this.factorRh = factorRh;
     }
 
     @Basic
@@ -467,7 +506,7 @@ public class Terceros {
         if (idEstadoCivil != null ? !idEstadoCivil.equals(terceros.idEstadoCivil) : terceros.idEstadoCivil != null)
             return false;
         if (idFactorRh != null ? !idFactorRh.equals(terceros.idFactorRh) : terceros.idFactorRh != null) return false;
-        if (factorRh != null ? !factorRh.equals(terceros.factorRh) : terceros.factorRh != null) return false;
+
         if (nroHijos != null ? !nroHijos.equals(terceros.nroHijos) : terceros.nroHijos != null) return false;
         if (idLateralidad != null ? !idLateralidad.equals(terceros.idLateralidad) : terceros.idLateralidad != null)
             return false;
@@ -525,7 +564,6 @@ public class Terceros {
         result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
         result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
         result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
-        result = 31 * result + (factorRh != null ? factorRh.hashCode() : 0);
         result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
         result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
         result = 31 * result + (idTipoVivienda != null ? idTipoVivienda.hashCode() : 0);

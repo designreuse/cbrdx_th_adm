@@ -25,7 +25,7 @@ public class TiposAfiliacionControlador {
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposAfiliacion> listarTiposAfiliacion() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposAfiliacion[] tiposAfiliacion = restTemplate.getForObject(serviceUrl + "api/terceros", ListasTiposAfiliacion[].class);
+        ListasTiposAfiliacion[] tiposAfiliacion = restTemplate.getForObject(serviceUrl + "api/tiposAfiliacion", ListasTiposAfiliacion[].class);
 
         return Arrays.asList(tiposAfiliacion);
     }    

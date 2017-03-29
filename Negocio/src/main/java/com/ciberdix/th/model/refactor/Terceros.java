@@ -22,7 +22,6 @@ public class Terceros {
     private Integer idGenero;
     private Integer idEstadoCivil;
     private Integer idFactorRh;
-    private String factorRh;
     private Integer nroHijos;
     private Integer idLateralidad;
     private Integer idTipoVivienda;
@@ -172,14 +171,6 @@ public class Terceros {
 
     public void setIdFactorRh(Integer idFactorRh) {
         this.idFactorRh = idFactorRh;
-    }
-
-    public String getFactorRh() {
-        return factorRh;
-    }
-
-    public void setFactorRh(String factorRh) {
-        this.factorRh = factorRh;
     }
 
     public Integer getNroHijos() {

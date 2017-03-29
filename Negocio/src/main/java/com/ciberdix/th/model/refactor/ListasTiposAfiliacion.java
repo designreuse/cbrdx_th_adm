@@ -14,7 +14,7 @@ public class ListasTiposAfiliacion {
     private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;    
+    private Timestamp auditoriaFecha;   
 
     public Integer getIdListaTipoAfiliacion() {
         return idListaTipoAfiliacion;
