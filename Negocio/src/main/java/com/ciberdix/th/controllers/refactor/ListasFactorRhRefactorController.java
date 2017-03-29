@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasEstadosCiviles;
+import com.ciberdix.th.model.refactor.ListasFactoresRh;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,17 +16,17 @@ import org.springframework.web.client.RestTemplate;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/api/estadosCiviles")
-public class EstadosCivilesControlador {
+@RequestMapping("/api/factorRh")
+public class ListasFactorRhRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
     
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasEstadosCiviles> listarEstadosCiviles() {
+    List<ListasFactoresRh> listarFactorRh() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasEstadosCiviles[] estados = restTemplate.getForObject(serviceUrl + "api/estadosCiviles", ListasEstadosCiviles[].class);
+        ListasFactoresRh[] factores = restTemplate.getForObject(serviceUrl + "api/factorRh", ListasFactoresRh[].class);
 
-        return Arrays.asList(estados);
-    }    
+        return Arrays.asList(factores);
+    }     
 }

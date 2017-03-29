@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/api/terceros")
 @Api(value = "terceros", description = "Terceros")
-public class TercerosControlador {
+public class TercerosRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
