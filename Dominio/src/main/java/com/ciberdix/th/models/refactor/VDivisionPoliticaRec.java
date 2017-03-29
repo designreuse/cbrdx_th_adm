@@ -24,6 +24,7 @@ public class VDivisionPoliticaRec {
     private Timestamp auditoriaFecha;
     private String camino;
 
+    @Basic
     @Id
     @Column(name = "IdDivisionPolitica")
     public Integer getIdDivisionPolitica() {

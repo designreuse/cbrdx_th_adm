@@ -19,6 +19,7 @@ public class VTercerosReferencias {
     private String telefonoMovil;
     private String descripcionDivisonPolitica;
 
+    @Basic
     @Id
     @Column(name = "IdTerceroReferencia")
     public Integer getIdTerceroReferencia() {
