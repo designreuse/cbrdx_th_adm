@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin
 @Transactional
 @RequestMapping("/api/ocupaciones")
-public class ListasOcupacionesRefactorController {
+public class OcupacionesRefactorController {
 
     @Autowired
     private OcupacionesRefactorRepository ocupacionesRepository;
@@ -28,8 +29,13 @@ public class ListasOcupacionesRefactorController {
     List<Ocupaciones> listarNivelAcademico() {
         return (List<Ocupaciones>) ocupacionesRepository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+
+    @RequestMapping(method = RequestMethod.GET, path = "/tipo/{id}")
+    List<Ocupaciones> listarPorTipo(@PathVariable Integer id) {
+        return ocupacionesRepository.findByIdOcupacionTipo(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<Ocupaciones> listEnabled() {
         return ocupacionesRepository.findByIndicadorHabilitadoIsTrue();
     }
@@ -38,9 +44,9 @@ public class ListasOcupacionesRefactorController {
     Ocupaciones crearOcupaciones(@RequestBody Ocupaciones obj) {
         return ocupacionesRepository.save(obj);
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarOcupaciones(@RequestBody Ocupaciones obj){
+    void actualizarOcupaciones(@RequestBody Ocupaciones obj) {
         ocupacionesRepository.save(obj);
-    }     
+    }
 }
