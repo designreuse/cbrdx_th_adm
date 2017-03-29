@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/nivelesEstudios")
-public class ListasNivelesEstudiosRefactorControlador {
+public class ListasNivelesEstudiosRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
