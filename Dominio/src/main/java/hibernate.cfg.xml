@@ -286,6 +286,9 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasCoberturasSalud"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasEstadosJuridicos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposOcupaciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTerceros"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosEstudiosFormales"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosEstudiosNoFormales"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
