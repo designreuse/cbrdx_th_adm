@@ -31,6 +31,7 @@ public class VTercerosEstudiosFormales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
     @Column(name = "IdTerceroEstudioFormal")
     public Integer getIdTerceroEstudioFormal() {

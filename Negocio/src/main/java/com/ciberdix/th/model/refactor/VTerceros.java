@@ -70,6 +70,7 @@ public class VTerceros {
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
     private String tipoAfiliacion;
+    private Boolean indicadorHabilitado;
 
     public Long getIdTercero() {
         return idTercero;
@@ -573,5 +574,13 @@ public class VTerceros {
 
     public void setTipoAfiliacion(String tipoAfiliacion) {
         this.tipoAfiliacion = tipoAfiliacion;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }

@@ -73,7 +73,9 @@ public class VTerceros {
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
     private String tipoAfiliacion;
+    private Boolean indicadorHabilitado;
 
+    @Basic
     @Id
     @Column(name = "IdTercero")
     public Long getIdTercero() {
@@ -893,5 +895,15 @@ public class VTerceros {
         result = 31 * result + (idTipoAfiliacion != null ? idTipoAfiliacion.hashCode() : 0);
         result = 31 * result + (tipoAfiliacion != null ? tipoAfiliacion.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }
