@@ -75,7 +75,6 @@ public class VTerceros {
     private String tipoAfiliacion;
     private Boolean indicadorHabilitado;
 
-    @Basic
     @Id
     @Column(name = "IdTercero")
     public Long getIdTercero() {

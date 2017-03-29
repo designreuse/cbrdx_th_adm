@@ -5,23 +5,27 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by faaguirre on 3/29/2017.
  */
 @Entity
-@Table(name = "TercerosExperienciasLaborales", schema = "crz_th", catalog = "CREZCAMOS")
-public class TercerosExperienciasLaborales {
+@Table(name = "V_TercerosExperienciasLaborales", schema = "crz_th", catalog = "CREZCAMOS")
+public class VTercerosExperienciasLaborales {
     private Integer idTerceroExperienciaLaboral;
     private Long idTercero;
     private String empresa;
     private String telefonoEmpresa;
     private Integer idSectorEmpresa;
+    private String sectorEmpresa;
     private Integer idSubSectorEmpresa;
+    private String subSectorEmpresa;
     private String cargo;
     private Integer idNivelCargo;
+    private String nivelCargo;
     private String areaCargo;
     private String jefeInmediato;
     private String tiempoExperiencia;
     private Integer idCiudad;
+    private String ciudad;
     private Boolean indicadorActualmente;
     private Date fechaIngresa;
     private Date fechaTermina;
@@ -30,32 +34,7 @@ public class TercerosExperienciasLaborales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosExperienciasLaborales() {
-    }
-
-    public TercerosExperienciasLaborales(Long idTercero, String empresa, String telefonoEmpresa, Integer idSectorEmpresa, Integer idSubSectorEmpresa, String cargo, Integer idNivelCargo, String areaCargo, String jefeInmediato, String tiempoExperiencia, Integer idCiudad, Boolean indicadorActualmente, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTercero = idTercero;
-        this.empresa = empresa;
-        this.telefonoEmpresa = telefonoEmpresa;
-        this.idSectorEmpresa = idSectorEmpresa;
-        this.idSubSectorEmpresa = idSubSectorEmpresa;
-        this.cargo = cargo;
-        this.idNivelCargo = idNivelCargo;
-        this.areaCargo = areaCargo;
-        this.jefeInmediato = jefeInmediato;
-        this.tiempoExperiencia = tiempoExperiencia;
-        this.idCiudad = idCiudad;
-        this.indicadorActualmente = indicadorActualmente;
-        this.fechaIngresa = fechaIngresa;
-        this.fechaTermina = fechaTermina;
-        this.idAdjunto = idAdjunto;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroExperienciaLaboral")
     public Integer getIdTerceroExperienciaLaboral() {
         return idTerceroExperienciaLaboral;
@@ -106,6 +85,16 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
+    @Column(name = "SectorEmpresa")
+    public String getSectorEmpresa() {
+        return sectorEmpresa;
+    }
+
+    public void setSectorEmpresa(String sectorEmpresa) {
+        this.sectorEmpresa = sectorEmpresa;
+    }
+
+    @Basic
     @Column(name = "IdSubSectorEmpresa")
     public Integer getIdSubSectorEmpresa() {
         return idSubSectorEmpresa;
@@ -113,6 +102,16 @@ public class TercerosExperienciasLaborales {
 
     public void setIdSubSectorEmpresa(Integer idSubSectorEmpresa) {
         this.idSubSectorEmpresa = idSubSectorEmpresa;
+    }
+
+    @Basic
+    @Column(name = "SubSectorEmpresa")
+    public String getSubSectorEmpresa() {
+        return subSectorEmpresa;
+    }
+
+    public void setSubSectorEmpresa(String subSectorEmpresa) {
+        this.subSectorEmpresa = subSectorEmpresa;
     }
 
     @Basic
@@ -133,6 +132,16 @@ public class TercerosExperienciasLaborales {
 
     public void setIdNivelCargo(Integer idNivelCargo) {
         this.idNivelCargo = idNivelCargo;
+    }
+
+    @Basic
+    @Column(name = "NivelCargo")
+    public String getNivelCargo() {
+        return nivelCargo;
+    }
+
+    public void setNivelCargo(String nivelCargo) {
+        this.nivelCargo = nivelCargo;
     }
 
     @Basic
@@ -173,6 +182,16 @@ public class TercerosExperienciasLaborales {
 
     public void setIdCiudad(Integer idCiudad) {
         this.idCiudad = idCiudad;
+    }
+
+    @Basic
+    @Column(name = "Ciudad")
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     @Basic
@@ -250,7 +269,7 @@ public class TercerosExperienciasLaborales {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosExperienciasLaborales that = (TercerosExperienciasLaborales) o;
+        VTercerosExperienciasLaborales that = (VTercerosExperienciasLaborales) o;
 
         if (idTerceroExperienciaLaboral != null ? !idTerceroExperienciaLaboral.equals(that.idTerceroExperienciaLaboral) : that.idTerceroExperienciaLaboral != null)
             return false;
@@ -260,16 +279,22 @@ public class TercerosExperienciasLaborales {
             return false;
         if (idSectorEmpresa != null ? !idSectorEmpresa.equals(that.idSectorEmpresa) : that.idSectorEmpresa != null)
             return false;
+        if (sectorEmpresa != null ? !sectorEmpresa.equals(that.sectorEmpresa) : that.sectorEmpresa != null)
+            return false;
         if (idSubSectorEmpresa != null ? !idSubSectorEmpresa.equals(that.idSubSectorEmpresa) : that.idSubSectorEmpresa != null)
+            return false;
+        if (subSectorEmpresa != null ? !subSectorEmpresa.equals(that.subSectorEmpresa) : that.subSectorEmpresa != null)
             return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idNivelCargo != null ? !idNivelCargo.equals(that.idNivelCargo) : that.idNivelCargo != null) return false;
+        if (nivelCargo != null ? !nivelCargo.equals(that.nivelCargo) : that.nivelCargo != null) return false;
         if (areaCargo != null ? !areaCargo.equals(that.areaCargo) : that.areaCargo != null) return false;
         if (jefeInmediato != null ? !jefeInmediato.equals(that.jefeInmediato) : that.jefeInmediato != null)
             return false;
         if (tiempoExperiencia != null ? !tiempoExperiencia.equals(that.tiempoExperiencia) : that.tiempoExperiencia != null)
             return false;
         if (idCiudad != null ? !idCiudad.equals(that.idCiudad) : that.idCiudad != null) return false;
+        if (ciudad != null ? !ciudad.equals(that.ciudad) : that.ciudad != null) return false;
         if (indicadorActualmente != null ? !indicadorActualmente.equals(that.indicadorActualmente) : that.indicadorActualmente != null)
             return false;
         if (fechaIngresa != null ? !fechaIngresa.equals(that.fechaIngresa) : that.fechaIngresa != null) return false;
@@ -292,13 +317,17 @@ public class TercerosExperienciasLaborales {
         result = 31 * result + (empresa != null ? empresa.hashCode() : 0);
         result = 31 * result + (telefonoEmpresa != null ? telefonoEmpresa.hashCode() : 0);
         result = 31 * result + (idSectorEmpresa != null ? idSectorEmpresa.hashCode() : 0);
+        result = 31 * result + (sectorEmpresa != null ? sectorEmpresa.hashCode() : 0);
         result = 31 * result + (idSubSectorEmpresa != null ? idSubSectorEmpresa.hashCode() : 0);
+        result = 31 * result + (subSectorEmpresa != null ? subSectorEmpresa.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idNivelCargo != null ? idNivelCargo.hashCode() : 0);
+        result = 31 * result + (nivelCargo != null ? nivelCargo.hashCode() : 0);
         result = 31 * result + (areaCargo != null ? areaCargo.hashCode() : 0);
         result = 31 * result + (jefeInmediato != null ? jefeInmediato.hashCode() : 0);
         result = 31 * result + (tiempoExperiencia != null ? tiempoExperiencia.hashCode() : 0);
         result = 31 * result + (idCiudad != null ? idCiudad.hashCode() : 0);
+        result = 31 * result + (ciudad != null ? ciudad.hashCode() : 0);
         result = 31 * result + (indicadorActualmente != null ? indicadorActualmente.hashCode() : 0);
         result = 31 * result + (fechaIngresa != null ? fechaIngresa.hashCode() : 0);
         result = 31 * result + (fechaTermina != null ? fechaTermina.hashCode() : 0);

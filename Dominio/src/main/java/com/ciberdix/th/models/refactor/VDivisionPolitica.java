@@ -11,7 +11,6 @@ public class VDivisionPolitica {
     private Integer value;
     private String label;
 
-    @Basic
     @Id
     @Column(name = "Value")
     public Integer getValue() {
