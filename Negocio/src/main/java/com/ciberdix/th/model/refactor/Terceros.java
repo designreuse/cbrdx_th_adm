@@ -52,6 +52,7 @@ public class Terceros {
     private Integer idCoberturaSalud;
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
+    private Boolean indicadorHabilitado;
 
     public Long getIdTercero() {
         return idTercero;
@@ -411,5 +412,13 @@ public class Terceros {
 
     public void setIdTipoAfiliacion(Integer idTipoAfiliacion) {
         this.idTipoAfiliacion = idTipoAfiliacion;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }
