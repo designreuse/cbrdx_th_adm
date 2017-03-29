@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,14 @@ public class ActividadesEconomicasRefactorController {
     List<ActividadesEconomicas> lastChild(@PathVariable Integer id) {
         return actividadesEconomicasRepository.queryAllActividadesEconomicasPorTipo(id);
     }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    ActividadesEconomicas crearActividadEconomica(@RequestBody ActividadesEconomicas obj){
+        return actividadesEconomicasRepository.save(obj);
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    void actualizarActividadEconomica(@RequestBody ActividadesEconomicas obj){
+        actividadesEconomicasRepository.save(obj);
+    }    
 }
