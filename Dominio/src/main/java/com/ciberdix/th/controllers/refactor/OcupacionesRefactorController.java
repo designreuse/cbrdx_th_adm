@@ -35,7 +35,7 @@ public class OcupacionesRefactorController {
         return ocupacionesRepository.findByIdOcupacionTipo(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<Ocupaciones> listEnabled() {
         return ocupacionesRepository.findByIndicadorHabilitadoIsTrue();
     }
