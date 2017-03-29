@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasTiposAfiliacion;
+import com.ciberdix.th.model.refactor.ListasTiposPersonas;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,17 +16,17 @@ import org.springframework.web.client.RestTemplate;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/api/tiposAfiliacion")
-public class TiposAfiliacionControlador {
+@RequestMapping("/api/tiposPersonas")
+public class ListasTiposPersonasRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposAfiliacion> listarTiposAfiliacion() {
+    List<ListasTiposPersonas> listarTiposPersonas() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposAfiliacion[] tiposAfiliacion = restTemplate.getForObject(serviceUrl + "api/tiposAfiliacion", ListasTiposAfiliacion[].class);
+        ListasTiposPersonas[] tiposPersonas = restTemplate.getForObject(serviceUrl + "api/tiposPersonas", ListasTiposPersonas[].class);
 
-        return Arrays.asList(tiposAfiliacion);
+        return Arrays.asList(tiposPersonas);
     }    
 }

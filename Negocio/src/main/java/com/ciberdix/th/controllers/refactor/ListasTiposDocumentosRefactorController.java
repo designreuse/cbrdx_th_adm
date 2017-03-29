@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/tiposDocumentos")
-public class TiposDocumentosControlador {
+public class ListasTiposDocumentosRefactorController {
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();

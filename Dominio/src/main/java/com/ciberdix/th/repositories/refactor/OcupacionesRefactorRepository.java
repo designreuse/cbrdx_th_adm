@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface OcupacionesRefactorRepository extends CrudRepository<Ocupaciones, Integer>{
     List<Ocupaciones> findByIndicadorHabilitadoIsTrue();
+    List<Ocupaciones> findByIdOcupacionTipo(Integer id);
 }
