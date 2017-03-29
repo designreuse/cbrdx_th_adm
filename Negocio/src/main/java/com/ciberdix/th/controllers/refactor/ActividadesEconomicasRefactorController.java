@@ -36,6 +36,15 @@ public class ActividadesEconomicasRefactorController {
         return Arrays.asList(actividadesEconomicas);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/padre/{id}")
+    @ApiOperation(value = "Obtener actividades economicas por padre", notes = "Retorna la lista de actividades economicas por padre")
+    List<ActividadesEconomicas> obtenerActividadEconomicaPorPadre(@PathVariable Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        ActividadesEconomicas[] actividades = restTemplate.getForObject(serviceUrl + "api/actividadesEconomicas/padre/" + id, ActividadesEconomicas[].class);
+
+        return Arrays.asList(actividades);
+    }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     @ApiOperation(value = "Obtener actividades economicas padre", notes = "Retorna la actividad economica")
     ActividadesEconomicas obtenerActividadEconomica(@PathVariable Long id) {
