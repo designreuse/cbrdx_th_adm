@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.TercerosEstudiosFormales;
+import com.ciberdix.th.models.refactor.VTercerosEstudiosFormales;
 import com.ciberdix.th.repositories.refactor.TercerosEstudiosFormalesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VTercerosEstudiosFormalesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class TercerosEstudiosFormalesRefactorController {
     @Autowired
     private TercerosEstudiosFormalesRefactorRepository tercerosEstudiosFormalesRefactorRepository;
 
+    @Autowired
+    private VTercerosEstudiosFormalesRefactorRepository vTercerosEstudiosFormalesRefactorRepository;
+
 
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosEstudiosFormales> findAll() {
@@ -28,13 +33,13 @@ public class TercerosEstudiosFormalesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idTerceroEstudioFormal}")
-    TercerosEstudiosFormales findOne(@PathVariable Integer idTerceroEstudioFormal) {
-        return tercerosEstudiosFormalesRefactorRepository.findOne(idTerceroEstudioFormal);
+    VTercerosEstudiosFormales findViewOne(@PathVariable Integer idTerceroEstudioFormal) {
+        return vTercerosEstudiosFormalesRefactorRepository.findOne(idTerceroEstudioFormal);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{idTercero}")
-    List<TercerosEstudiosFormales> findOne(@PathVariable Long idTercero) {
-        return tercerosEstudiosFormalesRefactorRepository.findByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
+    List<VTercerosEstudiosFormales> findViewOne(@PathVariable Long idTercero) {
+        return vTercerosEstudiosFormalesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdTercero(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)
