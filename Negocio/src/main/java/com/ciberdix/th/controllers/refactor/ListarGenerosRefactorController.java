@@ -1,9 +1,10 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasTiposDocumentos;
+import com.ciberdix.th.model.refactor.ListasGeneros;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,19 +15,19 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author Roberto Chajin Ortiz
  */
-@CrossOrigin
 @RestController
-@RequestMapping("/api/tiposDocumentos")
-public class TiposDocumentosControlador {
-
+@CrossOrigin
+@Transactional
+@RequestMapping("/api/generos")
+public class ListarGenerosRefactorController {
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl();
-
+    
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposDocumentos> listarTiposDocumentos() {
+    List<ListasGeneros> listarGeneros() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposDocumentos[] tiposDocumentos = restTemplate.getForObject(serviceUrl + "api/tiposDocumentos", ListasTiposDocumentos[].class);
+        ListasGeneros[] generos = restTemplate.getForObject(serviceUrl + "api/generos", ListasGeneros[].class);
 
-        return Arrays.asList(tiposDocumentos);
-    }    
+        return Arrays.asList(generos);
+    }       
 }
