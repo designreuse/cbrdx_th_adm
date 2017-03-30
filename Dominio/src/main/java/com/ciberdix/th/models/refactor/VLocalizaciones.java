@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -25,7 +22,7 @@ public class VLocalizaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
+    @Id
     @Column(name = "IdLocalizacion")
     public Integer getIdLocalizacion() {
         return idLocalizacion;
