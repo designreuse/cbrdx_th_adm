@@ -290,6 +290,7 @@
         <mapping class="com.ciberdix.th.models.refactor.VTercerosEstudiosFormales"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosEstudiosNoFormales"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosExperienciasLaborales"/>
+        <mapping class="com.ciberdix.th.models.refactor.VLocalizaciones"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
