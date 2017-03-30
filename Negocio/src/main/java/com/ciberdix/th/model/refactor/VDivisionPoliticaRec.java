@@ -20,6 +20,7 @@ public class VDivisionPoliticaRec {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String camino;
+    private String gentilicio;
 
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
@@ -131,5 +132,13 @@ public class VDivisionPoliticaRec {
 
     public void setCamino(String camino) {
         this.camino = camino;
+    }
+
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
     }
 }
