@@ -29,6 +29,11 @@ public class ListasTiposOcupacionesRefactorController {
     List<ListasTiposOcupaciones> listarTiposOcupaciones() {
         return (List<ListasTiposOcupaciones>) tiposOcupacionesRepository.findAll();
     }
+    
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasTiposOcupaciones> listEnabled() {
+        return tiposOcupacionesRepository.findByIndicadorHabilitadoIsTrue();
+    }    
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     ListasTiposOcupaciones obtenerTiposOcupaciones(@PathVariable Integer id) {

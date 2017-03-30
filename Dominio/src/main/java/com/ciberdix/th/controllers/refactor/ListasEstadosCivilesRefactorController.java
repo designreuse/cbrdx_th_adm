@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.EstadosCivilesRefactorRepository;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.ciberdix.th.repositories.refactor.ListasEstadosCivilesRefactorRepository;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ListasEstadosCivilesRefactorController {
 
     @Autowired
-    private EstadosCivilesRefactorRepository estadosCivilesRepository;
+    private ListasEstadosCivilesRefactorRepository estadosCivilesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasEstadosCiviles> listarEstadosCiviles() {
