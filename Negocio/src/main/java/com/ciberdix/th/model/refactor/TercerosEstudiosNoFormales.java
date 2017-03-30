@@ -26,7 +26,6 @@ public class TercerosEstudiosNoFormales {
     private Timestamp auditoriaFecha;
     private Boolean indicadorVerificado;
     private Timestamp fechaVerificado;
-    private Integer idEstado;
 
     public Integer getIdTerceroEstudioNoFormal() {
         return idTerceroEstudioNoFormal;
@@ -180,11 +179,4 @@ public class TercerosEstudiosNoFormales {
         this.fechaVerificado = fechaVerificado;
     }
 
-    public Integer getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
-    }
 }

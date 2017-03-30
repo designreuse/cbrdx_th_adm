@@ -29,12 +29,11 @@ public class TercerosEstudiosNoFormales {
     private Timestamp auditoriaFecha;
     private Boolean indicadorVerificado;
     private Timestamp fechaVerificado;
-    private Integer idEstado;
 
     public TercerosEstudiosNoFormales() {
     }
 
-    public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado, Integer idEstado) {
+    public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
         this.idTercero = idTercero;
         this.idTipoEstudio = idTipoEstudio;
         this.otroEstudio = otroEstudio;
@@ -52,7 +51,6 @@ public class TercerosEstudiosNoFormales {
         this.auditoriaUsuario = auditoriaUsuario;
         this.indicadorVerificado = indicadorVerificado;
         this.fechaVerificado = fechaVerificado;
-        this.idEstado = idEstado;
     }
 
     @Id
@@ -246,16 +244,6 @@ public class TercerosEstudiosNoFormales {
         this.fechaVerificado = fechaVerificado;
     }
 
-    @Basic
-    @Column(name = "IdEstado")
-    public Integer getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -293,7 +281,6 @@ public class TercerosEstudiosNoFormales {
             return false;
         if (fechaVerificado != null ? !fechaVerificado.equals(that.fechaVerificado) : that.fechaVerificado != null)
             return false;
-        if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
 
         return true;
     }
@@ -319,7 +306,6 @@ public class TercerosEstudiosNoFormales {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorVerificado != null ? indicadorVerificado.hashCode() : 0);
         result = 31 * result + (fechaVerificado != null ? fechaVerificado.hashCode() : 0);
-        result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         return result;
     }
 }
