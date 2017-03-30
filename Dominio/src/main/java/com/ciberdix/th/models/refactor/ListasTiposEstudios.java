@@ -1,11 +1,7 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -21,7 +17,20 @@ public class ListasTiposEstudios {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasTiposEstudios() {
+    }
+
+    public ListasTiposEstudios(String codigoListaTipoEstudio, String nombreListaTipoEstudio, Integer ordenListaTipoEstudio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigoListaTipoEstudio = codigoListaTipoEstudio;
+        this.nombreListaTipoEstudio = nombreListaTipoEstudio;
+        this.ordenListaTipoEstudio = ordenListaTipoEstudio;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdListaTipoEstudio")
     public Integer getIdListaTipoEstudio() {
         return idListaTipoEstudio;

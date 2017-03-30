@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "TercerosLocalizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosLocalizaciones {
     private Integer idTerceroLocalizacion;
     private Long idTercero;
@@ -17,6 +15,16 @@ public class TercerosLocalizaciones {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+    public TercerosLocalizaciones() {
+    }
+
+    public TercerosLocalizaciones(Long idTercero, Integer idlocalizacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTercero = idTercero;
+        this.idlocalizacion = idlocalizacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
 
     @Id
     @Column(name = "IdTerceroLocalizacion")
