@@ -30,6 +30,11 @@ public class TercerosRefactorController {
         return tercerosRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{cedula}/{id}")
+    Terceros obtenerTerceroPorCedula(@PathVariable String cedula, @PathVariable Integer id) {
+        return tercerosRepository.queryTercero(cedula, id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Terceros crearTercero(@RequestBody Terceros obj) {
         return tercerosRepository.save(new Terceros(obj.getPrimerNombre(), obj.getSegundoNombre(),
