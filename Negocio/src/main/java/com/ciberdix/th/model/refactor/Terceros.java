@@ -1,5 +1,6 @@
 package com.ciberdix.th.model.refactor;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -53,6 +54,7 @@ public class Terceros {
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
     private Boolean indicadorHabilitado;
+    private Integer idTipoTercero;
 
     public Long getIdTercero() {
         return idTercero;
@@ -420,5 +422,13 @@ public class Terceros {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public Integer getIdTipoTercero() {
+        return idTipoTercero;
+    }
+
+    public void setIdTipoTercero(Integer idTipoTercero) {
+        this.idTipoTercero = idTipoTercero;
     }
 }

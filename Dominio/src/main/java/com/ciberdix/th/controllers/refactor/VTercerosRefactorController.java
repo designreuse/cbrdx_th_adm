@@ -2,17 +2,13 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.VTerceros;
 import com.ciberdix.th.repositories.refactor.VTercerosRefactorRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @RestController
@@ -28,10 +24,15 @@ public class VTercerosRefactorController {
     List<VTerceros> listarTerceros() {
         return (List<VTerceros>) vtercerosRepository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET, value="/{id}")
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     VTerceros listarTercerosPorId(@PathVariable Long id) {
         return vtercerosRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarTerceros/{type}")
+    List<VTerceros> listarColaboradores(@PathVariable String type) {
+        return vtercerosRepository.findByTypes(type);
     }
 
 }

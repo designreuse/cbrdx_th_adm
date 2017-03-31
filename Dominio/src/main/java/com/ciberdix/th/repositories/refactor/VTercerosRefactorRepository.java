@@ -6,12 +6,17 @@
 package com.ciberdix.th.repositories.refactor;
 
 import com.ciberdix.th.models.refactor.VTerceros;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 /**
- *
  * @author Roberto Chajin Ortiz
  */
-public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, Long>{
-    
+public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, Long> {
+
+    @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idListaTipoTercero FROM ListasTiposTerceros WHERE codigo = ?1)")
+    List<VTerceros> findByTypes(String type);
+
 }
