@@ -52,4 +52,11 @@ public class ListasTiposTercerosRefactorController {
         ListasTiposTerceros parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasTiposTerceros.class);
         return parametro;
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCodigo/{codigo}")
+    ListasTiposTerceros findOne(@PathVariable String codigo) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasTiposTerceros parametro = restTemplate.getForObject(serviceUrl + "/buscarCodigo/" + codigo, ListasTiposTerceros.class);
+        return parametro;
+    }
 }

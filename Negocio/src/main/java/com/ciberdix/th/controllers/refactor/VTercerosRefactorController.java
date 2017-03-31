@@ -40,7 +40,7 @@ public class VTercerosRefactorController {
         return tercero;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/buscarTerceros/{type}")
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarTerceros/{tipo}")
     @ApiOperation(value = "Obtener terceros por tipo", notes = "Retorna el tercero por Tipo")
     List<VTerceros> obtenerTerceros(@PathVariable String tipo) {
         RestTemplate restTemplate = new RestTemplate();
