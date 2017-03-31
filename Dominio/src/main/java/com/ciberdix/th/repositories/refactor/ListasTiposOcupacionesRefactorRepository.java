@@ -6,6 +6,7 @@
 package com.ciberdix.th.repositories.refactor;
 
 import com.ciberdix.th.models.refactor.ListasTiposOcupaciones;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposOcupacionesRefactorRepository extends CrudRepository<ListasTiposOcupaciones, Integer>{
-    
+    List<ListasTiposOcupaciones> findByIndicadorHabilitadoIsTrue();
 }

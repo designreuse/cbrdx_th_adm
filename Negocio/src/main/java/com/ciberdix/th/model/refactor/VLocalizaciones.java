@@ -3,34 +3,22 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ *
+ * @author Roberto Chajin Ortiz
  */
-public class Localizaciones {
+public class VLocalizaciones {
     private Integer idLocalizacion;
     private Integer idTipoDireccion;
+    private String nombreListaTipoDireccion;
     private String direccion;
     private String latitud;
     private String longitud;
     private String comoLlegar;
     private Boolean indicadorHabilitado;
     private Integer idDivisionPolitica;
+    private String divisionPolitica;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;
-
-    public Localizaciones() {
-    }
-    
-    public Localizaciones(Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
-        this.idTipoDireccion = idTipoDireccion;
-        this.direccion = direccion;
-        this.latitud = latitud;
-        this.longitud = longitud;
-        this.comoLlegar = comoLlegar;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.idDivisionPolitica = idDivisionPolitica;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }    
+    private Timestamp auditoriaFecha;    
 
     public Integer getIdLocalizacion() {
         return idLocalizacion;
@@ -46,6 +34,14 @@ public class Localizaciones {
 
     public void setIdTipoDireccion(Integer idTipoDireccion) {
         this.idTipoDireccion = idTipoDireccion;
+    }
+
+    public String getNombreListaTipoDireccion() {
+        return nombreListaTipoDireccion;
+    }
+
+    public void setNombreListaTipoDireccion(String nombreListaTipoDireccion) {
+        this.nombreListaTipoDireccion = nombreListaTipoDireccion;
     }
 
     public String getDireccion() {
@@ -94,6 +90,14 @@ public class Localizaciones {
 
     public void setIdDivisionPolitica(Integer idDivisionPolitica) {
         this.idDivisionPolitica = idDivisionPolitica;
+    }
+
+    public String getDivisionPolitica() {
+        return divisionPolitica;
+    }
+
+    public void setDivisionPolitica(String divisionPolitica) {
+        this.divisionPolitica = divisionPolitica;
     }
 
     public Integer getAuditoriaUsuario() {

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.GenerosRefactorRepository;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.ciberdix.th.repositories.refactor.ListasGenerosRefactorRepository;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ListasGenerosRefactorController {
 
     @Autowired
-    private GenerosRefactorRepository generosRepository;
+    private ListasGenerosRefactorRepository generosRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasGeneros> listarTerceros() {

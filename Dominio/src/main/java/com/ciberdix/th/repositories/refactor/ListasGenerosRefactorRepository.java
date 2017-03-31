@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface GenerosRefactorRepository extends CrudRepository<ListasGeneros, Integer>{
+public interface ListasGenerosRefactorRepository extends CrudRepository<ListasGeneros, Integer>{
     List<ListasGeneros> findByIndicadorHabilitadoIsTrue();
 }

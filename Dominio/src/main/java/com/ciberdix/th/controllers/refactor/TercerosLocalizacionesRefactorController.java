@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.TercerosLocalizaciones;
+import com.ciberdix.th.models.refactor.VLocalizaciones;
 import com.ciberdix.th.repositories.refactor.TercerosLocalizacionesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VLocalizacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,16 +22,23 @@ public class TercerosLocalizacionesRefactorController {
 
     @Autowired
     private TercerosLocalizacionesRefactorRepository tercerosLocalizacionesRefactorRepository;
-
+    
+    @Autowired
+    private VLocalizacionesRefactorRepository vlocalizacionesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosLocalizaciones> findAll() {
         return (List<TercerosLocalizaciones>) tercerosLocalizacionesRefactorRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{idLocalizacion}")
+    TercerosLocalizaciones findOne(@PathVariable Integer idLocalizacion) {        
+        return tercerosLocalizacionesRefactorRepository.findByIdlocalizacion(idLocalizacion);
+    }
+    
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{idTercero}")
-    List<TercerosLocalizaciones> findViewOne(@PathVariable Long idTercero) {
-        return tercerosLocalizacionesRefactorRepository.findByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
+    List<VLocalizaciones> findViewOne(@PathVariable Long idTercero) {        
+        return vlocalizacionesRepository.queryAllLocalizaciones(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)

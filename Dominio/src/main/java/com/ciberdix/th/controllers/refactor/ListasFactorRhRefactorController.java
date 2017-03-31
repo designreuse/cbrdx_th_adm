@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.FactorRhRefactorRepository;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.ciberdix.th.repositories.refactor.ListasFactorRhRefactorRepository;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ListasFactorRhRefactorController {
 
     @Autowired
-    private FactorRhRefactorRepository factorRhRepository;
+    private ListasFactorRhRefactorRepository factorRhRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasFactoresRh> listarGeneros() {
