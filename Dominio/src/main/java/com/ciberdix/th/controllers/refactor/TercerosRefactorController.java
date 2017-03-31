@@ -47,7 +47,8 @@ public class TercerosRefactorController {
                 obj.getIdProfesion(), obj.getIdNivelEducacion(), obj.getIdVehiculo(), obj.getAuditoriaUsuario(),
                 obj.getAuditoriaFecha(), obj.getTelefonoFijo(), obj.getTelefonoCelular(), obj.getFechaDefuncion(),
                 obj.getIdTipoOcupacion(), obj.getIdSectorEconomico(), obj.getIdActividadEconomica(), obj.getIdOcupacion(),
-                obj.getIdEstadoJuridico(), obj.getIdCoberturaSalud(), obj.getIndicadorVivo(), obj.getIdTipoAfiliacion(), obj.getIdTipoTercero()));
+                obj.getIdEstadoJuridico(), obj.getIdCoberturaSalud(), obj.getIndicadorVivo(), obj.getIdTipoAfiliacion(), obj.getIdTipoTercero(),
+                obj.getIndicadorHabilitado()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
