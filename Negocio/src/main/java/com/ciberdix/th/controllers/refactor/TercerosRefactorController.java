@@ -44,6 +44,15 @@ public class TercerosRefactorController {
 
         return tercero;
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/{cedula}/{id}")
+    @ApiOperation(value = "Obtener terceros por número de documento e id de documento", notes = "Retorna el tercero por numero de documento e id de documento")
+    Terceros obtenerTerceroCedula(@PathVariable String cedula, @PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        Terceros tercero = restTemplate.getForObject(serviceUrl + "api/terceros/" + cedula + "/" + id, Terceros.class);
+
+        return tercero;
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Crear tercero", notes = "Retorna el tercero creado")
