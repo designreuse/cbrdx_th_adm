@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.ListasTiposEstudios;
+import com.ciberdix.th.model.refactor.ListasTiposTerceros;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,43 +13,43 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/listasTiposEstudios")
+@RequestMapping("/api/listasTiposTerceros")
 @CrossOrigin
 public class ListasTiposTercerosRefactorController {
 
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/listasTiposEstudios";
+    private String serviceUrl = globales.getUrl() + "/api/listasTiposTerceros";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposEstudios> findAll() {
+    List<ListasTiposTerceros> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposEstudios[] parametros = restTemplate.getForObject(serviceUrl, ListasTiposEstudios[].class);
+        ListasTiposTerceros[] parametros = restTemplate.getForObject(serviceUrl, ListasTiposTerceros[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasTiposEstudios> findEnabled() {
+    List<ListasTiposTerceros> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposEstudios[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasTiposEstudios[].class);
+        ListasTiposTerceros[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasTiposTerceros[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTiposEstudios create(@RequestBody ListasTiposEstudios request) {
+    ListasTiposTerceros create(@RequestBody ListasTiposTerceros request) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, request, ListasTiposEstudios.class);
+        return restTemplate.postForObject(serviceUrl, request, ListasTiposTerceros.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasTiposEstudios request) {
+    void update(@RequestBody ListasTiposTerceros request) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, ListasTiposEstudios.class);
+        restTemplate.put(serviceUrl, request, ListasTiposTerceros.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idLista}")
-    ListasTiposEstudios findOne(@PathVariable Integer idLista) {
+    ListasTiposTerceros findOne(@PathVariable Integer idLista) {
         RestTemplate restTemplate = new RestTemplate();
-        ListasTiposEstudios parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasTiposEstudios.class);
+        ListasTiposTerceros parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, ListasTiposTerceros.class);
         return parametro;
     }
 }
