@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ListasTiposTercerosRefactorRepository extends CrudRepository<ListasTiposTerceros, Integer> {
     List<ListasTiposTerceros> findByIndicadorHabilitadoIsTrue();
+
+    ListasTiposTerceros findByIndicadorHabilitadoIsTrueAndCodigo(String codigo);
 }
