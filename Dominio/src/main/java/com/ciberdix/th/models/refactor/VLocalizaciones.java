@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import javax.persistence.Id;
 
 /**
  * Created by faaguirre on 3/30/2017.
@@ -25,7 +26,7 @@ public class VLocalizaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
+    @Id
     @Column(name = "IdLocalizacion")
     public Integer getIdLocalizacion() {
         return idLocalizacion;

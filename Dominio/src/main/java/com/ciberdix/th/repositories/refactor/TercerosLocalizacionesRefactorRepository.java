@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface TercerosLocalizacionesRefactorRepository extends CrudRepository<TercerosLocalizaciones, Integer> {
     List<TercerosLocalizaciones> findByIdTerceroAndIndicadorHabilitadoIsTrue(Long idTercero);
+    TercerosLocalizaciones findByIdlocalizacion(Integer idLocalizacion);
 }
