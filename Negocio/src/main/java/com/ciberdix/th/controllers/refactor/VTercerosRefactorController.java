@@ -4,17 +4,13 @@ import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.VTerceros;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @CrossOrigin
@@ -42,5 +38,15 @@ public class VTercerosRefactorController {
         VTerceros tercero = restTemplate.getForObject(serviceUrl + "api/vterceros/" + id, VTerceros.class);
 
         return tercero;
-    }    
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarTerceros/{type}")
+    @ApiOperation(value = "Obtener terceros por tipo", notes = "Retorna el tercero por Tipo")
+    List<VTerceros> obtenerTerceros(@PathVariable String tipo) {
+        RestTemplate restTemplate = new RestTemplate();
+        VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "api/vterceros/buscarTerceros/" + tipo, VTerceros[].class);
+        return Arrays.asList(tercero);
+    }
+
+
 }
