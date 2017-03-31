@@ -28,6 +28,9 @@ public class VTercerosFamiliares {
     private String telefonoCelular;
     private String direccion;
     private Boolean indicadorHabilitado;
+    private Integer idLocalizacion;
+    private Integer idTipoDireccion;
+    private Integer idDivisionPolitica;
 
     @Id
     @Column(name = "IdTerceroFamiliar")
@@ -284,5 +287,35 @@ public class VTercerosFamiliares {
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdLocalizacion")
+    public Integer getIdLocalizacion() {
+        return idLocalizacion;
+    }
+
+    public void setIdLocalizacion(Integer idLocalizacion) {
+        this.idLocalizacion = idLocalizacion;
+    }
+
+    @Basic
+    @Column(name = "IdTipoDireccion")
+    public Integer getIdTipoDireccion() {
+        return idTipoDireccion;
+    }
+
+    public void setIdTipoDireccion(Integer idTipoDireccion) {
+        this.idTipoDireccion = idTipoDireccion;
+    }
+
+    @Basic
+    @Column(name = "IdDivisionPolitica")
+    public Integer getIdDivisionPolitica() {
+        return idDivisionPolitica;
+    }
+
+    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
+        this.idDivisionPolitica = idDivisionPolitica;
     }
 }
