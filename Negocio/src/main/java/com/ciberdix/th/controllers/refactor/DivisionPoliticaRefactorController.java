@@ -74,16 +74,4 @@ public class DivisionPoliticaRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "/search/" + label, VDivisionPoliticaRec[].class));
     }
-    
-    @RequestMapping(method = RequestMethod.POST)
-    DivisionPolitica crearDP(@RequestBody DivisionPolitica obj){
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, obj, DivisionPolitica.class);
-    }
-    
-    @RequestMapping(method = RequestMethod.PUT)
-    void actualizarDP(@RequestBody DivisionPolitica obj){
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
-    }
 }
