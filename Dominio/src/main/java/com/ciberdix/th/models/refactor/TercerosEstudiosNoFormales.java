@@ -48,9 +48,10 @@ public class TercerosEstudiosNoFormales {
         this.fechaTermina = fechaTermina;
         this.idAdjunto = idAdjunto;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.indicadorVerificado = indicadorVerificado;
         this.fechaVerificado = fechaVerificado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
