@@ -75,6 +75,8 @@ public class VTerceros {
     private String tipoAfiliacion;
     private Boolean indicadorHabilitado;
     private String gentilicio;
+    private Integer idTipoTercero;
+    private String tipoTercero;
 
     @Id
     @Column(name = "IdTercero")
@@ -915,5 +917,25 @@ public class VTerceros {
 
     public void setGentilicio(String gentilicio) {
         this.gentilicio = gentilicio;
+    }
+
+    @Basic
+    @Column(name = "IdTipoTercero")
+    public Integer getIdTipoTercero() {
+        return idTipoTercero;
+    }
+
+    public void setIdTipoTercero(Integer idTipoTercero) {
+        this.idTipoTercero = idTipoTercero;
+    }
+
+    @Basic
+    @Column(name = "TipoTercero")
+    public String getTipoTercero() {
+        return tipoTercero;
+    }
+
+    public void setTipoTercero(String tipoTercero) {
+        this.tipoTercero = tipoTercero;
     }
 }

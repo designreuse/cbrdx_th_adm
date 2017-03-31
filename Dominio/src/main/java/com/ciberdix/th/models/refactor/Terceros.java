@@ -67,7 +67,7 @@ public class Terceros {
     public Terceros() {
     }
 
-    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Integer idTipoTercero) {
+    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Integer idTipoTercero, Boolean indicadorHabilitado) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -113,6 +113,7 @@ public class Terceros {
         this.indicadorVivo = indicadorVivo;
         this.idTipoAfiliacion = idTipoAfiliacion;
         this.idTipoTercero = idTipoTercero;
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Id
