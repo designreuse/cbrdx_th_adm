@@ -62,6 +62,7 @@ public class Terceros {
     private Boolean indicadorVivo;
     private Integer idTipoAfiliacion;
     private Boolean indicadorHabilitado;
+    private Integer idTipoTercero;
 
     public Terceros() {
     }
@@ -687,5 +688,15 @@ public class Terceros {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "IdTipoTercero")
+    public Integer getIdTipoTercero() {
+        return idTipoTercero;
+    }
+
+    public void setIdTipoTercero(Integer idTipoTercero) {
+        this.idTipoTercero = idTipoTercero;
     }
 }
