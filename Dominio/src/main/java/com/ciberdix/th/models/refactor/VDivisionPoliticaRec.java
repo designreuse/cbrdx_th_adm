@@ -23,6 +23,7 @@ public class VDivisionPoliticaRec {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String camino;
+    private String gentilicio;
 
     @Id
     @Column(name = "IdDivisionPolitica")
@@ -219,5 +220,15 @@ public class VDivisionPoliticaRec {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (camino != null ? camino.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "Gentilicio")
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
     }
 }
