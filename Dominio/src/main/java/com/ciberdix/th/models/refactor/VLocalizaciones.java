@@ -2,6 +2,7 @@ package com.ciberdix.th.models.refactor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import javax.persistence.Id;
 
 /**
  * Created by faaguirre on 3/30/2017.

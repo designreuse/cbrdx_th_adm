@@ -21,6 +21,15 @@ public class DivisionPolitica {
     private Timestamp auditoriaFecha;
     private Integer idDivisionPoliticaComuna;
     private Integer idDivisionPoliticaLocalidad;
+    private String gentilicio;
+
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
+    }
 
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;

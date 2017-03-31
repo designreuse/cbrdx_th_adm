@@ -23,10 +23,12 @@ public class TercerosLocalizaciones {
         this.idTercero = idTercero;
         this.idlocalizacion = idlocalizacion;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroLocalizacion")
     public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;

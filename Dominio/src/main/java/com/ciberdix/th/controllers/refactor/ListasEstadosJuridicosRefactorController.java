@@ -30,6 +30,11 @@ public class ListasEstadosJuridicosRefactorController {
         return (List<ListasEstadosJuridicos>) estadosJuridicosRepository.findAll();
     }    
     
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
+    List<ListasEstadosJuridicos> listEnabled() {
+        return estadosJuridicosRepository.findByIndicadorHabilitadoIsTrue();
+    }     
+    
     @RequestMapping(method = RequestMethod.GET, value="/{id}")
     ListasEstadosJuridicos obtenerEstadoJuridico(@PathVariable Integer id) {
         return estadosJuridicosRepository.findOne(id);

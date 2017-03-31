@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface EstadosCivilesRefactorRepository extends CrudRepository<ListasEstadosCiviles, Integer>{
+public interface ListasEstadosCivilesRefactorRepository extends CrudRepository<ListasEstadosCiviles, Integer>{
     List<ListasEstadosCiviles> findByIndicadorHabilitadoIsTrue();
 }
