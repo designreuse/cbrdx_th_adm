@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface VDivisionPoliticaRecRefactorRepository extends CrudRepository<VDivisionPoliticaRec, Integer> {
 
-    @Query("SELECT u from VDivisionPoliticaRec u where u.camino like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where length(codigoDivisionPolitica)>2)")
+    @Query("SELECT u from VDivisionPoliticaRec u where u.camino like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where length(codigoDivisionPoliticaTipo)>2)")
     List<VDivisionPoliticaRec> queryLocations(String queryString);
 
-    @Query("SELECT u from VDivisionPoliticaRec u where u.camino like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where length(codigoDivisionPolitica)=3)")
+    @Query("SELECT u from VDivisionPoliticaRec u where u.camino like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where length(codigoDivisionPoliticaTipo)=3)")
     List<VDivisionPoliticaRec> queryAllCities(String queryString);
 }
