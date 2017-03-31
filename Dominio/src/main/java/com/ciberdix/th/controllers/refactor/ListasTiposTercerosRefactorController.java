@@ -36,6 +36,11 @@ public class ListasTiposTercerosRefactorController {
         return listasTiposTercerosRefactorRepository.findOne(idListaInstitucion);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCodigo/{codigo}")
+    ListasTiposTerceros findOne(@PathVariable String codigo) {
+        return listasTiposTercerosRefactorRepository.findByIndicadorHabilitadoIsTrueAndCodigo(codigo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposTerceros create(@RequestBody ListasTiposTerceros listasTiposReferencias) {
         return listasTiposTercerosRefactorRepository.save(new ListasTiposTerceros(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
