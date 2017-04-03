@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,11 @@ public class ListasLateralidadesRefactorController {
     @RequestMapping(method = RequestMethod.GET)
     List<ListasLateralidades> findAll() {
         return (List<ListasLateralidades>) listasLateralidadesRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, name = "/{id}")
+    ListasLateralidades findOne(@PathVariable Integer id) {
+        return listasLateralidadesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
