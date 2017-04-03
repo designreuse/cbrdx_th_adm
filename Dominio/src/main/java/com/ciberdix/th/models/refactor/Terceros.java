@@ -1,14 +1,8 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -33,11 +27,9 @@ public class Terceros {
     private Integer idFactorRh;
     private Integer nroHijos;
     private Integer idLateralidad;
-    private Integer idTipoVivienda;
-    private Integer estrato;
-    private Integer tallaCamisa;
-    private Integer tallaPantalon;
-    private Integer tallaCalzado;
+    private String tallaCamisa;
+    private String tallaPantalon;
+    private String tallaCalzado;
     private String correoElectronico;
     private Date fechaCreacion;
     private Integer idTipoPersona;
@@ -47,7 +39,6 @@ public class Terceros {
     private Double imc;
     private Integer idProfesion;
     private Integer idNivelEducacion;
-    private Integer idVehiculo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
@@ -63,11 +54,14 @@ public class Terceros {
     private Integer idTipoAfiliacion;
     private Boolean indicadorHabilitado;
     private Integer idTipoTercero;
+    private Integer idTallaCamisa;
+    private Integer idTallaPantalon;
+    private Integer idTallaCalzado;
 
     public Terceros() {
     }
 
-    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, Integer idTipoVivienda, Integer estrato, Integer tallaCamisa, Integer tallaPantalon, Integer tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer idVehiculo, Integer auditoriaUsuario, Timestamp auditoriaFecha, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Integer idTipoTercero, Boolean indicadorHabilitado) {
+    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -84,13 +78,11 @@ public class Terceros {
         this.idFactorRh = idFactorRh;
         this.nroHijos = nroHijos;
         this.idLateralidad = idLateralidad;
-        this.idTipoVivienda = idTipoVivienda;
-        this.estrato = estrato;
         this.tallaCamisa = tallaCamisa;
         this.tallaPantalon = tallaPantalon;
         this.tallaCalzado = tallaCalzado;
         this.correoElectronico = correoElectronico;
-        this.fechaCreacion = fechaCreacion != null ? fechaCreacion : new Date(System.currentTimeMillis());
+        this.fechaCreacion = fechaCreacion;
         this.idTipoPersona = idTipoPersona;
         this.razonSocial = razonSocial;
         this.talla = talla;
@@ -98,9 +90,7 @@ public class Terceros {
         this.imc = imc;
         this.idProfesion = idProfesion;
         this.idNivelEducacion = idNivelEducacion;
-        this.idVehiculo = idVehiculo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.telefonoFijo = telefonoFijo;
         this.telefonoCelular = telefonoCelular;
         this.fechaDefuncion = fechaDefuncion;
@@ -112,8 +102,12 @@ public class Terceros {
         this.idCoberturaSalud = idCoberturaSalud;
         this.indicadorVivo = indicadorVivo;
         this.idTipoAfiliacion = idTipoAfiliacion;
-        this.idTipoTercero = idTipoTercero;
         this.indicadorHabilitado = indicadorHabilitado;
+        this.idTipoTercero = idTipoTercero;
+        this.idTallaCamisa = idTallaCamisa;
+        this.idTallaPantalon = idTallaPantalon;
+        this.idTallaCalzado = idTallaCalzado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
@@ -288,56 +282,6 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
-    public Integer getIdTipoVivienda() {
-        return idTipoVivienda;
-    }
-
-    public void setIdTipoVivienda(Integer idTipoVivienda) {
-        this.idTipoVivienda = idTipoVivienda;
-    }
-
-    @Basic
-    @Column(name = "Estrato")
-    public Integer getEstrato() {
-        return estrato;
-    }
-
-    public void setEstrato(Integer estrato) {
-        this.estrato = estrato;
-    }
-
-    @Basic
-    @Column(name = "TallaCamisa")
-    public Integer getTallaCamisa() {
-        return tallaCamisa;
-    }
-
-    public void setTallaCamisa(Integer tallaCamisa) {
-        this.tallaCamisa = tallaCamisa;
-    }
-
-    @Basic
-    @Column(name = "TallaPantalon")
-    public Integer getTallaPantalon() {
-        return tallaPantalon;
-    }
-
-    public void setTallaPantalon(Integer tallaPantalon) {
-        this.tallaPantalon = tallaPantalon;
-    }
-
-    @Basic
-    @Column(name = "TallaCalzado")
-    public Integer getTallaCalzado() {
-        return tallaCalzado;
-    }
-
-    public void setTallaCalzado(Integer tallaCalzado) {
-        this.tallaCalzado = tallaCalzado;
-    }
-
-    @Basic
     @Column(name = "CorreoElectronico")
     public String getCorreoElectronico() {
         return correoElectronico;
@@ -428,16 +372,6 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdVehiculo")
-    public Integer getIdVehiculo() {
-        return idVehiculo;
-    }
-
-    public void setIdVehiculo(Integer idVehiculo) {
-        this.idVehiculo = idVehiculo;
-    }
-
-    @Basic
     @Column(name = "AuditoriaUsuario")
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
@@ -514,9 +448,6 @@ public class Terceros {
         if (nroHijos != null ? !nroHijos.equals(terceros.nroHijos) : terceros.nroHijos != null) return false;
         if (idLateralidad != null ? !idLateralidad.equals(terceros.idLateralidad) : terceros.idLateralidad != null)
             return false;
-        if (idTipoVivienda != null ? !idTipoVivienda.equals(terceros.idTipoVivienda) : terceros.idTipoVivienda != null)
-            return false;
-        if (estrato != null ? !estrato.equals(terceros.estrato) : terceros.estrato != null) return false;
         if (tallaCamisa != null ? !tallaCamisa.equals(terceros.tallaCamisa) : terceros.tallaCamisa != null)
             return false;
         if (tallaPantalon != null ? !tallaPantalon.equals(terceros.tallaPantalon) : terceros.tallaPantalon != null)
@@ -538,7 +469,6 @@ public class Terceros {
             return false;
         if (idNivelEducacion != null ? !idNivelEducacion.equals(terceros.idNivelEducacion) : terceros.idNivelEducacion != null)
             return false;
-        if (idVehiculo != null ? !idVehiculo.equals(terceros.idVehiculo) : terceros.idVehiculo != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(terceros.auditoriaUsuario) : terceros.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(terceros.auditoriaFecha) : terceros.auditoriaFecha != null)
@@ -570,8 +500,6 @@ public class Terceros {
         result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
         result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
         result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
-        result = 31 * result + (idTipoVivienda != null ? idTipoVivienda.hashCode() : 0);
-        result = 31 * result + (estrato != null ? estrato.hashCode() : 0);
         result = 31 * result + (tallaCamisa != null ? tallaCamisa.hashCode() : 0);
         result = 31 * result + (tallaPantalon != null ? tallaPantalon.hashCode() : 0);
         result = 31 * result + (tallaCalzado != null ? tallaCalzado.hashCode() : 0);
@@ -584,7 +512,6 @@ public class Terceros {
         result = 31 * result + (imc != null ? imc.hashCode() : 0);
         result = 31 * result + (idProfesion != null ? idProfesion.hashCode() : 0);
         result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
-        result = 31 * result + (idVehiculo != null ? idVehiculo.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
@@ -700,5 +627,35 @@ public class Terceros {
 
     public void setIdTipoTercero(Integer idTipoTercero) {
         this.idTipoTercero = idTipoTercero;
+    }
+
+    @Basic
+    @Column(name = "IdTallaCamisa")
+    public Integer getIdTallaCamisa() {
+        return idTallaCamisa;
+    }
+
+    public void setIdTallaCamisa(Integer idTallaCamisa) {
+        this.idTallaCamisa = idTallaCamisa;
+    }
+
+    @Basic
+    @Column(name = "IdTallaPantalon")
+    public Integer getIdTallaPantalon() {
+        return idTallaPantalon;
+    }
+
+    public void setIdTallaPantalon(Integer idTallaPantalon) {
+        this.idTallaPantalon = idTallaPantalon;
+    }
+
+    @Basic
+    @Column(name = "IdTallaCalzado")
+    public Integer getIdTallaCalzado() {
+        return idTallaCalzado;
+    }
+
+    public void setIdTallaCalzado(Integer idTallaCalzado) {
+        this.idTallaCalzado = idTallaCalzado;
     }
 }
