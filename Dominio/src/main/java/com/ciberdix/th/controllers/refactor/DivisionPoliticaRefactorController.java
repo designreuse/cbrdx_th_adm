@@ -41,7 +41,7 @@ public class DivisionPoliticaRefactorController {
         return divisionPoliticaRefactorRepository.findOne(idDivisionPolitica);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarHijos/{idDivisionPoliticaPadre")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarHijos/{idDivisionPoliticaPadre}")
     List<DivisionPolitica> findSons(@PathVariable Integer idDivisionPoliticaPadre) {
         return divisionPoliticaRefactorRepository.findByIdDivisionPoliticaPadre(idDivisionPoliticaPadre);
     }
