@@ -34,6 +34,7 @@ public class TercerosFamiliares {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroFamiliar")
     public Integer getIdTerceroFamiliar() {
         return idTerceroFamiliar;
