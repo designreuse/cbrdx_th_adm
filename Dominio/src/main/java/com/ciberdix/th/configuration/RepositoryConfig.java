@@ -77,6 +77,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(Constantes.class);
         config.exposeIdsFor(ListasTiposDatos.class);
         config.exposeIdsFor(ListasLateralidades.class);
+        config.exposeIdsFor(VConstantes.class);
         
     }
 }
