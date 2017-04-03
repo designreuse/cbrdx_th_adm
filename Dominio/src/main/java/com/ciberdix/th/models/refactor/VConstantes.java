@@ -1,35 +1,19 @@
 package com.ciberdix.th.models.refactor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
  */
 @Entity
-@Table(name = "Constantes", schema = "crz_th", catalog = "CREZCAMOS")
-public class Constantes {
+@Table(name = "V_Constantes", schema = "crz_th", catalog = "CREZCAMOS")
+public class VConstantes {
     private Integer idConstante;
     private String constante;
-    private Integer idTipoDato;
+    private String tipoDato;
     private String valor;
     private String descripcion;
     private Boolean indicadorHabilitado;
-    private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;
-
-    public Constantes() {
-    }
-
-    public Constantes(String constante, Integer idTipoDato, String valor, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.constante = constante;
-        this.idTipoDato = idTipoDato;
-        this.valor = valor;
-        this.descripcion = descripcion;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
 
     @Id
     @Column(name = "IdConstante")
@@ -52,13 +36,13 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "IdTipoDato")
-    public Integer getIdTipoDato() {
-        return idTipoDato;
+    @Column(name = "TipoDato")
+    public String getTipoDato() {
+        return tipoDato;
     }
 
-    public void setIdTipoDato(Integer idTipoDato) {
-        this.idTipoDato = idTipoDato;
+    public void setTipoDato(String tipoDato) {
+        this.tipoDato = tipoDato;
     }
 
     @Basic
@@ -91,43 +75,19 @@ public class Constantes {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    @Basic
-    @Column(name = "AuditoriaUsuario")
-    public Integer getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
-
-    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
-    }
-
-    @Basic
-    @Column(name = "AuditoriaFecha")
-    public Timestamp getAuditoriaFecha() {
-        return auditoriaFecha;
-    }
-
-    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
-        this.auditoriaFecha = auditoriaFecha;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Constantes that = (Constantes) o;
+        VConstantes that = (VConstantes) o;
 
         if (idConstante != null ? !idConstante.equals(that.idConstante) : that.idConstante != null) return false;
         if (constante != null ? !constante.equals(that.constante) : that.constante != null) return false;
-        if (idTipoDato != null ? !idTipoDato.equals(that.idTipoDato) : that.idTipoDato != null) return false;
+        if (tipoDato != null ? !tipoDato.equals(that.tipoDato) : that.tipoDato != null) return false;
         if (valor != null ? !valor.equals(that.valor) : that.valor != null) return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
-            return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
 
         return true;
@@ -137,12 +97,10 @@ public class Constantes {
     public int hashCode() {
         int result = idConstante != null ? idConstante.hashCode() : 0;
         result = 31 * result + (constante != null ? constante.hashCode() : 0);
-        result = 31 * result + (idTipoDato != null ? idTipoDato.hashCode() : 0);
+        result = 31 * result + (tipoDato != null ? tipoDato.hashCode() : 0);
         result = 31 * result + (valor != null ? valor.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
     }
 }
