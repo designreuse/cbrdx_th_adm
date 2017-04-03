@@ -13,7 +13,7 @@ public class DivisionPolitica {
     private Integer idDivisionPoliticaPadre;
     private String codigoDivisionPolitica;
     private String descripcionDivisonPolitica;
-    private Integer indicativoDivisonPolitica;
+    private String indicativoDivisonPolitica;
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
@@ -29,7 +29,7 @@ public class DivisionPolitica {
     public DivisionPolitica() {
     }
 
-    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, Integer indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad, String gentilicio) {
+    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad, String gentilicio) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
@@ -90,11 +90,11 @@ public class DivisionPolitica {
 
     @Basic
     @Column(name = "IndicativoDivisonPolitica")
-    public Integer getIndicativoDivisonPolitica() {
+    public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
 
-    public void setIndicativoDivisonPolitica(Integer indicativoDivisonPolitica) {
+    public void setIndicativoDivisonPolitica(String indicativoDivisonPolitica) {
         this.indicativoDivisonPolitica = indicativoDivisonPolitica;
     }
 

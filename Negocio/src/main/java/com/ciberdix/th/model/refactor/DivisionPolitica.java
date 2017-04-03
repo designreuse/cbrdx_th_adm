@@ -10,7 +10,7 @@ public class DivisionPolitica {
     private Integer idDivisionPoliticaPadre;
     private String codigoDivisionPolitica;
     private String descripcionDivisonPolitica;
-    private Integer indicativoDivisonPolitica;
+    private String indicativoDivisonPolitica;
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
@@ -63,11 +63,11 @@ public class DivisionPolitica {
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 
-    public Integer getIndicativoDivisonPolitica() {
+    public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
 
-    public void setIndicativoDivisonPolitica(Integer indicativoDivisonPolitica) {
+    public void setIndicativoDivisonPolitica(String indicativoDivisonPolitica) {
         this.indicativoDivisonPolitica = indicativoDivisonPolitica;
     }
 
