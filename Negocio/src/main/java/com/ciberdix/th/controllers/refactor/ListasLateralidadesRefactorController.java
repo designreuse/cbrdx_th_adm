@@ -30,7 +30,7 @@ public class ListasLateralidadesRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, name = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasLateralidades findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/" + id, ListasLateralidades.class);
@@ -39,7 +39,7 @@ public class ListasLateralidadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<ListasLateralidades> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        ListasLateralidades[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", ListasLateralidades[].class);
+        ListasLateralidades[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", ListasLateralidades[].class);
         return Arrays.asList(parametros);
     }
 }
