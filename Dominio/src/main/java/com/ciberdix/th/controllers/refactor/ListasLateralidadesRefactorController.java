@@ -30,12 +30,12 @@ public class ListasLateralidadesRefactorController {
         return (List<ListasLateralidades>) listasLateralidadesRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, name = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasLateralidades findOne(@PathVariable Integer id) {
         return listasLateralidadesRefactorRepository.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasLateralidades> findEnabled() {
         return (List<ListasLateralidades>) listasLateralidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
