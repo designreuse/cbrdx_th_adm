@@ -292,6 +292,7 @@
         <mapping class="com.ciberdix.th.models.refactor.VTercerosExperienciasLaborales"/>
         <mapping class="com.ciberdix.th.models.refactor.VLocalizaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposTerceros"/>
+        <mapping class="com.ciberdix.th.models.refactor.VConstantes"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
