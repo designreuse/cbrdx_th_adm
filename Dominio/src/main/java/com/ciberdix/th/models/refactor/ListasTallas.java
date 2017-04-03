@@ -5,11 +5,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
  */
 @Entity
+@Table(name = "ListasTallas", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTallas {
     private Integer idListaTalla;
     private String codigo;
