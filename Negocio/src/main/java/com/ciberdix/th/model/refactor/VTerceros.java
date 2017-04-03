@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by faaguirre on 3/29/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
  */
 public class VTerceros {
     private Long idTercero;
@@ -22,6 +22,7 @@ public class VTerceros {
     private Date fechaNacimiento;
     private Integer idCiudadNacimiento;
     private String ciudadNacimiento;
+    private String gentilicio;
     private Integer idGenero;
     private String genero;
     private Integer idEstadoCivil;
@@ -31,12 +32,12 @@ public class VTerceros {
     private Integer nroHijos;
     private Integer idLateralidad;
     private String lateralidad;
-    private Integer idTipoVivienda;
-    private String tipoVivienda;
-    private Integer estrato;
-    private Integer tallaCamisa;
-    private Integer tallaPantalon;
-    private Integer tallaCalzado;
+    private Integer idTallaCamisa;
+    private String tallaCamisa;
+    private Integer idTallaPantalon;
+    private String tallaPantalon;
+    private Integer idTallaCalzado;
+    private String tallaCalzado;
     private String correoElectronico;
     private Date fechaCreacion;
     private Integer idTipoPersona;
@@ -49,7 +50,6 @@ public class VTerceros {
     private String profesion;
     private Integer idNivelEducacion;
     private String nivelEstudio;
-    private Integer idVehiculo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
@@ -71,7 +71,8 @@ public class VTerceros {
     private Integer idTipoAfiliacion;
     private String tipoAfiliacion;
     private Boolean indicadorHabilitado;
-    private String gentilicio;
+    private Integer idTipoTercero;
+    private String tipoTercero;
 
     public Long getIdTercero() {
         return idTercero;
@@ -193,6 +194,14 @@ public class VTerceros {
         this.ciudadNacimiento = ciudadNacimiento;
     }
 
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
+    }
+
     public Integer getIdGenero() {
         return idGenero;
     }
@@ -265,51 +274,51 @@ public class VTerceros {
         this.lateralidad = lateralidad;
     }
 
-    public Integer getIdTipoVivienda() {
-        return idTipoVivienda;
+    public Integer getIdTallaCamisa() {
+        return idTallaCamisa;
     }
 
-    public void setIdTipoVivienda(Integer idTipoVivienda) {
-        this.idTipoVivienda = idTipoVivienda;
+    public void setIdTallaCamisa(Integer idTallaCamisa) {
+        this.idTallaCamisa = idTallaCamisa;
     }
 
-    public String getTipoVivienda() {
-        return tipoVivienda;
-    }
-
-    public void setTipoVivienda(String tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
-    }
-
-    public Integer getEstrato() {
-        return estrato;
-    }
-
-    public void setEstrato(Integer estrato) {
-        this.estrato = estrato;
-    }
-
-    public Integer getTallaCamisa() {
+    public String getTallaCamisa() {
         return tallaCamisa;
     }
 
-    public void setTallaCamisa(Integer tallaCamisa) {
+    public void setTallaCamisa(String tallaCamisa) {
         this.tallaCamisa = tallaCamisa;
     }
 
-    public Integer getTallaPantalon() {
+    public Integer getIdTallaPantalon() {
+        return idTallaPantalon;
+    }
+
+    public void setIdTallaPantalon(Integer idTallaPantalon) {
+        this.idTallaPantalon = idTallaPantalon;
+    }
+
+    public String getTallaPantalon() {
         return tallaPantalon;
     }
 
-    public void setTallaPantalon(Integer tallaPantalon) {
+    public void setTallaPantalon(String tallaPantalon) {
         this.tallaPantalon = tallaPantalon;
     }
 
-    public Integer getTallaCalzado() {
+    public Integer getIdTallaCalzado() {
+        return idTallaCalzado;
+    }
+
+    public void setIdTallaCalzado(Integer idTallaCalzado) {
+        this.idTallaCalzado = idTallaCalzado;
+    }
+
+    public String getTallaCalzado() {
         return tallaCalzado;
     }
 
-    public void setTallaCalzado(Integer tallaCalzado) {
+    public void setTallaCalzado(String tallaCalzado) {
         this.tallaCalzado = tallaCalzado;
     }
 
@@ -407,14 +416,6 @@ public class VTerceros {
 
     public void setNivelEstudio(String nivelEstudio) {
         this.nivelEstudio = nivelEstudio;
-    }
-
-    public Integer getIdVehiculo() {
-        return idVehiculo;
-    }
-
-    public void setIdVehiculo(Integer idVehiculo) {
-        this.idVehiculo = idVehiculo;
     }
 
     public Integer getAuditoriaUsuario() {
@@ -585,11 +586,19 @@ public class VTerceros {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    public String getGentilicio() {
-        return gentilicio;
+    public Integer getIdTipoTercero() {
+        return idTipoTercero;
     }
 
-    public void setGentilicio(String gentilicio) {
-        this.gentilicio = gentilicio;
+    public void setIdTipoTercero(Integer idTipoTercero) {
+        this.idTipoTercero = idTipoTercero;
+    }
+
+    public String getTipoTercero() {
+        return tipoTercero;
+    }
+
+    public void setTipoTercero(String tipoTercero) {
+        this.tipoTercero = tipoTercero;
     }
 }

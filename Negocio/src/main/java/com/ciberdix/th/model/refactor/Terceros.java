@@ -1,6 +1,5 @@
 package com.ciberdix.th.model.refactor;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -25,11 +24,9 @@ public class Terceros {
     private Integer idFactorRh;
     private Integer nroHijos;
     private Integer idLateralidad;
-    private Integer idTipoVivienda;
-    private Integer estrato;
-    private Integer tallaCamisa;
-    private Integer tallaPantalon;
-    private Integer tallaCalzado;
+    private String tallaCamisa;
+    private String tallaPantalon;
+    private String tallaCalzado;
     private String correoElectronico;
     private Date fechaCreacion;
     private Integer idTipoPersona;
@@ -39,7 +36,6 @@ public class Terceros {
     private Double imc;
     private Integer idProfesion;
     private Integer idNivelEducacion;
-    private Integer idVehiculo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
@@ -55,6 +51,9 @@ public class Terceros {
     private Integer idTipoAfiliacion;
     private Boolean indicadorHabilitado;
     private Integer idTipoTercero;
+    private Integer idTallaCamisa;
+    private Integer idTallaPantalon;
+    private Integer idTallaCalzado;
 
     public Long getIdTercero() {
         return idTercero;
@@ -192,43 +191,27 @@ public class Terceros {
         this.idLateralidad = idLateralidad;
     }
 
-    public Integer getIdTipoVivienda() {
-        return idTipoVivienda;
-    }
-
-    public void setIdTipoVivienda(Integer idTipoVivienda) {
-        this.idTipoVivienda = idTipoVivienda;
-    }
-
-    public Integer getEstrato() {
-        return estrato;
-    }
-
-    public void setEstrato(Integer estrato) {
-        this.estrato = estrato;
-    }
-
-    public Integer getTallaCamisa() {
+    public String getTallaCamisa() {
         return tallaCamisa;
     }
 
-    public void setTallaCamisa(Integer tallaCamisa) {
+    public void setTallaCamisa(String tallaCamisa) {
         this.tallaCamisa = tallaCamisa;
     }
 
-    public Integer getTallaPantalon() {
+    public String getTallaPantalon() {
         return tallaPantalon;
     }
 
-    public void setTallaPantalon(Integer tallaPantalon) {
+    public void setTallaPantalon(String tallaPantalon) {
         this.tallaPantalon = tallaPantalon;
     }
 
-    public Integer getTallaCalzado() {
+    public String getTallaCalzado() {
         return tallaCalzado;
     }
 
-    public void setTallaCalzado(Integer tallaCalzado) {
+    public void setTallaCalzado(String tallaCalzado) {
         this.tallaCalzado = tallaCalzado;
     }
 
@@ -302,14 +285,6 @@ public class Terceros {
 
     public void setIdNivelEducacion(Integer idNivelEducacion) {
         this.idNivelEducacion = idNivelEducacion;
-    }
-
-    public Integer getIdVehiculo() {
-        return idVehiculo;
-    }
-
-    public void setIdVehiculo(Integer idVehiculo) {
-        this.idVehiculo = idVehiculo;
     }
 
     public Integer getAuditoriaUsuario() {
@@ -430,5 +405,29 @@ public class Terceros {
 
     public void setIdTipoTercero(Integer idTipoTercero) {
         this.idTipoTercero = idTipoTercero;
+    }
+
+    public Integer getIdTallaCamisa() {
+        return idTallaCamisa;
+    }
+
+    public void setIdTallaCamisa(Integer idTallaCamisa) {
+        this.idTallaCamisa = idTallaCamisa;
+    }
+
+    public Integer getIdTallaPantalon() {
+        return idTallaPantalon;
+    }
+
+    public void setIdTallaPantalon(Integer idTallaPantalon) {
+        this.idTallaPantalon = idTallaPantalon;
+    }
+
+    public Integer getIdTallaCalzado() {
+        return idTallaCalzado;
+    }
+
+    public void setIdTallaCalzado(Integer idTallaCalzado) {
+        this.idTallaCalzado = idTallaCalzado;
     }
 }

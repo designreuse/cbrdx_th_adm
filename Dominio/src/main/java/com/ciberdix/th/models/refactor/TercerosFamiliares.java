@@ -18,6 +18,7 @@ public class TercerosFamiliares {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idLocalizacion;
+    private String direccion;
 
     public TercerosFamiliares() {
     }
@@ -159,5 +160,15 @@ public class TercerosFamiliares {
 
     public void setIdLocalizacion(Integer idLocalizacion) {
         this.idLocalizacion = idLocalizacion;
+    }
+
+    @Basic
+    @Column(name = "Direccion")
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

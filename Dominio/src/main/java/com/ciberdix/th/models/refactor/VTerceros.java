@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by faaguirre on 3/29/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
  */
 @Entity
 @Table(name = "V_Terceros", schema = "crz_th", catalog = "CREZCAMOS")
@@ -25,6 +25,7 @@ public class VTerceros {
     private Date fechaNacimiento;
     private Integer idCiudadNacimiento;
     private String ciudadNacimiento;
+    private String gentilicio;
     private Integer idGenero;
     private String genero;
     private Integer idEstadoCivil;
@@ -34,12 +35,12 @@ public class VTerceros {
     private Integer nroHijos;
     private Integer idLateralidad;
     private String lateralidad;
-    private Integer idTipoVivienda;
-    private String tipoVivienda;
-    private Integer estrato;
-    private Integer tallaCamisa;
-    private Integer tallaPantalon;
-    private Integer tallaCalzado;
+    private Integer idTallaCamisa;
+    private String tallaCamisa;
+    private Integer idTallaPantalon;
+    private String tallaPantalon;
+    private Integer idTallaCalzado;
+    private String tallaCalzado;
     private String correoElectronico;
     private Date fechaCreacion;
     private Integer idTipoPersona;
@@ -52,7 +53,6 @@ public class VTerceros {
     private String profesion;
     private Integer idNivelEducacion;
     private String nivelEstudio;
-    private Integer idVehiculo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String telefonoFijo;
@@ -74,7 +74,6 @@ public class VTerceros {
     private Integer idTipoAfiliacion;
     private String tipoAfiliacion;
     private Boolean indicadorHabilitado;
-    private String gentilicio;
     private Integer idTipoTercero;
     private String tipoTercero;
 
@@ -229,6 +228,16 @@ public class VTerceros {
     }
 
     @Basic
+    @Column(name = "Gentilicio")
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
+    }
+
+    @Basic
     @Column(name = "IdGenero")
     public Integer getIdGenero() {
         return idGenero;
@@ -319,62 +328,62 @@ public class VTerceros {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
-    public Integer getIdTipoVivienda() {
-        return idTipoVivienda;
+    @Column(name = "IdTallaCamisa")
+    public Integer getIdTallaCamisa() {
+        return idTallaCamisa;
     }
 
-    public void setIdTipoVivienda(Integer idTipoVivienda) {
-        this.idTipoVivienda = idTipoVivienda;
-    }
-
-    @Basic
-    @Column(name = "TipoVivienda")
-    public String getTipoVivienda() {
-        return tipoVivienda;
-    }
-
-    public void setTipoVivienda(String tipoVivienda) {
-        this.tipoVivienda = tipoVivienda;
-    }
-
-    @Basic
-    @Column(name = "Estrato")
-    public Integer getEstrato() {
-        return estrato;
-    }
-
-    public void setEstrato(Integer estrato) {
-        this.estrato = estrato;
+    public void setIdTallaCamisa(Integer idTallaCamisa) {
+        this.idTallaCamisa = idTallaCamisa;
     }
 
     @Basic
     @Column(name = "TallaCamisa")
-    public Integer getTallaCamisa() {
+    public String getTallaCamisa() {
         return tallaCamisa;
     }
 
-    public void setTallaCamisa(Integer tallaCamisa) {
+    public void setTallaCamisa(String tallaCamisa) {
         this.tallaCamisa = tallaCamisa;
     }
 
     @Basic
+    @Column(name = "IdTallaPantalon")
+    public Integer getIdTallaPantalon() {
+        return idTallaPantalon;
+    }
+
+    public void setIdTallaPantalon(Integer idTallaPantalon) {
+        this.idTallaPantalon = idTallaPantalon;
+    }
+
+    @Basic
     @Column(name = "TallaPantalon")
-    public Integer getTallaPantalon() {
+    public String getTallaPantalon() {
         return tallaPantalon;
     }
 
-    public void setTallaPantalon(Integer tallaPantalon) {
+    public void setTallaPantalon(String tallaPantalon) {
         this.tallaPantalon = tallaPantalon;
     }
 
     @Basic
+    @Column(name = "IdTallaCalzado")
+    public Integer getIdTallaCalzado() {
+        return idTallaCalzado;
+    }
+
+    public void setIdTallaCalzado(Integer idTallaCalzado) {
+        this.idTallaCalzado = idTallaCalzado;
+    }
+
+    @Basic
     @Column(name = "TallaCalzado")
-    public Integer getTallaCalzado() {
+    public String getTallaCalzado() {
         return tallaCalzado;
     }
 
-    public void setTallaCalzado(Integer tallaCalzado) {
+    public void setTallaCalzado(String tallaCalzado) {
         this.tallaCalzado = tallaCalzado;
     }
 
@@ -496,16 +505,6 @@ public class VTerceros {
 
     public void setNivelEstudio(String nivelEstudio) {
         this.nivelEstudio = nivelEstudio;
-    }
-
-    @Basic
-    @Column(name = "IdVehiculo")
-    public Integer getIdVehiculo() {
-        return idVehiculo;
-    }
-
-    public void setIdVehiculo(Integer idVehiculo) {
-        this.idVehiculo = idVehiculo;
     }
 
     @Basic
@@ -708,6 +707,36 @@ public class VTerceros {
         this.tipoAfiliacion = tipoAfiliacion;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "IdTipoTercero")
+    public Integer getIdTipoTercero() {
+        return idTipoTercero;
+    }
+
+    public void setIdTipoTercero(Integer idTipoTercero) {
+        this.idTipoTercero = idTipoTercero;
+    }
+
+    @Basic
+    @Column(name = "TipoTercero")
+    public String getTipoTercero() {
+        return tipoTercero;
+    }
+
+    public void setTipoTercero(String tipoTercero) {
+        this.tipoTercero = tipoTercero;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -743,6 +772,7 @@ public class VTerceros {
             return false;
         if (ciudadNacimiento != null ? !ciudadNacimiento.equals(vTerceros.ciudadNacimiento) : vTerceros.ciudadNacimiento != null)
             return false;
+        if (gentilicio != null ? !gentilicio.equals(vTerceros.gentilicio) : vTerceros.gentilicio != null) return false;
         if (idGenero != null ? !idGenero.equals(vTerceros.idGenero) : vTerceros.idGenero != null) return false;
         if (genero != null ? !genero.equals(vTerceros.genero) : vTerceros.genero != null) return false;
         if (idEstadoCivil != null ? !idEstadoCivil.equals(vTerceros.idEstadoCivil) : vTerceros.idEstadoCivil != null)
@@ -756,14 +786,15 @@ public class VTerceros {
             return false;
         if (lateralidad != null ? !lateralidad.equals(vTerceros.lateralidad) : vTerceros.lateralidad != null)
             return false;
-        if (idTipoVivienda != null ? !idTipoVivienda.equals(vTerceros.idTipoVivienda) : vTerceros.idTipoVivienda != null)
+        if (idTallaCamisa != null ? !idTallaCamisa.equals(vTerceros.idTallaCamisa) : vTerceros.idTallaCamisa != null)
             return false;
-        if (tipoVivienda != null ? !tipoVivienda.equals(vTerceros.tipoVivienda) : vTerceros.tipoVivienda != null)
-            return false;
-        if (estrato != null ? !estrato.equals(vTerceros.estrato) : vTerceros.estrato != null) return false;
         if (tallaCamisa != null ? !tallaCamisa.equals(vTerceros.tallaCamisa) : vTerceros.tallaCamisa != null)
             return false;
+        if (idTallaPantalon != null ? !idTallaPantalon.equals(vTerceros.idTallaPantalon) : vTerceros.idTallaPantalon != null)
+            return false;
         if (tallaPantalon != null ? !tallaPantalon.equals(vTerceros.tallaPantalon) : vTerceros.tallaPantalon != null)
+            return false;
+        if (idTallaCalzado != null ? !idTallaCalzado.equals(vTerceros.idTallaCalzado) : vTerceros.idTallaCalzado != null)
             return false;
         if (tallaCalzado != null ? !tallaCalzado.equals(vTerceros.tallaCalzado) : vTerceros.tallaCalzado != null)
             return false;
@@ -787,7 +818,6 @@ public class VTerceros {
             return false;
         if (nivelEstudio != null ? !nivelEstudio.equals(vTerceros.nivelEstudio) : vTerceros.nivelEstudio != null)
             return false;
-        if (idVehiculo != null ? !idVehiculo.equals(vTerceros.idVehiculo) : vTerceros.idVehiculo != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(vTerceros.auditoriaUsuario) : vTerceros.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(vTerceros.auditoriaFecha) : vTerceros.auditoriaFecha != null)
@@ -827,6 +857,12 @@ public class VTerceros {
             return false;
         if (tipoAfiliacion != null ? !tipoAfiliacion.equals(vTerceros.tipoAfiliacion) : vTerceros.tipoAfiliacion != null)
             return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(vTerceros.indicadorHabilitado) : vTerceros.indicadorHabilitado != null)
+            return false;
+        if (idTipoTercero != null ? !idTipoTercero.equals(vTerceros.idTipoTercero) : vTerceros.idTipoTercero != null)
+            return false;
+        if (tipoTercero != null ? !tipoTercero.equals(vTerceros.tipoTercero) : vTerceros.tipoTercero != null)
+            return false;
 
         return true;
     }
@@ -848,6 +884,7 @@ public class VTerceros {
         result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
         result = 31 * result + (idCiudadNacimiento != null ? idCiudadNacimiento.hashCode() : 0);
         result = 31 * result + (ciudadNacimiento != null ? ciudadNacimiento.hashCode() : 0);
+        result = 31 * result + (gentilicio != null ? gentilicio.hashCode() : 0);
         result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
         result = 31 * result + (genero != null ? genero.hashCode() : 0);
         result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
@@ -857,11 +894,11 @@ public class VTerceros {
         result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
         result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
         result = 31 * result + (lateralidad != null ? lateralidad.hashCode() : 0);
-        result = 31 * result + (idTipoVivienda != null ? idTipoVivienda.hashCode() : 0);
-        result = 31 * result + (tipoVivienda != null ? tipoVivienda.hashCode() : 0);
-        result = 31 * result + (estrato != null ? estrato.hashCode() : 0);
+        result = 31 * result + (idTallaCamisa != null ? idTallaCamisa.hashCode() : 0);
         result = 31 * result + (tallaCamisa != null ? tallaCamisa.hashCode() : 0);
+        result = 31 * result + (idTallaPantalon != null ? idTallaPantalon.hashCode() : 0);
         result = 31 * result + (tallaPantalon != null ? tallaPantalon.hashCode() : 0);
+        result = 31 * result + (idTallaCalzado != null ? idTallaCalzado.hashCode() : 0);
         result = 31 * result + (tallaCalzado != null ? tallaCalzado.hashCode() : 0);
         result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
@@ -875,7 +912,6 @@ public class VTerceros {
         result = 31 * result + (profesion != null ? profesion.hashCode() : 0);
         result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
         result = 31 * result + (nivelEstudio != null ? nivelEstudio.hashCode() : 0);
-        result = 31 * result + (idVehiculo != null ? idVehiculo.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
@@ -896,46 +932,9 @@ public class VTerceros {
         result = 31 * result + (indicadorVivo != null ? indicadorVivo.hashCode() : 0);
         result = 31 * result + (idTipoAfiliacion != null ? idTipoAfiliacion.hashCode() : 0);
         result = 31 * result + (tipoAfiliacion != null ? tipoAfiliacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (idTipoTercero != null ? idTipoTercero.hashCode() : 0);
+        result = 31 * result + (tipoTercero != null ? tipoTercero.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IndicadorHabilitado")
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
-    }
-
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
-    }
-
-    @Basic
-    @Column(name = "Gentilicio")
-    public String getGentilicio() {
-        return gentilicio;
-    }
-
-    public void setGentilicio(String gentilicio) {
-        this.gentilicio = gentilicio;
-    }
-
-    @Basic
-    @Column(name = "IdTipoTercero")
-    public Integer getIdTipoTercero() {
-        return idTipoTercero;
-    }
-
-    public void setIdTipoTercero(Integer idTipoTercero) {
-        this.idTipoTercero = idTipoTercero;
-    }
-
-    @Basic
-    @Column(name = "TipoTercero")
-    public String getTipoTercero() {
-        return tipoTercero;
-    }
-
-    public void setTipoTercero(String tipoTercero) {
-        this.tipoTercero = tipoTercero;
     }
 }
