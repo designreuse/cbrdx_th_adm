@@ -31,6 +31,11 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         //Desde Aqui empezar a incluir los del Refactor
 
         config.exposeIdsFor(DivisionPolitica.class);
+        config.exposeIdsFor(DivisionPoliticaAreas.class);
+        config.exposeIdsFor(DivisionPoliticaComunas.class);
+        config.exposeIdsFor(DivisionPoliticaLocalidades.class);
+        config.exposeIdsFor(DivisionPoliticaResguardos.class);
+        config.exposeIdsFor(DivisionPoliticaTipos.class);
         config.exposeIdsFor(VDivisionPoliticaRec.class);
         config.exposeIdsFor(ListasTiposReferencias.class);
         config.exposeIdsFor(Localizaciones.class);
