@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class VConstantes {
     private Integer idConstante;
     private String constante;
+    private Integer idTipoDato;
     private String tipoDato;
     private String valor;
     private String descripcion;
@@ -29,6 +30,14 @@ public class VConstantes {
 
     public void setConstante(String constante) {
         this.constante = constante;
+    }
+
+    public Integer getIdTipoDato() {
+        return idTipoDato;
+    }
+
+    public void setIdTipoDato(Integer idTipoDato) {
+        this.idTipoDato = idTipoDato;
     }
 
     public String getTipoDato() {
