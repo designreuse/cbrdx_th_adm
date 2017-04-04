@@ -82,7 +82,7 @@ public class Terceros {
         this.tallaPantalon = tallaPantalon;
         this.tallaCalzado = tallaCalzado;
         this.correoElectronico = correoElectronico;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = fechaCreacion != null ? fechaCreacion : new Date(System.currentTimeMillis());
         this.idTipoPersona = idTipoPersona;
         this.razonSocial = razonSocial;
         this.talla = talla;
