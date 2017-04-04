@@ -28,8 +28,8 @@ public class ConstantesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Constantes parent(@PathVariable Integer id) {
-        return ConstantesRepository.findOne(id);
+    VConstantes parent(@PathVariable Integer id) {
+        return vConstantesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
