@@ -32,8 +32,8 @@ public class TercerosInmueblesRefactorController {
     private VTercerosInmueblesRefactorRepository vTercerosInmueblesRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<TercerosInmuebles> findAll() {
-        return (List<TercerosInmuebles>) tercerosInmueblesRefactorRepository.findAll();
+    List<VTercerosInmuebles> findAll() {
+        return (List<VTercerosInmuebles>) vTercerosInmueblesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")

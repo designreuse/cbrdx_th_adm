@@ -28,9 +28,9 @@ public class TercerosInmueblesRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/tercerosInmuebles";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<TercerosInmuebles> findAll() {
+    List<VTercerosInmuebles> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosInmuebles[] parametros = restTemplate.getForObject(serviceUrl, TercerosInmuebles[].class);
+        VTercerosInmuebles[] parametros = restTemplate.getForObject(serviceUrl, VTercerosInmuebles[].class);
         return Arrays.asList(parametros);
     }
 
