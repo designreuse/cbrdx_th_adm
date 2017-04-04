@@ -294,6 +294,12 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposTerceros"/>
         <mapping class="com.ciberdix.th.models.refactor.VConstantes"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTallas"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasEstratos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposConstruccionViviendas"/>
+        <mapping class="com.ciberdix.th.models.refactor.TercerosContactos"/>
+        <mapping class="com.ciberdix.th.models.refactor.TercerosDatosClinicos"/>
+        <mapping class="com.ciberdix.th.models.refactor.TercerosInmuebles"/>
+        <mapping class="com.ciberdix.th.models.refactor.TercerosVehiculos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
