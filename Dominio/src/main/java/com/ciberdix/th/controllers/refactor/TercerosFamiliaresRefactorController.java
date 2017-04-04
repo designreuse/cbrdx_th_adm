@@ -43,12 +43,12 @@ public class TercerosFamiliaresRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosFamiliares create(@RequestBody TercerosFamiliares tercerosReferencias) {
-        return tercerosFamiliaresRefactorRepository.save(new TercerosFamiliares(tercerosReferencias.getIdTercero(), tercerosReferencias.getIdFamiliar(), tercerosReferencias.getIdParentesco(), tercerosReferencias.getIdConvivencia(), tercerosReferencias.getIndicadorHabilitado(), tercerosReferencias.getAuditoriaUsuario(), tercerosReferencias.getIdLocalizacion()));
+    TercerosFamiliares create(@RequestBody TercerosFamiliares tercerosFamiliares) {
+        return tercerosFamiliaresRefactorRepository.save(new TercerosFamiliares(tercerosFamiliares.getIdTercero(), tercerosFamiliares.getIdFamiliar(), tercerosFamiliares.getIdParentesco(), tercerosFamiliares.getIdConvivencia(), tercerosFamiliares.getIndicadorHabilitado(), tercerosFamiliares.getAuditoriaUsuario(), tercerosFamiliares.getIdLocalizacion()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    TercerosFamiliares update(@RequestBody TercerosFamiliares tercerosReferencias) {
-        return tercerosFamiliaresRefactorRepository.save(tercerosReferencias);
+    TercerosFamiliares update(@RequestBody TercerosFamiliares tercerosFamiliares) {
+        return tercerosFamiliaresRefactorRepository.save(new TercerosFamiliares(tercerosFamiliares.getIdTerceroFamiliar(), tercerosFamiliares.getIdTercero(), tercerosFamiliares.getIdFamiliar(), tercerosFamiliares.getIdParentesco(), tercerosFamiliares.getIdConvivencia(), tercerosFamiliares.getIndicadorHabilitado(), tercerosFamiliares.getAuditoriaUsuario(), tercerosFamiliares.getIdLocalizacion()));
     }
 }

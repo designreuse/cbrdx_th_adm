@@ -1,6 +1,7 @@
 package com.ciberdix.th.model.refactor;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -23,11 +24,12 @@ public class VTercerosFamiliares {
     private String nombreListaParentesco;
     private String telefonoFijo;
     private String telefonoCelular;
-    private String direccion;
     private Boolean indicadorHabilitado;
     private Integer idLocalizacion;
+    private String direccion;
     private Integer idTipoDireccion;
     private Integer idDivisionPolitica;
+    private Timestamp auditoriaFecha;
 
     public Integer getIdTerceroFamiliar() {
         return idTerceroFamiliar;
@@ -203,5 +205,13 @@ public class VTercerosFamiliares {
 
     public void setIdDivisionPolitica(Integer idDivisionPolitica) {
         this.idDivisionPolitica = idDivisionPolitica;
+    }
+
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 }
