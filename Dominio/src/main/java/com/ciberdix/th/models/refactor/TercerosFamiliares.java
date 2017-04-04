@@ -34,6 +34,18 @@ public class TercerosFamiliares {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosFamiliares(Integer idTerceroFamiliar, Long idTercero, Long idFamiliar, Integer idParentesco, Integer idConvivencia, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idLocalizacion) {
+        this.idTerceroFamiliar = idTerceroFamiliar;
+        this.idTercero = idTercero;
+        this.idFamiliar = idFamiliar;
+        this.idParentesco = idParentesco;
+        this.idConvivencia = idConvivencia;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.idLocalizacion = idLocalizacion;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroFamiliar")
