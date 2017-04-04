@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.TercerosInmuebles;
+import com.ciberdix.th.model.refactor.VTercerosInmuebles;
 import io.swagger.annotations.Api;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +31,13 @@ public class TercerosInmueblesRefactorController {
     List<TercerosInmuebles> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         TercerosInmuebles[] parametros = restTemplate.getForObject(serviceUrl, TercerosInmuebles[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="/buscarTercero/{id}")
+    List<VTercerosInmuebles> findAllPorTercero(@PathVariable Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VTercerosInmuebles[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTercero/" + id, VTercerosInmuebles[].class);
         return Arrays.asList(parametros);
     }
 
