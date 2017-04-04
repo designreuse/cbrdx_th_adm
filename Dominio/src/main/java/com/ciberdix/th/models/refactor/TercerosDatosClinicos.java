@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Timestamp;
+import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
+@Table(name = "TercerosDatosClinicos", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosDatosClinicos {
     private Integer idTerceroDatoClinico;
     private Long idTercero;
@@ -20,6 +22,19 @@ public class TercerosDatosClinicos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+    public TercerosDatosClinicos() {
+    }
+
+    public TercerosDatosClinicos(Long idTercero, Integer idDiagnostico, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTercero = idTercero;
+        this.idDiagnostico = idDiagnostico;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdTerceroDatoClinico")
