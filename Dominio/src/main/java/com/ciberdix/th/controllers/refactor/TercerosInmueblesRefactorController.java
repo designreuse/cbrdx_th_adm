@@ -1,8 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.TercerosInmuebles;
+import com.ciberdix.th.models.refactor.VTercerosInmuebles;
 import com.ciberdix.th.repositories.refactor.TercerosInmueblesRefactorRepository;
 import java.util.List;
+
+import com.ciberdix.th.repositories.refactor.VTercerosInmueblesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +28,9 @@ public class TercerosInmueblesRefactorController {
     @Autowired
     private TercerosInmueblesRefactorRepository tercerosInmueblesRefactorRepository;
 
+    @Autowired
+    private VTercerosInmueblesRefactorRepository vTercerosInmueblesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosInmuebles> findAll() {
         return (List<TercerosInmuebles>) tercerosInmueblesRefactorRepository.findAll();
@@ -34,11 +40,11 @@ public class TercerosInmueblesRefactorController {
     TercerosInmuebles findOne(@PathVariable Long id) {
         return tercerosInmueblesRefactorRepository.findOne(id);
     }
-    
+
     @RequestMapping(method = RequestMethod.GET, path="/buscarTercero/{id}")
-    List<TercerosInmuebles> findPorTercero(@PathVariable Long id) {
-        return (List<TercerosInmuebles>) tercerosInmueblesRefactorRepository.findByIdTercero(id);
-    }    
+    List<VTercerosInmuebles> findPorTercero(@PathVariable Long id) {
+        return (List<VTercerosInmuebles>) vTercerosInmueblesRefactorRepository.findByIdTercero(id);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosInmuebles create(@RequestBody TercerosInmuebles obj) {

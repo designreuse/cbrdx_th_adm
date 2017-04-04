@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -29,7 +26,7 @@ public class VTercerosInmuebles {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
+    @Id
     @Column(name = "IdTerceroInmueble")
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
@@ -221,10 +218,7 @@ public class VTercerosInmuebles {
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        return auditoriaFecha != null ? auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha == null;
     }
 
     @Override
