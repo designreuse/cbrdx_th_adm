@@ -42,7 +42,7 @@ public class DivisionPoliticaRefactorController {
         return parametro;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarHijos/{idDivisionPoliticaPadre")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarHijos/{idDivisionPoliticaPadre}")
     List<DivisionPolitica> findSons(@PathVariable Integer idDivisionPoliticaPadre) {
         RestTemplate restTemplate = new RestTemplate();
         DivisionPolitica[] parametros = restTemplate.getForObject(serviceUrl + "/buscarHijos/" + idDivisionPoliticaPadre, DivisionPolitica[].class);
