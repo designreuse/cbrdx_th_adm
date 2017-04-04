@@ -1,5 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
+import java.sql.Timestamp;
 import javax.persistence.*;
 
 /**
@@ -8,12 +9,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "V_Constantes", schema = "crz_th", catalog = "CREZCAMOS")
 public class VConstantes {
+
     private Integer idConstante;
     private String constante;
     private String tipoDato;
     private String valor;
     private String descripcion;
     private Boolean indicadorHabilitado;
+    private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
 
     @Id
     @Column(name = "IdConstante")
@@ -75,32 +79,23 @@ public class VConstantes {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        VConstantes that = (VConstantes) o;
-
-        if (idConstante != null ? !idConstante.equals(that.idConstante) : that.idConstante != null) return false;
-        if (constante != null ? !constante.equals(that.constante) : that.constante != null) return false;
-        if (tipoDato != null ? !tipoDato.equals(that.tipoDato) : that.tipoDato != null) return false;
-        if (valor != null ? !valor.equals(that.valor) : that.valor != null) return false;
-        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
-            return false;
-
-        return true;
+    @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
     }
 
-    @Override
-    public int hashCode() {
-        int result = idConstante != null ? idConstante.hashCode() : 0;
-        result = 31 * result + (constante != null ? constante.hashCode() : 0);
-        result = 31 * result + (tipoDato != null ? tipoDato.hashCode() : 0);
-        result = 31 * result + (valor != null ? valor.hashCode() : 0);
-        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
-        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        return result;
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaFecha")
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 }

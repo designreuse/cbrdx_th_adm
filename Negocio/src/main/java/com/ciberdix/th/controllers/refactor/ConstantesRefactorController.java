@@ -26,9 +26,9 @@ public class ConstantesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    Constantes getOne(@PathVariable Long id) {
+    VConstantes getOne(@PathVariable Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        Constantes actividad = restTemplate.getForObject(serviceUrl + id, Constantes.class);
+        VConstantes actividad = restTemplate.getForObject(serviceUrl + id, VConstantes.class);
 
         return actividad;
     }
