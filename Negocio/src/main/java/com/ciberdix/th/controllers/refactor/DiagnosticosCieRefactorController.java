@@ -3,10 +3,7 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.DiagnosticosCie;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -28,5 +25,24 @@ public class DiagnosticosCieRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         DiagnosticosCie[] parametros = restTemplate.getForObject(serviceUrl, DiagnosticosCie[].class);
         return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="/{id}")
+    DiagnosticosCie findOne(@PathVariable Integer id){
+        RestTemplate restTemplate = new RestTemplate();
+        DiagnosticosCie parametros = restTemplate.getForObject(serviceUrl + "/" + id, DiagnosticosCie.class);
+        return parametros;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    DiagnosticosCie create(@RequestBody DiagnosticosCie request) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForObject(serviceUrl, request, DiagnosticosCie.class);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    void update(@RequestBody DiagnosticosCie request) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl, request, DiagnosticosCie.class);
     }
 }
