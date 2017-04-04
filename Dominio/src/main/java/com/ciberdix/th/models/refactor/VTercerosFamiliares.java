@@ -2,9 +2,10 @@ package com.ciberdix.th.models.refactor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
 @Table(name = "V_TercerosFamiliares", schema = "crz_th", catalog = "CREZCAMOS")
@@ -26,11 +27,12 @@ public class VTercerosFamiliares {
     private String nombreListaParentesco;
     private String telefonoFijo;
     private String telefonoCelular;
-    private String direccion;
     private Boolean indicadorHabilitado;
     private Integer idLocalizacion;
+    private String direccion;
     private Integer idTipoDireccion;
     private Integer idDivisionPolitica;
+    private Timestamp auditoriaFecha;
 
     @Id
     @Column(name = "IdTerceroFamiliar")
@@ -203,6 +205,26 @@ public class VTercerosFamiliares {
     }
 
     @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "IdLocalizacion")
+    public Integer getIdLocalizacion() {
+        return idLocalizacion;
+    }
+
+    public void setIdLocalizacion(Integer idLocalizacion) {
+        this.idLocalizacion = idLocalizacion;
+    }
+
+    @Basic
     @Column(name = "Direccion")
     public String getDireccion() {
         return direccion;
@@ -213,13 +235,33 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
+    @Column(name = "IdTipoDireccion")
+    public Integer getIdTipoDireccion() {
+        return idTipoDireccion;
     }
 
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
+    public void setIdTipoDireccion(Integer idTipoDireccion) {
+        this.idTipoDireccion = idTipoDireccion;
+    }
+
+    @Basic
+    @Column(name = "IdDivisionPolitica")
+    public Integer getIdDivisionPolitica() {
+        return idDivisionPolitica;
+    }
+
+    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
+        this.idDivisionPolitica = idDivisionPolitica;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaFecha")
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 
     @Override
@@ -258,8 +300,16 @@ public class VTercerosFamiliares {
         if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) return false;
         if (telefonoCelular != null ? !telefonoCelular.equals(that.telefonoCelular) : that.telefonoCelular != null)
             return false;
-        if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
+            return false;
+        if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
+        if (idTipoDireccion != null ? !idTipoDireccion.equals(that.idTipoDireccion) : that.idTipoDireccion != null)
+            return false;
+        if (idDivisionPolitica != null ? !idDivisionPolitica.equals(that.idDivisionPolitica) : that.idDivisionPolitica != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
 
         return true;
@@ -284,38 +334,12 @@ public class VTercerosFamiliares {
         result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
         result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
-        result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
+        result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
+        result = 31 * result + (idTipoDireccion != null ? idTipoDireccion.hashCode() : 0);
+        result = 31 * result + (idDivisionPolitica != null ? idDivisionPolitica.hashCode() : 0);
+        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IdLocalizacion")
-    public Integer getIdLocalizacion() {
-        return idLocalizacion;
-    }
-
-    public void setIdLocalizacion(Integer idLocalizacion) {
-        this.idLocalizacion = idLocalizacion;
-    }
-
-    @Basic
-    @Column(name = "IdTipoDireccion")
-    public Integer getIdTipoDireccion() {
-        return idTipoDireccion;
-    }
-
-    public void setIdTipoDireccion(Integer idTipoDireccion) {
-        this.idTipoDireccion = idTipoDireccion;
-    }
-
-    @Basic
-    @Column(name = "IdDivisionPolitica")
-    public Integer getIdDivisionPolitica() {
-        return idDivisionPolitica;
-    }
-
-    public void setIdDivisionPolitica(Integer idDivisionPolitica) {
-        this.idDivisionPolitica = idDivisionPolitica;
     }
 }
