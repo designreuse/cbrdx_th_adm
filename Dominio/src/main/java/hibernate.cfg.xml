@@ -300,6 +300,8 @@
         <mapping class="com.ciberdix.th.models.refactor.TercerosDatosClinicos"/>
         <mapping class="com.ciberdix.th.models.refactor.TercerosInmuebles"/>
         <mapping class="com.ciberdix.th.models.refactor.TercerosVehiculos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosVehiculos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosInmuebles"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
