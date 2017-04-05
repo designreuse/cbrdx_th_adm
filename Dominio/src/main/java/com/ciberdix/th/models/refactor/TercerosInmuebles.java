@@ -21,6 +21,7 @@ public class TercerosInmuebles {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTerceroLocalizacion;
 
     public TercerosInmuebles() {
     }
@@ -148,6 +149,16 @@ public class TercerosInmuebles {
 
     public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
+    @Column(name = "IdTerceroLocalizacion")
+    public Integer getIdTerceroLocalizacion() {
+        return idTerceroLocalizacion;
+    }
+
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 
     @Basic
