@@ -37,7 +37,7 @@ public class TercerosInmueblesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosInmuebles findOne(@PathVariable Long id) {
+    TercerosInmuebles findOne(@PathVariable Integer id) {
         return tercerosInmueblesRefactorRepository.findOne(id);
     }
 
