@@ -309,6 +309,7 @@
         <mapping class="com.ciberdix.th.models.refactor.VUsuarios"/>
         <mapping class="com.ciberdix.th.models.refactor.VTerceroInmuebles"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosDatosClinicos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosContactos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

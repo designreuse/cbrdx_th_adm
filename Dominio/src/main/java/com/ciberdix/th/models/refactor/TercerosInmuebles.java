@@ -1,11 +1,7 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
@@ -44,6 +40,7 @@ public class TercerosInmuebles {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroInmueble")
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
