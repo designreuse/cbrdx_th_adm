@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 5/04/17.
+ * Created by Felipe Alejandro Aguirre Santos on 4/5/2017.
  */
 @Entity
 @Table(name = "V_TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -20,7 +20,6 @@ public class VTercerosContactos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idListaParentezco;
 
     @Basic
     @Column(name = "CodigoListaParentesco")
@@ -42,7 +41,6 @@ public class VTercerosContactos {
         this.nombreListaParentesco = nombreListaParentesco;
     }
 
-    @Basic
     @Id
     @Column(name = "IdTerceroContacto")
     public Integer getIdTerceroContacto() {
@@ -140,8 +138,6 @@ public class VTercerosContactos {
 
         VTercerosContactos that = (VTercerosContactos) o;
 
-        if (idListaParentezco != null ? !idListaParentezco.equals(that.idListaParentezco) : that.idListaParentezco != null)
-            return false;
         if (codigoListaParentesco != null ? !codigoListaParentesco.equals(that.codigoListaParentesco) : that.codigoListaParentesco != null)
             return false;
         if (nombreListaParentesco != null ? !nombreListaParentesco.equals(that.nombreListaParentesco) : that.nombreListaParentesco != null)
@@ -166,8 +162,7 @@ public class VTercerosContactos {
 
     @Override
     public int hashCode() {
-        int result = idListaParentezco != null ? idListaParentezco.hashCode() : 0;
-        result = 31 * result + (codigoListaParentesco != null ? codigoListaParentesco.hashCode() : 0);
+        int result = codigoListaParentesco != null ? codigoListaParentesco.hashCode() : 0;
         result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
         result = 31 * result + (idTerceroContacto != null ? idTerceroContacto.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
@@ -179,15 +174,5 @@ public class VTercerosContactos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IdListaParentezco")
-    public Integer getIdListaParentezco() {
-        return idListaParentezco;
-    }
-
-    public void setIdListaParentezco(Integer idListaParentezco) {
-        this.idListaParentezco = idListaParentezco;
     }
 }
