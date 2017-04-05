@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
+@Table(name = "ListasTiposConstruccionViviendas", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposConstruccionViviendas {
     private Integer idListaTipoConstruccionVivienda;
     private String codigo;
