@@ -57,6 +57,7 @@ public class Terceros {
     private Integer idTallaCamisa;
     private Integer idTallaPantalon;
     private Integer idTallaCalzado;
+    private String sitioWeb;
 
     public Terceros() {
     }
@@ -657,5 +658,15 @@ public class Terceros {
 
     public void setIdTallaCalzado(Integer idTallaCalzado) {
         this.idTallaCalzado = idTallaCalzado;
+    }
+
+    @Basic
+    @Column(name = "SitioWeb")
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
     }
 }
