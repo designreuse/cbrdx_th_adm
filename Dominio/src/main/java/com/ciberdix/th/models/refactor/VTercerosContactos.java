@@ -4,11 +4,14 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
+ * Created by robertochajin on 5/04/17.
  */
 @Entity
-@Table(name = "TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
-public class TercerosContactos {
+@Table(name = "V_TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
+public class VTercerosContactos {
+    private Integer idListaParentezco;
+    private String codigoListaParentesco;
+    private String nombreListaParentesco;
     private Integer idTerceroContacto;
     private Long idTercero;
     private String contacto;
@@ -19,22 +22,37 @@ public class TercerosContactos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosContactos() {
-    }
-
-    public TercerosContactos(Long idTercero, String contacto, String telefono, String celular, Integer idListaParentesco, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTercero = idTercero;
-        this.contacto = contacto;
-        this.telefono = telefono;
-        this.celular = celular;
-        this.idListaParentesco = idListaParentesco;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "IdListaParentezco")
+    public Integer getIdListaParentezco() {
+        return idListaParentezco;
+    }
+
+    public void setIdListaParentezco(Integer idListaParentezco) {
+        this.idListaParentezco = idListaParentezco;
+    }
+
+    @Basic
+    @Column(name = "CodigoListaParentesco")
+    public String getCodigoListaParentesco() {
+        return codigoListaParentesco;
+    }
+
+    public void setCodigoListaParentesco(String codigoListaParentesco) {
+        this.codigoListaParentesco = codigoListaParentesco;
+    }
+
+    @Basic
+    @Column(name = "NombreListaParentesco")
+    public String getNombreListaParentesco() {
+        return nombreListaParentesco;
+    }
+
+    public void setNombreListaParentesco(String nombreListaParentesco) {
+        this.nombreListaParentesco = nombreListaParentesco;
+    }
+
+    @Basic
     @Column(name = "IdTerceroContacto")
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
@@ -129,8 +147,14 @@ public class TercerosContactos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosContactos that = (TercerosContactos) o;
+        VTercerosContactos that = (VTercerosContactos) o;
 
+        if (idListaParentezco != null ? !idListaParentezco.equals(that.idListaParentezco) : that.idListaParentezco != null)
+            return false;
+        if (codigoListaParentesco != null ? !codigoListaParentesco.equals(that.codigoListaParentesco) : that.codigoListaParentesco != null)
+            return false;
+        if (nombreListaParentesco != null ? !nombreListaParentesco.equals(that.nombreListaParentesco) : that.nombreListaParentesco != null)
+            return false;
         if (idTerceroContacto != null ? !idTerceroContacto.equals(that.idTerceroContacto) : that.idTerceroContacto != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
@@ -151,7 +175,10 @@ public class TercerosContactos {
 
     @Override
     public int hashCode() {
-        int result = idTerceroContacto != null ? idTerceroContacto.hashCode() : 0;
+        int result = idListaParentezco != null ? idListaParentezco.hashCode() : 0;
+        result = 31 * result + (codigoListaParentesco != null ? codigoListaParentesco.hashCode() : 0);
+        result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
+        result = 31 * result + (idTerceroContacto != null ? idTerceroContacto.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (contacto != null ? contacto.hashCode() : 0);
         result = 31 * result + (telefono != null ? telefono.hashCode() : 0);
