@@ -42,9 +42,9 @@ public class TercerosInmueblesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosInmuebles findOne(@PathVariable Long id) {
+    VTercerosInmuebles findOne(@PathVariable Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosInmuebles parametros = restTemplate.getForObject(serviceUrl + "/" + id, TercerosInmuebles.class);
+        VTercerosInmuebles parametros = restTemplate.getForObject(serviceUrl + "/" + id, VTercerosInmuebles.class);
         return parametros;
     }
 

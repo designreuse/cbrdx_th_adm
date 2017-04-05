@@ -37,8 +37,8 @@ public class TercerosInmueblesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosInmuebles findOne(@PathVariable Integer id) {
-        return tercerosInmueblesRefactorRepository.findOne(id);
+    VTercerosInmuebles findOne(@PathVariable Integer id) {
+        return vTercerosInmueblesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path="/buscarTercero/{id}")
@@ -52,7 +52,8 @@ public class TercerosInmueblesRefactorController {
                 new TercerosInmuebles(obj.getIdTercero(), obj.getIdTipoVivienda(),
                         obj.getIdClaseVivienda(), obj.getIdTipoConstruccionVivienda(),
                         obj.getAnioConstruccion(), obj.getNumeroPisos(), obj.getNumeroSotanos(),
-                        obj.getIdEstrato(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+                        obj.getIdEstrato(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario(),
+                        obj.getIdTerceroLocalizacion()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
