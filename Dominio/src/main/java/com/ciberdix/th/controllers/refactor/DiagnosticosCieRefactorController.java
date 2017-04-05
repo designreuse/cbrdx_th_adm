@@ -29,6 +29,11 @@ public class DiagnosticosCieRefactorController {
         return diagnosticosCieRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/codigoNombre/{query}")
+    List<DiagnosticosCie> findByCodigoNombre(@PathVariable String query) {
+        return diagnosticosCieRefactorRepository.queryAllDiagnosticosCie(query);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DiagnosticosCie create(@RequestBody DiagnosticosCie obj) {
         return diagnosticosCieRefactorRepository.save(new DiagnosticosCie(obj.getCodigo(), obj.getSimbolo(),

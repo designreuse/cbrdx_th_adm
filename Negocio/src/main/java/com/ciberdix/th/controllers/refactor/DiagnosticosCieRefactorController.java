@@ -34,6 +34,13 @@ public class DiagnosticosCieRefactorController {
         return parametros;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path="/codigoNombre/{query}")
+    List<DiagnosticosCie> findCodigoNombre(@PathVariable String query){
+        RestTemplate restTemplate = new RestTemplate();
+        DiagnosticosCie[] parametros = restTemplate.getForObject(serviceUrl + "/codigoNombre/" + query, DiagnosticosCie[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DiagnosticosCie create(@RequestBody DiagnosticosCie request) {
         RestTemplate restTemplate = new RestTemplate();
