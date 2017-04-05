@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Roberto Chajin Ortiz
  */
-public interface TercerosInmueblesRefactorRepository extends CrudRepository<TercerosInmuebles, Long> {
+public interface TercerosInmueblesRefactorRepository extends CrudRepository<TercerosInmuebles, Integer> {
 
-    List<TercerosInmuebles> findByIdTercero(Long id);
+    List<TercerosInmuebles> findByIdTercero(Integer id);
 }
