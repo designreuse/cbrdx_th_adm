@@ -73,6 +73,7 @@ public class VTerceros {
     private Boolean indicadorHabilitado;
     private Integer idTipoTercero;
     private String tipoTercero;
+    private String sitioWeb;
 
     public Long getIdTercero() {
         return idTercero;
@@ -600,5 +601,13 @@ public class VTerceros {
 
     public void setTipoTercero(String tipoTercero) {
         this.tipoTercero = tipoTercero;
+    }
+
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
     }
 }

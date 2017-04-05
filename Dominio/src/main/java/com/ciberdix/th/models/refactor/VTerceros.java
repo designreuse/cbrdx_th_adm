@@ -76,6 +76,7 @@ public class VTerceros {
     private Boolean indicadorHabilitado;
     private Integer idTipoTercero;
     private String tipoTercero;
+    private String sitioWeb;
 
     @Id
     @Column(name = "IdTercero")
@@ -936,5 +937,15 @@ public class VTerceros {
         result = 31 * result + (idTipoTercero != null ? idTipoTercero.hashCode() : 0);
         result = 31 * result + (tipoTercero != null ? tipoTercero.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "SitioWeb")
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
     }
 }
