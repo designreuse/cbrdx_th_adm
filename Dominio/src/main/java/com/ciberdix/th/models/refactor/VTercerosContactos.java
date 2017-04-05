@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "V_TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosContactos {
-    private Integer idListaParentezco;
     private String codigoListaParentesco;
     private String nombreListaParentesco;
     private Integer idTerceroContacto;
@@ -21,16 +20,7 @@ public class VTercerosContactos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    @Id
-    @Column(name = "IdListaParentezco")
-    public Integer getIdListaParentezco() {
-        return idListaParentezco;
-    }
-
-    public void setIdListaParentezco(Integer idListaParentezco) {
-        this.idListaParentezco = idListaParentezco;
-    }
+    private Integer idListaParentezco;
 
     @Basic
     @Column(name = "CodigoListaParentesco")
@@ -53,6 +43,7 @@ public class VTercerosContactos {
     }
 
     @Basic
+    @Id
     @Column(name = "IdTerceroContacto")
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
@@ -188,5 +179,15 @@ public class VTercerosContactos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdListaParentezco")
+    public Integer getIdListaParentezco() {
+        return idListaParentezco;
+    }
+
+    public void setIdListaParentezco(Integer idListaParentezco) {
+        this.idListaParentezco = idListaParentezco;
     }
 }

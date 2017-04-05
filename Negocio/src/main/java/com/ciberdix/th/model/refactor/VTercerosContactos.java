@@ -6,7 +6,6 @@ import java.sql.Timestamp;
  * Created by robertochajin on 5/04/17.
  */
 public class VTercerosContactos {
-    private Integer idListaParentezco;
     private String codigoListaParentesco;
     private String nombreListaParentesco;
     private Integer idTerceroContacto;
@@ -18,14 +17,7 @@ public class VTercerosContactos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public Integer getIdListaParentezco() {
-        return idListaParentezco;
-    }
-
-    public void setIdListaParentezco(Integer idListaParentezco) {
-        this.idListaParentezco = idListaParentezco;
-    }
+    private Integer idListaParentezco;
 
     public String getCodigoListaParentesco() {
         return codigoListaParentesco;
@@ -113,5 +105,13 @@ public class VTercerosContactos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdListaParentezco() {
+        return idListaParentezco;
+    }
+
+    public void setIdListaParentezco(Integer idListaParentezco) {
+        this.idListaParentezco = idListaParentezco;
     }
 }
