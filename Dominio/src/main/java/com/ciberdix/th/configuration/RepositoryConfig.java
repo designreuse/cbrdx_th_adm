@@ -88,6 +88,10 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VTercerosInmuebles.class);
         config.exposeIdsFor(VTercerosVehiculos.class);
         config.exposeIdsFor(DiagnosticosCie.class);
+        config.exposeIdsFor(ListasTiposConstruccionViviendas.class);
+        config.exposeIdsFor(ListasEstratos.class);
+        config.exposeIdsFor(ListasClasesViviendas.class);
+        config.exposeIdsFor(ListasTiposViviendas.class);
 
     }
 }
