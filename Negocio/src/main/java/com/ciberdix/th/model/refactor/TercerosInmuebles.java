@@ -18,7 +18,8 @@ public class TercerosInmuebles {
     private Integer idEstrato;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;    
+    private Timestamp auditoriaFecha;
+    private Integer idTerceroLocalizacion;
 
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
@@ -114,5 +115,13 @@ public class TercerosInmuebles {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTerceroLocalizacion() {
+        return idTerceroLocalizacion;
+    }
+
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 }

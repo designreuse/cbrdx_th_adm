@@ -26,7 +26,7 @@ public class TercerosInmuebles {
     public TercerosInmuebles() {
     }
 
-    public TercerosInmuebles(Long idTercero, Integer idTipoVivienda, Integer idClaseVivienda, Integer idTipoConstruccionVivienda, Integer anioConstruccion, Integer numeroPisos, Integer numeroSotanos, Integer idEstrato, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosInmuebles(Long idTercero, Integer idTipoVivienda, Integer idClaseVivienda, Integer idTipoConstruccionVivienda, Integer anioConstruccion, Integer numeroPisos, Integer numeroSotanos, Integer idEstrato, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idTerceroLocalizacion) {
         this.idTercero = idTercero;
         this.idTipoVivienda = idTipoVivienda;
         this.idClaseVivienda = idClaseVivienda;
@@ -38,6 +38,7 @@ public class TercerosInmuebles {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 
     @Id
