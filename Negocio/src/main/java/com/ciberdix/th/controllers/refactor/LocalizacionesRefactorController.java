@@ -45,4 +45,11 @@ public class LocalizacionesRefactorController {
         Localizaciones parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLocalizacion, Localizaciones.class);
         return parametro;
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{idTercero}")
+    List<Localizaciones> findOthers(@PathVariable Long idTercero) {
+        RestTemplate restTemplate = new RestTemplate();
+        Localizaciones[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTercero/" + idTercero, Localizaciones[].class);
+        return Arrays.asList(parametros);
+    }
 }
