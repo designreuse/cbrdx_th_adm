@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
 public class Faltas {
@@ -18,6 +18,7 @@ public class Faltas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idEstadoFalta;
 
     @Id
     @Column(name = "IdFalta")
@@ -89,6 +90,16 @@ public class Faltas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdEstadoFalta")
+    public Integer getIdEstadoFalta() {
+        return idEstadoFalta;
+    }
+
+    public void setIdEstadoFalta(Integer idEstadoFalta) {
+        this.idEstadoFalta = idEstadoFalta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +117,8 @@ public class Faltas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(faltas.auditoriaFecha) : faltas.auditoriaFecha != null)
             return false;
+        if (idEstadoFalta != null ? !idEstadoFalta.equals(faltas.idEstadoFalta) : faltas.idEstadoFalta != null)
+            return false;
 
         return true;
     }
@@ -119,6 +132,7 @@ public class Faltas {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idEstadoFalta != null ? idEstadoFalta.hashCode() : 0);
         return result;
     }
 }
