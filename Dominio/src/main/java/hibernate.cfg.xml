@@ -311,6 +311,9 @@
         <mapping class="com.ciberdix.th.models.refactor.VTercerosDatosClinicos"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosContactos"/>
         <mapping class="com.ciberdix.th.models.refactor.TercerosResidencias"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasEstadosCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposNovedades"/>
+        <mapping class="com.ciberdix.th.models.refactor.VFaltas"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
