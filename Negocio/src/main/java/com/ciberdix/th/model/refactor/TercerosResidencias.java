@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  */
 public class TercerosResidencias {
     private Integer idTerceroResidencia;
-    private Long idTerceroLocalizacion;
+    private Integer idTerceroLocalizacion;
     private Integer idTipoVivienda;
     private Integer idTipoConstruccionVivienda;
     private Integer idEstrato;
@@ -24,11 +24,11 @@ public class TercerosResidencias {
         this.idTerceroResidencia = idTerceroResidencia;
     }
 
-    public Long getIdTerceroLocalizacion() {
+    public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;
     }
 
-    public void setIdTerceroLocalizacion(Long idTerceroLocalizacion) {
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 

@@ -22,7 +22,7 @@ public class TercerosResidenciasRefactorController {
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosResidencias> listarTercerosResidencias() {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosResidencias[] TercerosResidencias = restTemplate.getForObject(serviceUrl + "api/TercerosResidencias", TercerosResidencias[].class);
+        TercerosResidencias[] TercerosResidencias = restTemplate.getForObject(serviceUrl + "api/tercerosResidencias", TercerosResidencias[].class);
 
         return Arrays.asList(TercerosResidencias);
     }
@@ -30,7 +30,7 @@ public class TercerosResidenciasRefactorController {
     @RequestMapping(method = RequestMethod.GET, value = "/buscarId/{id}")
     TercerosResidencias obtenerActividadEconomica(@PathVariable Long id) {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosResidencias actividad = restTemplate.getForObject(serviceUrl + "api/TercerosResidencias/buscarId/" + id, TercerosResidencias.class);
+        TercerosResidencias actividad = restTemplate.getForObject(serviceUrl + "api/tercerosResidencias/buscarId/" + id, TercerosResidencias.class);
 
         return actividad;
     }
@@ -38,7 +38,7 @@ public class TercerosResidenciasRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     TercerosResidencias crearActividadEconomica(@RequestBody TercerosResidencias obj) {
         RestTemplate restTemplate = new RestTemplate();
-        TercerosResidencias tercero = restTemplate.postForObject(serviceUrl + "api/TercerosResidencias", obj, TercerosResidencias.class);
+        TercerosResidencias tercero = restTemplate.postForObject(serviceUrl + "api/tercerosResidencias", obj, TercerosResidencias.class);
 
         return tercero;
     }
@@ -46,6 +46,6 @@ public class TercerosResidenciasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody TercerosResidencias obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl + "api/TercerosResidencias", obj);
+        restTemplate.put(serviceUrl + "api/tercerosResidencias", obj);
     }
 }

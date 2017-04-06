@@ -29,7 +29,10 @@ public class TercerosResidenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosResidencias crearActividadEconomica(@RequestBody TercerosResidencias obj) {
-        return TercerosResidenciasRepository.save(obj);
+        if (obj.getIndicadorHabilitado()) {
+            TercerosResidenciasRepository.updateChecks(obj.getIdTerceroLocalizacion());
+        }
+        return TercerosResidenciasRepository.save(new TercerosResidencias(obj.getIdTerceroLocalizacion(), obj.getIdTipoVivienda(), obj.getIdTipoConstruccionVivienda(), obj.getIdEstrato(), obj.getIdClasesViviendas(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

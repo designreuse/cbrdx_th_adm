@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Table(name = "TercerosResidencias", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosResidencias {
     private Integer idTerceroResidencia;
-    private Long idTerceroLocalizacion;
+    private Integer idTerceroLocalizacion;
     private Integer idTipoVivienda;
     private Integer idTipoConstruccionVivienda;
     private Integer idEstrato;
@@ -22,7 +22,7 @@ public class TercerosResidencias {
     public TercerosResidencias() {
     }
 
-    public TercerosResidencias(Long idTerceroLocalizacion, Integer idTipoVivienda, Integer idTipoConstruccionVivienda, Integer idEstrato, Integer idClasesViviendas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosResidencias(Integer idTerceroLocalizacion, Integer idTipoVivienda, Integer idTipoConstruccionVivienda, Integer idEstrato, Integer idClasesViviendas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
         this.idTipoVivienda = idTipoVivienda;
         this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
@@ -46,11 +46,11 @@ public class TercerosResidencias {
 
     @Basic
     @Column(name = "IdTerceroLocalizacion")
-    public Long getIdTerceroLocalizacion() {
+    public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;
     }
 
-    public void setIdTerceroLocalizacion(Long idTerceroLocalizacion) {
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
         this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 
