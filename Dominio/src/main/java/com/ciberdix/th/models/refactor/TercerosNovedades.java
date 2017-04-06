@@ -20,6 +20,7 @@ public class TercerosNovedades {
     private String observacionEstado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Long idTercero;
 
     @Id
     @Column(name = "IdTerceroNovedad")
@@ -148,5 +149,15 @@ public class TercerosNovedades {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdTercero")
+    public Long getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
     }
 }
