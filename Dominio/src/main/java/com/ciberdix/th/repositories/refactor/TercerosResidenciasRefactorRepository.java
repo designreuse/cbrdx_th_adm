@@ -12,4 +12,6 @@ public interface TercerosResidenciasRefactorRepository extends CrudRepository<Te
     @Modifying
     @Query("update TercerosResidencias set indicadorHabilitado = 0 where idTerceroLocalizacion in (select idTerceroLocalizacion from TercerosLocalizaciones where idTercero in (select idTercero from TercerosLocalizaciones where idTerceroLocalizacion = ?1))")
     void updateChecks(Integer id);
+
+    TercerosResidencias findByIdTerceroLocalizacion(Integer idTerceroLocalizacion);
 }

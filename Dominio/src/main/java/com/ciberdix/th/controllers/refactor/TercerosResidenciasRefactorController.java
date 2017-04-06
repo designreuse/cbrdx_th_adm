@@ -24,7 +24,7 @@ public class TercerosResidenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
     TercerosResidencias parent(@PathVariable Integer id) {
-        return TercerosResidenciasRepository.findOne(id);
+        return TercerosResidenciasRepository.findByIdTerceroLocalizacion(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
