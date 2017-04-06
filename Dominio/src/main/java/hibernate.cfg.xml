@@ -302,6 +302,15 @@
         <mapping class="com.ciberdix.th.models.refactor.TercerosVehiculos"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosVehiculos"/>
         <mapping class="com.ciberdix.th.models.refactor.VTercerosInmuebles"/>
+        <mapping class="com.ciberdix.th.models.refactor.VHistoricoUsuarios"/>
+        <mapping class="com.ciberdix.th.models.refactor.VUsuarioGruposGestion"/>
+        <mapping class="com.ciberdix.th.models.refactor.VUsuarioRoles"/>
+        <mapping class="com.ciberdix.th.models.refactor.VUsuarioRolesCantidad"/>
+        <mapping class="com.ciberdix.th.models.refactor.VUsuarios"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTerceroInmuebles"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosDatosClinicos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosContactos"/>
+        <mapping class="com.ciberdix.th.models.refactor.TercerosResidencias"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

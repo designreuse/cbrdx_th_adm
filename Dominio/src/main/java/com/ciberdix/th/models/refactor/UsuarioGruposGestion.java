@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -21,7 +18,21 @@ public class UsuarioGruposGestion {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
+    public UsuarioGruposGestion() {
+    }
+
+    public UsuarioGruposGestion(Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado) {
+        this.idUsuario = idUsuario;
+        this.idGrupoGestion = idGrupoGestion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdUsuarioGrupoGestion")
     public Integer getIdUsuarioGrupoGestion() {
         return idUsuarioGrupoGestion;

@@ -54,6 +54,7 @@ public class Terceros {
     private Integer idTallaCamisa;
     private Integer idTallaPantalon;
     private Integer idTallaCalzado;
+    private String sitioWeb;
 
     public Long getIdTercero() {
         return idTercero;
@@ -429,5 +430,13 @@ public class Terceros {
 
     public void setIdTallaCalzado(Integer idTallaCalzado) {
         this.idTallaCalzado = idTallaCalzado;
+    }
+
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
     }
 }

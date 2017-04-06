@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
+@Table(name = "TercerosInmuebles", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosInmuebles {
     private Integer idTerceroInmueble;
     private Long idTercero;
@@ -24,7 +22,25 @@ public class TercerosInmuebles {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public TercerosInmuebles() {
+    }
+
+    public TercerosInmuebles(Long idTercero, Integer idTipoVivienda, Integer idClaseVivienda, Integer idTipoConstruccionVivienda, Integer anioConstruccion, Integer numeroPisos, Integer numeroSotanos, Integer idEstrato, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTercero = idTercero;
+        this.idTipoVivienda = idTipoVivienda;
+        this.idClaseVivienda = idClaseVivienda;
+        this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
+        this.anioConstruccion = anioConstruccion;
+        this.numeroPisos = numeroPisos;
+        this.numeroSotanos = numeroSotanos;
+        this.idEstrato = idEstrato;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroInmueble")
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;

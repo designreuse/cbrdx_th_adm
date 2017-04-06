@@ -32,6 +32,7 @@ public class Constantes {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdConstante")
     public Integer getIdConstante() {
         return idConstante;

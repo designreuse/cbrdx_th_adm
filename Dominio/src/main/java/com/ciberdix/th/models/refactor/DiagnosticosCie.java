@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "DiagnosticosCie", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "DiagnosticosCIE", schema = "crz_th", catalog = "CREZCAMOS")
 public class DiagnosticosCie {
     private Integer idDiagnosticoCie;
     private String codigo;
@@ -23,6 +23,21 @@ public class DiagnosticosCie {
     private Integer noAfeccion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+    public DiagnosticosCie() {
+    }
+
+    public DiagnosticosCie(String codigo, String simbolo, String descripcion, Integer sexo, Integer limiteInferior, Integer limiteSuperior, Integer noAfeccion, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.simbolo = simbolo;
+        this.descripcion = descripcion;
+        this.sexo = sexo;
+        this.limiteInferior = limiteInferior;
+        this.limiteSuperior = limiteSuperior;
+        this.noAfeccion = noAfeccion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdDiagnosticoCIE")
