@@ -9,5 +9,5 @@ import java.util.List;
  * Created by robertochajin on 4/04/17.
  */
 public interface VTercerosInmueblesRefactorRepository extends CrudRepository<VTercerosInmuebles, Integer> {
-    List<VTercerosInmuebles> findByIdTercero(Long id);
+    List<VTercerosInmuebles> findByIndicadorHabilitadoIsTrueAndIdTercero(Long id);
 }
