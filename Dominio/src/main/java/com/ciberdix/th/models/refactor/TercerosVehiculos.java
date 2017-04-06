@@ -38,6 +38,7 @@ public class TercerosVehiculos {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroVehiculo")
     public Integer getIdTerceroVehiculo() {
         return idTerceroVehiculo;

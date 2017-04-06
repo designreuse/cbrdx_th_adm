@@ -3,37 +3,33 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- *
- * @author Roberto Chajin Ortiz
+ * Created by Felipe Alejandro Aguirre Santos on 4/5/2017.
  */
-public class TercerosInmuebles {
-    private Integer idTerceroInmueble;
-    private Long idTercero;
+public class TercerosResidencias {
+    private Integer idTerceroResidencia;
+    private Integer idTerceroLocalizacion;
     private Integer idTipoVivienda;
-    private Integer idClaseVivienda;
     private Integer idTipoConstruccionVivienda;
-    private Integer anioConstruccion;
-    private Integer numeroPisos;
-    private Integer numeroSotanos;
     private Integer idEstrato;
+    private Integer idClasesViviendas;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdTerceroInmueble() {
-        return idTerceroInmueble;
+    public Integer getIdTerceroResidencia() {
+        return idTerceroResidencia;
     }
 
-    public void setIdTerceroInmueble(Integer idTerceroInmueble) {
-        this.idTerceroInmueble = idTerceroInmueble;
+    public void setIdTerceroResidencia(Integer idTerceroResidencia) {
+        this.idTerceroResidencia = idTerceroResidencia;
     }
 
-    public Long getIdTercero() {
-        return idTercero;
+    public Integer getIdTerceroLocalizacion() {
+        return idTerceroLocalizacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
+    public void setIdTerceroLocalizacion(Integer idTerceroLocalizacion) {
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
     }
 
     public Integer getIdTipoVivienda() {
@@ -44,14 +40,6 @@ public class TercerosInmuebles {
         this.idTipoVivienda = idTipoVivienda;
     }
 
-    public Integer getIdClaseVivienda() {
-        return idClaseVivienda;
-    }
-
-    public void setIdClaseVivienda(Integer idClaseVivienda) {
-        this.idClaseVivienda = idClaseVivienda;
-    }
-
     public Integer getIdTipoConstruccionVivienda() {
         return idTipoConstruccionVivienda;
     }
@@ -60,36 +48,20 @@ public class TercerosInmuebles {
         this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
     }
 
-    public Integer getAnioConstruccion() {
-        return anioConstruccion;
-    }
-
-    public void setAnioConstruccion(Integer anioConstruccion) {
-        this.anioConstruccion = anioConstruccion;
-    }
-
-    public Integer getNumeroPisos() {
-        return numeroPisos;
-    }
-
-    public void setNumeroPisos(Integer numeroPisos) {
-        this.numeroPisos = numeroPisos;
-    }
-
-    public Integer getNumeroSotanos() {
-        return numeroSotanos;
-    }
-
-    public void setNumeroSotanos(Integer numeroSotanos) {
-        this.numeroSotanos = numeroSotanos;
-    }
-
     public Integer getIdEstrato() {
         return idEstrato;
     }
 
     public void setIdEstrato(Integer idEstrato) {
         this.idEstrato = idEstrato;
+    }
+
+    public Integer getIdClasesViviendas() {
+        return idClasesViviendas;
+    }
+
+    public void setIdClasesViviendas(Integer idClasesViviendas) {
+        this.idClasesViviendas = idClasesViviendas;
     }
 
     public Boolean getIndicadorHabilitado() {
