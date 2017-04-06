@@ -37,7 +37,7 @@ public class TercerosInmueblesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{id}")
     List<VTercerosInmuebles> findPorTercero(@PathVariable Long id) {
-        return (List<VTercerosInmuebles>) vTercerosInmueblesRefactorRepository.findByIdTercero(id);
+        return (List<VTercerosInmuebles>) vTercerosInmueblesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdTercero(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
