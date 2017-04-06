@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
 public class Cargos {
@@ -23,7 +23,7 @@ public class Cargos {
     private Integer puntos;
     private Integer idCategoria;
     private Integer salario;
-    private Boolean idRequiereFormacion;
+    private Boolean indicadorRequiereFormacion;
     private Boolean indicadorHabilitado;
     private String interrelacionesInternas;
     private String interrelacionesExternas;
@@ -35,11 +35,11 @@ public class Cargos {
     private String tiempoExperiencia;
     private String otrosRequisitos;
     private BigInteger edad;
-    private Integer idGenero;
-    private Integer idEstadoCivil;
     private String cargaFisica;
     private String cargaMental;
     private String nivelPsicoSocial;
+    private String codigoCargo;
+    private Integer idEstructuraArea;
 
     @Id
     @Column(name = "IdCargo")
@@ -152,13 +152,13 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdRequiereFormacion")
-    public Boolean getIdRequiereFormacion() {
-        return idRequiereFormacion;
+    @Column(name = "IndicadorRequiereFormacion")
+    public Boolean getIndicadorRequiereFormacion() {
+        return indicadorRequiereFormacion;
     }
 
-    public void setIdRequiereFormacion(Boolean idRequiereFormacion) {
-        this.idRequiereFormacion = idRequiereFormacion;
+    public void setIndicadorRequiereFormacion(Boolean indicadorRequiereFormacion) {
+        this.indicadorRequiereFormacion = indicadorRequiereFormacion;
     }
 
     @Basic
@@ -272,26 +272,6 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdGenero")
-    public Integer getIdGenero() {
-        return idGenero;
-    }
-
-    public void setIdGenero(Integer idGenero) {
-        this.idGenero = idGenero;
-    }
-
-    @Basic
-    @Column(name = "IdEstadoCivil")
-    public Integer getIdEstadoCivil() {
-        return idEstadoCivil;
-    }
-
-    public void setIdEstadoCivil(Integer idEstadoCivil) {
-        this.idEstadoCivil = idEstadoCivil;
-    }
-
-    @Basic
     @Column(name = "CargaFisica")
     public String getCargaFisica() {
         return cargaFisica;
@@ -321,6 +301,26 @@ public class Cargos {
         this.nivelPsicoSocial = nivelPsicoSocial;
     }
 
+    @Basic
+    @Column(name = "CodigoCargo")
+    public String getCodigoCargo() {
+        return codigoCargo;
+    }
+
+    public void setCodigoCargo(String codigoCargo) {
+        this.codigoCargo = codigoCargo;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraArea")
+    public Integer getIdEstructuraArea() {
+        return idEstructuraArea;
+    }
+
+    public void setIdEstructuraArea(Integer idEstructuraArea) {
+        this.idEstructuraArea = idEstructuraArea;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -343,7 +343,7 @@ public class Cargos {
         if (puntos != null ? !puntos.equals(cargos.puntos) : cargos.puntos != null) return false;
         if (idCategoria != null ? !idCategoria.equals(cargos.idCategoria) : cargos.idCategoria != null) return false;
         if (salario != null ? !salario.equals(cargos.salario) : cargos.salario != null) return false;
-        if (idRequiereFormacion != null ? !idRequiereFormacion.equals(cargos.idRequiereFormacion) : cargos.idRequiereFormacion != null)
+        if (indicadorRequiereFormacion != null ? !indicadorRequiereFormacion.equals(cargos.indicadorRequiereFormacion) : cargos.indicadorRequiereFormacion != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(cargos.indicadorHabilitado) : cargos.indicadorHabilitado != null)
             return false;
@@ -366,12 +366,12 @@ public class Cargos {
         if (otrosRequisitos != null ? !otrosRequisitos.equals(cargos.otrosRequisitos) : cargos.otrosRequisitos != null)
             return false;
         if (edad != null ? !edad.equals(cargos.edad) : cargos.edad != null) return false;
-        if (idGenero != null ? !idGenero.equals(cargos.idGenero) : cargos.idGenero != null) return false;
-        if (idEstadoCivil != null ? !idEstadoCivil.equals(cargos.idEstadoCivil) : cargos.idEstadoCivil != null)
-            return false;
         if (cargaFisica != null ? !cargaFisica.equals(cargos.cargaFisica) : cargos.cargaFisica != null) return false;
         if (cargaMental != null ? !cargaMental.equals(cargos.cargaMental) : cargos.cargaMental != null) return false;
         if (nivelPsicoSocial != null ? !nivelPsicoSocial.equals(cargos.nivelPsicoSocial) : cargos.nivelPsicoSocial != null)
+            return false;
+        if (codigoCargo != null ? !codigoCargo.equals(cargos.codigoCargo) : cargos.codigoCargo != null) return false;
+        if (idEstructuraArea != null ? !idEstructuraArea.equals(cargos.idEstructuraArea) : cargos.idEstructuraArea != null)
             return false;
 
         return true;
@@ -390,7 +390,7 @@ public class Cargos {
         result = 31 * result + (puntos != null ? puntos.hashCode() : 0);
         result = 31 * result + (idCategoria != null ? idCategoria.hashCode() : 0);
         result = 31 * result + (salario != null ? salario.hashCode() : 0);
-        result = 31 * result + (idRequiereFormacion != null ? idRequiereFormacion.hashCode() : 0);
+        result = 31 * result + (indicadorRequiereFormacion != null ? indicadorRequiereFormacion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (interrelacionesInternas != null ? interrelacionesInternas.hashCode() : 0);
         result = 31 * result + (interrelacionesExternas != null ? interrelacionesExternas.hashCode() : 0);
@@ -402,11 +402,11 @@ public class Cargos {
         result = 31 * result + (tiempoExperiencia != null ? tiempoExperiencia.hashCode() : 0);
         result = 31 * result + (otrosRequisitos != null ? otrosRequisitos.hashCode() : 0);
         result = 31 * result + (edad != null ? edad.hashCode() : 0);
-        result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
-        result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
         result = 31 * result + (cargaFisica != null ? cargaFisica.hashCode() : 0);
         result = 31 * result + (cargaMental != null ? cargaMental.hashCode() : 0);
         result = 31 * result + (nivelPsicoSocial != null ? nivelPsicoSocial.hashCode() : 0);
+        result = 31 * result + (codigoCargo != null ? codigoCargo.hashCode() : 0);
+        result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
         return result;
     }
 }
