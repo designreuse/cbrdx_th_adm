@@ -101,6 +101,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(ListasTiposVehiculos.class);
         config.exposeIdsFor(ListasMarcasVehiculos.class);
         config.exposeIdsFor(ListasTiposServiciosVehiculos.class);
+        config.exposeIdsFor(TercerosResidencias.class);
 
     }
 }
