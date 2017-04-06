@@ -313,6 +313,12 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasEstadosCargos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposNovedades"/>
         <mapping class="com.ciberdix.th.models.refactor.VFaltas"/>
+        <mapping class="com.ciberdix.th.models.refactor.CargosOcupaciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasAtributosCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposCargosRelaciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.Ponderaciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.Productividades"/>
+        <mapping class="com.ciberdix.th.models.refactor.VCargos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

@@ -4,18 +4,19 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
 public class CargosProductividades {
     private Integer idCargoProductividad;
     private Integer idCargo;
-    private Integer idProductividadItem;
+    private Integer idProductividad;
+    private Integer idProductividadIq;
+    private Integer idProductividadAptitud;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;
+    private Integer auditoriaFecha;
 
     @Id
     @Column(name = "IdCargoProductividad")
@@ -38,13 +39,33 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "IdProductividadItem")
-    public Integer getIdProductividadItem() {
-        return idProductividadItem;
+    @Column(name = "IdProductividad")
+    public Integer getIdProductividad() {
+        return idProductividad;
     }
 
-    public void setIdProductividadItem(Integer idProductividadItem) {
-        this.idProductividadItem = idProductividadItem;
+    public void setIdProductividad(Integer idProductividad) {
+        this.idProductividad = idProductividad;
+    }
+
+    @Basic
+    @Column(name = "IdProductividadIQ")
+    public Integer getIdProductividadIq() {
+        return idProductividadIq;
+    }
+
+    public void setIdProductividadIq(Integer idProductividadIq) {
+        this.idProductividadIq = idProductividadIq;
+    }
+
+    @Basic
+    @Column(name = "IdProductividadAptitud")
+    public Integer getIdProductividadAptitud() {
+        return idProductividadAptitud;
+    }
+
+    public void setIdProductividadAptitud(Integer idProductividadAptitud) {
+        this.idProductividadAptitud = idProductividadAptitud;
     }
 
     @Basic
@@ -59,11 +80,11 @@ public class CargosProductividades {
 
     @Basic
     @Column(name = "AuditoriaFecha")
-    public Timestamp getAuditoriaFecha() {
+    public Integer getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
-    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+    public void setAuditoriaFecha(Integer auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
 
@@ -77,7 +98,11 @@ public class CargosProductividades {
         if (idCargoProductividad != null ? !idCargoProductividad.equals(that.idCargoProductividad) : that.idCargoProductividad != null)
             return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
-        if (idProductividadItem != null ? !idProductividadItem.equals(that.idProductividadItem) : that.idProductividadItem != null)
+        if (idProductividad != null ? !idProductividad.equals(that.idProductividad) : that.idProductividad != null)
+            return false;
+        if (idProductividadIq != null ? !idProductividadIq.equals(that.idProductividadIq) : that.idProductividadIq != null)
+            return false;
+        if (idProductividadAptitud != null ? !idProductividadAptitud.equals(that.idProductividadAptitud) : that.idProductividadAptitud != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
@@ -91,7 +116,9 @@ public class CargosProductividades {
     public int hashCode() {
         int result = idCargoProductividad != null ? idCargoProductividad.hashCode() : 0;
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
-        result = 31 * result + (idProductividadItem != null ? idProductividadItem.hashCode() : 0);
+        result = 31 * result + (idProductividad != null ? idProductividad.hashCode() : 0);
+        result = 31 * result + (idProductividadIq != null ? idProductividadIq.hashCode() : 0);
+        result = 31 * result + (idProductividadAptitud != null ? idProductividadAptitud.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
