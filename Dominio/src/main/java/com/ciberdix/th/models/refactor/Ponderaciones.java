@@ -10,42 +10,53 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-public class CargosResponsabilidades {
-    private Integer idCargoResponsabilidad;
-    private Integer idResponsabilidad;
-    private Integer idCargo;
+public class Ponderaciones {
+    private Integer idPonderacion;
+    private String ponderacion;
+    private Double minimo;
+    private Double maximo;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoResponsabilidad")
-    public Integer getIdCargoResponsabilidad() {
-        return idCargoResponsabilidad;
+    @Column(name = "IdPonderacion")
+    public Integer getIdPonderacion() {
+        return idPonderacion;
     }
 
-    public void setIdCargoResponsabilidad(Integer idCargoResponsabilidad) {
-        this.idCargoResponsabilidad = idCargoResponsabilidad;
-    }
-
-    @Basic
-    @Column(name = "IdResponsabilidad")
-    public Integer getIdResponsabilidad() {
-        return idResponsabilidad;
-    }
-
-    public void setIdResponsabilidad(Integer idResponsabilidad) {
-        this.idResponsabilidad = idResponsabilidad;
+    public void setIdPonderacion(Integer idPonderacion) {
+        this.idPonderacion = idPonderacion;
     }
 
     @Basic
-    @Column(name = "IdCargo")
-    public Integer getIdCargo() {
-        return idCargo;
+    @Column(name = "Ponderacion")
+    public String getPonderacion() {
+        return ponderacion;
     }
 
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setPonderacion(String ponderacion) {
+        this.ponderacion = ponderacion;
+    }
+
+    @Basic
+    @Column(name = "Minimo")
+    public Double getMinimo() {
+        return minimo;
+    }
+
+    public void setMinimo(Double minimo) {
+        this.minimo = minimo;
+    }
+
+    @Basic
+    @Column(name = "Maximo")
+    public Double getMaximo() {
+        return maximo;
+    }
+
+    public void setMaximo(Double maximo) {
+        this.maximo = maximo;
     }
 
     @Basic
@@ -83,13 +94,13 @@ public class CargosResponsabilidades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosResponsabilidades that = (CargosResponsabilidades) o;
+        Ponderaciones that = (Ponderaciones) o;
 
-        if (idCargoResponsabilidad != null ? !idCargoResponsabilidad.equals(that.idCargoResponsabilidad) : that.idCargoResponsabilidad != null)
+        if (idPonderacion != null ? !idPonderacion.equals(that.idPonderacion) : that.idPonderacion != null)
             return false;
-        if (idResponsabilidad != null ? !idResponsabilidad.equals(that.idResponsabilidad) : that.idResponsabilidad != null)
-            return false;
-        if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (ponderacion != null ? !ponderacion.equals(that.ponderacion) : that.ponderacion != null) return false;
+        if (minimo != null ? !minimo.equals(that.minimo) : that.minimo != null) return false;
+        if (maximo != null ? !maximo.equals(that.maximo) : that.maximo != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -102,9 +113,10 @@ public class CargosResponsabilidades {
 
     @Override
     public int hashCode() {
-        int result = idCargoResponsabilidad != null ? idCargoResponsabilidad.hashCode() : 0;
-        result = 31 * result + (idResponsabilidad != null ? idResponsabilidad.hashCode() : 0);
-        result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        int result = idPonderacion != null ? idPonderacion.hashCode() : 0;
+        result = 31 * result + (ponderacion != null ? ponderacion.hashCode() : 0);
+        result = 31 * result + (minimo != null ? minimo.hashCode() : 0);
+        result = 31 * result + (maximo != null ? maximo.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

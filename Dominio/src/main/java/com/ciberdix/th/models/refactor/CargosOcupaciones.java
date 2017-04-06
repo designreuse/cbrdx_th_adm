@@ -7,24 +7,25 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-public class CargosIqNiveles {
-    private Integer idCargoIqNivel;
+public class CargosOcupaciones {
+    private Integer idCargoOcupacion;
     private Integer idCargo;
-    private Integer idIqNivel;
+    private Integer idOcupacion;
+    private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoIQNivel")
-    public Integer getIdCargoIqNivel() {
-        return idCargoIqNivel;
+    @Column(name = "IdCargoOcupacion")
+    public Integer getIdCargoOcupacion() {
+        return idCargoOcupacion;
     }
 
-    public void setIdCargoIqNivel(Integer idCargoIqNivel) {
-        this.idCargoIqNivel = idCargoIqNivel;
+    public void setIdCargoOcupacion(Integer idCargoOcupacion) {
+        this.idCargoOcupacion = idCargoOcupacion;
     }
 
     @Basic
@@ -38,13 +39,23 @@ public class CargosIqNiveles {
     }
 
     @Basic
-    @Column(name = "IdIQNivel")
-    public Integer getIdIqNivel() {
-        return idIqNivel;
+    @Column(name = "IdOcupacion")
+    public Integer getIdOcupacion() {
+        return idOcupacion;
     }
 
-    public void setIdIqNivel(Integer idIqNivel) {
-        this.idIqNivel = idIqNivel;
+    public void setIdOcupacion(Integer idOcupacion) {
+        this.idOcupacion = idOcupacion;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Basic
@@ -72,12 +83,14 @@ public class CargosIqNiveles {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosIqNiveles that = (CargosIqNiveles) o;
+        CargosOcupaciones that = (CargosOcupaciones) o;
 
-        if (idCargoIqNivel != null ? !idCargoIqNivel.equals(that.idCargoIqNivel) : that.idCargoIqNivel != null)
+        if (idCargoOcupacion != null ? !idCargoOcupacion.equals(that.idCargoOcupacion) : that.idCargoOcupacion != null)
             return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
-        if (idIqNivel != null ? !idIqNivel.equals(that.idIqNivel) : that.idIqNivel != null) return false;
+        if (idOcupacion != null ? !idOcupacion.equals(that.idOcupacion) : that.idOcupacion != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -88,9 +101,10 @@ public class CargosIqNiveles {
 
     @Override
     public int hashCode() {
-        int result = idCargoIqNivel != null ? idCargoIqNivel.hashCode() : 0;
+        int result = idCargoOcupacion != null ? idCargoOcupacion.hashCode() : 0;
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
-        result = 31 * result + (idIqNivel != null ? idIqNivel.hashCode() : 0);
+        result = 31 * result + (idOcupacion != null ? idOcupacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
