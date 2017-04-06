@@ -37,6 +37,9 @@ public class TercerosResidenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody TercerosResidencias obj) {
+        if (obj.getIndicadorHabilitado()) {
+            TercerosResidenciasRepository.updateChecks(obj.getIdTerceroLocalizacion());
+        }
         TercerosResidenciasRepository.save(obj);
     }
 }
