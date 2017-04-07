@@ -33,7 +33,7 @@ public class CargosProductividadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    CargosProductividades create(@RequestBody Cargos obj) {
+    CargosProductividades create(@RequestBody CargosProductividades obj) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, CargosProductividades.class);
     }
