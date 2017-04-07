@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
@@ -42,6 +39,7 @@ public class Cargos {
     private Integer idEstructuraArea;
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCargo")
     public Integer getIdCargo() {
         return idCargo;
