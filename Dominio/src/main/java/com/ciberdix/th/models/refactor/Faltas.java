@@ -32,6 +32,7 @@ public class Faltas {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdFalta")
     public Integer getIdFalta() {
         return idFalta;

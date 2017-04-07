@@ -18,7 +18,7 @@ import java.util.List;
 @Api(value = "listasTiposFaltas", description = "Listas Tipos Faltas")
 public class ListasTiposFaltasRefactorController {
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/faltas";
+    private String serviceUrl = globales.getUrl() + "/api/listasTiposFaltas";
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposFaltas> findAll() {

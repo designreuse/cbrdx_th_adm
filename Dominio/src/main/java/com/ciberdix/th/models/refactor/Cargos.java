@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
+@Table(name = "Cargos", schema = "crz_th", catalog = "CREZCAMOS")
 public class Cargos {
     private Integer idCargo;
     private String cargo;
@@ -41,7 +39,41 @@ public class Cargos {
     private String codigoCargo;
     private Integer idEstructuraArea;
 
+    public Cargos() {
+    }
+
+    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea) {
+        this.cargo = cargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.personaACargoDir = personaACargoDir;
+        this.personaACargoInd = personaACargoInd;
+        this.idCargoJefe = idCargoJefe;
+        this.mision = mision;
+        this.puntos = puntos;
+        this.idCategoria = idCategoria;
+        this.salario = salario;
+        this.indicadorRequiereFormacion = indicadorRequiereFormacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.interrelacionesInternas = interrelacionesInternas;
+        this.interrelacionesExternas = interrelacionesExternas;
+        this.responsabilidadesAd = responsabilidadesAd;
+        this.tomaDecisiones = tomaDecisiones;
+        this.actividadesSupervisa = actividadesSupervisa;
+        this.idNivelEducacion = idNivelEducacion;
+        this.conocimientosBasicos = conocimientosBasicos;
+        this.tiempoExperiencia = tiempoExperiencia;
+        this.otrosRequisitos = otrosRequisitos;
+        this.edad = edad;
+        this.cargaFisica = cargaFisica;
+        this.cargaMental = cargaMental;
+        this.nivelPsicoSocial = nivelPsicoSocial;
+        this.codigoCargo = codigoCargo;
+        this.idEstructuraArea = idEstructuraArea;
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdCargo")
     public Integer getIdCargo() {
         return idCargo;
