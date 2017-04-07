@@ -30,6 +30,7 @@ public class CargosProductividades {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCargoProductividad")
     public Integer getIdCargoProductividad() {
         return idCargoProductividad;
