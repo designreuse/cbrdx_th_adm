@@ -1,6 +1,9 @@
-FROM java:8
-VOLUME /tmp
-ADD dominio-0.0.2-TH.jar app.jar
-RUN bash -c 'touch /app.jar'
+FROM microsoft/nanoserver:latest
+ADD ./Negocio/target/dominio.jar app.jar
+ENV JAVA_PKG=./server-jre-8u121-windows-x64.tar.gz \
+    JAVA_HOME=C:\\jdk1.8.0_121
+ADD $JAVA_PKG /
+RUN setx /M PATH %PATH%;%JAVA_HOME%\bin
+RUN powershell.exe 'touch C:\app.jar'
 EXPOSE 8444
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT java -jar C:\app.jar

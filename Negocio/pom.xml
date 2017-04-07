@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Logica</name>
+    <name>logica</name>
     <description>Capa de Logica de Negocio para Talento Humano</description>
 
     <parent>
@@ -72,6 +72,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>

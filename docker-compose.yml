@@ -1,10 +1,23 @@
-dominio:
-  image: crezcamos/dominio
-  ports:
-   - "8444:8444"
-negocio:
-  image: crezcamos/logica
-  ports:
-   - "8448:8448"
-  links:
-   - dominio
+version: '3'
+services:
+    dominio:
+        image: crezcamos/dominio
+        build: 
+            context: . 
+            dockerfile: ./Dominio/src/main/docker/Dockerfile
+
+        ports:
+            - "8444:8444"
+    negocio:
+        image: crezcamos/logica
+        build: 
+            context: . 
+            dockerfile: ./Negocio/src/main/docker/Dockerfile
+        ports:
+            - "8448:8448"
+        links:
+            - dominio
+networks: 
+    default: 
+        external: 
+            name: nat 

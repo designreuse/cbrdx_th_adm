@@ -8,7 +8,7 @@
     <version>0.0.2-TH</version>
     <packaging>jar</packaging>
 
-    <name>Dominio</name>
+    <name>dominio</name>
     <description>Dominio para el proyecto de Talento Humano</description>
        
     <parent>
@@ -63,6 +63,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>
