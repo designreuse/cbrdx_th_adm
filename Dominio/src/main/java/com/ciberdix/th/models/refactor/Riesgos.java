@@ -18,6 +18,7 @@ public class Riesgos {
     private Timestamp auditoriaFecha;
 
     @Id
+    @GeneratedValue
     @Column(name = "IdRiesgo")
     public Integer getIdRiesgo() {
         return idRiesgo;
