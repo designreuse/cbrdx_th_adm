@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
 public class CargosRelacionados {
@@ -16,6 +16,8 @@ public class CargosRelacionados {
     private Integer idCargo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idCargoRelacion;
+    private Boolean indicadorHabilitado;
 
     @Id
     @Column(name = "IdCargoRelacionado")
@@ -67,6 +69,26 @@ public class CargosRelacionados {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdCargoRelacion")
+    public Integer getIdCargoRelacion() {
+        return idCargoRelacion;
+    }
+
+    public void setIdCargoRelacion(Integer idCargoRelacion) {
+        this.idCargoRelacion = idCargoRelacion;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,6 +105,10 @@ public class CargosRelacionados {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idCargoRelacion != null ? !idCargoRelacion.equals(that.idCargoRelacion) : that.idCargoRelacion != null)
+            return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
 
         return true;
     }
@@ -94,6 +120,8 @@ public class CargosRelacionados {
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idCargoRelacion != null ? idCargoRelacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         return result;
     }
 }

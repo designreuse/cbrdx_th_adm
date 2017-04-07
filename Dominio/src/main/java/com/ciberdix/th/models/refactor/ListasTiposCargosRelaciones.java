@@ -10,42 +10,53 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-public class CargosResponsabilidades {
-    private Integer idCargoResponsabilidad;
-    private Integer idResponsabilidad;
-    private Integer idCargo;
+public class ListasTiposCargosRelaciones {
+    private Integer idListaTipoCargoRelacion;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoResponsabilidad")
-    public Integer getIdCargoResponsabilidad() {
-        return idCargoResponsabilidad;
+    @Column(name = "IdListaTipoCargoRelacion")
+    public Integer getIdListaTipoCargoRelacion() {
+        return idListaTipoCargoRelacion;
     }
 
-    public void setIdCargoResponsabilidad(Integer idCargoResponsabilidad) {
-        this.idCargoResponsabilidad = idCargoResponsabilidad;
-    }
-
-    @Basic
-    @Column(name = "IdResponsabilidad")
-    public Integer getIdResponsabilidad() {
-        return idResponsabilidad;
-    }
-
-    public void setIdResponsabilidad(Integer idResponsabilidad) {
-        this.idResponsabilidad = idResponsabilidad;
+    public void setIdListaTipoCargoRelacion(Integer idListaTipoCargoRelacion) {
+        this.idListaTipoCargoRelacion = idListaTipoCargoRelacion;
     }
 
     @Basic
-    @Column(name = "IdCargo")
-    public Integer getIdCargo() {
-        return idCargo;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Basic
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -83,13 +94,13 @@ public class CargosResponsabilidades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosResponsabilidades that = (CargosResponsabilidades) o;
+        ListasTiposCargosRelaciones that = (ListasTiposCargosRelaciones) o;
 
-        if (idCargoResponsabilidad != null ? !idCargoResponsabilidad.equals(that.idCargoResponsabilidad) : that.idCargoResponsabilidad != null)
+        if (idListaTipoCargoRelacion != null ? !idListaTipoCargoRelacion.equals(that.idListaTipoCargoRelacion) : that.idListaTipoCargoRelacion != null)
             return false;
-        if (idResponsabilidad != null ? !idResponsabilidad.equals(that.idResponsabilidad) : that.idResponsabilidad != null)
-            return false;
-        if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -102,9 +113,10 @@ public class CargosResponsabilidades {
 
     @Override
     public int hashCode() {
-        int result = idCargoResponsabilidad != null ? idCargoResponsabilidad.hashCode() : 0;
-        result = 31 * result + (idResponsabilidad != null ? idResponsabilidad.hashCode() : 0);
-        result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        int result = idListaTipoCargoRelacion != null ? idListaTipoCargoRelacion.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
