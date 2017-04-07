@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
+@Table(name = "Productividades", schema = "crz_th", catalog = "CREZCAMOS")
 public class Productividades {
     private Integer idProductividad;
     private String productividad;
@@ -20,6 +18,20 @@ public class Productividades {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+    public Productividades() {
+    }
+
+    public Productividades(String productividad, Integer minimoIq, Integer maximoIq, Integer minimoAptitud, Integer maximoAptitud, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.productividad = productividad;
+        this.minimoIq = minimoIq;
+        this.maximoIq = maximoIq;
+        this.minimoAptitud = minimoAptitud;
+        this.maximoAptitud = maximoAptitud;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdProductividad")
