@@ -56,7 +56,7 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>     
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -71,14 +71,6 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
@@ -90,9 +82,16 @@
                         </resource>
                     </resources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>docker-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>        
     </build>
-
-
 </project>
