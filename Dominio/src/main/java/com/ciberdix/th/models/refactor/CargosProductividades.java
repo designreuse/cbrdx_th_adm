@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
@@ -16,7 +17,7 @@ public class CargosProductividades {
     private Integer idProductividadIq;
     private Integer idProductividadAptitud;
     private Integer auditoriaUsuario;
-    private Integer auditoriaFecha;
+    private Timestamp auditoriaFecha;
 
     @Id
     @Column(name = "IdCargoProductividad")
@@ -80,11 +81,11 @@ public class CargosProductividades {
 
     @Basic
     @Column(name = "AuditoriaFecha")
-    public Integer getAuditoriaFecha() {
+    public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
-    public void setAuditoriaFecha(Integer auditoriaFecha) {
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
 
