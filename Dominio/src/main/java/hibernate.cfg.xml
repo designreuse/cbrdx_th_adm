@@ -324,6 +324,7 @@
         <mapping class="com.ciberdix.th.models.refactor.VCargosRiesgos"/>
         <mapping class="com.ciberdix.th.models.refactor.CargosEstadosObservaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosResponsabilidades"/>
+        <mapping class="com.ciberdix.th.models.refactor.VCargosB"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
