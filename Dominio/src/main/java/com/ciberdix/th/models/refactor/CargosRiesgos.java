@@ -3,9 +3,6 @@ package com.ciberdix.th.models.refactor;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by robertochajin on 7/04/17.
- */
 @Entity
 @Table(name = "CargosRiesgos", schema = "crz_th", catalog = "CREZCAMOS")
 public class CargosRiesgos {
@@ -14,16 +11,6 @@ public class CargosRiesgos {
     private Integer idRiesgo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public CargosRiesgos() {
-    }
-
-    public CargosRiesgos(Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario) {
-        this.idCargo = idCargo;
-        this.idRiesgo = idRiesgo;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
 
     @Id
     @GeneratedValue
@@ -89,7 +76,10 @@ public class CargosRiesgos {
         if (idRiesgo != null ? !idRiesgo.equals(that.idRiesgo) : that.idRiesgo != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
-        return auditoriaFecha != null ? auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha == null;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
+
+        return true;
     }
 
     @Override
