@@ -28,6 +28,7 @@ public class CargosResponsabilidades {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCargoResponsabilidad")
     public Integer getIdCargoResponsabilidad() {
         return idCargoResponsabilidad;
