@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
+ * Created by robertochajin on 8/04/17.
  */
 @Entity
 @Table(name = "V_Cargos", schema = "crz_th", catalog = "CREZCAMOS")
