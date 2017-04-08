@@ -4,28 +4,19 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
+ * Created by robertochajin on 8/04/17.
  */
 @Entity
-@Table(name = "CargosResponsabilidades", schema = "crz_th", catalog = "CREZCAMOS")
-public class CargosResponsabilidades {
+@Table(name = "V_CargosResponsabilidades", schema = "crz_th", catalog = "CREZCAMOS")
+public class VCargosResponsabilidades {
     private Integer idCargoResponsabilidad;
-    private Integer idResponsabilidad;
     private Integer idCargo;
+    private String cargo;
+    private Integer idResponsabilidad;
+    private String responsabilidad;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public CargosResponsabilidades() {
-    }
-
-    public CargosResponsabilidades(Integer idResponsabilidad, Integer idCargo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idResponsabilidad = idResponsabilidad;
-        this.idCargo = idCargo;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
 
     @Id
     @Column(name = "IdCargoResponsabilidad")
@@ -35,6 +26,26 @@ public class CargosResponsabilidades {
 
     public void setIdCargoResponsabilidad(Integer idCargoResponsabilidad) {
         this.idCargoResponsabilidad = idCargoResponsabilidad;
+    }
+
+    @Basic
+    @Column(name = "IdCargo")
+    public Integer getIdCargo() {
+        return idCargo;
+    }
+
+    public void setIdCargo(Integer idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    @Basic
+    @Column(name = "Cargo")
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Basic
@@ -48,13 +59,13 @@ public class CargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "IdCargo")
-    public Integer getIdCargo() {
-        return idCargo;
+    @Column(name = "Responsabilidad")
+    public String getResponsabilidad() {
+        return responsabilidad;
     }
 
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setResponsabilidad(String responsabilidad) {
+        this.responsabilidad = responsabilidad;
     }
 
     @Basic
@@ -92,13 +103,16 @@ public class CargosResponsabilidades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosResponsabilidades that = (CargosResponsabilidades) o;
+        VCargosResponsabilidades that = (VCargosResponsabilidades) o;
 
         if (idCargoResponsabilidad != null ? !idCargoResponsabilidad.equals(that.idCargoResponsabilidad) : that.idCargoResponsabilidad != null)
             return false;
+        if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idResponsabilidad != null ? !idResponsabilidad.equals(that.idResponsabilidad) : that.idResponsabilidad != null)
             return false;
-        if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (responsabilidad != null ? !responsabilidad.equals(that.responsabilidad) : that.responsabilidad != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -112,8 +126,10 @@ public class CargosResponsabilidades {
     @Override
     public int hashCode() {
         int result = idCargoResponsabilidad != null ? idCargoResponsabilidad.hashCode() : 0;
-        result = 31 * result + (idResponsabilidad != null ? idResponsabilidad.hashCode() : 0);
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (idResponsabilidad != null ? idResponsabilidad.hashCode() : 0);
+        result = 31 * result + (responsabilidad != null ? responsabilidad.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
