@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Table(name = "Categorias", schema = "crz_th", catalog = "CREZCAMOS")
 public class Categorias {
     private Integer idCategoria;
-    private BigInteger categoria;
+    private String categoria;
     private Integer puntosMinimos;
     private Integer puntosMaximos;
     private Integer idNivel;
@@ -20,7 +20,22 @@ public class Categorias {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public Categorias() {
+    }
+
+    public Categorias(String categoria, Integer puntosMinimos, Integer puntosMaximos, Integer idNivel, String nivel, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.categoria = categoria;
+        this.puntosMinimos = puntosMinimos;
+        this.puntosMaximos = puntosMaximos;
+        this.idNivel = idNivel;
+        this.nivel = nivel;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdCategoria")
     public Integer getIdCategoria() {
         return idCategoria;
@@ -32,11 +47,11 @@ public class Categorias {
 
     @Basic
     @Column(name = "Categoria")
-    public BigInteger getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(BigInteger categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
