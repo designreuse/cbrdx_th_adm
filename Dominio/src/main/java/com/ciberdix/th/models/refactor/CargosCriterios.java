@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
 public class CargosCriterios {
@@ -16,7 +16,9 @@ public class CargosCriterios {
     private Integer idCargo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idTipoCriterio;
+    private String descripcion;
+    private Double meta;
+    private Double factor;
 
     @Id
     @Column(name = "IdCargoCriterio")
@@ -69,13 +71,33 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IdTipoCriterio")
-    public Integer getIdTipoCriterio() {
-        return idTipoCriterio;
+    @Column(name = "Descripcion")
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setIdTipoCriterio(Integer idTipoCriterio) {
-        this.idTipoCriterio = idTipoCriterio;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Basic
+    @Column(name = "Meta")
+    public Double getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Double meta) {
+        this.meta = meta;
+    }
+
+    @Basic
+    @Column(name = "Factor")
+    public Double getFactor() {
+        return factor;
+    }
+
+    public void setFactor(Double factor) {
+        this.factor = factor;
     }
 
     @Override
@@ -93,8 +115,9 @@ public class CargosCriterios {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-        if (idTipoCriterio != null ? !idTipoCriterio.equals(that.idTipoCriterio) : that.idTipoCriterio != null)
-            return false;
+        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
+        if (meta != null ? !meta.equals(that.meta) : that.meta != null) return false;
+        if (factor != null ? !factor.equals(that.factor) : that.factor != null) return false;
 
         return true;
     }
@@ -106,7 +129,9 @@ public class CargosCriterios {
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (idTipoCriterio != null ? idTipoCriterio.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
+        result = 31 * result + (meta != null ? meta.hashCode() : 0);
+        result = 31 * result + (factor != null ? factor.hashCode() : 0);
         return result;
     }
 }

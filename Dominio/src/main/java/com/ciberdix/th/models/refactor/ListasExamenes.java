@@ -1,23 +1,25 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 7/04/17.
+ * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
-@Table(name = "ListasExamenes", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasExamenes {
     private Integer idListaExamen;
     private String codigo;
     private String nombre;
     private Integer orden;
     private Boolean indicadorHabilitado;
+    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @GeneratedValue
     @Column(name = "IdListaExamen")
     public Integer getIdListaExamen() {
         return idListaExamen;
@@ -68,6 +70,16 @@ public class ListasExamenes {
     }
 
     @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
     @Column(name = "AuditoriaFecha")
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
@@ -91,6 +103,8 @@ public class ListasExamenes {
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+            return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
 
@@ -104,6 +118,7 @@ public class ListasExamenes {
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
     }

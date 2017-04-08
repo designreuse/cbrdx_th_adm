@@ -1,10 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 7/04/17.
+ * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
 @Table(name = "V_CargosRiesgos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -17,7 +20,7 @@ public class VCargosRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
+    @Basic
     @Column(name = "IdCargoRiesgo")
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;

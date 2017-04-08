@@ -319,6 +319,7 @@
         <mapping class="com.ciberdix.th.models.refactor.Ponderaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.Productividades"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.CargosExamenes"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasExamenes"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosRiesgos"/>
         <mapping class="com.ciberdix.th.models.refactor.CargosEstadosObservaciones"/>
