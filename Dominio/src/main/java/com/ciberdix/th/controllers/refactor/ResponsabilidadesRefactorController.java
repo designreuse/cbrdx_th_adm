@@ -29,6 +29,11 @@ public class ResponsabilidadesRefactorController {
         return (List<Responsabilidades>) responsabilidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/noAsignadas/{id}")
+    List<Responsabilidades> findNoAsignadas(@PathVariable Integer id) {
+        return (List<Responsabilidades>) responsabilidadesRefactorRepository.queryAll(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     Responsabilidades findOne(@PathVariable Integer id) {
         return responsabilidadesRefactorRepository.findOne(id);

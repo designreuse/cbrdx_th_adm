@@ -40,6 +40,13 @@ public class ResponsabilidadesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/noAsignadas/{id}")
+    List<Responsabilidades> findNoAsignadas(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        Responsabilidades[] parametros = restTemplate.getForObject(serviceUrl + "/noAsignadas/" + id, Responsabilidades[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Responsabilidades create(@RequestBody Responsabilidades obj){
         RestTemplate restTemplate = new RestTemplate();
