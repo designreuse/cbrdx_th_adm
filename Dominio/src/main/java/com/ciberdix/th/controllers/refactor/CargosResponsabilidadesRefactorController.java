@@ -34,6 +34,11 @@ public class CargosResponsabilidadesRefactorController {
         return (List<VCargosResponsabilidades>) vCargosResponsabilidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosResponsabilidades> findByIdCargo(@PathVariable Integer id) {
+        return (List<VCargosResponsabilidades>) vCargosResponsabilidadesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargosResponsabilidades findOne(@PathVariable Integer id) {
         return vCargosResponsabilidadesRefactorRepository.findOne(id);

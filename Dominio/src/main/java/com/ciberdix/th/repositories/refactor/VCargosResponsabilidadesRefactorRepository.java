@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface VCargosResponsabilidadesRefactorRepository extends CrudRepository<VCargosResponsabilidades, Integer> {
     List<VCargosResponsabilidades> findByIndicadorHabilitadoIsTrue();
+    List<VCargosResponsabilidades> findByIndicadorHabilitadoIsTrueAndIdCargo(Integer id);
 }

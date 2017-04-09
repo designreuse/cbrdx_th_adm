@@ -40,6 +40,12 @@ public class CargosResponsabilidadesRefactorController {
         VCargosResponsabilidades[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VCargosResponsabilidades[].class);
         return Arrays.asList(parametros);
     }
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosResponsabilidades> findByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VCargosResponsabilidades[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VCargosResponsabilidades[].class);
+        return Arrays.asList(parametros);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     CargosResponsabilidades create(@RequestBody CargosResponsabilidades obj){
