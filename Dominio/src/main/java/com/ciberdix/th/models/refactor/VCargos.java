@@ -48,7 +48,7 @@ public class VCargos {
     private String estadoCivil;
     private Integer idEstado;
     private String estado;
-    
+
     @Id
     @Column(name = "IdCargo")
     public Integer getIdCargo() {

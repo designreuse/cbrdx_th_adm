@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
+@Table(name = "CargosCriterios", schema = "crz_th", catalog = "CREZCAMOS")
 public class CargosCriterios {
     private Integer idCargoCriterio;
     private Integer idCriterio;
@@ -19,6 +17,21 @@ public class CargosCriterios {
     private String descripcion;
     private Double meta;
     private Double factor;
+    private Boolean indicadorHabilitado;
+
+    public CargosCriterios() {
+    }
+
+    public CargosCriterios(Integer idCriterio, Integer idCargo, Integer auditoriaUsuario, String descripcion, Double meta, Double factor, Boolean indicadorHabilitado) {
+        this.idCriterio = idCriterio;
+        this.idCargo = idCargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.descripcion = descripcion;
+        this.meta = meta;
+        this.factor = factor;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdCargoCriterio")
@@ -134,4 +147,16 @@ public class CargosCriterios {
         result = 31 * result + (factor != null ? factor.hashCode() : 0);
         return result;
     }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+
 }
