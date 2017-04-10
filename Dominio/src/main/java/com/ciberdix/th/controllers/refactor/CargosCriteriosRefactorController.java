@@ -32,6 +32,7 @@ public class CargosCriteriosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     CargosCriterios[] create(@RequestBody CargosCriterios[] objetos) {
         CargosCriterios[] salida = new CargosCriterios[objetos.length];
+        cargosCriteriosRefactorRepository.updateChecks(objetos[0].getIdCargo());
         for (int i = 0; i < objetos.length; i++) {
             CargosCriterios obj = objetos[i];
             salida[i] = cargosCriteriosRefactorRepository.save(new CargosCriterios(obj.getIdCriterio(), obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getDescripcion(), obj.getMeta(), obj.getFactor(), obj.getIndicadorHabilitado()));
