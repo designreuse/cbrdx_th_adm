@@ -29,7 +29,7 @@ public class CargosProductividadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
     CargosProductividades findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, CargosProductividades.class);
+        return restTemplate.getForObject(serviceUrl + "/buscarId/" + id, CargosProductividades.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
