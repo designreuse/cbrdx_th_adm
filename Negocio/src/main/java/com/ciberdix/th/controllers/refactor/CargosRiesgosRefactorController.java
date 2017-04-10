@@ -33,6 +33,13 @@ public class CargosRiesgosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, CargosRiesgos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<CargosRiesgos> findByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        CargosRiesgos[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, CargosRiesgos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CargosRiesgos create(@RequestBody CargosRiesgos obj){
         RestTemplate restTemplate = new RestTemplate();

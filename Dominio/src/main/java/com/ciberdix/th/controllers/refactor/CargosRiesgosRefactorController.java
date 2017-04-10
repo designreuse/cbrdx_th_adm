@@ -34,6 +34,11 @@ public class CargosRiesgosRefactorController {
         return vCargosRiesgosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosRiesgos> findByIdCargo(@PathVariable Integer id) {
+        return vCargosRiesgosRefactorRepository.findByIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CargosRiesgos create(@RequestBody CargosRiesgos obj) {
         return cargosRiesgosRefactorRepository.save(
