@@ -29,6 +29,11 @@ public class CargosExamenesRefactorController {
         return (List<VCargosExamenes>) vCargosExamenesRefactorRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosExamenes> findByIdCargo(@PathVariable Integer id) {
+        return (List<VCargosExamenes>) vCargosExamenesRefactorRepository.findByIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargosExamenes findOne(@PathVariable Integer id) {
         return vCargosExamenesRefactorRepository.findOne(id);

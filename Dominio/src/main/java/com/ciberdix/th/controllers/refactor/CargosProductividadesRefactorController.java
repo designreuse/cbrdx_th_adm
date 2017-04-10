@@ -15,7 +15,7 @@ import java.util.List;
 @Transactional
 @RestController
 @RequestMapping("/api/cargosProductividades")
-public class CargosProductividadesController {
+public class CargosProductividadesRefactorController {
     @Autowired
     private CargosProductividadesRefactorRepository cargosRefactorRepository;
 
