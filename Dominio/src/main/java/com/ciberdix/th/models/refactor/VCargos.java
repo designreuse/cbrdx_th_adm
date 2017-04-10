@@ -21,7 +21,7 @@ public class VCargos {
     private String mision;
     private Integer puntos;
     private Integer idCategoria;
-    private BigInteger categoria;
+    private String categoria;
     private Integer salario;
     private Boolean indicadorRequiereFormacion;
     private Boolean indicadorHabilitado;
@@ -155,11 +155,11 @@ public class VCargos {
 
     @Basic
     @Column(name = "Categoria")
-    public BigInteger getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(BigInteger categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
