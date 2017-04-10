@@ -29,16 +29,14 @@ public class CargosCriteriosRefactorController {
         return (List<CargosCriterios>) cargosCriteriosRefactorRepository.findByIndicadorHabilitadoTrueAndIdCargoEquals(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    CargosCriterios findOne(@PathVariable Integer id) {
-        return cargosCriteriosRefactorRepository.findOne(id);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
-    CargosCriterios create(@RequestBody CargosCriterios obj) {
-        return cargosCriteriosRefactorRepository.save(
-                new CargosCriterios(obj.getIdCriterio(), obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getDescripcion(), obj.getMeta(), obj.getFactor(), obj.getIndicadorHabilitado())
-        );
+    CargosCriterios[] create(@RequestBody CargosCriterios[] objetos) {
+        CargosCriterios[] salida = new CargosCriterios[objetos.length];
+        for (int i = 0; i < objetos.length; i++) {
+            CargosCriterios obj = objetos[i];
+            salida[i] = cargosCriteriosRefactorRepository.save(new CargosCriterios(obj.getIdCriterio(), obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getDescripcion(), obj.getMeta(), obj.getFactor(), obj.getIndicadorHabilitado()));
+        }
+        return salida;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
