@@ -27,6 +27,13 @@ public class CargosEstadosObservacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<CargosEstadosObservaciones> findByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        CargosEstadosObservaciones[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, CargosEstadosObservaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     CargosEstadosObservaciones findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
