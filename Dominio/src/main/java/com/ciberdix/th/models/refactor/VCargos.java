@@ -42,7 +42,13 @@ public class VCargos {
     private String codigoCargo;
     private Integer idEstructuraArea;
     private String estructuraArea;
-
+    private Integer idGenero;
+    private String genero;
+    private Integer idEstadoCivil;
+    private String estadoCivil;
+    private Integer idEstado;
+    private String estado;
+    
     @Id
     @Column(name = "IdCargo")
     public Integer getIdCargo() {
@@ -460,5 +466,65 @@ public class VCargos {
         result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
         result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdGenero")
+    public Integer getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    @Basic
+    @Column(name = "Genero")
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoCivil")
+    public Integer getIdEstadoCivil() {
+        return idEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(Integer idEstadoCivil) {
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    @Basic
+    @Column(name = "EstadoCivil")
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    @Basic
+    @Column(name = "IdEstado")
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    @Basic
+    @Column(name = "Estado")
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
