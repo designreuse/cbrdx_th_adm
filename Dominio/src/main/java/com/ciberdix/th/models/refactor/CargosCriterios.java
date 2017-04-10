@@ -34,6 +34,7 @@ public class CargosCriterios {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCargoCriterio")
     public Integer getIdCargoCriterio() {
         return idCargoCriterio;
