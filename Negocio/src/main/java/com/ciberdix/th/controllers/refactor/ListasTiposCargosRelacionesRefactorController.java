@@ -36,6 +36,13 @@ public class ListasTiposCargosRelacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCodigo/{codigo}/")
+    ListasTiposCargosRelaciones findEnabled(@PathVariable String codigo) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasTiposCargosRelaciones parametros = restTemplate.getForObject(serviceUrl + "/buscarCodigo/" + codigo + "/", ListasTiposCargosRelaciones.class);
+        return parametros;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposCargosRelaciones create(@RequestBody ListasTiposCargosRelaciones obj) {
         RestTemplate restTemplate = new RestTemplate();
