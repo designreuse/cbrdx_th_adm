@@ -48,6 +48,7 @@ public class VCargos {
     private String estadoCivil;
     private Integer idEstado;
     private String estado;
+    private Integer paso;
 
     @Id
     @Column(name = "IdCargo")
@@ -526,5 +527,15 @@ public class VCargos {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Basic
+    @Column(name = "Paso")
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
     }
 }

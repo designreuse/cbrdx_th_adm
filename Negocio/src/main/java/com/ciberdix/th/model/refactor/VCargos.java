@@ -39,6 +39,13 @@ public class VCargos {
     private String codigoCargo;
     private Integer idEstructuraArea;
     private String estructuraArea;
+    private Integer idGenero;
+    private String genero;
+    private Integer idEstadoCivil;
+    private String estadoCivil;
+    private Integer idEstado;
+    private String estado;
+    private Integer paso;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -294,5 +301,61 @@ public class VCargos {
 
     public void setEstructuraArea(String estructuraArea) {
         this.estructuraArea = estructuraArea;
+    }
+
+    public Integer getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Integer getIdEstadoCivil() {
+        return idEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(Integer idEstadoCivil) {
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
     }
 }

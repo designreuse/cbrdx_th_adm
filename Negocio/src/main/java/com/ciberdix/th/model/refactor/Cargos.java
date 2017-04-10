@@ -35,6 +35,10 @@ public class Cargos {
     private String nivelPsicoSocial;
     private String codigoCargo;
     private Integer idEstructuraArea;
+    private Integer idGenero;
+    private Integer idEstadoCivil;
+    private Integer idEstado;
+    private Integer paso;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -258,5 +262,37 @@ public class Cargos {
 
     public void setIdEstructuraArea(Integer idEstructuraArea) {
         this.idEstructuraArea = idEstructuraArea;
+    }
+
+    public Integer getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    public Integer getIdEstadoCivil() {
+        return idEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(Integer idEstadoCivil) {
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
     }
 }

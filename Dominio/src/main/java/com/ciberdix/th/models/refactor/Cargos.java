@@ -41,6 +41,7 @@ public class Cargos {
     private Integer idGenero;
     private Integer idEstadoCivil;
     private Integer idEstado;
+    private Integer paso;
 
     public Cargos() {
     }
@@ -473,5 +474,15 @@ public class Cargos {
 
     public void setIdEstado(Integer idEstado) {
         this.idEstado = idEstado;
+    }
+
+    @Basic
+    @Column(name = "Paso")
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
     }
 }
