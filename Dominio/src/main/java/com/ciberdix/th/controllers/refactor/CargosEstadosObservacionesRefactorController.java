@@ -29,6 +29,11 @@ public class CargosEstadosObservacionesRefactorController {
         return cargosEstadosObservacionesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<CargosEstadosObservaciones> findByIdCargo(@PathVariable Integer id) {
+        return cargosEstadosObservacionesRefactorRepository.findByIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CargosEstadosObservaciones create (@RequestBody CargosEstadosObservaciones obj){
         return cargosEstadosObservacionesRefactorRepository.save(
