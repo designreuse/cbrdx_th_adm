@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by robertochajin on 7/04/17.
- */
 @CrossOrigin
 @Transactional
 @RestController
 @RequestMapping("/api/criterios")
 public class CriteriosRefactorController {
+
     @Autowired
     private CriteriosRefactorRepository cargosCriteriosRefactorRepository;
 
@@ -29,7 +27,7 @@ public class CriteriosRefactorController {
         return (List<Criterios>) cargosCriteriosRefactorRepository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
     Criterios findOne(@PathVariable Integer id) {
         return cargosCriteriosRefactorRepository.findOne(id);
     }
