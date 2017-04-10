@@ -28,6 +28,13 @@ public class CargosExamenesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosExamenes> findByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VCargosExamenes[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VCargosExamenes[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargosExamenes findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
