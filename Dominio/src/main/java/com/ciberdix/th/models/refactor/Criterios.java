@@ -1,21 +1,29 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
+@Table(name = "Criterios", schema = "crz_th", catalog = "CREZCAMOS")
 public class Criterios {
     private Integer idCriterio;
     private String criterio;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
+    public Criterios() {
+    }
+
+    public Criterios(String criterio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.criterio = criterio;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdCriterio")
