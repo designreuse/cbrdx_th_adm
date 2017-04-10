@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface CargosRelacionadosRefactorRepository extends CrudRepository<CargosRelacionados, Integer> {
 
-    @Query("select u from CargosRelacionados u where idTipoRelacion in (select idListaTipoCargoRelacion from ListasTiposCargosRelaciones where codigo like concat('%',?1,'%'))")
-    List<CargosRelacionados> findCargos(String codigoRelacion);
+    @Query("select u from CargosRelacionados u where idCargo = ?2 and idTipoRelacion in (select idListaTipoCargoRelacion from ListasTiposCargosRelaciones where codigo like concat('%',?1,'%'))")
+    List<CargosRelacionados> findCargos(String codigoRelacion, Integer idCargo);
 }
