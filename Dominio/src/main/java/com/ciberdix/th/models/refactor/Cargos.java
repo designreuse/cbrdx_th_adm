@@ -38,6 +38,9 @@ public class Cargos {
     private String nivelPsicoSocial;
     private String codigoCargo;
     private Integer idEstructuraArea;
+    private Integer idGenero;
+    private Integer idEstadoCivil;
+    private Integer idEstado;
 
     public Cargos() {
     }
@@ -440,5 +443,35 @@ public class Cargos {
         result = 31 * result + (codigoCargo != null ? codigoCargo.hashCode() : 0);
         result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdGenero")
+    public Integer getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoCivil")
+    public Integer getIdEstadoCivil() {
+        return idEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(Integer idEstadoCivil) {
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    @Basic
+    @Column(name = "IdEstado")
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
     }
 }

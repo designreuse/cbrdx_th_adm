@@ -15,15 +15,17 @@ public class ListasRolesProceso {
     private Integer orden;
     private Boolean indicadorHabilitado;
     private Timestamp auditoriaFecha;
+    private Integer auditoriaUsuario;
 
     public ListasRolesProceso() {
     }
 
-    public ListasRolesProceso(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado) {
+    public ListasRolesProceso(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
@@ -117,5 +119,15 @@ public class ListasRolesProceso {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
     }
 }
