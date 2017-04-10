@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "CargosElementos", schema = "crz_th", catalog = "CREZCAMOS")
 public class CargosElementos {
     private Integer idCargoElemento;
     private Integer idCargo;
@@ -21,6 +19,7 @@ public class CargosElementos {
     private Timestamp auditoriaFecha;
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCargoElemento")
     public Integer getIdCargoElemento() {
         return idCargoElemento;
