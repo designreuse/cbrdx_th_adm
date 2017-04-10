@@ -36,7 +36,7 @@ public class ListasRolesProcesoRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasRolesProceso create(@RequestBody ListasRolesProceso obj) {
-        return listasRolesProcesoRefactorRepository.save(obj);
+        return listasRolesProcesoRefactorRepository.save(new ListasRolesProceso(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
