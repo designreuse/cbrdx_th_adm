@@ -4,35 +4,23 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
+ * Created by robertochajin on 8/04/17.
  */
 @Entity
-@Table(name = "CargosExamenes", schema = "crz_th", catalog = "CREZCAMOS")
-public class CargosExamenes {
+@Table(name = "V_CargosExamenes", schema = "crz_th", catalog = "CREZCAMOS")
+public class VCargosExamenes {
     private Integer idCargoExamen;
     private Integer idCargo;
+    private String cargo;
     private Integer idExamen;
+    private String examen;
     private Boolean indicadorIngreso;
     private Boolean indicadorPeriodicidad;
     private Boolean indicadorRetiro;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public CargosExamenes() {
-    }
-
-    public CargosExamenes(Integer idCargo, Integer idExamen, Boolean indicadorIngreso, Boolean indicadorPeriodicidad, Boolean indicadorRetiro, Integer auditoriaUsuario) {
-        this.idCargo = idCargo;
-        this.idExamen = idExamen;
-        this.indicadorIngreso = indicadorIngreso;
-        this.indicadorPeriodicidad = indicadorPeriodicidad;
-        this.indicadorRetiro = indicadorRetiro;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdCargoExamen")
     public Integer getIdCargoExamen() {
         return idCargoExamen;
@@ -53,6 +41,16 @@ public class CargosExamenes {
     }
 
     @Basic
+    @Column(name = "Cargo")
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
     @Column(name = "IdExamen")
     public Integer getIdExamen() {
         return idExamen;
@@ -60,6 +58,16 @@ public class CargosExamenes {
 
     public void setIdExamen(Integer idExamen) {
         this.idExamen = idExamen;
+    }
+
+    @Basic
+    @Column(name = "Examen")
+    public String getExamen() {
+        return examen;
+    }
+
+    public void setExamen(String examen) {
+        this.examen = examen;
     }
 
     @Basic
@@ -117,12 +125,14 @@ public class CargosExamenes {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosExamenes that = (CargosExamenes) o;
+        VCargosExamenes that = (VCargosExamenes) o;
 
         if (idCargoExamen != null ? !idCargoExamen.equals(that.idCargoExamen) : that.idCargoExamen != null)
             return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idExamen != null ? !idExamen.equals(that.idExamen) : that.idExamen != null) return false;
+        if (examen != null ? !examen.equals(that.examen) : that.examen != null) return false;
         if (indicadorIngreso != null ? !indicadorIngreso.equals(that.indicadorIngreso) : that.indicadorIngreso != null)
             return false;
         if (indicadorPeriodicidad != null ? !indicadorPeriodicidad.equals(that.indicadorPeriodicidad) : that.indicadorPeriodicidad != null)
@@ -141,7 +151,9 @@ public class CargosExamenes {
     public int hashCode() {
         int result = idCargoExamen != null ? idCargoExamen.hashCode() : 0;
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idExamen != null ? idExamen.hashCode() : 0);
+        result = 31 * result + (examen != null ? examen.hashCode() : 0);
         result = 31 * result + (indicadorIngreso != null ? indicadorIngreso.hashCode() : 0);
         result = 31 * result + (indicadorPeriodicidad != null ? indicadorPeriodicidad.hashCode() : 0);
         result = 31 * result + (indicadorRetiro != null ? indicadorRetiro.hashCode() : 0);

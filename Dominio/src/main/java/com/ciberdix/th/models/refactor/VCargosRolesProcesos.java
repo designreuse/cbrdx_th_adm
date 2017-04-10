@@ -4,27 +4,48 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
+ * Created by robertochajin on 9/04/17.
  */
 @Entity
-@Table(name = "V_CargosRiesgos", schema = "crz_th", catalog = "CREZCAMOS")
-public class VCargosRiesgos {
-    private Integer idCargoRiesgo;
+@Table(name = "V_CargosRolesProcesos", schema = "crz_th", catalog = "CREZCAMOS")
+public class VCargosRolesProcesos {
+    private Integer idCargoRolProceso;
+    private Integer idRolProceso;
+    private String cragoRolProceso;
     private Integer idCargo;
     private String cargo;
-    private Integer idRiesgo;
-    private String riesgo;
+    private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoRiesgo")
-    public Integer getIdCargoRiesgo() {
-        return idCargoRiesgo;
+    @Column(name = "IdCargoRolProceso")
+    public Integer getIdCargoRolProceso() {
+        return idCargoRolProceso;
     }
 
-    public void setIdCargoRiesgo(Integer idCargoRiesgo) {
-        this.idCargoRiesgo = idCargoRiesgo;
+    public void setIdCargoRolProceso(Integer idCargoRolProceso) {
+        this.idCargoRolProceso = idCargoRolProceso;
+    }
+
+    @Basic
+    @Column(name = "IdRolProceso")
+    public Integer getIdRolProceso() {
+        return idRolProceso;
+    }
+
+    public void setIdRolProceso(Integer idRolProceso) {
+        this.idRolProceso = idRolProceso;
+    }
+
+    @Basic
+    @Column(name = "CragoRolProceso")
+    public String getCragoRolProceso() {
+        return cragoRolProceso;
+    }
+
+    public void setCragoRolProceso(String cragoRolProceso) {
+        this.cragoRolProceso = cragoRolProceso;
     }
 
     @Basic
@@ -48,23 +69,13 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdRiesgo")
-    public Integer getIdRiesgo() {
-        return idRiesgo;
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
     }
 
-    public void setIdRiesgo(Integer idRiesgo) {
-        this.idRiesgo = idRiesgo;
-    }
-
-    @Basic
-    @Column(name = "Riesgo")
-    public String getRiesgo() {
-        return riesgo;
-    }
-
-    public void setRiesgo(String riesgo) {
-        this.riesgo = riesgo;
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Basic
@@ -92,14 +103,17 @@ public class VCargosRiesgos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VCargosRiesgos that = (VCargosRiesgos) o;
+        VCargosRolesProcesos that = (VCargosRolesProcesos) o;
 
-        if (idCargoRiesgo != null ? !idCargoRiesgo.equals(that.idCargoRiesgo) : that.idCargoRiesgo != null)
+        if (idCargoRolProceso != null ? !idCargoRolProceso.equals(that.idCargoRolProceso) : that.idCargoRolProceso != null)
+            return false;
+        if (idRolProceso != null ? !idRolProceso.equals(that.idRolProceso) : that.idRolProceso != null) return false;
+        if (cragoRolProceso != null ? !cragoRolProceso.equals(that.cragoRolProceso) : that.cragoRolProceso != null)
             return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
-        if (idRiesgo != null ? !idRiesgo.equals(that.idRiesgo) : that.idRiesgo != null) return false;
-        if (riesgo != null ? !riesgo.equals(that.riesgo) : that.riesgo != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -110,11 +124,12 @@ public class VCargosRiesgos {
 
     @Override
     public int hashCode() {
-        int result = idCargoRiesgo != null ? idCargoRiesgo.hashCode() : 0;
+        int result = idCargoRolProceso != null ? idCargoRolProceso.hashCode() : 0;
+        result = 31 * result + (idRolProceso != null ? idRolProceso.hashCode() : 0);
+        result = 31 * result + (cragoRolProceso != null ? cragoRolProceso.hashCode() : 0);
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
-        result = 31 * result + (idRiesgo != null ? idRiesgo.hashCode() : 0);
-        result = 31 * result + (riesgo != null ? riesgo.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
