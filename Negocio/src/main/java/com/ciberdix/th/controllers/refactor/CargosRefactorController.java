@@ -3,7 +3,6 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.Cargos;
 import com.ciberdix.th.model.refactor.VCargos;
-import com.ciberdix.th.model.refactor.VCargosB;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -23,22 +22,22 @@ public class CargosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/cargos";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<VCargosB> findAll() {
+    List<VCargos> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        VCargosB[] parametros = restTemplate.getForObject(serviceUrl, VCargosB[].class);
+        VCargos[] parametros = restTemplate.getForObject(serviceUrl, VCargos[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    VCargosB findOne(@PathVariable Integer id) {
+    VCargos findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, VCargosB.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VCargos.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<VCargosB> findEnabled() {
+    List<VCargos> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        VCargosB[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VCargosB[].class);
+        VCargos[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VCargos[].class);
         return Arrays.asList(parametros);
     }
 

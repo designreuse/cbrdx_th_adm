@@ -2,7 +2,6 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.Cargos;
 import com.ciberdix.th.models.refactor.VCargos;
-import com.ciberdix.th.models.refactor.VCargosB;
 import com.ciberdix.th.repositories.refactor.CargosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VCargosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +25,17 @@ public class CargosRefactorController {
     private VCargosRefactorRepository vCargosRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<VCargosB> findAll() {
-        return (List<VCargosB>) vCargosRefactorRepository.findAll();
+    List<VCargos> findAll() {
+        return (List<VCargos>) vCargosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<VCargosB> findEnabled() {
-        return (List<VCargosB>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VCargos> findEnabled() {
+        return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    VCargosB findOne(@PathVariable Integer id) {
+    VCargos findOne(@PathVariable Integer id) {
         return vCargosRefactorRepository.findOne(id);
     }
 
