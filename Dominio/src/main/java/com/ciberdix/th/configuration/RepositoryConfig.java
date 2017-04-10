@@ -133,5 +133,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(GruposCompetencias.class);
         config.exposeIdsFor(Ponderaciones.class);
         config.exposeIdsFor(CargosElementos.class);
+        config.exposeIdsFor(ListasTiposCargosRelaciones.class);
+        config.exposeIdsFor(CargosRelacionados.class);
     }
 }
