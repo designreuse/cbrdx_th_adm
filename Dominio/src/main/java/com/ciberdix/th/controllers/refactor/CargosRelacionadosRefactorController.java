@@ -28,7 +28,7 @@ public class CargosRelacionadosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     CargosRelacionados create(@RequestBody CargosRelacionados obj) {
-        return CargosRelacionadosRefactorRepository.save(new CargosRelacionados());
+        return CargosRelacionadosRefactorRepository.save(new CargosRelacionados(obj.getIdTipoRelacion(), obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getIdCargoRelacion(), obj.getIndicadorHabilitado()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

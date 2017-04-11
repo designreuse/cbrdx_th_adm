@@ -46,10 +46,9 @@ public class Cargos {
     public Cargos() {
     }
 
-    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea) {
+    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso) {
         this.cargo = cargo;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.personaACargoDir = personaACargoDir;
         this.personaACargoInd = personaACargoInd;
         this.idCargoJefe = idCargoJefe;
@@ -74,6 +73,11 @@ public class Cargos {
         this.nivelPsicoSocial = nivelPsicoSocial;
         this.codigoCargo = codigoCargo;
         this.idEstructuraArea = idEstructuraArea;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+        this.idEstado = idEstado;
+        this.paso = paso;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
