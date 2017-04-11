@@ -43,14 +43,14 @@ public class CargosRefactorRefactorController {
     Cargos create(@RequestBody Cargos obj) {
         return cargosRefactorRepository.save(
                 new Cargos(obj.getCargo(), obj.getAuditoriaUsuario(), obj.getPersonaACargoDir(),
-                        obj.getPersonaACargoInd(), obj.getIdCargoJefe(), obj.getMision(),
-                        obj.getPuntos(), obj.getIdCategoria(), obj.getSalario(), obj.getIndicadorRequiereFormacion(),
-                        obj.getIndicadorHabilitado(), obj.getInterrelacionesInternas(),
-                        obj.getInterrelacionesExternas(), obj.getResponsabilidadesAd(),
-                        obj.getTomaDecisiones(), obj.getActividadesSupervisa(), obj.getIdNivelEducacion(),
-                        obj.getConocimientosBasicos(), obj.getTiempoExperiencia(), obj.getOtrosRequisitos(),
-                        obj.getEdad(), obj.getCargaFisica(), obj.getCargaMental(), obj.getNivelPsicoSocial(),
-                        obj.getCodigoCargo(), obj.getIdEstructuraArea())
+                        obj.getPersonaACargoInd(), obj.getIdCargoJefe(), obj.getMision(), obj.getPuntos(),
+                        obj.getIdCategoria(), obj.getSalario(), obj.getIndicadorRequiereFormacion(),
+                        obj.getIndicadorHabilitado(), obj.getInterrelacionesInternas(), obj.getInterrelacionesExternas(),
+                        obj.getResponsabilidadesAd(), obj.getTomaDecisiones(), obj.getActividadesSupervisa(),
+                        obj.getIdNivelEducacion(), obj.getConocimientosBasicos(), obj.getTiempoExperiencia(),
+                        obj.getOtrosRequisitos(), obj.getEdad(), obj.getCargaFisica(), obj.getCargaMental(),
+                        obj.getNivelPsicoSocial(), obj.getCodigoCargo(), obj.getIdEstructuraArea(), obj.getIdGenero(),
+                        obj.getIdEstadoCivil(), obj.getIdEstado(), obj.getPaso())
         );
     }
 
