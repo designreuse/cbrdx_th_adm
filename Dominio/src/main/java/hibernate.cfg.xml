@@ -328,6 +328,8 @@
         <mapping class="com.ciberdix.th.models.refactor.VCargosExamenes"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosRolesProcesos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasRolesProceso"/>
+        <mapping class="com.ciberdix.th.models.refactor.VCargosElementos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposElementos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
