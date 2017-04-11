@@ -1,11 +1,14 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.models.refactor.CargosElementos;
+import com.ciberdix.th.models.refactor.VCargosElementos;
 import com.ciberdix.th.repositories.refactor.CargosElementosRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VCargosElementosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by robertochajin on 10/04/17.
@@ -18,5 +21,34 @@ public class CargosElementosRefactorController {
     @Autowired
     private CargosElementosRefactorRepository cargosElementosRefactorRepository;
 
+    @Autowired
+    private VCargosElementosRefactorRepository vCargosElementosRefactorRepository;
 
+    @RequestMapping(method = RequestMethod.GET)
+    List<VCargosElementos> findAll() {
+        return (List<VCargosElementos>) vCargosElementosRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VCargosElementos findOne(@PathVariable Integer id) {
+        return vCargosElementosRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VCargosElementos> findByIdCargo(@PathVariable Integer id) {
+        return vCargosElementosRefactorRepository.findByIdCargo(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    CargosElementos create(@RequestBody CargosElementos obj) {
+        return cargosElementosRefactorRepository.save(
+                new CargosElementos(obj.getIdCargo(), obj.getIdTipoElemento(),
+                        obj.getDescripcion(), obj.getValor(), obj.getAuditoriaUsuario())
+        );
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    void update(@RequestBody CargosElementos obj) {
+        cargosElementosRefactorRepository.save(obj);
+    }
 }
