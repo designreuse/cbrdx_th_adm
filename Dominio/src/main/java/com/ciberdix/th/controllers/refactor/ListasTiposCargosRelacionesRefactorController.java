@@ -31,6 +31,11 @@ public class ListasTiposCargosRelacionesRefactorController {
         return listasTiposCargosRelacionesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCodigo/{codigo}/")
+    ListasTiposCargosRelaciones findEnabled(@PathVariable String codigo) {
+        return listasTiposCargosRelacionesRefactorRepository.findByCodigoEquals(codigo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposCargosRelaciones create(@RequestBody ListasTiposCargosRelaciones obj) {
         return listasTiposCargosRelacionesRefactorRepository.save(new ListasTiposCargosRelaciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));

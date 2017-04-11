@@ -16,7 +16,7 @@ import java.util.List;
 public class PonderacionesRefactorController {
 
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/cargosCompetencias";
+    private String serviceUrl = globales.getUrl() + "/api/ponderaciones";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Ponderaciones> findAll() {

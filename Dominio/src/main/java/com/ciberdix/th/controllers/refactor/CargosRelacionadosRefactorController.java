@@ -21,9 +21,9 @@ public class CargosRelacionadosRefactorController {
         return (List<CargosRelacionados>) CargosRelacionadosRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}/")
-    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion) {
-        return (List<CargosRelacionados>) CargosRelacionadosRefactorRepository.findCargos(codigoRelacion);
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}/{idCargo}")
+    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
+        return (List<CargosRelacionados>) CargosRelacionadosRefactorRepository.findCargos(codigoRelacion, idCargo);
     }
 
     @RequestMapping(method = RequestMethod.POST)

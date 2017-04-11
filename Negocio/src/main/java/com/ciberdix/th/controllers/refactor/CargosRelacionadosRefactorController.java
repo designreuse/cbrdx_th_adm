@@ -25,10 +25,10 @@ public class CargosRelacionadosRefactorController {
         return Arrays.asList(cargosRelacionados);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}")
-    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion) {
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}/{idCargo}")
+    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
         RestTemplate restTemplate = new RestTemplate();
-        CargosRelacionados[] cargosRelacionados = restTemplate.getForObject(serviceUrl + "/buscarRelacion/" + codigoRelacion, CargosRelacionados[].class);
+        CargosRelacionados[] cargosRelacionados = restTemplate.getForObject(serviceUrl + "/buscarRelacion/" + codigoRelacion + "/" + idCargo, CargosRelacionados[].class);
         return Arrays.asList(cargosRelacionados);
     }
 

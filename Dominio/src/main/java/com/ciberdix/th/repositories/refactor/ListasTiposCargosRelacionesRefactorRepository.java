@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface ListasTiposCargosRelacionesRefactorRepository extends CrudRepository<ListasTiposCargosRelaciones, Integer> {
     List<ListasTiposCargosRelaciones> findByIndicadorHabilitadoIsTrue();
+
+    ListasTiposCargosRelaciones findByCodigoEquals(String codigo);
 }
