@@ -5,33 +5,22 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by robertochajin on 10/04/17.
  */
 @Entity
-@Table(name = "CargosElementos", schema = "crz_th", catalog = "CREZCAMOS")
-public class CargosElementos {
+@Table(name = "V_CargosElementos", schema = "crz_th", catalog = "CREZCAMOS")
+public class VCargosElementos {
     private Integer idCargoElemento;
     private Integer idCargo;
+    private String cargo;
     private Integer idTipoElemento;
+    private String tipoElemento;
     private String descripcion;
     private BigDecimal valor;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public CargosElementos() {
-    }
-
-    public CargosElementos(Integer idCargo, Integer idTipoElemento, String descripcion, BigDecimal valor, Integer auditoriaUsuario) {
-        this.idCargo = idCargo;
-        this.idTipoElemento = idTipoElemento;
-        this.descripcion = descripcion;
-        this.valor = valor;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdCargoElemento")
     public Integer getIdCargoElemento() {
         return idCargoElemento;
@@ -52,6 +41,16 @@ public class CargosElementos {
     }
 
     @Basic
+    @Column(name = "Cargo")
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
     @Column(name = "IdTipoElemento")
     public Integer getIdTipoElemento() {
         return idTipoElemento;
@@ -59,6 +58,16 @@ public class CargosElementos {
 
     public void setIdTipoElemento(Integer idTipoElemento) {
         this.idTipoElemento = idTipoElemento;
+    }
+
+    @Basic
+    @Column(name = "TipoElemento")
+    public String getTipoElemento() {
+        return tipoElemento;
+    }
+
+    public void setTipoElemento(String tipoElemento) {
+        this.tipoElemento = tipoElemento;
     }
 
     @Basic
@@ -106,13 +115,15 @@ public class CargosElementos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CargosElementos that = (CargosElementos) o;
+        VCargosElementos that = (VCargosElementos) o;
 
         if (idCargoElemento != null ? !idCargoElemento.equals(that.idCargoElemento) : that.idCargoElemento != null)
             return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idTipoElemento != null ? !idTipoElemento.equals(that.idTipoElemento) : that.idTipoElemento != null)
             return false;
+        if (tipoElemento != null ? !tipoElemento.equals(that.tipoElemento) : that.tipoElemento != null) return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (valor != null ? !valor.equals(that.valor) : that.valor != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -127,7 +138,9 @@ public class CargosElementos {
     public int hashCode() {
         int result = idCargoElemento != null ? idCargoElemento.hashCode() : 0;
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idTipoElemento != null ? idTipoElemento.hashCode() : 0);
+        result = 31 * result + (tipoElemento != null ? tipoElemento.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (valor != null ? valor.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
