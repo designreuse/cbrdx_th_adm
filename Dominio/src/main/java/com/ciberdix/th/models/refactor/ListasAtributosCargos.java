@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
+@Table(name = "ListasAtributosCargos", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasAtributosCargos {
     private Integer idListaAtributoCargo;
     private String codigo;
@@ -19,7 +17,20 @@ public class ListasAtributosCargos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasAtributosCargos() {
+    }
+
+    public ListasAtributosCargos(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdListaAtributoCargo")
     public Integer getIdListaAtributoCargo() {
         return idListaAtributoCargo;
