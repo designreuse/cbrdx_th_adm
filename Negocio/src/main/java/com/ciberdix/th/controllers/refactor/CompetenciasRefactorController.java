@@ -16,7 +16,7 @@ import java.util.List;
 public class CompetenciasRefactorController {
 
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/cargosCompetencias";
+    private String serviceUrl = globales.getUrl() + "/api/competencias";
 
     @RequestMapping(method = RequestMethod.GET)
     List<Competencias> findAll() {
