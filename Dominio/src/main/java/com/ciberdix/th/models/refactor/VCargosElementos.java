@@ -16,7 +16,6 @@ public class VCargosElementos {
     private Integer idTipoElemento;
     private String tipoElemento;
     private String descripcion;
-    private BigDecimal valor;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
@@ -81,16 +80,6 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "Valor")
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    @Basic
     @Column(name = "AuditoriaUsuario")
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
@@ -125,7 +114,6 @@ public class VCargosElementos {
             return false;
         if (tipoElemento != null ? !tipoElemento.equals(that.tipoElemento) : that.tipoElemento != null) return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
-        if (valor != null ? !valor.equals(that.valor) : that.valor != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -142,7 +130,6 @@ public class VCargosElementos {
         result = 31 * result + (idTipoElemento != null ? idTipoElemento.hashCode() : 0);
         result = 31 * result + (tipoElemento != null ? tipoElemento.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
-        result = 31 * result + (valor != null ? valor.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;

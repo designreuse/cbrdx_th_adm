@@ -1,25 +1,24 @@
 package com.ciberdix.th.model.refactor;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 10/04/17.
+ * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
-public class CargosElementos {
-    private Integer idCargoElemento;
+public class CargosPersonalidadAtributos {
+    private Integer idCargoPersonalidadAtributo;
     private Integer idCargo;
-    private Integer idTipoElemento;
+    private Integer idAtributo;
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdCargoElemento() {
-        return idCargoElemento;
+    public Integer getIdCargoPersonalidadAtributo() {
+        return idCargoPersonalidadAtributo;
     }
 
-    public void setIdCargoElemento(Integer idCargoElemento) {
-        this.idCargoElemento = idCargoElemento;
+    public void setIdCargoPersonalidadAtributo(Integer idCargoPersonalidadAtributo) {
+        this.idCargoPersonalidadAtributo = idCargoPersonalidadAtributo;
     }
 
     public Integer getIdCargo() {
@@ -30,12 +29,12 @@ public class CargosElementos {
         this.idCargo = idCargo;
     }
 
-    public Integer getIdTipoElemento() {
-        return idTipoElemento;
+    public Integer getIdAtributo() {
+        return idAtributo;
     }
 
-    public void setIdTipoElemento(Integer idTipoElemento) {
-        this.idTipoElemento = idTipoElemento;
+    public void setIdAtributo(Integer idAtributo) {
+        this.idAtributo = idAtributo;
     }
 
     public String getDescripcion() {

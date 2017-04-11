@@ -13,7 +13,6 @@ public class VCargosElementos {
     private Integer idTipoElemento;
     private String tipoElemento;
     private String descripcion;
-    private BigDecimal valor;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
@@ -63,14 +62,6 @@ public class VCargosElementos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
     }
 
     public Integer getAuditoriaUsuario() {
