@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface CargosCriteriosRefactorRepository extends CrudRepository<CargosCriterios, Integer> {
     List<CargosCriterios> findByIndicadorHabilitadoTrueAndIdCargoEquals(Integer id);
+    List<CargosCriterios> findByIdCargo(Integer id);
 
     @Transactional
     @Modifying
