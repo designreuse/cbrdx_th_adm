@@ -80,6 +80,53 @@ public class Cargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Cargos(Integer idCargo, String cargo, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Boolean indicadorHabilitado, String codigoCargo, Integer idEstructuraArea, Integer idEstado) {
+        this.idCargo = idCargo;
+        this.cargo = cargo;
+        this.personaACargoDir = personaACargoDir;
+        this.personaACargoInd = personaACargoInd;
+        this.idCargoJefe = idCargoJefe;
+        this.mision = mision;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.codigoCargo = codigoCargo;
+        this.idEstructuraArea = idEstructuraArea;
+        this.idEstado = idEstado;
+    }
+
+    public Cargos(Integer idCargo, Integer idEstado, Integer paso) {
+        this.idCargo = idCargo;
+        this.idEstado = idEstado;
+        this.paso = paso;
+    }
+
+    public Cargos(Integer idCargo, String interrelacionesInternas, String interrelacionesExternas) {
+        this.idCargo = idCargo;
+        this.interrelacionesInternas = interrelacionesInternas;
+        this.interrelacionesExternas = interrelacionesExternas;
+    }
+
+    public Cargos(Integer idCargo, String responsabilidadesAd) {
+        this.idCargo = idCargo;
+        this.responsabilidadesAd = responsabilidadesAd;
+    }
+
+    public Cargos(Integer idCargo, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, Integer idGenero, Integer idEstadoCivil) {
+        this.idCargo = idCargo;
+        this.conocimientosBasicos = conocimientosBasicos;
+        this.tiempoExperiencia = tiempoExperiencia;
+        this.otrosRequisitos = otrosRequisitos;
+        this.edad = edad;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    public Cargos(Integer idCargo, Integer puntos, Integer idCategoria, Integer salario) {
+        this.idCargo = idCargo;
+        this.puntos = puntos;
+        this.idCategoria = idCategoria;
+        this.salario = salario;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargo")

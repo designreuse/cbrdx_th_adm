@@ -54,6 +54,14 @@ public class CargosRefactorController {
         );
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab1")
+    Cargos createTab1(@RequestBody Cargos obj) {
+        return cargosRefactorRepository.save(new Cargos(obj.getIdCargo(),obj.getCargo(),
+                obj.getPersonaACargoDir(),obj.getPersonaACargoInd(),obj.getIdCargoJefe(),
+                obj.getMision(),obj.getIndicadorHabilitado(),obj.getCodigoCargo(),
+                obj.getIdEstructuraArea(),obj.getIdEstado()));
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Cargos obj) {
         cargosRefactorRepository.save(obj);
