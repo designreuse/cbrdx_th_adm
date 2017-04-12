@@ -29,6 +29,11 @@ public class RiesgosTiposRefactorController {
         return riesgosTiposRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<RiesgosTipos> findByEnabled (){
+        return riesgosTiposRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     RiesgosTipos create(@RequestBody RiesgosTipos obj) {
         return riesgosTiposRefactorRepository.save(
