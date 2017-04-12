@@ -56,43 +56,73 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab1")
     Cargos updateTab1(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(new Cargos(obj.getIdCargo(), obj.getCargo(),
-                obj.getPersonaACargoDir(), obj.getPersonaACargoInd(), obj.getIdCargoJefe(),
-                obj.getMision(), obj.getIndicadorHabilitado(), obj.getCodigoCargo(),
-                obj.getIdEstructuraArea(), obj.getIdEstado()));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setCargo(obj.getCargo());
+        cargo.setPersonaACargoDir(obj.getPersonaACargoDir());
+        cargo.setPersonaACargoInd(obj.getPersonaACargoInd());
+        cargo.setIdCargoJefe(obj.getIdCargoJefe());
+        cargo.setMision(obj.getMision());
+        cargo.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        cargo.setCodigoCargo(obj.getCodigoCargo());
+        cargo.setIdEstructuraArea(obj.getIdEstructuraArea());
+
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
     Cargos updateTab2(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(new Cargos(obj.getIdCargo(), obj.getIdEstado(),
-                obj.getPaso()));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setIdEstado(obj.getIdEstado());
+        cargo.setPaso(obj.getPaso());
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab3")
     Cargos updateTab3(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(new Cargos(obj.getIdCargo(),
-                obj.getInterrelacionesInternas(), obj.getInterrelacionesExternas()));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setInterrelacionesExternas(obj.getInterrelacionesExternas());
+        cargo.setInterrelacionesInternas(obj.getInterrelacionesInternas());
+
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab4")
     Cargos updateTab4(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(new Cargos(obj.getIdCargo(),
-                obj.getResponsabilidadesAd()));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setResponsabilidadesAd(obj.getResponsabilidadesAd());
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab5")
     Cargos updateTab5(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(
-                new Cargos(obj.getIdCargo(), obj.getConocimientosBasicos(),
-                        obj.getTiempoExperiencia(), obj.getOtrosRequisitos(),
-                        obj.getEdad(), obj.getIdGenero(), obj.getIdEstadoCivil()));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setTomaDecisiones(obj.getTomaDecisiones());
+        cargo.setActividadesSupervisa(obj.getActividadesSupervisa());
+
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab6")
     Cargos updateTab6(@RequestBody Cargos obj) {
-        return cargosRefactorRepository.save(new Cargos(
-                obj.getIdCargo(), obj.getPuntos(), obj.getIdCategoria(), obj.getSalario()
-        ));
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setConocimientosBasicos(obj.getConocimientosBasicos());
+        cargo.setTiempoExperiencia(obj.getTiempoExperiencia());
+        cargo.setOtrosRequisitos(obj.getOtrosRequisitos());
+        cargo.setEdad(obj.getEdad());
+        cargo.setIdGenero(obj.getIdGenero());
+        cargo.setIdEstadoCivil(obj.getIdEstadoCivil());
+
+        return cargosRefactorRepository.save(cargo);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
+    Cargos updateTab7(@RequestBody Cargos obj) {
+        Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
+        cargo.setPuntos(obj.getPuntos());
+        cargo.setIdCategoria(obj.getIdCategoria());
+        cargo.setSalario(obj.getSalario());
+
+        return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
