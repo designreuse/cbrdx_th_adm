@@ -88,4 +88,10 @@ public class CargosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab6", obj);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
+    void updateTab7(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab7", obj);
+    }
 }
