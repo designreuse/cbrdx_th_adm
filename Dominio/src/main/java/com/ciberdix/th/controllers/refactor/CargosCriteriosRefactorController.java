@@ -31,7 +31,7 @@ public class CargosCriteriosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
     List<CargosCriterios> findByIdCargo(@PathVariable Integer id) {
-        return (List<CargosCriterios>) cargosCriteriosRefactorRepository.findByIdCargo(id);
+        return (List<CargosCriterios>) cargosCriteriosRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdCargo(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
