@@ -29,6 +29,11 @@ public class CargosCriteriosRefactorController {
         return (List<CargosCriterios>) cargosCriteriosRefactorRepository.findByIndicadorHabilitadoTrueAndIdCargoEquals(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<CargosCriterios> findByIdCargo(@PathVariable Integer id) {
+        return (List<CargosCriterios>) cargosCriteriosRefactorRepository.findByIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CargosCriterios[] create(@RequestBody CargosCriterios[] objetos) {
         CargosCriterios[] salida = new CargosCriterios[objetos.length];
