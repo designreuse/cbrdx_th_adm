@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.Riesgos;
+import com.ciberdix.th.models.refactor.VRiesgos;
 import com.ciberdix.th.repositories.refactor.RiesgosRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VRiesgosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,22 @@ public class RiesgosRefactorController {
     @Autowired
     private RiesgosRefactorRepository riesgosRefactorRepository;
 
+    @Autowired
+    private VRiesgosRefactorRepository vRiesgosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<Riesgos> findAll() {
-        return (List<Riesgos>) riesgosRefactorRepository.findAll();
+    List<VRiesgos> findAll() {
+        return (List<VRiesgos>) vRiesgosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Riesgos findOne(@PathVariable Integer id) {
-        return riesgosRefactorRepository.findOne(id);
+    VRiesgos findOne(@PathVariable Integer id) {
+        return vRiesgosRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<Riesgos> findByEnabled(){
-        return riesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VRiesgos> findByEnabled(){
+        return vRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.POST)
