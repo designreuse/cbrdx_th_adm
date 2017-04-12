@@ -330,6 +330,7 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasRolesProceso"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosElementos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposElementos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VRiesgos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
