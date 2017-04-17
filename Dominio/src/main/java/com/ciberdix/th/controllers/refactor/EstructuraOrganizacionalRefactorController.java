@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.EstructuraOrganizacional;
+import com.ciberdix.th.models.refactor.VEstructuraOrganizacional;
 import com.ciberdix.th.repositories.refactor.EstructuraOrganizacionalRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VEstructuraOrganizacionalRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,24 +21,27 @@ public class EstructuraOrganizacionalRefactorController {
     @Autowired
     private EstructuraOrganizacionalRefactorRepository estructuraOrganizacionalRefactorRepository;
 
+    @Autowired
+    private VEstructuraOrganizacionalRefactorRepository vEstructuraOrganizacionalRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<EstructuraOrganizacional> findAll() {
-        return (List<EstructuraOrganizacional>) estructuraOrganizacionalRefactorRepository.findAll();
+    List<VEstructuraOrganizacional> findAll() {
+        return (List<VEstructuraOrganizacional>) vEstructuraOrganizacionalRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<EstructuraOrganizacional> findEnabled() {
-        return (List<EstructuraOrganizacional>) estructuraOrganizacionalRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VEstructuraOrganizacional> findEnabled() {
+        return (List<VEstructuraOrganizacional>) vEstructuraOrganizacionalRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{id}")
-    List<EstructuraOrganizacional> findByIdPadre(@PathVariable Integer id) {
-        return (List<EstructuraOrganizacional>) estructuraOrganizacionalRefactorRepository.findByIdPadre(id);
+    List<VEstructuraOrganizacional> findByIdPadre(@PathVariable Integer id) {
+        return (List<VEstructuraOrganizacional>) vEstructuraOrganizacionalRefactorRepository.findByIdPadre(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    EstructuraOrganizacional findOne(@PathVariable Integer id) {
-        return estructuraOrganizacionalRefactorRepository.findOne(id);
+    VEstructuraOrganizacional findOne(@PathVariable Integer id) {
+        return vEstructuraOrganizacionalRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

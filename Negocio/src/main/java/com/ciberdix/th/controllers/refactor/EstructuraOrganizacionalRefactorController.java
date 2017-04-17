@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.EstructuraOrganizacional;
+import com.ciberdix.th.model.refactor.VEstructuraOrganizacional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,29 +20,29 @@ public class EstructuraOrganizacionalRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/EstructuraOrganizacional";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<EstructuraOrganizacional> findAll() {
+    List<VEstructuraOrganizacional> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        EstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl, EstructuraOrganizacional[].class);
+        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl, VEstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    EstructuraOrganizacional findOne(@PathVariable Integer id) {
+    VEstructuraOrganizacional findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, EstructuraOrganizacional.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VEstructuraOrganizacional.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<EstructuraOrganizacional> findEnabled() {
+    List<VEstructuraOrganizacional> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        EstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", EstructuraOrganizacional[].class);
+        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VEstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{id}")
-    List<EstructuraOrganizacional> findByIdPadre(@PathVariable Integer id) {
+    List<VEstructuraOrganizacional> findByIdPadre(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        EstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/buscarPadre/" + id, EstructuraOrganizacional[].class);
+        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/buscarPadre/" + id, VEstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
     }
 
