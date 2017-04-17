@@ -36,7 +36,13 @@ public class EstructuraFisicaRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     EstructuraFisica create(@RequestBody EstructuraFisica obj) {
-        return estructuraFisicaRefactorRepository.save(obj);
+        return estructuraFisicaRefactorRepository.save(
+                new EstructuraFisica(obj.getCodigo(),obj.getEstructuraFisica(),
+                        obj.getIdClasificacionSede(),obj.getIdLocalizacion(),
+                        obj.getTelefono(),obj.getCelular(),obj.getCorreoElectronico(),
+                        obj.getIndicadorVirtual(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
