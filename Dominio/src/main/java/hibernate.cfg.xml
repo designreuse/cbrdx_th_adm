@@ -331,6 +331,8 @@
         <mapping class="com.ciberdix.th.models.refactor.VCargosElementos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposElementos"/>
         <mapping class="com.ciberdix.th.models.refactor.VRiesgos"/>
+        <mapping class="com.ciberdix.th.models.refactor.EstructuraOrganizacional"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposEstructuras"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
