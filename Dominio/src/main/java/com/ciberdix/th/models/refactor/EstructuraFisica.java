@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 17/04/2017.
  */
 @Entity
+@Table(name = "EstructuraFisica", schema = "crz_th", catalog = "CREZCAMOS")
 public class EstructuraFisica {
     private Integer idEstructuraFisica;
     private String codigo;
@@ -24,7 +22,25 @@ public class EstructuraFisica {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public EstructuraFisica() {
+    }
+
+    public EstructuraFisica(String codigo, String estructuraFisica, Integer idClasificacionSede, Integer idLocalizacion, String telefono, String celular, String correoElectronico, Boolean indicadorVirtual, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.estructuraFisica = estructuraFisica;
+        this.idClasificacionSede = idClasificacionSede;
+        this.idLocalizacion = idLocalizacion;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.indicadorVirtual = indicadorVirtual;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdEstructuraFisica")
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;

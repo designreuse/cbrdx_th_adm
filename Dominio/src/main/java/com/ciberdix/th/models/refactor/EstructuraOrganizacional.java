@@ -16,7 +16,6 @@ public class EstructuraOrganizacional {
     private Integer idTipoEstructura;
     private Integer idCentroCostos;
     private Integer idTipoArea;
-    private Integer idSede;
     private Integer idTipoDocumento;
     private String numeroDocumento;
     private Integer idLocalizacion;
@@ -30,6 +29,31 @@ public class EstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idEstructuraFisica;
+
+    public EstructuraOrganizacional() {
+    }
+
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idSede, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.idPadre = idPadre;
+        this.idTipoEstructura = idTipoEstructura;
+        this.idCentroCostos = idCentroCostos;
+        this.idTipoArea = idTipoArea;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.idLocalizacion = idLocalizacion;
+        this.razonSocial = razonSocial;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.paginaWeb = paginaWeb;
+        this.idLogo = idLogo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Basic
@@ -100,16 +124,6 @@ public class EstructuraOrganizacional {
 
     public void setIdTipoArea(Integer idTipoArea) {
         this.idTipoArea = idTipoArea;
-    }
-
-    @Basic
-    @Column(name = "IdSede")
-    public Integer getIdSede() {
-        return idSede;
-    }
-
-    public void setIdSede(Integer idSede) {
-        this.idSede = idSede;
     }
 
     @Basic
@@ -232,6 +246,16 @@ public class EstructuraOrganizacional {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "EstructuraFisica")
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -249,7 +273,6 @@ public class EstructuraOrganizacional {
         if (idCentroCostos != null ? !idCentroCostos.equals(that.idCentroCostos) : that.idCentroCostos != null)
             return false;
         if (idTipoArea != null ? !idTipoArea.equals(that.idTipoArea) : that.idTipoArea != null) return false;
-        if (idSede != null ? !idSede.equals(that.idSede) : that.idSede != null) return false;
         if (idTipoDocumento != null ? !idTipoDocumento.equals(that.idTipoDocumento) : that.idTipoDocumento != null)
             return false;
         if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null)
@@ -269,8 +292,7 @@ public class EstructuraOrganizacional {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-
-        return true;
+        return idEstructuraFisica != null ? idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica == null;
     }
 
     @Override
@@ -282,7 +304,6 @@ public class EstructuraOrganizacional {
         result = 31 * result + (idTipoEstructura != null ? idTipoEstructura.hashCode() : 0);
         result = 31 * result + (idCentroCostos != null ? idCentroCostos.hashCode() : 0);
         result = 31 * result + (idTipoArea != null ? idTipoArea.hashCode() : 0);
-        result = 31 * result + (idSede != null ? idSede.hashCode() : 0);
         result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
@@ -295,6 +316,7 @@ public class EstructuraOrganizacional {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         return result;
     }
 }
