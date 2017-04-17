@@ -337,6 +337,7 @@
         <mapping class="com.ciberdix.th.models.refactor.EstructuraOrganizacionalCargos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasClasificacionesSedes"/>
         <mapping class="com.ciberdix.th.models.refactor.Zonas"/>
+        <mapping class="com.ciberdix.th.models.refactor.VEstructuraOrganizacional"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
