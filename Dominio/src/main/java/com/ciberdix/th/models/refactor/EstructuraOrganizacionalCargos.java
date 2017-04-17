@@ -7,37 +7,36 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 17/04/2017.
  */
 @Entity
-public class SedesAreasCargos {
-    private Integer idSedeAreaCargo;
-    private Integer idSedeArea;
+public class EstructuraOrganizacionalCargos {
+    private Integer idEstructuraOrganizacionalCargo;
+    private Integer idEstructuraOrganizacional;
     private Integer idCargo;
-    private Integer nroPlazas;
+    private Integer plazas;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer costoPlazas;
 
     @Id
-    @Column(name = "IdSedeAreaCargo")
-    public Integer getIdSedeAreaCargo() {
-        return idSedeAreaCargo;
+    @Column(name = "IdEstructuraOrganizacionalCargo")
+    public Integer getIdEstructuraOrganizacionalCargo() {
+        return idEstructuraOrganizacionalCargo;
     }
 
-    public void setIdSedeAreaCargo(Integer idSedeAreaCargo) {
-        this.idSedeAreaCargo = idSedeAreaCargo;
+    public void setIdEstructuraOrganizacionalCargo(Integer idEstructuraOrganizacionalCargo) {
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
     }
 
     @Basic
-    @Column(name = "IdSedeArea")
-    public Integer getIdSedeArea() {
-        return idSedeArea;
+    @Column(name = "IdEstructuraOrganizacional")
+    public Integer getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
     }
 
-    public void setIdSedeArea(Integer idSedeArea) {
-        this.idSedeArea = idSedeArea;
+    public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
     }
 
     @Basic
@@ -51,13 +50,13 @@ public class SedesAreasCargos {
     }
 
     @Basic
-    @Column(name = "NroPlazas")
-    public Integer getNroPlazas() {
-        return nroPlazas;
+    @Column(name = "Plazas")
+    public Integer getPlazas() {
+        return plazas;
     }
 
-    public void setNroPlazas(Integer nroPlazas) {
-        this.nroPlazas = nroPlazas;
+    public void setPlazas(Integer plazas) {
+        this.plazas = plazas;
     }
 
     @Basic
@@ -90,49 +89,38 @@ public class SedesAreasCargos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Basic
-    @Column(name = "CostoPlazas")
-    public Integer getCostoPlazas() {
-        return costoPlazas;
-    }
-
-    public void setCostoPlazas(Integer costoPlazas) {
-        this.costoPlazas = costoPlazas;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SedesAreasCargos that = (SedesAreasCargos) o;
+        EstructuraOrganizacionalCargos that = (EstructuraOrganizacionalCargos) o;
 
-        if (idSedeAreaCargo != null ? !idSedeAreaCargo.equals(that.idSedeAreaCargo) : that.idSedeAreaCargo != null)
+        if (idEstructuraOrganizacionalCargo != null ? !idEstructuraOrganizacionalCargo.equals(that.idEstructuraOrganizacionalCargo) : that.idEstructuraOrganizacionalCargo != null)
             return false;
-        if (idSedeArea != null ? !idSedeArea.equals(that.idSedeArea) : that.idSedeArea != null) return false;
+        if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
+            return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
-        if (nroPlazas != null ? !nroPlazas.equals(that.nroPlazas) : that.nroPlazas != null) return false;
+        if (plazas != null ? !plazas.equals(that.plazas) : that.plazas != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-        if (costoPlazas != null ? !costoPlazas.equals(that.costoPlazas) : that.costoPlazas != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idSedeAreaCargo != null ? idSedeAreaCargo.hashCode() : 0;
-        result = 31 * result + (idSedeArea != null ? idSedeArea.hashCode() : 0);
+        int result = idEstructuraOrganizacionalCargo != null ? idEstructuraOrganizacionalCargo.hashCode() : 0;
+        result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
-        result = 31 * result + (nroPlazas != null ? nroPlazas.hashCode() : 0);
+        result = 31 * result + (plazas != null ? plazas.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (costoPlazas != null ? costoPlazas.hashCode() : 0);
         return result;
     }
 }

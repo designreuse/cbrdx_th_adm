@@ -333,6 +333,10 @@
         <mapping class="com.ciberdix.th.models.refactor.VRiesgos"/>
         <mapping class="com.ciberdix.th.models.refactor.EstructuraOrganizacional"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposEstructuras"/>
+        <mapping class="com.ciberdix.th.models.refactor.EstructuraFisica"/>
+        <mapping class="com.ciberdix.th.models.refactor.EstructuraOrganizacionalCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasClasificacionesSedes"/>
+        <mapping class="com.ciberdix.th.models.refactor.Zonas"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

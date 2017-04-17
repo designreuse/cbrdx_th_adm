@@ -7,35 +7,34 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 17/04/2017.
  */
 @Entity
-public class SedesAreas {
-    private Integer idSedeArea;
-    private Integer idSede;
+public class Zonas {
+    private Integer idZona;
+    private String zona;
     private Boolean indicadorHabilitado;
-    private Integer idArea;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdSedeArea")
-    public Integer getIdSedeArea() {
-        return idSedeArea;
+    @Column(name = "IdZona")
+    public Integer getIdZona() {
+        return idZona;
     }
 
-    public void setIdSedeArea(Integer idSedeArea) {
-        this.idSedeArea = idSedeArea;
+    public void setIdZona(Integer idZona) {
+        this.idZona = idZona;
     }
 
     @Basic
-    @Column(name = "IdSede")
-    public Integer getIdSede() {
-        return idSede;
+    @Column(name = "Zona")
+    public String getZona() {
+        return zona;
     }
 
-    public void setIdSede(Integer idSede) {
-        this.idSede = idSede;
+    public void setZona(String zona) {
+        this.zona = zona;
     }
 
     @Basic
@@ -46,16 +45,6 @@ public class SedesAreas {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
-    }
-
-    @Basic
-    @Column(name = "IdArea")
-    public Integer getIdArea() {
-        return idArea;
-    }
-
-    public void setIdArea(Integer idArea) {
-        this.idArea = idArea;
     }
 
     @Basic
@@ -83,16 +72,15 @@ public class SedesAreas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SedesAreas that = (SedesAreas) o;
+        Zonas zonas = (Zonas) o;
 
-        if (idSedeArea != null ? !idSedeArea.equals(that.idSedeArea) : that.idSedeArea != null) return false;
-        if (idSede != null ? !idSede.equals(that.idSede) : that.idSede != null) return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+        if (idZona != null ? !idZona.equals(zonas.idZona) : zonas.idZona != null) return false;
+        if (zona != null ? !zona.equals(zonas.zona) : zonas.zona != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(zonas.indicadorHabilitado) : zonas.indicadorHabilitado != null)
             return false;
-        if (idArea != null ? !idArea.equals(that.idArea) : that.idArea != null) return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(zonas.auditoriaUsuario) : zonas.auditoriaUsuario != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(zonas.auditoriaFecha) : zonas.auditoriaFecha != null)
             return false;
 
         return true;
@@ -100,10 +88,9 @@ public class SedesAreas {
 
     @Override
     public int hashCode() {
-        int result = idSedeArea != null ? idSedeArea.hashCode() : 0;
-        result = 31 * result + (idSede != null ? idSede.hashCode() : 0);
+        int result = idZona != null ? idZona.hashCode() : 0;
+        result = 31 * result + (zona != null ? zona.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (idArea != null ? idArea.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;

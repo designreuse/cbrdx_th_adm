@@ -29,34 +29,10 @@ public class EstructuraOrganizacional {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public EstructuraOrganizacional() {
-    }
-
-    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idSede, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.idPadre = idPadre;
-        this.idTipoEstructura = idTipoEstructura;
-        this.idCentroCostos = idCentroCostos;
-        this.idTipoArea = idTipoArea;
-        this.idSede = idSede;
-        this.idTipoDocumento = idTipoDocumento;
-        this.numeroDocumento = numeroDocumento;
-        this.idLocalizacion = idLocalizacion;
-        this.razonSocial = razonSocial;
-        this.telefono = telefono;
-        this.celular = celular;
-        this.correoElectronico = correoElectronico;
-        this.paginaWeb = paginaWeb;
-        this.idLogo = idLogo;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
+    private Integer idEstructuraFisica;
 
     @Id
-    @GeneratedValue
+    @Basic
     @Column(name = "IdEstructuraOrganizacional")
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
