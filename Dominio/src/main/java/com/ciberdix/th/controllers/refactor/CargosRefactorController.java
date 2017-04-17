@@ -121,6 +121,7 @@ public class CargosRefactorController {
         cargo.setPuntos(obj.getPuntos());
         cargo.setIdCategoria(obj.getIdCategoria());
         cargo.setSalario(obj.getSalario());
+        cargo.setIndicadorRequiereFormacion(obj.getIndicadorRequiereFormacion());
 
         return cargosRefactorRepository.save(cargo);
     }
