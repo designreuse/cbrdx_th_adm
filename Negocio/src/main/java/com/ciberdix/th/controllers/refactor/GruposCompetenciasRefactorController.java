@@ -28,7 +28,7 @@ public class GruposCompetenciasRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<GruposCompetencias> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        GruposCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl, GruposCompetencias[].class);
+        GruposCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/enabled", GruposCompetencias[].class);
         return Arrays.asList(cargosCompetencias);
     }
 
