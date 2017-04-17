@@ -1,30 +1,32 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 10/04/17.
+ * Created by felip on 17/04/2017.
  */
 @Entity
-@Table(name = "ListasTiposElementos", schema = "crz_th", catalog = "CREZCAMOS")
-public class ListasTiposElementos {
-    private Integer idListaTipoElemento;
+public class ListasTiposEstructuras {
+    private Integer idListaTipoEstructura;
     private String codigo;
     private String nombre;
     private Integer orden;
     private Boolean indicadorHabilitado;
-    private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdListaTipoElemento")
-    public Integer getIdListaTipoElemento() {
-        return idListaTipoElemento;
+    @Column(name = "IdListaTipoEstructura")
+    public Integer getIdListaTipoEstructura() {
+        return idListaTipoEstructura;
     }
 
-    public void setIdListaTipoElemento(Integer idListaTipoElemento) {
-        this.idListaTipoElemento = idListaTipoElemento;
+    public void setIdListaTipoEstructura(Integer idListaTipoEstructura) {
+        this.idListaTipoEstructura = idListaTipoEstructura;
     }
 
     @Basic
@@ -68,6 +70,16 @@ public class ListasTiposElementos {
     }
 
     @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
     @Column(name = "AuditoriaFecha")
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
@@ -82,14 +94,16 @@ public class ListasTiposElementos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ListasTiposElementos that = (ListasTiposElementos) o;
+        ListasTiposEstructuras that = (ListasTiposEstructuras) o;
 
-        if (idListaTipoElemento != null ? !idListaTipoElemento.equals(that.idListaTipoElemento) : that.idListaTipoElemento != null)
+        if (idListaTipoEstructura != null ? !idListaTipoEstructura.equals(that.idListaTipoEstructura) : that.idListaTipoEstructura != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
@@ -99,22 +113,13 @@ public class ListasTiposElementos {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoElemento != null ? idListaTipoElemento.hashCode() : 0;
+        int result = idListaTipoEstructura != null ? idListaTipoEstructura.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "AuditoriaUsuario")
-    public Integer getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
-
-    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
     }
 }
