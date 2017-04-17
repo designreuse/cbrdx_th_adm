@@ -3,6 +3,7 @@ package com.ciberdix.th.models.refactor;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
@@ -30,7 +31,9 @@ public class EstructuraOrganizacional {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idEstructuraFisica;
 
+    @Id
     @Basic
     @Column(name = "IdEstructuraOrganizacional")
     public Integer getIdEstructuraOrganizacional() {
@@ -295,5 +298,15 @@ public class EstructuraOrganizacional {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraFisica")
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
     }
 }
