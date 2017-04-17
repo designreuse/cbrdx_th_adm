@@ -1,14 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 17/04/2017.
  */
 @Entity
+@Table(name = "EstructuraOrganizacional", schema = "crz_th", catalog = "CREZCAMOS")
 public class EstructuraOrganizacional {
     private Integer idEstructuraOrganizacional;
     private String codigo;
@@ -31,7 +30,33 @@ public class EstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
+    public EstructuraOrganizacional() {
+    }
+
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idSede, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.idPadre = idPadre;
+        this.idTipoEstructura = idTipoEstructura;
+        this.idCentroCostos = idCentroCostos;
+        this.idTipoArea = idTipoArea;
+        this.idSede = idSede;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.idLocalizacion = idLocalizacion;
+        this.razonSocial = razonSocial;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.paginaWeb = paginaWeb;
+        this.idLogo = idLogo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    @Id
+    @GeneratedValue
     @Column(name = "IdEstructuraOrganizacional")
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
