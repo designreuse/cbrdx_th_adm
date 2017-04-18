@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.EstructuraFisica;
+import com.ciberdix.th.models.refactor.VEstructuraFisica;
 import com.ciberdix.th.repositories.refactor.EstructuraFisicaRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VEstructuraFisicaRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,22 @@ public class EstructuraFisicaRefactorController {
     @Autowired
     private EstructuraFisicaRefactorRepository estructuraFisicaRefactorRepository;
 
+    @Autowired
+    private VEstructuraFisicaRefactorRepository vEstructuraFisicaRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<EstructuraFisica> findAll() {
-        return (List<EstructuraFisica>) estructuraFisicaRefactorRepository.findAll();
+    List<VEstructuraFisica> findAll() {
+        return (List<VEstructuraFisica>) vEstructuraFisicaRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<EstructuraFisica> findEnabled() {
-        return (List<EstructuraFisica>) estructuraFisicaRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VEstructuraFisica> findEnabled() {
+        return (List<VEstructuraFisica>) vEstructuraFisicaRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    EstructuraFisica findOne(@PathVariable Integer id) {
-        return estructuraFisicaRefactorRepository.findOne(id);
+    VEstructuraFisica findOne(@PathVariable Integer id) {
+        return vEstructuraFisicaRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
