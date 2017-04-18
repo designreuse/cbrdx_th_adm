@@ -19,7 +19,8 @@ public class VEstructuraOrganizacionalCargos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
+    private Integer ocupados;
+    
     @Id
     @Column(name = "IdEstructuraOrganizacionalCargo")
     public Integer getIdEstructuraOrganizacionalCargo() {
@@ -160,5 +161,15 @@ public class VEstructuraOrganizacionalCargos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "Ocupados")
+    public Integer getOcupados() {
+        return ocupados;
+    }
+
+    public void setOcupados(Integer ocupados) {
+        this.ocupados = ocupados;
     }
 }
