@@ -47,13 +47,13 @@ public class EstructuraOrganizacionalRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     EstructuraOrganizacional create(@RequestBody EstructuraOrganizacional obj) {
         return estructuraOrganizacionalRefactorRepository.save(
-                new EstructuraOrganizacional(obj.getCodigo(),obj.getNombre(),obj.getIdPadre(),
-                        obj.getIdTipoEstructura(),obj.getIdCentroCostos(),obj.getIdTipoArea(),
-                        obj.getIdCentroCostos(),obj.getIdTipoDocumento(),obj.getNumeroDocumento(),
-                        obj.getIdLocalizacion(),obj.getRazonSocial(),obj.getTelefono(),
-                        obj.getCelular(),obj.getCorreoElectronico(),obj.getPaginaWeb(),
-                        obj.getIdLogo(),obj.getIndicadorHabilitado(),obj.getAuditoriaUsuario(),
-                        obj.getIdEstructuraFisica())
+                new EstructuraOrganizacional(obj.getCodigo(), obj.getNombre(),
+                        obj.getIdPadre(), obj.getIdTipoEstructura(),
+                        obj.getIdCentroCostos(), obj.getIdTipoArea(),
+                        obj.getIdTipoDocumento(), obj.getNumeroDocumento(), obj.getIdLocalizacion(),
+                        obj.getRazonSocial(), obj.getTelefono(), obj.getCelular(), obj.getCorreoElectronico(),
+                        obj.getPaginaWeb(), obj.getIdLogo(), obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario(), obj.getIdEstructuraFisica(), obj.getIndicadorPlantaConfirmada())
         );
     }
 

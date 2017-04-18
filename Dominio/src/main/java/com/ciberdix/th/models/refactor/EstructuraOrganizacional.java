@@ -34,7 +34,7 @@ public class EstructuraOrganizacional {
     public EstructuraOrganizacional() {
     }
 
-    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idSede, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica) {
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idPadre = idPadre;
@@ -54,10 +54,11 @@ public class EstructuraOrganizacional {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.idEstructuraFisica = idEstructuraFisica;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 
     @Id
-    @Basic
+    @GeneratedValue
     @Column(name = "IdEstructuraOrganizacional")
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
