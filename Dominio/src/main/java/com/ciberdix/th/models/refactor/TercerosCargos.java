@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -21,6 +22,10 @@ public class TercerosCargos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Long idTercero;
+    private Integer idEstructuraOrganizacionalCargo;
+    private Date asignadoDesde;
+    private Integer idZona;
+    private Boolean indicadorHabilitado;
 
     @Id
     @Column(name = "IdTerceroCargo")
@@ -160,5 +165,45 @@ public class TercerosCargos {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraOrganizacionalCargo")
+    public Integer getIdEstructuraOrganizacionalCargo() {
+        return idEstructuraOrganizacionalCargo;
+    }
+
+    public void setIdEstructuraOrganizacionalCargo(Integer idEstructuraOrganizacionalCargo) {
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
+    }
+
+    @Basic
+    @Column(name = "AsignadoDesde")
+    public Date getAsignadoDesde() {
+        return asignadoDesde;
+    }
+
+    public void setAsignadoDesde(Date asignadoDesde) {
+        this.asignadoDesde = asignadoDesde;
+    }
+
+    @Basic
+    @Column(name = "IdZona")
+    public Integer getIdZona() {
+        return idZona;
+    }
+
+    public void setIdZona(Integer idZona) {
+        this.idZona = idZona;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado")
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }

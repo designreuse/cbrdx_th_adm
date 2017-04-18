@@ -52,4 +52,46 @@ public class CargosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab1")
+    void updateTab1(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab1", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
+    void updateTab2(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab2", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab3")
+    void updateTab3(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab3", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab4")
+    void updateTab4(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab4", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab5")
+    void updateTab5(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab5", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab6")
+    void updateTab6(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab6", obj);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
+    void updateTab7(@RequestBody Cargos obj){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/tab7", obj);
+    }
 }

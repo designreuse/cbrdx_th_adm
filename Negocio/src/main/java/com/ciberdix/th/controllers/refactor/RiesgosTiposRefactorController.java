@@ -27,6 +27,13 @@ public class RiesgosTiposRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<RiesgosTipos> findByEnabled() {
+        RestTemplate restTemplate = new RestTemplate();
+        RiesgosTipos[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", RiesgosTipos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     RiesgosTipos findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();

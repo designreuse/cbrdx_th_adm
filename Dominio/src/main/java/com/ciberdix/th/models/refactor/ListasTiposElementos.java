@@ -15,6 +15,7 @@ public class ListasTiposElementos {
     private Integer orden;
     private Boolean indicadorHabilitado;
     private Timestamp auditoriaFecha;
+    private Integer auditoriaUsuario;
 
     @Id
     @Column(name = "IdListaTipoElemento")
@@ -105,5 +106,15 @@ public class ListasTiposElementos {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
     }
 }

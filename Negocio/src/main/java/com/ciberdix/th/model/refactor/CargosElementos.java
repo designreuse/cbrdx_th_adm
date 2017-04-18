@@ -11,7 +11,6 @@ public class CargosElementos {
     private Integer idCargo;
     private Integer idTipoElemento;
     private String descripcion;
-    private BigDecimal valor;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
@@ -45,14 +44,6 @@ public class CargosElementos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
     }
 
     public Integer getAuditoriaUsuario() {

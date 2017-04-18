@@ -7,34 +7,34 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 17/04/2017.
  */
 @Entity
-public class Menus {
-    private Integer idMenu;
-    private String menu;
+public class Zonas {
+    private Integer idZona;
+    private String zona;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdMenu")
-    public Integer getIdMenu() {
-        return idMenu;
+    @Column(name = "IdZona")
+    public Integer getIdZona() {
+        return idZona;
     }
 
-    public void setIdMenu(Integer idMenu) {
-        this.idMenu = idMenu;
+    public void setIdZona(Integer idZona) {
+        this.idZona = idZona;
     }
 
     @Basic
-    @Column(name = "Menu")
-    public String getMenu() {
-        return menu;
+    @Column(name = "Zona")
+    public String getZona() {
+        return zona;
     }
 
-    public void setMenu(String menu) {
-        this.menu = menu;
+    public void setZona(String zona) {
+        this.zona = zona;
     }
 
     @Basic
@@ -72,15 +72,15 @@ public class Menus {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Menus menus = (Menus) o;
+        Zonas zonas = (Zonas) o;
 
-        if (idMenu != null ? !idMenu.equals(menus.idMenu) : menus.idMenu != null) return false;
-        if (menu != null ? !menu.equals(menus.menu) : menus.menu != null) return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(menus.indicadorHabilitado) : menus.indicadorHabilitado != null)
+        if (idZona != null ? !idZona.equals(zonas.idZona) : zonas.idZona != null) return false;
+        if (zona != null ? !zona.equals(zonas.zona) : zonas.zona != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(zonas.indicadorHabilitado) : zonas.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(menus.auditoriaUsuario) : menus.auditoriaUsuario != null)
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(zonas.auditoriaUsuario) : zonas.auditoriaUsuario != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(menus.auditoriaFecha) : menus.auditoriaFecha != null)
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(zonas.auditoriaFecha) : zonas.auditoriaFecha != null)
             return false;
 
         return true;
@@ -88,8 +88,8 @@ public class Menus {
 
     @Override
     public int hashCode() {
-        int result = idMenu != null ? idMenu.hashCode() : 0;
-        result = 31 * result + (menu != null ? menu.hashCode() : 0);
+        int result = idZona != null ? idZona.hashCode() : 0;
+        result = 31 * result + (zona != null ? zona.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

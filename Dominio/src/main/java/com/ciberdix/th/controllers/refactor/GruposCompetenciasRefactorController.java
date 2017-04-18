@@ -28,7 +28,9 @@ public class GruposCompetenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     GruposCompetencias create(@RequestBody GruposCompetencias obj) {
-        return GruposCompetenciasRefactorRepository.save(new GruposCompetencias(obj.getGrupoCompetencia(), obj.getDescripcion(), obj.getPonderacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return GruposCompetenciasRefactorRepository.save(
+                new GruposCompetencias(obj.getGrupoCompetencia(), obj.getDescripcion(),
+                        obj.getPonderacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

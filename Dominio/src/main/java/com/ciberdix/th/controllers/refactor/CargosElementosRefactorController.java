@@ -43,7 +43,7 @@ public class CargosElementosRefactorController {
     CargosElementos create(@RequestBody CargosElementos obj) {
         return cargosElementosRefactorRepository.save(
                 new CargosElementos(obj.getIdCargo(), obj.getIdTipoElemento(),
-                        obj.getDescripcion(), obj.getValor(), obj.getAuditoriaUsuario())
+                        obj.getDescripcion(), obj.getAuditoriaUsuario())
         );
     }
 
