@@ -45,6 +45,13 @@ public class OcupacionesRefactorController {
         return Arrays.asList(ocupaciones);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarCargo/{idCargo}")
+    List<Ocupaciones> listarOcupacionesPorCargo(@PathVariable Integer idCargo) {
+        RestTemplate restTemplate = new RestTemplate();
+        Ocupaciones[] ocupaciones = restTemplate.getForObject(serviceUrl + "api/ocupaciones/buscarCargo/" + idCargo, Ocupaciones[].class);
+        return Arrays.asList(ocupaciones);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/enabled")
     @ApiOperation(value = "Crear una Ocupación", notes = "Retorna la ocupación creada")
     List<Ocupaciones> listarOcupacionesHabilitadas(@PathVariable Integer id) {
