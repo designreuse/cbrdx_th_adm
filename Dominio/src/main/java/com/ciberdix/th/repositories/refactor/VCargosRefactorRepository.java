@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface VCargosRefactorRepository extends CrudRepository<VCargos, Integer> {
     List<VCargos> findByIndicadorHabilitadoIsTrue();
+    List<VCargos> findByCargoContains(String query);
 }
