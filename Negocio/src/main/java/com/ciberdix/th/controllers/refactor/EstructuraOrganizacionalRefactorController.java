@@ -14,10 +14,10 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/api/EstructuraOrganizacional")
+@RequestMapping("/api/estructuraOrganizacional")
 public class EstructuraOrganizacionalRefactorController {
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/EstructuraOrganizacional";
+    private String serviceUrl = globales.getUrl() + "/api/estructuraOrganizacional";
 
     @RequestMapping(method = RequestMethod.GET)
     List<VEstructuraOrganizacional> findAll() {

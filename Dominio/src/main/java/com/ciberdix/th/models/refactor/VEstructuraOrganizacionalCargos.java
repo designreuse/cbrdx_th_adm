@@ -4,30 +4,21 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 17/04/2017.
+ * Created by robertochajin on 18/04/17.
  */
 @Entity
-@Table(name = "EstructuraOrganizacionalCargos", schema = "crz_th", catalog = "CREZCAMOS")
-public class EstructuraOrganizacionalCargos {
+@Table(name = "V_EstructuraOrganizacionalCargos", schema = "crz_th", catalog = "CREZCAMOS")
+public class VEstructuraOrganizacionalCargos {
     private Integer idEstructuraOrganizacionalCargo;
     private Integer idEstructuraOrganizacional;
+    private String estructuraOrganizacional;
     private Integer idCargo;
+    private String cargo;
+    private Integer salario;
     private Integer plazas;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public EstructuraOrganizacionalCargos() {
-    }
-
-    public EstructuraOrganizacionalCargos(Integer idEstructuraOrganizacional, Integer idCargo, Integer plazas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
-        this.idCargo = idCargo;
-        this.plazas = plazas;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
 
     @Id
     @Column(name = "IdEstructuraOrganizacionalCargo")
@@ -50,6 +41,16 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
+    @Column(name = "EstructuraOrganizacional")
+    public String getEstructuraOrganizacional() {
+        return estructuraOrganizacional;
+    }
+
+    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
+        this.estructuraOrganizacional = estructuraOrganizacional;
+    }
+
+    @Basic
     @Column(name = "IdCargo")
     public Integer getIdCargo() {
         return idCargo;
@@ -57,6 +58,26 @@ public class EstructuraOrganizacionalCargos {
 
     public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
+    }
+
+    @Basic
+    @Column(name = "Cargo")
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
+    @Column(name = "Salario")
+    public Integer getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
 
     @Basic
@@ -104,13 +125,17 @@ public class EstructuraOrganizacionalCargos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EstructuraOrganizacionalCargos that = (EstructuraOrganizacionalCargos) o;
+        VEstructuraOrganizacionalCargos that = (VEstructuraOrganizacionalCargos) o;
 
         if (idEstructuraOrganizacionalCargo != null ? !idEstructuraOrganizacionalCargo.equals(that.idEstructuraOrganizacionalCargo) : that.idEstructuraOrganizacionalCargo != null)
             return false;
         if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
             return false;
+        if (estructuraOrganizacional != null ? !estructuraOrganizacional.equals(that.estructuraOrganizacional) : that.estructuraOrganizacional != null)
+            return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
+        if (salario != null ? !salario.equals(that.salario) : that.salario != null) return false;
         if (plazas != null ? !plazas.equals(that.plazas) : that.plazas != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
@@ -126,7 +151,10 @@ public class EstructuraOrganizacionalCargos {
     public int hashCode() {
         int result = idEstructuraOrganizacionalCargo != null ? idEstructuraOrganizacionalCargo.hashCode() : 0;
         result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
+        result = 31 * result + (estructuraOrganizacional != null ? estructuraOrganizacional.hashCode() : 0);
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (salario != null ? salario.hashCode() : 0);
         result = 31 * result + (plazas != null ? plazas.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
