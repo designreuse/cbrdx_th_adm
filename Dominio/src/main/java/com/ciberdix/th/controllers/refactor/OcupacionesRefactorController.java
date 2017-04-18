@@ -35,6 +35,11 @@ public class OcupacionesRefactorController {
         return ocupacionesRepository.findByIdOcupacionTipo(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{idCargo}")
+    List<Ocupaciones> listarPorCargo(@PathVariable Integer idCargo) {
+        return ocupacionesRepository.findByIdCargo(idCargo);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<Ocupaciones> listEnabled() {
         return ocupacionesRepository.findByIndicadorHabilitadoIsTrue();
