@@ -36,7 +36,10 @@ public class CentrosCostosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     CentrosCostos create(@RequestBody CentrosCostos obj) {
-        return centrosCostosRefactorRepository.save(obj);
+        return centrosCostosRefactorRepository.save(
+                new CentrosCostos(obj.getCentroCostos(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario(),obj.getCodigoCentroCostos())
+        );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
