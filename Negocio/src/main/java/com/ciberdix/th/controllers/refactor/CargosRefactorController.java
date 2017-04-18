@@ -41,6 +41,13 @@ public class CargosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
+    List<VCargos> findByWildCard(@PathVariable String query) {
+        RestTemplate restTemplate = new RestTemplate();
+        VCargos[] parametros = restTemplate.getForObject(serviceUrl + "/wildcard/" + query, VCargos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Cargos create(@RequestBody Cargos obj){
         RestTemplate restTemplate = new RestTemplate();

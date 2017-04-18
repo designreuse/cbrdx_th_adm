@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "TercerosCargos", schema = "crz_th", catalog = "CREZCAMOS")
 public class TercerosCargos {
     private Integer idTerceroCargo;
     private Integer idSede;
@@ -26,6 +24,25 @@ public class TercerosCargos {
     private Date asignadoDesde;
     private Integer idZona;
     private Boolean indicadorHabilitado;
+
+    public TercerosCargos() {
+    }
+
+    public TercerosCargos(Integer idSede, Integer idArea, Integer idCargo, Timestamp fechaInicio, Timestamp fechaFin, Integer idTipoContrato, Integer auditoriaUsuario, Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idZona, Boolean indicadorHabilitado) {
+        this.idSede = idSede;
+        this.idArea = idArea;
+        this.idCargo = idCargo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.idTipoContrato = idTipoContrato;
+        this.auditoriaUsuario = auditoriaUsuario != null ?  auditoriaUsuario: 1;
+        this.idTercero = idTercero;
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
+        this.asignadoDesde = asignadoDesde;
+        this.idZona = idZona;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdTerceroCargo")
