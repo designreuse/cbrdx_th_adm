@@ -36,7 +36,7 @@ public class EstructuraOrganizacionalCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
     List<VEstructuraOrganizacionalCargos> findByIdCargo(@PathVariable Integer id) {
-        return (List<VEstructuraOrganizacionalCargos>) vEstructuraOrganizacionalCargosRefactorRepository.findByIdCargo(id);
+        return (List<VEstructuraOrganizacionalCargos>) vEstructuraOrganizacionalCargosRefactorRepository.findByIdEstructuraOrganizacionalCargo(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
