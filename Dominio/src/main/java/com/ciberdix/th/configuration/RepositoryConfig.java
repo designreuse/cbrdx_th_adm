@@ -144,5 +144,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VEstructuraOrganizacional.class);
         config.exposeIdsFor(EstructuraFisica.class);
         config.exposeIdsFor(ListasTiposEstructuras.class);
+        config.exposeIdsFor(VEstructuraFisica.class);
+        config.exposeIdsFor(ListasClasificacionesSedes.class);
     }
 }
