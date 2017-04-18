@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api/centrosCostos")
 public class CentrosCostosRefactorController {
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/categorias";
+    private String serviceUrl = globales.getUrl() + "/api/centrosCostos";
 
     @RequestMapping(method = RequestMethod.GET)
     List<CentrosCostos> findAll() {
