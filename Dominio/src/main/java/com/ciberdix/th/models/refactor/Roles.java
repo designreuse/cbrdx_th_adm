@@ -35,6 +35,7 @@ public class Roles {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdRol")
     public Integer getIdRol() {
         return idRol;

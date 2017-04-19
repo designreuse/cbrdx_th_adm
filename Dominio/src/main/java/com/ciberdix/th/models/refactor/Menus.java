@@ -31,6 +31,7 @@ public class Menus {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdMenu")
     public Integer getIdMenu() {
         return idMenu;
