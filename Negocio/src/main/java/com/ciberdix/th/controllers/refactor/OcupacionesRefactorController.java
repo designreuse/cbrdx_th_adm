@@ -29,11 +29,18 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Obtener ocupaciones", notes = "Retorna el listado de ocupaciones")
-    List<Ocupaciones> listarOcupaciones() {
+    List<Ocupaciones> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         Ocupaciones[] ocupaciones = restTemplate.getForObject(serviceUrl + "api/ocupaciones", Ocupaciones[].class);
 
         return Arrays.asList(ocupaciones);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @ApiOperation(value = "Obtener ocupaciones", notes = "Retorna el listado de ocupaciones por IdOcupacion")
+    Ocupaciones findOne(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "api/ocupaciones/" + id, Ocupaciones.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/tipo/{id}")
@@ -62,7 +69,7 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Crear una Ocupación", notes = "Retorna la ocupación creada")
-    Ocupaciones crearTercero(@RequestBody Ocupaciones obj) {
+    Ocupaciones create(@RequestBody Ocupaciones obj) {
         RestTemplate restTemplate = new RestTemplate();
         Ocupaciones ocupacion = restTemplate.postForObject(serviceUrl + "api/ocupaciones", obj, Ocupaciones.class);
 
@@ -71,7 +78,7 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     @ApiOperation(value = "Actualizar ocupación", notes = "Actualiza la ocupación")
-    void actualizarTercero(@RequestBody Ocupaciones obj) {
+    void update(@RequestBody Ocupaciones obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "api/ocupaciones", obj);
     }

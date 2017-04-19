@@ -26,8 +26,13 @@ public class OcupacionesRefactorController {
     private OcupacionesRefactorRepository ocupacionesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Ocupaciones> listarNivelAcademico() {
+    List<Ocupaciones> findAll() {
         return (List<Ocupaciones>) ocupacionesRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    Ocupaciones findOne(@PathVariable Integer id) {
+        return ocupacionesRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/tipo/{id}")

@@ -1,11 +1,7 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -22,7 +18,21 @@ public class Ocupaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public Ocupaciones() {
+    }
+
+    public Ocupaciones(Integer idOcupacionPadre, Integer idOcupacionTipo, String codigoOcupacion, String ocupacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idOcupacionPadre = idOcupacionPadre;
+        this.idOcupacionTipo = idOcupacionTipo;
+        this.codigoOcupacion = codigoOcupacion;
+        this.ocupacion = ocupacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdOcupacion")
     public Integer getIdOcupacion() {
         return idOcupacion;
