@@ -19,6 +19,7 @@ public class VEstructuraOrganizacional {
     private Integer idEstructuraFisica;
     private String estructuraFisica;
     private Integer idTipoDocumento;
+    private String nombreListaTipoDocumento;
     private String numeroDocumento;
     private Integer idLocalizacion;
     private String localizacion;
@@ -134,6 +135,14 @@ public class VEstructuraOrganizacional {
 
     public void setIdTipoDocumento(Integer idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
+    }
+
+    public String getNombreListaTipoDocumento() {
+        return nombreListaTipoDocumento;
+    }
+
+    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
+        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
     }
 
     public String getNumeroDocumento() {
