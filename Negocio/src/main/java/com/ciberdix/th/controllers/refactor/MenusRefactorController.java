@@ -19,10 +19,9 @@ public class MenusRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
-    private String serviceUrl = baseUrl + "/api/menus/";
-
     @RequestMapping(method = RequestMethod.GET)
     List<Menus> findAll() {
+        String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         Menus[] menus = restTemplate.getForObject(serviceUrl, Menus[].class);
         return Arrays.asList(menus);
@@ -30,6 +29,7 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idMenu}")
     List<Menus> findOne(@PathVariable Integer idMenu) {
+        String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         Menus[] menus = restTemplate.getForObject(serviceUrl + idMenu, Menus[].class);
         return Arrays.asList(menus);
@@ -37,6 +37,7 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{idMenu}")
     List<Menus> findByParent(@PathVariable Integer idMenu) {
+        String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         Menus[] menus = restTemplate.getForObject(serviceUrl + "buscarPadre/" + idMenu, Menus[].class);
         return Arrays.asList(menus);
@@ -44,12 +45,14 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Menus create(@RequestBody Menus menus) {
+        String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, menus, Menus.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Menus menus) {
+        String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, menus);
     }
