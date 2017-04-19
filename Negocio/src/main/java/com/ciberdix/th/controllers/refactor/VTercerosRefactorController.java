@@ -48,7 +48,7 @@ public class VTercerosRefactorController {
         return Arrays.asList(tercero);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/}")
+    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/")
     List<VTerceros> obtenerTerceros() {
         RestTemplate restTemplate = new RestTemplate();
         VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "api/vterceros/asignarColaborador/", VTerceros[].class);
