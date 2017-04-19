@@ -10,5 +10,8 @@ import java.util.List;
  */
 public interface EstructuraOrganizacionalRefactorRepository extends CrudRepository<EstructuraOrganizacional, Integer> {
     List<EstructuraOrganizacional> findByIndicadorHabilitadoIsTrue();
+
     List<EstructuraOrganizacional> findByIdPadre(Integer id);
+
+    List<EstructuraOrganizacional> findByIndicadorHabilitadoTrueAndIdTipoArea(Integer IdTipoArea);
 }

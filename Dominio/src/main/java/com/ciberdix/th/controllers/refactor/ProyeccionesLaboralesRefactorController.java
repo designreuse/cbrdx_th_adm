@@ -24,24 +24,34 @@ public class ProyeccionesLaboralesRefactorController {
         return (List<ProyeccionesLaborales>) proyeccionesLaboralesRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     ProyeccionesLaborales obtenerEstadoJuridico(@PathVariable Integer id) {
         return proyeccionesLaboralesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarArea/{id}")
+    List<ProyeccionesLaborales> findByArea(@PathVariable Integer id) {
+        return proyeccionesLaboralesRefactorRepository.findByIdEstructuraOrganizacional(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/generarProyeccion/{idUsuario}")
+    Integer runProcedure(@PathVariable Integer idUsuario) {
+        return proyeccionesLaboralesRefactorRepository.executeCreation(idUsuario);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    ProyeccionesLaborales crearListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj){
+    ProyeccionesLaborales crearListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj) {
         return proyeccionesLaboralesRefactorRepository.save(
-                new ProyeccionesLaborales(obj.getIdEstructuraOrganizacional(),obj.getIdCargo(),
-                        obj.getPlazasActuales(),obj.getPlazasProyectadas(),obj.getCostoActual(),
-                        obj.getCostoProyectado(), obj.getIdEstadoProyeccion(),obj.getIdUsuarioProyecta(),
-                        obj.getIdUsuarioAprueba(),obj.getAño(),obj.getObservacion(),
-                        obj.getObservacionAprobacion(),obj.getAuditoriaUsuario())
+                new ProyeccionesLaborales(obj.getIdEstructuraOrganizacional(), obj.getIdCargo(),
+                        obj.getPlazasActuales(), obj.getPlazasProyectadas(), obj.getCostoActual(),
+                        obj.getCostoProyectado(), obj.getIdEstadoProyeccion(), obj.getIdUsuarioProyecta(),
+                        obj.getIdUsuarioAprueba(), obj.getAño(), obj.getObservacion(),
+                        obj.getObservacionAprobacion(), obj.getAuditoriaUsuario())
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj){
+    void actualizarListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj) {
         proyeccionesLaboralesRefactorRepository.save(obj);
     }
 }
