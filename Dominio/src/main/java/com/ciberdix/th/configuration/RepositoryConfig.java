@@ -156,5 +156,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(ListasEstadosProyecciones.class);
         config.exposeIdsFor(ProyeccionesLaborales.class);
         config.exposeIdsFor(VFaltas.class);
+        config.exposeIdsFor(VProyeccionLaboral.class);
     }
 }

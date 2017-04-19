@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ProyeccionesLaborales;
+import com.ciberdix.th.models.refactor.VProyeccionLaboral;
 import com.ciberdix.th.repositories.refactor.ProyeccionesLaboralesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VProyeccionLaboralRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +21,12 @@ public class ProyeccionesLaboralesRefactorController {
     @Autowired
     private ProyeccionesLaboralesRefactorRepository proyeccionesLaboralesRefactorRepository;
 
+    @Autowired
+    private VProyeccionLaboralRefactorRepository vProyeccionLaboralRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionesLaborales> listarEstadosJuridicos() {
-        return (List<ProyeccionesLaborales>) proyeccionesLaboralesRefactorRepository.findAll();
+    List<VProyeccionLaboral> listarEstadosJuridicos() {
+        return (List<VProyeccionLaboral>) vProyeccionLaboralRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -30,8 +35,8 @@ public class ProyeccionesLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarArea/{id}")
-    List<ProyeccionesLaborales> findByArea(@PathVariable Integer id) {
-        return proyeccionesLaboralesRefactorRepository.findByIdEstructuraOrganizacional(id);
+    List<VProyeccionLaboral> findByArea(@PathVariable Integer id) {
+        return vProyeccionLaboralRefactorRepository.findByIdEstructuraOrganizacional(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/generarProyeccion/{idUsuario}")
