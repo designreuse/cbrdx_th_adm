@@ -27,6 +27,7 @@ public class VTercerosCargos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idEstructuraOrganizacional;
 
     @Id
     @Column(name = "IdTerceroCargo")
@@ -198,6 +199,16 @@ public class VTercerosCargos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdEstructuraOrganizacional")
+    public Integer getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
+    }
+
+    public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -232,6 +243,8 @@ public class VTercerosCargos {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
+            return false;
 
         return true;
     }
@@ -255,6 +268,7 @@ public class VTercerosCargos {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
         return result;
     }
 }

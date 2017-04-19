@@ -32,6 +32,13 @@ public class CargosOcupacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET,path = "/enabled")
+    List<CargosOcupaciones> findEnabled() {
+        RestTemplate restTemplate = new RestTemplate();
+        CargosOcupaciones[] parametros = restTemplate.getForObject(serviceUrl+"/enabled/", CargosOcupaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     CargosOcupaciones findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();

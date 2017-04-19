@@ -9,6 +9,6 @@ import java.util.List;
  * Created by robertochajin on 9/04/17.
  */
 public interface CargosOcupacionesRefactorRepository extends CrudRepository<CargosOcupaciones, Integer> {
-
+    List<CargosOcupaciones> findByIndicadorHabilitadoIsTrue();
     List<CargosOcupaciones> findByIdCargo(Integer idCargo);
 }
