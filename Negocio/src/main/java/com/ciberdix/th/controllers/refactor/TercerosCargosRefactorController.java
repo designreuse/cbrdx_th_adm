@@ -34,6 +34,18 @@ public class TercerosCargosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, VTercerosCargos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
+    List<VTercerosCargos> findByEstructuraCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarEstructuraCargo/" + id, VTercerosCargos[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
+    List<VTercerosCargos> findByEstructura(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarEstructura/" + id, VTercerosCargos[].class));
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<VTercerosCargos> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();

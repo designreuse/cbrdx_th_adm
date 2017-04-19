@@ -34,9 +34,14 @@ public class TercerosCargosRefactorController {
         return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
     List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
         return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacionalCargo(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
+    List<VTercerosCargos> findByIdEstructuraOrganizacional(@PathVariable Integer id) {
+        return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacional(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")

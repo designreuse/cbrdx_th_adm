@@ -24,6 +24,7 @@ public class VTercerosCargos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idEstructuraOrganizacional;
 
     public Integer getIdTerceroCargo() {
         return idTerceroCargo;
@@ -159,5 +160,13 @@ public class VTercerosCargos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
+    }
+
+    public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
     }
 }
