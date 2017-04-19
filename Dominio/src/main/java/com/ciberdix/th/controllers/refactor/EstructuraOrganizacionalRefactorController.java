@@ -39,6 +39,11 @@ public class EstructuraOrganizacionalRefactorController {
         return (List<VEstructuraOrganizacional>) vEstructuraOrganizacionalRefactorRepository.findByIdPadre(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarTipo/{idTipoArea}")
+    List<EstructuraOrganizacional> findByIdTipoArea(@PathVariable Integer idTipoArea) {
+        return estructuraOrganizacionalRefactorRepository.findByIndicadorHabilitadoTrueAndIdTipoArea(idTipoArea);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VEstructuraOrganizacional findOne(@PathVariable Integer id) {
         return vEstructuraOrganizacionalRefactorRepository.findOne(id);

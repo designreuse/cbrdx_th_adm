@@ -53,8 +53,7 @@ public class OcupacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/enabled")
-    @ApiOperation(value = "Crear una Ocupación", notes = "Retorna la ocupación creada")
-    List<Ocupaciones> listarOcupacionesHabilitadas(@PathVariable Integer id) {
+    List<Ocupaciones> listarOcupacionesHabilitadas() {
         RestTemplate restTemplate = new RestTemplate();
         Ocupaciones[] ocupaciones = restTemplate.getForObject(serviceUrl + "api/ocupaciones/enabled", Ocupaciones[].class);
 

@@ -116,7 +116,7 @@ public class CargosRefactorController {
         cargo.setEdad(obj.getEdad());
         cargo.setIdGenero(obj.getIdGenero());
         cargo.setIdEstadoCivil(obj.getIdEstadoCivil());
-
+        cargo.setIdNivelEducacion(obj.getIdNivelEducacion());
         return cargosRefactorRepository.save(cargo);
     }
 
