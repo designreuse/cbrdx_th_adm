@@ -16,7 +16,7 @@ public class ProyeccionesLaborales {
     private Integer idEstadoProyeccion;
     private Integer idUsuarioProyecta;
     private Integer idUsuarioAprueba;
-    private Integer año;
+    private Integer anio;
     private String observacion;
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
@@ -102,12 +102,12 @@ public class ProyeccionesLaborales {
         this.idUsuarioAprueba = idUsuarioAprueba;
     }
 
-    public Integer getAño() {
-        return año;
+    public Integer getAnio() {
+        return anio;
     }
 
-    public void setAño(Integer año) {
-        this.año = año;
+    public void setAnio(Integer anio) {
+        this.anio = anio;
     }
 
     public String getObservacion() {

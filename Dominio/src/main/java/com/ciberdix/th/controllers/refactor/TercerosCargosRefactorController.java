@@ -52,8 +52,7 @@ public class TercerosCargosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos obj) {
         return tercerosCargosRefactorRepository.save(
-                new TercerosCargos(obj.getIdSede(), obj.getIdArea(), obj.getIdCargo(),
-                        obj.getFechaInicio(), obj.getFechaFin(), obj.getIdTipoContrato(),
+                new TercerosCargos(obj.getIdTipoContrato(),
                         obj.getAuditoriaUsuario(), obj.getIdTercero(), obj.getIdEstructuraOrganizacionalCargo(),
                         obj.getAsignadoDesde(), obj.getIdZona(), obj.getIndicadorHabilitado()));
     }

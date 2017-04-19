@@ -22,7 +22,7 @@ public class ProyeccionesLaborales {
     private Integer idEstadoProyeccion;
     private Integer idUsuarioProyecta;
     private Integer idUsuarioAprueba;
-    private Integer año;
+    private Integer anio;
     private String observacion;
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
@@ -31,7 +31,7 @@ public class ProyeccionesLaborales {
     public ProyeccionesLaborales() {
     }
 
-    public ProyeccionesLaborales(Integer idEstructuraOrganizacional, Integer idCargo, Integer plazasActuales, Integer plazasProyectadas, Double costoActual, Double costoProyectado, Integer idEstadoProyeccion, Integer idUsuarioProyecta, Integer idUsuarioAprueba, Integer año, String observacion, String observacionAprobacion, Integer auditoriaUsuario) {
+    public ProyeccionesLaborales(Integer idEstructuraOrganizacional, Integer idCargo, Integer plazasActuales, Integer plazasProyectadas, Double costoActual, Double costoProyectado, Integer idEstadoProyeccion, Integer idUsuarioProyecta, Integer idUsuarioAprueba, Integer anio, String observacion, String observacionAprobacion, Integer auditoriaUsuario) {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idCargo = idCargo;
         this.plazasActuales = plazasActuales;
@@ -41,7 +41,7 @@ public class ProyeccionesLaborales {
         this.idEstadoProyeccion = idEstadoProyeccion;
         this.idUsuarioProyecta = idUsuarioProyecta;
         this.idUsuarioAprueba = idUsuarioAprueba;
-        this.año = año;
+        this.anio = anio;
         this.observacion = observacion;
         this.observacionAprobacion = observacionAprobacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
@@ -151,12 +151,12 @@ public class ProyeccionesLaborales {
 
     @Basic
     @Column(name = "Año")
-    public Integer getAño() {
-        return año;
+    public Integer getAnio() {
+        return anio;
     }
 
-    public void setAño(Integer año) {
-        this.año = año;
+    public void setAnio(Integer año) {
+        this.anio = año;
     }
 
     @Basic
@@ -224,7 +224,7 @@ public class ProyeccionesLaborales {
             return false;
         if (idUsuarioAprueba != null ? !idUsuarioAprueba.equals(that.idUsuarioAprueba) : that.idUsuarioAprueba != null)
             return false;
-        if (año != null ? !año.equals(that.año) : that.año != null) return false;
+        if (anio != null ? !anio.equals(that.anio) : that.anio != null) return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
         if (observacionAprobacion != null ? !observacionAprobacion.equals(that.observacionAprobacion) : that.observacionAprobacion != null)
             return false;
@@ -248,7 +248,7 @@ public class ProyeccionesLaborales {
         result = 31 * result + (idEstadoProyeccion != null ? idEstadoProyeccion.hashCode() : 0);
         result = 31 * result + (idUsuarioProyecta != null ? idUsuarioProyecta.hashCode() : 0);
         result = 31 * result + (idUsuarioAprueba != null ? idUsuarioAprueba.hashCode() : 0);
-        result = 31 * result + (año != null ? año.hashCode() : 0);
+        result = 31 * result + (anio != null ? anio.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (observacionAprobacion != null ? observacionAprobacion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
