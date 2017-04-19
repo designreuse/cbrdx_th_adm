@@ -34,6 +34,11 @@ public class CargosRefactorController {
         return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
+    List<VCargos> findByWildCard(@PathVariable String query) {
+        return (List<VCargos>) vCargosRefactorRepository.findByCargoContains(query);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargos findOne(@PathVariable Integer id) {
         return vCargosRefactorRepository.findOne(id);
@@ -111,7 +116,7 @@ public class CargosRefactorController {
         cargo.setEdad(obj.getEdad());
         cargo.setIdGenero(obj.getIdGenero());
         cargo.setIdEstadoCivil(obj.getIdEstadoCivil());
-
+        cargo.setIdNivelEducacion(obj.getIdNivelEducacion());
         return cargosRefactorRepository.save(cargo);
     }
 

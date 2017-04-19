@@ -29,11 +29,12 @@ public class EstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idEstructuraFisica;
+    private Boolean indicadorPlantaConfirmada;
 
     public EstructuraOrganizacional() {
     }
 
-    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idSede, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica) {
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idPadre = idPadre;
@@ -53,10 +54,11 @@ public class EstructuraOrganizacional {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.idEstructuraFisica = idEstructuraFisica;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 
     @Id
-    @Basic
+    @GeneratedValue
     @Column(name = "IdEstructuraOrganizacional")
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
@@ -247,7 +249,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "EstructuraFisica")
+    @Column(name = "IdEstructuraFisica")
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -318,5 +320,15 @@ public class EstructuraOrganizacional {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "IndicadorPlantaConfirmada")
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }

@@ -340,6 +340,19 @@
         <mapping class="com.ciberdix.th.models.refactor.VEstructuraOrganizacional"/>
         <mapping class="com.ciberdix.th.models.refactor.VEstructuraFisica"/>
         <mapping class="com.ciberdix.th.models.refactor.VEstructuraOrganizacionalCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.VTercerosCargos"/>
+        <mapping class="com.ciberdix.th.models.refactor.Funcionalidades"/>
+        <mapping class="com.ciberdix.th.models.refactor.FuncionalidadesControles"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasClasificaciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.RolesFuncionalidades"/>
+        <mapping class="com.ciberdix.th.models.refactor.RolesFuncionalidadesControles"/>
+        <mapping class="com.ciberdix.th.models.refactor.RolesWidgets"/>
+        <mapping class="com.ciberdix.th.models.refactor.UsuariosWidgets"/>
+        <mapping class="com.ciberdix.th.models.refactor.Widgets"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasEstadosProyecciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.ProyeccionesLaborales"/>
+        <mapping class="com.ciberdix.th.models.refactor.VActividadesEconomicas"/>
+        <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboral"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

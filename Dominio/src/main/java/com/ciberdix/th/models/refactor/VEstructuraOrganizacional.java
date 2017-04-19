@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 17/04/2017.
+ * Created by robertochajin on 18/04/17.
  */
 @Entity
 @Table(name = "V_EstructuraOrganizacional", schema = "crz_th", catalog = "CREZCAMOS")
@@ -22,6 +22,7 @@ public class VEstructuraOrganizacional {
     private Integer idEstructuraFisica;
     private String estructuraFisica;
     private Integer idTipoDocumento;
+    private String nombreListaTipoDocumento;
     private String numeroDocumento;
     private Integer idLocalizacion;
     private String localizacion;
@@ -163,6 +164,16 @@ public class VEstructuraOrganizacional {
 
     public void setIdTipoDocumento(Integer idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
+    }
+
+    @Basic
+    @Column(name = "NombreListaTipoDocumento")
+    public String getNombreListaTipoDocumento() {
+        return nombreListaTipoDocumento;
+    }
+
+    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
+        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
     }
 
     @Basic
@@ -312,6 +323,8 @@ public class VEstructuraOrganizacional {
             return false;
         if (idTipoDocumento != null ? !idTipoDocumento.equals(that.idTipoDocumento) : that.idTipoDocumento != null)
             return false;
+        if (nombreListaTipoDocumento != null ? !nombreListaTipoDocumento.equals(that.nombreListaTipoDocumento) : that.nombreListaTipoDocumento != null)
+            return false;
         if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null)
             return false;
         if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
@@ -349,6 +362,7 @@ public class VEstructuraOrganizacional {
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
         result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
+        result = 31 * result + (nombreListaTipoDocumento != null ? nombreListaTipoDocumento.hashCode() : 0);
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
         result = 31 * result + (localizacion != null ? localizacion.hashCode() : 0);

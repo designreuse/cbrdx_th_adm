@@ -30,6 +30,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdEstructuraOrganizacionalCargo")
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;

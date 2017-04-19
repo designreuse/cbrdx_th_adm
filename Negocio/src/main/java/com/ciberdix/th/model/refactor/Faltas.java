@@ -13,7 +13,6 @@ public class Faltas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idEstadoFalta;
 
     public Integer getIdFalta() {
         return idFalta;
@@ -71,11 +70,4 @@ public class Faltas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Integer getIdEstadoFalta() {
-        return idEstadoFalta;
-    }
-
-    public void setIdEstadoFalta(Integer idEstadoFalta) {
-        this.idEstadoFalta = idEstadoFalta;
-    }
 }
