@@ -14,8 +14,6 @@ public class VFaltas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idEstadoFalta;
-    private String estadoFalta;
 
     public Integer getIdFalta() {
         return idFalta;
@@ -81,19 +79,4 @@ public class VFaltas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Integer getIdEstadoFalta() {
-        return idEstadoFalta;
-    }
-
-    public void setIdEstadoFalta(Integer idEstadoFalta) {
-        this.idEstadoFalta = idEstadoFalta;
-    }
-
-    public String getEstadoFalta() {
-        return estadoFalta;
-    }
-
-    public void setEstadoFalta(String estadoFalta) {
-        this.estadoFalta = estadoFalta;
-    }
 }

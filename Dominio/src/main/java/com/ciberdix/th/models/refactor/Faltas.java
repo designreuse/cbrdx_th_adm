@@ -16,18 +16,16 @@ public class Faltas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idEstadoFalta;
 
     public Faltas() {
     }
 
-    public Faltas(String falta, Integer idTipoFalta, String accion, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstadoFalta) {
+    public Faltas(String falta, Integer idTipoFalta, String accion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.falta = falta;
         this.idTipoFalta = idTipoFalta;
         this.accion = accion;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.idEstadoFalta = idEstadoFalta;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
@@ -102,16 +100,6 @@ public class Faltas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Basic
-    @Column(name = "IdEstadoFalta")
-    public Integer getIdEstadoFalta() {
-        return idEstadoFalta;
-    }
-
-    public void setIdEstadoFalta(Integer idEstadoFalta) {
-        this.idEstadoFalta = idEstadoFalta;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,8 +117,6 @@ public class Faltas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(faltas.auditoriaFecha) : faltas.auditoriaFecha != null)
             return false;
-        if (idEstadoFalta != null ? !idEstadoFalta.equals(faltas.idEstadoFalta) : faltas.idEstadoFalta != null)
-            return false;
 
         return true;
     }
@@ -144,7 +130,6 @@ public class Faltas {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (idEstadoFalta != null ? idEstadoFalta.hashCode() : 0);
         return result;
     }
 }
