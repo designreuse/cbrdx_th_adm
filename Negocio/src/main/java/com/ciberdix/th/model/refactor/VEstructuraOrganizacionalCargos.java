@@ -16,6 +16,7 @@ public class VEstructuraOrganizacionalCargos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer ocupados;
 
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
@@ -95,5 +96,13 @@ public class VEstructuraOrganizacionalCargos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getOcupados() {
+        return ocupados;
+    }
+
+    public void setOcupados(Integer ocupados) {
+        this.ocupados = ocupados;
     }
 }
