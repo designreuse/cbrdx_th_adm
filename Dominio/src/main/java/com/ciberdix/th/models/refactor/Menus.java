@@ -1,15 +1,10 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by felip on 18/04/2017.
- */
 @Entity
+@Table(name = "Menus", schema = "crz_th", catalog = "CREZCAMOS")
 public class Menus {
     private Integer idMenu;
     private String menu;
@@ -20,6 +15,20 @@ public class Menus {
     private String codigoMenu;
     private String ruta;
     private Integer secuencia;
+
+    public Menus() {
+    }
+
+    public Menus(String menu, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, String codigoMenu, String ruta, Integer secuencia) {
+        this.menu = menu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.idPadre = idPadre;
+        this.codigoMenu = codigoMenu;
+        this.ruta = ruta;
+        this.secuencia = secuencia;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
 
     @Id
     @Column(name = "IdMenu")
