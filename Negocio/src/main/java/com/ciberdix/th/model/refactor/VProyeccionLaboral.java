@@ -21,7 +21,7 @@ public class VProyeccionLaboral {
     private String usuarioProyecta;
     private Integer idUsuarioAprueba;
     private String usuarioAprueba;
-    private Integer año;
+    private Integer anio;
     private String observacion;
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
@@ -147,12 +147,12 @@ public class VProyeccionLaboral {
         this.usuarioAprueba = usuarioAprueba;
     }
 
-    public Integer getAño() {
-        return año;
+    public Integer getAnio() {
+        return anio;
     }
 
-    public void setAño(Integer año) {
-        this.año = año;
+    public void setAnio(Integer anio) {
+        this.anio = anio;
     }
 
     public String getObservacion() {
