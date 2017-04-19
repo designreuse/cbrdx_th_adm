@@ -35,4 +35,9 @@ public class VTercerosRefactorController {
         return vtercerosRepository.findByTypes(type);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/")
+    List<VTerceros> listarColaboradores() {
+        return vtercerosRepository.findByTypes("TERCOL");
+    }
+
 }
