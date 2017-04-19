@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 18/04/2017.
  */
 @Entity
+@Table(name = "ProyeccionesLaborales", schema = "crz_th", catalog = "CREZCAMOS")
 public class ProyeccionesLaborales {
     private Integer idProyecccionLaboral;
     private Integer idEstructuraOrganizacional;
@@ -27,7 +25,28 @@ public class ProyeccionesLaborales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ProyeccionesLaborales() {
+    }
+
+    public ProyeccionesLaborales(Integer idEstructuraOrganizacional, Integer idCargo, Integer plazasActuales, Integer plazasProyectadas, Double costoActual, Double costoProyectado, Integer idEstadoProyeccion, Integer idUsuarioProyecta, Integer idUsuarioAprueba, Integer año, String observacion, String observacionAprobacion, Integer auditoriaUsuario) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idCargo = idCargo;
+        this.plazasActuales = plazasActuales;
+        this.plazasProyectadas = plazasProyectadas;
+        this.costoActual = costoActual;
+        this.costoProyectado = costoProyectado;
+        this.idEstadoProyeccion = idEstadoProyeccion;
+        this.idUsuarioProyecta = idUsuarioProyecta;
+        this.idUsuarioAprueba = idUsuarioAprueba;
+        this.año = año;
+        this.observacion = observacion;
+        this.observacionAprobacion = observacionAprobacion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdProyecccionLaboral")
     public Integer getIdProyecccionLaboral() {
         return idProyecccionLaboral;
