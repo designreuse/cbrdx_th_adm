@@ -31,13 +31,13 @@ public class VTercerosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarTerceros/{type}")
-    List<VTerceros> listarColaboradores(@PathVariable String type) {
+    List<VTerceros> listarColaborador(@PathVariable String type) {
         return vtercerosRepository.findByTypes(type);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/")
-    List<VTerceros> listarColaboradores() {
-        return vtercerosRepository.findByType("TERCOL");
+    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/{queryString}/")
+    List<VTerceros> listarColaboradores(@PathVariable String queryString) {
+        return vtercerosRepository.findByType("TERCOL",queryString);
     }
 
 }
