@@ -32,6 +32,13 @@ public class CompetenciasRefactorController {
         return Arrays.asList(cargosCompetencias);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarGrupo/{idGrupoCompetencia}")
+    List<Competencias> findGroups(@PathVariable Integer idGrupoCompetencia) {
+        RestTemplate restTemplate = new RestTemplate();
+        Competencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/buscarGrupo/" + idGrupoCompetencia, Competencias[].class);
+        return Arrays.asList(cargosCompetencias);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Competencias create(@RequestBody Competencias obj) {
         RestTemplate restTemplate = new RestTemplate();
