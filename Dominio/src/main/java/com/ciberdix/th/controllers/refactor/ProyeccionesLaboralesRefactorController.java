@@ -1,7 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ProyeccionesLaborales;
+import com.ciberdix.th.models.refactor.VProyeccionLaboral;
+import com.ciberdix.th.models.refactor.VProyeccionLaboralResumen;
 import com.ciberdix.th.repositories.refactor.ProyeccionesLaboralesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VProyeccionLaboralRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VProyeccionLaboralResumenRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +23,15 @@ public class ProyeccionesLaboralesRefactorController {
     @Autowired
     private ProyeccionesLaboralesRefactorRepository proyeccionesLaboralesRefactorRepository;
 
+    @Autowired
+    private VProyeccionLaboralRefactorRepository vProyeccionLaboralRefactorRepository;
+
+    @Autowired
+    private VProyeccionLaboralResumenRefactorRepository vProyeccionLaboralResumenRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionesLaborales> listarEstadosJuridicos() {
-        return (List<ProyeccionesLaborales>) proyeccionesLaboralesRefactorRepository.findAll();
+    List<VProyeccionLaboral> listarEstadosJuridicos() {
+        return (List<VProyeccionLaboral>) vProyeccionLaboralRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -30,13 +40,23 @@ public class ProyeccionesLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarArea/{id}")
-    List<ProyeccionesLaborales> findByArea(@PathVariable Integer id) {
-        return proyeccionesLaboralesRefactorRepository.findByIdEstructuraOrganizacional(id);
+    List<VProyeccionLaboral> findByArea(@PathVariable Integer id) {
+        return vProyeccionLaboralRefactorRepository.findByIdEstructuraOrganizacional(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/generarProyeccion/{idUsuario}")
     Integer runProcedure(@PathVariable Integer idUsuario) {
         return proyeccionesLaboralesRefactorRepository.executeCreation(idUsuario);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/consultarPendientes")
+    List<VProyeccionLaboralResumen> findPending() {
+        return (List<VProyeccionLaboralResumen>) vProyeccionLaboralResumenRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")
+    Integer runProcedure() {
+        return vProyeccionLaboralResumenRefactorRepository.executeConfirmation();
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -45,7 +65,7 @@ public class ProyeccionesLaboralesRefactorController {
                 new ProyeccionesLaborales(obj.getIdEstructuraOrganizacional(), obj.getIdCargo(),
                         obj.getPlazasActuales(), obj.getPlazasProyectadas(), obj.getCostoActual(),
                         obj.getCostoProyectado(), obj.getIdEstadoProyeccion(), obj.getIdUsuarioProyecta(),
-                        obj.getIdUsuarioAprueba(), obj.getAño(), obj.getObservacion(),
+                        obj.getIdUsuarioAprueba(), obj.getAnio(), obj.getObservacion(),
                         obj.getObservacionAprobacion(), obj.getAuditoriaUsuario())
         );
     }

@@ -14,6 +14,6 @@ public interface ProyeccionesLaboralesRefactorRepository extends CrudRepository<
 
     List<ProyeccionesLaborales> findByIdEstructuraOrganizacional(Integer idEstructuraOrganizacional);
 
-    @Procedure("crz_th.GenerarProyeccion")
+    @Procedure(name = "GenProy",outputParameterName = "Output")
     Integer executeCreation(@Param("Usuario") Integer IdUsuario);
 }

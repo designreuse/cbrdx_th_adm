@@ -11,5 +11,5 @@ import java.util.List;
 public interface VTercerosCargosRefactorRepository extends CrudRepository<VTercerosCargos, Integer> {
     List<VTercerosCargos> findByIndicadorHabilitadoIsTrue();
     List<VTercerosCargos> findByIdEstructuraOrganizacionalCargo(Integer id);
-    List<VTercerosCargos> findByIdEstructuraOrganizacional(Integer id);
+    List<VTercerosCargos> findByIndicadorHabilitadoTrueAndIdEstructuraOrganizacional(Integer id);
 }

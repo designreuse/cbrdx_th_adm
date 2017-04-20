@@ -3,19 +3,24 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 18/04/17.
+ * Created by felip on 19/04/2017.
  */
-public class ProyeccionesLaborales {
+public class VProyeccionLaboral {
     private Integer idProyecccionLaboral;
     private Integer idEstructuraOrganizacional;
+    private String estructuraOrganizacional;
     private Integer idCargo;
+    private String cargo;
     private Integer plazasActuales;
     private Integer plazasProyectadas;
     private Double costoActual;
     private Double costoProyectado;
     private Integer idEstadoProyeccion;
+    private String estadoProyeccion;
     private Integer idUsuarioProyecta;
+    private String usuarioProyecta;
     private Integer idUsuarioAprueba;
+    private String usuarioAprueba;
     private Integer anio;
     private String observacion;
     private String observacionAprobacion;
@@ -38,12 +43,28 @@ public class ProyeccionesLaborales {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
     }
 
+    public String getEstructuraOrganizacional() {
+        return estructuraOrganizacional;
+    }
+
+    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
+        this.estructuraOrganizacional = estructuraOrganizacional;
+    }
+
     public Integer getIdCargo() {
         return idCargo;
     }
 
     public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public Integer getPlazasActuales() {
@@ -86,6 +107,14 @@ public class ProyeccionesLaborales {
         this.idEstadoProyeccion = idEstadoProyeccion;
     }
 
+    public String getEstadoProyeccion() {
+        return estadoProyeccion;
+    }
+
+    public void setEstadoProyeccion(String estadoProyeccion) {
+        this.estadoProyeccion = estadoProyeccion;
+    }
+
     public Integer getIdUsuarioProyecta() {
         return idUsuarioProyecta;
     }
@@ -94,12 +123,28 @@ public class ProyeccionesLaborales {
         this.idUsuarioProyecta = idUsuarioProyecta;
     }
 
+    public String getUsuarioProyecta() {
+        return usuarioProyecta;
+    }
+
+    public void setUsuarioProyecta(String usuarioProyecta) {
+        this.usuarioProyecta = usuarioProyecta;
+    }
+
     public Integer getIdUsuarioAprueba() {
         return idUsuarioAprueba;
     }
 
     public void setIdUsuarioAprueba(Integer idUsuarioAprueba) {
         this.idUsuarioAprueba = idUsuarioAprueba;
+    }
+
+    public String getUsuarioAprueba() {
+        return usuarioAprueba;
+    }
+
+    public void setUsuarioAprueba(String usuarioAprueba) {
+        this.usuarioAprueba = usuarioAprueba;
     }
 
     public Integer getAnio() {

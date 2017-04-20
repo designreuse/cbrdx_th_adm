@@ -351,6 +351,9 @@
         <mapping class="com.ciberdix.th.models.refactor.Widgets"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasEstadosProyecciones"/>
         <mapping class="com.ciberdix.th.models.refactor.ProyeccionesLaborales"/>
+        <mapping class="com.ciberdix.th.models.refactor.VActividadesEconomicas"/>
+        <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboral"/>
+        <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboralResumen"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

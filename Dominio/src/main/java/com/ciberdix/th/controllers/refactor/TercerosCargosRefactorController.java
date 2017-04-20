@@ -36,12 +36,12 @@ public class TercerosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
     List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
-        return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacionalCargo(id);
+        return vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacionalCargo(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
     List<VTercerosCargos> findByIdEstructuraOrganizacional(@PathVariable Integer id) {
-        return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacional(id);
+        return vTercerosCargosRefactorRepository.findByIndicadorHabilitadoTrueAndIdEstructuraOrganizacional(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -52,8 +52,7 @@ public class TercerosCargosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos obj) {
         return tercerosCargosRefactorRepository.save(
-                new TercerosCargos(obj.getIdSede(), obj.getIdArea(), obj.getIdCargo(),
-                        obj.getFechaInicio(), obj.getFechaFin(), obj.getIdTipoContrato(),
+                new TercerosCargos(obj.getIdTipoContrato(),
                         obj.getAuditoriaUsuario(), obj.getIdTercero(), obj.getIdEstructuraOrganizacionalCargo(),
                         obj.getAsignadoDesde(), obj.getIdZona(), obj.getIndicadorHabilitado()));
     }

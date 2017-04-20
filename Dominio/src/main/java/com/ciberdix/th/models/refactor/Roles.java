@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "Roles", schema = "crz_th", catalog = "CREZCAMOS")
 public class Roles {
     private Integer idRol;
     private String rol;
@@ -22,7 +20,22 @@ public class Roles {
     private Date fechaInicio;
     private Date fechaFin;
 
+    public Roles() {
+    }
+
+    public Roles(String rol, Boolean indicadorHabilitado, String descripcion, Integer auditoriaUsuario, String codigoRol, Date fechaInicio, Date fechaFin) {
+        this.rol = rol;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.descripcion = descripcion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.codigoRol = codigoRol;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdRol")
     public Integer getIdRol() {
         return idRol;

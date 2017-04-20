@@ -17,8 +17,6 @@ public class VFaltas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idEstadoFalta;
-    private String estadoFalta;
 
     @Id
     @Column(name = "IdFalta")
@@ -100,26 +98,6 @@ public class VFaltas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    @Basic
-    @Column(name = "IdEstadoFalta")
-    public Integer getIdEstadoFalta() {
-        return idEstadoFalta;
-    }
-
-    public void setIdEstadoFalta(Integer idEstadoFalta) {
-        this.idEstadoFalta = idEstadoFalta;
-    }
-
-    @Basic
-    @Column(name = "EstadoFalta")
-    public String getEstadoFalta() {
-        return estadoFalta;
-    }
-
-    public void setEstadoFalta(String estadoFalta) {
-        this.estadoFalta = estadoFalta;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,10 +116,6 @@ public class VFaltas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(vFaltas.auditoriaFecha) : vFaltas.auditoriaFecha != null)
             return false;
-        if (idEstadoFalta != null ? !idEstadoFalta.equals(vFaltas.idEstadoFalta) : vFaltas.idEstadoFalta != null)
-            return false;
-        if (estadoFalta != null ? !estadoFalta.equals(vFaltas.estadoFalta) : vFaltas.estadoFalta != null) return false;
-
         return true;
     }
 
@@ -155,8 +129,6 @@ public class VFaltas {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (idEstadoFalta != null ? idEstadoFalta.hashCode() : 0);
-        result = 31 * result + (estadoFalta != null ? estadoFalta.hashCode() : 0);
         return result;
     }
 }

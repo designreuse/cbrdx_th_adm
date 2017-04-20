@@ -2,6 +2,8 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.ProyeccionesLaborales;
+import com.ciberdix.th.model.refactor.VProyeccionLaboral;
+import com.ciberdix.th.model.refactor.VProyeccionLaboralResumen;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -21,9 +23,9 @@ public class ProyeccionesLaboralesRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/proyeccionesLaborales";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionesLaborales> findAll() {
+    List<VProyeccionLaboral> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        ProyeccionesLaborales[] parametros = restTemplate.getForObject(serviceUrl, ProyeccionesLaborales[].class);
+        VProyeccionLaboral[] parametros = restTemplate.getForObject(serviceUrl, VProyeccionLaboral[].class);
         return Arrays.asList(parametros);
     }
 
@@ -34,9 +36,9 @@ public class ProyeccionesLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarArea/{id}")
-    List<ProyeccionesLaborales> findAll(@PathVariable Integer id) {
+    List<VProyeccionLaboral> findAll(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        ProyeccionesLaborales[] parametros = restTemplate.getForObject(serviceUrl + "/buscarArea/" + id, ProyeccionesLaborales[].class);
+        VProyeccionLaboral[] parametros = restTemplate.getForObject(serviceUrl + "/buscarArea/" + id, VProyeccionLaboral[].class);
         return Arrays.asList(parametros);
     }
 
@@ -44,6 +46,19 @@ public class ProyeccionesLaboralesRefactorController {
     Integer runProc(@PathVariable Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/generarProyeccion/" + idUsuario, Integer.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/consultarPendientes")
+    List<VProyeccionLaboralResumen> queryState() {
+        RestTemplate restTemplate = new RestTemplate();
+        VProyeccionLaboralResumen[] parametros =  restTemplate.getForObject(serviceUrl + "/consultarPendientes", VProyeccionLaboralResumen[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")
+    Integer runProc() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/confirmarProyeccion", Integer.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -48,5 +48,10 @@ public class VTercerosRefactorController {
         return Arrays.asList(tercero);
     }
 
-
+    @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/{queryString}/")
+    List<VTerceros> obtenerTercero(@PathVariable String queryString) {
+        RestTemplate restTemplate = new RestTemplate();
+        VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "api/vterceros/asignarColaborador/"+queryString+"/", VTerceros[].class);
+        return Arrays.asList(tercero);
+    }
 }
