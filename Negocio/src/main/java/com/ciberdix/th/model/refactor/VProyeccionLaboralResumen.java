@@ -4,10 +4,19 @@ package com.ciberdix.th.model.refactor;
  * Created by felip on 20/04/2017.
  */
 public class VProyeccionLaboralResumen {
+    private Long idProyeccionLaboralResumen;
     private Integer idArea;
     private String area;
     private String estado;
     private Integer cantidad;
+
+    public Long getIdProyeccionLaboralResumen() {
+        return idProyeccionLaboralResumen;
+    }
+
+    public void setIdProyeccionLaboralResumen(Long idProyeccionLaboralResumen) {
+        this.idProyeccionLaboralResumen = idProyeccionLaboralResumen;
+    }
 
     public Integer getIdArea() {
         return idArea;
