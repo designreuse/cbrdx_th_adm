@@ -32,6 +32,7 @@ public class VEstructuraOrganizacional {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorPlantaConfirmada;
 
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
@@ -239,5 +240,13 @@ public class VEstructuraOrganizacional {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }
