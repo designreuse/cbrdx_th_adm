@@ -27,6 +27,7 @@ public class EstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idEstructuraFisica;
+    private Boolean indicadorPlantaConfirmada;
 
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
@@ -194,5 +195,13 @@ public class EstructuraOrganizacional {
 
     public void setIdEstructuraFisica(Integer idEstructuraFisica) {
         this.idEstructuraFisica = idEstructuraFisica;
+    }
+
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }

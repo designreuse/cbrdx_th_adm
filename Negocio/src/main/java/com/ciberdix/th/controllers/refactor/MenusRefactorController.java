@@ -28,11 +28,10 @@ public class MenusRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idMenu}")
-    List<Menus> findOne(@PathVariable Integer idMenu) {
+    Menus findOne(@PathVariable Integer idMenu) {
         String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
-        Menus[] menus = restTemplate.getForObject(serviceUrl + idMenu, Menus[].class);
-        return Arrays.asList(menus);
+        return restTemplate.getForObject(serviceUrl + idMenu, Menus.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{idMenu}")
