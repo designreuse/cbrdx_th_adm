@@ -49,9 +49,10 @@ public class ProyeccionesLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/consultarPendientes")
-    VProyeccionLaboralResumen queryState() {
+    List<VProyeccionLaboralResumen> queryState() {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/consultarPendientes", VProyeccionLaboralResumen.class);
+        VProyeccionLaboralResumen[] parametros =  restTemplate.getForObject(serviceUrl + "/consultarPendientes", VProyeccionLaboralResumen[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")

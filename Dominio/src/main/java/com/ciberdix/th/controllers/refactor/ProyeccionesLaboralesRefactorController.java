@@ -50,8 +50,8 @@ public class ProyeccionesLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/consultarPendientes")
-    VProyeccionLaboralResumen findPending() {
-        return (VProyeccionLaboralResumen) vProyeccionLaboralResumenRefactorRepository.findAll();
+    List<VProyeccionLaboralResumen> findPending() {
+        return (List<VProyeccionLaboralResumen>) vProyeccionLaboralResumenRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")
