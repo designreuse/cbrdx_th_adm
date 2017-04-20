@@ -23,7 +23,12 @@ public class CompetenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/{id}")
     List<Competencias> findEnabled(@PathVariable Integer id) {
-        return (List<Competencias>) CompetenciasRefactorRepository.findByIdGrupoCompetenciaAndIndicadorHabilitadoTrue(id);
+        return CompetenciasRefactorRepository.findByIdGrupoCompetenciaAndIndicadorHabilitadoTrue(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarGrupo/{id}")
+    List<Competencias> findGrupos(@PathVariable Integer id) {
+        return CompetenciasRefactorRepository.findByIdGrupoCompetencia(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

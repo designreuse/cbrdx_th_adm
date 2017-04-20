@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.ProyeccionesLaborales;
 import com.ciberdix.th.model.refactor.VProyeccionLaboral;
+import com.ciberdix.th.model.refactor.VProyeccionLaboralResumen;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -45,6 +46,18 @@ public class ProyeccionesLaboralesRefactorController {
     Integer runProc(@PathVariable Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/generarProyeccion/" + idUsuario, Integer.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/consultarPendientes")
+    VProyeccionLaboralResumen queryState() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/consultarPendientes", VProyeccionLaboralResumen.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")
+    Integer runProc() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/confirmarProyeccion", Integer.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

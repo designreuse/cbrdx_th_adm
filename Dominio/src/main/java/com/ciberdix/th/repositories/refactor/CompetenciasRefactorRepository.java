@@ -11,4 +11,6 @@ import java.util.List;
 public interface CompetenciasRefactorRepository extends CrudRepository<Competencias, Integer> {
 
     List<Competencias> findByIdGrupoCompetenciaAndIndicadorHabilitadoTrue(Integer idGrupoCompetencia);
+
+    List<Competencias> findByIdGrupoCompetencia(Integer idGrupoCompetencia);
 }
