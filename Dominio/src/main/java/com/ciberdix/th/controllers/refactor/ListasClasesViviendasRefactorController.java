@@ -13,7 +13,7 @@ import java.util.List;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/listasClasesViviendas")
+@RequestMapping("/api/ListasClasesViviendas")
 @CrossOrigin
 public class ListasClasesViviendasRefactorController {
     @Autowired
@@ -21,7 +21,7 @@ public class ListasClasesViviendasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasClasesViviendas> findAll() {
-        return (List<ListasClasesViviendas>) listasClasesViviendasRefactorRepository.findAll();
+        return listasClasesViviendasRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -31,7 +31,7 @@ public class ListasClasesViviendasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasClasesViviendas create(@RequestBody ListasClasesViviendas obj) {
-        return listasClasesViviendasRefactorRepository.save(obj);
+        return listasClasesViviendasRefactorRepository.save(new ListasClasesViviendas(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

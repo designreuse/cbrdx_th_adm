@@ -10,5 +10,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTallasRefactorRepository extends CrudRepository<ListasTallas, Integer> {
+    List<ListasTallas> findByIndicadorHabilitadoIsTrue();
     List<ListasTallas> findByIndicadorHabilitadoIsTrueAndCodigoStartingWith(String codigo);
 }

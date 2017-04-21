@@ -19,6 +19,18 @@ public class ListasAtributosCargos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasAtributosCargos() {
+    }
+
+    public ListasAtributosCargos(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdLista")
     public Integer getIdLista() {

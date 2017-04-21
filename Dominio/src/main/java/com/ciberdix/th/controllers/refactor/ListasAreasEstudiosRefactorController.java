@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasAreasEstudios")
+@RequestMapping("/api/ListasAreasEstudios")
 @CrossOrigin
 public class ListasAreasEstudiosRefactorController {
 
@@ -23,22 +23,17 @@ public class ListasAreasEstudiosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasAreasEstudios> findAll() {
-        return (List<ListasAreasEstudios>) listasAreasEstudiosRefactorRepository.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasAreasEstudios> findEnabled() {
         return (List<ListasAreasEstudios>) listasAreasEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
+    @RequestMapping(method = RequestMethod.GET, path = "/{idListaInstitucion}")
     ListasAreasEstudios findOne(@PathVariable Integer idListaInstitucion) {
         return listasAreasEstudiosRefactorRepository.findOne(idListaInstitucion);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasAreasEstudios create(@RequestBody ListasAreasEstudios listasTiposReferencias) {
-        return listasAreasEstudiosRefactorRepository.save(new ListasAreasEstudios(listasTiposReferencias.getIdListaAreaEstudio(), listasTiposReferencias.getCodigoListaAreaEstudio(), listasTiposReferencias.getNombreListaAreaEstudio(), listasTiposReferencias.getOrdenListaAreaEstudio(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+        return listasAreasEstudiosRefactorRepository.save(new ListasAreasEstudios(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

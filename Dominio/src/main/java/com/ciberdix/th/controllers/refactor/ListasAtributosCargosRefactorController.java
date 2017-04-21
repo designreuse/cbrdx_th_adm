@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/listasAtributosCargos")
+@RequestMapping("/api/ListasAtributosCargos")
 public class ListasAtributosCargosRefactorController {
 
     @Autowired
@@ -19,11 +19,6 @@ public class ListasAtributosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasAtributosCargos> listarTerceros() {
-        return (List<ListasAtributosCargos>) listasAtributosCargosRefactorRepository.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasAtributosCargos> listEnabled() {
         return listasAtributosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 

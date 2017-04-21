@@ -170,8 +170,6 @@
         <mapping class="com.ciberdix.th.models.refactor.ExamenesPromocionesPreguntas"/>
         <mapping class="com.ciberdix.th.models.refactor.ExamenesPromocionesPreguntasRespuestas"/>
         <mapping class="com.ciberdix.th.models.refactor.Faltas"/>
-        <mapping class="com.ciberdix.th.models.refactor.Formularios"/>
-        <mapping class="com.ciberdix.th.models.refactor.FormulariosElementos"/>
         <mapping class="com.ciberdix.th.models.refactor.GruposCompetencias"/>
         <mapping class="com.ciberdix.th.models.refactor.GruposDotaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.GruposFormaciones"/>
@@ -193,8 +191,6 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasNivelesCargos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasNivelesEstudios"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasParentescos"/>
-        <mapping class="com.ciberdix.th.models.refactor.ListasSectoresEmpresas"/>
-        <mapping class="com.ciberdix.th.models.refactor.ListasSubSectoresEmpresas"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposAfiliacion"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposArchivos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposContratos"/>
@@ -215,14 +211,12 @@
         <mapping class="com.ciberdix.th.models.refactor.Localizaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.Materias"/>
         <mapping class="com.ciberdix.th.models.refactor.Menus"/>
-        <mapping class="com.ciberdix.th.models.refactor.MenusElementos"/>
         <mapping class="com.ciberdix.th.models.refactor.Ocupaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.OcupacionesTipos"/>
         <mapping class="com.ciberdix.th.models.refactor.Procesos"/>
         <mapping class="com.ciberdix.th.models.refactor.Profesiones"/>
         <mapping class="com.ciberdix.th.models.refactor.Proveedores"/>
         <mapping class="com.ciberdix.th.models.refactor.ProveedoresServicios"/>
-        <mapping class="com.ciberdix.th.models.refactor.Proyecciones"/>
         <mapping class="com.ciberdix.th.models.refactor.Requerimientos"/>
         <mapping class="com.ciberdix.th.models.refactor.RequerimientosActividades"/>
         <mapping class="com.ciberdix.th.models.refactor.RequerimientosAspirantes"/>
@@ -235,12 +229,6 @@
         <mapping class="com.ciberdix.th.models.refactor.RiesgosSubTipos"/>
         <mapping class="com.ciberdix.th.models.refactor.RiesgosTipos"/>
         <mapping class="com.ciberdix.th.models.refactor.Roles"/>
-        <mapping class="com.ciberdix.th.models.refactor.RolesMenuElementos"/>
-        <mapping class="com.ciberdix.th.models.refactor.RolesMenuElementosAcciones"/>
-        <mapping class="com.ciberdix.th.models.refactor.Sedes"/>
-        <mapping class="com.ciberdix.th.models.refactor.SedesAreas"/>
-        <mapping class="com.ciberdix.th.models.refactor.SedesAreasCargos"/>
-        <mapping class="com.ciberdix.th.models.refactor.SedesCentrosCostos"/>
         <mapping class="com.ciberdix.th.models.refactor.Temas"/>
         <mapping class="com.ciberdix.th.models.refactor.Terceros"/>
         <mapping class="com.ciberdix.th.models.refactor.TercerosAdaptacionesLaborales"/>
@@ -324,7 +312,6 @@
         <mapping class="com.ciberdix.th.models.refactor.VCargosRiesgos"/>
         <mapping class="com.ciberdix.th.models.refactor.CargosEstadosObservaciones"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosResponsabilidades"/>
-        <mapping class="com.ciberdix.th.models.refactor.VCargosB"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosExamenes"/>
         <mapping class="com.ciberdix.th.models.refactor.VCargosRolesProcesos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasRolesProceso"/>
@@ -354,15 +341,6 @@
         <mapping class="com.ciberdix.th.models.refactor.VActividadesEconomicas"/>
         <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboral"/>
         <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboralResumen"/>
-        <mapping class="com.ciberdix.th.models.refactor.AclClass"/>
-        <mapping class="com.ciberdix.th.models.refactor.AclEntry"/>
-        <mapping class="com.ciberdix.th.models.refactor.AclObjectIdentity"/>
-        <mapping class="com.ciberdix.th.models.refactor.AclSid"/>
-        <mapping class="com.ciberdix.th.models.refactor.Authorities"/>
-        <mapping class="com.ciberdix.th.models.refactor.GroupAuthorities"/>
-        <mapping class="com.ciberdix.th.models.refactor.GroupMembers"/>
-        <mapping class="com.ciberdix.th.models.refactor.Groups"/>
-        <mapping class="com.ciberdix.th.models.refactor.Users"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
