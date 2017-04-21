@@ -10,12 +10,23 @@ import javax.persistence.*;
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "Output", type = Integer.class)})
 @Table(name = "V_ProyeccionLaboral_Resumen", schema = "crz_th", catalog = "CREZCAMOS")
 public class VProyeccionLaboralResumen {
+    private Long idProyeccionLaboralResumen;
     private Integer idArea;
     private String area;
     private String estado;
     private Integer cantidad;
 
     @Id
+    @Column(name = "IdProyeccionLaboralResumen")
+    public Long getIdProyeccionLaboralResumen() {
+        return idProyeccionLaboralResumen;
+    }
+
+    public void setIdProyeccionLaboralResumen(Long idProyeccionLaboralResumen) {
+        this.idProyeccionLaboralResumen = idProyeccionLaboralResumen;
+    }
+
+    @Basic
     @Column(name = "IdArea")
     public Integer getIdArea() {
         return idArea;
@@ -62,6 +73,8 @@ public class VProyeccionLaboralResumen {
 
         VProyeccionLaboralResumen that = (VProyeccionLaboralResumen) o;
 
+        if (idProyeccionLaboralResumen != null ? !idProyeccionLaboralResumen.equals(that.idProyeccionLaboralResumen) : that.idProyeccionLaboralResumen != null)
+            return false;
         if (idArea != null ? !idArea.equals(that.idArea) : that.idArea != null) return false;
         if (area != null ? !area.equals(that.area) : that.area != null) return false;
         if (estado != null ? !estado.equals(that.estado) : that.estado != null) return false;
@@ -72,7 +85,8 @@ public class VProyeccionLaboralResumen {
 
     @Override
     public int hashCode() {
-        int result = idArea != null ? idArea.hashCode() : 0;
+        int result = idProyeccionLaboralResumen != null ? idProyeccionLaboralResumen.hashCode() : 0;
+        result = 31 * result + (idArea != null ? idArea.hashCode() : 0);
         result = 31 * result + (area != null ? area.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (cantidad != null ? cantidad.hashCode() : 0);
