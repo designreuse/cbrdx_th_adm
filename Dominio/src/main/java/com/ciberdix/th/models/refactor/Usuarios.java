@@ -5,9 +5,10 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by robertochajin on 20/04/17.
  */
 @Entity
+@Table(name = "Usuarios", schema = "crz_th", catalog = "CREZCAMOS")
 public class Usuarios {
     private Integer idUsuario;
     private String usuarioSistema;
@@ -18,18 +19,20 @@ public class Usuarios {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String correoElectronico;
 
     public Usuarios() {
     }
 
-    public Usuarios(String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Usuarios(String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
         this.usuarioSistema = usuarioSistema;
         this.contrasena = contrasena;
         this.usuarioLdap = usuarioLdap;
         this.fechaInactivacion = fechaInactivacion;
         this.idTercero = idTercero;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.correoElectronico = correoElectronico;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
@@ -124,6 +127,16 @@ public class Usuarios {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "CorreoElectronico")
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -146,6 +159,8 @@ public class Usuarios {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(usuarios.auditoriaFecha) : usuarios.auditoriaFecha != null)
             return false;
+        if (correoElectronico != null ? !correoElectronico.equals(usuarios.correoElectronico) : usuarios.correoElectronico != null)
+            return false;
 
         return true;
     }
@@ -161,6 +176,7 @@ public class Usuarios {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         return result;
     }
 }
