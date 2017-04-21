@@ -354,6 +354,14 @@
         <mapping class="com.ciberdix.th.models.refactor.VActividadesEconomicas"/>
         <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboral"/>
         <mapping class="com.ciberdix.th.models.refactor.VProyeccionLaboralResumen"/>
+        <mapping class="com.ciberdix.th.models.refactor.AclClass"/>
+        <mapping class="com.ciberdix.th.models.refactor.AclEntry"/>
+        <mapping class="com.ciberdix.th.models.refactor.AclObjectIdentity"/>
+        <mapping class="com.ciberdix.th.models.refactor.AclSid"/>
+        <mapping class="com.ciberdix.th.models.refactor.Authorities"/>
+        <mapping class="com.ciberdix.th.models.refactor.GroupAuthorities"/>
+        <mapping class="com.ciberdix.th.models.refactor.GroupMembers"/>
+        <mapping class="com.ciberdix.th.models.refactor.Groups"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
