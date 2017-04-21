@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by ingjj on 8/03/2017.
  */
 @Entity
-@Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS_TEST")
 public class FiltroDivPoliticaEntity {
    private Integer idDivisionPolitica;
    private String descripcionDivisionPolitica;

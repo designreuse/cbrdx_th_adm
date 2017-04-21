@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by faaguirre on 3/28/2017.
  */
 @Entity
-@Table(name = "ActividadesEconomicas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ActividadesEconomicas", schema = "crz_th", catalog = "CREZCAMOS_TEST")
 public class ActividadesEconomicas {
     private Integer idActividadEconomica;
     private Integer idActividadPadre;
