@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface ListasInstitucionesRefactorRepository extends CrudRepository<ListasInstituciones, Integer> {
     List<ListasInstituciones> findByIndicadorHabilitadoIsTrue();
-    List<ListasInstituciones> findByIndicadorHabilitadoIsTrueAndNombreListaInstitucionContains(String nombreListaInstitucion);
+    List<ListasInstituciones> findByIndicadorHabilitadoIsTrueAndNombreContains(String nombreListaInstitucion);
 }

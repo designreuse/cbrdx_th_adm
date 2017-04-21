@@ -19,6 +19,18 @@ public class ListasInstituciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasInstituciones() {
+    }
+
+    public ListasInstituciones(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdLista")
     public Integer getIdLista() {

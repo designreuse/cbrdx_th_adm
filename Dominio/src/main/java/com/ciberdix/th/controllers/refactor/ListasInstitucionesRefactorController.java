@@ -33,7 +33,7 @@ public class ListasInstitucionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarInstitucion/{nombreInstitucion}/")
     List<ListasInstituciones> findInstitution(@PathVariable String nombreInstitucion) {
-        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrueAndNombreListaInstitucionContains(nombreInstitucion);
+        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrueAndNombreContains(nombreInstitucion);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
@@ -43,7 +43,7 @@ public class ListasInstitucionesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasInstituciones create(@RequestBody ListasInstituciones listasTiposReferencias) {
-        return listasInstitucionesRefactorRepository.save(new ListasInstituciones(listasTiposReferencias.getIdListaInstitucion(), listasTiposReferencias.getCodigoListaInstitucion(), listasTiposReferencias.getNombreListaInstitucion(), listasTiposReferencias.getOrdenListaInstitucion(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+        return listasInstitucionesRefactorRepository.save(new ListasInstituciones(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
