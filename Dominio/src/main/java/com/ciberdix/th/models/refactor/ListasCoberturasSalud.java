@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -19,7 +16,20 @@ public class ListasCoberturasSalud {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasCoberturasSalud() {
+    }
+
+    public ListasCoberturasSalud(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdLista")
     public Integer getIdLista() {
         return idLista;

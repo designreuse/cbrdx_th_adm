@@ -14,19 +14,14 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/listasClasificacionesSedes")
+@RequestMapping("/api/ListasClasificacionesSedes")
 public class ListasClasificacionesSedesRefactorController {
     @Autowired
     private ListasClasificacionesSedesRefactorRepository listasClasificacionesSedesRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasClasificacionesSedes> findAll() {
-        return (List<ListasClasificacionesSedes>) listasClasificacionesSedesRefactorRepository.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<ListasClasificacionesSedes> findEnabled() {
-        return (List<ListasClasificacionesSedes>) listasClasificacionesSedesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return listasClasificacionesSedesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -36,7 +31,7 @@ public class ListasClasificacionesSedesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasClasificacionesSedes create(@RequestBody ListasClasificacionesSedes obj) {
-        return listasClasificacionesSedesRefactorRepository.save(obj);
+        return listasClasificacionesSedesRefactorRepository.save(new ListasClasificacionesSedes(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

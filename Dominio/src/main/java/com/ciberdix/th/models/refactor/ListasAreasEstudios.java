@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 21/04/2017.
  */
 @Entity
+@Table(name = "ListasAreasEstudios",schema = "crz_th",catalog = "CREZCAMOS_TEST")
 public class ListasAreasEstudios {
     private Integer idLista;
     private String codigo;
@@ -32,6 +30,7 @@ public class ListasAreasEstudios {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdLista")
     public Integer getIdLista() {
         return idLista;

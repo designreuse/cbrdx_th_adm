@@ -2,23 +2,18 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ListasCoberturasSalud;
 import com.ciberdix.th.repositories.refactor.ListasCoberturasSaludRefactorRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @RestController
 @Transactional
-@RequestMapping("/api/coberturasSalud")
+@RequestMapping("/api/ListasCoberturasSalud")
 @CrossOrigin
 public class ListasCoberturasSaludRefactorController {
 
@@ -27,7 +22,7 @@ public class ListasCoberturasSaludRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasCoberturasSalud> listarCoberturasSalud() {
-        return (List<ListasCoberturasSalud>) coberturasSaludRepository.findAll();
+        return (List<ListasCoberturasSalud>) coberturasSaludRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
@@ -37,7 +32,7 @@ public class ListasCoberturasSaludRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasCoberturasSalud crearListasCoberturasSalud(@RequestBody ListasCoberturasSalud obj) {
-        return coberturasSaludRepository.save(obj);
+        return coberturasSaludRepository.save(new ListasCoberturasSalud(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

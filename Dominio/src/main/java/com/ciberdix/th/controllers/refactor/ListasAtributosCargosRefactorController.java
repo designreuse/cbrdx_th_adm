@@ -22,6 +22,11 @@ public class ListasAtributosCargosRefactorController {
         return listasAtributosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasAtributosCargos listarTerceros(@PathVariable Integer id) {
+        return listasAtributosCargosRefactorRepository.findOne(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ListasAtributosCargos crearGeneros(@RequestBody ListasAtributosCargos obj) {
         return listasAtributosCargosRefactorRepository.save(new ListasAtributosCargos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
