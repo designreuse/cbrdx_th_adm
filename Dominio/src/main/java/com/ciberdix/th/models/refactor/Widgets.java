@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 18/04/2017.
  */
 @Entity
+@Table(name = "Widgets", schema = "crz_th", catalog = "CREZCAMOS")
 public class Widgets {
     private Integer idWidget;
     private String widget;
@@ -19,7 +17,21 @@ public class Widgets {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public Widgets (){
+    }
+
+    public Widgets (String widget, String codigoWidget, String descripcion, Boolean indicadorHabilitado,
+                    Integer auditoriaUsuario){
+        this.widget = widget;
+        this.codigoWidget = codigoWidget;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdWidget")
     public Integer getIdWidget() {
         return idWidget;
