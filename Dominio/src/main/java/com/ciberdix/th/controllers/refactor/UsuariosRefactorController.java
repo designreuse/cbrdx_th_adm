@@ -55,7 +55,10 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Usuarios createList(@RequestBody Usuarios c) {
-        return usuariosRepository.save(new Usuarios(c.getUsuarioSistema(), c.getContrasena(), c.getUsuarioLdap(), c.getFechaInactivacion(), c.getIdTercero(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario()));
+        return usuariosRepository.save(
+                new Usuarios(c.getUsuarioSistema(),c.getContrasena(),c.getUsuarioLdap(),
+                        c.getFechaInactivacion(),c.getIdTercero(),c.getIndicadorHabilitado(),
+                        c.getAuditoriaUsuario(),c.getCorreoElectronico()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
