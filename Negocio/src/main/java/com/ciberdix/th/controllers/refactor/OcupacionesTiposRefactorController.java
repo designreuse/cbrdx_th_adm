@@ -28,6 +28,14 @@ public class OcupacionesTiposRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<OcupacionesTipos> findEnabled() {
+        String serviceUrl = baseUrl + "/api/ocupacionesTipos/";
+        RestTemplate restTemplate = new RestTemplate();
+        OcupacionesTipos[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", OcupacionesTipos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     OcupacionesTipos createCentrosCostos(@RequestBody OcupacionesTipos request) {
         String serviceUrl = baseUrl + "/api/ocupacionesTipos/";

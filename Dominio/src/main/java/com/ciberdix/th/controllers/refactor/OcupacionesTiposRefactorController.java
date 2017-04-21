@@ -30,6 +30,11 @@ public class OcupacionesTiposRefactorController {
         return ocupacionesTiposRefactorRepository.findOne(idLista);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<OcupacionesTipos> findEnabled() {
+        return (List<OcupacionesTipos>) ocupacionesTiposRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     OcupacionesTipos createOcupacionTipo(@RequestBody OcupacionesTipos c) {
         return ocupacionesTiposRefactorRepository.save(new OcupacionesTipos(c.getCodigoOcupacionTipo(), c.getDescripcionOcupacionTipo(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario()));
