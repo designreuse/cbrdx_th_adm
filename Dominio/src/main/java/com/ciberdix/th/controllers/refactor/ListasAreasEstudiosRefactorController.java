@@ -23,7 +23,7 @@ public class ListasAreasEstudiosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasAreasEstudios> findAll() {
-        return (List<ListasAreasEstudios>) listasAreasEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return listasAreasEstudiosRefactorRepository.findByIndicadorHabilitadoTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idListaInstitucion}")

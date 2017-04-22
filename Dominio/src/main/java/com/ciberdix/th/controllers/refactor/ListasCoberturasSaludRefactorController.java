@@ -22,7 +22,7 @@ public class ListasCoberturasSaludRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasCoberturasSalud> listarCoberturasSalud() {
-        return (List<ListasCoberturasSalud>) coberturasSaludRepository.findByIndicadorHabilitadoIsTrue();
+        return coberturasSaludRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
