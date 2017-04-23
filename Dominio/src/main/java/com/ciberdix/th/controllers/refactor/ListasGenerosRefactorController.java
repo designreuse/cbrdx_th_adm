@@ -1,46 +1,62 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ListasGeneros;
-import java.util.List;
+import com.ciberdix.th.repositories.refactor.ListasGenerosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import com.ciberdix.th.repositories.refactor.ListasGenerosRefactorRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/generos")
+@RequestMapping("/api/ListasGeneros")
 public class ListasGenerosRefactorController {
 
     @Autowired
-    private ListasGenerosRefactorRepository generosRepository;
+    private ListasGenerosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasGeneros> listarTerceros() {
-        return (List<ListasGeneros>) generosRepository.findAll();
+    List<ListasGeneros> findAll() {
+        return (List<ListasGeneros>) repository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
-    List<ListasGeneros> listEnabled() {
-        return generosRepository.findByIndicadorHabilitadoIsTrue();
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasGeneros> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasGeneros findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasGeneros> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasGeneros> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasGeneros findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasGeneros crearGeneros(@RequestBody ListasGeneros obj) {
-        return generosRepository.save(obj);
+    ListasGeneros create(@RequestBody ListasGeneros obj) {
+        return repository.save(new ListasGeneros(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarGeneros(@RequestBody ListasGeneros obj){
-        generosRepository.save(obj);
-    }    
+    ListasGeneros update(@RequestBody ListasGeneros obj) {
+        return repository.save(obj);
+    }
 }

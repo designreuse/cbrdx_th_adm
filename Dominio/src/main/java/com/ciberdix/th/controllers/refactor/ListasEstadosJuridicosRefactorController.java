@@ -18,35 +18,49 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/estadosJuridicos")
+@RequestMapping("/api/ListasEstadosJuridicos")
 @CrossOrigin
 public class ListasEstadosJuridicosRefactorController {
 
     @Autowired
-    private ListasEstadosJuridicosRefactorRepository estadosJuridicosRepository;
-    
+    private ListasEstadosJuridicosRefactorRepository repository;
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasEstadosJuridicos> listarEstadosJuridicos() {
-        return (List<ListasEstadosJuridicos>) estadosJuridicosRepository.findAll();
-    }    
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
-    List<ListasEstadosJuridicos> listEnabled() {
-        return estadosJuridicosRepository.findByIndicadorHabilitadoIsTrue();
-    }     
-    
-    @RequestMapping(method = RequestMethod.GET, value="/{id}")
-    ListasEstadosJuridicos obtenerEstadoJuridico(@PathVariable Integer id) {
-        return estadosJuridicosRepository.findOne(id);
-    }    
+    List<ListasEstadosJuridicos> findAll() {
+        return (List<ListasEstadosJuridicos>) repository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasEstadosJuridicos> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasEstadosJuridicos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasEstadosJuridicos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasEstadosJuridicos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasEstadosJuridicos findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasEstadosJuridicos crearListasEstadosJuridicos(@RequestBody ListasEstadosJuridicos obj){
-        return estadosJuridicosRepository.save(obj);
+    ListasEstadosJuridicos create(@RequestBody ListasEstadosJuridicos obj) {
+        return repository.save(new ListasEstadosJuridicos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarListasEstadosJuridicos(@RequestBody ListasEstadosJuridicos obj){
-        estadosJuridicosRepository.save(obj);
-    }     
+    ListasEstadosJuridicos update(@RequestBody ListasEstadosJuridicos obj) {
+        return repository.save(obj);
+    }
 }

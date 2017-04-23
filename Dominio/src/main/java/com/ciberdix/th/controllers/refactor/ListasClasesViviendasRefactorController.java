@@ -17,25 +17,45 @@ import java.util.List;
 @CrossOrigin
 public class ListasClasesViviendasRefactorController {
     @Autowired
-    private ListasClasesViviendasRefactorRepository listasClasesViviendasRefactorRepository;
+    private ListasClasesViviendasRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasClasesViviendas> findAll() {
-        return listasClasesViviendasRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return (List<ListasClasesViviendas>) repository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasClasesViviendas> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasClasesViviendas findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasClasesViviendas> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasClasesViviendas> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasClasesViviendas findOne(@PathVariable Integer id) {
-        return listasClasesViviendasRefactorRepository.findOne(id);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasClasesViviendas create(@RequestBody ListasClasesViviendas obj) {
-        return listasClasesViviendasRefactorRepository.save(new ListasClasesViviendas(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return repository.save(new ListasClasesViviendas(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasClasesViviendas obj) {
-        listasClasesViviendasRefactorRepository.save(obj);
+    ListasClasesViviendas update(@RequestBody ListasClasesViviendas obj) {
+        return repository.save(obj);
     }
 }

@@ -19,25 +19,45 @@ import java.util.List;
 public class ListasAreasEstudiosRefactorController {
 
     @Autowired
-    private ListasAreasEstudiosRefactorRepository listasAreasEstudiosRefactorRepository;
+    private ListasAreasEstudiosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasAreasEstudios> findAll() {
-        return listasAreasEstudiosRefactorRepository.findByIndicadorHabilitadoTrue();
+        return (List<ListasAreasEstudios>) repository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idListaInstitucion}")
-    ListasAreasEstudios findOne(@PathVariable Integer idListaInstitucion) {
-        return listasAreasEstudiosRefactorRepository.findOne(idListaInstitucion);
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasAreasEstudios> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasAreasEstudios findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasAreasEstudios> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasAreasEstudios> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasAreasEstudios findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasAreasEstudios create(@RequestBody ListasAreasEstudios listasTiposReferencias) {
-        return listasAreasEstudiosRefactorRepository.save(new ListasAreasEstudios(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+    ListasAreasEstudios create(@RequestBody ListasAreasEstudios obj) {
+        return repository.save(new ListasAreasEstudios(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasAreasEstudios update(@RequestBody ListasAreasEstudios divisionPolitica) {
-        return listasAreasEstudiosRefactorRepository.save(divisionPolitica);
+    ListasAreasEstudios update(@RequestBody ListasAreasEstudios obj) {
+        return repository.save(obj);
     }
 }

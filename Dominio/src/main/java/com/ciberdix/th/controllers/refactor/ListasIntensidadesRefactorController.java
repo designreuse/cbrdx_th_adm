@@ -14,35 +14,50 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasIntensidades")
+@RequestMapping("/api/ListasIntensidades")
 @CrossOrigin
 public class ListasIntensidadesRefactorController {
 
     @Autowired
-    private ListasIntensidadesRefactorRepository listasIntensidadesRefactorRepository;
+    private ListasIntensidadesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasIntensidades> findAll() {
-        return (List<ListasIntensidades>) listasIntensidadesRefactorRepository.findAll();
+        return (List<ListasIntensidades>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasIntensidades> findEnabled() {
-        return (List<ListasIntensidades>) listasIntensidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
-    ListasIntensidades findOne(@PathVariable Integer idListaInstitucion) {
-        return listasIntensidadesRefactorRepository.findOne(idListaInstitucion);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasIntensidades findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasIntensidades> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasIntensidades> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasIntensidades findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasIntensidades create(@RequestBody ListasIntensidades listasTiposReferencias) {
-        return listasIntensidadesRefactorRepository.save(new ListasIntensidades(listasTiposReferencias.getCodigoListaIntensidad(), listasTiposReferencias.getNombreListaIntensidad(), listasTiposReferencias.getOrdenListaIntensidad(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+    ListasIntensidades create(@RequestBody ListasIntensidades obj) {
+        return repository.save(new ListasIntensidades(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasIntensidades update(@RequestBody ListasIntensidades divisionPolitica) {
-        return listasIntensidadesRefactorRepository.save(divisionPolitica);
+    ListasIntensidades update(@RequestBody ListasIntensidades obj) {
+        return repository.save(obj);
     }
 }

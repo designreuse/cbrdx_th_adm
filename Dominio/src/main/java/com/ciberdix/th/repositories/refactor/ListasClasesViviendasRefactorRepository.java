@@ -9,5 +9,11 @@ import java.util.List;
  * Created by robertochajin on 5/04/17.
  */
 public interface ListasClasesViviendasRefactorRepository extends CrudRepository<ListasClasesViviendas, Integer> {
-    List<ListasClasesViviendas> findByIndicadorHabilitadoIsTrue();
+    List<ListasClasesViviendas> findByIndicadorHabilitadoTrue();
+
+    ListasClasesViviendas findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+
+    List<ListasClasesViviendas> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+
+    List<ListasClasesViviendas> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
 }

@@ -41,6 +41,33 @@ public class ListasRefactorController {
         return Arrays.asList(parameter);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/enabled/")
+    List<ListasItems> findEnabled(@PathVariable String tableName) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasItems[] parameter = restTemplate.getForObject(serviceUrl + "/" + tableName + "/enabled/", ListasItems[].class);
+        return Arrays.asList(parameter);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/code/{queryString}")
+    ListasItems findByCode(@PathVariable String tableName, @PathVariable String queryString) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/" + tableName + "/code/" + queryString + "/", ListasItems.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/codeStarts/{queryString}")
+    List<ListasItems> findByCodeStarts(@PathVariable String tableName, @PathVariable String queryString) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasItems[] parameter = restTemplate.getForObject(serviceUrl + "/" + tableName + "/codeStarts/" + queryString + "/", ListasItems[].class);
+        return Arrays.asList(parameter);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/name/{queryString}")
+    List<ListasItems> findByName(@PathVariable String tableName, @PathVariable String queryString) {
+        RestTemplate restTemplate = new RestTemplate();
+        ListasItems[] parameter = restTemplate.getForObject(serviceUrl + "/" + tableName + "/name/" + queryString + "/", ListasItems[].class);
+        return Arrays.asList(parameter);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/tabla/{tableName}/")
     ListasItems createItem(@PathVariable String tableName, @RequestBody ListasItems listasItems) {
         RestTemplate restTemplate = new RestTemplate();

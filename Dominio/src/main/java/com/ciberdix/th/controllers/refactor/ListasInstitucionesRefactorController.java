@@ -14,42 +14,50 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasInstituciones")
+@RequestMapping("/api/ListasInstituciones")
 @CrossOrigin
 public class ListasInstitucionesRefactorController {
 
     @Autowired
-    private ListasInstitucionesRefactorRepository listasInstitucionesRefactorRepository;
+    private ListasInstitucionesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasInstituciones> findAll() {
-        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findAll();
+        return (List<ListasInstituciones>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasInstituciones> findEnabled() {
-        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarInstitucion/{nombreInstitucion}/")
-    List<ListasInstituciones> findInstitution(@PathVariable String nombreInstitucion) {
-        return (List<ListasInstituciones>) listasInstitucionesRefactorRepository.findByIndicadorHabilitadoIsTrueAndNombreContains(nombreInstitucion);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasInstituciones findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
-    ListasInstituciones findOne(@PathVariable Integer idListaInstitucion) {
-        return listasInstitucionesRefactorRepository.findOne(idListaInstitucion);
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasInstituciones> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasInstituciones> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasInstituciones findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasInstituciones create(@RequestBody ListasInstituciones listasTiposReferencias) {
-        return listasInstitucionesRefactorRepository.save(new ListasInstituciones(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+    ListasInstituciones create(@RequestBody ListasInstituciones obj) {
+        return repository.save(new ListasInstituciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasInstituciones update(@RequestBody ListasInstituciones divisionPolitica) {
-        return listasInstitucionesRefactorRepository.save(divisionPolitica);
+    ListasInstituciones update(@RequestBody ListasInstituciones obj) {
+        return repository.save(obj);
     }
-
-
 }
