@@ -19,8 +19,25 @@ public class UsuariosEntity {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String correoElectronico;
+
+    public UsuariosEntity(String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
+        this.usuarioSistema = usuarioSistema;
+        this.contrasena = contrasena;
+        this.usuarioLdap = usuarioLdap;
+        this.fechaInactivacion = fechaInactivacion;
+        this.idTercero = idTercero;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.correoElectronico = correoElectronico;
+    }
+
+    public UsuariosEntity() {
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdUsuario", nullable = false)
     public Integer getIdUsuario() {
         return idUsuario;
@@ -110,6 +127,16 @@ public class UsuariosEntity {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "CorreoElectronico", nullable = true, length = 64)
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -131,6 +158,8 @@ public class UsuariosEntity {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null)
+            return false;
 
         return true;
     }
@@ -146,6 +175,7 @@ public class UsuariosEntity {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         return result;
     }
 }
