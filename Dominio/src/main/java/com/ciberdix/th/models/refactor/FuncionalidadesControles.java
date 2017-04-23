@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 18/04/2017.
  */
 @Entity
+@Table(name = "FuncionalidadesControles", schema = "crz_th", catalog = "CREZCAMOS")
 public class FuncionalidadesControles {
     private Integer idFuncionalidadControl;
     private String codigo;
@@ -24,7 +22,28 @@ public class FuncionalidadesControles {
     private Integer idPadre;
     private Boolean indicadorSeccion;
 
+    public FuncionalidadesControles(){
+    }
+
+    public FuncionalidadesControles(String codigo, String control, Integer idClasificacion,
+                                    Integer idFuncionalidad, Boolean indicadorVisible, Boolean indicadorImprimir,
+                                    Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre,
+                                    Boolean indicadorSeccion){
+        this.codigo = codigo;
+        this.control = control;
+        this.idClasificacion = idClasificacion;
+        this.idFuncionalidad = idFuncionalidad;
+        this.indicadorVisible = indicadorVisible;
+        this.indicadorImprimir = indicadorImprimir;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idPadre = idPadre;
+        this.indicadorSeccion = indicadorSeccion;
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdFuncionalidadControl")
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;

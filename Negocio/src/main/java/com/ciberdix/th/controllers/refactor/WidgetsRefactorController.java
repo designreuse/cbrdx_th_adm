@@ -34,6 +34,14 @@ public class WidgetsRefactorController {
         return restTemplate.getForObject(serviceUrl + idWidget, Widgets.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<Widgets> findEnabled() {
+        String serviceUrl = baseUrl + "/api/widgets/";
+        RestTemplate restTemplate = new RestTemplate();
+        Widgets[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", Widgets[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Widgets create(@RequestBody Widgets widgets) {
         String serviceUrl = baseUrl + "/api/widgets/";

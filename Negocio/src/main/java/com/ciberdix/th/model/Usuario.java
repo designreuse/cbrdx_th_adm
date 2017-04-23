@@ -10,10 +10,10 @@ public class Usuario {
     private String usuarioLdap;
     private Date fechaInactivacion;
     private Long idTercero;
-    private String correoElectronico;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String correoElectronico;
 
     public String getCorreoElectronico() {
         return correoElectronico;
@@ -98,12 +98,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String usuarioSistema, String contrasena, String usuarioLdap, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Usuario(String usuarioSistema, String contrasena, String usuarioLdap, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
         this.usuarioSistema = usuarioSistema;
         this.contrasena = contrasena;
         this.usuarioLdap = usuarioLdap;
         this.idTercero = idTercero;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario;
+        this.correoElectronico = correoElectronico;
     }
 }

@@ -36,6 +36,11 @@ public class WidgetsRefactorController {
                 widgets.getDescripcion(), widgets.getIndicadorHabilitado(), widgets.getAuditoriaUsuario()));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<Widgets> findEnabled() {
+        return (List<Widgets>) widgetsRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
     Widgets update(@RequestBody Widgets widgets) {
         return widgetsRefactorRepository.save(widgets);
