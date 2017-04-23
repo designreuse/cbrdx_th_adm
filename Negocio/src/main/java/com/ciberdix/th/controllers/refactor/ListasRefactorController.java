@@ -24,7 +24,7 @@ public class ListasRefactorController {
     @RequestMapping(method = RequestMethod.GET)
     List<Listas> listarGeneros() {
         RestTemplate restTemplate = new RestTemplate();
-        Listas[] generos = restTemplate.getForObject(serviceUrl, Listas[].class);
+        Listas[] generos = restTemplate.getForObject(serviceUrl + "listas/", Listas[].class);
         return Arrays.asList(generos);
     }
 
@@ -83,6 +83,6 @@ public class ListasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Listas obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        restTemplate.put(serviceUrl+ "listas/", obj);
     }
 }
