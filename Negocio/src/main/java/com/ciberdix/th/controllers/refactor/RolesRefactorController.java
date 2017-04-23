@@ -1,9 +1,12 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.model.refactor.Menus;
 import com.ciberdix.th.model.refactor.Roles;
 import com.ciberdix.th.model.refactor.VUsuarioRolesCantidad;
+import com.ciberdix.th.security.JwtTokenUtil;
+import com.ciberdix.th.security.abac.policy.spring.ContextAwarePolicyEnforcement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,13 +24,19 @@ public class RolesRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private ContextAwarePolicyEnforcement policy;
 
     @RequestMapping(method = RequestMethod.GET)
     List<Roles> findAll() {
+        //jwtTokenUtil.getAuthorities();
         String serviceUrl = baseUrl + "/api/roles/";
         RestTemplate restTemplate = new RestTemplate();
         Roles[] parametros = restTemplate.getForObject(serviceUrl, Roles[].class);
+        //policy.checkPermission(parametros, "LISTAR");
         return Arrays.asList(parametros);
     }
 
