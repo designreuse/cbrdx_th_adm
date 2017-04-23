@@ -82,13 +82,6 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, request, Usuarios.class);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Usuarios usuarios) {
-        String serviceUrl = baseUrl + "/api/usuarios";
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, usuarios);
-    }
-
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
     void queryAllByCambiarPass(@RequestBody Usuarios obj, @PathVariable String oldPass, @PathVariable String newPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
