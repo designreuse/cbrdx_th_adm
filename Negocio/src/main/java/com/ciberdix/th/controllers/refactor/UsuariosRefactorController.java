@@ -8,6 +8,7 @@ import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -63,9 +64,9 @@ public class UsuariosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Usuarios create(@RequestBody Usuarios usuario) {
         String serviceUrl = baseUrl + "/api/usuarios/";
-//        if (!usuario.getUsuarioLdap()) {
-//            usuario = processMailInfo(usuario);
-//        }
+        if (!usuario.getUsuarioLdap()) {
+            usuario = processMailInfo(usuario);
+        }
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, usuario, Usuarios.class);
     }
@@ -74,25 +75,19 @@ public class UsuariosRefactorController {
     void updateUsuario(@RequestBody Usuarios request) {
         String serviceUrl = baseUrl + "/api/usuarios/";
         System.out.println(request.getContrasena());
-//        if (!request.getUsuarioLdap() && request.getContrasena() == null) {
-//            request = processMailInfo(request);
-//        }
+        if (!request.getUsuarioLdap() && request.getContrasena() == null) {
+            request = processMailInfo(request);
+        }
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, request, Usuarios.class);
-    }
-
-    @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Usuarios usuarios) {
-        String serviceUrl = baseUrl + "/api/usuarios";
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, usuarios);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
     Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
-        if(!obj.getContrasena().equals(oldPass)){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        if(!obj.getContrasena().equals(bCryptPasswordEncoder.encode(oldPass))){
             restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
             return true;
         }else{
@@ -100,32 +95,32 @@ public class UsuariosRefactorController {
         }
     }
 
-//    private Usuarios processMailInfo(Usuarios usuario) {
-//        String pass = UUID.randomUUID().toString().substring(0, 10);
-//        MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
-//        MandrillMessage message = new MandrillMessage();
-//        message.setSubject("Su Contraseña");
-//        message.setHtml("<h1>Hola!</h1><br />Su nueva Contraseña es: " + pass);
-//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
-//        String hashedPassword = bCryptPasswordEncoder.encode(pass);
-//        usuario.setContrasena(hashedPassword);
-//        message.setAutoText(true);
-//        message.setFromEmail("info@ciberdix.com");
-//        message.setFromName("Gestionemos");
-//        ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
-//        MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
-//        recipient.setEmail(usuario.getCorreoElectronico());
-//        recipient.setName(usuario.getUsuarioSistema());
-//        recipients.add(recipient);
-//        message.setTo(recipients);
-//        message.setPreserveRecipients(true);
-//        try {
-//            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message,false);
-//        } catch (MandrillApiError mandrillApiError) {
-//            mandrillApiError.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return usuario;
-//    }
+    private Usuarios processMailInfo(Usuarios usuario) {
+        String pass = UUID.randomUUID().toString().substring(0, 10);
+        MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
+        MandrillMessage message = new MandrillMessage();
+        message.setSubject("Su Contraseña");
+        message.setHtml("<h1>Hola!</h1><br />Su nueva Contraseña es: " + pass);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
+        String hashedPassword = bCryptPasswordEncoder.encode(pass);
+        usuario.setContrasena(hashedPassword);
+        message.setAutoText(true);
+        message.setFromEmail("info@ciberdix.com");
+        message.setFromName("Gestionemos");
+        ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
+        MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
+        recipient.setEmail(usuario.getCorreoElectronico());
+        recipient.setName(usuario.getUsuarioSistema());
+        recipients.add(recipient);
+        message.setTo(recipients);
+        message.setPreserveRecipients(true);
+        try {
+            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message,false);
+        } catch (MandrillApiError mandrillApiError) {
+            mandrillApiError.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return usuario;
+    }
 }
