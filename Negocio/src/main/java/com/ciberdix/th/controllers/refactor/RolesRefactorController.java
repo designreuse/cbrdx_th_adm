@@ -36,7 +36,7 @@ public class RolesRefactorController {
         String serviceUrl = baseUrl + "/api/roles/";
         RestTemplate restTemplate = new RestTemplate();
         Roles[] parametros = restTemplate.getForObject(serviceUrl, Roles[].class);
-        policy.checkPermission(parametros, "LISTAR");
+        //policy.checkPermission(parametros, "LISTAR");
         return Arrays.asList(parametros);
     }
 
