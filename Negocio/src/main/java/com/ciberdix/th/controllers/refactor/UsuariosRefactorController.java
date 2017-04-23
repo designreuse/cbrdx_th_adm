@@ -63,9 +63,9 @@ public class UsuariosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Usuarios create(@RequestBody Usuarios usuario) {
         String serviceUrl = baseUrl + "/api/usuarios/";
-        if (!usuario.getUsuarioLdap()) {
+//        if (!usuario.getUsuarioLdap()) {
 //            usuario = processMailInfo(usuario);
-        }
+//        }
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, usuario, Usuarios.class);
     }
@@ -88,11 +88,16 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, usuarios);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
-    void queryAllByCambiarPass(@RequestBody Usuarios obj, @PathVariable String oldPass, @PathVariable String newPass) {
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
+    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
+        if(!obj.getContrasena().equals(oldPass)){
+            restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
+            return true;
+        }else{
+            return false;
+        }
     }
 
 //    private Usuarios processMailInfo(Usuarios usuario) {
