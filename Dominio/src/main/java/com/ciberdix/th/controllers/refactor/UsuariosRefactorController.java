@@ -67,7 +67,7 @@ public class UsuariosRefactorController {
     }
 
 //    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
-//    Boolean cambiarPass(@RequestBody Usuarios user, @RequestParam(defaultValue = "") String oldPass, @RequestParam(defaultValue = "") String newPass) {
+//    Boolean cambiarPass(@RequestBody Usuarios user, @PathVariable String oldPass, @PathVariable String newPass) {
 //            Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
 //            if(users.getContrasena().equals(oldPass)){
 //                usuariosRepository.queryCambiarPass(newPass, user.getIdUsuario());

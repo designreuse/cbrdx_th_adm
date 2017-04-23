@@ -28,11 +28,11 @@ public class FuncionalidadesRefactorController {
         return Arrays.asList(listasClasificaciones);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idFuncionalidad}")
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
     Funcionalidades findOne(@PathVariable Integer idFuncionalidad) {
         String serviceUrl = baseUrl + "/api/funcionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + idFuncionalidad, Funcionalidades.class);
+        return restTemplate.getForObject(serviceUrl + "id/" + idFuncionalidad, Funcionalidades.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")

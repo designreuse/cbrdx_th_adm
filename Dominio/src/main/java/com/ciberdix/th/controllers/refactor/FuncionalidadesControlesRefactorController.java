@@ -25,35 +25,24 @@ public class FuncionalidadesControlesRefactorController {
         return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idFuncionalidad}")
-    List<FuncionalidadesControles> findByOne(@PathVariable Integer idFuncionalidad) {
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
+    List<FuncionalidadesControles> findOne(@PathVariable Integer idFuncionalidad) {
         return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec/{idFuncionalidad}")
-    List<FuncionalidadesControles> queryAllByIdSecCamSec(@PathVariable Integer idFuncionalidad) {
-        FuncionalidadesControles fc = funcionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
-        String sec = "sec";
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, sec);
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{IdPadre}")
+    List<FuncionalidadesControles> findByFather(@PathVariable Integer IdPadre) {
+        return funcionalidadesControlesRefactorRepository.findByIdPadre(IdPadre);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/cam/{idFuncionalidad}")
-    List<FuncionalidadesControles> queryAllByIdSecCamCam(@PathVariable Integer idFuncionalidad) {
-        FuncionalidadesControles fc = funcionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
-        String sec = "cam";
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, sec);
+    @RequestMapping(method = RequestMethod.GET, path = "/secycam/{idFuncionalidad}/{indicador}")
+    List<FuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidad, @PathVariable Boolean indicador) {
+        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, indicador);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec")
-    List<FuncionalidadesControles> queryAllBySecCamSec() {
-        String sec = "sec";
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllBySecCam(sec);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/cam")
-    List<FuncionalidadesControles> queryAllBySecCamCam() {
-        String cam = "cam";
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllBySecCam(cam);
+    @RequestMapping(method = RequestMethod.GET, path = "/indicadorsecycam/{indicador}")
+    List<FuncionalidadesControles> queryAllBySecCam(@PathVariable Boolean indicador) {
+        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -61,7 +50,7 @@ public class FuncionalidadesControlesRefactorController {
         return funcionalidadesControlesRefactorRepository.save(
                 new FuncionalidadesControles(fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
-                        fc.getIndicadorImprimir(), fc.getAuditoriaUsuario(),
+                        fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
                         fc.getIdPadre(), fc.getIndicadorSeccion()));
     }
 

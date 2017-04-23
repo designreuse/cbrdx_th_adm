@@ -28,11 +28,11 @@ public class FuncionalidadesControlesRefactorController {
         return Arrays.asList(funcionalidadesControles);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idFuncionalidadControl}")
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidadControl}")
     FuncionalidadesControles findOne(@PathVariable Integer idFuncionalidadControl) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + idFuncionalidadControl, FuncionalidadesControles.class);
+        return restTemplate.getForObject(serviceUrl + "id/" + idFuncionalidadControl, FuncionalidadesControles.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
@@ -43,32 +43,26 @@ public class FuncionalidadesControlesRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec/{idFuncionalidadControl}")
-    List<FuncionalidadesControles> findByIdSec(@PathVariable Integer idFuncionalidadControl) {
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{idPadre}")
+    List<FuncionalidadesControles> findByParent(@PathVariable Integer idPadre) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
         RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "sec/" + idFuncionalidadControl, FuncionalidadesControles[].class));
+        FuncionalidadesControles[] funcionalidadesControles = restTemplate.getForObject(serviceUrl + "buscarPadre/" + idPadre, FuncionalidadesControles[].class);
+        return Arrays.asList(funcionalidadesControles);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/cam/{idFuncionalidadControl}")
-    List<FuncionalidadesControles> findByIdCam(@PathVariable Integer idFuncionalidadControl) {
+    @RequestMapping(method = RequestMethod.GET, path = "/secycam/{idFuncionalidad}/{indicador}")
+    List<FuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidadControl, @PathVariable Boolean indicador) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
         RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "cam/" + idFuncionalidadControl, FuncionalidadesControles[].class));
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "secycam/" + idFuncionalidadControl + "/" + indicador, FuncionalidadesControles[].class));
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec")
-    List<FuncionalidadesControles> findBySec() {
+    @RequestMapping(method = RequestMethod.GET, path = "/indicadorsecycam/{indicador}")
+    List<FuncionalidadesControles> queryAllBySecCam(@PathVariable Boolean indicador) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
         RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "sec/", FuncionalidadesControles[].class));
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/cam")
-    List<FuncionalidadesControles> findByCam() {
-        String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
-        RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "cam/", FuncionalidadesControles[].class));
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "indicadorsecycam/" + indicador, FuncionalidadesControles[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
