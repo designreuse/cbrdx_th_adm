@@ -56,9 +56,9 @@ public class UsuariosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Usuarios createList(@RequestBody Usuarios c) {
         return usuariosRepository.save(
-                new Usuarios(c.getUsuarioSistema(),c.getContrasena(),c.getUsuarioLdap(),
-                        c.getFechaInactivacion(),c.getIdTercero(),c.getIndicadorHabilitado(),
-                        c.getAuditoriaUsuario(),c.getCorreoElectronico()));
+                new Usuarios(c.getUsuarioSistema(), c.getContrasena(), c.getUsuarioLdap(),
+                        c.getFechaInactivacion(), c.getIdTercero(), c.getIndicadorHabilitado(),
+                        c.getAuditoriaUsuario(), c.getCorreoElectronico()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -68,12 +68,12 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
     Boolean updatePass(@RequestBody Usuarios user, @PathVariable String oldPass) {
-            Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
-            if(users.getContrasena().equals(oldPass)){
-                usuariosRepository.save(user);
-                return true;
-            }else{
-                return false;
-            }
+        Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
+        if (users.getContrasena().equals(oldPass)) {
+            usuariosRepository.save(user);
+            return true;
+        } else {
+            return false;
         }
+    }
 }
