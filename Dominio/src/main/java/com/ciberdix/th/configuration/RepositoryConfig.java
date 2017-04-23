@@ -165,5 +165,8 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VCargosRiesgos.class);
         config.exposeIdsFor(Widgets.class);
         config.exposeIdsFor(OcupacionesTipos.class);
+        config.exposeIdsFor(Funcionalidades.class);
+        config.exposeIdsFor(ListasClasificaciones.class);
+        config.exposeIdsFor(FuncionalidadesControles.class);
     }
 }

@@ -1,15 +1,13 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 18/04/2017.
  */
 @Entity
+@Table(name = "Funcionalidades", schema = "crz_th", catalog = "CREZCAMOS")
 public class Funcionalidades {
     private Integer idFuncionalidad;
     private Integer idMenu;
@@ -17,7 +15,18 @@ public class Funcionalidades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public Funcionalidades(){
+    }
+
+    public Funcionalidades(Integer idMenu, Boolean indicadorHabilitado, Integer auditoriaUsuario){
+        this.idMenu = idMenu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdFuncionalidad")
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
