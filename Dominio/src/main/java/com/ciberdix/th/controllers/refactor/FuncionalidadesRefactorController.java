@@ -25,9 +25,9 @@ public class FuncionalidadesRefactorController {
         return (List<Funcionalidades>) funcionalidadesRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{idFuncionalidad}")
-    List<Funcionalidades> findByOne(@PathVariable Integer idFuncionalidad) {
-        return (List<Funcionalidades>) funcionalidadesRefactorRepository.findOne(idFuncionalidad);
+    @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
+    Funcionalidades findOne(@PathVariable Integer idFuncionalidad) {
+        return funcionalidadesRefactorRepository.findOne(idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.POST)
