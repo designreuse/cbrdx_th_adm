@@ -41,6 +41,12 @@ public class ListasRefactorController {
         return Arrays.asList(parameter);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/idItem/{idItem}")
+    ListasItems findOne(@PathVariable String tableName, @PathVariable Integer idItem) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/" + tableName + "/" + idItem, ListasItems.class);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/tabla/{tableName}/enabled/")
     List<ListasItems> findEnabled(@PathVariable String tableName) {
         RestTemplate restTemplate = new RestTemplate();
@@ -83,6 +89,6 @@ public class ListasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Listas obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl+ "listas/", obj);
+        restTemplate.put(serviceUrl + "listas/", obj);
     }
 }
