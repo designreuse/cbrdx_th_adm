@@ -82,11 +82,24 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, request, Usuarios.class);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
-    void queryAllByCambiarPass(@RequestBody Usuarios obj, @PathVariable String oldPass, @PathVariable String newPass) {
+    @RequestMapping(method = RequestMethod.PUT)
+    void update(@RequestBody Usuarios usuarios) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
+        restTemplate.put(serviceUrl, usuarios);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
+    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
+        String serviceUrl = baseUrl + "/api/usuarios";
+        RestTemplate restTemplate = new RestTemplate();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        if(!obj.getContrasena().equals(bCryptPasswordEncoder.encode(oldPass))){
+            restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private Usuarios processMailInfo(Usuarios usuario) {
