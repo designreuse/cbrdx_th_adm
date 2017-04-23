@@ -75,7 +75,7 @@ public class UsuariosRefactorController {
 //        String serviceUrl = baseUrl + "/api/usuarios/";
 //        System.out.println(request.getContrasena());
 //        if (!request.getUsuarioLdap() && request.getContrasena() == null) {
-////            request = processMailInfo(request);
+//            request = processMailInfo(request);
 //        }
 //        RestTemplate restTemplate = new RestTemplate();
 //        restTemplate.put(serviceUrl, request, Usuarios.class);
@@ -88,12 +88,12 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, usuarios);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{antigPass}/{nuevoPass}")
-    void cambiarPass(@RequestBody Usuarios obj, String oldPass, String newPass){
-        String serviceUrl = baseUrl + "/api/usuarios";
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
-    }
+//    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
+//    void cambiarPass(@RequestBody Usuarios obj, @RequestParam(defaultValue = "") String oldPass, @RequestParam(defaultValue = "") String newPass) {
+//        String serviceUrl = baseUrl + "/api/usuarios";
+//        RestTemplate restTemplate = new RestTemplate();
+//        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
+//    }
 
 //    private Usuarios processMailInfo(Usuarios usuario) {
 //        String pass = UUID.randomUUID().toString().substring(0, 10);
