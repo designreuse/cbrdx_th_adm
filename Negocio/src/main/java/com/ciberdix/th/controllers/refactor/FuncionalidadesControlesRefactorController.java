@@ -52,10 +52,10 @@ public class FuncionalidadesControlesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/secycam/{idFuncionalidad}/{indicador}")
-    List<FuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidadControl, @PathVariable Boolean indicador) {
+    List<FuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidad, @PathVariable Boolean indicador) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
         RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "secycam/" + idFuncionalidadControl + "/" + indicador, FuncionalidadesControles[].class));
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "secycam/" + idFuncionalidad + "/" + indicador, FuncionalidadesControles[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/indicadorsecycam/{indicador}")

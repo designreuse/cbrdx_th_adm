@@ -13,7 +13,7 @@ public interface FuncionalidadesControlesRefactorRepository extends CrudReposito
 
     List<FuncionalidadesControles> findByIdPadre(Integer idPadre);
 
-    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE (fc.idFuncionalidadControl = ?1) AND " +
+    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE (fc.idFuncionalidad = ?1) AND " +
             "fc.indicadorSeccion = ?2")
     List<FuncionalidadesControles> queryAllByIdSecCam(Integer idFuncionalidadControl, Boolean indicador);
 
