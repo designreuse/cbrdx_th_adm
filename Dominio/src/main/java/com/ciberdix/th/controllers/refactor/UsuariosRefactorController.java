@@ -66,14 +66,14 @@ public class UsuariosRefactorController {
         return usuariosRepository.save(roles);
     }
 
-//    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
-//    Boolean cambiarPass(@RequestBody Usuarios user, @PathVariable String oldPass, @PathVariable String newPass) {
-//            Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
-//            if(users.getContrasena().equals(oldPass)){
-//                usuariosRepository.queryCambiarPass(newPass, user.getIdUsuario());
-//                return true;
-//            }else{
-//                return false;
-//            }
-//        }
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
+    Boolean queryAllByCambiarPass(@RequestBody Usuarios user, @PathVariable String oldPass, @PathVariable String newPass) {
+            Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
+            if(users.getContrasena().equals(oldPass)){
+                usuariosRepository.queryAllByCambiarPass(newPass, user.getIdUsuario());
+                return true;
+            }else{
+                return false;
+            }
+        }
 }

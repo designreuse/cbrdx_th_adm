@@ -88,12 +88,12 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, usuarios);
     }
 
-//    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
-//    void cambiarPass(@RequestBody Usuarios obj, @PathVariable String oldPass, @PathVariable String newPass) {
-//        String serviceUrl = baseUrl + "/api/usuarios";
-//        RestTemplate restTemplate = new RestTemplate();
-//        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
-//    }
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/{newPass}")
+    void queryAllByCambiarPass(@RequestBody Usuarios obj, @PathVariable String oldPass, @PathVariable String newPass) {
+        String serviceUrl = baseUrl + "/api/usuarios";
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass + "/" + newPass, obj);
+    }
 
 //    private Usuarios processMailInfo(Usuarios usuario) {
 //        String pass = UUID.randomUUID().toString().substring(0, 10);

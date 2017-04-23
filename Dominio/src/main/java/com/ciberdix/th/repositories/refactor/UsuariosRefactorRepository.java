@@ -9,5 +9,5 @@ public interface UsuariosRefactorRepository extends CrudRepository<Usuarios, Int
     Usuarios findByUsuarioSistema(String usuarioSistema);
 
     @Query("UPDATE Usuarios SET Contrasena = ?1 WHERE IdUsuario = ?2")
-    void queryCambiarPass(String newPass, Integer idUsuario);
+    void queryAllByCambiarPass(String newPass, Integer idUsuario);
 }
