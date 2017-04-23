@@ -11,11 +11,13 @@ import java.util.List;
  */
 public interface FuncionalidadesControlesRefactorRepository extends CrudRepository<FuncionalidadesControles, Integer> {
 
-    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE (fc.idFuncionalidadControl = ?1) AND " +
-            "(LOWER(SUBSTRING(fc.codigo,1,3)) = ?2)")
-    List<FuncionalidadesControles> queryAllByIdSecCam(Integer idListaClasificacion, String codigo);
+    List<FuncionalidadesControles> findByIdPadre(Integer idPadre);
 
-    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE (LOWER(SUBSTRING(fc.codigo,1,3)) = ?1)")
-    List<FuncionalidadesControles> queryAllBySecCam(String codigo);
+    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE (fc.idFuncionalidadControl = ?1) AND " +
+            "fc.indicadorSeccion = ?2")
+    List<FuncionalidadesControles> queryAllByIdSecCam(Integer idFuncionalidadControl, Boolean indicador);
+
+    @Query("SELECT fc FROM FuncionalidadesControles fc WHERE fc.indicadorSeccion = ?1")
+    List<FuncionalidadesControles> queryAllBySecCam(Boolean indicador);
 
 }
