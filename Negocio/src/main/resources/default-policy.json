@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Administrador",
+    "description": "El administrador puede hacer todo.",
+    "target": "subject.authorities.toString().contains('ROLE_ADMINISTRADOR')",
+    "condition": "true"
+  },
+  {
+    "name": "Gerente",
+    "description": "El gerente puede...",
+    "target": "subject.authorities.toString().contains('ROLE_GERENTE') && {'CREATE','UPDATE','READ','DELETE'}.contains(action)",
+    "condition": "true"
+  },
+  {
+    "name": "Jefe de área",
+    "description": "El jefe de área puede",
+    "target": "subject.authorities.toString().contains('ROLE_JEFEAREA') && {'CREATE','UPDATE','READ'}.contains(action)",
+    "condition": "true"
+  },
+  {
+    "name": "Administrador de Dimensionamiento organizacional",
+    "description": "El administrador de dimensionamiento puede.",
+    "target": "subject.authorities.toString().contains('ROLE_ADMDIMORG') && {'CREATE','UPDATE','READ','DELETE'}.contains(action)",
+    "condition": "true"
+  }
+]

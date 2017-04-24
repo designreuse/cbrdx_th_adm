@@ -7,6 +7,7 @@ import com.ciberdix.th.repositories.refactor.UsuariosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VHistoricoUsuariosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VUsuariosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,13 +57,19 @@ public class UsuariosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Usuarios createList(@RequestBody Usuarios c) {
         return usuariosRepository.save(
-                new Usuarios(c.getUsuarioSistema(),c.getContrasena(),c.getUsuarioLdap(),
-                        c.getFechaInactivacion(),c.getIdTercero(),c.getIndicadorHabilitado(),
-                        c.getAuditoriaUsuario(),c.getCorreoElectronico()));
+                new Usuarios(c.getUsuarioSistema(), c.getContrasena(), c.getUsuarioLdap(),
+                        c.getFechaInactivacion(), c.getIdTercero(), c.getIndicadorHabilitado(),
+                        c.getAuditoriaUsuario(), c.getCorreoElectronico()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     Usuarios updateList(@RequestBody Usuarios roles) {
         return usuariosRepository.save(roles);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass")
+    void updatePass(@RequestBody Usuarios user) {
+
+            usuariosRepository.save(user);
     }
 }
