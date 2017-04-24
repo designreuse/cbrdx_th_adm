@@ -28,6 +28,7 @@ public class RolesWidgets {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdRolWidget")
     public Integer getIdRolWidget() {
         return idRolWidget;
