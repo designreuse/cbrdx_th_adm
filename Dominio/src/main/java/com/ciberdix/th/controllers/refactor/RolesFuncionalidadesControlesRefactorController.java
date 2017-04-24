@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.RolesFuncionalidadesControles;
+import com.ciberdix.th.models.refactor.VRolesFuncionalidadesControles;
 import com.ciberdix.th.repositories.refactor.RolesFuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VRolesFuncionalidadesControlesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,22 @@ public class RolesFuncionalidadesControlesRefactorController {
     @Autowired
     private RolesFuncionalidadesControlesRefactorRepository rolesFuncionalidadesControlesRefactorRepository;
 
+    @Autowired
+    private VRolesFuncionalidadesControlesRefactorRepository vRolesFuncionalidadesControlesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<RolesFuncionalidadesControles> findAll() {
-        return (List<RolesFuncionalidadesControles>) rolesFuncionalidadesControlesRefactorRepository.findAll();
+    List<VRolesFuncionalidadesControles> findAll() {
+        return (List<VRolesFuncionalidadesControles>) vRolesFuncionalidadesControlesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<RolesFuncionalidadesControles> findEnabled() {
-        return rolesFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VRolesFuncionalidadesControles> findEnabled() {
+        return vRolesFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    RolesFuncionalidadesControles findOne(@PathVariable Integer id) {
-        return rolesFuncionalidadesControlesRefactorRepository.findOne(id);
+    VRolesFuncionalidadesControles findOne(@PathVariable Integer id) {
+        return vRolesFuncionalidadesControlesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
