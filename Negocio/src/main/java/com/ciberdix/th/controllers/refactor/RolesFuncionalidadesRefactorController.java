@@ -35,6 +35,14 @@ public class RolesFuncionalidadesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRol/{id}")
+    List<VRolesFuncionalidades> findByIdRol(@PathVariable Integer id) {
+        String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl + "buscarRol/" + id, VRolesFuncionalidades[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path="/{id}")
     VRolesFuncionalidades findOne(@PathVariable Integer id) {
         String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
