@@ -3,11 +3,18 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.model.refactor.Usuarios;
 import com.ciberdix.th.model.refactor.VUsuarios;
 import com.ciberdix.th.model.refactor.VHistoricoUsuarios;
+import com.ciberdix.th.security.providers.SystemAuthenticationProvider;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -29,6 +36,9 @@ public class UsuariosRefactorController {
 
     @Value("${domain.url}")
     private String baseUrl;
+
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @RequestMapping(method = RequestMethod.GET)
     List<Usuarios> findAll() {
@@ -83,15 +93,27 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
-    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
+    ResponseEntity<?> updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
+
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        if(!obj.getContrasena().equals(bCryptPasswordEncoder.encode(oldPass))){
-            restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
-            return true;
+        obj.setContrasena(bCryptPasswordEncoder.encode(obj.getContrasena()));
+
+        SystemAuthenticationProvider systemAuthenticationProvider = new SystemAuthenticationProvider();
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(obj.getUsuarioSistema());
+        final Authentication authentication = systemAuthenticationProvider.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        obj.getUsuarioSistema(),
+                        oldPass
+                )
+        );
+
+        if (authentication != null){
+            restTemplate.put(serviceUrl + "/cambiarPass", obj);
+            return ResponseEntity.ok("La contraseña se cambió exitosamente");
         }else{
-            return false;
+            return ResponseEntity.ok("La contraseña actual es incorrecta, verifíquela e intente nuevamente");
         }
     }
 
