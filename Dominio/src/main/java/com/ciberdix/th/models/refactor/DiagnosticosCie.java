@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "DiagnosticosCIE", schema = "crz_th", catalog = "CREZCAMOS_TEST")
+@Table(name = "DiagnosticosCIE", schema = "crz_th", catalog = "CREZCAMOS")
 public class DiagnosticosCie {
     private Integer idDiagnosticoCie;
     private String codigo;

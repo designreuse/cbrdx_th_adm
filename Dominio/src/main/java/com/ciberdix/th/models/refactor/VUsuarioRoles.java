@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_UsuarioRoles", schema = "crz_th", catalog = "CREZCAMOS_TEST")
+@Table(name = "V_UsuarioRoles", schema = "crz_th", catalog = "CREZCAMOS")
 public class VUsuarioRoles {
     private Integer idUsuarioRol;
     private Integer idUsuario;

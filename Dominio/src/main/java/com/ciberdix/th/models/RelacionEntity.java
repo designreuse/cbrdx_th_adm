@@ -7,7 +7,7 @@ import java.security.Timestamp;
  * Created by ingjj on 8/03/2017.
  */
  @Entity
-@Table(name = "ListasParentescos", schema = "crz_th", catalog = "CREZCAMOS_TEST")
+@Table(name = "ListasParentescos", schema = "crz_th", catalog = "CREZCAMOS")
 public class RelacionEntity {
    private int idListaParentescos;
     private String codigoListaParentescos;

@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_UsuarioRolesCantidad", schema = "crz_th", catalog = "CREZCAMOS_TEST")
+@Table(name = "V_UsuarioRolesCantidad", schema = "crz_th", catalog = "CREZCAMOS")
 public class VUsuarioRolesCantidad {
     private String rol;
     private Integer cantidad;

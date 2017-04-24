@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:sqlserver://bd-ciberdix.database.windows.net:1433;databaseName=CREZCAMOS_TEST</property>
+        <property name="connection.url">jdbc:sqlserver://bd-ciberdix.database.windows.net:1433;databaseName=CREZCAMOS</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <mapping class="com.ciberdix.th.models.AdjuntosEntity"/>
         <mapping class="com.ciberdix.th.models.AreasEntity"/>
