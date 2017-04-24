@@ -67,14 +67,9 @@ public class UsuariosRefactorController {
         return usuariosRepository.save(roles);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
-    ResponseEntity<?> updatePass(@RequestBody Usuarios user, @PathVariable String oldPass) {
-        Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
-        if (users.getContrasena().equals(oldPass)) {
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass")
+    void updatePass(@RequestBody Usuarios user) {
+
             usuariosRepository.save(user);
-            return ResponseEntity.ok("Se realizó el cambio de contraseña exitosamente");
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
     }
 }
