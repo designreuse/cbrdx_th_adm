@@ -40,7 +40,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/")
     List<VUsuarios> queryCentrosCostos() {
-        String serviceUrl = baseUrl + "/api/vista/";
+        String serviceUrl = baseUrl + "/api/usuarios/vista/";
         RestTemplate restTemplate = new RestTemplate();
         VUsuarios[] parametros = restTemplate.getForObject(serviceUrl, VUsuarios[].class);
         return Arrays.asList(parametros);
@@ -48,7 +48,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/auditoria/{objeto}/{idObjeto}")
     List<VHistoricoUsuarios> queryCentrosCostos(@PathVariable String objeto, @PathVariable Long idObjeto) {
-        String serviceUrl = baseUrl + "/api/auditoria/";
+        String serviceUrl = baseUrl + "/api/usuarios/auditoria/";
         RestTemplate restTemplate = new RestTemplate();
         VHistoricoUsuarios[] parametros = restTemplate.getForObject(serviceUrl + objeto + "/" + idObjeto, VHistoricoUsuarios[].class);
         return Arrays.asList(parametros);
