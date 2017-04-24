@@ -9,6 +9,7 @@ public class VFuncionalidades {
 
     private Integer idFuncionalidad;
     private Integer idMenu;
+    private String menu;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -27,6 +28,14 @@ public class VFuncionalidades {
 
     public void setIdMenu(Integer idMenu) {
         this.idMenu = idMenu;
+    }
+
+    public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
     }
 
     public Boolean getIndicadorHabilitado() {

@@ -11,6 +11,7 @@ public class VFuncionalidadesControles {
     private String codigo;
     private String control;
     private Integer idClasificacion;
+    private String clasificacion;
     private Integer idFuncionalidad;
     private Boolean indicadorVisible;
     private Boolean indicadorImprimir;
@@ -50,6 +51,14 @@ public class VFuncionalidadesControles {
 
     public void setIdClasificacion(Integer idClasificacion) {
         this.idClasificacion = idClasificacion;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
     public Integer getIdFuncionalidad() {
