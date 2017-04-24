@@ -1,5 +1,8 @@
 package com.ciberdix.th.security;
 
+import com.ciberdix.th.model.refactor.RolesFuncionalidades;
+import com.ciberdix.th.model.refactor.VRolesFuncionalidades;
+import com.ciberdix.th.security.abac.policy.model.VPolicyRules;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +20,7 @@ public class JwtUser implements UserDetails {
     private final Collection<? extends GrantedAuthority> authorities;
     private final boolean enabled;
     private final Date lastPasswordResetDate;
+    private List<String> funcionalidades;
 
     public JwtUser(
             Integer id,
@@ -24,7 +28,8 @@ public class JwtUser implements UserDetails {
             String email,
             String password, Collection<? extends GrantedAuthority> authorities,
             boolean enabled,
-            Date lastPasswordResetDate
+            Date lastPasswordResetDate,
+            List<String> funcionalidades
     ) {
         this.id = id;
         this.username = username;
@@ -33,6 +38,7 @@ public class JwtUser implements UserDetails {
         this.authorities = authorities;
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
+        this.funcionalidades = funcionalidades;
     }
 
     @JsonIgnore
@@ -86,5 +92,10 @@ public class JwtUser implements UserDetails {
     @JsonIgnore
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
+    }
+
+    @JsonIgnore
+    public List<String> getFuncionalidades() {
+        return funcionalidades;
     }
 }

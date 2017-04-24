@@ -2,15 +2,16 @@ package com.ciberdix.th.security.abac.policy.json;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
-import com.ciberdix.th.model.refactor.RolesFuncionalidades;
 import com.ciberdix.th.security.abac.policy.PolicyDefinition;
 import com.ciberdix.th.security.abac.policy.PolicyRule;
 import org.slf4j.Logger;
@@ -22,7 +23,6 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by robertochajin on 21/04/17.
@@ -40,22 +40,26 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
     private List<PolicyRule> rules;
 
     @PostConstruct
-    private void init() {
-        RestTemplate restTemplate = new RestTemplate();
+    private void init() throws MalformedURLException, URISyntaxException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Expression.class, new SpelDeserializer());
         mapper.registerModule(module);
+
+        URL jsonUrl = new URL("http://localhost:8444/api/policyRules").toURI().toURL();
+
         try {
             PolicyRule[] rulesArray = null;
             logger.debug("[init] Checking policy file at: {}", policyFilePath);
             if (policyFilePath != null && !policyFilePath.isEmpty()
                     && Files.exists(Paths.get(policyFilePath))) {
                 logger.info("[init] Loading policy from custom file: {}", policyFilePath);
-                rulesArray = mapper.readValue(new File(policyFilePath), PolicyRule[].class);
+                //rulesArray = mapper.readValue(new File(policyFilePath), PolicyRule[].class);
+                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
             } else {
                 logger.info("[init] Custom policy file not found. Loading default policy");
-                rulesArray = mapper.readValue(getClass().getClassLoader().getResourceAsStream(DEFAULT_POLICY_FILE_NAME), PolicyRule[].class);
+                //rulesArray = mapper.readValue(getClass().getClassLoader().getResourceAsStream(DEFAULT_POLICY_FILE_NAME), PolicyRule[].class);
+                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
             }
             this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
             logger.info("[init] Policy loaded successfully.");
@@ -70,10 +74,4 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
     public List<PolicyRule> getAllPolicyRules() {
         return rules;
     }
-
-//    private static List<PolicyRule> mapToRule(List<RolesFuncionalidades> funcionalidades){
-//        return funcionalidades.stream()
-//                .map(f -> new PolicyRule(f.getIdRolFuncionalidad(),f.getIdRolFuncionalidad(),"",""))
-//                .collect(Collectors.toList());
-//    }
 }
