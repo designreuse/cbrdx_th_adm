@@ -39,6 +39,11 @@ public class RolesFuncionalidadesRefactorController {
         return vRolesFuncionalidadesRefactorRepository.findByIdRol(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/policy/{rol}")
+    List<VRolesFuncionalidades> findByRol(@PathVariable String rol) {
+        return vRolesFuncionalidadesRefactorRepository.findByRol(rol);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VRolesFuncionalidades findOne(@PathVariable Integer id) {
         return vRolesFuncionalidadesRefactorRepository.findOne(id);

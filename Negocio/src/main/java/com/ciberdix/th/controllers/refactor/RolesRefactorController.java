@@ -24,19 +24,15 @@ public class RolesRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private ContextAwarePolicyEnforcement policy;
+    //@Autowired
+    //private ContextAwarePolicyEnforcement policy;
 
     @RequestMapping(method = RequestMethod.GET)
     List<Roles> findAll() {
-        //jwtTokenUtil.getAuthorities();
         String serviceUrl = baseUrl + "/api/roles/";
         RestTemplate restTemplate = new RestTemplate();
         Roles[] parametros = restTemplate.getForObject(serviceUrl, Roles[].class);
-        //policy.checkPermission(parametros, "LISTAR");
+        //policy.checkPermission(null, "LISTAR");
         return Arrays.asList(parametros);
     }
 
