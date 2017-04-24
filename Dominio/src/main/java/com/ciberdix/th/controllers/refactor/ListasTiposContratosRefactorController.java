@@ -14,33 +14,48 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/listasTiposContratos")
+@RequestMapping("/api/ListasTiposContratos")
 public class ListasTiposContratosRefactorController {
     @Autowired
-    private ListasTiposContratosRefactorRepository listasTiposContratosRefactorRepository;
+    private ListasTiposContratosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposContratos> findAll() {
-        return (List<ListasTiposContratos>) listasTiposContratosRefactorRepository.findAll();
+        return (List<ListasTiposContratos>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasTiposContratos> findEnabled() {
-        return (List<ListasTiposContratos>) listasTiposContratosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposContratos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposContratos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposContratos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasTiposContratos findOne(@PathVariable Integer id) {
-        return listasTiposContratosRefactorRepository.findOne(id);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposContratos create(@RequestBody ListasTiposContratos obj) {
-        return listasTiposContratosRefactorRepository.save(obj);
+        return repository.save(new ListasTiposContratos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasTiposContratos obj) {
-        listasTiposContratosRefactorRepository.save(obj);
+    ListasTiposContratos update(@RequestBody ListasTiposContratos obj) {
+        return repository.save(obj);
     }
 }

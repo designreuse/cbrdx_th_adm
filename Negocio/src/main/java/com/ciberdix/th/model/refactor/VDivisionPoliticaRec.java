@@ -3,14 +3,14 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VDivisionPoliticaRec {
     private Integer idDivisionPolitica;
     private Integer idDivisionPoliticaPadre;
     private String codigoDivisionPolitica;
     private String descripcionDivisonPolitica;
-    private Integer indicativoDivisonPolitica;
+    private String indicativoDivisonPolitica;
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
@@ -54,11 +54,11 @@ public class VDivisionPoliticaRec {
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 
-    public Integer getIndicativoDivisonPolitica() {
+    public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
 
-    public void setIndicativoDivisonPolitica(Integer indicativoDivisonPolitica) {
+    public void setIndicativoDivisonPolitica(String indicativoDivisonPolitica) {
         this.indicativoDivisonPolitica = indicativoDivisonPolitica;
     }
 

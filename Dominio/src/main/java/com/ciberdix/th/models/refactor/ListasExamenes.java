@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasExamenes", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasExamenes {
-    private Integer idListaExamen;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
@@ -25,19 +25,19 @@ public class ListasExamenes {
         this.nombre = nombre;
         this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdListaExamen")
-    public Integer getIdListaExamen() {
-        return idListaExamen;
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaExamen(Integer idListaExamen) {
-        this.idListaExamen = idListaExamen;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -107,8 +107,7 @@ public class ListasExamenes {
 
         ListasExamenes that = (ListasExamenes) o;
 
-        if (idListaExamen != null ? !idListaExamen.equals(that.idListaExamen) : that.idListaExamen != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
@@ -124,7 +123,7 @@ public class ListasExamenes {
 
     @Override
     public int hashCode() {
-        int result = idListaExamen != null ? idListaExamen.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);

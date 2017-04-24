@@ -1,7 +1,7 @@
 package com.ciberdix.th.model.refactor;
 
 /**
- * Created by felip on 20/04/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VProyeccionLaboralResumen {
     private Long idProyeccionLaboralResumen;

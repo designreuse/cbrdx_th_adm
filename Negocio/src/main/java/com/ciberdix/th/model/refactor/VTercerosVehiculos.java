@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 5/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VTercerosVehiculos {
     private Integer idTerceroVehiculo;

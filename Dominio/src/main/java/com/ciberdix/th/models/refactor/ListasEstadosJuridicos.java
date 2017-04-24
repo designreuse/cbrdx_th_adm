@@ -1,19 +1,15 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by faaguirre on 3/28/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasEstadosJuridicos", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasEstadosJuridicos {
-    private Integer idListaEstadoJuridico;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
@@ -21,14 +17,27 @@ public class ListasEstadosJuridicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
-    @Column(name = "IdListaEstadoJuridico")
-    public Integer getIdListaEstadoJuridico() {
-        return idListaEstadoJuridico;
+    public ListasEstadosJuridicos() {
     }
 
-    public void setIdListaEstadoJuridico(Integer idListaEstadoJuridico) {
-        this.idListaEstadoJuridico = idListaEstadoJuridico;
+    public ListasEstadosJuridicos(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -98,8 +107,7 @@ public class ListasEstadosJuridicos {
 
         ListasEstadosJuridicos that = (ListasEstadosJuridicos) o;
 
-        if (idListaEstadoJuridico != null ? !idListaEstadoJuridico.equals(that.idListaEstadoJuridico) : that.idListaEstadoJuridico != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
@@ -115,7 +123,7 @@ public class ListasEstadosJuridicos {
 
     @Override
     public int hashCode() {
-        int result = idListaEstadoJuridico != null ? idListaEstadoJuridico.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);

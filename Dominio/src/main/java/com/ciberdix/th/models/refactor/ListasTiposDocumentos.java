@@ -1,64 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposDocumentos", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposDocumentos {
-    private Integer idListaTipoDocumento;
-    private String codigoListaTipoDocumento;
-    private String nombreListaTipoDocumento;
-    private Integer ordenListaTipoDocumento;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasTiposDocumentos() {
+    }
+
+    public ListasTiposDocumentos(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaTipoDocumento")
-    public Integer getIdListaTipoDocumento() {
-        return idListaTipoDocumento;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoDocumento(Integer idListaTipoDocumento) {
-        this.idListaTipoDocumento = idListaTipoDocumento;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaTipoDocumento")
-    public String getCodigoListaTipoDocumento() {
-        return codigoListaTipoDocumento;
-    }
-
-    public void setCodigoListaTipoDocumento(String codigoListaTipoDocumento) {
-        this.codigoListaTipoDocumento = codigoListaTipoDocumento;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaTipoDocumento")
-    public String getNombreListaTipoDocumento() {
-        return nombreListaTipoDocumento;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
-        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaTipoDocumento")
-    public Integer getOrdenListaTipoDocumento() {
-        return ordenListaTipoDocumento;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaTipoDocumento(Integer ordenListaTipoDocumento) {
-        this.ordenListaTipoDocumento = ordenListaTipoDocumento;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -98,14 +107,10 @@ public class ListasTiposDocumentos {
 
         ListasTiposDocumentos that = (ListasTiposDocumentos) o;
 
-        if (idListaTipoDocumento != null ? !idListaTipoDocumento.equals(that.idListaTipoDocumento) : that.idListaTipoDocumento != null)
-            return false;
-        if (codigoListaTipoDocumento != null ? !codigoListaTipoDocumento.equals(that.codigoListaTipoDocumento) : that.codigoListaTipoDocumento != null)
-            return false;
-        if (nombreListaTipoDocumento != null ? !nombreListaTipoDocumento.equals(that.nombreListaTipoDocumento) : that.nombreListaTipoDocumento != null)
-            return false;
-        if (ordenListaTipoDocumento != null ? !ordenListaTipoDocumento.equals(that.ordenListaTipoDocumento) : that.ordenListaTipoDocumento != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -118,10 +123,10 @@ public class ListasTiposDocumentos {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoDocumento != null ? idListaTipoDocumento.hashCode() : 0;
-        result = 31 * result + (codigoListaTipoDocumento != null ? codigoListaTipoDocumento.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoDocumento != null ? nombreListaTipoDocumento.hashCode() : 0);
-        result = 31 * result + (ordenListaTipoDocumento != null ? ordenListaTipoDocumento.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

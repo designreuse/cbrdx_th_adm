@@ -9,5 +9,11 @@ import java.util.List;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasParentescosRefactorRepository extends CrudRepository<ListasParentescos, Integer> {
-    List<ListasParentescos> findByIndicadorHabilitadoIsTrue();
+    List<ListasParentescos> findByIndicadorHabilitadoTrue();
+
+    ListasParentescos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+
+    List<ListasParentescos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+
+    List<ListasParentescos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
 }

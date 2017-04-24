@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 17/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VEstructuraOrganizacional {
     private Integer idEstructuraOrganizacional;
@@ -19,7 +19,7 @@ public class VEstructuraOrganizacional {
     private Integer idEstructuraFisica;
     private String estructuraFisica;
     private Integer idTipoDocumento;
-    private String nombreListaTipoDocumento;
+    private String tipoDocumento;
     private String numeroDocumento;
     private Integer idLocalizacion;
     private String localizacion;
@@ -138,12 +138,12 @@ public class VEstructuraOrganizacional {
         this.idTipoDocumento = idTipoDocumento;
     }
 
-    public String getNombreListaTipoDocumento() {
-        return nombreListaTipoDocumento;
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
-        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getNumeroDocumento() {

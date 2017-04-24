@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposContratos", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposContratos {
-    private Integer idListaTipoContrato;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
@@ -17,14 +17,27 @@ public class ListasTiposContratos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
-    @Column(name = "IdListaTipoContrato")
-    public Integer getIdListaTipoContrato() {
-        return idListaTipoContrato;
+    public ListasTiposContratos() {
     }
 
-    public void setIdListaTipoContrato(Integer idListaTipoContrato) {
-        this.idListaTipoContrato = idListaTipoContrato;
+    public ListasTiposContratos(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -94,7 +107,7 @@ public class ListasTiposContratos {
 
         ListasTiposContratos that = (ListasTiposContratos) o;
 
-        if (idListaTipoContrato != null ? !idListaTipoContrato.equals(that.idListaTipoContrato) : that.idListaTipoContrato != null)
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
@@ -111,7 +124,7 @@ public class ListasTiposContratos {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoContrato != null ? idListaTipoContrato.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);

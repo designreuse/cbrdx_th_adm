@@ -14,35 +14,50 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasTiposCargosRelaciones")
+@RequestMapping("/api/ListasTiposCargosRelaciones")
 @CrossOrigin
 public class ListasTiposCargosRelacionesRefactorController {
 
     @Autowired
-    private ListasTiposCargosRelacionesRefactorRepository listasTiposCargosRelacionesRefactorRepository;
+    private ListasTiposCargosRelacionesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposCargosRelaciones> findAll() {
-        return (List<ListasTiposCargosRelaciones>) listasTiposCargosRelacionesRefactorRepository.findAll();
+        return (List<ListasTiposCargosRelaciones>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasTiposCargosRelaciones> findEnabled() {
-        return listasTiposCargosRelacionesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarCodigo/{codigo}/")
-    ListasTiposCargosRelaciones findEnabled(@PathVariable String codigo) {
-        return listasTiposCargosRelacionesRefactorRepository.findByCodigoEquals(codigo);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposCargosRelaciones findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposCargosRelaciones> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposCargosRelaciones> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasTiposCargosRelaciones findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposCargosRelaciones create(@RequestBody ListasTiposCargosRelaciones obj) {
-        return listasTiposCargosRelacionesRefactorRepository.save(new ListasTiposCargosRelaciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return repository.save(new ListasTiposCargosRelaciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposCargosRelaciones update(@RequestBody ListasTiposCargosRelaciones obj) {
-        return listasTiposCargosRelacionesRefactorRepository.save(obj);
+        return repository.save(obj);
     }
 }

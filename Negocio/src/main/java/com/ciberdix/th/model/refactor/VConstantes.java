@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VConstantes {
     private Integer idConstante;
@@ -13,8 +13,8 @@ public class VConstantes {
     private String valor;
     private String descripcion;
     private Boolean indicadorHabilitado;
-    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer auditoriaUsuario;
 
     public Integer getIdConstante() {
         return idConstante;
@@ -72,19 +72,19 @@ public class VConstantes {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    public Integer getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
-
-    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
-    }
-
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
     }
 }

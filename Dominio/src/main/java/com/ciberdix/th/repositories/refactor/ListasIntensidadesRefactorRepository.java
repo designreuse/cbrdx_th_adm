@@ -9,5 +9,11 @@ import java.util.List;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasIntensidadesRefactorRepository extends CrudRepository<ListasIntensidades, Integer> {
-    List<ListasIntensidades> findByIndicadorHabilitadoIsTrue();
+    List<ListasIntensidades> findByIndicadorHabilitadoTrue();
+
+    ListasIntensidades findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+
+    List<ListasIntensidades> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+
+    List<ListasIntensidades> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
 }

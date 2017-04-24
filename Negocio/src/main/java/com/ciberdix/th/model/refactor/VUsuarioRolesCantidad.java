@@ -1,7 +1,7 @@
 package com.ciberdix.th.model.refactor;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VUsuarioRolesCantidad {
     private String rol;

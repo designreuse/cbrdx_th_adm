@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 18/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_EstructuraOrganizacionalCargos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -20,7 +20,7 @@ public class VEstructuraOrganizacionalCargos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer ocupados;
-    
+
     @Id
     @Column(name = "IdEstructuraOrganizacionalCargo")
     public Integer getIdEstructuraOrganizacionalCargo() {
@@ -121,6 +121,16 @@ public class VEstructuraOrganizacionalCargos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "Ocupados")
+    public Integer getOcupados() {
+        return ocupados;
+    }
+
+    public void setOcupados(Integer ocupados) {
+        this.ocupados = ocupados;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,6 +154,7 @@ public class VEstructuraOrganizacionalCargos {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (ocupados != null ? !ocupados.equals(that.ocupados) : that.ocupados != null) return false;
 
         return true;
     }
@@ -160,16 +171,7 @@ public class VEstructuraOrganizacionalCargos {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (ocupados != null ? ocupados.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "Ocupados")
-    public Integer getOcupados() {
-        return ocupados;
-    }
-
-    public void setOcupados(Integer ocupados) {
-        this.ocupados = ocupados;
     }
 }

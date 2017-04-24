@@ -4,29 +4,20 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- *
- * @author Roberto Chajin Ortiz
+ * Created by felip on 21/04/2017.
  */
 public class VTercerosDatosClinicos {
-    private Integer idTerceroDatoClinico;
     private Integer idDiagnosticoCie;
     private String codigo;
     private String descripcion;
+    private Integer idTerceroDatoClinico;
     private Long idTercero;
     private Integer idDiagnostico;
     private Date fechaInicio;
     private Date fechaFin;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;    
-
-    public Integer getIdTerceroDatoClinico() {
-        return idTerceroDatoClinico;
-    }
-
-    public void setIdTerceroDatoClinico(Integer idTerceroDatoClinico) {
-        this.idTerceroDatoClinico = idTerceroDatoClinico;
-    }
+    private Timestamp auditoriaFecha;
 
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
@@ -50,6 +41,14 @@ public class VTercerosDatosClinicos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getIdTerceroDatoClinico() {
+        return idTerceroDatoClinico;
+    }
+
+    public void setIdTerceroDatoClinico(Integer idTerceroDatoClinico) {
+        this.idTerceroDatoClinico = idTerceroDatoClinico;
     }
 
     public Long getIdTercero() {
