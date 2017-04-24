@@ -4,28 +4,19 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 18/04/2017.
+ * Created by robertochajin on 24/04/17.
  */
 @Entity
-@Table(name = "RolesWidgets", schema = "crz_th", catalog = "CREZCAMOS")
-public class RolesWidgets {
+@Table(name = "V_RolesWidgets", schema = "crz_th", catalog = "CREZCAMOS")
+public class VRolesWidgets {
     private Integer idRolWidget;
     private Integer idRol;
+    private String rol;
     private Integer idWidget;
+    private String widget;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-    public RolesWidgets() {
-    }
-
-    public RolesWidgets(Integer idRol, Integer idWidget, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idRol = idRol;
-        this.idWidget = idWidget;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
 
     @Id
     @Column(name = "IdRolWidget")
@@ -48,6 +39,16 @@ public class RolesWidgets {
     }
 
     @Basic
+    @Column(name = "Rol")
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    @Basic
     @Column(name = "IdWidget")
     public Integer getIdWidget() {
         return idWidget;
@@ -55,6 +56,16 @@ public class RolesWidgets {
 
     public void setIdWidget(Integer idWidget) {
         this.idWidget = idWidget;
+    }
+
+    @Basic
+    @Column(name = "Widget")
+    public String getWidget() {
+        return widget;
+    }
+
+    public void setWidget(String widget) {
+        this.widget = widget;
     }
 
     @Basic
@@ -92,11 +103,13 @@ public class RolesWidgets {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RolesWidgets that = (RolesWidgets) o;
+        VRolesWidgets that = (VRolesWidgets) o;
 
         if (idRolWidget != null ? !idRolWidget.equals(that.idRolWidget) : that.idRolWidget != null) return false;
         if (idRol != null ? !idRol.equals(that.idRol) : that.idRol != null) return false;
+        if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
         if (idWidget != null ? !idWidget.equals(that.idWidget) : that.idWidget != null) return false;
+        if (widget != null ? !widget.equals(that.widget) : that.widget != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -111,7 +124,9 @@ public class RolesWidgets {
     public int hashCode() {
         int result = idRolWidget != null ? idRolWidget.hashCode() : 0;
         result = 31 * result + (idRol != null ? idRol.hashCode() : 0);
+        result = 31 * result + (rol != null ? rol.hashCode() : 0);
         result = 31 * result + (idWidget != null ? idWidget.hashCode() : 0);
+        result = 31 * result + (widget != null ? widget.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

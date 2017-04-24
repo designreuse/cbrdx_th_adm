@@ -34,6 +34,11 @@ public class RolesFuncionalidadesRefactorController {
         return vRolesFuncionalidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRol/{id}")
+    List<VRolesFuncionalidades> findByIdRol(@PathVariable Integer id) {
+        return vRolesFuncionalidadesRefactorRepository.findByIdRol(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VRolesFuncionalidades findOne(@PathVariable Integer id) {
         return vRolesFuncionalidadesRefactorRepository.findOne(id);
