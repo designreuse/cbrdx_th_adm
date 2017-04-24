@@ -21,6 +21,8 @@ public class FuncionalidadesControlesRefactorController {
 
     @Autowired
     private FuncionalidadesControlesRefactorRepository funcionalidadesControlesRefactorRepository;
+
+    @Autowired
     private VFuncionalidadesControlesRefactorRepository vFuncionalidadesControlesRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -29,8 +31,8 @@ public class FuncionalidadesControlesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
-    List<VFuncionalidadesControles> findOne(@PathVariable Integer idFuncionalidad) {
-        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
+    VFuncionalidadesControles findOne(@PathVariable Integer idFuncionalidad) {
+        return vFuncionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{IdPadre}")

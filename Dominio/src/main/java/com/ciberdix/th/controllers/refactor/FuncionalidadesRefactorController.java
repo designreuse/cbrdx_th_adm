@@ -21,6 +21,8 @@ public class FuncionalidadesRefactorController {
 
     @Autowired
     private FuncionalidadesRefactorRepository funcionalidadesRefactorRepository;
+
+    @Autowired
     private VFuncionalidadesRefactorRepository vFuncionalidadesRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
