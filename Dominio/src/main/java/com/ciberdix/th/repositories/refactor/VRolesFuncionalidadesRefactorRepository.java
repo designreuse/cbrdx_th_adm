@@ -11,4 +11,5 @@ import java.util.List;
 public interface VRolesFuncionalidadesRefactorRepository extends CrudRepository<VRolesFuncionalidades,Integer>{
     List<VRolesFuncionalidades> findByIndicadorHabilitadoIsTrue();
     List<VRolesFuncionalidades> findByIdRol(Integer id);
+    List<VRolesFuncionalidades> findByRol(String rol);
 }

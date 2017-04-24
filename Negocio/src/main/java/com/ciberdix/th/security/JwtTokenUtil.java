@@ -59,6 +59,12 @@ public class JwtTokenUtil implements Serializable {
         return userDetails.getAuthorities();
     }
 
+    public String getUsuario(){
+        Authentication  authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
+    }
+
     public Date getExpirationDateFromToken(String token) {
         Date expiration;
         try {
