@@ -14,6 +14,7 @@ import java.util.List;
  * Created by Danny on 22/04/2017.
  */
 
+@CrossOrigin
 @RestController
 @Transactional
 @RequestMapping("/api/funcionalidades")
@@ -33,6 +34,11 @@ public class FuncionalidadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
     VFuncionalidades findOne(@PathVariable Integer idFuncionalidad) {
         return vFuncionalidadesRefactorRepository.findOne(idFuncionalidad);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<VFuncionalidades> findEnabled() {
+        return (List<VFuncionalidades>) vFuncionalidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.POST)
