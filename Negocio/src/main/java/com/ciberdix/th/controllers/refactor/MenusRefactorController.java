@@ -42,6 +42,14 @@ public class MenusRefactorController {
         return Arrays.asList(menus);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/idPadreDifCero")
+    List<Menus> queryAllByIdFatherNot0() {
+        String serviceUrl = baseUrl + "/api/menus/";
+        RestTemplate restTemplate = new RestTemplate();
+        Menus[] menus = restTemplate.getForObject(serviceUrl + "idPadreDifCero", Menus[].class);
+        return Arrays.asList(menus);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Menus create(@RequestBody Menus menus) {
         String serviceUrl = baseUrl + "/api/menus/";
