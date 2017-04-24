@@ -32,11 +32,10 @@ public class RolesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<Roles> findAll() {
-        //jwtTokenUtil.getAuthorities();
         String serviceUrl = baseUrl + "/api/roles/";
         RestTemplate restTemplate = new RestTemplate();
         Roles[] parametros = restTemplate.getForObject(serviceUrl, Roles[].class);
-        //policy.checkPermission(parametros, "LISTAR");
+        policy.checkPermission(null, "LISTAR");
         return Arrays.asList(parametros);
     }
 
