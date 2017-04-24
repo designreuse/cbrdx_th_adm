@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface VFuncionalidadesControlesRefactorRepository extends CrudRepository<VFuncionalidadesControles, Integer> {
 
+    List<VFuncionalidadesControles> findByIndicadorHabilitadoIsTrue();
+
     List<VFuncionalidadesControles> findByIdPadre(Integer idPadre);
 
     @Query("SELECT fc FROM VFuncionalidadesControles fc WHERE (fc.idFuncionalidad = ?1) AND " +

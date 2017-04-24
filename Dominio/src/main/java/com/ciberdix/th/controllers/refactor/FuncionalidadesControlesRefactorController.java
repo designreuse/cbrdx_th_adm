@@ -50,6 +50,11 @@ public class FuncionalidadesControlesRefactorController {
         return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<VFuncionalidadesControles> findEnabled() {
+        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     FuncionalidadesControles createList(@RequestBody FuncionalidadesControles fc) {
         return funcionalidadesControlesRefactorRepository.save(
