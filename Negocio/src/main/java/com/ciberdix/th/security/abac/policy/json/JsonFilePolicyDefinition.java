@@ -6,9 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import com.ciberdix.th.model.refactor.RolesFuncionalidades;
 import com.ciberdix.th.security.abac.policy.PolicyDefinition;
 import com.ciberdix.th.security.abac.policy.PolicyRule;
 import org.slf4j.Logger;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by robertochajin on 21/04/17.
@@ -38,6 +41,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
 
     @PostConstruct
     private void init() {
+        RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Expression.class, new SpelDeserializer());
@@ -67,4 +71,9 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
         return rules;
     }
 
+//    private static List<PolicyRule> mapToRule(List<RolesFuncionalidades> funcionalidades){
+//        return funcionalidades.stream()
+//                .map(f -> new PolicyRule(f.getIdRolFuncionalidad(),f.getIdRolFuncionalidad(),"",""))
+//                .collect(Collectors.toList());
+//    }
 }

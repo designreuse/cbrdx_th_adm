@@ -37,7 +37,7 @@ public class RolesWidgetsRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarRol/{id}")
     List<VRolesWidgets> findByIdRol(@PathVariable Integer id) {
-        String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
+        String serviceUrl = baseUrl + "/api/rolesWidgets/";
         RestTemplate restTemplate = new RestTemplate();
         VRolesWidgets[] parametros = restTemplate.getForObject(serviceUrl + "buscarRol/" + id, VRolesWidgets[].class);
         return Arrays.asList(parametros);
