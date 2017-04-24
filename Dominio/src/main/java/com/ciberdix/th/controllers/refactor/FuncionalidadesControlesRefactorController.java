@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.FuncionalidadesControles;
+import com.ciberdix.th.models.refactor.VFuncionalidadesControles;
 import com.ciberdix.th.repositories.refactor.FuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VFuncionalidadesControlesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,29 +22,32 @@ public class FuncionalidadesControlesRefactorController {
     @Autowired
     private FuncionalidadesControlesRefactorRepository funcionalidadesControlesRefactorRepository;
 
+    @Autowired
+    private VFuncionalidadesControlesRefactorRepository vFuncionalidadesControlesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<FuncionalidadesControles> getLists() {
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.findAll();
+    List<VFuncionalidadesControles> getLists() {
+        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
-    List<FuncionalidadesControles> findOne(@PathVariable Integer idFuncionalidad) {
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
+    VFuncionalidadesControles findOne(@PathVariable Integer idFuncionalidad) {
+        return vFuncionalidadesControlesRefactorRepository.findOne(idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{IdPadre}")
-    List<FuncionalidadesControles> findByFather(@PathVariable Integer IdPadre) {
-        return funcionalidadesControlesRefactorRepository.findByIdPadre(IdPadre);
+    List<VFuncionalidadesControles> findByFather(@PathVariable Integer IdPadre) {
+        return vFuncionalidadesControlesRefactorRepository.findByIdPadre(IdPadre);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/secycam/{idFuncionalidad}/{indicador}")
-    List<FuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidad, @PathVariable Boolean indicador) {
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, indicador);
+    List<VFuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidad, @PathVariable Boolean indicador) {
+        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, indicador);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/indicadorsecycam/{indicador}")
-    List<FuncionalidadesControles> queryAllBySecCam(@PathVariable Boolean indicador) {
-        return (List<FuncionalidadesControles>) funcionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
+    List<VFuncionalidadesControles> queryAllBySecCam(@PathVariable Boolean indicador) {
+        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
     }
 
     @RequestMapping(method = RequestMethod.POST)
