@@ -23,25 +23,6 @@ public class VFuncionalidadesControles {
     private Integer idPadre;
     private Boolean indicadorSeccion;
 
-    public VFuncionalidadesControles(){
-    }
-
-    public VFuncionalidadesControles (String codigo, String control, Integer idClasificacion, String clasificacion, Integer idFuncionalidad, Boolean indicadorVisible,
-                                      Boolean indicadorImprimir, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, Boolean indicadorSeccion){
-        this.codigo = codigo;
-        this.control = control;
-        this.idClasificacion = idClasificacion;
-        this.clasificacion = clasificacion;
-        this.idFuncionalidad = idFuncionalidad;
-        this.indicadorVisible = indicadorVisible;
-        this.indicadorImprimir = indicadorImprimir;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idPadre = idPadre;
-        this.indicadorSeccion = indicadorSeccion;
-    }
-
     @Id
     @Column(name = "IdFuncionalidadControl")
     public Integer getIdFuncionalidadControl() {
