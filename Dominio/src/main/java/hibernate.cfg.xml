@@ -345,6 +345,7 @@
         <mapping class="com.ciberdix.th.models.refactor.VRolesFuncionalidadesControles"/>
         <mapping class="com.ciberdix.th.models.refactor.VFuncionalidades"/>
         <mapping class="com.ciberdix.th.models.refactor.VFuncionalidadesControles"/>
+        <mapping class="com.ciberdix.th.models.refactor.VRolesWidgets"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
