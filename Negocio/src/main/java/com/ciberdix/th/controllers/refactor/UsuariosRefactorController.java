@@ -8,6 +8,7 @@ import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -83,15 +84,16 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
-    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
+    ResponseEntity<?> updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
         if(!obj.getContrasena().equals(bCryptPasswordEncoder.encode(oldPass))){
             restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
-            return true;
+            return ResponseEntity.ok("La contraseña se cambió exitosamente");
         }else{
-            return false;
+            return ResponseEntity.badRequest().build();
         }
     }
 

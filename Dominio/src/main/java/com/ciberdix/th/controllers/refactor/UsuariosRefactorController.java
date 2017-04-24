@@ -7,6 +7,7 @@ import com.ciberdix.th.repositories.refactor.UsuariosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VHistoricoUsuariosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VUsuariosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,13 +68,13 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
-    Boolean updatePass(@RequestBody Usuarios user, @PathVariable String oldPass) {
+    ResponseEntity<?> updatePass(@RequestBody Usuarios user, @PathVariable String oldPass) {
         Usuarios users = usuariosRepository.findOne(user.getIdUsuario());
         if (users.getContrasena().equals(oldPass)) {
             usuariosRepository.save(user);
-            return true;
+            return ResponseEntity.ok("Se realizó el cambio de contraseña exitosamente");
         } else {
-            return false;
+            return ResponseEntity.badRequest().build();
         }
     }
 }
