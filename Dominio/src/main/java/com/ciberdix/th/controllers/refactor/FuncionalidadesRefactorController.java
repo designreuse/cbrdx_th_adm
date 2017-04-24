@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.Funcionalidades;
+import com.ciberdix.th.models.refactor.VFuncionalidades;
 import com.ciberdix.th.repositories.refactor.FuncionalidadesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VFuncionalidadesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,15 +21,16 @@ public class FuncionalidadesRefactorController {
 
     @Autowired
     private FuncionalidadesRefactorRepository funcionalidadesRefactorRepository;
+    private VFuncionalidadesRefactorRepository vFuncionalidadesRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Funcionalidades> getLists() {
-        return (List<Funcionalidades>) funcionalidadesRefactorRepository.findAll();
+    List<VFuncionalidades> getLists() {
+        return (List<VFuncionalidades>) vFuncionalidadesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
-    Funcionalidades findOne(@PathVariable Integer idFuncionalidad) {
-        return funcionalidadesRefactorRepository.findOne(idFuncionalidad);
+    VFuncionalidades findOne(@PathVariable Integer idFuncionalidad) {
+        return vFuncionalidadesRefactorRepository.findOne(idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.POST)

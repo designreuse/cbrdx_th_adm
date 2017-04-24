@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.model.refactor.Funcionalidades;
+import com.ciberdix.th.model.refactor.VFuncionalidades;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -21,25 +22,25 @@ public class FuncionalidadesRefactorController {
     private String baseUrl;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Funcionalidades> findAll() {
+    List<VFuncionalidades> findAll() {
         String serviceUrl = baseUrl + "/api/funcionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        Funcionalidades[] listasClasificaciones = restTemplate.getForObject(serviceUrl, Funcionalidades[].class);
-        return Arrays.asList(listasClasificaciones);
+        VFuncionalidades[] vFuncionalidades = restTemplate.getForObject(serviceUrl, VFuncionalidades[].class);
+        return Arrays.asList(vFuncionalidades);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/id/{idFuncionalidad}")
-    Funcionalidades findOne(@PathVariable Integer idFuncionalidad) {
+    VFuncionalidades findOne(@PathVariable Integer idFuncionalidad) {
         String serviceUrl = baseUrl + "/api/funcionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "id/" + idFuncionalidad, Funcionalidades.class);
+        return restTemplate.getForObject(serviceUrl + "id/" + idFuncionalidad, VFuncionalidades.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<Funcionalidades> findEnabled() {
+    List<VFuncionalidades> findEnabled() {
         String serviceUrl = baseUrl + "/api/funcionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        Funcionalidades[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", Funcionalidades[].class);
+        VFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", VFuncionalidades[].class);
         return Arrays.asList(parametros);
     }
 
