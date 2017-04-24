@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by faaguirre on 3/29/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VTercerosEstudiosFormales {
     private Integer idTerceroEstudioFormal;

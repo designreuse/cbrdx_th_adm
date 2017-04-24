@@ -1,62 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
+@Table(name = "ListasTiposNomenclaturas", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposNomenclaturas {
-    private Integer idListaTipoNomenclatura;
-    private String codigoListaTipoNomenclatura;
-    private String nombreListaTipoNomenclatura;
-    private Integer ordenListaTipoNomenclatura;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasTiposNomenclaturas() {
+    }
+
+    public ListasTiposNomenclaturas(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaTipoNomenclatura")
-    public Integer getIdListaTipoNomenclatura() {
-        return idListaTipoNomenclatura;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoNomenclatura(Integer idListaTipoNomenclatura) {
-        this.idListaTipoNomenclatura = idListaTipoNomenclatura;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaTipoNomenclatura")
-    public String getCodigoListaTipoNomenclatura() {
-        return codigoListaTipoNomenclatura;
-    }
-
-    public void setCodigoListaTipoNomenclatura(String codigoListaTipoNomenclatura) {
-        this.codigoListaTipoNomenclatura = codigoListaTipoNomenclatura;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaTipoNomenclatura")
-    public String getNombreListaTipoNomenclatura() {
-        return nombreListaTipoNomenclatura;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaTipoNomenclatura(String nombreListaTipoNomenclatura) {
-        this.nombreListaTipoNomenclatura = nombreListaTipoNomenclatura;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaTipoNomenclatura")
-    public Integer getOrdenListaTipoNomenclatura() {
-        return ordenListaTipoNomenclatura;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaTipoNomenclatura(Integer ordenListaTipoNomenclatura) {
-        this.ordenListaTipoNomenclatura = ordenListaTipoNomenclatura;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -96,14 +107,10 @@ public class ListasTiposNomenclaturas {
 
         ListasTiposNomenclaturas that = (ListasTiposNomenclaturas) o;
 
-        if (idListaTipoNomenclatura != null ? !idListaTipoNomenclatura.equals(that.idListaTipoNomenclatura) : that.idListaTipoNomenclatura != null)
-            return false;
-        if (codigoListaTipoNomenclatura != null ? !codigoListaTipoNomenclatura.equals(that.codigoListaTipoNomenclatura) : that.codigoListaTipoNomenclatura != null)
-            return false;
-        if (nombreListaTipoNomenclatura != null ? !nombreListaTipoNomenclatura.equals(that.nombreListaTipoNomenclatura) : that.nombreListaTipoNomenclatura != null)
-            return false;
-        if (ordenListaTipoNomenclatura != null ? !ordenListaTipoNomenclatura.equals(that.ordenListaTipoNomenclatura) : that.ordenListaTipoNomenclatura != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -116,10 +123,10 @@ public class ListasTiposNomenclaturas {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoNomenclatura != null ? idListaTipoNomenclatura.hashCode() : 0;
-        result = 31 * result + (codigoListaTipoNomenclatura != null ? codigoListaTipoNomenclatura.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoNomenclatura != null ? nombreListaTipoNomenclatura.hashCode() : 0);
-        result = 31 * result + (ordenListaTipoNomenclatura != null ? ordenListaTipoNomenclatura.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

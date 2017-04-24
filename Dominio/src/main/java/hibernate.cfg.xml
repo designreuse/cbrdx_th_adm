@@ -189,8 +189,6 @@
         <mapping class="com.ciberdix.th.models.refactor.ListasNivelesCargos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasNivelesEstudios"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasParentescos"/>
-        <mapping class="com.ciberdix.th.models.refactor.ListasSectoresEmpresas"/>
-        <mapping class="com.ciberdix.th.models.refactor.ListasSubSectoresEmpresas"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposAfiliacion"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposArchivos"/>
         <mapping class="com.ciberdix.th.models.refactor.ListasTiposContratos"/>

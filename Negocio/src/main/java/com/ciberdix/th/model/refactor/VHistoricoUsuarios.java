@@ -1,8 +1,5 @@
 package com.ciberdix.th.model.refactor;
 
-/**
- * Created by Danny on 21/04/2017.
- */
 public class VHistoricoUsuarios {
     private Integer usuario;
     private String objeto;

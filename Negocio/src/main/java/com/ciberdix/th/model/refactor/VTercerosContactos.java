@@ -3,11 +3,11 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 5/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VTercerosContactos {
-    private String codigoListaParentesco;
-    private String nombreListaParentesco;
+    private String codigo;
+    private String nombre;
     private Integer idTerceroContacto;
     private Long idTercero;
     private String contacto;
@@ -17,22 +17,21 @@ public class VTercerosContactos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idListaParentezco;
 
-    public String getCodigoListaParentesco() {
-        return codigoListaParentesco;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoListaParentesco(String codigoListaParentesco) {
-        this.codigoListaParentesco = codigoListaParentesco;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Integer getIdTerceroContacto() {
@@ -105,13 +104,5 @@ public class VTercerosContactos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
-    }
-
-    public Integer getIdListaParentezco() {
-        return idListaParentezco;
-    }
-
-    public void setIdListaParentezco(Integer idListaParentezco) {
-        this.idListaParentezco = idListaParentezco;
     }
 }

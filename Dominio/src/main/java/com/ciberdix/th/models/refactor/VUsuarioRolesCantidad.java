@@ -3,7 +3,7 @@ package com.ciberdix.th.models.refactor;
 import javax.persistence.*;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_UsuarioRolesCantidad", schema = "crz_th", catalog = "CREZCAMOS")

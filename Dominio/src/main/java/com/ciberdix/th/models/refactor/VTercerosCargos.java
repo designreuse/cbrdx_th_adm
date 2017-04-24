@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 18/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_TercerosCargos", schema = "crz_th", catalog = "CREZCAMOS")

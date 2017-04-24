@@ -3,13 +3,12 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- *
- * @author Roberto Chajin Ortiz
+ * Created by felip on 21/04/2017.
  */
 public class VLocalizaciones {
     private Integer idLocalizacion;
     private Integer idTipoDireccion;
-    private String nombreListaTipoDireccion;
+    private String nombre;
     private String direccion;
     private String latitud;
     private String longitud;
@@ -18,7 +17,7 @@ public class VLocalizaciones {
     private Integer idDivisionPolitica;
     private String divisionPolitica;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;    
+    private Timestamp auditoriaFecha;
 
     public Integer getIdLocalizacion() {
         return idLocalizacion;
@@ -36,12 +35,12 @@ public class VLocalizaciones {
         this.idTipoDireccion = idTipoDireccion;
     }
 
-    public String getNombreListaTipoDireccion() {
-        return nombreListaTipoDireccion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreListaTipoDireccion(String nombreListaTipoDireccion) {
-        this.nombreListaTipoDireccion = nombreListaTipoDireccion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {

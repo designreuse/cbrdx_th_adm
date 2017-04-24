@@ -14,35 +14,50 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasEstadosEstudios")
+@RequestMapping("/api/ListasEstadosEstudios")
 @CrossOrigin
 public class ListasEstadosEstudiosRefactorController {
 
     @Autowired
-    private ListasEstadosEstudiosRefactorRepository listasEstadosEstudiosRefactorRepository;
+    private ListasEstadosEstudiosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasEstadosEstudios> findAll() {
-        return (List<ListasEstadosEstudios>) listasEstadosEstudiosRefactorRepository.findAll();
+        return (List<ListasEstadosEstudios>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasEstadosEstudios> findEnabled() {
-        return (List<ListasEstadosEstudios>) listasEstadosEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idListaInstitucion}")
-    ListasEstadosEstudios findOne(@PathVariable Integer idListaInstitucion) {
-        return listasEstadosEstudiosRefactorRepository.findOne(idListaInstitucion);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasEstadosEstudios findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasEstadosEstudios> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasEstadosEstudios> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasEstadosEstudios findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasEstadosEstudios create(@RequestBody ListasEstadosEstudios listasTiposReferencias) {
-        return listasEstadosEstudiosRefactorRepository.save(new ListasEstadosEstudios(listasTiposReferencias.getIdListaEstadoEstudio(), listasTiposReferencias.getCodigoListaEstadoEstudio(), listasTiposReferencias.getNombreListaEstadoEstudio(), listasTiposReferencias.getOrdenListaEstadoEstudio(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+    ListasEstadosEstudios create(@RequestBody ListasEstadosEstudios obj) {
+        return repository.save(new ListasEstadosEstudios(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasEstadosEstudios update(@RequestBody ListasEstadosEstudios divisionPolitica) {
-        return listasEstadosEstudiosRefactorRepository.save(divisionPolitica);
+    ListasEstadosEstudios update(@RequestBody ListasEstadosEstudios obj) {
+        return repository.save(obj);
     }
 }

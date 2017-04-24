@@ -14,35 +14,50 @@ import java.util.List;
 
 @RestController
 @Transactional
-@RequestMapping("/api/listasTiposDatos")
+@RequestMapping("/api/ListasTiposDatos")
 @CrossOrigin
 public class ListasTiposDatosRefactorController {
 
     @Autowired
-    private ListasTiposDatosRefactorRepository listasTiposDatosRefactorRepository;
+    private ListasTiposDatosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposDatos> findAll() {
-        return (List<ListasTiposDatos>) listasTiposDatosRefactorRepository.findAll();
+        return (List<ListasTiposDatos>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasTiposDatos> findEnabled() {
-        return (List<ListasTiposDatos>) listasTiposDatosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idTiposDatos}")
-    ListasTiposDatos findOne(@PathVariable Integer idTiposDatos) {
-        return listasTiposDatosRefactorRepository.findOne(idTiposDatos);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposDatos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposDatos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposDatos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasTiposDatos findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTiposDatos create(@RequestBody ListasTiposDatos listasTiposReferencias) {
-        return listasTiposDatosRefactorRepository.save(new ListasTiposDatos(listasTiposReferencias.getCodigo(), listasTiposReferencias.getNombre(), listasTiposReferencias.getOrden(), listasTiposReferencias.getIndicadorHabilitado(), listasTiposReferencias.getAuditoriaUsuario()));
+    ListasTiposDatos create(@RequestBody ListasTiposDatos obj) {
+        return repository.save(new ListasTiposDatos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasTiposDatos update(@RequestBody ListasTiposDatos divisionPolitica) {
-        return listasTiposDatosRefactorRepository.save(divisionPolitica);
+    ListasTiposDatos update(@RequestBody ListasTiposDatos obj) {
+        return repository.save(obj);
     }
 }

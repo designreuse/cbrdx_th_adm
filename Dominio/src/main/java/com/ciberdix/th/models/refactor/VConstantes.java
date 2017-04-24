@@ -1,15 +1,14 @@
 package com.ciberdix.th.models.refactor;
 
-import java.sql.Timestamp;
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_Constantes", schema = "crz_th", catalog = "CREZCAMOS")
 public class VConstantes {
-
     private Integer idConstante;
     private String constante;
     private Integer idTipoDato;
@@ -17,9 +16,9 @@ public class VConstantes {
     private String valor;
     private String descripcion;
     private Boolean indicadorHabilitado;
-    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    
+    private Integer auditoriaUsuario;
+
     @Id
     @Column(name = "IdConstante")
     public Integer getIdConstante() {
@@ -41,7 +40,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "IdTipoDato")    
+    @Column(name = "IdTipoDato")
     public Integer getIdTipoDato() {
         return idTipoDato;
     }
@@ -91,16 +90,6 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
-    public Integer getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
-
-    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
-    }
-
-    @Basic
     @Column(name = "AuditoriaFecha")
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
@@ -108,6 +97,16 @@ public class VConstantes {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
     }
 
     @Override
@@ -125,9 +124,9 @@ public class VConstantes {
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
 
         return true;
@@ -142,8 +141,8 @@ public class VConstantes {
         result = 31 * result + (valor != null ? valor.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         return result;
     }
 }

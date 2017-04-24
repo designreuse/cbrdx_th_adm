@@ -13,29 +13,49 @@ import java.util.List;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/listasEstratos")
+@RequestMapping("/api/ListasEstratos")
 @CrossOrigin
 public class ListasEstratosRefactorController {
     @Autowired
-    private ListasEstratosRefactorRepository listasEstratosRefactorRepository;
+    private ListasEstratosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasEstratos> findAll() {
-        return (List<ListasEstratos>) listasEstratosRefactorRepository.findAll();
+        return (List<ListasEstratos>) repository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasEstratos> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasEstratos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasEstratos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasEstratos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasEstratos findOne(@PathVariable Integer id) {
-        return listasEstratosRefactorRepository.findOne(id);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasEstratos create(@RequestBody ListasEstratos obj) {
-        return listasEstratosRefactorRepository.save(obj);
+        return repository.save(new ListasEstratos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasEstratos obj) {
-        listasEstratosRefactorRepository.save(obj);
+    ListasEstratos update(@RequestBody ListasEstratos obj) {
+        return repository.save(obj);
     }
 }

@@ -14,33 +14,48 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/listasRolesProceso")
+@RequestMapping("/api/ListasRolesProceso")
 public class ListasRolesProcesoRefactorController {
     @Autowired
-    private ListasRolesProcesoRefactorRepository listasRolesProcesoRefactorRepository;
+    private ListasRolesProcesoRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasRolesProceso> findAll() {
-        return (List<ListasRolesProceso>) listasRolesProcesoRefactorRepository.findAll();
+        return (List<ListasRolesProceso>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasRolesProceso> findEnabled() {
-        return (List<ListasRolesProceso>) listasRolesProcesoRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasRolesProceso findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasRolesProceso> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasRolesProceso> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasRolesProceso findOne(@PathVariable Integer id) {
-        return listasRolesProcesoRefactorRepository.findOne(id);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasRolesProceso create(@RequestBody ListasRolesProceso obj) {
-        return listasRolesProcesoRefactorRepository.save(new ListasRolesProceso(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return repository.save(new ListasRolesProceso(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasRolesProceso obj) {
-        listasRolesProcesoRefactorRepository.save(obj);
+    ListasRolesProceso update(@RequestBody ListasRolesProceso obj) {
+        return repository.save(obj);
     }
 }

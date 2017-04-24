@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 8/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_Cargos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -370,105 +370,6 @@ public class VCargos {
         this.estructuraArea = estructuraArea;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        VCargos vCargos = (VCargos) o;
-
-        if (idCargo != null ? !idCargo.equals(vCargos.idCargo) : vCargos.idCargo != null) return false;
-        if (cargo != null ? !cargo.equals(vCargos.cargo) : vCargos.cargo != null) return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(vCargos.auditoriaUsuario) : vCargos.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(vCargos.auditoriaFecha) : vCargos.auditoriaFecha != null)
-            return false;
-        if (personaACargoDir != null ? !personaACargoDir.equals(vCargos.personaACargoDir) : vCargos.personaACargoDir != null)
-            return false;
-        if (personaACargoInd != null ? !personaACargoInd.equals(vCargos.personaACargoInd) : vCargos.personaACargoInd != null)
-            return false;
-        if (idCargoJefe != null ? !idCargoJefe.equals(vCargos.idCargoJefe) : vCargos.idCargoJefe != null) return false;
-        if (cargoJefe != null ? !cargoJefe.equals(vCargos.cargoJefe) : vCargos.cargoJefe != null) return false;
-        if (mision != null ? !mision.equals(vCargos.mision) : vCargos.mision != null) return false;
-        if (puntos != null ? !puntos.equals(vCargos.puntos) : vCargos.puntos != null) return false;
-        if (idCategoria != null ? !idCategoria.equals(vCargos.idCategoria) : vCargos.idCategoria != null) return false;
-        if (categoria != null ? !categoria.equals(vCargos.categoria) : vCargos.categoria != null) return false;
-        if (salario != null ? !salario.equals(vCargos.salario) : vCargos.salario != null) return false;
-        if (indicadorRequiereFormacion != null ? !indicadorRequiereFormacion.equals(vCargos.indicadorRequiereFormacion) : vCargos.indicadorRequiereFormacion != null)
-            return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(vCargos.indicadorHabilitado) : vCargos.indicadorHabilitado != null)
-            return false;
-        if (interrelacionesInternas != null ? !interrelacionesInternas.equals(vCargos.interrelacionesInternas) : vCargos.interrelacionesInternas != null)
-            return false;
-        if (interrelacionesExternas != null ? !interrelacionesExternas.equals(vCargos.interrelacionesExternas) : vCargos.interrelacionesExternas != null)
-            return false;
-        if (responsabilidadesAd != null ? !responsabilidadesAd.equals(vCargos.responsabilidadesAd) : vCargos.responsabilidadesAd != null)
-            return false;
-        if (tomaDecisiones != null ? !tomaDecisiones.equals(vCargos.tomaDecisiones) : vCargos.tomaDecisiones != null)
-            return false;
-        if (actividadesSupervisa != null ? !actividadesSupervisa.equals(vCargos.actividadesSupervisa) : vCargos.actividadesSupervisa != null)
-            return false;
-        if (idNivelEducacion != null ? !idNivelEducacion.equals(vCargos.idNivelEducacion) : vCargos.idNivelEducacion != null)
-            return false;
-        if (nivelEducacion != null ? !nivelEducacion.equals(vCargos.nivelEducacion) : vCargos.nivelEducacion != null)
-            return false;
-        if (conocimientosBasicos != null ? !conocimientosBasicos.equals(vCargos.conocimientosBasicos) : vCargos.conocimientosBasicos != null)
-            return false;
-        if (tiempoExperiencia != null ? !tiempoExperiencia.equals(vCargos.tiempoExperiencia) : vCargos.tiempoExperiencia != null)
-            return false;
-        if (otrosRequisitos != null ? !otrosRequisitos.equals(vCargos.otrosRequisitos) : vCargos.otrosRequisitos != null)
-            return false;
-        if (edad != null ? !edad.equals(vCargos.edad) : vCargos.edad != null) return false;
-        if (cargaFisica != null ? !cargaFisica.equals(vCargos.cargaFisica) : vCargos.cargaFisica != null) return false;
-        if (cargaMental != null ? !cargaMental.equals(vCargos.cargaMental) : vCargos.cargaMental != null) return false;
-        if (nivelPsicoSocial != null ? !nivelPsicoSocial.equals(vCargos.nivelPsicoSocial) : vCargos.nivelPsicoSocial != null)
-            return false;
-        if (codigoCargo != null ? !codigoCargo.equals(vCargos.codigoCargo) : vCargos.codigoCargo != null) return false;
-        if (idEstructuraArea != null ? !idEstructuraArea.equals(vCargos.idEstructuraArea) : vCargos.idEstructuraArea != null)
-            return false;
-        if (estructuraArea != null ? !estructuraArea.equals(vCargos.estructuraArea) : vCargos.estructuraArea != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idCargo != null ? idCargo.hashCode() : 0;
-        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (personaACargoDir != null ? personaACargoDir.hashCode() : 0);
-        result = 31 * result + (personaACargoInd != null ? personaACargoInd.hashCode() : 0);
-        result = 31 * result + (idCargoJefe != null ? idCargoJefe.hashCode() : 0);
-        result = 31 * result + (cargoJefe != null ? cargoJefe.hashCode() : 0);
-        result = 31 * result + (mision != null ? mision.hashCode() : 0);
-        result = 31 * result + (puntos != null ? puntos.hashCode() : 0);
-        result = 31 * result + (idCategoria != null ? idCategoria.hashCode() : 0);
-        result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
-        result = 31 * result + (salario != null ? salario.hashCode() : 0);
-        result = 31 * result + (indicadorRequiereFormacion != null ? indicadorRequiereFormacion.hashCode() : 0);
-        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (interrelacionesInternas != null ? interrelacionesInternas.hashCode() : 0);
-        result = 31 * result + (interrelacionesExternas != null ? interrelacionesExternas.hashCode() : 0);
-        result = 31 * result + (responsabilidadesAd != null ? responsabilidadesAd.hashCode() : 0);
-        result = 31 * result + (tomaDecisiones != null ? tomaDecisiones.hashCode() : 0);
-        result = 31 * result + (actividadesSupervisa != null ? actividadesSupervisa.hashCode() : 0);
-        result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
-        result = 31 * result + (nivelEducacion != null ? nivelEducacion.hashCode() : 0);
-        result = 31 * result + (conocimientosBasicos != null ? conocimientosBasicos.hashCode() : 0);
-        result = 31 * result + (tiempoExperiencia != null ? tiempoExperiencia.hashCode() : 0);
-        result = 31 * result + (otrosRequisitos != null ? otrosRequisitos.hashCode() : 0);
-        result = 31 * result + (edad != null ? edad.hashCode() : 0);
-        result = 31 * result + (cargaFisica != null ? cargaFisica.hashCode() : 0);
-        result = 31 * result + (cargaMental != null ? cargaMental.hashCode() : 0);
-        result = 31 * result + (nivelPsicoSocial != null ? nivelPsicoSocial.hashCode() : 0);
-        result = 31 * result + (codigoCargo != null ? codigoCargo.hashCode() : 0);
-        result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
-        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
-        return result;
-    }
-
     @Basic
     @Column(name = "IdGenero")
     public Integer getIdGenero() {
@@ -537,5 +438,119 @@ public class VCargos {
 
     public void setPaso(Integer paso) {
         this.paso = paso;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        VCargos vCargos = (VCargos) o;
+
+        if (idCargo != null ? !idCargo.equals(vCargos.idCargo) : vCargos.idCargo != null) return false;
+        if (cargo != null ? !cargo.equals(vCargos.cargo) : vCargos.cargo != null) return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(vCargos.auditoriaUsuario) : vCargos.auditoriaUsuario != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(vCargos.auditoriaFecha) : vCargos.auditoriaFecha != null)
+            return false;
+        if (personaACargoDir != null ? !personaACargoDir.equals(vCargos.personaACargoDir) : vCargos.personaACargoDir != null)
+            return false;
+        if (personaACargoInd != null ? !personaACargoInd.equals(vCargos.personaACargoInd) : vCargos.personaACargoInd != null)
+            return false;
+        if (idCargoJefe != null ? !idCargoJefe.equals(vCargos.idCargoJefe) : vCargos.idCargoJefe != null) return false;
+        if (cargoJefe != null ? !cargoJefe.equals(vCargos.cargoJefe) : vCargos.cargoJefe != null) return false;
+        if (mision != null ? !mision.equals(vCargos.mision) : vCargos.mision != null) return false;
+        if (puntos != null ? !puntos.equals(vCargos.puntos) : vCargos.puntos != null) return false;
+        if (idCategoria != null ? !idCategoria.equals(vCargos.idCategoria) : vCargos.idCategoria != null) return false;
+        if (categoria != null ? !categoria.equals(vCargos.categoria) : vCargos.categoria != null) return false;
+        if (salario != null ? !salario.equals(vCargos.salario) : vCargos.salario != null) return false;
+        if (indicadorRequiereFormacion != null ? !indicadorRequiereFormacion.equals(vCargos.indicadorRequiereFormacion) : vCargos.indicadorRequiereFormacion != null)
+            return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(vCargos.indicadorHabilitado) : vCargos.indicadorHabilitado != null)
+            return false;
+        if (interrelacionesInternas != null ? !interrelacionesInternas.equals(vCargos.interrelacionesInternas) : vCargos.interrelacionesInternas != null)
+            return false;
+        if (interrelacionesExternas != null ? !interrelacionesExternas.equals(vCargos.interrelacionesExternas) : vCargos.interrelacionesExternas != null)
+            return false;
+        if (responsabilidadesAd != null ? !responsabilidadesAd.equals(vCargos.responsabilidadesAd) : vCargos.responsabilidadesAd != null)
+            return false;
+        if (tomaDecisiones != null ? !tomaDecisiones.equals(vCargos.tomaDecisiones) : vCargos.tomaDecisiones != null)
+            return false;
+        if (actividadesSupervisa != null ? !actividadesSupervisa.equals(vCargos.actividadesSupervisa) : vCargos.actividadesSupervisa != null)
+            return false;
+        if (idNivelEducacion != null ? !idNivelEducacion.equals(vCargos.idNivelEducacion) : vCargos.idNivelEducacion != null)
+            return false;
+        if (nivelEducacion != null ? !nivelEducacion.equals(vCargos.nivelEducacion) : vCargos.nivelEducacion != null)
+            return false;
+        if (conocimientosBasicos != null ? !conocimientosBasicos.equals(vCargos.conocimientosBasicos) : vCargos.conocimientosBasicos != null)
+            return false;
+        if (tiempoExperiencia != null ? !tiempoExperiencia.equals(vCargos.tiempoExperiencia) : vCargos.tiempoExperiencia != null)
+            return false;
+        if (otrosRequisitos != null ? !otrosRequisitos.equals(vCargos.otrosRequisitos) : vCargos.otrosRequisitos != null)
+            return false;
+        if (edad != null ? !edad.equals(vCargos.edad) : vCargos.edad != null) return false;
+        if (cargaFisica != null ? !cargaFisica.equals(vCargos.cargaFisica) : vCargos.cargaFisica != null) return false;
+        if (cargaMental != null ? !cargaMental.equals(vCargos.cargaMental) : vCargos.cargaMental != null) return false;
+        if (nivelPsicoSocial != null ? !nivelPsicoSocial.equals(vCargos.nivelPsicoSocial) : vCargos.nivelPsicoSocial != null)
+            return false;
+        if (codigoCargo != null ? !codigoCargo.equals(vCargos.codigoCargo) : vCargos.codigoCargo != null) return false;
+        if (idEstructuraArea != null ? !idEstructuraArea.equals(vCargos.idEstructuraArea) : vCargos.idEstructuraArea != null)
+            return false;
+        if (estructuraArea != null ? !estructuraArea.equals(vCargos.estructuraArea) : vCargos.estructuraArea != null)
+            return false;
+        if (idGenero != null ? !idGenero.equals(vCargos.idGenero) : vCargos.idGenero != null) return false;
+        if (genero != null ? !genero.equals(vCargos.genero) : vCargos.genero != null) return false;
+        if (idEstadoCivil != null ? !idEstadoCivil.equals(vCargos.idEstadoCivil) : vCargos.idEstadoCivil != null)
+            return false;
+        if (estadoCivil != null ? !estadoCivil.equals(vCargos.estadoCivil) : vCargos.estadoCivil != null) return false;
+        if (idEstado != null ? !idEstado.equals(vCargos.idEstado) : vCargos.idEstado != null) return false;
+        if (estado != null ? !estado.equals(vCargos.estado) : vCargos.estado != null) return false;
+        if (paso != null ? !paso.equals(vCargos.paso) : vCargos.paso != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idCargo != null ? idCargo.hashCode() : 0;
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
+        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (personaACargoDir != null ? personaACargoDir.hashCode() : 0);
+        result = 31 * result + (personaACargoInd != null ? personaACargoInd.hashCode() : 0);
+        result = 31 * result + (idCargoJefe != null ? idCargoJefe.hashCode() : 0);
+        result = 31 * result + (cargoJefe != null ? cargoJefe.hashCode() : 0);
+        result = 31 * result + (mision != null ? mision.hashCode() : 0);
+        result = 31 * result + (puntos != null ? puntos.hashCode() : 0);
+        result = 31 * result + (idCategoria != null ? idCategoria.hashCode() : 0);
+        result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
+        result = 31 * result + (salario != null ? salario.hashCode() : 0);
+        result = 31 * result + (indicadorRequiereFormacion != null ? indicadorRequiereFormacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (interrelacionesInternas != null ? interrelacionesInternas.hashCode() : 0);
+        result = 31 * result + (interrelacionesExternas != null ? interrelacionesExternas.hashCode() : 0);
+        result = 31 * result + (responsabilidadesAd != null ? responsabilidadesAd.hashCode() : 0);
+        result = 31 * result + (tomaDecisiones != null ? tomaDecisiones.hashCode() : 0);
+        result = 31 * result + (actividadesSupervisa != null ? actividadesSupervisa.hashCode() : 0);
+        result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
+        result = 31 * result + (nivelEducacion != null ? nivelEducacion.hashCode() : 0);
+        result = 31 * result + (conocimientosBasicos != null ? conocimientosBasicos.hashCode() : 0);
+        result = 31 * result + (tiempoExperiencia != null ? tiempoExperiencia.hashCode() : 0);
+        result = 31 * result + (otrosRequisitos != null ? otrosRequisitos.hashCode() : 0);
+        result = 31 * result + (edad != null ? edad.hashCode() : 0);
+        result = 31 * result + (cargaFisica != null ? cargaFisica.hashCode() : 0);
+        result = 31 * result + (cargaMental != null ? cargaMental.hashCode() : 0);
+        result = 31 * result + (nivelPsicoSocial != null ? nivelPsicoSocial.hashCode() : 0);
+        result = 31 * result + (codigoCargo != null ? codigoCargo.hashCode() : 0);
+        result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
+        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
+        result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
+        result = 31 * result + (genero != null ? genero.hashCode() : 0);
+        result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
+        result = 31 * result + (estadoCivil != null ? estadoCivil.hashCode() : 0);
+        result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
+        result = 31 * result + (estado != null ? estado.hashCode() : 0);
+        result = 31 * result + (paso != null ? paso.hashCode() : 0);
+        return result;
     }
 }

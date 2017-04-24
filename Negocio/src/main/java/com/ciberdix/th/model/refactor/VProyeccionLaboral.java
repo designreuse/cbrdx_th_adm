@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 19/04/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VProyeccionLaboral {
     private Integer idProyecccionLaboral;
@@ -21,7 +21,7 @@ public class VProyeccionLaboral {
     private String usuarioProyecta;
     private Integer idUsuarioAprueba;
     private String usuarioAprueba;
-    private Integer anio;
+    private Integer año;
     private String observacion;
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
@@ -147,12 +147,12 @@ public class VProyeccionLaboral {
         this.usuarioAprueba = usuarioAprueba;
     }
 
-    public Integer getAnio() {
-        return anio;
+    public Integer getAño() {
+        return año;
     }
 
-    public void setAnio(Integer anio) {
-        this.anio = anio;
+    public void setAño(Integer año) {
+        this.año = año;
     }
 
     public String getObservacion() {

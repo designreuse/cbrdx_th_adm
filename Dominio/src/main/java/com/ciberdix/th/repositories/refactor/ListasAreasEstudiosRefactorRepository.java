@@ -9,5 +9,12 @@ import java.util.List;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasAreasEstudiosRefactorRepository extends CrudRepository<ListasAreasEstudios, Integer> {
-    List<ListasAreasEstudios> findByIndicadorHabilitadoIsTrue();
+
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrue();
+
+    ListasAreasEstudios findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
 }

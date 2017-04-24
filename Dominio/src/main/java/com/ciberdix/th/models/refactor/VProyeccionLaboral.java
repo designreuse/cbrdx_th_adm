@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 19/04/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_ProyeccionLaboral", schema = "crz_th", catalog = "CREZCAMOS")
@@ -24,7 +24,7 @@ public class VProyeccionLaboral {
     private String usuarioProyecta;
     private Integer idUsuarioAprueba;
     private String usuarioAprueba;
-    private Integer anio;
+    private Integer año;
     private String observacion;
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
@@ -182,12 +182,12 @@ public class VProyeccionLaboral {
 
     @Basic
     @Column(name = "Año")
-    public Integer getAnio() {
-        return anio;
+    public Integer getAño() {
+        return año;
     }
 
-    public void setAnio(Integer año) {
-        this.anio = año;
+    public void setAño(Integer año) {
+        this.año = año;
     }
 
     @Basic
@@ -264,7 +264,7 @@ public class VProyeccionLaboral {
             return false;
         if (usuarioAprueba != null ? !usuarioAprueba.equals(that.usuarioAprueba) : that.usuarioAprueba != null)
             return false;
-        if (anio != null ? !anio.equals(that.anio) : that.anio != null) return false;
+        if (año != null ? !año.equals(that.año) : that.año != null) return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
         if (observacionAprobacion != null ? !observacionAprobacion.equals(that.observacionAprobacion) : that.observacionAprobacion != null)
             return false;
@@ -293,7 +293,7 @@ public class VProyeccionLaboral {
         result = 31 * result + (usuarioProyecta != null ? usuarioProyecta.hashCode() : 0);
         result = 31 * result + (idUsuarioAprueba != null ? idUsuarioAprueba.hashCode() : 0);
         result = 31 * result + (usuarioAprueba != null ? usuarioAprueba.hashCode() : 0);
-        result = 31 * result + (anio != null ? anio.hashCode() : 0);
+        result = 31 * result + (año != null ? año.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (observacionAprobacion != null ? observacionAprobacion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);

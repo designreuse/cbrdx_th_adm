@@ -1,64 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposPersonas", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposPersonas {
-    private Integer idListaTipoPersona;
-    private String codigoListaTipoPersona;
-    private String nombreListaTipoPersona;
-    private Integer ordenListaTipoPersona;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasTiposPersonas() {
+    }
+
+    public ListasTiposPersonas(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaTipoPersona")
-    public Integer getIdListaTipoPersona() {
-        return idListaTipoPersona;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoPersona(Integer idListaTipoPersona) {
-        this.idListaTipoPersona = idListaTipoPersona;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaTipoPersona")
-    public String getCodigoListaTipoPersona() {
-        return codigoListaTipoPersona;
-    }
-
-    public void setCodigoListaTipoPersona(String codigoListaTipoPersona) {
-        this.codigoListaTipoPersona = codigoListaTipoPersona;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaTipoPersona")
-    public String getNombreListaTipoPersona() {
-        return nombreListaTipoPersona;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaTipoPersona(String nombreListaTipoPersona) {
-        this.nombreListaTipoPersona = nombreListaTipoPersona;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaTipoPersona")
-    public Integer getOrdenListaTipoPersona() {
-        return ordenListaTipoPersona;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaTipoPersona(Integer ordenListaTipoPersona) {
-        this.ordenListaTipoPersona = ordenListaTipoPersona;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -98,14 +107,10 @@ public class ListasTiposPersonas {
 
         ListasTiposPersonas that = (ListasTiposPersonas) o;
 
-        if (idListaTipoPersona != null ? !idListaTipoPersona.equals(that.idListaTipoPersona) : that.idListaTipoPersona != null)
-            return false;
-        if (codigoListaTipoPersona != null ? !codigoListaTipoPersona.equals(that.codigoListaTipoPersona) : that.codigoListaTipoPersona != null)
-            return false;
-        if (nombreListaTipoPersona != null ? !nombreListaTipoPersona.equals(that.nombreListaTipoPersona) : that.nombreListaTipoPersona != null)
-            return false;
-        if (ordenListaTipoPersona != null ? !ordenListaTipoPersona.equals(that.ordenListaTipoPersona) : that.ordenListaTipoPersona != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -118,10 +123,10 @@ public class ListasTiposPersonas {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoPersona != null ? idListaTipoPersona.hashCode() : 0;
-        result = 31 * result + (codigoListaTipoPersona != null ? codigoListaTipoPersona.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoPersona != null ? nombreListaTipoPersona.hashCode() : 0);
-        result = 31 * result + (ordenListaTipoPersona != null ? ordenListaTipoPersona.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

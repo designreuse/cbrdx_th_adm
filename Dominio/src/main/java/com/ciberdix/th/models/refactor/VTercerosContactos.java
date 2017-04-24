@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/5/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosContactos {
-    private String codigoListaParentesco;
-    private String nombreListaParentesco;
+    private String codigo;
+    private String nombre;
     private Integer idTerceroContacto;
     private Long idTercero;
     private String contacto;
@@ -21,27 +21,27 @@ public class VTercerosContactos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
-    @Column(name = "CodigoListaParentesco")
-    public String getCodigoListaParentesco() {
-        return codigoListaParentesco;
-    }
-
-    public void setCodigoListaParentesco(String codigoListaParentesco) {
-        this.codigoListaParentesco = codigoListaParentesco;
-    }
-
-    @Basic
-    @Column(name = "NombreListaParentesco")
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
-    }
-
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
-    }
-
     @Id
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Basic
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
     @Column(name = "IdTerceroContacto")
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
@@ -138,10 +138,8 @@ public class VTercerosContactos {
 
         VTercerosContactos that = (VTercerosContactos) o;
 
-        if (codigoListaParentesco != null ? !codigoListaParentesco.equals(that.codigoListaParentesco) : that.codigoListaParentesco != null)
-            return false;
-        if (nombreListaParentesco != null ? !nombreListaParentesco.equals(that.nombreListaParentesco) : that.nombreListaParentesco != null)
-            return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (idTerceroContacto != null ? !idTerceroContacto.equals(that.idTerceroContacto) : that.idTerceroContacto != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
@@ -162,8 +160,8 @@ public class VTercerosContactos {
 
     @Override
     public int hashCode() {
-        int result = codigoListaParentesco != null ? codigoListaParentesco.hashCode() : 0;
-        result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
+        int result = codigo != null ? codigo.hashCode() : 0;
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (idTerceroContacto != null ? idTerceroContacto.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (contacto != null ? contacto.hashCode() : 0);

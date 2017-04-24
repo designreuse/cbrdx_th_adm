@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasEstadosEstudios", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasEstadosEstudios {
-    private Integer idListaEstadoEstudio;
-    private String codigoListaEstadoEstudio;
-    private String nombreListaEstadoEstudio;
-    private Integer ordenListaEstadoEstudio;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -20,11 +20,10 @@ public class ListasEstadosEstudios {
     public ListasEstadosEstudios() {
     }
 
-    public ListasEstadosEstudios(Integer idListaEstadoEstudio, String codigoListaEstadoEstudio, String nombreListaEstadoEstudio, Integer ordenListaEstadoEstudio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idListaEstadoEstudio = idListaEstadoEstudio;
-        this.codigoListaEstadoEstudio = codigoListaEstadoEstudio;
-        this.nombreListaEstadoEstudio = nombreListaEstadoEstudio;
-        this.ordenListaEstadoEstudio = ordenListaEstadoEstudio;
+    public ListasEstadosEstudios(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -32,43 +31,43 @@ public class ListasEstadosEstudios {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdListaEstadoEstudio")
-    public Integer getIdListaEstadoEstudio() {
-        return idListaEstadoEstudio;
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaEstadoEstudio(Integer idListaEstadoEstudio) {
-        this.idListaEstadoEstudio = idListaEstadoEstudio;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaEstadoEstudio")
-    public String getCodigoListaEstadoEstudio() {
-        return codigoListaEstadoEstudio;
-    }
-
-    public void setCodigoListaEstadoEstudio(String codigoListaEstadoEstudio) {
-        this.codigoListaEstadoEstudio = codigoListaEstadoEstudio;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaEstadoEstudio")
-    public String getNombreListaEstadoEstudio() {
-        return nombreListaEstadoEstudio;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaEstadoEstudio(String nombreListaEstadoEstudio) {
-        this.nombreListaEstadoEstudio = nombreListaEstadoEstudio;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaEstadoEstudio")
-    public Integer getOrdenListaEstadoEstudio() {
-        return ordenListaEstadoEstudio;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaEstadoEstudio(Integer ordenListaEstadoEstudio) {
-        this.ordenListaEstadoEstudio = ordenListaEstadoEstudio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -108,14 +107,10 @@ public class ListasEstadosEstudios {
 
         ListasEstadosEstudios that = (ListasEstadosEstudios) o;
 
-        if (idListaEstadoEstudio != null ? !idListaEstadoEstudio.equals(that.idListaEstadoEstudio) : that.idListaEstadoEstudio != null)
-            return false;
-        if (codigoListaEstadoEstudio != null ? !codigoListaEstadoEstudio.equals(that.codigoListaEstadoEstudio) : that.codigoListaEstadoEstudio != null)
-            return false;
-        if (nombreListaEstadoEstudio != null ? !nombreListaEstadoEstudio.equals(that.nombreListaEstadoEstudio) : that.nombreListaEstadoEstudio != null)
-            return false;
-        if (ordenListaEstadoEstudio != null ? !ordenListaEstadoEstudio.equals(that.ordenListaEstadoEstudio) : that.ordenListaEstadoEstudio != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -128,10 +123,10 @@ public class ListasEstadosEstudios {
 
     @Override
     public int hashCode() {
-        int result = idListaEstadoEstudio != null ? idListaEstadoEstudio.hashCode() : 0;
-        result = 31 * result + (codigoListaEstadoEstudio != null ? codigoListaEstadoEstudio.hashCode() : 0);
-        result = 31 * result + (nombreListaEstadoEstudio != null ? nombreListaEstadoEstudio.hashCode() : 0);
-        result = 31 * result + (ordenListaEstadoEstudio != null ? ordenListaEstadoEstudio.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

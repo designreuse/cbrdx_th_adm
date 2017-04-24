@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "ListasAreasEstudios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ListasAreasEstudios",schema = "crz_th",catalog = "CREZCAMOS")
 public class ListasAreasEstudios {
-    private Integer idListaAreaEstudio;
-    private String codigoListaAreaEstudio;
-    private String nombreListaAreaEstudio;
-    private Integer ordenListaAreaEstudio;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -20,55 +20,54 @@ public class ListasAreasEstudios {
     public ListasAreasEstudios() {
     }
 
-    public ListasAreasEstudios(Integer idListaAreaEstudio, String codigoListaAreaEstudio, String nombreListaAreaEstudio, Integer ordenListaAreaEstudio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idListaAreaEstudio = idListaAreaEstudio;
-        this.codigoListaAreaEstudio = codigoListaAreaEstudio;
-        this.nombreListaAreaEstudio = nombreListaAreaEstudio;
-        this.ordenListaAreaEstudio = ordenListaAreaEstudio;
+    public ListasAreasEstudios(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdListaAreaEstudio")
-    public Integer getIdListaAreaEstudio() {
-        return idListaAreaEstudio;
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaAreaEstudio(Integer idListaAreaEstudio) {
-        this.idListaAreaEstudio = idListaAreaEstudio;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaAreaEstudio")
-    public String getCodigoListaAreaEstudio() {
-        return codigoListaAreaEstudio;
-    }
-
-    public void setCodigoListaAreaEstudio(String codigoListaAreaEstudio) {
-        this.codigoListaAreaEstudio = codigoListaAreaEstudio;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaAreaEstudio")
-    public String getNombreListaAreaEstudio() {
-        return nombreListaAreaEstudio;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaAreaEstudio(String nombreListaAreaEstudio) {
-        this.nombreListaAreaEstudio = nombreListaAreaEstudio;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaAreaEstudio")
-    public Integer getOrdenListaAreaEstudio() {
-        return ordenListaAreaEstudio;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaAreaEstudio(Integer ordenListaAreaEstudio) {
-        this.ordenListaAreaEstudio = ordenListaAreaEstudio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -108,14 +107,10 @@ public class ListasAreasEstudios {
 
         ListasAreasEstudios that = (ListasAreasEstudios) o;
 
-        if (idListaAreaEstudio != null ? !idListaAreaEstudio.equals(that.idListaAreaEstudio) : that.idListaAreaEstudio != null)
-            return false;
-        if (codigoListaAreaEstudio != null ? !codigoListaAreaEstudio.equals(that.codigoListaAreaEstudio) : that.codigoListaAreaEstudio != null)
-            return false;
-        if (nombreListaAreaEstudio != null ? !nombreListaAreaEstudio.equals(that.nombreListaAreaEstudio) : that.nombreListaAreaEstudio != null)
-            return false;
-        if (ordenListaAreaEstudio != null ? !ordenListaAreaEstudio.equals(that.ordenListaAreaEstudio) : that.ordenListaAreaEstudio != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -128,10 +123,10 @@ public class ListasAreasEstudios {
 
     @Override
     public int hashCode() {
-        int result = idListaAreaEstudio != null ? idListaAreaEstudio.hashCode() : 0;
-        result = 31 * result + (codigoListaAreaEstudio != null ? codigoListaAreaEstudio.hashCode() : 0);
-        result = 31 * result + (nombreListaAreaEstudio != null ? nombreListaAreaEstudio.hashCode() : 0);
-        result = 31 * result + (ordenListaAreaEstudio != null ? ordenListaAreaEstudio.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

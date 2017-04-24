@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposReferencias", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposReferencias {
-    private Integer idListaTipoReferencia;
-    private String codigoListaTipoReferencia;
-    private String nombreListaTipoReferencia;
-    private Integer ordenListaTipoReferencia;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -20,10 +20,10 @@ public class ListasTiposReferencias {
     public ListasTiposReferencias() {
     }
 
-    public ListasTiposReferencias(String codigoListaTipoReferencia, String nombreListaTipoReferencia, Integer ordenListaTipoReferencia, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.codigoListaTipoReferencia = codigoListaTipoReferencia;
-        this.nombreListaTipoReferencia = nombreListaTipoReferencia;
-        this.ordenListaTipoReferencia = ordenListaTipoReferencia;
+    public ListasTiposReferencias(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -31,43 +31,43 @@ public class ListasTiposReferencias {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdListaTipoReferencia")
-    public Integer getIdListaTipoReferencia() {
-        return idListaTipoReferencia;
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoReferencia(Integer idListaTipoReferencia) {
-        this.idListaTipoReferencia = idListaTipoReferencia;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaTipoReferencia")
-    public String getCodigoListaTipoReferencia() {
-        return codigoListaTipoReferencia;
-    }
-
-    public void setCodigoListaTipoReferencia(String codigoListaTipoReferencia) {
-        this.codigoListaTipoReferencia = codigoListaTipoReferencia;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaTipoReferencia")
-    public String getNombreListaTipoReferencia() {
-        return nombreListaTipoReferencia;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaTipoReferencia(String nombreListaTipoReferencia) {
-        this.nombreListaTipoReferencia = nombreListaTipoReferencia;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaTipoReferencia")
-    public Integer getOrdenListaTipoReferencia() {
-        return ordenListaTipoReferencia;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaTipoReferencia(Integer ordenListaTipoReferencia) {
-        this.ordenListaTipoReferencia = ordenListaTipoReferencia;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -107,14 +107,10 @@ public class ListasTiposReferencias {
 
         ListasTiposReferencias that = (ListasTiposReferencias) o;
 
-        if (idListaTipoReferencia != null ? !idListaTipoReferencia.equals(that.idListaTipoReferencia) : that.idListaTipoReferencia != null)
-            return false;
-        if (codigoListaTipoReferencia != null ? !codigoListaTipoReferencia.equals(that.codigoListaTipoReferencia) : that.codigoListaTipoReferencia != null)
-            return false;
-        if (nombreListaTipoReferencia != null ? !nombreListaTipoReferencia.equals(that.nombreListaTipoReferencia) : that.nombreListaTipoReferencia != null)
-            return false;
-        if (ordenListaTipoReferencia != null ? !ordenListaTipoReferencia.equals(that.ordenListaTipoReferencia) : that.ordenListaTipoReferencia != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -127,10 +123,10 @@ public class ListasTiposReferencias {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoReferencia != null ? idListaTipoReferencia.hashCode() : 0;
-        result = 31 * result + (codigoListaTipoReferencia != null ? codigoListaTipoReferencia.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoReferencia != null ? nombreListaTipoReferencia.hashCode() : 0);
-        result = 31 * result + (ordenListaTipoReferencia != null ? ordenListaTipoReferencia.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

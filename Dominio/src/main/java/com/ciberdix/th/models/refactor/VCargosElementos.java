@@ -1,11 +1,10 @@
 package com.ciberdix.th.models.refactor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 10/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_CargosElementos", schema = "crz_th", catalog = "CREZCAMOS")

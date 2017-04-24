@@ -18,35 +18,50 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/listasLateralidades")
+@RequestMapping("/api/ListasLateralidades")
 @CrossOrigin
 public class ListasLateralidadesRefactorController {
 
     @Autowired
-    private ListasLateralidadesRefactorRepository listasLateralidadesRefactorRepository;
+    private ListasLateralidadesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasLateralidades> findAll() {
-        return (List<ListasLateralidades>) listasLateralidadesRefactorRepository.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ListasLateralidades findOne(@PathVariable Integer id) {
-        return listasLateralidadesRefactorRepository.findOne(id);
+        return (List<ListasLateralidades>) repository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasLateralidades> findEnabled() {
-        return (List<ListasLateralidades>) listasLateralidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasLateralidades findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasLateralidades> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasLateralidades> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasLateralidades findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasLateralidades create(@RequestBody ListasLateralidades listasLateralidades) {
-        return listasLateralidadesRefactorRepository.save(listasLateralidades);
+    ListasLateralidades create(@RequestBody ListasLateralidades obj) {
+        return repository.save(new ListasLateralidades(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasLateralidades listasLateralidades) {
-        listasLateralidadesRefactorRepository.save(listasLateralidades);
+    ListasLateralidades update(@RequestBody ListasLateralidades obj) {
+        return repository.save(obj);
     }
 }
