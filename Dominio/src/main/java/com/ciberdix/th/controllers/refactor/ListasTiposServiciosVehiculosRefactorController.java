@@ -14,28 +14,48 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @Transactional
-@RequestMapping("/api/listasTiposServiciosVehiculos")
+@RequestMapping("/api/ListasTiposServiciosVehiculos")
 public class ListasTiposServiciosVehiculosRefactorController {
     @Autowired
-    private ListasTiposServiciosVehiculosRefactorRepository listasTiposServiciosVehiculosRefactorRepository;
+    private ListasTiposServiciosVehiculosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTiposServiciosVehiculos> findAll() {
-        return (List<ListasTiposServiciosVehiculos>) listasTiposServiciosVehiculosRefactorRepository.findAll();
+        return (List<ListasTiposServiciosVehiculos>) repository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasTiposServiciosVehiculos> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposServiciosVehiculos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposServiciosVehiculos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposServiciosVehiculos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasTiposServiciosVehiculos findOne(@PathVariable Integer id) {
-        return listasTiposServiciosVehiculosRefactorRepository.findOne(id);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasTiposServiciosVehiculos create(@RequestBody ListasTiposServiciosVehiculos obj) {
-        return listasTiposServiciosVehiculosRefactorRepository.save(obj);
+        return repository.save(new ListasTiposServiciosVehiculos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasTiposServiciosVehiculos obj) {
-        listasTiposServiciosVehiculosRefactorRepository.save(obj);
+    ListasTiposServiciosVehiculos update(@RequestBody ListasTiposServiciosVehiculos obj) {
+        return repository.save(obj);
     }
 }

@@ -1,64 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasEstadosCiviles", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasEstadosCiviles {
-    private Integer idListaEstadoCivil;
-    private String codigoListaEstadoCivil;
-    private String nombreListaEstadoCivil;
-    private Integer ordenListaEstadoCivil;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasEstadosCiviles() {
+    }
+
+    public ListasEstadosCiviles(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaEstadoCivil")
-    public Integer getIdListaEstadoCivil() {
-        return idListaEstadoCivil;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaEstadoCivil(Integer idListaEstadoCivil) {
-        this.idListaEstadoCivil = idListaEstadoCivil;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaEstadoCivil")
-    public String getCodigoListaEstadoCivil() {
-        return codigoListaEstadoCivil;
-    }
-
-    public void setCodigoListaEstadoCivil(String codigoListaEstadoCivil) {
-        this.codigoListaEstadoCivil = codigoListaEstadoCivil;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaEstadoCivil")
-    public String getNombreListaEstadoCivil() {
-        return nombreListaEstadoCivil;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaEstadoCivil(String nombreListaEstadoCivil) {
-        this.nombreListaEstadoCivil = nombreListaEstadoCivil;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaEstadoCivil")
-    public Integer getOrdenListaEstadoCivil() {
-        return ordenListaEstadoCivil;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaEstadoCivil(Integer ordenListaEstadoCivil) {
-        this.ordenListaEstadoCivil = ordenListaEstadoCivil;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -98,14 +107,10 @@ public class ListasEstadosCiviles {
 
         ListasEstadosCiviles that = (ListasEstadosCiviles) o;
 
-        if (idListaEstadoCivil != null ? !idListaEstadoCivil.equals(that.idListaEstadoCivil) : that.idListaEstadoCivil != null)
-            return false;
-        if (codigoListaEstadoCivil != null ? !codigoListaEstadoCivil.equals(that.codigoListaEstadoCivil) : that.codigoListaEstadoCivil != null)
-            return false;
-        if (nombreListaEstadoCivil != null ? !nombreListaEstadoCivil.equals(that.nombreListaEstadoCivil) : that.nombreListaEstadoCivil != null)
-            return false;
-        if (ordenListaEstadoCivil != null ? !ordenListaEstadoCivil.equals(that.ordenListaEstadoCivil) : that.ordenListaEstadoCivil != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -118,10 +123,10 @@ public class ListasEstadosCiviles {
 
     @Override
     public int hashCode() {
-        int result = idListaEstadoCivil != null ? idListaEstadoCivil.hashCode() : 0;
-        result = 31 * result + (codigoListaEstadoCivil != null ? codigoListaEstadoCivil.hashCode() : 0);
-        result = 31 * result + (nombreListaEstadoCivil != null ? nombreListaEstadoCivil.hashCode() : 0);
-        result = 31 * result + (ordenListaEstadoCivil != null ? ordenListaEstadoCivil.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

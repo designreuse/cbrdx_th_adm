@@ -4,11 +4,7 @@ import com.ciberdix.th.models.refactor.ListasTiposPersonas;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import com.ciberdix.th.repositories.refactor.ListasTiposPersonaRefactorRepository;
 
 /**
@@ -18,29 +14,49 @@ import com.ciberdix.th.repositories.refactor.ListasTiposPersonaRefactorRepositor
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/tiposPersonas")
+@RequestMapping("/api/ListasTiposPersonas")
 public class ListasTiposPersonasRefactorController {
 
     @Autowired
-    ListasTiposPersonaRefactorRepository tiposPersonaRepository;
+    ListasTiposPersonaRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposPersonas> listarTiposPersonas() {
-        return (List<ListasTiposPersonas>) tiposPersonaRepository.findAll();
+    List<ListasTiposPersonas> findAll() {
+        return (List<ListasTiposPersonas>) repository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
-    List<ListasTiposPersonas> listEnabled() {
-        return tiposPersonaRepository.findByIndicadorHabilitadoIsTrue();
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasTiposPersonas> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposPersonas findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposPersonas> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposPersonas> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasTiposPersonas findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTiposPersonas crearTiposPersonas(@RequestBody ListasTiposPersonas obj) {
-        return tiposPersonaRepository.save(obj);
+    ListasTiposPersonas create(@RequestBody ListasTiposPersonas obj) {
+        return repository.save(new ListasTiposPersonas(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarTiposPersonas(@RequestBody ListasTiposPersonas obj) {
-        tiposPersonaRepository.save(obj);
-    }    
+    ListasTiposPersonas update(@RequestBody ListasTiposPersonas obj) {
+        return repository.save(obj);
+    }
 }

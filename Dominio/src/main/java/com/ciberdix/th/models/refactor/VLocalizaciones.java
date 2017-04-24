@@ -2,17 +2,16 @@ package com.ciberdix.th.models.refactor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Id;
 
 /**
- * Created by faaguirre on 3/30/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_Localizaciones", schema = "crz_th", catalog = "CREZCAMOS")
 public class VLocalizaciones {
     private Integer idLocalizacion;
     private Integer idTipoDireccion;
-    private String nombreListaTipoDireccion;
+    private String nombre;
     private String direccion;
     private String latitud;
     private String longitud;
@@ -44,13 +43,13 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "NombreListaTipoDireccion")
-    public String getNombreListaTipoDireccion() {
-        return nombreListaTipoDireccion;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreListaTipoDireccion(String nombreListaTipoDireccion) {
-        this.nombreListaTipoDireccion = nombreListaTipoDireccion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Basic
@@ -154,8 +153,7 @@ public class VLocalizaciones {
             return false;
         if (idTipoDireccion != null ? !idTipoDireccion.equals(that.idTipoDireccion) : that.idTipoDireccion != null)
             return false;
-        if (nombreListaTipoDireccion != null ? !nombreListaTipoDireccion.equals(that.nombreListaTipoDireccion) : that.nombreListaTipoDireccion != null)
-            return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
         if (latitud != null ? !latitud.equals(that.latitud) : that.latitud != null) return false;
         if (longitud != null ? !longitud.equals(that.longitud) : that.longitud != null) return false;
@@ -178,7 +176,7 @@ public class VLocalizaciones {
     public int hashCode() {
         int result = idLocalizacion != null ? idLocalizacion.hashCode() : 0;
         result = 31 * result + (idTipoDireccion != null ? idTipoDireccion.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoDireccion != null ? nombreListaTipoDireccion.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
         result = 31 * result + (latitud != null ? latitud.hashCode() : 0);
         result = 31 * result + (longitud != null ? longitud.hashCode() : 0);

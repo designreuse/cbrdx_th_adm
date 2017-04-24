@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_Faltas", schema = "crz_th", catalog = "CREZCAMOS")
@@ -116,6 +116,7 @@ public class VFaltas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(vFaltas.auditoriaFecha) : vFaltas.auditoriaFecha != null)
             return false;
+
         return true;
     }
 

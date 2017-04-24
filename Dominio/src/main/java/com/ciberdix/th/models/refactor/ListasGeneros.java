@@ -1,64 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasGeneros", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasGeneros {
-    private Integer idListaGenero;
-    private String codigoListaGenero;
-    private String nombreListaGenero;
-    private Integer ordenListaGenero;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasGeneros() {
+    }
+
+    public ListasGeneros(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaGenero")
-    public Integer getIdListaGenero() {
-        return idListaGenero;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaGenero(Integer idListaGenero) {
-        this.idListaGenero = idListaGenero;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaGenero")
-    public String getCodigoListaGenero() {
-        return codigoListaGenero;
-    }
-
-    public void setCodigoListaGenero(String codigoListaGenero) {
-        this.codigoListaGenero = codigoListaGenero;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaGenero")
-    public String getNombreListaGenero() {
-        return nombreListaGenero;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaGenero(String nombreListaGenero) {
-        this.nombreListaGenero = nombreListaGenero;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaGenero")
-    public Integer getOrdenListaGenero() {
-        return ordenListaGenero;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaGenero(Integer ordenListaGenero) {
-        this.ordenListaGenero = ordenListaGenero;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -98,14 +107,10 @@ public class ListasGeneros {
 
         ListasGeneros that = (ListasGeneros) o;
 
-        if (idListaGenero != null ? !idListaGenero.equals(that.idListaGenero) : that.idListaGenero != null)
-            return false;
-        if (codigoListaGenero != null ? !codigoListaGenero.equals(that.codigoListaGenero) : that.codigoListaGenero != null)
-            return false;
-        if (nombreListaGenero != null ? !nombreListaGenero.equals(that.nombreListaGenero) : that.nombreListaGenero != null)
-            return false;
-        if (ordenListaGenero != null ? !ordenListaGenero.equals(that.ordenListaGenero) : that.ordenListaGenero != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -118,10 +123,10 @@ public class ListasGeneros {
 
     @Override
     public int hashCode() {
-        int result = idListaGenero != null ? idListaGenero.hashCode() : 0;
-        result = 31 * result + (codigoListaGenero != null ? codigoListaGenero.hashCode() : 0);
-        result = 31 * result + (nombreListaGenero != null ? nombreListaGenero.hashCode() : 0);
-        result = 31 * result + (ordenListaGenero != null ? ordenListaGenero.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

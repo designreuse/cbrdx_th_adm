@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by faaguirre on 3/31/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposTerceros", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposTerceros {
-    private Integer idListaTipoTercero;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
@@ -30,13 +30,14 @@ public class ListasTiposTerceros {
     }
 
     @Id
-    @Column(name = "IdListaTipoTercero")
-    public Integer getIdListaTipoTercero() {
-        return idListaTipoTercero;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoTercero(Integer idListaTipoTercero) {
-        this.idListaTipoTercero = idListaTipoTercero;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -106,8 +107,7 @@ public class ListasTiposTerceros {
 
         ListasTiposTerceros that = (ListasTiposTerceros) o;
 
-        if (idListaTipoTercero != null ? !idListaTipoTercero.equals(that.idListaTipoTercero) : that.idListaTipoTercero != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
@@ -123,7 +123,7 @@ public class ListasTiposTerceros {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoTercero != null ? idListaTipoTercero.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);

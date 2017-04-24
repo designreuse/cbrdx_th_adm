@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 6/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VFaltas {
     private Integer idFalta;
@@ -78,5 +78,4 @@ public class VFaltas {
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
-
 }

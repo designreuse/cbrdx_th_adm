@@ -1,6 +1,5 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Funcionalidades;
 import com.ciberdix.th.models.refactor.ListasClasificaciones;
 import com.ciberdix.th.repositories.refactor.ListasClasificacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,64 +9,53 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by Danny on 22/04/2017.
+ * Created by robertochajin on 18/04/17.
  */
-
-@RestController
+@CrossOrigin
 @Transactional
-@RequestMapping("/api/listasClasificaciones")
+@RestController
+@RequestMapping("/api/ListasClasificaciones")
 public class ListasClasificacionesRefactorController {
-
     @Autowired
-    private ListasClasificacionesRefactorRepository listasClasificacionesRefactorRepository;
+    private ListasClasificacionesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasClasificaciones> getLists() {
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.findAll();
+    List<ListasClasificaciones> findAll() {
+        return (List<ListasClasificaciones>) repository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/id/{idListaClasificacion}")
-    List<ListasClasificaciones> findByOne(@PathVariable Integer idListaClasificacion) {
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.findOne(idListaClasificacion);
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasClasificaciones> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec/{idListaClasificacion}")
-    List<ListasClasificaciones> queryAllByIdSecCamSec(@PathVariable Integer idListaClasificacion) {
-        ListasClasificaciones lc = listasClasificacionesRefactorRepository.findOne(idListaClasificacion);
-        String sec = "sec";
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.queryAllByIdSecCam(idListaClasificacion, sec);
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasClasificaciones findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/cam/{idListaClasificacion}")
-    List<ListasClasificaciones> queryAllByIdSecCamCam(@PathVariable Integer idListaClasificacion) {
-        ListasClasificaciones lc = listasClasificacionesRefactorRepository.findOne(idListaClasificacion);
-        String sec = "cam";
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.queryAllByIdSecCam(idListaClasificacion, sec);
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasClasificaciones> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/sec")
-    List<ListasClasificaciones> queryAllBySecCamSec() {
-        String sec = "sec";
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.queryAllBySecCam(sec);
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasClasificaciones> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/cam")
-    List<ListasClasificaciones> queryAllBySecCamCam() {
-        String cam = "cam";
-        return (List<ListasClasificaciones>) listasClasificacionesRefactorRepository.queryAllBySecCam(cam);
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasClasificaciones findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasClasificaciones createList(@RequestBody ListasClasificaciones l) {
-        return listasClasificacionesRefactorRepository.save(
-                new ListasClasificaciones(l.getCodigo(), l.getNombre(), l.getOrden(),
-                        l.getIndicadorHabilitado(), l.getAuditoriaUsuario()));
+    ListasClasificaciones create(@RequestBody ListasClasificaciones obj) {
+        return repository.save(new ListasClasificaciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ListasClasificaciones updateList(@RequestBody ListasClasificaciones listasClasificaciones) {
-        return listasClasificacionesRefactorRepository.save(listasClasificaciones);
+    ListasClasificaciones update(@RequestBody ListasClasificaciones obj) {
+        return repository.save(obj);
     }
-
-
 }

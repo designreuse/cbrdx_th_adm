@@ -1,24 +1,21 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
+@Table(name = "Listas", schema = "crz_th", catalog = "CREZCAMOS")
 public class Listas {
     private Integer idLista;
-    private String codigoLista;
+    private String nombreTabla;
     private String lista;
-    private Integer dependeLista;
-    private Integer dependeItem;
-    private Boolean indicadorHabilitado;
+    private Boolean indicadorEditable;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String descripcion;
 
     @Id
     @Column(name = "IdLista")
@@ -31,13 +28,13 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "CodigoLista")
-    public String getCodigoLista() {
-        return codigoLista;
+    @Column(name = "NombreTabla")
+    public String getNombreTabla() {
+        return nombreTabla;
     }
 
-    public void setCodigoLista(String codigoLista) {
-        this.codigoLista = codigoLista;
+    public void setNombreTabla(String nombreTabla) {
+        this.nombreTabla = nombreTabla;
     }
 
     @Basic
@@ -51,33 +48,13 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "DependeLista")
-    public Integer getDependeLista() {
-        return dependeLista;
+    @Column(name = "IndicadorEditable")
+    public Boolean getIndicadorEditable() {
+        return indicadorEditable;
     }
 
-    public void setDependeLista(Integer dependeLista) {
-        this.dependeLista = dependeLista;
-    }
-
-    @Basic
-    @Column(name = "DependeItem")
-    public Integer getDependeItem() {
-        return dependeItem;
-    }
-
-    public void setDependeItem(Integer dependeItem) {
-        this.dependeItem = dependeItem;
-    }
-
-    @Basic
-    @Column(name = "IndicadorHabilitado")
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
-    }
-
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
+    public void setIndicadorEditable(Boolean indicadorEditable) {
+        this.indicadorEditable = indicadorEditable;
     }
 
     @Basic
@@ -100,6 +77,16 @@ public class Listas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "Descripcion")
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -108,17 +95,15 @@ public class Listas {
         Listas listas = (Listas) o;
 
         if (idLista != null ? !idLista.equals(listas.idLista) : listas.idLista != null) return false;
-        if (codigoLista != null ? !codigoLista.equals(listas.codigoLista) : listas.codigoLista != null) return false;
+        if (nombreTabla != null ? !nombreTabla.equals(listas.nombreTabla) : listas.nombreTabla != null) return false;
         if (lista != null ? !lista.equals(listas.lista) : listas.lista != null) return false;
-        if (dependeLista != null ? !dependeLista.equals(listas.dependeLista) : listas.dependeLista != null)
-            return false;
-        if (dependeItem != null ? !dependeItem.equals(listas.dependeItem) : listas.dependeItem != null) return false;
-        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(listas.indicadorHabilitado) : listas.indicadorHabilitado != null)
+        if (indicadorEditable != null ? !indicadorEditable.equals(listas.indicadorEditable) : listas.indicadorEditable != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(listas.auditoriaUsuario) : listas.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(listas.auditoriaFecha) : listas.auditoriaFecha != null)
             return false;
+        if (descripcion != null ? !descripcion.equals(listas.descripcion) : listas.descripcion != null) return false;
 
         return true;
     }
@@ -126,13 +111,12 @@ public class Listas {
     @Override
     public int hashCode() {
         int result = idLista != null ? idLista.hashCode() : 0;
-        result = 31 * result + (codigoLista != null ? codigoLista.hashCode() : 0);
+        result = 31 * result + (nombreTabla != null ? nombreTabla.hashCode() : 0);
         result = 31 * result + (lista != null ? lista.hashCode() : 0);
-        result = 31 * result + (dependeLista != null ? dependeLista.hashCode() : 0);
-        result = 31 * result + (dependeItem != null ? dependeItem.hashCode() : 0);
-        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (indicadorEditable != null ? indicadorEditable.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         return result;
     }
 }

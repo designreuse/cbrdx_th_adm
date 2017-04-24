@@ -4,14 +4,14 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 public class VTercerosFamiliares {
     private Integer idTerceroFamiliar;
     private Long idTercero;
     private Long idFamiliar;
     private Integer idTipoDocumento;
-    private String nombreListaTipoDocumento;
+    private String tipoDocumento;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -21,7 +21,7 @@ public class VTercerosFamiliares {
     private String numeroDocumento;
     private Integer idConvivencia;
     private Integer idParentesco;
-    private String nombreListaParentesco;
+    private String parentesco;
     private String telefonoFijo;
     private String telefonoCelular;
     private Boolean indicadorHabilitado;
@@ -63,12 +63,12 @@ public class VTercerosFamiliares {
         this.idTipoDocumento = idTipoDocumento;
     }
 
-    public String getNombreListaTipoDocumento() {
-        return nombreListaTipoDocumento;
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
-        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     public String getPrimerNombre() {
@@ -143,12 +143,12 @@ public class VTercerosFamiliares {
         this.idParentesco = idParentesco;
     }
 
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
+    public String getParentesco() {
+        return parentesco;
     }
 
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
     }
 
     public String getTelefonoFijo() {
@@ -167,14 +167,6 @@ public class VTercerosFamiliares {
         this.telefonoCelular = telefonoCelular;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -189,6 +181,14 @@ public class VTercerosFamiliares {
 
     public void setIdLocalizacion(Integer idLocalizacion) {
         this.idLocalizacion = idLocalizacion;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Integer getIdTipoDireccion() {

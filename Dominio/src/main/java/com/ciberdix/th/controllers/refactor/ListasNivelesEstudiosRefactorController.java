@@ -1,42 +1,59 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ListasNivelesEstudios;
-import java.util.List;
+import com.ciberdix.th.repositories.refactor.ListasNivelesEstudiosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.ListasNivelesEstudiosRefactorRepository;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/nivelesEstudios")
+@RequestMapping("/api/ListasNivelesEstudios")
 public class ListasNivelesEstudiosRefactorController {
-    
+
     @Autowired
-    private ListasNivelesEstudiosRefactorRepository listasNivelesEstudiosRefactorRepository;
+    private ListasNivelesEstudiosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasNivelesEstudios> listarNivelesEstudio() {
-        return (List<ListasNivelesEstudios>) listasNivelesEstudiosRefactorRepository.findAll();
+    List<ListasNivelesEstudios> findAll() {
+        return (List<ListasNivelesEstudios>) repository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
-    List<ListasNivelesEstudios> listEnabled() {
-        return listasNivelesEstudiosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasNivelesEstudios> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
     }
-    
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasNivelesEstudios findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasNivelesEstudios> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasNivelesEstudios> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasNivelesEstudios findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
-    ListasNivelesEstudios crearNivelesEstudios(@RequestBody ListasNivelesEstudios obj) {
-        return listasNivelesEstudiosRefactorRepository.save(obj);
+    ListasNivelesEstudios create(@RequestBody ListasNivelesEstudios obj) {
+        return repository.save(new ListasNivelesEstudios(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarNivelesEstudios(@RequestBody ListasNivelesEstudios obj){
-        listasNivelesEstudiosRefactorRepository.save(obj);
-    }    
+    ListasNivelesEstudios update(@RequestBody ListasNivelesEstudios obj) {
+        return repository.save(obj);
+    }
 }

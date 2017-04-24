@@ -18,35 +18,50 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/tiposOcupaciones")
+@RequestMapping("/api/ListasTiposOcupaciones")
 @CrossOrigin
 public class ListasTiposOcupacionesRefactorController {
 
     @Autowired
-    private ListasTiposOcupacionesRefactorRepository tiposOcupacionesRepository;
+    private ListasTiposOcupacionesRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ListasTiposOcupaciones> listarTiposOcupaciones() {
-        return (List<ListasTiposOcupaciones>) tiposOcupacionesRepository.findAll();
+    List<ListasTiposOcupaciones> findAll() {
+        return (List<ListasTiposOcupaciones>) repository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET,path = "/enabled/")
-    List<ListasTiposOcupaciones> listEnabled() {
-        return tiposOcupacionesRepository.findByIndicadorHabilitadoIsTrue();
-    }    
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    ListasTiposOcupaciones obtenerTiposOcupaciones(@PathVariable Integer id) {
-        return tiposOcupacionesRepository.findOne(id);
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasTiposOcupaciones> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTiposOcupaciones findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTiposOcupaciones> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTiposOcupaciones> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasTiposOcupaciones findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTiposOcupaciones crearListasTiposOcupaciones(@RequestBody ListasTiposOcupaciones obj) {
-        return tiposOcupacionesRepository.save(obj);
+    ListasTiposOcupaciones create(@RequestBody ListasTiposOcupaciones obj) {
+        return repository.save(new ListasTiposOcupaciones(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarListasTiposOcupaciones(@RequestBody ListasTiposOcupaciones obj) {
-        tiposOcupacionesRepository.save(obj);
+    ListasTiposOcupaciones update(@RequestBody ListasTiposOcupaciones obj) {
+        return repository.save(obj);
     }
 }

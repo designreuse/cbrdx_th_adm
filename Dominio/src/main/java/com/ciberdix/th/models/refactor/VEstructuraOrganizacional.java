@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 18/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_EstructuraOrganizacional", schema = "crz_th", catalog = "CREZCAMOS")
@@ -22,7 +22,7 @@ public class VEstructuraOrganizacional {
     private Integer idEstructuraFisica;
     private String estructuraFisica;
     private Integer idTipoDocumento;
-    private String nombreListaTipoDocumento;
+    private String tipoDocumento;
     private String numeroDocumento;
     private Integer idLocalizacion;
     private String localizacion;
@@ -168,13 +168,13 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "NombreListaTipoDocumento")
-    public String getNombreListaTipoDocumento() {
-        return nombreListaTipoDocumento;
+    @Column(name = "TipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
-        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     @Basic
@@ -297,6 +297,16 @@ public class VEstructuraOrganizacional {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorPlantaConfirmada")
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -324,7 +334,7 @@ public class VEstructuraOrganizacional {
             return false;
         if (idTipoDocumento != null ? !idTipoDocumento.equals(that.idTipoDocumento) : that.idTipoDocumento != null)
             return false;
-        if (nombreListaTipoDocumento != null ? !nombreListaTipoDocumento.equals(that.nombreListaTipoDocumento) : that.nombreListaTipoDocumento != null)
+        if (tipoDocumento != null ? !tipoDocumento.equals(that.tipoDocumento) : that.tipoDocumento != null)
             return false;
         if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null)
             return false;
@@ -343,6 +353,8 @@ public class VEstructuraOrganizacional {
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
+        if (indicadorPlantaConfirmada != null ? !indicadorPlantaConfirmada.equals(that.indicadorPlantaConfirmada) : that.indicadorPlantaConfirmada != null)
             return false;
 
         return true;
@@ -363,7 +375,7 @@ public class VEstructuraOrganizacional {
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
         result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoDocumento != null ? nombreListaTipoDocumento.hashCode() : 0);
+        result = 31 * result + (tipoDocumento != null ? tipoDocumento.hashCode() : 0);
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
         result = 31 * result + (localizacion != null ? localizacion.hashCode() : 0);
@@ -376,16 +388,7 @@ public class VEstructuraOrganizacional {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorPlantaConfirmada != null ? indicadorPlantaConfirmada.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IndicadorPlantaConfirmada")
-    public Boolean getIndicadorPlantaConfirmada() {
-        return indicadorPlantaConfirmada;
-    }
-
-    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
-        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }
