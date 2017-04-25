@@ -92,7 +92,7 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, request, Usuarios.class);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/")
     ResponseEntity<?> updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
@@ -109,10 +109,10 @@ public class UsuariosRefactorController {
                 )
         );
 
-        if (authentication != null){
+        if (authentication != null) {
             restTemplate.put(serviceUrl + "/cambiarPass", obj);
             return ResponseEntity.ok("La contraseña se cambió exitosamente");
-        }else{
+        } else {
             return ResponseEntity.ok("La contraseña actual es incorrecta, verifíquela e intente nuevamente");
         }
     }
@@ -137,7 +137,7 @@ public class UsuariosRefactorController {
         message.setTo(recipients);
         message.setPreserveRecipients(true);
         try {
-            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message,false);
+            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
         } catch (MandrillApiError mandrillApiError) {
             mandrillApiError.printStackTrace();
         } catch (IOException e) {
