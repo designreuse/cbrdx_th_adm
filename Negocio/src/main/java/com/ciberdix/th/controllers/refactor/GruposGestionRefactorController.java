@@ -14,7 +14,7 @@ import java.util.List;
 public class GruposGestionRefactorController {
 
     Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/gruposGestion";
+    private String serviceUrl = globales.getUrl() + "/api/gruposGestion/";
 
     @RequestMapping(method = RequestMethod.GET)
     List<GruposGestion> queryCenrtosCostos() {
