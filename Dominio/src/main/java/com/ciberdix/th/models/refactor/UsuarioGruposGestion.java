@@ -15,14 +15,14 @@ public class UsuarioGruposGestion {
     private Integer idGrupoGestion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private Timestamp fechaInicio;
+    private Timestamp fechaFin;
     private Boolean indicadorHabilitado;
 
     public UsuarioGruposGestion() {
     }
 
-    public UsuarioGruposGestion(Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado) {
+    public UsuarioGruposGestion(Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Timestamp fechaInicio, Timestamp fechaFin, Boolean indicadorHabilitado) {
         this.idUsuario = idUsuario;
         this.idGrupoGestion = idGrupoGestion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -85,21 +85,21 @@ public class UsuarioGruposGestion {
 
     @Basic
     @Column(name = "FechaInicio")
-    public Date getFechaInicio() {
+    public Timestamp getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(Timestamp fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     @Basic
     @Column(name = "FechaFin")
-    public Date getFechaFin() {
+    public Timestamp getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(Timestamp fechaFin) {
         this.fechaFin = fechaFin;
     }
 
