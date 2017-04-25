@@ -54,12 +54,12 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
             if (policyFilePath != null && !policyFilePath.isEmpty()
                     && Files.exists(Paths.get(policyFilePath))) {
                 logger.info("[init] Loading policy from custom file: {}", policyFilePath);
-                //rulesArray = mapper.readValue(new File(policyFilePath), PolicyRule[].class);
-                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
+                rulesArray = mapper.readValue(new File(policyFilePath), PolicyRule[].class);
+                //rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
             } else {
                 logger.info("[init] Custom policy file not found. Loading default policy");
-                //rulesArray = mapper.readValue(getClass().getClassLoader().getResourceAsStream(DEFAULT_POLICY_FILE_NAME), PolicyRule[].class);
-                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
+                rulesArray = mapper.readValue(getClass().getClassLoader().getResourceAsStream(DEFAULT_POLICY_FILE_NAME), PolicyRule[].class);
+                //rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
             }
             this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
             logger.info("[init] Policy loaded successfully.");

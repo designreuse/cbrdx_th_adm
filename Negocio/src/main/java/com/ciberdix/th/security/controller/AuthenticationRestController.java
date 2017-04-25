@@ -66,7 +66,7 @@ public class AuthenticationRestController {
                 RestTemplate restTemplate = new RestTemplate();
                 Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
                 Terceros tercero = restTemplate.getForObject("http://localhost:8444/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
-                final String token = jwtTokenUtil.generateToken(userDetails, device, tercero);
+                final String token = jwtTokenUtil.generateToken(userDetails, device, user, tercero);
                 return ResponseEntity.ok(new JwtAuthenticationResponse(token));
             } else {
                 return ResponseEntity.badRequest().build();
