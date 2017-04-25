@@ -34,9 +34,9 @@ public class RolesFuncionalidadesControlesRefactorController {
         return vRolesFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarFuncionalidad/{id}")
-    List<VRolesFuncionalidadesControles> findByIdFuncionalidadControl(@PathVariable Integer id) {
-        return vRolesFuncionalidadesControlesRefactorRepository.findByIdFuncionalidadControl(id);
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarFuncionalidad/{idRol}/{idFuncionalidad}")
+    List<VRolesFuncionalidadesControles> findByIdFuncionalidadControl(@PathVariable Integer idRol, @PathVariable Integer idFuncionalidad) {
+        return vRolesFuncionalidadesControlesRefactorRepository.findByIdRolIdFuncionalidad(idRol, idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -47,8 +47,8 @@ public class RolesFuncionalidadesControlesRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     RolesFuncionalidadesControles create(@RequestBody RolesFuncionalidadesControles obj) {
         return rolesFuncionalidadesControlesRefactorRepository.save(
-                new RolesFuncionalidadesControles(obj.getIdRol(),obj.getIdFuncionalidadControl(),
-                        obj.getIndicadorEditar(),obj.getIndicadorHabilitado(),obj.getAuditoriaUsuario()));
+                new RolesFuncionalidadesControles(obj.getIdRol(), obj.getIdFuncionalidadControl(),
+                        obj.getIndicadorEditar(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

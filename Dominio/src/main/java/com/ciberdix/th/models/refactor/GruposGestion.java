@@ -1,9 +1,6 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -11,6 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "GruposGestion", schema = "crz_th", catalog = "CREZCAMOS")
 public class GruposGestion {
     private Integer idGrupoGestion;
     private String grupoGestion;
@@ -23,7 +21,23 @@ public class GruposGestion {
     private Date fechaFin;
     private String codigoGrupoGestion;
 
+    public GruposGestion() {
+    }
+
+    public GruposGestion(String grupoGestion, String funciones, String responsabilidades, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, String codigoGrupoGestion) {
+        this.grupoGestion = grupoGestion;
+        this.funciones = funciones;
+        this.responsabilidades = responsabilidades;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.codigoGrupoGestion = codigoGrupoGestion;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdGrupoGestion")
     public Integer getIdGrupoGestion() {
         return idGrupoGestion;

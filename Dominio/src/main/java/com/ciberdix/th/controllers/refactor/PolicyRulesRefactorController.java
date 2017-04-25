@@ -29,10 +29,10 @@ public class PolicyRulesRefactorController {
         String accion = "";
 
         for (VPolicyRules pr : policies) {
-            if (pr.getIndicadorHabilitado()){
+            if (pr.getIndicadorHabilitado() != null && pr.getIndicadorHabilitado()){
                 accion = "'LISTAR'";
 
-                if (pr.getIndicadorInsertar())
+                if (pr.getIndicadorInsertar() != null && pr.getIndicadorInsertar())
                     accion += ",'INSERTAR'";
             }
 
