@@ -25,14 +25,29 @@ public class UsuariosGruposGestionController {
         return (List<UsuarioGruposGestion>) usuarioGruposGestionRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path="/vistas")
+    List<VUsuarioGruposGestion> getVLists() {
+        return (List<VUsuarioGruposGestion>) vUsuarioGruposGestionRefactorRepository.findAll();
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/vista/{idUsuario}")
-    List<VUsuarioGruposGestion> getVLists(@PathVariable Integer idUsuario) {
+    List<VUsuarioGruposGestion> getVListsId(@PathVariable Integer idUsuario) {
         return (List<VUsuarioGruposGestion>) vUsuarioGruposGestionRefactorRepository.findByIdUsuario(idUsuario);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idLista}")
     UsuarioGruposGestion findList(@PathVariable Integer idLista) {
         return usuarioGruposGestionRepository.findOne(idLista);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idUsuario}")
+    List<UsuarioGruposGestion> findEnabled(@PathVariable Integer idUsuario) {
+        return (List<UsuarioGruposGestion>) usuarioGruposGestionRepository.findByIndicadorHabilitadoIsTrueAndIdUsuario(idUsuario);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/vista/enabled/{idUsuario}")
+    List<VUsuarioGruposGestion> findVEnabled(@PathVariable Integer idUsuario) {
+        return (List<VUsuarioGruposGestion>) vUsuarioGruposGestionRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdUsuario(idUsuario);
     }
 
     @RequestMapping(method = RequestMethod.POST)
