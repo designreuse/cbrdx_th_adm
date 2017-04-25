@@ -1,9 +1,6 @@
 package com.ciberdix.th.security.controller;
 
-import com.ciberdix.th.model.refactor.Contrasena;
-import com.ciberdix.th.model.refactor.CorreoElectronico;
-import com.ciberdix.th.model.refactor.RecaptchaResponse;
-import com.ciberdix.th.model.refactor.Usuarios;
+import com.ciberdix.th.model.refactor.*;
 import com.ciberdix.th.security.JwtAuthenticationRequest;
 import com.ciberdix.th.security.JwtTokenUtil;
 import com.ciberdix.th.security.JwtUser;
@@ -66,7 +63,10 @@ public class AuthenticationRestController {
         if (authentication != null) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             if (!userDetails.getAuthorities().isEmpty()) {
-                final String token = jwtTokenUtil.generateToken(userDetails, device);
+                RestTemplate restTemplate = new RestTemplate();
+                Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
+                Terceros tercero = restTemplate.getForObject("http://localhost:8444/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
+                final String token = jwtTokenUtil.generateToken(userDetails, device, tercero);
                 return ResponseEntity.ok(new JwtAuthenticationResponse(token));
             } else {
                 return ResponseEntity.badRequest().build();
