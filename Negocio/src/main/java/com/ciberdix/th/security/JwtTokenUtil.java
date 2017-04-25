@@ -25,6 +25,7 @@ public class JwtTokenUtil implements Serializable {
     static final String CLAIM_KEY_CREATED = "created";
     static final String CLAIM_USUARIO = "usuario";
     static final String CLAIM_NOMBRE_TERCERO = "nombre";
+    static final String CLAIM_NOMBRE_TERCERO_CORTO = "nombreCorto";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
@@ -141,6 +142,7 @@ public class JwtTokenUtil implements Serializable {
         claims.put(CLAIM_KEY_CREATED, new Date());
         claims.put(CLAIM_USUARIO, user);
         claims.put(CLAIM_NOMBRE_TERCERO, tercero.getPrimerNombre() + " " + tercero.getSegundoNombre() + " " + tercero.getPrimerApellido() + " " + tercero.getSegundoApellido());
+        claims.put(CLAIM_NOMBRE_TERCERO_CORTO, tercero.getPrimerNombre() + " " + tercero.getPrimerApellido());
         return generateToken(claims);
     }
 
