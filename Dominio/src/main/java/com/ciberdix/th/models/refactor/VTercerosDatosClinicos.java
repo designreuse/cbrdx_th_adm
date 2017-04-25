@@ -1,20 +1,19 @@
 package com.ciberdix.th.models.refactor;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
-import javax.persistence.*;
 
 /**
- *
- * @author Roberto Chajin Ortiz
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_TercerosDatosClinicos", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosDatosClinicos {
-    private Integer idTerceroDatoClinico;
     private Integer idDiagnosticoCie;
     private String codigo;
     private String descripcion;
+    private Integer idTerceroDatoClinico;
     private Long idTercero;
     private Integer idDiagnostico;
     private Date fechaInicio;
@@ -24,16 +23,6 @@ public class VTercerosDatosClinicos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroDatoClinico")
-    public Integer getIdTerceroDatoClinico() {
-        return idTerceroDatoClinico;
-    }
-
-    public void setIdTerceroDatoClinico(Integer idTerceroDatoClinico) {
-        this.idTerceroDatoClinico = idTerceroDatoClinico;
-    }
-
-    @Basic
     @Column(name = "IdDiagnosticoCIE")
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
@@ -44,7 +33,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "Codigo")    
+    @Column(name = "Codigo")
     public String getCodigo() {
         return codigo;
     }
@@ -54,7 +43,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "Descripcion")    
+    @Column(name = "Descripcion")
     public String getDescripcion() {
         return descripcion;
     }
@@ -64,7 +53,17 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdTercero")    
+    @Column(name = "IdTerceroDatoClinico")
+    public Integer getIdTerceroDatoClinico() {
+        return idTerceroDatoClinico;
+    }
+
+    public void setIdTerceroDatoClinico(Integer idTerceroDatoClinico) {
+        this.idTerceroDatoClinico = idTerceroDatoClinico;
+    }
+
+    @Basic
+    @Column(name = "IdTercero")
     public Long getIdTercero() {
         return idTercero;
     }
@@ -74,7 +73,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdDiagnostico")    
+    @Column(name = "IdDiagnostico")
     public Integer getIdDiagnostico() {
         return idDiagnostico;
     }
@@ -140,12 +139,12 @@ public class VTercerosDatosClinicos {
 
         VTercerosDatosClinicos that = (VTercerosDatosClinicos) o;
 
-        if (idTerceroDatoClinico != null ? !idTerceroDatoClinico.equals(that.idTerceroDatoClinico) : that.idTerceroDatoClinico != null)
-            return false;
         if (idDiagnosticoCie != null ? !idDiagnosticoCie.equals(that.idDiagnosticoCie) : that.idDiagnosticoCie != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
+        if (idTerceroDatoClinico != null ? !idTerceroDatoClinico.equals(that.idTerceroDatoClinico) : that.idTerceroDatoClinico != null)
+            return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (idDiagnostico != null ? !idDiagnostico.equals(that.idDiagnostico) : that.idDiagnostico != null)
             return false;

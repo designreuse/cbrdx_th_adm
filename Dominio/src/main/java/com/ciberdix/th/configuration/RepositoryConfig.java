@@ -46,12 +46,10 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(ListasFactoresRh.class);
         config.exposeIdsFor(ListasGeneros.class);
         config.exposeIdsFor(ListasNivelesEstudios.class);
-        config.exposeIdsFor(ListasSectoresEmpresas.class);
         config.exposeIdsFor(ListasTiposAfiliacion.class);
         config.exposeIdsFor(ListasTiposDocumentos.class);
         config.exposeIdsFor(ListasTiposPersonas.class);
         config.exposeIdsFor(Ocupaciones.class);
-        config.exposeIdsFor(ListasSectoresEmpresas.class);
         config.exposeIdsFor(ListasTiposAfiliacion.class);
         config.exposeIdsFor(ListasTiposDocumentos.class);
         config.exposeIdsFor(ListasTiposPersonas.class);
@@ -172,5 +170,14 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(RolesFuncionalidades.class);
         config.exposeIdsFor(VFuncionalidades.class);
         config.exposeIdsFor(VFuncionalidadesControles.class);
+        config.exposeIdsFor(VUsuarios.class);
+        config.exposeIdsFor(VRolesFuncionalidades.class);
+        config.exposeIdsFor(VRolesFuncionalidadesControles.class);
+        config.exposeIdsFor(RolesWidgets.class);
+        config.exposeIdsFor(VRolesWidgets.class);
+        config.exposeIdsFor(VPolicyRules.class);
+        config.exposeIdsFor(Listas.class);
+        config.exposeIdsFor(GruposGestion.class);
+        config.exposeIdsFor(VUsuarioRolesCantidad.class);
     }
 }

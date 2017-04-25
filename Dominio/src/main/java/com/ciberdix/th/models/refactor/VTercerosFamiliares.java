@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_TercerosFamiliares", schema = "crz_th", catalog = "CREZCAMOS")
@@ -14,7 +14,7 @@ public class VTercerosFamiliares {
     private Long idTercero;
     private Long idFamiliar;
     private Integer idTipoDocumento;
-    private String nombreListaTipoDocumento;
+    private String tipoDocumento;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -24,7 +24,7 @@ public class VTercerosFamiliares {
     private String numeroDocumento;
     private Integer idConvivencia;
     private Integer idParentesco;
-    private String nombreListaParentesco;
+    private String parentesco;
     private String telefonoFijo;
     private String telefonoCelular;
     private Boolean indicadorHabilitado;
@@ -75,13 +75,13 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "NombreListaTipoDocumento")
-    public String getNombreListaTipoDocumento() {
-        return nombreListaTipoDocumento;
+    @Column(name = "TipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setNombreListaTipoDocumento(String nombreListaTipoDocumento) {
-        this.nombreListaTipoDocumento = nombreListaTipoDocumento;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     @Basic
@@ -175,13 +175,13 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "NombreListaParentesco")
-    public String getNombreListaParentesco() {
-        return nombreListaParentesco;
+    @Column(name = "Parentesco")
+    public String getParentesco() {
+        return parentesco;
     }
 
-    public void setNombreListaParentesco(String nombreListaParentesco) {
-        this.nombreListaParentesco = nombreListaParentesco;
+    public void setParentesco(String parentesco) {
+        this.parentesco = parentesco;
     }
 
     @Basic
@@ -277,7 +277,7 @@ public class VTercerosFamiliares {
         if (idFamiliar != null ? !idFamiliar.equals(that.idFamiliar) : that.idFamiliar != null) return false;
         if (idTipoDocumento != null ? !idTipoDocumento.equals(that.idTipoDocumento) : that.idTipoDocumento != null)
             return false;
-        if (nombreListaTipoDocumento != null ? !nombreListaTipoDocumento.equals(that.nombreListaTipoDocumento) : that.nombreListaTipoDocumento != null)
+        if (tipoDocumento != null ? !tipoDocumento.equals(that.tipoDocumento) : that.tipoDocumento != null)
             return false;
         if (primerNombre != null ? !primerNombre.equals(that.primerNombre) : that.primerNombre != null) return false;
         if (segundoNombre != null ? !segundoNombre.equals(that.segundoNombre) : that.segundoNombre != null)
@@ -295,8 +295,7 @@ public class VTercerosFamiliares {
         if (idConvivencia != null ? !idConvivencia.equals(that.idConvivencia) : that.idConvivencia != null)
             return false;
         if (idParentesco != null ? !idParentesco.equals(that.idParentesco) : that.idParentesco != null) return false;
-        if (nombreListaParentesco != null ? !nombreListaParentesco.equals(that.nombreListaParentesco) : that.nombreListaParentesco != null)
-            return false;
+        if (parentesco != null ? !parentesco.equals(that.parentesco) : that.parentesco != null) return false;
         if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) return false;
         if (telefonoCelular != null ? !telefonoCelular.equals(that.telefonoCelular) : that.telefonoCelular != null)
             return false;
@@ -321,7 +320,7 @@ public class VTercerosFamiliares {
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idFamiliar != null ? idFamiliar.hashCode() : 0);
         result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoDocumento != null ? nombreListaTipoDocumento.hashCode() : 0);
+        result = 31 * result + (tipoDocumento != null ? tipoDocumento.hashCode() : 0);
         result = 31 * result + (primerNombre != null ? primerNombre.hashCode() : 0);
         result = 31 * result + (segundoNombre != null ? segundoNombre.hashCode() : 0);
         result = 31 * result + (primerApellido != null ? primerApellido.hashCode() : 0);
@@ -331,7 +330,7 @@ public class VTercerosFamiliares {
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (idConvivencia != null ? idConvivencia.hashCode() : 0);
         result = 31 * result + (idParentesco != null ? idParentesco.hashCode() : 0);
-        result = 31 * result + (nombreListaParentesco != null ? nombreListaParentesco.hashCode() : 0);
+        result = 31 * result + (parentesco != null ? parentesco.hashCode() : 0);
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
         result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

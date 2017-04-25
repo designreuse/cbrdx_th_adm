@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 17/04/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasTiposEstructuras", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposEstructuras {
-    private Integer idListaTipoEstructura;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
@@ -17,14 +17,27 @@ public class ListasTiposEstructuras {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
-    @Column(name = "IdListaTipoEstructura")
-    public Integer getIdListaTipoEstructura() {
-        return idListaTipoEstructura;
+    public ListasTiposEstructuras() {
     }
 
-    public void setIdListaTipoEstructura(Integer idListaTipoEstructura) {
-        this.idListaTipoEstructura = idListaTipoEstructura;
+    public ListasTiposEstructuras(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -94,8 +107,7 @@ public class ListasTiposEstructuras {
 
         ListasTiposEstructuras that = (ListasTiposEstructuras) o;
 
-        if (idListaTipoEstructura != null ? !idListaTipoEstructura.equals(that.idListaTipoEstructura) : that.idListaTipoEstructura != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
@@ -111,7 +123,7 @@ public class ListasTiposEstructuras {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoEstructura != null ? idListaTipoEstructura.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);

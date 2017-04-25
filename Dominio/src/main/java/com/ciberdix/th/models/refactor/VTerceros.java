@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/3/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_Terceros", schema = "crz_th", catalog = "CREZCAMOS")
@@ -738,6 +738,16 @@ public class VTerceros {
         this.tipoTercero = tipoTercero;
     }
 
+    @Basic
+    @Column(name = "SitioWeb")
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public void setSitioWeb(String sitioWeb) {
+        this.sitioWeb = sitioWeb;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -864,6 +874,7 @@ public class VTerceros {
             return false;
         if (tipoTercero != null ? !tipoTercero.equals(vTerceros.tipoTercero) : vTerceros.tipoTercero != null)
             return false;
+        if (sitioWeb != null ? !sitioWeb.equals(vTerceros.sitioWeb) : vTerceros.sitioWeb != null) return false;
 
         return true;
     }
@@ -936,16 +947,7 @@ public class VTerceros {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (idTipoTercero != null ? idTipoTercero.hashCode() : 0);
         result = 31 * result + (tipoTercero != null ? tipoTercero.hashCode() : 0);
+        result = 31 * result + (sitioWeb != null ? sitioWeb.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "SitioWeb")
-    public String getSitioWeb() {
-        return sitioWeb;
-    }
-
-    public void setSitioWeb(String sitioWeb) {
-        this.sitioWeb = sitioWeb;
     }
 }

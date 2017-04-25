@@ -3,11 +3,18 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.model.refactor.Usuarios;
 import com.ciberdix.th.model.refactor.VUsuarios;
 import com.ciberdix.th.model.refactor.VHistoricoUsuarios;
+import com.ciberdix.th.security.providers.SystemAuthenticationProvider;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -30,6 +37,9 @@ public class UsuariosRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
+    @Autowired
+    UserDetailsService userDetailsService;
+
     @RequestMapping(method = RequestMethod.GET)
     List<Usuarios> findAll() {
         String serviceUrl = baseUrl + "/api/usuarios/";
@@ -40,7 +50,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/")
     List<VUsuarios> queryCentrosCostos() {
-        String serviceUrl = baseUrl + "/api/vista/";
+        String serviceUrl = baseUrl + "/api/usuarios/vista/";
         RestTemplate restTemplate = new RestTemplate();
         VUsuarios[] parametros = restTemplate.getForObject(serviceUrl, VUsuarios[].class);
         return Arrays.asList(parametros);
@@ -48,7 +58,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/auditoria/{objeto}/{idObjeto}")
     List<VHistoricoUsuarios> queryCentrosCostos(@PathVariable String objeto, @PathVariable Long idObjeto) {
-        String serviceUrl = baseUrl + "/api/auditoria/";
+        String serviceUrl = baseUrl + "/api/usuarios/auditoria/";
         RestTemplate restTemplate = new RestTemplate();
         VHistoricoUsuarios[] parametros = restTemplate.getForObject(serviceUrl + objeto + "/" + idObjeto, VHistoricoUsuarios[].class);
         return Arrays.asList(parametros);
@@ -82,16 +92,28 @@ public class UsuariosRefactorController {
         restTemplate.put(serviceUrl, request, Usuarios.class);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}")
-    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
+    @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/")
+    ResponseEntity<?> updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
+
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        if(!obj.getContrasena().equals(bCryptPasswordEncoder.encode(oldPass))){
-            restTemplate.put(serviceUrl + "/cambiarPass/" + oldPass , obj);
-            return true;
-        }else{
-            return false;
+        obj.setContrasena(bCryptPasswordEncoder.encode(obj.getContrasena()));
+
+        SystemAuthenticationProvider systemAuthenticationProvider = new SystemAuthenticationProvider();
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(obj.getUsuarioSistema());
+        final Authentication authentication = systemAuthenticationProvider.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        obj.getUsuarioSistema(),
+                        oldPass
+                )
+        );
+
+        if (authentication != null) {
+            restTemplate.put(serviceUrl + "/cambiarPass", obj);
+            return ResponseEntity.ok("La contraseña se cambió exitosamente");
+        } else {
+            return ResponseEntity.ok("La contraseña actual es incorrecta, verifíquela e intente nuevamente");
         }
     }
 
@@ -115,7 +137,7 @@ public class UsuariosRefactorController {
         message.setTo(recipients);
         message.setPreserveRecipients(true);
         try {
-            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message,false);
+            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
         } catch (MandrillApiError mandrillApiError) {
             mandrillApiError.printStackTrace();
         } catch (IOException e) {

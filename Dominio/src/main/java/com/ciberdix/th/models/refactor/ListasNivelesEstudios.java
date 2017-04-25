@@ -1,64 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import javax.persistence.Table;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasNivelesEstudios", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasNivelesEstudios {
-    private Integer idListaNivelEstudio;
-    private String codigoListaNivelEstudio;
-    private String nombreListaNivelEstudio;
-    private Integer ordenListaNivelEstudio;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasNivelesEstudios() {
+    }
+
+    public ListasNivelesEstudios(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaNivelEstudio")
-    public Integer getIdListaNivelEstudio() {
-        return idListaNivelEstudio;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaNivelEstudio(Integer idListaNivelEstudio) {
-        this.idListaNivelEstudio = idListaNivelEstudio;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaNivelEstudio")
-    public String getCodigoListaNivelEstudio() {
-        return codigoListaNivelEstudio;
-    }
-
-    public void setCodigoListaNivelEstudio(String codigoListaNivelEstudio) {
-        this.codigoListaNivelEstudio = codigoListaNivelEstudio;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaNivelEstudio")
-    public String getNombreListaNivelEstudio() {
-        return nombreListaNivelEstudio;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaNivelEstudio(String nombreListaNivelEstudio) {
-        this.nombreListaNivelEstudio = nombreListaNivelEstudio;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaNivelEstudio")
-    public Integer getOrdenListaNivelEstudio() {
-        return ordenListaNivelEstudio;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaNivelEstudio(Integer ordenListaNivelEstudio) {
-        this.ordenListaNivelEstudio = ordenListaNivelEstudio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -98,14 +107,10 @@ public class ListasNivelesEstudios {
 
         ListasNivelesEstudios that = (ListasNivelesEstudios) o;
 
-        if (idListaNivelEstudio != null ? !idListaNivelEstudio.equals(that.idListaNivelEstudio) : that.idListaNivelEstudio != null)
-            return false;
-        if (codigoListaNivelEstudio != null ? !codigoListaNivelEstudio.equals(that.codigoListaNivelEstudio) : that.codigoListaNivelEstudio != null)
-            return false;
-        if (nombreListaNivelEstudio != null ? !nombreListaNivelEstudio.equals(that.nombreListaNivelEstudio) : that.nombreListaNivelEstudio != null)
-            return false;
-        if (ordenListaNivelEstudio != null ? !ordenListaNivelEstudio.equals(that.ordenListaNivelEstudio) : that.ordenListaNivelEstudio != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -118,10 +123,10 @@ public class ListasNivelesEstudios {
 
     @Override
     public int hashCode() {
-        int result = idListaNivelEstudio != null ? idListaNivelEstudio.hashCode() : 0;
-        result = 31 * result + (codigoListaNivelEstudio != null ? codigoListaNivelEstudio.hashCode() : 0);
-        result = 31 * result + (nombreListaNivelEstudio != null ? nombreListaNivelEstudio.hashCode() : 0);
-        result = 31 * result + (ordenListaNivelEstudio != null ? ordenListaNivelEstudio.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

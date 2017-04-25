@@ -30,6 +30,11 @@ public class MenusRefactorController {
         return menusRefactorRepository.findByIdPadre(IdPadre);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/idPadreDifCero")
+    List<Menus> queryAllByIdFatherNot0() {
+        return menusRefactorRepository.queryAllByIdFatherNot0();
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{IdMenu}")
     Menus findOne(@PathVariable Integer IdMenu) {
         return menusRefactorRepository.findOne(IdMenu);

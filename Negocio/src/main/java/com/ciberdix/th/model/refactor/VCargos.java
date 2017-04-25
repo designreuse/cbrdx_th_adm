@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 7/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VCargos {
     private Integer idCargo;

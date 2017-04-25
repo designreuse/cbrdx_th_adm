@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "V_DivisionPolitica_Rec", schema = "crz_th", catalog = "CREZCAMOS")
@@ -13,7 +13,7 @@ public class VDivisionPoliticaRec {
     private Integer idDivisionPoliticaPadre;
     private String codigoDivisionPolitica;
     private String descripcionDivisonPolitica;
-    private Integer indicativoDivisonPolitica;
+    private String indicativoDivisonPolitica;
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
@@ -67,11 +67,11 @@ public class VDivisionPoliticaRec {
 
     @Basic
     @Column(name = "IndicativoDivisonPolitica")
-    public Integer getIndicativoDivisonPolitica() {
+    public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
 
-    public void setIndicativoDivisonPolitica(Integer indicativoDivisonPolitica) {
+    public void setIndicativoDivisonPolitica(String indicativoDivisonPolitica) {
         this.indicativoDivisonPolitica = indicativoDivisonPolitica;
     }
 
@@ -165,6 +165,16 @@ public class VDivisionPoliticaRec {
         this.camino = camino;
     }
 
+    @Basic
+    @Column(name = "Gentilicio")
+    public String getGentilicio() {
+        return gentilicio;
+    }
+
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -199,6 +209,7 @@ public class VDivisionPoliticaRec {
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
         if (camino != null ? !camino.equals(that.camino) : that.camino != null) return false;
+        if (gentilicio != null ? !gentilicio.equals(that.gentilicio) : that.gentilicio != null) return false;
 
         return true;
     }
@@ -219,16 +230,7 @@ public class VDivisionPoliticaRec {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (camino != null ? camino.hashCode() : 0);
+        result = 31 * result + (gentilicio != null ? gentilicio.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "Gentilicio")
-    public String getGentilicio() {
-        return gentilicio;
-    }
-
-    public void setGentilicio(String gentilicio) {
-        this.gentilicio = gentilicio;
     }
 }

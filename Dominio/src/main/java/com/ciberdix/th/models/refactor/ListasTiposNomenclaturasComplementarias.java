@@ -1,62 +1,73 @@
 package com.ciberdix.th.models.refactor;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
+@Table(name = "ListasTiposNomenclaturasComplementarias", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasTiposNomenclaturasComplementarias {
-    private Integer idListaTipoNomenclaturaComplementaria;
-    private String codigoListaTipoNomenclaturaComplementaria;
-    private String nombreListaTipoNomenclaturaComplementaria;
-    private Integer ordenListaTipoNomenclaturaComplementaria;
+    private Integer idLista;
+    private String codigo;
+    private String nombre;
+    private Integer orden;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public ListasTiposNomenclaturasComplementarias() {
+    }
+
+    public ListasTiposNomenclaturasComplementarias(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdListaTipoNomenclaturaComplementaria")
-    public Integer getIdListaTipoNomenclaturaComplementaria() {
-        return idListaTipoNomenclaturaComplementaria;
+    @GeneratedValue
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaTipoNomenclaturaComplementaria(Integer idListaTipoNomenclaturaComplementaria) {
-        this.idListaTipoNomenclaturaComplementaria = idListaTipoNomenclaturaComplementaria;
-    }
-
-    @Basic
-    @Column(name = "CodigoListaTipoNomenclaturaComplementaria")
-    public String getCodigoListaTipoNomenclaturaComplementaria() {
-        return codigoListaTipoNomenclaturaComplementaria;
-    }
-
-    public void setCodigoListaTipoNomenclaturaComplementaria(String codigoListaTipoNomenclaturaComplementaria) {
-        this.codigoListaTipoNomenclaturaComplementaria = codigoListaTipoNomenclaturaComplementaria;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
-    @Column(name = "NombreListaTipoNomenclaturaComplementaria")
-    public String getNombreListaTipoNomenclaturaComplementaria() {
-        return nombreListaTipoNomenclaturaComplementaria;
+    @Column(name = "Codigo")
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setNombreListaTipoNomenclaturaComplementaria(String nombreListaTipoNomenclaturaComplementaria) {
-        this.nombreListaTipoNomenclaturaComplementaria = nombreListaTipoNomenclaturaComplementaria;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Basic
-    @Column(name = "OrdenListaTipoNomenclaturaComplementaria")
-    public Integer getOrdenListaTipoNomenclaturaComplementaria() {
-        return ordenListaTipoNomenclaturaComplementaria;
+    @Column(name = "Nombre")
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setOrdenListaTipoNomenclaturaComplementaria(Integer ordenListaTipoNomenclaturaComplementaria) {
-        this.ordenListaTipoNomenclaturaComplementaria = ordenListaTipoNomenclaturaComplementaria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "Orden")
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -96,14 +107,10 @@ public class ListasTiposNomenclaturasComplementarias {
 
         ListasTiposNomenclaturasComplementarias that = (ListasTiposNomenclaturasComplementarias) o;
 
-        if (idListaTipoNomenclaturaComplementaria != null ? !idListaTipoNomenclaturaComplementaria.equals(that.idListaTipoNomenclaturaComplementaria) : that.idListaTipoNomenclaturaComplementaria != null)
-            return false;
-        if (codigoListaTipoNomenclaturaComplementaria != null ? !codigoListaTipoNomenclaturaComplementaria.equals(that.codigoListaTipoNomenclaturaComplementaria) : that.codigoListaTipoNomenclaturaComplementaria != null)
-            return false;
-        if (nombreListaTipoNomenclaturaComplementaria != null ? !nombreListaTipoNomenclaturaComplementaria.equals(that.nombreListaTipoNomenclaturaComplementaria) : that.nombreListaTipoNomenclaturaComplementaria != null)
-            return false;
-        if (ordenListaTipoNomenclaturaComplementaria != null ? !ordenListaTipoNomenclaturaComplementaria.equals(that.ordenListaTipoNomenclaturaComplementaria) : that.ordenListaTipoNomenclaturaComplementaria != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -116,10 +123,10 @@ public class ListasTiposNomenclaturasComplementarias {
 
     @Override
     public int hashCode() {
-        int result = idListaTipoNomenclaturaComplementaria != null ? idListaTipoNomenclaturaComplementaria.hashCode() : 0;
-        result = 31 * result + (codigoListaTipoNomenclaturaComplementaria != null ? codigoListaTipoNomenclaturaComplementaria.hashCode() : 0);
-        result = 31 * result + (nombreListaTipoNomenclaturaComplementaria != null ? nombreListaTipoNomenclaturaComplementaria.hashCode() : 0);
-        result = 31 * result + (ordenListaTipoNomenclaturaComplementaria != null ? ordenListaTipoNomenclaturaComplementaria.hashCode() : 0);
+        int result = idLista != null ? idLista.hashCode() : 0;
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.model.refactor.RolesFuncionalidades;
+import com.ciberdix.th.model.refactor.VRolesFuncionalidades;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,26 +20,34 @@ public class RolesFuncionalidadesRefactorController {
     private String baseUrl;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<RolesFuncionalidades> findAll() {
+    List<VRolesFuncionalidades> findAll() {
         String serviceUrl = baseUrl + "/api/rolesFuncionalidades";
         RestTemplate restTemplate = new RestTemplate();
-        RolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl, RolesFuncionalidades[].class);
+        VRolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl, VRolesFuncionalidades[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<RolesFuncionalidades> findEnabled() {
+    List<VRolesFuncionalidades> findEnabled() {
         String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        RolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", RolesFuncionalidades[].class);
+        VRolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl + "enabled/", VRolesFuncionalidades[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRol/{id}")
+    List<VRolesFuncionalidades> findByIdRol(@PathVariable Integer id) {
+        String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRolesFuncionalidades[] parametros = restTemplate.getForObject(serviceUrl + "buscarRol/" + id, VRolesFuncionalidades[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path="/{id}")
-    RolesFuncionalidades findOne(@PathVariable Integer id) {
+    VRolesFuncionalidades findOne(@PathVariable Integer id) {
         String serviceUrl = baseUrl + "/api/rolesFuncionalidades/";
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + id, RolesFuncionalidades.class);
+        return restTemplate.getForObject(serviceUrl + id, VRolesFuncionalidades.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

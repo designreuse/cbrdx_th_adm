@@ -3,7 +3,7 @@ package com.ciberdix.th.models.refactor;
 import javax.persistence.*;
 
 /**
- * Created by felip on 20/04/2017.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @NamedStoredProcedureQuery(name = "ConProy", procedureName = "crz_th.ConfirmarProyeccion", parameters = {

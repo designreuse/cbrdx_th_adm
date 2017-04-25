@@ -9,5 +9,11 @@ import java.util.List;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasNivelesCargosRefactorRepository extends CrudRepository<ListasNivelesCargos, Integer> {
-    List<ListasNivelesCargos> findByIndicadorHabilitadoIsTrue();
+    List<ListasNivelesCargos> findByIndicadorHabilitadoTrue();
+
+    ListasNivelesCargos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+
+    List<ListasNivelesCargos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+
+    List<ListasNivelesCargos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
 }

@@ -13,39 +13,49 @@ import java.util.List;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/listasEstadosCargos")
+@RequestMapping("/api/ListasEstadosCargos")
 @CrossOrigin
 public class ListasEstadosCargosRefactorController {
     @Autowired
-    private ListasEstadosCargosRefactorRepository listasEstadosCargosRefactorRepository;
+    private ListasEstadosCargosRefactorRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<ListasEstadosCargos> findAll() {
-        return (List<ListasEstadosCargos>) listasEstadosCargosRefactorRepository.findAll();
+        return (List<ListasEstadosCargos>) repository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    ListasEstadosCargos findOne(@PathVariable Integer id) {
-        return listasEstadosCargosRefactorRepository.findOne(id);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/codigo/{codigo}")
-    ListasEstadosCargos findOne(@PathVariable String codigo) {
-        return listasEstadosCargosRefactorRepository.findByCodigo(codigo);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/enabled/")
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasEstadosCargos> findEnabled() {
-        return listasEstadosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasEstadosCargos findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasEstadosCargos> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasEstadosCargos> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    ListasEstadosCargos findOne(@PathVariable Integer id) {
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ListasEstadosCargos create(@RequestBody ListasEstadosCargos obj) {
-        return listasEstadosCargosRefactorRepository.save(obj);
+        return repository.save(new ListasEstadosCargos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasEstadosCargos obj) {
-        listasEstadosCargosRefactorRepository.save(obj);
+    ListasEstadosCargos update(@RequestBody ListasEstadosCargos obj) {
+        return repository.save(obj);
     }
 }

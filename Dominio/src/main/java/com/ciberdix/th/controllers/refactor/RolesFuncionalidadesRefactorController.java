@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.RolesFuncionalidades;
+import com.ciberdix.th.models.refactor.VRolesFuncionalidades;
 import com.ciberdix.th.repositories.refactor.RolesFuncionalidadesRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VRolesFuncionalidadesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,32 @@ public class RolesFuncionalidadesRefactorController {
     @Autowired
     private RolesFuncionalidadesRefactorRepository rolesFuncionalidadesRefactorRepository;
 
+    @Autowired
+    private VRolesFuncionalidadesRefactorRepository vRolesFuncionalidadesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<RolesFuncionalidades> findAll() {
-        return (List<RolesFuncionalidades>) rolesFuncionalidadesRefactorRepository.findAll();
+    List<VRolesFuncionalidades> findAll() {
+        return (List<VRolesFuncionalidades>) vRolesFuncionalidadesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<RolesFuncionalidades> findEnabled() {
-        return rolesFuncionalidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VRolesFuncionalidades> findEnabled() {
+        return vRolesFuncionalidadesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRol/{id}")
+    List<VRolesFuncionalidades> findByIdRol(@PathVariable Integer id) {
+        return vRolesFuncionalidadesRefactorRepository.findByIdRol(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/policy/{rol}")
+    List<VRolesFuncionalidades> findByRol(@PathVariable String rol) {
+        return vRolesFuncionalidadesRefactorRepository.findByRol(rol);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    RolesFuncionalidades findOne(@PathVariable Integer id) {
-        return rolesFuncionalidadesRefactorRepository.findOne(id);
+    VRolesFuncionalidades findOne(@PathVariable Integer id) {
+        return vRolesFuncionalidadesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -3,7 +3,7 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Date;
 
 /**
- * Created by robertochajin on 20/04/17.
+ * Created by felip on 21/04/2017.
  */
 public class VUsuarioRoles {
     private Integer idUsuarioRol;

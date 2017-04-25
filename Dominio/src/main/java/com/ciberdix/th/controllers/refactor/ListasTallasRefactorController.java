@@ -18,35 +18,50 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Transactional
-@RequestMapping("/api/listasTallas")
+@RequestMapping("/api/ListasTallas")
 @CrossOrigin
 public class ListasTallasRefactorController {
     
     @Autowired
-    private ListasTallasRefactorRepository listasTallasRefactorRepository;
-    
+    private ListasTallasRefactorRepository repository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<ListasTallas> findAll() {
-        return (List<ListasTallas>) listasTallasRefactorRepository.findAll();
+        return (List<ListasTallas>) repository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
+    List<ListasTallas> findEnabled() {
+        return repository.findByIndicadorHabilitadoTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
+    ListasTallas findByCode(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
+    List<ListasTallas> findByCodeStarts(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
+    List<ListasTallas> findByName(@PathVariable String queryString) {
+        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ListasTallas findOne(@PathVariable Integer id) {
-        return listasTallasRefactorRepository.findOne(id);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/{codigo}")
-    List<ListasTallas> findEnabled(@PathVariable String codigo) {
-        return (List<ListasTallas>) listasTallasRefactorRepository.findByIndicadorHabilitadoIsTrueAndCodigoStartingWith(codigo);
+        return repository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ListasTallas create(@RequestBody ListasTallas listasTallas) {
-        return listasTallasRefactorRepository.save(listasTallas);
+    ListasTallas create(@RequestBody ListasTallas obj) {
+        return repository.save(new ListasTallas(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ListasTallas listasTallas) {
-        listasTallasRefactorRepository.save(listasTallas);
-    }    
+    ListasTallas update(@RequestBody ListasTallas obj) {
+        return repository.save(obj);
+    }
 }

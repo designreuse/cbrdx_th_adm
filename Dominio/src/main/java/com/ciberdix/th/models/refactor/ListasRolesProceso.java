@@ -4,18 +4,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 9/04/17.
+ * Created by felip on 21/04/2017.
  */
 @Entity
 @Table(name = "ListasRolesProceso", schema = "crz_th", catalog = "CREZCAMOS")
 public class ListasRolesProceso {
-    private Integer idListaRolProceso;
+    private Integer idLista;
     private String codigo;
     private String nombre;
     private Integer orden;
     private Boolean indicadorHabilitado;
-    private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
 
     public ListasRolesProceso() {
     }
@@ -31,13 +31,13 @@ public class ListasRolesProceso {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdListaRolProceso")
-    public Integer getIdListaRolProceso() {
-        return idListaRolProceso;
+    @Column(name = "IdLista")
+    public Integer getIdLista() {
+        return idLista;
     }
 
-    public void setIdListaRolProceso(Integer idListaRolProceso) {
-        this.idListaRolProceso = idListaRolProceso;
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
     }
 
     @Basic
@@ -81,6 +81,16 @@ public class ListasRolesProceso {
     }
 
     @Basic
+    @Column(name = "AuditoriaUsuario")
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
     @Column(name = "AuditoriaFecha")
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
@@ -97,12 +107,13 @@ public class ListasRolesProceso {
 
         ListasRolesProceso that = (ListasRolesProceso) o;
 
-        if (idListaRolProceso != null ? !idListaRolProceso.equals(that.idListaRolProceso) : that.idListaRolProceso != null)
-            return false;
+        if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
@@ -112,22 +123,13 @@ public class ListasRolesProceso {
 
     @Override
     public int hashCode() {
-        int result = idListaRolProceso != null ? idListaRolProceso.hashCode() : 0;
+        int result = idLista != null ? idLista.hashCode() : 0;
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "AuditoriaUsuario")
-    public Integer getAuditoriaUsuario() {
-        return auditoriaUsuario;
-    }
-
-    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
-        this.auditoriaUsuario = auditoriaUsuario;
     }
 }
