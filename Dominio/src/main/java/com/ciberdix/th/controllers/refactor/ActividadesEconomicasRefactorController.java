@@ -1,8 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.ActividadesEconomicas;
+import com.ciberdix.th.models.refactor.VActividadesEconomicas;
 import com.ciberdix.th.repositories.refactor.ActividadesEconomicasRefactorRepository;
 import java.util.List;
+
+import com.ciberdix.th.repositories.refactor.VActividadesEconomicasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +28,9 @@ public class ActividadesEconomicasRefactorController {
     @Autowired
     private ActividadesEconomicasRefactorRepository actividadesEconomicasRepository;
 
+    @Autowired
+    private VActividadesEconomicasRefactorRepository vActividadesEconomicasRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<ActividadesEconomicas> listarActividadesEconomicas() {
         return (List<ActividadesEconomicas>) actividadesEconomicasRepository.findAll();
@@ -43,6 +49,11 @@ public class ActividadesEconomicasRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/lastChild/{id}")
     List<ActividadesEconomicas> lastChild(@PathVariable Integer id) {
         return actividadesEconomicasRepository.queryAllActividadesEconomicasPorTipo(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
+    List<VActividadesEconomicas> getActividadesEconomicas(@PathVariable String label) {
+        return vActividadesEconomicasRefactorRepository.findByLabelContains(label);
     }
     
     @RequestMapping(method = RequestMethod.POST)
