@@ -56,7 +56,7 @@ public class ProyeccionesLaboralesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/confirmarProyeccion")
     Integer runProcedure() {
-        return vProyeccionLaboralResumenRefactorRepository.executeConfirmation();
+        return vProyeccionLaboralResumenRefactorRepository.executeConfirmation(1);
     }
 
     @RequestMapping(method = RequestMethod.POST)
