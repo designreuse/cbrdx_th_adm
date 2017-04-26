@@ -4,12 +4,15 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 25/04/2017.
  */
-public class VUsuarioGruposGestion {
+public class UsuarioGruposGestion {
+
     private Integer idUsuarioGrupoGestion;
     private Integer idUsuario;
-    private String grupoGestion;
+    private Integer idGrupoGestion;
+    private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
     private Timestamp fechaInicio;
     private Timestamp fechaFin;
     private Boolean indicadorHabilitado;
@@ -30,12 +33,28 @@ public class VUsuarioGruposGestion {
         this.idUsuario = idUsuario;
     }
 
-    public String getGrupoGestion() {
-        return grupoGestion;
+    public Integer getIdGrupoGestion() {
+        return idGrupoGestion;
     }
 
-    public void setGrupoGestion(String grupoGestion) {
-        this.grupoGestion = grupoGestion;
+    public void setIdGrupoGestion(Integer idGrupoGestion) {
+        this.idGrupoGestion = idGrupoGestion;
+    }
+
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
     }
 
     public Timestamp getFechaInicio() {

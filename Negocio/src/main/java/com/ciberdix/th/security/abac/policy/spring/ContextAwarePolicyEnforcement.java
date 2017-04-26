@@ -19,8 +19,9 @@ public class ContextAwarePolicyEnforcement {
     @Autowired
     protected PolicyEnforcement policy;
 
-    public void checkPermission(Object resource, String permission) {
+    public Boolean checkPermission(Object resource, String permission) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Boolean permitido;
 
         Map<String, Object> environment = new HashMap<>();
 
@@ -35,7 +36,12 @@ public class ContextAwarePolicyEnforcement {
         environment.put("time", new Date());
 
         if (!policy.check(auth.getPrincipal(), resource, permission, environment)) {
-            throw new AccessDeniedException("Acceso denegado a este recurso");
+            //throw new AccessDeniedException("Acceso denegado a este recurso");
+            permitido=false;
+        } else {
+            permitido = true;
         }
+
+        return permitido;
     }
 }

@@ -12,6 +12,7 @@ public class Menus {
     private String codigoMenu;
     private String ruta;
     private Integer secuencia;
+    private String clase;
 
     public Integer getIdMenu() {
         return idMenu;
@@ -83,5 +84,13 @@ public class Menus {
 
     public void setSecuencia(Integer secuencia) {
         this.secuencia = secuencia;
+    }
+
+    public String getClase() {
+        return clase;
+    }
+
+    public void setClase(String clase) {
+        this.clase = clase;
     }
 }

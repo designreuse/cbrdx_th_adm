@@ -3,41 +3,24 @@ package com.ciberdix.th.model.refactor;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 24/04/17.
+ * Created by robertochajin on 26/04/17.
  */
-public class VRolesWidgets {
-    private Integer idRolWidget;
-    private Integer idRol;
-    private String rol;
+public class VUsuariosWidgets {
+    private Integer idUsuario;
     private Integer idWidget;
     private String widget;
     private String codigoWidget;
+    private String descripcion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdRolWidget() {
-        return idRolWidget;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdRolWidget(Integer idRolWidget) {
-        this.idRolWidget = idRolWidget;
-    }
-
-    public Integer getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(Integer idRol) {
-        this.idRol = idRol;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Integer getIdWidget() {
@@ -62,6 +45,14 @@ public class VRolesWidgets {
 
     public void setCodigoWidget(String codigoWidget) {
         this.codigoWidget = codigoWidget;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Boolean getIndicadorHabilitado() {

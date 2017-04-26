@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.Ocupaciones;
+import com.ciberdix.th.model.refactor.VOcupaciones;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.Arrays;
@@ -65,6 +66,13 @@ public class OcupacionesRefactorController {
         Ocupaciones[] ocupaciones = restTemplate.getForObject(serviceUrl + "api/ocupaciones/enabled", Ocupaciones[].class);
 
         return Arrays.asList(ocupaciones);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "search/{label}/")
+    List<VOcupaciones> consultarParametros(@PathVariable String label) {
+        RestTemplate restTemplate = new RestTemplate();
+        VOcupaciones[] parametros = restTemplate.getForObject(serviceUrl + "search/" + label + "/", VOcupaciones[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)

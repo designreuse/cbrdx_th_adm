@@ -1,10 +1,14 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.model.refactor.Menus;
+import com.ciberdix.th.security.abac.policy.spring.ContextAwarePolicyEnforcement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,12 +23,31 @@ public class MenusRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
+    @Autowired
+    private ContextAwarePolicyEnforcement policy;
+
     @RequestMapping(method = RequestMethod.GET)
     List<Menus> findAll() {
         String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
-        Menus[] menus = restTemplate.getForObject(serviceUrl, Menus[].class);
-        return Arrays.asList(menus);
+        List<Menus> menus = Arrays.asList(restTemplate.getForObject(serviceUrl, Menus[].class));
+
+        return menus;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="/rol")
+    List<Menus> findAllPorRol() {
+        List<Menus> menusAprobados = new ArrayList<>();
+        String serviceUrl = baseUrl + "/api/menus/";
+        RestTemplate restTemplate = new RestTemplate();
+        List<Menus> menus = Arrays.asList(restTemplate.getForObject(serviceUrl, Menus[].class));
+
+        for(Menus m: menus){
+            if (policy.checkPermission(m, "LISTAR"))
+                menusAprobados.add(m);
+        }
+
+        return menusAprobados;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idMenu}")

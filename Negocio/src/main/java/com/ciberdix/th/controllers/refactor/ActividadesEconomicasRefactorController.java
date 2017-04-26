@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.ActividadesEconomicas;
+import com.ciberdix.th.model.refactor.VActividadesEconomicas;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.Arrays;
@@ -61,6 +62,13 @@ public class ActividadesEconomicasRefactorController {
         ActividadesEconomicas[] actividad = restTemplate.getForObject(serviceUrl + "api/actividadesEconomicas/lastChild/" + id, ActividadesEconomicas[].class);
 
         return Arrays.asList(actividad);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "search/{label}")
+    List<VActividadesEconomicas> consultarParametros(@PathVariable String label) {
+        RestTemplate restTemplate = new RestTemplate();
+        VActividadesEconomicas[] parametros = restTemplate.getForObject(serviceUrl + "search/" + label + "/", VActividadesEconomicas[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
