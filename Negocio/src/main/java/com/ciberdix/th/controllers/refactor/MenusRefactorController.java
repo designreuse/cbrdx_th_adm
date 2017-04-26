@@ -28,6 +28,15 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<Menus> findAll() {
+        String serviceUrl = baseUrl + "/api/menus/";
+        RestTemplate restTemplate = new RestTemplate();
+        List<Menus> menus = Arrays.asList(restTemplate.getForObject(serviceUrl, Menus[].class));
+
+        return menus;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="/rol")
+    List<Menus> findAllPorRol() {
         List<Menus> menusAprobados = new ArrayList<>();
         String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
