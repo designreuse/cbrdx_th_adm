@@ -15,11 +15,12 @@ public class Menus {
     private String codigoMenu;
     private String ruta;
     private Integer secuencia;
+    private String clase;
 
     public Menus() {
     }
 
-    public Menus(String menu, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, String codigoMenu, String ruta, Integer secuencia) {
+    public Menus(String menu, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, String codigoMenu, String ruta, Integer secuencia, String clase) {
         this.menu = menu;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -28,6 +29,7 @@ public class Menus {
         this.ruta = ruta;
         this.secuencia = secuencia;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.clase = clase;
     }
 
     @Id
@@ -121,6 +123,16 @@ public class Menus {
         this.secuencia = secuencia;
     }
 
+    @Basic
+    @Column(name = "Clase")
+    public String getClase() {
+        return clase;
+    }
+
+    public void setClase(String clase) {
+        this.clase = clase;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -140,6 +152,7 @@ public class Menus {
         if (codigoMenu != null ? !codigoMenu.equals(menus.codigoMenu) : menus.codigoMenu != null) return false;
         if (ruta != null ? !ruta.equals(menus.ruta) : menus.ruta != null) return false;
         if (secuencia != null ? !secuencia.equals(menus.secuencia) : menus.secuencia != null) return false;
+        if (clase != null ? !clase.equals(menus.clase) : menus.clase != null) return false;
 
         return true;
     }
@@ -155,6 +168,7 @@ public class Menus {
         result = 31 * result + (codigoMenu != null ? codigoMenu.hashCode() : 0);
         result = 31 * result + (ruta != null ? ruta.hashCode() : 0);
         result = 31 * result + (secuencia != null ? secuencia.hashCode() : 0);
+        result = 31 * result + (clase != null ? clase.hashCode() : 0);
         return result;
     }
 }
