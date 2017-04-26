@@ -64,10 +64,10 @@ public class ActividadesEconomicasRefactorController {
         return Arrays.asList(actividad);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "search/{label}")
+    @RequestMapping(method = RequestMethod.GET, value = "/search/{label}")
     List<VActividadesEconomicas> consultarParametros(@PathVariable String label) {
         RestTemplate restTemplate = new RestTemplate();
-        VActividadesEconomicas[] parametros = restTemplate.getForObject(serviceUrl + "search/" + label + "/", VActividadesEconomicas[].class);
+        VActividadesEconomicas[] parametros = restTemplate.getForObject(serviceUrl + "api/actividadesEconomicas/search/" + label + "/", VActividadesEconomicas[].class);
         return Arrays.asList(parametros);
     }
 
