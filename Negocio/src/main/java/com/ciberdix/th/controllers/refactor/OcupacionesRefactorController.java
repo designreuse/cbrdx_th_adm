@@ -68,10 +68,10 @@ public class OcupacionesRefactorController {
         return Arrays.asList(ocupaciones);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "search/{label}/")
+    @RequestMapping(method = RequestMethod.GET, value = "/search/{label}")
     List<VOcupaciones> consultarParametros(@PathVariable String label) {
         RestTemplate restTemplate = new RestTemplate();
-        VOcupaciones[] parametros = restTemplate.getForObject(serviceUrl + "search/" + label + "/", VOcupaciones[].class);
+        VOcupaciones[] parametros = restTemplate.getForObject(serviceUrl + "api/ocupaciones/search/" + label + "/", VOcupaciones[].class);
         return Arrays.asList(parametros);
     }
 
