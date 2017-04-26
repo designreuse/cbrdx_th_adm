@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.model.refactor.VUsuariosWidgets;
 import com.ciberdix.th.model.refactor.Widgets;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,13 @@ public class WidgetsRefactorController {
         String serviceUrl = baseUrl + "/api/widgets/";
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + idWidget, Widgets.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarUsuario/{id}")
+    List<VUsuariosWidgets> findByIdUsuario(@PathVariable Integer id) {
+        String serviceUrl = baseUrl + "/api/widgets/buscarUsuario/";
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + id, VUsuariosWidgets[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")

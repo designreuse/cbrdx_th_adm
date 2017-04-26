@@ -1,6 +1,8 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.models.refactor.VUsuariosWidgets;
 import com.ciberdix.th.models.refactor.Widgets;
+import com.ciberdix.th.repositories.refactor.VUsuariosWidgetsRefactorRepository;
 import com.ciberdix.th.repositories.refactor.WidgetsRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,9 @@ public class WidgetsRefactorController {
     @Autowired
     private WidgetsRefactorRepository widgetsRefactorRepository;
 
+    @Autowired
+    private VUsuariosWidgetsRefactorRepository vUsuariosWidgetsRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<Widgets> findAll() {
         return (List<Widgets>) widgetsRefactorRepository.findAll();
@@ -28,6 +33,11 @@ public class WidgetsRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/{IdWidget}")
     Widgets findOne(@PathVariable Integer IdWidget) {
         return widgetsRefactorRepository.findOne(IdWidget);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarUsuario/{id}")
+    List<VUsuariosWidgets> findByIdUsuario(@PathVariable Integer id) {
+        return vUsuariosWidgetsRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdUsuario(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -71,18 +71,6 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
-                <configuration>
-                    <dockerHost>http://192.168.2.58:2375</dockerHost>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.name}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
                 <executions>
                     <execution>
                         <id>docker-package</id>
@@ -92,6 +80,18 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <dockerHost>http://192.168.2.58:2375</dockerHost>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}/docker</directory>
+                            <include>${project.name}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
         </plugins>        
     </build>
