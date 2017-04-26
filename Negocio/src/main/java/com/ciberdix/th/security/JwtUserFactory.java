@@ -18,17 +18,19 @@ public final class JwtUserFactory {
 
     public static JwtUser create(Usuarios user) {
 
-        List<VPolicyRules> rolesFuncionalidades = new ArrayList<>();
+        //List<VPolicyRules> rolesFuncionalidades = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
         VUsuarioRoles[] usuarioRoles = restTemplate.getForObject("http://localhost:8444/api/usuariosRoles/secure/" + user.getIdUsuario(), VUsuarioRoles[].class);
 
-        for (VUsuarioRoles ur: usuarioRoles){
-            VPolicyRules[] funcionalidades = restTemplate.getForObject("http://localhost:8444/api/policyRules/" + ur.getRol(), VPolicyRules[].class);
+        List<Menus> menus = Arrays.asList(restTemplate.getForObject("http://localhost:8444/api/menus", Menus[].class));
 
-            for(VPolicyRules pr: funcionalidades){
-                rolesFuncionalidades.add(pr);
-            }
-        }
+//        for (VUsuarioRoles ur: usuarioRoles){
+//            VPolicyRules[] funcionalidades = restTemplate.getForObject("http://localhost:8444/api/policyRules/" + ur.getRol(), VPolicyRules[].class);
+//
+//            for(VPolicyRules pr: funcionalidades){
+//                rolesFuncionalidades.add(pr);
+//            }
+//        }
 
         return new JwtUser(
                 user.getIdUsuario(),
@@ -38,7 +40,7 @@ public final class JwtUserFactory {
                 mapToGrantedAuthorities(Arrays.asList(usuarioRoles)),
                 user.getIndicadorHabilitado(),
                 user.getFechaInactivacion(),
-                mapToFuncionalidades(rolesFuncionalidades)
+                menus
         );
     }
 
@@ -48,9 +50,9 @@ public final class JwtUserFactory {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> mapToFuncionalidades(List<VPolicyRules> reglas){
-        return reglas.stream()
-                .map(rules -> rules.getIdFuncionalidad().toString())
-                .collect(Collectors.toList());
-    }
+//    private static List<String> mapToFuncionalidades(List<VPolicyRules> reglas){
+//        return reglas.stream()
+//                .map(rules -> rules.getIdFuncionalidad().toString())
+//                .collect(Collectors.toList());
+//    }
 }
