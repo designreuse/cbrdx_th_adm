@@ -58,14 +58,14 @@ public class JwtTokenUtil implements Serializable {
         return created;
     }
 
-    public Collection<?> getAuthorities(){
-        Authentication  authentication = SecurityContextHolder.getContext().getAuthentication();
+    public Collection<?> getAuthorities() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return userDetails.getAuthorities();
     }
 
-    public String getUsuario(){
-        Authentication  authentication = SecurityContextHolder.getContext().getAuthentication();
+    public String getUsuario() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return userDetails.getUsername();
     }
@@ -177,9 +177,9 @@ public class JwtTokenUtil implements Serializable {
         final String username = getUsernameFromToken(token);
         final Date created = getCreatedDateFromToken(token);
         //final Date expiration = getExpirationDateFromToken(token);
-        return (
-                username.equals(user.getUsername())
-                        && !isTokenExpired(token)
-                        && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
+
+        //return (username.equals(user.getUsername()) && !isTokenExpired(token) && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
+
+        return (username.equals(user.getUsername()) && !isTokenExpired(token));
     }
 }

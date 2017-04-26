@@ -27,6 +27,7 @@ public class PolicyRulesRefactorController {
 
         List<Reglas> reglas = new ArrayList<>();
         String accion = "";
+        int i = 0;
 
         for (VPolicyRules pr : policies) {
             if (pr.getIndicadorHabilitado() != null && pr.getIndicadorHabilitado()){
@@ -36,10 +37,13 @@ public class PolicyRulesRefactorController {
                     accion += ",'INSERTAR'";
             }
 
-            Reglas r = new Reglas(pr.getRol(), pr.getRol(),
-                    "subject.authorities.toString().contains('" + pr.getRol() + "') && {" + accion + "}.contains(action)",
-                    "subject.funcionalidades.toString().contains('" + pr.getIdFuncionalidad() + "')");
-            reglas.add(r);
+            if (pr.getRol() != null){
+                Reglas r = new Reglas(pr.getRol(), pr.getRol(),
+                        "subject.authorities.toString().contains('" + pr.getRol() + "') && {" + accion + "}.contains(action)",
+                        "subject.menus["+ i +"].idMenu == resource.idMenu");
+                reglas.add(r);
+                i++;
+            }
         }
 
         return reglas;
