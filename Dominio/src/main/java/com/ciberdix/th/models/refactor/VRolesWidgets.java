@@ -14,6 +14,7 @@ public class VRolesWidgets {
     private String rol;
     private Integer idWidget;
     private String widget;
+    private String codigoWidget;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -56,6 +57,16 @@ public class VRolesWidgets {
 
     public void setIdWidget(Integer idWidget) {
         this.idWidget = idWidget;
+    }
+
+    @Basic
+    @Column(name = "CodigoWidget")
+    public String getCodigoWidget() {
+        return codigoWidget;
+    }
+
+    public void setCodigoWidget(String codigoWidget) {
+        this.codigoWidget = codigoWidget;
     }
 
     @Basic
