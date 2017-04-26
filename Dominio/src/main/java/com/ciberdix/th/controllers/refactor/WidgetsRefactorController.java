@@ -36,8 +36,8 @@ public class WidgetsRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarUsuario/{id}")
-    List<VUsuariosWidgets> findByIdUsuario(@PathVariable Integer id) {
-        return vUsuariosWidgetsRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdUsuario(id);
+    List<Widgets> findByIdUsuario(@PathVariable Integer id) {
+        return widgetsRefactorRepository.queryAllByIdUsuario(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

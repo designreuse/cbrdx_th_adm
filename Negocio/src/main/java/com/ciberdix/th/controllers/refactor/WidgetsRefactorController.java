@@ -36,10 +36,10 @@ public class WidgetsRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarUsuario/{id}")
-    List<VUsuariosWidgets> findByIdUsuario(@PathVariable Integer id) {
+    List<Widgets> findByIdUsuario(@PathVariable Integer id) {
         String serviceUrl = baseUrl + "/api/widgets/buscarUsuario/";
         RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + id, VUsuariosWidgets[].class));
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + id, Widgets[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
