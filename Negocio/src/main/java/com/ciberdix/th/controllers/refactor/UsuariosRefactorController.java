@@ -93,7 +93,7 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/")
-    ResponseEntity<?> updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
+    Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
         String serviceUrl = baseUrl + "/api/usuarios";
         RestTemplate restTemplate = new RestTemplate();
 
@@ -108,12 +108,11 @@ public class UsuariosRefactorController {
                         oldPass
                 )
         );
-
         if (authentication != null) {
             restTemplate.put(serviceUrl + "/cambiarPass", obj);
-            return ResponseEntity.ok("La contraseña se cambió exitosamente");
+            return true;
         } else {
-            return ResponseEntity.ok("La contraseña actual es incorrecta, verifíquela e intente nuevamente");
+            return false;
         }
     }
 
