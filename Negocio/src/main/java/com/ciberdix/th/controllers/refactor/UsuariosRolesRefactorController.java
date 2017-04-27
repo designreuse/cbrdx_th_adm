@@ -45,6 +45,13 @@ public class UsuariosRolesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VUsuarioRoles findOne(@PathVariable Integer id){
+        RestTemplate restTemplate = new RestTemplate();
+        String serviceUrl = baseUrl + "/api/usuariosRoles/";
+        return restTemplate.getForObject(serviceUrl + id, VUsuarioRoles.class);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/query/{idLista}")
     UsuarioRoles viewCentrosCostos(@PathVariable Integer idLista) {
         RestTemplate restTemplate = new RestTemplate();
