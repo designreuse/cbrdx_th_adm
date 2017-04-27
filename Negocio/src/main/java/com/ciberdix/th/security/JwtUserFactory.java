@@ -17,20 +17,10 @@ public final class JwtUserFactory {
     }
 
     public static JwtUser create(Usuarios user) {
-
-        //List<VPolicyRules> rolesFuncionalidades = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
         VUsuarioRoles[] usuarioRoles = restTemplate.getForObject("http://localhost:8444/api/usuariosRoles/secure/" + user.getIdUsuario(), VUsuarioRoles[].class);
 
         List<Menus> menus = Arrays.asList(restTemplate.getForObject("http://localhost:8444/api/menus", Menus[].class));
-
-//        for (VUsuarioRoles ur: usuarioRoles){
-//            VPolicyRules[] funcionalidades = restTemplate.getForObject("http://localhost:8444/api/policyRules/" + ur.getRol(), VPolicyRules[].class);
-//
-//            for(VPolicyRules pr: funcionalidades){
-//                rolesFuncionalidades.add(pr);
-//            }
-//        }
 
         return new JwtUser(
                 user.getIdUsuario(),
@@ -49,10 +39,4 @@ public final class JwtUserFactory {
                 .map(authority -> new SimpleGrantedAuthority(authority.getRol()))
                 .collect(Collectors.toList());
     }
-
-//    private static List<String> mapToFuncionalidades(List<VPolicyRules> reglas){
-//        return reglas.stream()
-//                .map(rules -> rules.getIdFuncionalidad().toString())
-//                .collect(Collectors.toList());
-//    }
 }

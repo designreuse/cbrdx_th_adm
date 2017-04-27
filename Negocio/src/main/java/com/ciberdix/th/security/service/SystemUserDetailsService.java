@@ -9,12 +9,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class SystemUserDetailsService implements UserDetailsService {
+public class SystemUserDetailsService implements CustomUserDetails {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         RestTemplate restTemplate = new RestTemplate();
         Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("No se encuentra el usuario '%s'.", username));
+        } else {
+            return JwtUserFactory.create(user);
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByIdUsername(Integer username) throws UsernameNotFoundException {
+        RestTemplate restTemplate = new RestTemplate();
+        Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/query/" + username + "/", Usuarios.class);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("No se encuentra el usuario '%s'.", username));
         } else {
