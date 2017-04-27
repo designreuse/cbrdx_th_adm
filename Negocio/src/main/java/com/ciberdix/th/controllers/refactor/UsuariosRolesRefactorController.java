@@ -22,7 +22,7 @@ public class UsuariosRolesRefactorController {
     private String baseUrl;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<UsuarioRoles> queryCenrtosCostos() {
+    List<UsuarioRoles> getLists() {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
         UsuarioRoles[] parametros = restTemplate.getForObject(serviceUrl, UsuarioRoles[].class);
@@ -30,7 +30,7 @@ public class UsuariosRolesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/{idUsuario}")
-    List<VUsuarioRoles> queryCenrtosCostos(@PathVariable Integer idUsuario) {
+    List<VUsuarioRoles> getVUsu(@PathVariable Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
         VUsuarioRoles[] parametros = restTemplate.getForObject(serviceUrl + "vista/" + idUsuario, VUsuarioRoles[].class);
@@ -38,10 +38,10 @@ public class UsuariosRolesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/secure/{idUsuario}")
-    public List<UsuarioRoles> queryCentrosCostos(@PathVariable Integer idUsuario) {
+    public List<VUsuarioRoles> getVUsuRolHabById(@PathVariable Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
-        UsuarioRoles[] parametros = restTemplate.getForObject(serviceUrl + "secure/" + idUsuario, UsuarioRoles[].class);
+        VUsuarioRoles[] parametros = restTemplate.getForObject(serviceUrl + "secure/" + idUsuario, VUsuarioRoles[].class);
         return Arrays.asList(parametros);
     }
 
@@ -52,22 +52,22 @@ public class UsuariosRolesRefactorController {
         return restTemplate.getForObject(serviceUrl + id, VUsuarioRoles.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/query/{idLista}")
-    UsuarioRoles viewCentrosCostos(@PathVariable Integer idLista) {
+    @RequestMapping(method = RequestMethod.GET, value = "/query/{idUsuarioRol}")
+    UsuarioRoles findByIdUsuRol(@PathVariable Integer idUsuarioRol) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
-        return restTemplate.getForObject(serviceUrl + "query/" + idLista, UsuarioRoles.class);
+        return restTemplate.getForObject(serviceUrl + "query/" + idUsuarioRol, UsuarioRoles.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    UsuarioRoles createCentrosCostos(@RequestBody UsuarioRoles request) {
+    UsuarioRoles createList(@RequestBody UsuarioRoles request) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
         return restTemplate.postForObject(serviceUrl, request, UsuarioRoles.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void updateCentrosCostos(@RequestBody UsuarioRoles request) {
+    void updateList(@RequestBody UsuarioRoles request) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceUrl = baseUrl + "/api/usuariosRoles/";
         restTemplate.put(serviceUrl, request, UsuarioRoles.class);
