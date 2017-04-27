@@ -47,6 +47,19 @@ public class JwtTokenUtil implements Serializable {
         return username;
     }
 
+    public Integer getIdUsernameFromToken(String token) {
+        Integer username;
+        try {
+            final Claims claims = getClaimsFromToken(token);
+            LinkedHashMap<Object, Object> usr = (LinkedHashMap<Object, Object>) claims.get(CLAIM_USUARIO);
+            Integer idUsuario = (Integer) usr.get("idUsuario");
+            username = idUsuario;
+        } catch (Exception e) {
+            username = null;
+        }
+        return username;
+    }
+
     public Date getCreatedDateFromToken(String token) {
         Date created;
         try {
