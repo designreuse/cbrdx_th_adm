@@ -35,6 +35,11 @@ public class UsuariosRolesController {
         return (List<VUsuarioRoles>) vUsuariosRolesRepository.findByIdUsuarioAndIndicadorHabilitadoTrue(idUsuario);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VUsuarioRoles findOne(@PathVariable Integer id){
+        return vUsuariosRolesRepository.findOne(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/query/{idLista}")
     UsuarioRoles findList(@PathVariable Integer idLista) {
         return usuariosRolesRepository.findOne(idLista);
