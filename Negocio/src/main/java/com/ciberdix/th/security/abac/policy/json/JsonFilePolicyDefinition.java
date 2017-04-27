@@ -40,7 +40,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
     private List<PolicyRule> rules;
 
     @PostConstruct
-    private void init() throws MalformedURLException, URISyntaxException {
+    public void init() throws MalformedURLException, URISyntaxException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Expression.class, new SpelDeserializer());

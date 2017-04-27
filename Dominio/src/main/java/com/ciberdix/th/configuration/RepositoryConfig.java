@@ -190,5 +190,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VUsuariosWidgets.class);
         config.exposeIdsFor(ActividadesEconomicas.class);
         config.exposeIdsFor(VActividadesEconomicas.class);
+        config.exposeIdsFor(VUsuarioRoles.class);
     }
 }

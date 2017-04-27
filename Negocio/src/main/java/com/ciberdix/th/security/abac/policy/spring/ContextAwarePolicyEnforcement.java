@@ -1,6 +1,7 @@
 package com.ciberdix.th.security.abac.policy.spring;
 
 import com.ciberdix.th.security.abac.policy.PolicyEnforcement;
+import com.ciberdix.th.security.abac.policy.json.JsonFilePolicyDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
