@@ -40,7 +40,7 @@ public class PolicyRulesRefactorController {
             if (pr.getRol() != null){
                 Reglas r = new Reglas(pr.getRol(), pr.getRol(),
                         "subject.authorities.toString().contains('" + pr.getRol() + "') && {" + accion + "}.contains(action)",
-                        "subject.menus["+ i +"].idMenu == resource.idMenu");
+                        "subject.menus["+ pr.getIdMenu() +"].idMenu == resource.idMenu");
                 reglas.add(r);
                 i++;
             }
