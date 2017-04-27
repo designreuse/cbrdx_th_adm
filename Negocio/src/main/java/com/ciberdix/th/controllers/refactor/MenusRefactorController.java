@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.model.refactor.Menus;
+import com.ciberdix.th.security.abac.policy.json.JsonFilePolicyDefinition;
 import com.ciberdix.th.security.abac.policy.spring.ContextAwarePolicyEnforcement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,8 @@ import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +39,10 @@ public class MenusRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path="/rol")
-    List<Menus> findAllPorRol() {
+    List<Menus> findAllPorRol() throws MalformedURLException, URISyntaxException {
+        JsonFilePolicyDefinition jpd = new JsonFilePolicyDefinition();
+        jpd.init();
+
         List<Menus> menusAprobados = new ArrayList<>();
         String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
