@@ -26,12 +26,12 @@ public class UsuariosRolesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/{idUsuario}")
-    List<VUsuarioRoles> getVLists(@PathVariable Integer idUsuario) {
+    List<VUsuarioRoles> getVUsu(@PathVariable Integer idUsuario) {
         return (List<VUsuarioRoles>) vUsuariosRolesRepository.findByIdUsuario(idUsuario);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/secure/{idUsuario}")
-    List<VUsuarioRoles> getRoleList(@PathVariable Integer idUsuario) {
+    List<VUsuarioRoles> getVUsuRolHabById(@PathVariable Integer idUsuario) {
         return (List<VUsuarioRoles>) vUsuariosRolesRepository.findByIdUsuarioAndIndicadorHabilitadoTrue(idUsuario);
     }
 
@@ -40,9 +40,9 @@ public class UsuariosRolesController {
         return vUsuariosRolesRepository.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/query/{idLista}")
-    UsuarioRoles findList(@PathVariable Integer idLista) {
-        return usuariosRolesRepository.findOne(idLista);
+    @RequestMapping(method = RequestMethod.GET, path = "/query/{idUsuarioRol}")
+    UsuarioRoles findByIdUsuRol(@PathVariable Integer idUsuarioRol) {
+        return usuariosRolesRepository.findOne(idUsuarioRol);
     }
 
     @RequestMapping(method = RequestMethod.POST)
