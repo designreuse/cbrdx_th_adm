@@ -40,7 +40,7 @@ public class PolicyRulesRefactorController {
             if (pr.getRol() != null){
                 Reglas r = new Reglas(pr.getRol(), pr.getRol(),
                         "subject.authorities.toString().contains('" + pr.getRol() + "') && {" + accion + "}.contains(action)",
-                        "subject.menus["+ i +"].idMenu == resource.idMenu");
+                        pr.getIdMenu() + " == resource.idMenu");
                 reglas.add(r);
                 i++;
             }
@@ -49,8 +49,18 @@ public class PolicyRulesRefactorController {
         return reglas;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{rol}")
-    List<VPolicyRules> findByRol(@PathVariable String rol) {
-        return vPolicyRulesRefactorRepository.findByRol(rol);
+    @RequestMapping(method = RequestMethod.GET, path = "/rol")
+    List<VPolicyRules> findByRol() {
+        List<VPolicyRules> policies = (List<VPolicyRules>) vPolicyRulesRefactorRepository.findAll();
+
+        List<VPolicyRules> reglas = new ArrayList<>();
+
+        for (VPolicyRules pr : policies) {
+            if (pr.getIndicadorHabilitado() != null && pr.getIndicadorHabilitado()) {
+                reglas.add(pr);
+            }
+        }
+
+        return reglas;
     }
 }

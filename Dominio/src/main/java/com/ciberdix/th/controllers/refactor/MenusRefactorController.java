@@ -22,7 +22,7 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.GET)
     List<Menus> findAll() {
-        return menusRefactorRepository.findByIndicadorHabilitadoTrue();
+        return (List<Menus>) menusRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{IdPadre}")

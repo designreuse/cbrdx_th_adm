@@ -1,6 +1,7 @@
 package com.ciberdix.th.security.abac.policy.spring;
 
 import com.ciberdix.th.security.abac.policy.PolicyEnforcement;
+import com.ciberdix.th.security.abac.policy.json.JsonFilePolicyDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
@@ -21,7 +22,7 @@ public class ContextAwarePolicyEnforcement {
 
     public Boolean checkPermission(Object resource, String permission) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Boolean permitido;
+        Boolean permit = false;
 
         Map<String, Object> environment = new HashMap<>();
 
@@ -35,13 +36,11 @@ public class ContextAwarePolicyEnforcement {
          */
         environment.put("time", new Date());
 
-        if (!policy.check(auth.getPrincipal(), resource, permission, environment)) {
+        if (policy.check(auth.getPrincipal(), resource, permission, environment)) {
             //throw new AccessDeniedException("Acceso denegado a este recurso");
-            permitido=false;
-        } else {
-            permitido = true;
+            permit = true;
         }
 
-        return permitido;
+        return permit;
     }
 }

@@ -1,12 +1,15 @@
 package com.ciberdix.th.security.abac.policy;
 
 import com.ciberdix.th.security.JwtUser;
+import com.ciberdix.th.security.abac.policy.json.JsonFilePolicyDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.expression.EvaluationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +30,17 @@ public class BasicPolicyEnforcement implements PolicyEnforcement {
 
     @Override
     public boolean check(Object subject, Object resource, Object action, Object environment) {
+
         //Get all policy rules
-        List<PolicyRule> allRules = policyDefinition.getAllPolicyRules();
+        List<PolicyRule> allRules = null;
+        try {
+            allRules = policyDefinition.obtenerReglas();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
         //Wrap the context
         SecurityAccessContext cxt = new SecurityAccessContext(subject, resource, action, environment);
         //Filter the rules according to context.
