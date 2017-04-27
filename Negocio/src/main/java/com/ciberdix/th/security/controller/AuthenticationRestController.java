@@ -50,6 +50,9 @@ public class AuthenticationRestController {
     @Value("${recaptcha.url}")
     private String recaptchaUrl;
 
+    @Value("${domain.url}")
+    private String domainUrl;
+
     @RequestMapping(value = "/auth/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
         SystemAuthenticationProvider systemAuthenticationProvider = new SystemAuthenticationProvider();
@@ -76,7 +79,7 @@ public class AuthenticationRestController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET,path = "/usuarioActivo")
+    @RequestMapping(method = RequestMethod.GET, path = "/usuarioActivo")
     public JwtUser getAuthenticatedUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
@@ -100,7 +103,7 @@ public class AuthenticationRestController {
     @RequestMapping(value = "/auth/rememberUser", method = RequestMethod.POST)
     public ResponseEntity<?> getUsername(@RequestBody CorreoElectronico correoElectronico) {
         RestTemplate restTemplate = new RestTemplate();
-        List<Usuarios> parametros = Arrays.asList(restTemplate.getForObject("http://localhost:8444/api/usuarios/", Usuarios[].class));
+        List<Usuarios> parametros = Arrays.asList(restTemplate.getForObject(domainUrl +"/api/usuarios/", Usuarios[].class));
         for (Usuarios u : parametros) {
             if (u.getCorreoElectronico() != null && u.getCorreoElectronico().compareTo(correoElectronico.getCorreoElectronico()) == 0) {
                 processMailInfo(u, "Usuario de Ingreso", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Recordar Usuario</h1><p style=\"margin-bottom: 80px;\">Su Usuario de Ingreso al Sistema es:" + u.getUsuarioSistema() + "</p>");
@@ -113,7 +116,7 @@ public class AuthenticationRestController {
     @RequestMapping(value = "/auth/reset", method = RequestMethod.POST)
     public ResponseEntity<?> getPassword(@RequestBody Contrasena contrasena) {
         RestTemplate restTemplate = new RestTemplate();
-        List<Usuarios> parametros = Arrays.asList(restTemplate.getForObject("http://localhost:8444/usuarios/", Usuarios[].class));
+        List<Usuarios> parametros = Arrays.asList(restTemplate.getForObject(domainUrl +"/api/usuarios/", Usuarios[].class));
         for (Usuarios u : parametros) {
             if (u.getCorreoElectronico() != null && u.getCorreoElectronico().compareTo(contrasena.getCorreoElectronico()) == 0 && u.getUsuarioSistema().compareTo(contrasena.getUsuarioSistema()) == 0) {
                 if (u.getUsuarioLdap()) {
@@ -125,7 +128,7 @@ public class AuthenticationRestController {
                     String hashedPassword = bCryptPasswordEncoder.encode(pass);
                     u.setContrasena(hashedPassword);
                     processMailInfo(u, "Reinicio de Contraseña", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Cambio de Clave de Acceso</h1><p style=\"margin-bottom: 80px;\">Su nueva clave de acceso al sistema es:</p><h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">" + pass + "</h1>");
-                    restTemplate.put("http://localhost:8444/usuarios/", u, Usuarios.class);
+                    restTemplate.put(domainUrl +"/api/usuarios/", u, Usuarios.class);
                     return ResponseEntity.ok(true);
                 }
             }
@@ -212,8 +215,7 @@ public class AuthenticationRestController {
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
         message.setSubject(Subject);
-        message.setHtml("<html>" +
-                "    <body bgcolor=\"##B4E3F3\" style=\"font-family: arial, sans-serif; font-size: 100%; line-height: 160%; background-color: #ecf0f1; margin: 0; padding: 0; border: 0;\">\n" +
+        message.setHtml("<html><body bgcolor=\"##B4E3F3\" style=\"font-family: arial, sans-serif; font-size: 100%; line-height: 160%; background-color: #ecf0f1; margin: 0; padding: 0; border: 0;\">\n" +
                 "        <table bgcolor=\"#ecf0f1\" style=\"width: 100%; background-color: #ecf0f1; font-size: 14px;\" align=\"center\" cellpadding=\"20\" cellspacing=\"0\" border=\"0\">\n" +
                 "            <tr>\n" +
                 "                <td>\n" +
