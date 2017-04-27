@@ -38,17 +38,15 @@ public class MenusRefactorController {
         return menus;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path="/rol")
+    @RequestMapping(method = RequestMethod.GET, path = "/rol")
     List<Menus> findAllPorRol() throws MalformedURLException, URISyntaxException {
-        JsonFilePolicyDefinition jpd = new JsonFilePolicyDefinition();
-        jpd.init();
-
         List<Menus> menusAprobados = new ArrayList<>();
+
         String serviceUrl = baseUrl + "/api/menus/";
         RestTemplate restTemplate = new RestTemplate();
         List<Menus> menus = Arrays.asList(restTemplate.getForObject(serviceUrl, Menus[].class));
 
-        for(Menus m: menus){
+        for (Menus m : menus) {
             if (policy.checkPermission(m, "LISTAR"))
                 menusAprobados.add(m);
         }
