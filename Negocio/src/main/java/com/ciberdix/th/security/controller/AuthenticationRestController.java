@@ -229,7 +229,6 @@ public class AuthenticationRestController {
                 "                        <tr>\n" +
                 "                            <td>\n" +
                 "                                <div style=\"position: relative; padding: 25px;\">\n" +
-                "                                    <h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">%titulo%</h1>\n" +
                 "                                    <p style=\"margin-bottom: 80px;\">\n" +
                 "                                        " + Body + "\n" +
                 "                                    </p>\n" +
