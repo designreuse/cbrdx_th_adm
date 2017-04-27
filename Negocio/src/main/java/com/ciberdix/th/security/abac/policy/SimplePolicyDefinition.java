@@ -4,6 +4,8 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 import javax.annotation.PostConstruct;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,11 @@ public class SimplePolicyDefinition implements PolicyDefinition {
 
     public List<PolicyRule> getAllPolicyRules() {
         return rules;
+    }
+
+    @Override
+    public List<PolicyRule> obtenerReglas() throws MalformedURLException, URISyntaxException {
+        return null;
     }
 
 }

@@ -21,8 +21,8 @@ public class UsuariosRolesController {
     private VUsuarioRolesRefactorRepository vUsuariosRolesRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<UsuarioRoles> getLists() {
-        return (List<UsuarioRoles>) usuariosRolesRepository.findAll();
+    List<VUsuarioRoles> getLists() {
+        return (List<VUsuarioRoles>) vUsuariosRolesRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/{idUsuario}")

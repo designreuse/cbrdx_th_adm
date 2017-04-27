@@ -39,7 +39,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
 
     private List<PolicyRule> rules;
 
-    @PostConstruct
+/*    @PostConstruct
     public void init() throws MalformedURLException, URISyntaxException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
@@ -68,10 +68,35 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
         } catch (IOException e) {
             logger.error("An error occurred while reading the policy file.", e);
         }
-    }
+    }*/
 
     @Override
     public List<PolicyRule> getAllPolicyRules() {
         return rules;
+    }
+
+    @Override
+    public List<PolicyRule> obtenerReglas() throws MalformedURLException, URISyntaxException {
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(Expression.class, new SpelDeserializer());
+        mapper.registerModule(module);
+
+        URL jsonUrl = new URL("http://localhost:8444/api/policyRules").toURI().toURL();
+
+        try {
+            PolicyRule[] rulesArray = null;
+
+            rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
+
+            this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
+            logger.info("Politicas cargadas nuevamente.");
+        } catch (JsonMappingException e) {
+            logger.error("An error occurred while parsing the policy file.", e);
+        } catch (IOException e) {
+            logger.error("An error occurred while reading the policy file.", e);
+        }
+
+        return this.rules;
     }
 }
