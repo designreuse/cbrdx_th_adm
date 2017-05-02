@@ -39,7 +39,7 @@ import java.util.UUID;
 @RestController
 public class AuthenticationRestController {
 
-    private String tokenHeader = "Authorization Bearer";
+    private String tokenHeader = "Authorization";
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
