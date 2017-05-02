@@ -47,7 +47,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder().title("TH API")
                 .description("API reference for developers")
                 .termsOfServiceUrl("http://ciberdix.com")
-                .contact("desarrollo@ciberdix.com").license("License")
+                .contact("desarrollo@ciberdix.com")
+                .license("License")
                 .licenseUrl("desarrollo@ciberdix.com").version(apiVersion).build();
     }
 
