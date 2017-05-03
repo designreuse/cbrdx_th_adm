@@ -67,8 +67,8 @@ public class AuthenticationRestController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             if (!userDetails.getAuthorities().isEmpty()) {
                 RestTemplate restTemplate = new RestTemplate();
-                Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
-                Terceros tercero = restTemplate.getForObject("http://localhost:8444/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
+                Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
+                Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
                 final String token = jwtTokenUtil.generateToken(userDetails, device, user, tercero);
                 return ResponseEntity.ok(new JwtAuthenticationResponse(token));
             } else {
