@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +27,8 @@ import org.springframework.web.client.RestTemplate;
 @Api(value = "actividadesEconomicas", description = "Actividades Económicas")
 public class ActividadesEconomicasRefactorController {
 
-    Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl();
+    @Value("${domain.url}")
+    private String serviceUrl;
 
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Obtener actividades económicas", notes = "Retorna el listado de actividades económicas")
