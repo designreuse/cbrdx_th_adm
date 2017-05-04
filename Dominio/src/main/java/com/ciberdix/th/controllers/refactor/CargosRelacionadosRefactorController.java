@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.CargosRelacionados;
+import com.ciberdix.th.models.refactor.VCargosRelacionados;
 import com.ciberdix.th.repositories.refactor.CargosRelacionadosRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VCargosRelacionadosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +18,17 @@ public class CargosRelacionadosRefactorController {
     @Autowired
     private CargosRelacionadosRefactorRepository CargosRelacionadosRefactorRepository;
 
+    @Autowired
+    private VCargosRelacionadosRefactorRepository vCargosRelacionadosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<CargosRelacionados> findAll() {
-        return (List<CargosRelacionados>) CargosRelacionadosRefactorRepository.findAll();
+    List<VCargosRelacionados> findAll() {
+        return (List<VCargosRelacionados>) vCargosRelacionadosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}/{idCargo}")
-    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
-        return (List<CargosRelacionados>) CargosRelacionadosRefactorRepository.findCargos(codigoRelacion, idCargo);
+    List<VCargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
+        return (List<VCargosRelacionados>) vCargosRelacionadosRefactorRepository.findCargos(codigoRelacion, idCargo);
     }
 
     @RequestMapping(method = RequestMethod.POST)

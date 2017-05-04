@@ -14,6 +14,8 @@ public interface VCargosRefactorRepository extends CrudRepository<VCargos, Integ
 
     List<VCargos> findByCargoContains(String query);
 
-    @Query("SELECT REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.cargo,'á','a'),'Á','a'),'é','e'),'É','e'),'í','i'),'Í','i'),'ó','o'),'Ó','o'),'ú','u'),'Ú','u'),'ñ','n'),'Ñ','n') FROM VCargos c")
-    List<VCargos> queryVCargosByCargo();
+    @Query("SELECT c FROM VCargos c WHERE "+
+    "SOUNDEX(lower(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.cargo,'á','a'),'Á','a'),'é','e'),'É','e'),'í','i'),'Í','i'),'ó','o'),'Ó','o'),'ú','u'),'Ú','u'),'ñ','n'),'Ñ','n'))) "+
+    "LIKE '%' || ?1 || '%'")
+    List<VCargos> queryVCargosByCargo(String str);
 }
