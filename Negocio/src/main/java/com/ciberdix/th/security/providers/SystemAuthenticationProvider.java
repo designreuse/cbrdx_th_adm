@@ -1,5 +1,6 @@
 package com.ciberdix.th.security.providers;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.Usuarios;
 import com.ciberdix.th.security.configuration.LdapConfiguration;
 import com.ciberdix.th.security.service.SystemUserDetailsService;
@@ -18,6 +19,9 @@ import java.util.Hashtable;
 
 public class SystemAuthenticationProvider implements AuthenticationProvider {
 
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl();
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
@@ -28,7 +32,7 @@ public class SystemAuthenticationProvider implements AuthenticationProvider {
         UserDetails userDetails = systemUserDetailsService.loadUserByUsername(username);
 
         RestTemplate restTemplate = new RestTemplate();
-        Usuarios user = restTemplate.getForObject("http://localhost:8444/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+        Usuarios user = restTemplate.getForObject(serviceUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
         if (user != null) {
             if (user.getUsuarioLdap() && ldapConfiguration.isLdapEnable()) {
                 Hashtable env = new Hashtable();
@@ -46,7 +50,7 @@ public class SystemAuthenticationProvider implements AuthenticationProvider {
                     DirContext ctx = new InitialDirContext(env);
                     ctx.close();
                     user.setContrasena(new BCryptPasswordEncoder(10).encode(password));
-                    restTemplate.put("http://localhost:8444/api/usuarios/", user);
+                    restTemplate.put(serviceUrl + "/api/usuarios/", user);
                     return authentication;
                 } catch (NamingException e) {
                     return null;

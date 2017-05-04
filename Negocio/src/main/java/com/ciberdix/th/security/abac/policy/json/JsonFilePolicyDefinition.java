@@ -37,6 +37,9 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
     @Value("${policy.json.filePath}")
     private String policyFilePath;
 
+    @Value("${domain.url}")
+    private String domainUrl;
+
     private List<PolicyRule> rules;
 
 /*    @PostConstruct
@@ -82,7 +85,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
         module.addDeserializer(Expression.class, new SpelDeserializer());
         mapper.registerModule(module);
 
-        URL jsonUrl = new URL("http://localhost:8444/api/policyRules").toURI().toURL();
+        URL jsonUrl = new URL(domainUrl + "/api/policyRules").toURI().toURL();
 
         try {
             PolicyRule[] rulesArray = null;
@@ -90,7 +93,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
             rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
 
             this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
-            logger.info("Politicas cargadas nuevamente.");
+            //logger.info("Politicas cargadas nuevamente.");
         } catch (JsonMappingException e) {
             logger.error("An error occurred while parsing the policy file.", e);
         } catch (IOException e) {
