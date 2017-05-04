@@ -21,7 +21,7 @@ public class VTercerosContactos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
+    @Basic
     @Column(name = "Codigo")
     public String getCodigo() {
         return codigo;
@@ -41,7 +41,7 @@ public class VTercerosContactos {
         this.nombre = nombre;
     }
 
-    @Basic
+    @Id
     @Column(name = "IdTerceroContacto")
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
