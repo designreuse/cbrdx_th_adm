@@ -1,5 +1,6 @@
 package com.ciberdix.th.security;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.*;
 import com.ciberdix.th.security.abac.policy.model.VPolicyRules;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,14 +14,17 @@ import java.util.stream.Collectors;
 
 public final class JwtUserFactory {
 
+    static Globales globales = new Globales();
+    private static String serviceUrl = globales.getUrl();
+
     private JwtUserFactory() {
     }
 
     public static JwtUser create(Usuarios user) {
         RestTemplate restTemplate = new RestTemplate();
-        VUsuarioRoles[] usuarioRoles = restTemplate.getForObject("http://localhost:8444/api/usuariosRoles/secure/" + user.getIdUsuario(), VUsuarioRoles[].class);
+        VUsuarioRoles[] usuarioRoles = restTemplate.getForObject(serviceUrl + "/api/usuariosRoles/secure/" + user.getIdUsuario(), VUsuarioRoles[].class);
 
-        List<Menus> menus = Arrays.asList(restTemplate.getForObject("http://localhost:8444/api/menus", Menus[].class));
+        List<Menus> menus = Arrays.asList(restTemplate.getForObject(serviceUrl + "/api/menus", Menus[].class));
 
         return new JwtUser(
                 user.getIdUsuario(),

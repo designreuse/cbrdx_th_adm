@@ -1,5 +1,6 @@
 package com.ciberdix.th.security.configuration;
 
+import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Constante;
 import org.springframework.web.client.RestTemplate;
 
@@ -7,8 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LdapConfiguration {
+    Globales globales = new Globales();
+    private String serviceUrl = globales.getUrl();
 
-    private String constantServiceUrl = "http://localhost:8444/api/constantes/";
+    private String constantServiceUrl = serviceUrl + "/api/constantes/";
     private String uldap = "";
     private String ldaps = "";
     private String ldape = "";

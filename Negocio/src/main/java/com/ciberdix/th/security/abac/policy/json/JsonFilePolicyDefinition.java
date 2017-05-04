@@ -93,7 +93,7 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
             rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
 
             this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
-            logger.info("Politicas cargadas nuevamente.");
+            //logger.info("Politicas cargadas nuevamente.");
         } catch (JsonMappingException e) {
             logger.error("An error occurred while parsing the policy file.", e);
         } catch (IOException e) {
