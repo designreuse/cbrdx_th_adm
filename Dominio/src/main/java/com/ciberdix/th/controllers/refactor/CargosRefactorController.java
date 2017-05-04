@@ -1,13 +1,16 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.ListaSoundex;
 import com.ciberdix.th.models.refactor.Cargos;
 import com.ciberdix.th.models.refactor.VCargos;
 import com.ciberdix.th.repositories.refactor.CargosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VCargosRefactorRepository;
+import org.apache.commons.codec.language.Soundex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,9 +37,37 @@ public class CargosRefactorController {
         return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+//    @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
+//    List<VCargos> findByWildCard(@PathVariable String query) {
+//        return (List<VCargos>) vCargosRefactorRepository.findByCargoContains(query);
+//    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
-    List<VCargos> findByWildCard(@PathVariable String query) {
-        return (List<VCargos>) vCargosRefactorRepository.findByCargoContains(query);
+    ArrayList<VCargos> findByWildCard(@PathVariable String query) {
+
+        Soundex soundex = new Soundex();
+        ArrayList<String> listQ = ListaSoundex.generarList(query, soundex);
+        ArrayList<VCargos> listVC = (ArrayList<VCargos>) vCargosRefactorRepository.findAll();
+        ArrayList<VCargos> listVCFinal = new ArrayList<>();
+        ArrayList<String> listC;
+        VCargos vCargo;
+        String cargo, strQuery;
+
+        for (int i=0; i<listVC.size(); i++){
+            vCargo = listVC.get(i);
+            cargo = vCargo.getCargo();
+            listC = ListaSoundex.generarList(cargo, soundex);
+            for(int j=0; j<listQ.size(); j++){
+                strQuery = listQ.get(j);
+                if (listC.contains(strQuery)){
+                    listVCFinal.add(listVC.get(i));
+                    j = listQ.size();
+                }
+            }
+        }
+
+        return listVCFinal;
+
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")

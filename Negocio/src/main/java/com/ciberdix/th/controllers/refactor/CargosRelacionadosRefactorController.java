@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.CargosRelacionados;
+import com.ciberdix.th.model.refactor.VCargosRelacionados;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,17 +20,17 @@ public class CargosRelacionadosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/cargosRelacionados";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<CargosRelacionados> findAll() {
+    List<VCargosRelacionados> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        CargosRelacionados[] cargosRelacionados = restTemplate.getForObject(serviceUrl, CargosRelacionados[].class);
-        return Arrays.asList(cargosRelacionados);
+        VCargosRelacionados[] vCargosRelacionados = restTemplate.getForObject(serviceUrl, VCargosRelacionados[].class);
+        return Arrays.asList(vCargosRelacionados);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarRelacion/{codigoRelacion}/{idCargo}")
-    List<CargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
+    List<VCargosRelacionados> findEnabled(@PathVariable String codigoRelacion, @PathVariable Integer idCargo) {
         RestTemplate restTemplate = new RestTemplate();
-        CargosRelacionados[] cargosRelacionados = restTemplate.getForObject(serviceUrl + "/buscarRelacion/" + codigoRelacion + "/" + idCargo, CargosRelacionados[].class);
-        return Arrays.asList(cargosRelacionados);
+        VCargosRelacionados[] vCargosRelacionados = restTemplate.getForObject(serviceUrl + "/buscarRelacion/" + codigoRelacion + "/" + idCargo, VCargosRelacionados[].class);
+        return Arrays.asList(vCargosRelacionados);
     }
 
     @RequestMapping(method = RequestMethod.POST)

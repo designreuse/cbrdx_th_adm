@@ -6,6 +6,8 @@
     <session-factory>
         <property name="connection.url">jdbc:sqlserver://bd-ciberdix.database.windows.net:1433;databaseName=CREZCAMOS</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.dialect">com.ciberdix.th.configuration.CiberdixSqlDialect</property>
+        <property name="dialect">com.ciberdix.th.configuration.CiberdixSqlDialect</property>
         <mapping class="com.ciberdix.th.models.AdjuntosEntity"/>
         <mapping class="com.ciberdix.th.models.AreasEntity"/>
         <mapping class="com.ciberdix.th.models.AuditoriasEntity"/>
