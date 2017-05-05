@@ -1,16 +1,21 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.LevenshteinDistance;
 import com.ciberdix.th.configuration.ListaSoundex;
+import com.ciberdix.th.configuration.SoundexEsp;
 import com.ciberdix.th.models.refactor.Cargos;
 import com.ciberdix.th.models.refactor.VCargos;
 import com.ciberdix.th.repositories.refactor.CargosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VCargosRefactorRepository;
+import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.language.Soundex;
+import org.apache.commons.codec.language.bm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -43,27 +48,46 @@ public class CargosRefactorController {
 //    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
-    ArrayList<VCargos> findByWildCard(@PathVariable String query) {
+    ArrayList<VCargos> findByWildCard(@PathVariable String query) throws EncoderException {
 
         Soundex soundex = new Soundex();
-        ArrayList<String> listQ = ListaSoundex.generarList(query, soundex);
-        ArrayList<VCargos> listVC = (ArrayList<VCargos>) vCargosRefactorRepository.findAll();
+        //ArrayList<String> listQ = ListaSoundex.generarList(query, soundex);
+        ArrayList<String> listQ = SoundexEsp.getList(query);
+        ArrayList<VCargos> listVC = (ArrayList<VCargos>) vCargosRefactorRepository.queryOrderByCargo();
         ArrayList<VCargos> listVCFinal = new ArrayList<>();
         ArrayList<String> listC;
         VCargos vCargo;
-        String cargo, strQuery;
+        String cargo, strQuery, strCargo;
+
+        cargo = query.toLowerCase();
+
+        listVCFinal = (ArrayList<VCargos>) vCargosRefactorRepository.queryVCargosByCargo(cargo);
+
+        for (int i=0; i<listVCFinal.size(); i++){
+            listVC.remove(listVCFinal.get(i));
+        }
 
         for (int i=0; i<listVC.size(); i++){
             vCargo = listVC.get(i);
             cargo = vCargo.getCargo();
-            listC = ListaSoundex.generarList(cargo, soundex);
-            for(int j=0; j<listQ.size(); j++){
+            //listC = ListaSoundex.generarList(cargo, soundex);
+            listC = SoundexEsp.getList(cargo);
+            for (int j=0; j<listQ.size(); j++){
                 strQuery = listQ.get(j);
-                if (listC.contains(strQuery)){
-                    listVCFinal.add(listVC.get(i));
-                    j = listQ.size();
+                for (int k=0; k<listC.size(); k++){
+                    strCargo = listC.get(k);
+                    if (LevenshteinDistance.computeLevenshteinDistance(strQuery, strCargo) == 0){
+                        listVCFinal.add(listVC.get(i));
+                    }
                 }
             }
+//            for(int j=0; j<listQ.size(); j++){
+//                strQuery = listQ.get(j);
+//                if (listC.contains(strQuery)){
+//                    listVCFinal.add(listVC.get(i));
+//                    j = listQ.size();
+//                }
+//            }
         }
 
         return listVCFinal;
@@ -78,6 +102,7 @@ public class CargosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Cargos create(@RequestBody Cargos obj) {
         return cargosRefactorRepository.save(
+
                 new Cargos(obj.getCargo(), obj.getAuditoriaUsuario(), obj.getPersonaACargoDir(),
                         obj.getPersonaACargoInd(), obj.getIdCargoJefe(), obj.getMision(), obj.getPuntos(),
                         obj.getIdCategoria(), obj.getSalario(), obj.getIndicadorRequiereFormacion(),

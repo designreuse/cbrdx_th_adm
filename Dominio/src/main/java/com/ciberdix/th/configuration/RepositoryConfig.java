@@ -193,5 +193,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VUsuarioRoles.class);
         config.exposeIdsFor(UsuarioRoles.class);
         config.exposeIdsFor(VCargosRelacionados.class);
+        config.exposeIdsFor(VListasRolesProcesoCargoRolesProceso.class);
     }
 }
