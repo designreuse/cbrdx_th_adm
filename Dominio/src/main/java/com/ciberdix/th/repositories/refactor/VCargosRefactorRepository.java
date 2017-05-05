@@ -12,10 +12,13 @@ import java.util.List;
 public interface VCargosRefactorRepository extends CrudRepository<VCargos, Integer> {
     List<VCargos> findByIndicadorHabilitadoIsTrue();
 
+    @Query ("SELECT vc FROM VCargos vc ORDER BY vc.cargo")
+    List<VCargos> queryOrderByCargo();
+
     List<VCargos> findByCargoContains(String query);
 
     @Query("SELECT c FROM VCargos c WHERE "+
-    "SOUNDEX(lower(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.cargo,'á','a'),'Á','a'),'é','e'),'É','e'),'í','i'),'Í','i'),'ó','o'),'Ó','o'),'ú','u'),'Ú','u'),'ñ','n'),'Ñ','n'))) "+
+    "lower(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.cargo,'á','a'),'Á','a'),'é','e'),'É','e'),'í','i'),'Í','i'),'ó','o'),'Ó','o'),'ú','u'),'Ú','u'),'ñ','n'),'Ñ','n')) "+
     "LIKE '%' || ?1 || '%'")
     List<VCargos> queryVCargosByCargo(String str);
 }

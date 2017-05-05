@@ -2,8 +2,10 @@ package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.CargosRolesProcesos;
 import com.ciberdix.th.models.refactor.VCargosRolesProcesos;
+import com.ciberdix.th.models.refactor.VListasRolesProcesoCargoRolesProceso;
 import com.ciberdix.th.repositories.refactor.CargosRolesProcesosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VCargosRolesProcesosRefactorRepository;
+import com.ciberdix.th.repositories.refactor.VListasRolesProcesoCargoRolesProcesoRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class CargosRolesProcesosRefactorController {
     @Autowired
     private VCargosRolesProcesosRefactorRepository vCargosRolesProcesosRefactorRepository;
 
+    @Autowired
+    private VListasRolesProcesoCargoRolesProcesoRefactorRepository vListasRolesProcesoCargoRolesProcesoRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<VCargosRolesProcesos> findAll() {
         return (List<VCargosRolesProcesos>) vCargosRolesProcesosRefactorRepository.findAll();
@@ -42,6 +47,11 @@ public class CargosRolesProcesosRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargosRolesProcesos findOne(@PathVariable Integer id) {
         return vCargosRolesProcesosRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRolesProceso/{idCargo}")
+    List<VListasRolesProcesoCargoRolesProceso> findAllByIdCargo(@PathVariable Integer idCargo){
+        return (List<VListasRolesProcesoCargoRolesProceso>) vListasRolesProcesoCargoRolesProcesoRefactorRepository.findAllByIdCargo(idCargo);
     }
 
     @RequestMapping(method = RequestMethod.POST)
