@@ -1,22 +1,16 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.models.refactor.Ocupaciones;
-import java.util.List;
-
 import com.ciberdix.th.models.refactor.VOcupaciones;
+import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VOcupacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @RestController
@@ -63,7 +57,7 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Ocupaciones crearOcupaciones(@RequestBody Ocupaciones obj) {
-        return ocupacionesRepository.save(obj);
+        return ocupacionesRepository.save(new Ocupaciones(obj.getIdOcupacionPadre(), obj.getIdOcupacionTipo(), obj.getCodigoOcupacion(), obj.getOcupacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
