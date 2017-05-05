@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.models.refactor.ActividadesEconomicas;
 import com.ciberdix.th.models.refactor.VActividadesEconomicas;
 import com.ciberdix.th.repositories.refactor.ActividadesEconomicasRefactorRepository;
+
 import java.util.List;
 
 import com.ciberdix.th.repositories.refactor.VActividadesEconomicasRefactorRepository;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author Roberto Chajin Ortiz
  */
 @RestController
@@ -35,12 +35,12 @@ public class ActividadesEconomicasRefactorController {
     List<ActividadesEconomicas> listarActividadesEconomicas() {
         return (List<ActividadesEconomicas>) actividadesEconomicasRepository.findAll();
     }
-    
-    @RequestMapping(method = RequestMethod.GET, value="/padre/{id}")
+
+    @RequestMapping(method = RequestMethod.GET, value = "/padre/{id}")
     List<ActividadesEconomicas> listarActividadesEconomicas(@PathVariable Integer id) {
         return (List<ActividadesEconomicas>) actividadesEconomicasRepository.findByIdActividadPadre(id);
     }
-    
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     ActividadesEconomicas parent(@PathVariable Integer id) {
         return actividadesEconomicasRepository.findOne(id);
@@ -55,14 +55,14 @@ public class ActividadesEconomicasRefactorController {
     List<VActividadesEconomicas> getActividadesEconomicas(@PathVariable String label) {
         return vActividadesEconomicasRefactorRepository.findByLabelContains(label);
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
-    ActividadesEconomicas crearActividadEconomica(@RequestBody ActividadesEconomicas obj){
-        return actividadesEconomicasRepository.save(obj);
+    ActividadesEconomicas crearActividadEconomica(@RequestBody ActividadesEconomicas obj) {
+        return actividadesEconomicasRepository.save(new ActividadesEconomicas(obj.getIdActividadPadre(), obj.getIdActividadTipo(), obj.getActividadEconomica(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario(), obj.getCodigoActividadEconomica()));
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarActividadEconomica(@RequestBody ActividadesEconomicas obj){
+    void actualizarActividadEconomica(@RequestBody ActividadesEconomicas obj) {
         actividadesEconomicasRepository.save(obj);
-    }    
+    }
 }
