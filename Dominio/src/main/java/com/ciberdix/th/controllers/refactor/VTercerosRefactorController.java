@@ -1,11 +1,13 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.refactor.VTerceros;
 import com.ciberdix.th.repositories.refactor.VTercerosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,8 +38,15 @@ public class VTercerosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/asignarColaborador/{queryString}/")
-    List<VTerceros> listarColaboradores(@PathVariable String queryString) {
-        return vtercerosRepository.findByType("TERCOL",queryString);
+    ArrayList<VTerceros> findByWildCard(@PathVariable String queryString){
+
+        String queryOutSChars = OutSpecialChars.getStr(queryString);
+
+        ArrayList<VTerceros> listVCFinal;
+
+        listVCFinal = (ArrayList<VTerceros>) vtercerosRepository.queryVTercerosByName(queryOutSChars);
+
+        return listVCFinal;
     }
 
 }
