@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.refactor.DivisionPolitica;
 import com.ciberdix.th.models.refactor.VDivisionPolitica;
 import com.ciberdix.th.models.refactor.VDivisionPoliticaRec;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,9 +63,20 @@ public class DivisionPoliticaRefactorController {
         return vDivisionPoliticaRecRefactorRepository.queryAllCities(queryString);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/search/{label}/")
-    List<VDivisionPolitica> getLists(@PathVariable String label) {
-        return vDivisionPoliticaRefactorRepository.findByLabelContains(label);
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
+    ArrayList<VDivisionPolitica> findByWildCard(@PathVariable String label){
+
+        String queryOutSChars = OutSpecialChars.getStr(label);
+
+        ArrayList<VDivisionPolitica> listVCFinal;
+
+        listVCFinal = (ArrayList<VDivisionPolitica>) vDivisionPoliticaRefactorRepository.queryVDivsByLabel(queryOutSChars);
+
+        if (listVCFinal.size()<1){
+            listVCFinal = (ArrayList<VDivisionPolitica>) vDivisionPoliticaRefactorRepository.queryVDivByLabelAll(queryOutSChars);
+        }
+
+        return listVCFinal;
     }
 
     @RequestMapping(method = RequestMethod.POST)
