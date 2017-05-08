@@ -69,10 +69,10 @@ public class FileUploadRefactorController {
         return ResponseEntity.ok(avatarGuardado);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/file/{filename}")
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+    @RequestMapping(method = RequestMethod.GET, path = "/file/{filename}.{ext}")
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename, @PathVariable String ext) {
 
-        Resource file = storageService.loadAsResource(filename + ".png");
+        Resource file = storageService.loadAsResource(filename + "." + ext);
         return ResponseEntity
                 .ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
