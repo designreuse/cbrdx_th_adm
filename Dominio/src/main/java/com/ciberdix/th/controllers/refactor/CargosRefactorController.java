@@ -1,12 +1,10 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.configuration.LevenshteinDistance;
 import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.refactor.Cargos;
 import com.ciberdix.th.models.refactor.VCargos;
 import com.ciberdix.th.repositories.refactor.CargosRefactorRepository;
 import com.ciberdix.th.repositories.refactor.VCargosRefactorRepository;
-import org.apache.commons.codec.EncoderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

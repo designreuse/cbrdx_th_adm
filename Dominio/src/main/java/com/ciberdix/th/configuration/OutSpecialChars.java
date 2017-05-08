@@ -50,23 +50,4 @@ public class OutSpecialChars {
         return str;
     }
 
-    public static ArrayList<String> getList (String str){
-
-        char[] c = str.toCharArray();
-        String strOut = "";
-        ArrayList<String> strListOut = new ArrayList<>();
-
-        for (int i=0; i<c.length; i++){
-            if(c[i] != ' '){
-                strOut = strOut + c[i];
-            }else{
-                strListOut.add(strOut);
-                strOut = "";
-            }
-        }
-        strListOut.add(strOut);
-
-        return strListOut;
-    }
-
 }
