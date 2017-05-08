@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.refactor.CargosRolesProcesos;
 import com.ciberdix.th.model.refactor.VCargosRolesProcesos;
+import com.ciberdix.th.model.refactor.VListaRolesProcesoCargoRolesProceso;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -45,6 +46,13 @@ public class CargosRolesProcesosRefactorController {
     List<VCargosRolesProcesos> findByIdCargo(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         VCargosRolesProcesos[] parametros = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VCargosRolesProcesos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarRolesProceso/{idCargo}")
+    List<VListaRolesProcesoCargoRolesProceso> findAllByIdCargo(@PathVariable Integer idCargo){
+        RestTemplate restTemplate = new RestTemplate();
+        VListaRolesProcesoCargoRolesProceso[] parametros = restTemplate.getForObject(serviceUrl + "/buscarRolesProceso/" + idCargo, VListaRolesProcesoCargoRolesProceso[].class);
         return Arrays.asList(parametros);
     }
 
