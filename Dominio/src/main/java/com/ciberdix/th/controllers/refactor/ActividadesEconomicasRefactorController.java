@@ -1,9 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.refactor.ActividadesEconomicas;
 import com.ciberdix.th.models.refactor.VActividadesEconomicas;
 import com.ciberdix.th.repositories.refactor.ActividadesEconomicasRefactorRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ciberdix.th.repositories.refactor.VActividadesEconomicasRefactorRepository;
@@ -52,8 +54,19 @@ public class ActividadesEconomicasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
-    List<VActividadesEconomicas> getActividadesEconomicas(@PathVariable String label) {
-        return vActividadesEconomicasRefactorRepository.findByLabelContains(label);
+    ArrayList<VActividadesEconomicas> findByWildCard(@PathVariable String label){
+
+        String queryOutSChars = OutSpecialChars.getStr(label);
+
+        ArrayList<VActividadesEconomicas> listVCFinal;
+
+        listVCFinal = (ArrayList<VActividadesEconomicas>) vActividadesEconomicasRefactorRepository.queryVActiviByLabel(queryOutSChars);
+
+        if (listVCFinal.size()<1){
+            listVCFinal = (ArrayList<VActividadesEconomicas>) vActividadesEconomicasRefactorRepository.queryVActiviByLabelAll(queryOutSChars);
+        }
+
+        return listVCFinal;
     }
 
     @RequestMapping(method = RequestMethod.POST)
