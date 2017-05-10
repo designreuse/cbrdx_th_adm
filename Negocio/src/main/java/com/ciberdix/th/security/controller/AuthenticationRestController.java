@@ -69,7 +69,7 @@ public class AuthenticationRestController {
                 RestTemplate restTemplate = new RestTemplate();
                 Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
                 Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
-                final String token = jwtTokenUtil.generateToken(userDetails, device, user, tercero);
+                final String token = jwtTokenUtil.generateToken(userDetails, user, tercero);
                 return ResponseEntity.ok(new JwtAuthenticationResponse(token));
             } else {
                 return ResponseEntity.badRequest().build();
@@ -91,13 +91,24 @@ public class AuthenticationRestController {
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
-        if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
-            String refreshedToken = jwtTokenUtil.refreshToken(token);
-            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+        //JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        if (!userDetails.getAuthorities().isEmpty()) {
+            RestTemplate restTemplate = new RestTemplate();
+            Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+            Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
+            final String tokenNuevo = jwtTokenUtil.generateToken(userDetails, user, tercero);
+            return ResponseEntity.ok(new JwtAuthenticationResponse(tokenNuevo));
         } else {
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().build();
         }
+
+        //if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
+            //String refreshedToken = jwtTokenUtil.refreshToken(token);
+            //return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+        //} else {
+            //return ResponseEntity.badRequest().body(null);
+        //}
     }
 
     @RequestMapping(value = "/auth/rememberUser", method = RequestMethod.POST)
