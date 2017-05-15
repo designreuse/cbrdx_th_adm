@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers.refactor;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.refactor.DiagnosticosCie;
 import com.ciberdix.th.repositories.refactor.DiagnosticosCieRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class DiagnosticosCieRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/codigoNombre/{query}")
     List<DiagnosticosCie> findByCodigoNombre(@PathVariable String query) {
-        return diagnosticosCieRefactorRepository.queryAllDiagnosticosCie(query);
+        return diagnosticosCieRefactorRepository.queryAllDiagnosticosCie(OutSpecialChars.getStr(query));
     }
 
     @RequestMapping(method = RequestMethod.POST)
