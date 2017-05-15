@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:sqlserver://bd-ciberdix.database.windows.net:1433;databaseName=CREZCAMOS</property>
+        <property name="connection.url">jdbc:sqlserver://190.147.208.155:1433</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.dialect">com.ciberdix.th.configuration.CiberdixSqlDialect</property>
         <property name="dialect">com.ciberdix.th.configuration.CiberdixSqlDialect</property>
@@ -348,6 +348,9 @@
         <mapping class="com.ciberdix.th.models.refactor.VRolesWidgets"/>
         <mapping class="com.ciberdix.th.models.refactor.VPolicyRules"/>
         <mapping class="com.ciberdix.th.models.refactor.VUsuariosWidgets"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasEstadosRequerimientos"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasRequerimientosAcciones"/>
+        <mapping class="com.ciberdix.th.models.refactor.ListasTiposSolicitudes"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
