@@ -26,6 +26,7 @@ public class JwtTokenUtil implements Serializable {
     static final String CLAIM_USUARIO = "usuario";
     static final String CLAIM_NOMBRE_TERCERO = "nombre";
     static final String CLAIM_NOMBRE_TERCERO_CORTO = "nombreCorto";
+    static final String CLAIM_AVATAR = "avatar";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
@@ -148,10 +149,12 @@ public class JwtTokenUtil implements Serializable {
         return (AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience));
     }
 
-    public String generateToken(UserDetails userDetails, Device device, Usuarios user, Terceros tercero) {
+    public String generateToken(UserDetails userDetails,
+                                //Device device,
+                                Usuarios user, Terceros tercero) {
         Map<String, Object> claims = new HashMap<>();
         claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
-        claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
+        //claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
         claims.put(CLAIM_KEY_CREATED, new Date());
         claims.put(CLAIM_USUARIO, user);
 
@@ -162,6 +165,8 @@ public class JwtTokenUtil implements Serializable {
 
         claims.put(CLAIM_NOMBRE_TERCERO, primerNombre + " " + segundoNombre + " " + primerApellido + " " + segundoApellido);
         claims.put(CLAIM_NOMBRE_TERCERO_CORTO, tercero.getPrimerNombre() + " " + tercero.getPrimerApellido());
+        claims.put(CLAIM_AVATAR, tercero.getImagen());
+
         return generateToken(claims);
     }
 

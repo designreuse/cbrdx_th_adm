@@ -22,7 +22,7 @@ public class VTercerosDatosClinicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Id
+    @Basic
     @Column(name = "IdDiagnosticoCIE")
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
@@ -52,7 +52,7 @@ public class VTercerosDatosClinicos {
         this.descripcion = descripcion;
     }
 
-    @Basic
+    @Id
     @Column(name = "IdTerceroDatoClinico")
     public Integer getIdTerceroDatoClinico() {
         return idTerceroDatoClinico;
