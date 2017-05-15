@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers.refactor;
 import com.ciberdix.th.model.refactor.Usuarios;
 import com.ciberdix.th.model.refactor.VUsuarios;
 import com.ciberdix.th.model.refactor.VHistoricoUsuarios;
+import com.ciberdix.th.security.controller.AuthenticationRestController;
 import com.ciberdix.th.security.providers.SystemAuthenticationProvider;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -75,7 +76,7 @@ public class UsuariosRefactorController {
     Usuarios create(@RequestBody Usuarios usuario) {
         String serviceUrl = baseUrl + "/api/usuarios/";
         if (!usuario.getUsuarioLdap()) {
-            usuario = processMailInfo(usuario);
+            usuario = processMailInfoNew(usuario);
         }
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, usuario, Usuarios.class);
@@ -116,6 +117,17 @@ public class UsuariosRefactorController {
         }
     }
 
+    private Usuarios processMailInfoNew(Usuarios usuario) {
+        String pass = UUID.randomUUID().toString().substring(0, 10);
+        String user = usuario.getUsuarioSistema();
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
+        String hashedPassword = bCryptPasswordEncoder.encode(pass);
+        AuthenticationRestController authenticationRestController = new AuthenticationRestController();
+        authenticationRestController.processMailInfo(usuario, "Bienvenido a Gestionamos","<h1>Bienvenido!</h1><br />Se ha registrado en Gestionamos<br /> Su Usuario es: " + user + "<br />Su Contraseña es: " + pass);
+        usuario.setContrasena(hashedPassword);
+        return usuario;
+    }
+
     private Usuarios processMailInfo(Usuarios usuario) {
         String pass = UUID.randomUUID().toString().substring(0, 10);
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
@@ -127,7 +139,7 @@ public class UsuariosRefactorController {
         usuario.setContrasena(hashedPassword);
         message.setAutoText(true);
         message.setFromEmail("info@ciberdix.com");
-        message.setFromName("Gestionemos");
+        message.setFromName("Gestionamos");
         ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
         MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
         recipient.setEmail(usuario.getCorreoElectronico());

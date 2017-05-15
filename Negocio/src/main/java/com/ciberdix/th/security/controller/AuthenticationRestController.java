@@ -165,7 +165,7 @@ public class AuthenticationRestController {
         return form;
     }
 
-    private Usuarios processMailInfo(Usuarios usuario, String Subject, String Body) {
+    public Usuarios processMailInfo(Usuarios usuario, String Subject, String Body) {
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
         message.setSubject(Subject);
@@ -203,7 +203,7 @@ public class AuthenticationRestController {
                 "</p></td></tr></table></td></tr></table></body></html>");
         message.setAutoText(true);
         message.setFromEmail("info@ciberdix.com");
-        message.setFromName("Aseguremos");
+        message.setFromName("Gestionamos");
         ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
         MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
         recipient.setEmail(usuario.getCorreoElectronico());
@@ -262,7 +262,7 @@ public class AuthenticationRestController {
                 "</p></td></tr></table></td></tr></table></body></html>");
         message.setAutoText(true);
         message.setFromEmail("info@ciberdix.com");
-        message.setFromName("Aseguremos");
+        message.setFromName("Gestionamos");
         ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
         MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
         recipient.setEmail(ldapConfiguration.getLdapc());
