@@ -107,7 +107,6 @@
         <mapping class="com.ciberdix.th.models.RequerimientosAspirantes"/>
         <mapping class="com.ciberdix.th.models.RequerimientosCompras"/>
         <mapping class="com.ciberdix.th.models.RequerimientosPreguntas"/>
-        <mapping class="com.ciberdix.th.models.RequerimientosReferidos"/>
         <mapping class="com.ciberdix.th.models.RequerimientosTics"/>
         <mapping class="com.ciberdix.th.models.Responsabilidades"/>
         <mapping class="com.ciberdix.th.models.Riesgos"/>
@@ -234,6 +233,8 @@
         <mapping class="com.ciberdix.th.models.VPolicyRules"/>
         <mapping class="com.ciberdix.th.models.VUsuariosWidgets"/>
         <mapping class="com.ciberdix.th.models.VRequerimientos"/>
+        <mapping class="com.ciberdix.th.models.RequerimientosReferidos"/>
+        <mapping class="com.ciberdix.th.models.RequerimientosAcciones"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
