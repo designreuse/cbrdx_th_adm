@@ -27,6 +27,13 @@ public class LocalizacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/localizacionTercero/{idTercero}")
+    List<Localizaciones> findByIdTerceroAllLocalizacion(@PathVariable Long idTercero) {
+        RestTemplate restTemplate = new RestTemplate();
+        Localizaciones[] parametro = restTemplate.getForObject(serviceUrl + "/localizacionTercero/" + idTercero, Localizaciones[].class);
+        return Arrays.asList(parametro);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Localizaciones create(@RequestBody Localizaciones request) {
         RestTemplate restTemplate = new RestTemplate();
