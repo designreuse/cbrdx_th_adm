@@ -71,7 +71,6 @@
         <mapping class="com.ciberdix.th.models.ListasGeneros"/>
         <mapping class="com.ciberdix.th.models.ListasInstituciones"/>
         <mapping class="com.ciberdix.th.models.ListasIntensidades"/>
-        <mapping class="com.ciberdix.th.models.refactor.ListasItems"/>
         <mapping class="com.ciberdix.th.models.ListasLateralidades"/>
         <mapping class="com.ciberdix.th.models.ListasMarcasVehiculos"/>
         <mapping class="com.ciberdix.th.models.ListasNivelesCargos"/>
@@ -155,7 +154,7 @@
         <mapping class="com.ciberdix.th.models.VDivisionPoliticaRec"/>
         <mapping class="com.ciberdix.th.models.VTercerosFamiliares"/>
         <mapping class="com.ciberdix.th.models.VTercerosReferencias"/>
-        <mapping class="com.ciberdix.th.models.refactor.ActividadesEconomicas"/>
+        <mapping class="com.ciberdix.th.models.ActividadesEconomicas"/>
         <mapping class="com.ciberdix.th.models.ActividadesEconomicasTipos"/>
         <mapping class="com.ciberdix.th.models.ListasCoberturasSalud"/>
         <mapping class="com.ciberdix.th.models.ListasEstadosJuridicos"/>
