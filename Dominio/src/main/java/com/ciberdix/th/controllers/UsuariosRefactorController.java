@@ -67,8 +67,7 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass")
-    void updatePass(@RequestBody Usuarios user) {
-
-            usuariosRepository.save(user);
+    void updatePass(@RequestBody Usuarios u) {
+        usuariosRepository.save(new Usuarios(u.getIdUsuario(), u.getUsuarioSistema(), u.getContrasena(), u.getUsuarioLdap(), u.getFechaInactivacion(), u.getIdTercero(), u.getIndicadorHabilitado(), u.getAuditoriaUsuario(), u.getCorreoElectronico()));
     }
 }

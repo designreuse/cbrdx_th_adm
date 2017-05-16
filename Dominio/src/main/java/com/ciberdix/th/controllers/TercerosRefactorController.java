@@ -41,7 +41,7 @@ public class TercerosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarTercero(@RequestBody Terceros obj) {
-        tercerosRepository.save(obj);
+    void actualizarTercero(@RequestBody Terceros o) {
+        tercerosRepository.save(new Terceros(o.getIdTercero(), o.getPrimerNombre(), o.getSegundoNombre(), o.getPrimerApellido(), o.getSegundoApellido(), o.getImagen(), o.getIdTipoDocumento(), o.getNumeroDocumento(), o.getFechaDocumento(), o.getIdCiudadExpDocumento(), o.getFechaNacimiento(), o.getIdCiudadNacimiento(), o.getIdGenero(), o.getIdEstadoCivil(), o.getIdFactorRh(), o.getNroHijos(), o.getIdLateralidad(), o.getCorreoElectronico(), o.getCorreoElectronico(), o.getCorreoElectronico(), o.getCorreoElectronico(), o.getFechaCreacion(), o.getIdTipoPersona(), o.getRazonSocial(), o.getTalla(), o.getPeso(), o.getImc(), o.getIdProfesion(), o.getIdNivelEducacion(), o.getAuditoriaUsuario(), o.getTelefonoFijo(), o.getTelefonoCelular(), o.getFechaDefuncion(), o.getIdTipoOcupacion(), o.getIdSectorEconomico(), o.getIdActividadEconomica(), o.getIdOcupacion(), o.getIdEstadoJuridico(), o.getIdCoberturaSalud(), o.getIndicadorVivo(), o.getIdTipoAfiliacion(), o.getIndicadorHabilitado(), o.getIdTipoTercero(), o.getIdTallaCamisa(), o.getIdTallaPantalon(), o.getIdTallaCalzado(), o.getSitioWeb()));
     }
 }

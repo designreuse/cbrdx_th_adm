@@ -25,7 +25,7 @@ public class UsuariosGruposGestionController {
         return (List<UsuarioGruposGestion>) usuarioGruposGestionRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path="/vistas")
+    @RequestMapping(method = RequestMethod.GET, path = "/vistas")
     List<VUsuarioGruposGestion> getVLists() {
         return (List<VUsuarioGruposGestion>) vUsuarioGruposGestionRefactorRepository.findAll();
     }
@@ -56,7 +56,7 @@ public class UsuariosGruposGestionController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    UsuarioGruposGestion updateList(@RequestBody UsuarioGruposGestion roles) {
-        return usuarioGruposGestionRepository.save(roles);
+    UsuarioGruposGestion updateList(@RequestBody UsuarioGruposGestion c) {
+        return usuarioGruposGestionRepository.save(new UsuarioGruposGestion(c.getIdGrupoGestion(), c.getIdUsuario(), c.getIdGrupoGestion(), c.getAuditoriaUsuario(), c.getFechaInicio(), c.getFechaFin(), c.getIndicadorHabilitado()));
     }
 }

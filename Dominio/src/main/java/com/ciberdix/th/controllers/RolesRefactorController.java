@@ -49,7 +49,7 @@ public class RolesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Roles obj) {
-        rolesRefactorRepository.save(obj);
+    void update(@RequestBody Roles o) {
+        rolesRefactorRepository.save(new Roles(o.getIdRol(), o.getRol(), o.getIndicadorHabilitado(), o.getDescripcion(), o.getAuditoriaUsuario(), o.getCodigoRol(), o.getFechaInicio(), o.getFechaFin()));
     }
 }

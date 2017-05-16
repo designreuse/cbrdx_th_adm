@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -25,10 +25,21 @@ public class TercerosDatosClinicos {
     public TercerosDatosClinicos(Long idTercero, Integer idDiagnostico, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.idDiagnostico = idDiagnostico;
+        this.fechaInicio = fechaInicio!=null?new Date(fechaInicio.getTime()):null;
+        this.fechaFin = fechaFin!=null?new Date(fechaFin.getTime()):null;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosDatosClinicos(Integer idTerceroDatoClinico, Long idTercero, Integer idDiagnostico, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroDatoClinico = idTerceroDatoClinico;
+        this.idTercero = idTercero;
+        this.idDiagnostico = idDiagnostico;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
