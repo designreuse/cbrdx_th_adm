@@ -36,6 +36,14 @@ public class RequerimientosRefactorController {
         return restTemplate.getForObject(serviceUrl + idRequerimientos, VRequerimientos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/estado/{idEstado}")
+    List<VRequerimientos> findByIdEstado(@PathVariable Integer idEstado) {
+        String serviceUrl = baseUrl + "/api/requerimientos/estado/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idEstado, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";

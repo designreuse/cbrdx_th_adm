@@ -16,6 +16,7 @@ public class VRequerimientos {
     private String justificacion;
     private String cargo;
     private Integer idCargo;
+    private Integer salario;
     private String formaContratacion;
     private Integer idFormaContratacion;
     private String tipoContratacion;
@@ -106,6 +107,16 @@ public class VRequerimientos {
 
     public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
+    }
+
+    @Basic
+    @Column(name = "Salario", nullable = true, precision = 0)
+    public Integer getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
 
     @Basic
@@ -435,6 +446,7 @@ public class VRequerimientos {
             return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
+        if (salario != null ? !salario.equals(that.salario) : that.salario != null) return false;
         if (formaContratacion != null ? !formaContratacion.equals(that.formaContratacion) : that.formaContratacion != null)
             return false;
         if (idFormaContratacion != null ? !idFormaContratacion.equals(that.idFormaContratacion) : that.idFormaContratacion != null)
@@ -499,6 +511,7 @@ public class VRequerimientos {
         result = 31 * result + (justificacion != null ? justificacion.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
+        result = 31 * result + (salario != null ? salario.hashCode() : 0);
         result = 31 * result + (formaContratacion != null ? formaContratacion.hashCode() : 0);
         result = 31 * result + (idFormaContratacion != null ? idFormaContratacion.hashCode() : 0);
         result = 31 * result + (tipoContratacion != null ? tipoContratacion.hashCode() : 0);

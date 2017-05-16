@@ -14,6 +14,7 @@ public class VRequerimientos {
     private String justificacion;
     private String cargo;
     private Integer idCargo;
+    private Integer salario;
     private String formaContratacion;
     private Integer idFormaContratacion;
     private String tipoContratacion;
@@ -92,6 +93,14 @@ public class VRequerimientos {
 
     public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
+    }
+
+    public Integer getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
 
     public String getFormaContratacion() {
