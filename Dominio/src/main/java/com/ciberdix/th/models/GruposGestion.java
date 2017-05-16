@@ -1,7 +1,10 @@
 package com.ciberdix.th.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.temporal.TemporalField;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -30,8 +33,21 @@ public class GruposGestion {
         this.responsabilidades = responsabilidades;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = new Date(fechaInicio.getTime());
+        this.fechaFin = new Date(fechaFin.getTime());
+        this.codigoGrupoGestion = codigoGrupoGestion;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public GruposGestion(Integer idGrupoGestion, String grupoGestion, String funciones, String responsabilidades, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, String codigoGrupoGestion) {
+        this.idGrupoGestion = idGrupoGestion;
+        this.grupoGestion = grupoGestion;
+        this.funciones = funciones;
+        this.responsabilidades = responsabilidades;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.fechaInicio = new Date(fechaInicio.getTime());
+        this.fechaFin = new Date(fechaFin.getTime());
         this.codigoGrupoGestion = codigoGrupoGestion;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
