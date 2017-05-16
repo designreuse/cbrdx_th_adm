@@ -26,8 +26,19 @@ public class UsuarioRoles {
         this.idUsuario = idUsuario;
         this.idRol = idRol;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public UsuarioRoles(Integer idUsuarioRol, Integer idUsuario, Integer idRol, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado) {
+        this.idUsuarioRol = idUsuarioRol;
+        this.idUsuario = idUsuario;
+        this.idRol = idRol;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }

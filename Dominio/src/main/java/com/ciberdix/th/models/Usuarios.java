@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -28,10 +28,23 @@ public class Usuarios {
         this.usuarioSistema = usuarioSistema;
         this.contrasena = contrasena;
         this.usuarioLdap = usuarioLdap;
-        this.fechaInactivacion = fechaInactivacion;
+        this.fechaInactivacion = fechaInactivacion != null ? new Date(fechaInactivacion.getTime()) : null;
         this.idTercero = idTercero;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.correoElectronico = correoElectronico;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Usuarios(Integer idUsuario, String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
+        this.idUsuario = idUsuario;
+        this.usuarioSistema = usuarioSistema;
+        this.contrasena = contrasena;
+        this.usuarioLdap = usuarioLdap;
+        this.fechaInactivacion = fechaInactivacion != null ? new Date(fechaInactivacion.getTime()) : null;
+        this.idTercero = idTercero;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.correoElectronico = correoElectronico;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }

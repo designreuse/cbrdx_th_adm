@@ -48,7 +48,7 @@ public class TercerosExperienciasLaboralesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    TercerosExperienciasLaborales update(@RequestBody TercerosExperienciasLaborales tercerosReferencias) {
-        return TercerosExperienciasLaboralesRefactorRepository.save(tercerosReferencias);
+    TercerosExperienciasLaborales update(@RequestBody TercerosExperienciasLaborales c) {
+        return TercerosExperienciasLaboralesRefactorRepository.save(new TercerosExperienciasLaborales(c.getIdTerceroExperienciaLaboral(), c.getIdTercero(), c.getEmpresa(), c.getTelefonoEmpresa(), c.getIdSectorEmpresa(), c.getIdSubSectorEmpresa(), c.getCargo(), c.getIdNivelCargo(), c.getAreaCargo(), c.getJefeInmediato(), c.getTiempoExperiencia(), c.getIdCiudad(), c.getIndicadorActualmente(), c.getFechaIngresa(), c.getFechaTermina(), c.getIdAdjunto(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario()));
     }
 }

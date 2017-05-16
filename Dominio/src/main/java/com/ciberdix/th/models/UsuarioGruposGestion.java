@@ -2,6 +2,7 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -14,19 +15,30 @@ public class UsuarioGruposGestion {
     private Integer idGrupoGestion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Timestamp fechaInicio;
-    private Timestamp fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private Boolean indicadorHabilitado;
 
     public UsuarioGruposGestion() {
     }
 
-    public UsuarioGruposGestion(Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Timestamp fechaInicio, Timestamp fechaFin, Boolean indicadorHabilitado) {
+    public UsuarioGruposGestion(Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado) {
         this.idUsuario = idUsuario;
         this.idGrupoGestion = idGrupoGestion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public UsuarioGruposGestion(Integer idUsuarioGrupoGestion, Integer idUsuario, Integer idGrupoGestion, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado) {
+        this.idUsuarioGrupoGestion = idUsuarioGrupoGestion;
+        this.idUsuario = idUsuario;
+        this.idGrupoGestion = idGrupoGestion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
@@ -84,21 +96,21 @@ public class UsuarioGruposGestion {
 
     @Basic
     @Column(name = "FechaInicio")
-    public Timestamp getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Timestamp fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     @Basic
     @Column(name = "FechaFin")
-    public Timestamp getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Timestamp fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 

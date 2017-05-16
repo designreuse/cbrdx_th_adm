@@ -49,6 +49,6 @@ public class TercerosEstudiosFormalesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     TercerosEstudiosFormales update(@RequestBody TercerosEstudiosFormales tercerosReferencias) {
-        return tercerosEstudiosFormalesRefactorRepository.save(tercerosReferencias);
+        return tercerosEstudiosFormalesRefactorRepository.save(new TercerosEstudiosFormales(tercerosReferencias.getIdTercero(), tercerosReferencias.getIdNivelEstudio(), tercerosReferencias.getIdAreaEstudio(), tercerosReferencias.getTituloEstudio(), tercerosReferencias.getIdInstitucion(), tercerosReferencias.getOtraInstitucion(), tercerosReferencias.getIdCiudad(), tercerosReferencias.getIdEstado(), tercerosReferencias.getFechaIngresa(), tercerosReferencias.getFechaTermina(), tercerosReferencias.getIdAdjunto(), tercerosReferencias.getIndicadorHabilitado(), tercerosReferencias.getAuditoriaUsuario(), tercerosReferencias.getIndicadorVerificado(), tercerosReferencias.getFechaVerificado()));
     }
 }

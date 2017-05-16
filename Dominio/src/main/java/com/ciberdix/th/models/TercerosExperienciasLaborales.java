@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -46,8 +46,30 @@ public class TercerosExperienciasLaborales {
         this.tiempoExperiencia = tiempoExperiencia;
         this.idCiudad = idCiudad;
         this.indicadorActualmente = indicadorActualmente;
-        this.fechaIngresa = fechaIngresa;
-        this.fechaTermina = fechaTermina;
+        this.fechaIngresa = fechaIngresa!=null?new Date(fechaIngresa.getTime()):null;
+        this.fechaTermina = fechaTermina!=null?new Date(fechaTermina.getTime()):null;
+        this.idAdjunto = idAdjunto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosExperienciasLaborales(Integer idTerceroExperienciaLaboral, Long idTercero, String empresa, String telefonoEmpresa, Integer idSectorEmpresa, Integer idSubSectorEmpresa, String cargo, Integer idNivelCargo, String areaCargo, String jefeInmediato, String tiempoExperiencia, Integer idCiudad, Boolean indicadorActualmente, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroExperienciaLaboral = idTerceroExperienciaLaboral;
+        this.idTercero = idTercero;
+        this.empresa = empresa;
+        this.telefonoEmpresa = telefonoEmpresa;
+        this.idSectorEmpresa = idSectorEmpresa;
+        this.idSubSectorEmpresa = idSubSectorEmpresa;
+        this.cargo = cargo;
+        this.idNivelCargo = idNivelCargo;
+        this.areaCargo = areaCargo;
+        this.jefeInmediato = jefeInmediato;
+        this.tiempoExperiencia = tiempoExperiencia;
+        this.idCiudad = idCiudad;
+        this.indicadorActualmente = indicadorActualmente;
+        this.fechaIngresa = fechaIngresa!=null?new Date(fechaIngresa.getTime()):null;
+        this.fechaTermina = fechaTermina!=null?new Date(fechaTermina.getTime()):null;
         this.idAdjunto = idAdjunto;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;

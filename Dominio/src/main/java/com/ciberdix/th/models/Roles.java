@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -29,8 +29,20 @@ public class Roles {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.codigoRol = codigoRol;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Roles(Integer idRol, String rol, Boolean indicadorHabilitado, String descripcion, Integer auditoriaUsuario, String codigoRol, Date fechaInicio, Date fechaFin) {
+        this.idRol = idRol;
+        this.rol = rol;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.descripcion = descripcion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.codigoRol = codigoRol;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
