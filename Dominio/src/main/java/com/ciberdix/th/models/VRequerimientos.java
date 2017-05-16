@@ -33,6 +33,8 @@ public class VRequerimientos {
     private Integer idFormaReclutamiento;
     private String estructuraOrganizacional;
     private Integer idEstructuraOrganizacional;
+    private String estructuraArea;
+    private Integer idTipoArea;
     private String zona;
     private Integer idZona;
     private String estructuraFisica;
@@ -280,6 +282,26 @@ public class VRequerimientos {
     }
 
     @Basic
+    @Column(name = "EstructuraArea", nullable = true, length = 40)
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
+    }
+
+    @Basic
+    @Column(name = "IdTipoArea", nullable = true)
+    public Integer getIdTipoArea() {
+        return idTipoArea;
+    }
+
+    public void setIdTipoArea(Integer idTipoArea) {
+        this.idTipoArea = idTipoArea;
+    }
+
+    @Basic
     @Column(name = "Zona", nullable = true, length = 50)
     public String getZona() {
         return zona;
@@ -477,6 +499,9 @@ public class VRequerimientos {
             return false;
         if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
             return false;
+        if (estructuraArea != null ? !estructuraArea.equals(that.estructuraArea) : that.estructuraArea != null)
+            return false;
+        if (idTipoArea != null ? !idTipoArea.equals(that.idTipoArea) : that.idTipoArea != null) return false;
         if (zona != null ? !zona.equals(that.zona) : that.zona != null) return false;
         if (idZona != null ? !idZona.equals(that.idZona) : that.idZona != null) return false;
         if (estructuraFisica != null ? !estructuraFisica.equals(that.estructuraFisica) : that.estructuraFisica != null)
@@ -528,6 +553,8 @@ public class VRequerimientos {
         result = 31 * result + (idFormaReclutamiento != null ? idFormaReclutamiento.hashCode() : 0);
         result = 31 * result + (estructuraOrganizacional != null ? estructuraOrganizacional.hashCode() : 0);
         result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
+        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
+        result = 31 * result + (idTipoArea != null ? idTipoArea.hashCode() : 0);
         result = 31 * result + (zona != null ? zona.hashCode() : 0);
         result = 31 * result + (idZona != null ? idZona.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
