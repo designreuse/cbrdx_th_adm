@@ -1,6 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.refactor.ActividadesEconomicas;
+import com.ciberdix.th.model.ActividadesEconomicas;
 import com.ciberdix.th.model.VActividadesEconomicas;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
