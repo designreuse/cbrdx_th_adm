@@ -14,6 +14,7 @@ public class VRequerimientos {
     private String justificacion;
     private String cargo;
     private Integer idCargo;
+    private Integer salario;
     private String formaContratacion;
     private Integer idFormaContratacion;
     private String tipoContratacion;
@@ -30,6 +31,8 @@ public class VRequerimientos {
     private Integer idFormaReclutamiento;
     private String estructuraOrganizacional;
     private Integer idEstructuraOrganizacional;
+    private String estructuraArea;
+    private Integer idTipoArea;
     private String zona;
     private Integer idZona;
     private String estructuraFisica;
@@ -92,6 +95,14 @@ public class VRequerimientos {
 
     public void setIdCargo(Integer idCargo) {
         this.idCargo = idCargo;
+    }
+
+    public Integer getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Integer salario) {
+        this.salario = salario;
     }
 
     public String getFormaContratacion() {
@@ -220,6 +231,22 @@ public class VRequerimientos {
 
     public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+    }
+
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
+    }
+
+    public Integer getIdTipoArea() {
+        return idTipoArea;
+    }
+
+    public void setIdTipoArea(Integer idTipoArea) {
+        this.idTipoArea = idTipoArea;
     }
 
     public String getZona() {

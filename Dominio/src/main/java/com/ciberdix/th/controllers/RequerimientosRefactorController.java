@@ -36,6 +36,11 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findOne(idRequerimiento);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/estado/{idEstado}")
+    List<VRequerimientos> findByIdEstado(@PathVariable Integer idEstado) {
+        return vRequerimientosRefactorRepository.findByIdEstadoOrderByIdRequerimientoDesc(idEstado);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos obj) {
         return requerimientosRefactorRepository.save(new Requerimientos(obj.getIdSolicitante(), obj.getJustificacion(),
