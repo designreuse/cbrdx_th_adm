@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 public class VRequerimientos {
 
     private Integer idRequerimiento;
-    private String usuarioSistema;
     private String nombreSolicitante;
     private Integer idSolicitante;
     private String justificacion;
@@ -17,7 +16,7 @@ public class VRequerimientos {
     private Integer idCargo;
     private String formaContratacion;
     private Integer idFormaContratacion;
-    private String nombre;
+    private String tipoContratacion;
     private Integer idTipoContratacion;
     private Integer cantidadVacantes;
     private Integer cantidadConvocados;
@@ -53,14 +52,6 @@ public class VRequerimientos {
 
     public void setIdRequerimiento(Integer idRequerimiento) {
         this.idRequerimiento = idRequerimiento;
-    }
-
-    public String getUsuarioSistema() {
-        return usuarioSistema;
-    }
-
-    public void setUsuarioSistema(String usuarioSistema) {
-        this.usuarioSistema = usuarioSistema;
     }
 
     public String getNombreSolicitante() {
@@ -119,12 +110,12 @@ public class VRequerimientos {
         this.idFormaContratacion = idFormaContratacion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTipoContratacion() {
+        return tipoContratacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipoContratacion(String tipoContratacion) {
+        this.tipoContratacion = tipoContratacion;
     }
 
     public Integer getIdTipoContratacion() {
