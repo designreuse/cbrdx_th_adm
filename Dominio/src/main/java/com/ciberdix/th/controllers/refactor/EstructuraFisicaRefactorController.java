@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.EstructuraFisica;
-import com.ciberdix.th.models.refactor.VEstructuraFisica;
-import com.ciberdix.th.repositories.refactor.EstructuraFisicaRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VEstructuraFisicaRefactorRepository;
+import com.ciberdix.th.models.EstructuraFisica;
+import com.ciberdix.th.models.VEstructuraFisica;
+import com.ciberdix.th.repositories.EstructuraFisicaRefactorRepository;
+import com.ciberdix.th.repositories.VEstructuraFisicaRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

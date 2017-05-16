@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.DivisionPoliticaTipos;
-import com.ciberdix.th.repositories.refactor.DivisionPoliticaTiposRefactorRepository;
+import com.ciberdix.th.models.DivisionPoliticaTipos;
+import com.ciberdix.th.repositories.DivisionPoliticaTiposRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

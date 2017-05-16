@@ -1,6 +1,6 @@
 package com.ciberdix.th.security.controller;
 
-import com.ciberdix.th.model.refactor.*;
+import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtAuthenticationRequest;
 import com.ciberdix.th.security.JwtTokenUtil;
 import com.ciberdix.th.security.JwtUser;

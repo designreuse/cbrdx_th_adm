@@ -1,12 +1,12 @@
 package com.ciberdix.th.controllers.refactor;
 
 import com.ciberdix.th.configuration.OutSpecialChars;
-import com.ciberdix.th.models.refactor.DivisionPolitica;
-import com.ciberdix.th.models.refactor.VDivisionPolitica;
-import com.ciberdix.th.models.refactor.VDivisionPoliticaRec;
-import com.ciberdix.th.repositories.refactor.DivisionPoliticaRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VDivisionPoliticaRecRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VDivisionPoliticaRefactorRepository;
+import com.ciberdix.th.models.DivisionPolitica;
+import com.ciberdix.th.models.VDivisionPolitica;
+import com.ciberdix.th.models.VDivisionPoliticaRec;
+import com.ciberdix.th.repositories.DivisionPoliticaRefactorRepository;
+import com.ciberdix.th.repositories.VDivisionPoliticaRecRefactorRepository;
+import com.ciberdix.th.repositories.VDivisionPoliticaRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

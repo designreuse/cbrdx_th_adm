@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasEstadosJuridicos;
-import com.ciberdix.th.repositories.refactor.ListasEstadosJuridicosRefactorRepository;
+import com.ciberdix.th.models.ListasEstadosJuridicos;
+import com.ciberdix.th.repositories.ListasEstadosJuridicosRefactorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

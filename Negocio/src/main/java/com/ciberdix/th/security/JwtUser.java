@@ -1,9 +1,6 @@
 package com.ciberdix.th.security;
 
-import com.ciberdix.th.model.refactor.Menus;
-import com.ciberdix.th.model.refactor.RolesFuncionalidades;
-import com.ciberdix.th.model.refactor.VRolesFuncionalidades;
-import com.ciberdix.th.security.abac.policy.model.VPolicyRules;
+import com.ciberdix.th.model.Menus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

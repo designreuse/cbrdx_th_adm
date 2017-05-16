@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasLateralidades;
-import com.ciberdix.th.repositories.refactor.ListasLateralidadesRefactorRepository;
+import com.ciberdix.th.models.ListasLateralidades;
+import com.ciberdix.th.repositories.ListasLateralidadesRefactorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

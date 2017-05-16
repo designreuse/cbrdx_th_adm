@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasEstratos;
-import com.ciberdix.th.repositories.refactor.ListasEstratosRefactorRepository;
+import com.ciberdix.th.models.ListasEstratos;
+import com.ciberdix.th.repositories.ListasEstratosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

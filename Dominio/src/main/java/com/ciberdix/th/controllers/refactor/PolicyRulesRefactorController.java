@@ -1,8 +1,8 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Reglas;
-import com.ciberdix.th.models.refactor.VPolicyRules;
-import com.ciberdix.th.repositories.refactor.VPolicyRulesRefactorRepository;
+import com.ciberdix.th.models.Reglas;
+import com.ciberdix.th.models.VPolicyRules;
+import com.ciberdix.th.repositories.VPolicyRulesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

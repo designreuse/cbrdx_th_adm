@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTallas;
-import com.ciberdix.th.repositories.refactor.ListasTallasRefactorRepository;
+import com.ciberdix.th.models.ListasTallas;
+import com.ciberdix.th.repositories.ListasTallasRefactorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

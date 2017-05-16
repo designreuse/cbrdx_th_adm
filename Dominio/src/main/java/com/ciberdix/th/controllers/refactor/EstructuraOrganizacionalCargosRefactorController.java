@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.EstructuraOrganizacionalCargos;
-import com.ciberdix.th.models.refactor.VEstructuraOrganizacionalCargos;
-import com.ciberdix.th.repositories.refactor.EstructuraOrganizacionalCargosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VEstructuraOrganizacionalCargosRefactorRepository;
+import com.ciberdix.th.models.EstructuraOrganizacionalCargos;
+import com.ciberdix.th.models.VEstructuraOrganizacionalCargos;
+import com.ciberdix.th.repositories.EstructuraOrganizacionalCargosRefactorRepository;
+import com.ciberdix.th.repositories.VEstructuraOrganizacionalCargosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

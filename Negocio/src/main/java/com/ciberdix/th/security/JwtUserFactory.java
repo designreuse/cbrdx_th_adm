@@ -1,13 +1,13 @@
 package com.ciberdix.th.security;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.*;
-import com.ciberdix.th.security.abac.policy.model.VPolicyRules;
+import com.ciberdix.th.model.Menus;
+import com.ciberdix.th.model.Usuarios;
+import com.ciberdix.th.model.VUsuarioRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

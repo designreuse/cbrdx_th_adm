@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.CargosElementos;
-import com.ciberdix.th.models.refactor.VCargosElementos;
-import com.ciberdix.th.repositories.refactor.CargosElementosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VCargosElementosRefactorRepository;
+import com.ciberdix.th.models.CargosElementos;
+import com.ciberdix.th.models.VCargosElementos;
+import com.ciberdix.th.repositories.CargosElementosRefactorRepository;
+import com.ciberdix.th.repositories.VCargosElementosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

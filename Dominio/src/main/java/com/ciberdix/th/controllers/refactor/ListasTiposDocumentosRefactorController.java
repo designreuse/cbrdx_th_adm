@@ -1,11 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposDocumentos;
+import com.ciberdix.th.models.ListasTiposDocumentos;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import com.ciberdix.th.repositories.refactor.ListasTiposDocumentosRefactorRepository;
+import com.ciberdix.th.repositories.ListasTiposDocumentosRefactorRepository;
 
 /**
  *

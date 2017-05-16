@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.EstructuraOrganizacional;
-import com.ciberdix.th.models.refactor.VEstructuraOrganizacional;
-import com.ciberdix.th.repositories.refactor.EstructuraOrganizacionalRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VEstructuraOrganizacionalRefactorRepository;
+import com.ciberdix.th.models.EstructuraOrganizacional;
+import com.ciberdix.th.models.VEstructuraOrganizacional;
+import com.ciberdix.th.repositories.EstructuraOrganizacionalRefactorRepository;
+import com.ciberdix.th.repositories.VEstructuraOrganizacionalRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

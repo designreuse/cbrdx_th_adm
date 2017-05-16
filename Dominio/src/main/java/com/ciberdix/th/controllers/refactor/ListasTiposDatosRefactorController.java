@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposDatos;
-import com.ciberdix.th.repositories.refactor.ListasTiposDatosRefactorRepository;
+import com.ciberdix.th.models.ListasTiposDatos;
+import com.ciberdix.th.repositories.ListasTiposDatosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

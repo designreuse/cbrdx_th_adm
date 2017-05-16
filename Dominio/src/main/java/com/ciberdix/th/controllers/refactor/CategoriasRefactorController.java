@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Categorias;
-import com.ciberdix.th.repositories.refactor.CategoriasRefactorRepository;
+import com.ciberdix.th.models.Categorias;
+import com.ciberdix.th.repositories.CategoriasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

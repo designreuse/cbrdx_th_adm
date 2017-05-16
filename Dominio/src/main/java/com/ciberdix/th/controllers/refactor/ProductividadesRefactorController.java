@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Productividades;
-import com.ciberdix.th.repositories.refactor.ProductividadesRefactorRepository;
+import com.ciberdix.th.models.Productividades;
+import com.ciberdix.th.repositories.ProductividadesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

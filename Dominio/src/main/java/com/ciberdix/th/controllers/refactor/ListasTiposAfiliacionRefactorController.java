@@ -1,11 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposAfiliacion;
+import com.ciberdix.th.models.ListasTiposAfiliacion;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import com.ciberdix.th.repositories.refactor.ListasTiposAfiliacionRefactorRepository;
+import com.ciberdix.th.repositories.ListasTiposAfiliacionRefactorRepository;
 
 /**
  *

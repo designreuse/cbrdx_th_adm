@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.UsuarioGruposGestion;
-import com.ciberdix.th.models.refactor.VUsuarioGruposGestion;
-import com.ciberdix.th.repositories.refactor.UsuarioGruposGestionRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VUsuarioGruposGestionRefactorRepository;
+import com.ciberdix.th.models.UsuarioGruposGestion;
+import com.ciberdix.th.models.VUsuarioGruposGestion;
+import com.ciberdix.th.repositories.UsuarioGruposGestionRefactorRepository;
+import com.ciberdix.th.repositories.VUsuarioGruposGestionRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

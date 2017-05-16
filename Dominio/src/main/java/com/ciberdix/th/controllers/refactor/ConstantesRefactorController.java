@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Constantes;
-import com.ciberdix.th.models.refactor.VConstantes;
-import com.ciberdix.th.repositories.refactor.ConstantesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VConstantesRefactorRepository;
+import com.ciberdix.th.models.Constantes;
+import com.ciberdix.th.models.VConstantes;
+import com.ciberdix.th.repositories.ConstantesRefactorRepository;
+import com.ciberdix.th.repositories.VConstantesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

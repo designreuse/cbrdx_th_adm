@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.RiesgosTipos;
-import com.ciberdix.th.repositories.refactor.RiesgosTiposRefactorRepository;
+import com.ciberdix.th.models.RiesgosTipos;
+import com.ciberdix.th.repositories.RiesgosTiposRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

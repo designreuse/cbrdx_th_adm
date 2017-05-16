@@ -1,11 +1,11 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ProyeccionesLaborales;
-import com.ciberdix.th.models.refactor.VProyeccionLaboral;
-import com.ciberdix.th.models.refactor.VProyeccionLaboralResumen;
-import com.ciberdix.th.repositories.refactor.ProyeccionesLaboralesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VProyeccionLaboralRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VProyeccionLaboralResumenRefactorRepository;
+import com.ciberdix.th.models.ProyeccionesLaborales;
+import com.ciberdix.th.models.VProyeccionLaboral;
+import com.ciberdix.th.models.VProyeccionLaboralResumen;
+import com.ciberdix.th.repositories.ProyeccionesLaboralesRefactorRepository;
+import com.ciberdix.th.repositories.VProyeccionLaboralRefactorRepository;
+import com.ciberdix.th.repositories.VProyeccionLaboralResumenRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

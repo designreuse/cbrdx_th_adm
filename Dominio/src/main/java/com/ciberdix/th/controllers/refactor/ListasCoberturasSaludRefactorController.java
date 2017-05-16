@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasCoberturasSalud;
-import com.ciberdix.th.repositories.refactor.ListasCoberturasSaludRefactorRepository;
+import com.ciberdix.th.models.ListasCoberturasSalud;
+import com.ciberdix.th.repositories.ListasCoberturasSaludRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

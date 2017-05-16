@@ -1,9 +1,12 @@
 package com.ciberdix.th.model;
 
+/**
+ * Created by felip on 21/04/2017.
+ */
 public class VTercerosReferencias {
     private Integer idTerceroReferencia;
     private Long idTercero;
-    private String nombreListaTipoReferencia;
+    private String tipoReferencia;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -28,12 +31,12 @@ public class VTercerosReferencias {
         this.idTercero = idTercero;
     }
 
-    public String getNombreListaTipoReferencia() {
-        return nombreListaTipoReferencia;
+    public String getTipoReferencia() {
+        return tipoReferencia;
     }
 
-    public void setNombreListaTipoReferencia(String nombreListaTipoReferencia) {
-        this.nombreListaTipoReferencia = nombreListaTipoReferencia;
+    public void setTipoReferencia(String tipoReferencia) {
+        this.tipoReferencia = tipoReferencia;
     }
 
     public String getPrimerNombre() {

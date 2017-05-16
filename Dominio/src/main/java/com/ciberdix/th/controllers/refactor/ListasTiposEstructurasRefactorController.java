@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposEstructuras;
-import com.ciberdix.th.repositories.refactor.ListasTiposEstructurasRefactorRepository;
+import com.ciberdix.th.models.ListasTiposEstructuras;
+import com.ciberdix.th.repositories.ListasTiposEstructurasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposOcupaciones;
-import com.ciberdix.th.repositories.refactor.ListasTiposOcupacionesRefactorRepository;
+import com.ciberdix.th.models.ListasTiposOcupaciones;
+import com.ciberdix.th.repositories.ListasTiposOcupacionesRefactorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

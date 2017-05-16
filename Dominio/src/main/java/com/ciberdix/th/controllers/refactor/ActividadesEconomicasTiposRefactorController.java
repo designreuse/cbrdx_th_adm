@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ActividadesEconomicasTipos;
-import com.ciberdix.th.repositories.refactor.ActividadesEconomicasTiposRefactorRepository;
+import com.ciberdix.th.models.ActividadesEconomicasTipos;
+import com.ciberdix.th.repositories.ActividadesEconomicasTiposRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

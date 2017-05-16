@@ -1,9 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposDirecciones;
-import com.ciberdix.th.models.refactor.ListasTiposDocumentos;
-import com.ciberdix.th.repositories.refactor.ListasTiposDireccionesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.ListasTiposDocumentosRefactorRepository;
+import com.ciberdix.th.models.ListasTiposDirecciones;
+import com.ciberdix.th.repositories.ListasTiposDireccionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.TercerosLocalizaciones;
-import com.ciberdix.th.models.refactor.VLocalizaciones;
-import com.ciberdix.th.repositories.refactor.TercerosLocalizacionesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VLocalizacionesRefactorRepository;
+import com.ciberdix.th.models.TercerosLocalizaciones;
+import com.ciberdix.th.models.VLocalizaciones;
+import com.ciberdix.th.repositories.TercerosLocalizacionesRefactorRepository;
+import com.ciberdix.th.repositories.VLocalizacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

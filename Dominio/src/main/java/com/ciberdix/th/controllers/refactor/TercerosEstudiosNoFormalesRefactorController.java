@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.TercerosEstudiosNoFormales;
-import com.ciberdix.th.models.refactor.VTercerosEstudiosNoFormales;
-import com.ciberdix.th.repositories.refactor.TercerosEstudiosNoFormalesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VTercerosEstudiosNoFormalesRefactorRepository;
+import com.ciberdix.th.models.TercerosEstudiosNoFormales;
+import com.ciberdix.th.models.VTercerosEstudiosNoFormales;
+import com.ciberdix.th.repositories.TercerosEstudiosNoFormalesRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosEstudiosNoFormalesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

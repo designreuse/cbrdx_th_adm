@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.CargosCriterios;
-import com.ciberdix.th.repositories.refactor.CargosCriteriosRefactorRepository;
+import com.ciberdix.th.models.CargosCriterios;
+import com.ciberdix.th.repositories.CargosCriteriosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

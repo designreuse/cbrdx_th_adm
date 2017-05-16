@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasClasificaciones;
-import com.ciberdix.th.repositories.refactor.ListasClasificacionesRefactorRepository;
+import com.ciberdix.th.models.ListasClasificaciones;
+import com.ciberdix.th.repositories.ListasClasificacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

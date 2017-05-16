@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.FuncionalidadesControles;
-import com.ciberdix.th.models.refactor.VFuncionalidadesControles;
-import com.ciberdix.th.repositories.refactor.FuncionalidadesControlesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VFuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.models.FuncionalidadesControles;
+import com.ciberdix.th.models.VFuncionalidadesControles;
+import com.ciberdix.th.repositories.FuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.repositories.VFuncionalidadesControlesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.TercerosContactos;
-import com.ciberdix.th.models.refactor.TercerosInmuebles;
-import com.ciberdix.th.models.refactor.VTercerosContactos;
-import com.ciberdix.th.repositories.refactor.TercerosContactosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VTercerosContactosRefactorRepository;
+import com.ciberdix.th.models.TercerosContactos;
+import com.ciberdix.th.models.VTercerosContactos;
+import com.ciberdix.th.repositories.TercerosContactosRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosContactosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

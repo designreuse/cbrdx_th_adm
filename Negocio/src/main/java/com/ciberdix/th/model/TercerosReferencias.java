@@ -2,6 +2,9 @@ package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
 
+/**
+ * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ */
 public class TercerosReferencias {
     private Integer idTerceroReferencia;
     private Long idTercero;

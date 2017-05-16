@@ -1,13 +1,12 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Usuarios;
-import com.ciberdix.th.models.refactor.VHistoricoUsuarios;
-import com.ciberdix.th.models.refactor.VUsuarios;
-import com.ciberdix.th.repositories.refactor.UsuariosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VHistoricoUsuariosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VUsuariosRefactorRepository;
+import com.ciberdix.th.models.Usuarios;
+import com.ciberdix.th.models.VHistoricoUsuarios;
+import com.ciberdix.th.models.VUsuarios;
+import com.ciberdix.th.repositories.UsuariosRefactorRepository;
+import com.ciberdix.th.repositories.VHistoricoUsuariosRefactorRepository;
+import com.ciberdix.th.repositories.VUsuariosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 

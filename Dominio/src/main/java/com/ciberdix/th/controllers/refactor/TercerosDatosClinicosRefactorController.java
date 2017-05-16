@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.TercerosDatosClinicos;
-import com.ciberdix.th.models.refactor.VTercerosDatosClinicos;
-import com.ciberdix.th.repositories.refactor.TercerosDatosClinicosRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VTercerosDatosClinicosRefactorRepository;
+import com.ciberdix.th.models.TercerosDatosClinicos;
+import com.ciberdix.th.models.VTercerosDatosClinicos;
+import com.ciberdix.th.repositories.TercerosDatosClinicosRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosDatosClinicosRefactorRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

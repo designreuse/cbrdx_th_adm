@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasClasesViviendas;
-import com.ciberdix.th.repositories.refactor.ListasClasesViviendasRefactorRepository;
+import com.ciberdix.th.models.ListasClasesViviendas;
+import com.ciberdix.th.repositories.ListasClasesViviendasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasAreasEstudios;
-import com.ciberdix.th.repositories.refactor.ListasAreasEstudiosRefactorRepository;
+import com.ciberdix.th.models.ListasAreasEstudios;
+import com.ciberdix.th.repositories.ListasAreasEstudiosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

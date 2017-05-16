@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasMarcasVehiculos;
-import com.ciberdix.th.repositories.refactor.ListasMarcasVehiculosRefactorRepository;
+import com.ciberdix.th.models.ListasMarcasVehiculos;
+import com.ciberdix.th.repositories.ListasMarcasVehiculosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

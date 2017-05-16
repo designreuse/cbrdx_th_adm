@@ -1,7 +1,7 @@
 package com.ciberdix.th.security.providers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.Usuarios;
+import com.ciberdix.th.model.Usuarios;
 import com.ciberdix.th.security.configuration.LdapConfiguration;
 import com.ciberdix.th.security.service.SystemUserDetailsService;
 import org.springframework.security.authentication.AuthenticationProvider;

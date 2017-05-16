@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Ocupaciones;
-import com.ciberdix.th.models.refactor.VOcupaciones;
-import com.ciberdix.th.repositories.refactor.OcupacionesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VOcupacionesRefactorRepository;
+import com.ciberdix.th.models.Ocupaciones;
+import com.ciberdix.th.models.VOcupaciones;
+import com.ciberdix.th.repositories.OcupacionesRefactorRepository;
+import com.ciberdix.th.repositories.VOcupacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

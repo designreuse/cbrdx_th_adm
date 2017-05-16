@@ -1,9 +1,8 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.VUsuariosWidgets;
-import com.ciberdix.th.models.refactor.Widgets;
-import com.ciberdix.th.repositories.refactor.VUsuariosWidgetsRefactorRepository;
-import com.ciberdix.th.repositories.refactor.WidgetsRefactorRepository;
+import com.ciberdix.th.models.Widgets;
+import com.ciberdix.th.repositories.VUsuariosWidgetsRefactorRepository;
+import com.ciberdix.th.repositories.WidgetsRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

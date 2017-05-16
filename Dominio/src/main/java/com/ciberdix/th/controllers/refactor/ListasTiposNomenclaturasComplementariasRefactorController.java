@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasTiposNomenclaturasComplementarias;
-import com.ciberdix.th.repositories.refactor.ListasTiposNomenclaturasComplementariasRefactorRepository;
+import com.ciberdix.th.models.ListasTiposNomenclaturasComplementarias;
+import com.ciberdix.th.repositories.ListasTiposNomenclaturasComplementariasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

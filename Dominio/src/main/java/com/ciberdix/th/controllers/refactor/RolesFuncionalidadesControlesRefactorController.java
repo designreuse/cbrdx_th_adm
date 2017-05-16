@@ -1,9 +1,9 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.RolesFuncionalidadesControles;
-import com.ciberdix.th.models.refactor.VRolesFuncionalidadesControles;
-import com.ciberdix.th.repositories.refactor.RolesFuncionalidadesControlesRefactorRepository;
-import com.ciberdix.th.repositories.refactor.VRolesFuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.models.RolesFuncionalidadesControles;
+import com.ciberdix.th.models.VRolesFuncionalidadesControles;
+import com.ciberdix.th.repositories.RolesFuncionalidadesControlesRefactorRepository;
+import com.ciberdix.th.repositories.VRolesFuncionalidadesControlesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

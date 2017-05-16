@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.CargosCompetencias;
-import com.ciberdix.th.repositories.refactor.CargosCompetenciasRefactorRepository;
+import com.ciberdix.th.models.CargosCompetencias;
+import com.ciberdix.th.repositories.CargosCompetenciasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

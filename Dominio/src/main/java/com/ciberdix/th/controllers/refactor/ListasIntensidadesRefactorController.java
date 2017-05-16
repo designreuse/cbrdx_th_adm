@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.ListasIntensidades;
-import com.ciberdix.th.repositories.refactor.ListasIntensidadesRefactorRepository;
+import com.ciberdix.th.models.ListasIntensidades;
+import com.ciberdix.th.repositories.ListasIntensidadesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

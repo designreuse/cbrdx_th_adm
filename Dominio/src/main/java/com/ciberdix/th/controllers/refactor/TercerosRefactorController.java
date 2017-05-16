@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.Terceros;
-import com.ciberdix.th.repositories.refactor.TercerosRefactorRepository;
+import com.ciberdix.th.models.Terceros;
+import com.ciberdix.th.repositories.TercerosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.ciberdix.th.controllers.refactor;
 
-import com.ciberdix.th.models.refactor.DivisionPoliticaResguardos;
-import com.ciberdix.th.repositories.refactor.DivisionPoliticaResguardosRefactorRepository;
+import com.ciberdix.th.models.DivisionPoliticaResguardos;
+import com.ciberdix.th.repositories.DivisionPoliticaResguardosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
