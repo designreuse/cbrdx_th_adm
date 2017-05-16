@@ -1,7 +1,7 @@
 package com.ciberdix.th.security.configuration;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.Constante;
+import com.ciberdix.th.model.Constantes;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -22,8 +22,8 @@ public class LdapConfiguration {
 
     public LdapConfiguration() {
         RestTemplate restTemplate = new RestTemplate();
-        List<Constante> constantes = Arrays.asList(restTemplate.getForObject(constantServiceUrl, Constante[].class));
-        for (Constante c : constantes) {
+        List<Constantes> constantes = Arrays.asList(restTemplate.getForObject(constantServiceUrl, Constantes[].class));
+        for (Constantes c : constantes) {
             if (c.getConstante().compareTo("LDAP") == 0) {
                 if (c.getValor().compareTo("0") == 0) {
                     ldapEnable = false;

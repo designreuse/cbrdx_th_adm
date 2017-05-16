@@ -2,44 +2,35 @@ package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
 
+/**
+ * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ */
 public class TercerosFamiliares {
-
-    private Long idTercerosFamiliar;
-    private Long idTerceros;
+    private Integer idTerceroFamiliar;
+    private Long idTercero;
     private Long idFamiliar;
-    private int idParentezco;
-    private int idConvivencia;
-    private boolean indicadorHabilitado;
-    private int auditoriaUsuario;
+    private Integer idParentesco;
+    private Integer idConvivencia;
+    private Boolean indicadorHabilitado;
+    private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idLocalizacion;
+    private String direccion;
 
-    public TercerosFamiliares(Long idTerceros, Long idFamiliar, int idParentezco, int idConvivencia, boolean indicadorHabilitado, int auditoriaUsuario, Timestamp auditoriaFecha) {
-        this.idTerceros = idTerceros;
-        this.idFamiliar = idFamiliar;
-        this.idParentezco = idParentezco;
-        this.idConvivencia = idConvivencia;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = auditoriaFecha;
+    public Integer getIdTerceroFamiliar() {
+        return idTerceroFamiliar;
     }
 
-    public TercerosFamiliares() {
+    public void setIdTerceroFamiliar(Integer idTerceroFamiliar) {
+        this.idTerceroFamiliar = idTerceroFamiliar;
     }
 
-    public Long getIdTercerosFamiliar() {
-        return idTercerosFamiliar;
+    public Long getIdTercero() {
+        return idTercero;
     }
 
-    public void setIdTercerosFamiliar(Long idTercerosFamiliar) {
-        this.idTercerosFamiliar = idTercerosFamiliar;
-    }
-
-    public Long getIdTerceros() {
-        return idTerceros;
-    }
-
-    public void setIdTerceros(Long idTerceros) {
-        this.idTerceros = idTerceros;
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
     }
 
     public Long getIdFamiliar() {
@@ -50,35 +41,35 @@ public class TercerosFamiliares {
         this.idFamiliar = idFamiliar;
     }
 
-    public int getIdParentezco() {
-        return idParentezco;
+    public Integer getIdParentesco() {
+        return idParentesco;
     }
 
-    public void setIdParentezco(int idParentezco) {
-        this.idParentezco = idParentezco;
+    public void setIdParentesco(Integer idParentesco) {
+        this.idParentesco = idParentesco;
     }
 
-    public int getIdConvivencia() {
+    public Integer getIdConvivencia() {
         return idConvivencia;
     }
 
-    public void setIdConvivencia(int idConvivencia) {
+    public void setIdConvivencia(Integer idConvivencia) {
         this.idConvivencia = idConvivencia;
     }
 
-    public boolean isIndicadorHabilitado() {
+    public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
 
-    public void setIndicadorHabilitado(boolean indicadorHabilitado) {
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    public int getAuditoriaUsuario() {
+    public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
 
-    public void setAuditoriaUsuario(int auditoriaUsuario) {
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
         this.auditoriaUsuario = auditoriaUsuario;
     }
 
@@ -89,6 +80,20 @@ public class TercerosFamiliares {
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
     }
-    
-    
+
+    public Integer getIdLocalizacion() {
+        return idLocalizacion;
+    }
+
+    public void setIdLocalizacion(Integer idLocalizacion) {
+        this.idLocalizacion = idLocalizacion;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }

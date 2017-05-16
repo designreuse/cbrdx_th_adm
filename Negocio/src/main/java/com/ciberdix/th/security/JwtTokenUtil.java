@@ -1,13 +1,12 @@
 package com.ciberdix.th.security;
 
-import com.ciberdix.th.model.refactor.Terceros;
-import com.ciberdix.th.model.refactor.Usuarios;
+import com.ciberdix.th.model.Terceros;
+import com.ciberdix.th.model.Usuarios;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
