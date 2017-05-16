@@ -1,28 +1,42 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Danny on 16/05/2017.
  */
 @Entity
+@Table(name = "RequerimientosReferidos", schema = "crz_th", catalog = "CREZCAMOS")
 public class RequerimientosReferidos {
     private Integer idRequerimientoReferido;
     private Integer idRequerimiento;
     private String nombre;
-    private Integer telefono;
-    private String mail;
-    private Timestamp fechaReferencia;
+    private String telefono;
+    private String correoElectronico;
+    private Date fechaReferencia;
     private Integer idEstado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public RequerimientosReferidos() {
+    }
+
+    public RequerimientosReferidos(Integer idRequerimiento, String nombre, String telefono, String correoElectronico, Date fechaReferencia, Integer idEstado, Integer auditoriaUsuario) {
+        this.idRequerimiento = idRequerimiento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correoElectronico = correoElectronico;
+        this.fechaReferencia = fechaReferencia;
+        this.idEstado = idEstado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdRequerimientoReferido")
+    @GeneratedValue
+    @Column(name = "IdRequerimientoReferido", nullable = false)
     public Integer getIdRequerimientoReferido() {
         return idRequerimientoReferido;
     }
@@ -32,7 +46,7 @@ public class RequerimientosReferidos {
     }
 
     @Basic
-    @Column(name = "IdRequerimiento")
+    @Column(name = "IdRequerimiento", nullable = true)
     public Integer getIdRequerimiento() {
         return idRequerimiento;
     }
@@ -42,7 +56,7 @@ public class RequerimientosReferidos {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = true, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -52,37 +66,37 @@ public class RequerimientosReferidos {
     }
 
     @Basic
-    @Column(name = "Telefono")
-    public Integer getTelefono() {
+    @Column(name = "Telefono", nullable = true, length = 100)
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
     @Basic
-    @Column(name = "Mail")
-    public String getMail() {
-        return mail;
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
     @Basic
-    @Column(name = "FechaReferencia")
-    public Timestamp getFechaReferencia() {
+    @Column(name = "FechaReferencia", nullable = true)
+    public Date getFechaReferencia() {
         return fechaReferencia;
     }
 
-    public void setFechaReferencia(Timestamp fechaReferencia) {
+    public void setFechaReferencia(Date fechaReferencia) {
         this.fechaReferencia = fechaReferencia;
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -92,7 +106,7 @@ public class RequerimientosReferidos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -102,7 +116,7 @@ public class RequerimientosReferidos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -124,7 +138,8 @@ public class RequerimientosReferidos {
             return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (telefono != null ? !telefono.equals(that.telefono) : that.telefono != null) return false;
-        if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
+        if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null)
+            return false;
         if (fechaReferencia != null ? !fechaReferencia.equals(that.fechaReferencia) : that.fechaReferencia != null)
             return false;
         if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
@@ -142,7 +157,7 @@ public class RequerimientosReferidos {
         result = 31 * result + (idRequerimiento != null ? idRequerimiento.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (telefono != null ? telefono.hashCode() : 0);
-        result = 31 * result + (mail != null ? mail.hashCode() : 0);
+        result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         result = 31 * result + (fechaReferencia != null ? fechaReferencia.hashCode() : 0);
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);

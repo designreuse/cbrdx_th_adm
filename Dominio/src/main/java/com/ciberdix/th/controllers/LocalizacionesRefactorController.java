@@ -31,6 +31,11 @@ public class LocalizacionesRefactorController {
         return localizacionesRefactorRepository.findOne(idLocalizacion);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/localizacionTercero/{idTercero}")
+    List<Localizaciones> findByIdTerceroAllLocalizacion(@PathVariable Long idTercero) {
+        return localizacionesRefactorRepository.queryByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Localizaciones create(@RequestBody Localizaciones localizaciones) {
         return localizacionesRefactorRepository.save(new Localizaciones(localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario()));
