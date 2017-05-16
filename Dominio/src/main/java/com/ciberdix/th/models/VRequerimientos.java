@@ -5,13 +5,12 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 15/05/2017.
+ * Created by Danny on 16/05/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
 public class VRequerimientos {
     private Integer idRequerimiento;
-    private String usuarioSistema;
     private String nombreSolicitante;
     private Integer idSolicitante;
     private String justificacion;
@@ -19,7 +18,7 @@ public class VRequerimientos {
     private Integer idCargo;
     private String formaContratacion;
     private Integer idFormaContratacion;
-    private String nombre;
+    private String tipoContratacion;
     private Integer idTipoContratacion;
     private Integer cantidadVacantes;
     private Integer cantidadConvocados;
@@ -50,7 +49,7 @@ public class VRequerimientos {
     private Date fechaFin;
 
     @Id
-    @Column(name = "IdRequerimiento")
+    @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {
         return idRequerimiento;
     }
@@ -60,17 +59,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "UsuarioSistema")
-    public String getUsuarioSistema() {
-        return usuarioSistema;
-    }
-
-    public void setUsuarioSistema(String usuarioSistema) {
-        this.usuarioSistema = usuarioSistema;
-    }
-
-    @Basic
-    @Column(name = "NombreSolicitante")
+    @Column(name = "NombreSolicitante", nullable = false, length = 259)
     public String getNombreSolicitante() {
         return nombreSolicitante;
     }
@@ -80,7 +69,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdSolicitante")
+    @Column(name = "IdSolicitante", nullable = true)
     public Integer getIdSolicitante() {
         return idSolicitante;
     }
@@ -90,7 +79,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Justificacion")
+    @Column(name = "Justificacion", nullable = true, length = 200)
     public String getJustificacion() {
         return justificacion;
     }
@@ -100,7 +89,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -110,7 +99,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -120,7 +109,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "FormaContratacion")
+    @Column(name = "FormaContratacion", nullable = true, length = 100)
     public String getFormaContratacion() {
         return formaContratacion;
     }
@@ -130,7 +119,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdFormaContratacion")
+    @Column(name = "IdFormaContratacion", nullable = true)
     public Integer getIdFormaContratacion() {
         return idFormaContratacion;
     }
@@ -140,17 +129,17 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Nombre")
-    public String getNombre() {
-        return nombre;
+    @Column(name = "TipoContratacion", nullable = true, length = 100)
+    public String getTipoContratacion() {
+        return tipoContratacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipoContratacion(String tipoContratacion) {
+        this.tipoContratacion = tipoContratacion;
     }
 
     @Basic
-    @Column(name = "IdTipoContratacion")
+    @Column(name = "IdTipoContratacion", nullable = true)
     public Integer getIdTipoContratacion() {
         return idTipoContratacion;
     }
@@ -160,7 +149,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "CantidadVacantes")
+    @Column(name = "CantidadVacantes", nullable = true)
     public Integer getCantidadVacantes() {
         return cantidadVacantes;
     }
@@ -170,7 +159,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "CantidadConvocados")
+    @Column(name = "CantidadConvocados", nullable = true)
     public Integer getCantidadConvocados() {
         return cantidadConvocados;
     }
@@ -180,7 +169,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Estado")
+    @Column(name = "Estado", nullable = true, length = 100)
     public String getEstado() {
         return estado;
     }
@@ -190,7 +179,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -200,7 +189,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -210,7 +199,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -220,7 +209,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "NombreResponsableSeleccion")
+    @Column(name = "NombreResponsableSeleccion", nullable = false, length = 259)
     public String getNombreResponsableSeleccion() {
         return nombreResponsableSeleccion;
     }
@@ -230,7 +219,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdResponsableSeleccion")
+    @Column(name = "IdResponsableSeleccion", nullable = true)
     public Integer getIdResponsableSeleccion() {
         return idResponsableSeleccion;
     }
@@ -240,7 +229,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "FormaReclutamiento")
+    @Column(name = "FormaReclutamiento", nullable = true, length = 100)
     public String getFormaReclutamiento() {
         return formaReclutamiento;
     }
@@ -250,7 +239,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdFormaReclutamiento")
+    @Column(name = "IdFormaReclutamiento", nullable = true)
     public Integer getIdFormaReclutamiento() {
         return idFormaReclutamiento;
     }
@@ -260,7 +249,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "EstructuraOrganizacional")
+    @Column(name = "EstructuraOrganizacional", nullable = true, length = 50)
     public String getEstructuraOrganizacional() {
         return estructuraOrganizacional;
     }
@@ -270,7 +259,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -280,7 +269,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Zona")
+    @Column(name = "Zona", nullable = true, length = 50)
     public String getZona() {
         return zona;
     }
@@ -290,7 +279,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdZona")
+    @Column(name = "IdZona", nullable = true)
     public Integer getIdZona() {
         return idZona;
     }
@@ -300,7 +289,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "EstructuraFisica")
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
     public String getEstructuraFisica() {
         return estructuraFisica;
     }
@@ -310,7 +299,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = true)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -320,7 +309,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "FechaSolicitud")
+    @Column(name = "FechaSolicitud", nullable = true)
     public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
@@ -330,7 +319,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IndicadorAutorizacion")
+    @Column(name = "IndicadorAutorizacion", nullable = true)
     public Boolean getIndicadorAutorizacion() {
         return indicadorAutorizacion;
     }
@@ -340,7 +329,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IndicadorAumentoPlazas")
+    @Column(name = "IndicadorAumentoPlazas", nullable = true)
     public Boolean getIndicadorAumentoPlazas() {
         return indicadorAumentoPlazas;
     }
@@ -350,7 +339,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "CargoJefe")
+    @Column(name = "CargoJefe", nullable = true, length = 100)
     public String getCargoJefe() {
         return cargoJefe;
     }
@@ -360,7 +349,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdJefe")
+    @Column(name = "IdJefe", nullable = true)
     public Integer getIdJefe() {
         return idJefe;
     }
@@ -370,7 +359,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "Categoria")
+    @Column(name = "Categoria", nullable = true, length = 30)
     public String getCategoria() {
         return categoria;
     }
@@ -380,7 +369,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = true)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -390,7 +379,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "TipoSolicitud")
+    @Column(name = "TipoSolicitud", nullable = true, length = 100)
     public String getTipoSolicitud() {
         return tipoSolicitud;
     }
@@ -400,7 +389,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "IdTipoSolicitud")
+    @Column(name = "IdTipoSolicitud", nullable = true)
     public Integer getIdTipoSolicitud() {
         return idTipoSolicitud;
     }
@@ -410,7 +399,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -420,7 +409,7 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -438,8 +427,6 @@ public class VRequerimientos {
 
         if (idRequerimiento != null ? !idRequerimiento.equals(that.idRequerimiento) : that.idRequerimiento != null)
             return false;
-        if (usuarioSistema != null ? !usuarioSistema.equals(that.usuarioSistema) : that.usuarioSistema != null)
-            return false;
         if (nombreSolicitante != null ? !nombreSolicitante.equals(that.nombreSolicitante) : that.nombreSolicitante != null)
             return false;
         if (idSolicitante != null ? !idSolicitante.equals(that.idSolicitante) : that.idSolicitante != null)
@@ -452,7 +439,8 @@ public class VRequerimientos {
             return false;
         if (idFormaContratacion != null ? !idFormaContratacion.equals(that.idFormaContratacion) : that.idFormaContratacion != null)
             return false;
-        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
+        if (tipoContratacion != null ? !tipoContratacion.equals(that.tipoContratacion) : that.tipoContratacion != null)
+            return false;
         if (idTipoContratacion != null ? !idTipoContratacion.equals(that.idTipoContratacion) : that.idTipoContratacion != null)
             return false;
         if (cantidadVacantes != null ? !cantidadVacantes.equals(that.cantidadVacantes) : that.cantidadVacantes != null)
@@ -506,7 +494,6 @@ public class VRequerimientos {
     @Override
     public int hashCode() {
         int result = idRequerimiento != null ? idRequerimiento.hashCode() : 0;
-        result = 31 * result + (usuarioSistema != null ? usuarioSistema.hashCode() : 0);
         result = 31 * result + (nombreSolicitante != null ? nombreSolicitante.hashCode() : 0);
         result = 31 * result + (idSolicitante != null ? idSolicitante.hashCode() : 0);
         result = 31 * result + (justificacion != null ? justificacion.hashCode() : 0);
@@ -514,7 +501,7 @@ public class VRequerimientos {
         result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
         result = 31 * result + (formaContratacion != null ? formaContratacion.hashCode() : 0);
         result = 31 * result + (idFormaContratacion != null ? idFormaContratacion.hashCode() : 0);
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (tipoContratacion != null ? tipoContratacion.hashCode() : 0);
         result = 31 * result + (idTipoContratacion != null ? idTipoContratacion.hashCode() : 0);
         result = 31 * result + (cantidadVacantes != null ? cantidadVacantes.hashCode() : 0);
         result = 31 * result + (cantidadConvocados != null ? cantidadConvocados.hashCode() : 0);
