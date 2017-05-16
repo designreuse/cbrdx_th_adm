@@ -1,10 +1,9 @@
 package com.ciberdix.th.security.service;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.refactor.Usuarios;
+import com.ciberdix.th.model.Usuarios;
 import com.ciberdix.th.security.JwtUserFactory;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
