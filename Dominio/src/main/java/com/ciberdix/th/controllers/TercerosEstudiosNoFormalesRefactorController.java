@@ -43,12 +43,12 @@ public class TercerosEstudiosNoFormalesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosEstudiosNoFormales create(@RequestBody TercerosEstudiosNoFormales tercerosReferencias) {
-        return TercerosEstudiosNoFormalesRefactorRepository.save(new TercerosEstudiosNoFormales(tercerosReferencias.getIdTercero(), tercerosReferencias.getIdTipoEstudio(), tercerosReferencias.getOtroEstudio(), tercerosReferencias.getIdAreaEstudio(), tercerosReferencias.getTituloEstudio(), tercerosReferencias.getInstitucion(), tercerosReferencias.getIdIntensidadHoraria(), tercerosReferencias.getDescripcion(), tercerosReferencias.getIdCiudad(), tercerosReferencias.getIndicadorTerminacion(), tercerosReferencias.getFechaIngresa(), tercerosReferencias.getFechaTermina(), tercerosReferencias.getIdAdjunto(), tercerosReferencias.getIndicadorHabilitado(), tercerosReferencias.getAuditoriaUsuario(), tercerosReferencias.getIndicadorVerificado(), tercerosReferencias.getFechaVerificado()));
+    TercerosEstudiosNoFormales create(@RequestBody TercerosEstudiosNoFormales c) {
+        return TercerosEstudiosNoFormalesRefactorRepository.save(new TercerosEstudiosNoFormales(c.getIdTercero(), c.getIdTipoEstudio(), c.getOtroEstudio(), c.getIdAreaEstudio(), c.getTituloEstudio(), c.getInstitucion(), c.getIdIntensidadHoraria(), c.getDescripcion(), c.getIdCiudad(), c.getIndicadorTerminacion(), c.getFechaIngresa(), c.getFechaTermina(), c.getIdAdjunto(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getIndicadorVerificado(), c.getFechaVerificado()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    TercerosEstudiosNoFormales update(@RequestBody TercerosEstudiosNoFormales tercerosReferencias) {
-        return TercerosEstudiosNoFormalesRefactorRepository.save(tercerosReferencias);
+    TercerosEstudiosNoFormales update(@RequestBody TercerosEstudiosNoFormales c) {
+        return TercerosEstudiosNoFormalesRefactorRepository.save(new TercerosEstudiosNoFormales(c.getIdTerceroEstudioNoFormal(),c.getIdTercero(), c.getIdTipoEstudio(), c.getOtroEstudio(), c.getIdAreaEstudio(), c.getTituloEstudio(), c.getInstitucion(), c.getIdIntensidadHoraria(), c.getDescripcion(), c.getIdCiudad(), c.getIndicadorTerminacion(), c.getFechaIngresa(), c.getFechaTermina(), c.getIdAdjunto(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getIndicadorVerificado(), c.getFechaVerificado()));
     }
 }

@@ -28,7 +28,19 @@ public class RequerimientosReferidos {
         this.nombre = nombre;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.fechaReferencia = fechaReferencia;
+        this.fechaReferencia = fechaReferencia != null ? new Date(fechaReferencia.getTime()) : null;
+        this.idEstado = idEstado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public RequerimientosReferidos(Integer idRequerimientoReferido, Integer idRequerimiento, String nombre, String telefono, String correoElectronico, Date fechaReferencia, Integer idEstado, Integer auditoriaUsuario) {
+        this.idRequerimientoReferido = idRequerimientoReferido;
+        this.idRequerimiento = idRequerimiento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.correoElectronico = correoElectronico;
+        this.fechaReferencia = fechaReferencia != null ? new Date(fechaReferencia.getTime()) : null;
         this.idEstado = idEstado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());

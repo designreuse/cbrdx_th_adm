@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -28,12 +28,12 @@ public class TercerosEstudiosNoFormales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorVerificado;
-    private Timestamp fechaVerificado;
+    private Date fechaVerificado;
 
     public TercerosEstudiosNoFormales() {
     }
 
-    public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Timestamp fechaVerificado) {
+    public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Date fechaVerificado) {
         this.idTercero = idTercero;
         this.idTipoEstudio = idTipoEstudio;
         this.otroEstudio = otroEstudio;
@@ -44,8 +44,30 @@ public class TercerosEstudiosNoFormales {
         this.descripcion = descripcion;
         this.idCiudad = idCiudad;
         this.indicadorTerminacion = indicadorTerminacion;
-        this.fechaIngresa = fechaIngresa;
-        this.fechaTermina = fechaTermina;
+        this.fechaIngresa = fechaIngresa != null ? new Date(fechaIngresa.getTime()) : null;
+        this.fechaTermina = fechaTermina != null ? new Date(fechaTermina.getTime()) : null;
+        this.idAdjunto = idAdjunto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.indicadorVerificado = indicadorVerificado;
+        this.fechaVerificado = fechaVerificado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosEstudiosNoFormales(Integer idTerceroEstudioNoFormal, Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Date fechaVerificado) {
+        this.idTerceroEstudioNoFormal = idTerceroEstudioNoFormal;
+        this.idTercero = idTercero;
+        this.idTipoEstudio = idTipoEstudio;
+        this.otroEstudio = otroEstudio;
+        this.idAreaEstudio = idAreaEstudio;
+        this.tituloEstudio = tituloEstudio;
+        this.institucion = institucion;
+        this.idIntensidadHoraria = idIntensidadHoraria;
+        this.descripcion = descripcion;
+        this.idCiudad = idCiudad;
+        this.indicadorTerminacion = indicadorTerminacion;
+        this.fechaIngresa = fechaIngresa != null ? new Date(fechaIngresa.getTime()) : null;
+        this.fechaTermina = fechaTermina != null ? new Date(fechaTermina.getTime()) : null;
         this.idAdjunto = idAdjunto;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -237,11 +259,11 @@ public class TercerosEstudiosNoFormales {
 
     @Basic
     @Column(name = "FechaVerificado")
-    public Timestamp getFechaVerificado() {
+    public Date getFechaVerificado() {
         return fechaVerificado;
     }
 
-    public void setFechaVerificado(Timestamp fechaVerificado) {
+    public void setFechaVerificado(Date fechaVerificado) {
         this.fechaVerificado = fechaVerificado;
     }
 

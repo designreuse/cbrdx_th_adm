@@ -36,7 +36,7 @@ public class UsuariosRolesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    VUsuarioRoles findOne(@PathVariable Integer id){
+    VUsuarioRoles findOne(@PathVariable Integer id) {
         return vUsuariosRolesRepository.findOne(id);
     }
 
@@ -51,7 +51,7 @@ public class UsuariosRolesController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    UsuarioRoles updateList(@RequestBody UsuarioRoles roles) {
-        return usuariosRolesRepository.save(roles);
+    UsuarioRoles updateList(@RequestBody UsuarioRoles c) {
+        return usuariosRolesRepository.save(new UsuarioRoles(c.getIdUsuarioRol(), c.getIdUsuario(), c.getIdRol(), c.getAuditoriaUsuario(), c.getFechaInicio(), c.getFechaFin(), c.getIndicadorHabilitado()));
     }
 }

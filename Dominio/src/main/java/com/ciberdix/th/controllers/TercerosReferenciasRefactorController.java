@@ -47,7 +47,7 @@ public class TercerosReferenciasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    TercerosReferencias update(@RequestBody TercerosReferencias tercerosReferencias) {
-        return tercerosReferenciasRefactorRepository.save(tercerosReferencias);
+    TercerosReferencias update(@RequestBody TercerosReferencias c) {
+        return tercerosReferenciasRefactorRepository.save(new TercerosReferencias(c.getIdTerceroReferencia(),c.getIdTercero(),c.getIdTipoReferencia(),c.getEmpresa(),c.getPrimerNombre(),c.getSegundoNombre(),c.getPrimerApellido(),c.getSegundoApellido(),c.getTelefonoFijo(),c.getTelefonoMovil(),c.getIdLocalizacion(),c.getIdAdjunto(),c.getIndicadorHabilitado(),c.getAuditoriaUsuario(),c.getIndicadorVerificado(),c.getFechaVerificado()));
     }
 }

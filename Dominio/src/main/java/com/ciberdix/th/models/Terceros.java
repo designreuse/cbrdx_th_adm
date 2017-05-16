@@ -1,8 +1,8 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -70,9 +70,9 @@ public class Terceros {
         this.imagen = imagen;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
-        this.fechaDocumento = fechaDocumento;
+        this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;
         this.idCiudadExpDocumento = idCiudadExpDocumento;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = fechaNacimiento != null ? new Date(fechaNacimiento.getTime()) : null;
         this.idCiudadNacimiento = idCiudadNacimiento;
         this.idGenero = idGenero;
         this.idEstadoCivil = idEstadoCivil;
@@ -94,7 +94,7 @@ public class Terceros {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.telefonoFijo = telefonoFijo;
         this.telefonoCelular = telefonoCelular;
-        this.fechaDefuncion = fechaDefuncion;
+        this.fechaDefuncion = fechaDefuncion != null ? new Date(fechaDefuncion.getTime()) : null;
         this.idTipoOcupacion = idTipoOcupacion;
         this.idSectorEconomico = idSectorEconomico;
         this.idActividadEconomica = idActividadEconomica;
@@ -108,6 +108,57 @@ public class Terceros {
         this.idTallaCamisa = idTallaCamisa;
         this.idTallaPantalon = idTallaPantalon;
         this.idTallaCalzado = idTallaCalzado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb) {
+        this.idTercero = idTercero;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.imagen = imagen;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;
+        this.idCiudadExpDocumento = idCiudadExpDocumento;
+        this.fechaNacimiento = fechaNacimiento != null ? new Date(fechaNacimiento.getTime()) : null;
+        this.idCiudadNacimiento = idCiudadNacimiento;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+        this.idFactorRh = idFactorRh;
+        this.nroHijos = nroHijos;
+        this.idLateralidad = idLateralidad;
+        this.tallaCamisa = tallaCamisa;
+        this.tallaPantalon = tallaPantalon;
+        this.tallaCalzado = tallaCalzado;
+        this.correoElectronico = correoElectronico;
+        this.fechaCreacion = fechaCreacion != null ? fechaCreacion : new Date(System.currentTimeMillis());
+        this.idTipoPersona = idTipoPersona;
+        this.razonSocial = razonSocial;
+        this.talla = talla;
+        this.peso = peso;
+        this.imc = imc;
+        this.idProfesion = idProfesion;
+        this.idNivelEducacion = idNivelEducacion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoCelular = telefonoCelular;
+        this.fechaDefuncion = fechaDefuncion != null ? new Date(fechaDefuncion.getTime()) : null;
+        this.idTipoOcupacion = idTipoOcupacion;
+        this.idSectorEconomico = idSectorEconomico;
+        this.idActividadEconomica = idActividadEconomica;
+        this.idOcupacion = idOcupacion;
+        this.idEstadoJuridico = idEstadoJuridico;
+        this.idCoberturaSalud = idCoberturaSalud;
+        this.indicadorVivo = indicadorVivo;
+        this.idTipoAfiliacion = idTipoAfiliacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.idTipoTercero = idTipoTercero;
+        this.idTallaCamisa = idTallaCamisa;
+        this.idTallaPantalon = idTallaPantalon;
+        this.idTallaCalzado = idTallaCalzado;
+        this.sitioWeb = sitioWeb;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 

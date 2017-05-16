@@ -60,6 +60,8 @@ public class TercerosDatosClinicosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosDatosClinicos obj) {
-        tercerosDatosClinicosRefactorRepository.save(obj);
+        tercerosDatosClinicosRefactorRepository.save(new TercerosDatosClinicos(obj.getIdTerceroDatoClinico(),obj.getIdTercero(), obj.getIdDiagnostico(),
+                obj.getFechaInicio(), obj.getFechaFin(),
+                obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 }
