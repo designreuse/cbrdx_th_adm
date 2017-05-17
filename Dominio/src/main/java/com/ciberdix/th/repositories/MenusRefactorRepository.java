@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface MenusRefactorRepository extends CrudRepository<Menus, Integer> {
 
-    List<Menus> findByIdPadre(Integer idPadre);
+    List<Menus> findByIdPadreAndIndicadorHabilitadoIsTrue(Integer idPadre);
 
     List<Menus> findByIndicadorHabilitadoTrue();
 
