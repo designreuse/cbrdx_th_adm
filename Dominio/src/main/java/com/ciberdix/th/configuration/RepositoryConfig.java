@@ -183,5 +183,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(RequerimientosReferidos.class);
         config.exposeIdsFor(VRequerimientos.class);
         config.exposeIdsFor(RequerimientosAcciones.class);
+        config.exposeIdsFor(VTercerosCargosAreasFisicas.class);
     }
 }

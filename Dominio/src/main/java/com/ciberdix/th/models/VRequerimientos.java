@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/05/2017.
+ * Created by Danny on 17/05/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -31,10 +31,8 @@ public class VRequerimientos {
     private Integer idResponsableSeleccion;
     private String formaReclutamiento;
     private Integer idFormaReclutamiento;
-    private String estructuraOrganizacional;
+    private String area;
     private Integer idEstructuraOrganizacional;
-    private String estructuraArea;
-    private Integer idTipoArea;
     private String zona;
     private Integer idZona;
     private String estructuraFisica;
@@ -262,13 +260,13 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "EstructuraOrganizacional", nullable = true, length = 50)
-    public String getEstructuraOrganizacional() {
-        return estructuraOrganizacional;
+    @Column(name = "Area", nullable = true, length = 50)
+    public String getArea() {
+        return area;
     }
 
-    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
-        this.estructuraOrganizacional = estructuraOrganizacional;
+    public void setArea(String area) {
+        this.area = area;
     }
 
     @Basic
@@ -279,26 +277,6 @@ public class VRequerimientos {
 
     public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
-    }
-
-    @Basic
-    @Column(name = "EstructuraArea", nullable = true, length = 40)
-    public String getEstructuraArea() {
-        return estructuraArea;
-    }
-
-    public void setEstructuraArea(String estructuraArea) {
-        this.estructuraArea = estructuraArea;
-    }
-
-    @Basic
-    @Column(name = "IdTipoArea", nullable = true)
-    public Integer getIdTipoArea() {
-        return idTipoArea;
-    }
-
-    public void setIdTipoArea(Integer idTipoArea) {
-        this.idTipoArea = idTipoArea;
     }
 
     @Basic
@@ -495,13 +473,9 @@ public class VRequerimientos {
             return false;
         if (idFormaReclutamiento != null ? !idFormaReclutamiento.equals(that.idFormaReclutamiento) : that.idFormaReclutamiento != null)
             return false;
-        if (estructuraOrganizacional != null ? !estructuraOrganizacional.equals(that.estructuraOrganizacional) : that.estructuraOrganizacional != null)
-            return false;
+        if (area != null ? !area.equals(that.area) : that.area != null) return false;
         if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
             return false;
-        if (estructuraArea != null ? !estructuraArea.equals(that.estructuraArea) : that.estructuraArea != null)
-            return false;
-        if (idTipoArea != null ? !idTipoArea.equals(that.idTipoArea) : that.idTipoArea != null) return false;
         if (zona != null ? !zona.equals(that.zona) : that.zona != null) return false;
         if (idZona != null ? !idZona.equals(that.idZona) : that.idZona != null) return false;
         if (estructuraFisica != null ? !estructuraFisica.equals(that.estructuraFisica) : that.estructuraFisica != null)
@@ -551,10 +525,8 @@ public class VRequerimientos {
         result = 31 * result + (idResponsableSeleccion != null ? idResponsableSeleccion.hashCode() : 0);
         result = 31 * result + (formaReclutamiento != null ? formaReclutamiento.hashCode() : 0);
         result = 31 * result + (idFormaReclutamiento != null ? idFormaReclutamiento.hashCode() : 0);
-        result = 31 * result + (estructuraOrganizacional != null ? estructuraOrganizacional.hashCode() : 0);
+        result = 31 * result + (area != null ? area.hashCode() : 0);
         result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
-        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
-        result = 31 * result + (idTipoArea != null ? idTipoArea.hashCode() : 0);
         result = 31 * result + (zona != null ? zona.hashCode() : 0);
         result = 31 * result + (idZona != null ? idZona.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);

@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Terceros;
+import com.ciberdix.th.model.VTercerosCargosAreasFisicas;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.Arrays;
@@ -52,6 +53,15 @@ public class TercerosRefactorController {
         Terceros tercero = restTemplate.getForObject(serviceUrl + "api/terceros/" + cedula + "/" + id, Terceros.class);
 
         return tercero;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisicas")
+    @ApiOperation(value = "Obtener tercerosCargosAreasFisicas", notes = "Retorna el listado de tercerosCargosAreasFisicas")
+    List<VTercerosCargosAreasFisicas> findAllTCAF() {
+        RestTemplate restTemplate = new RestTemplate();
+        VTercerosCargosAreasFisicas[] terceros = restTemplate.getForObject(serviceUrl + "api/terceros/tercerosCargosAreasFisicas", VTercerosCargosAreasFisicas[].class);
+
+        return Arrays.asList(terceros);
     }
 
     @RequestMapping(method = RequestMethod.POST)

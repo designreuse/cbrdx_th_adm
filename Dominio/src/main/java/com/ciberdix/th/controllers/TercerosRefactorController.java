@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Terceros;
+import com.ciberdix.th.models.VTercerosCargosAreasFisicas;
 import com.ciberdix.th.repositories.TercerosRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosCargosAreasFisicasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ public class TercerosRefactorController {
     @Autowired
     private TercerosRefactorRepository tercerosRepository;
 
+    @Autowired
+    private VTercerosCargosAreasFisicasRefactorRepository vTercerosCargosAreasFisicasRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<Terceros> listarTerceros() {
         return (List<Terceros>) tercerosRepository.findAll();
@@ -33,6 +38,11 @@ public class TercerosRefactorController {
     @RequestMapping(method = RequestMethod.GET, value = "/{cedula}/{id}")
     Terceros obtenerTerceroPorCedula(@PathVariable String cedula, @PathVariable Integer id) {
         return tercerosRepository.queryTercero(cedula, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisicas")
+    List<VTercerosCargosAreasFisicas> findAllTCAF() {
+        return (List<VTercerosCargosAreasFisicas>) vTercerosCargosAreasFisicasRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)

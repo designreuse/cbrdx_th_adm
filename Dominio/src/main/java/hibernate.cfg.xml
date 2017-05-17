@@ -236,6 +236,7 @@
         <mapping class="com.ciberdix.th.models.RequerimientosReferidos"/>
         <mapping class="com.ciberdix.th.models.RequerimientosAcciones"/>
         <mapping class="com.ciberdix.th.models.ListasFormasReclutamientos"/>
+        <mapping class="com.ciberdix.th.models.VTercerosCargosAreasFisicas"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

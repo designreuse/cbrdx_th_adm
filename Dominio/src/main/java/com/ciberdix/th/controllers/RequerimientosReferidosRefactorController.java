@@ -33,6 +33,11 @@ public class RequerimientosReferidosRefactorController {
         return requerimientosReferidosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/requerimiento/{idRequerimiento}")
+    List<RequerimientosReferidos> findByIdRequerimiento(@PathVariable Integer idRequerimiento) {
+        return requerimientosReferidosRefactorRepository.findByIdRequerimiento(idRequerimiento);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     RequerimientosReferidos create(@RequestBody RequerimientosReferidos o) {
         return requerimientosReferidosRefactorRepository.save(
