@@ -27,7 +27,7 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{IdPadre}")
     List<Menus> findByFather(@PathVariable Integer IdPadre) {
-        return menusRefactorRepository.findByIdPadre(IdPadre);
+        return menusRefactorRepository.findByIdPadreAndIndicadorHabilitadoIsTrue(IdPadre);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/idPadreDifCero")
