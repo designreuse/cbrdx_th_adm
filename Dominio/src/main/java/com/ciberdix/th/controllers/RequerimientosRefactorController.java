@@ -41,6 +41,11 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findByIdEstadoOrderByIdRequerimientoDesc(idEstado);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byUser/{idUsuario}")
+    List<VRequerimientos> findByIdSolicitante(@PathVariable Integer idUsuario) {
+        return vRequerimientosRefactorRepository.findByIdSolicitante(idUsuario);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos obj) {
         return requerimientosRefactorRepository.save(new Requerimientos(obj.getIdSolicitante(), obj.getJustificacion(),
@@ -53,12 +58,7 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Requerimientos obj) {
-        requerimientosRefactorRepository.save(new Requerimientos(obj.getIdRequerimiento(), obj.getIdSolicitante(), obj.getJustificacion(),
-                obj.getIdCargo(), obj.getIdFormaContratacion(), obj.getIdTipoContratacion(), obj.getCantidadVacantes(),
-                obj.getCantidadConvocados(), obj.getIdEstado(), obj.getAuditoriaUsuario(), obj.getIdResponsableSeleccion(),
-                obj.getIdFormaReclutamiento(), obj.getIdEstructuraOrganizacional(), obj.getIdZona(), obj.getIdEstructuraFisica(),
-                obj.getFechaSolicitud(), obj.getIndicadorAutorizacion(), obj.getIndicadorAumentoPlazas(), obj.getIdJefe(),
-                obj.getIdCategoria(), obj.getIdTipoSolicitud(), obj.getFechaInicio(), obj.getFechaFin()));
+        requerimientosRefactorRepository.save(obj);
     }
 
 }

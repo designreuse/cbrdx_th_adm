@@ -122,37 +122,18 @@ public class UsuariosRefactorController {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
         String hashedPassword = bCryptPasswordEncoder.encode(pass);
         AuthenticationRestController authenticationRestController = new AuthenticationRestController();
-        authenticationRestController.processMailInfo(usuario, "Bienvenido a Gestionamos","<h1>Bienvenido!</h1><br />Se ha registrado en Gestionamos<br /> Su Usuario es: " + user + "<br />Su Contraseña es: " + pass);
+        authenticationRestController.processMailInfo(usuario, "Bienvenido a Gestionamos","<h1>Bienvenido!</h1><br />Se ha registrado en Gestionamos<br /> Su Usuario es: " + user + "<br />Su Contraseña es: " + pass + "<br />");
         usuario.setContrasena(hashedPassword);
         return usuario;
     }
 
     private Usuarios processMailInfo(Usuarios usuario) {
         String pass = UUID.randomUUID().toString().substring(0, 10);
-        MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
-        MandrillMessage message = new MandrillMessage();
-        message.setSubject("Su Contraseña");
-        message.setHtml("<h1>Hola!</h1><br />Su nueva Contraseña es: " + pass);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
         String hashedPassword = bCryptPasswordEncoder.encode(pass);
+        AuthenticationRestController authenticationRestController = new AuthenticationRestController();
+        authenticationRestController.processMailInfo(usuario, "Su Contraseña","<h1>Se ha realizado un cambio de Contraseña</h1><br />Su Nueva Contraseña es: " + pass + "<br />");
         usuario.setContrasena(hashedPassword);
-        message.setAutoText(true);
-        message.setFromEmail("info@ciberdix.com");
-        message.setFromName("Gestionamos");
-        ArrayList<MandrillMessage.Recipient> recipients = new ArrayList<>();
-        MandrillMessage.Recipient recipient = new MandrillMessage.Recipient();
-        recipient.setEmail(usuario.getCorreoElectronico());
-        recipient.setName(usuario.getUsuarioSistema());
-        recipients.add(recipient);
-        message.setTo(recipients);
-        message.setPreserveRecipients(true);
-        try {
-            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
-        } catch (MandrillApiError mandrillApiError) {
-            mandrillApiError.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return usuario;
     }
 }

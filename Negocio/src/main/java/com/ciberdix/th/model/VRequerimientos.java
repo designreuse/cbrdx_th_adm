@@ -29,10 +29,8 @@ public class VRequerimientos {
     private Integer idResponsableSeleccion;
     private String formaReclutamiento;
     private Integer idFormaReclutamiento;
-    private String estructuraOrganizacional;
+    private String area;
     private Integer idEstructuraOrganizacional;
-    private String estructuraArea;
-    private Integer idTipoArea;
     private String zona;
     private Integer idZona;
     private String estructuraFisica;
@@ -217,12 +215,12 @@ public class VRequerimientos {
         this.idFormaReclutamiento = idFormaReclutamiento;
     }
 
-    public String getEstructuraOrganizacional() {
-        return estructuraOrganizacional;
+    public String getArea() {
+        return area;
     }
 
-    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
-        this.estructuraOrganizacional = estructuraOrganizacional;
+    public void setArea(String area) {
+        this.area = area;
     }
 
     public Integer getIdEstructuraOrganizacional() {
@@ -231,22 +229,6 @@ public class VRequerimientos {
 
     public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
-    }
-
-    public String getEstructuraArea() {
-        return estructuraArea;
-    }
-
-    public void setEstructuraArea(String estructuraArea) {
-        this.estructuraArea = estructuraArea;
-    }
-
-    public Integer getIdTipoArea() {
-        return idTipoArea;
-    }
-
-    public void setIdTipoArea(Integer idTipoArea) {
-        this.idTipoArea = idTipoArea;
     }
 
     public String getZona() {
