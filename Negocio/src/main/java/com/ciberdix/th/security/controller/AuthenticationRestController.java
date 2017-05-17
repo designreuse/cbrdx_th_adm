@@ -221,7 +221,7 @@ public class AuthenticationRestController {
         return usuario;
     }
 
-    private void processMailInfo(String Subject, String Body) {
+    public void processMailInfo(String Subject, String Body) {
         LdapConfiguration ldapConfiguration = new LdapConfiguration();
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();

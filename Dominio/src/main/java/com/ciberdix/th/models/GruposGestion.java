@@ -1,14 +1,11 @@
 package com.ciberdix.th.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.time.temporal.TemporalField;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Felipe Aguirre on 24/03/2017.
  */
 @Entity
 @Table(name = "GruposGestion", schema = "crz_th", catalog = "CREZCAMOS")
