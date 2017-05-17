@@ -6,32 +6,68 @@ import java.sql.Timestamp;
 /**
  * Created by Danny on 15/05/2017.
  */
-public class Requerimientos {
+public class RequerimientosHistoricos {
 
-    public Integer idRequerimiento;
-    public Long idSolicitante;
-    public String justificacion;
-    public Integer idCargo;
-    public Integer idFormaContratacion;
-    public Integer idTipoContratacion;
-    public Integer cantidadVacantes;
-    public Integer cantidadConvocados;
-    public Integer idEstado;
-    public Integer auditoriaUsuario;
-    public Timestamp auditoriaFecha;
-    public Integer idResponsableSeleccion;
-    public Integer idFormaReclutamiento;
-    public Integer idEstructuraOrganizacional;
-    public Integer idZona;
-    public Integer idEstructuraFisica;
-    public Date fechaSolicitud;
-    public Boolean indicadorAutorizacion;
-    public Boolean indicadorAumentoPlazas;
-    public Integer idJefe;
-    public Integer idCategoria;
-    public Integer idTipoSolicitud;
-    public Date fechaInicio;
-    public Date fechaFin;
+    private Integer idRequerimientoHistorico;
+    private Integer idRequerimiento;
+    private Long idSolicitante;
+    private String justificacion;
+    private Integer idCargo;
+    private Integer idFormaContratacion;
+    private Integer idTipoContratacion;
+    private Integer cantidadVacantes;
+    private Integer cantidadConvocados;
+    private Integer idEstado;
+    private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
+    private Integer idResponsableSeleccion;
+    private Integer idFormaReclutamiento;
+    private Integer idEstructuraOrganizacional;
+    private Integer idZona;
+    private Integer idEstructuraFisica;
+    private Date fechaSolicitud;
+    private Boolean indicadorAutorizacion;
+    private Boolean indicadorAumentoPlazas;
+    private Integer idJefe;
+    private Integer idCategoria;
+    private Integer idTipoSolicitud;
+    private Date fechaInicio;
+    private Date fechaFin;
+
+    public RequerimientosHistoricos(Requerimientos req) {
+        this.idRequerimiento = req.idRequerimiento;
+        this.idSolicitante = req.idSolicitante;
+        this.justificacion = req.justificacion;
+        this.idCargo = req.idCargo;
+        this.idFormaContratacion = req.idFormaContratacion;
+        this.idTipoContratacion = req.idTipoContratacion;
+        this.cantidadVacantes = req.cantidadVacantes;
+        this.cantidadConvocados = req.cantidadConvocados;
+        this.idEstado = req.idEstado;
+        this.auditoriaUsuario = req.auditoriaUsuario;
+        this.auditoriaFecha = req.auditoriaFecha;
+        this.idResponsableSeleccion = req.idResponsableSeleccion;
+        this.idFormaReclutamiento = req.idFormaReclutamiento;
+        this.idEstructuraOrganizacional = req.idEstructuraOrganizacional;
+        this.idZona = req.idZona;
+        this.idEstructuraFisica = req.idEstructuraFisica;
+        this.fechaSolicitud = req.fechaSolicitud;
+        this.indicadorAutorizacion = req.indicadorAutorizacion;
+        this.indicadorAumentoPlazas = req.indicadorAumentoPlazas;
+        this.idJefe = req.idJefe;
+        this.idCategoria = req.idCategoria;
+        this.idTipoSolicitud = req.idTipoSolicitud;
+        this.fechaInicio = req.fechaInicio;
+        this.fechaFin = req.fechaFin;
+    }
+
+    public Integer getIdRequerimientoHistorico() {
+        return idRequerimientoHistorico;
+    }
+
+    public void setIdRequerimientoHistorico(Integer idRequerimientoHistorico) {
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
+    }
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
