@@ -12,9 +12,9 @@ public class Globales {
 
     public Globales() {
         try {
-            input = getClass().getClassLoader().getResourceAsStream("global.properties");
+            input = getClass().getClassLoader().getResourceAsStream("application.properties");
             prop.load(input);
-            setUrl("http://" + prop.getProperty("host") + ":" + prop.getProperty("port"));
+            setUrl(prop.getProperty("url")+":"+prop.getProperty("domain.port"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
