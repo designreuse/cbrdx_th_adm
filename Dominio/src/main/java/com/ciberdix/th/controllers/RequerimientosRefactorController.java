@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +48,13 @@ public class RequerimientosRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/byUser/{idUsuario}")
     List<VRequerimientos> findByIdSolicitante(@PathVariable Integer idUsuario) {
         return vRequerimientosRefactorRepository.findByIdSolicitante(idUsuario);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/fecha/{fechaInicio}/{fechaFin}")
+    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin) throws ParseException {
+        SimpleDateFormat fInicio = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fFin = new SimpleDateFormat("yyyy-MM-dd");
+        return vRequerimientosRefactorRepository.findByFechaSolicitudBetween(fInicio.parse(fechaInicio), fFin.parse(fechaFin));
     }
 
     @RequestMapping(method = RequestMethod.POST)

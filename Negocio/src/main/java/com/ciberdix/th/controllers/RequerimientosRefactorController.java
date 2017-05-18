@@ -57,6 +57,14 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/fecha/{fechaInicio}/{fechaFin}")
+    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin){
+        String serviceUrl = baseUrl + "/api/requerimientos/fecha/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + fechaInicio + "/" + fechaFin, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";

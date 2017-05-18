@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.Arrays;
 import java.util.List;
+
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,13 +57,11 @@ public class TercerosRefactorController {
         return tercero;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisicas")
-    @ApiOperation(value = "Obtener tercerosCargosAreasFisicas", notes = "Retorna el listado de tercerosCargosAreasFisicas")
-    List<VTercerosCargosAreasFisicas> findAllTCAF() {
+    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisica/{idTercero}")
+    @ApiOperation(value = "Obtener tercerosCargosAreasFisicas", notes = "Retorna el listado de tercerosCargosAreasFisica")
+    VTercerosCargosAreasFisicas findAllTCAF(@PathVariable Long idTercero) {
         RestTemplate restTemplate = new RestTemplate();
-        VTercerosCargosAreasFisicas[] terceros = restTemplate.getForObject(serviceUrl + "api/terceros/tercerosCargosAreasFisicas", VTercerosCargosAreasFisicas[].class);
-
-        return Arrays.asList(terceros);
+        return restTemplate.getForObject(serviceUrl + "api/terceros/tercerosCargosAreasFisica/" + idTercero, VTercerosCargosAreasFisicas.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

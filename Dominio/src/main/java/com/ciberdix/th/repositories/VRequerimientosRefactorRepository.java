@@ -1,8 +1,11 @@
 package com.ciberdix.th.repositories;
 
 import com.ciberdix.th.models.VRequerimientos;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,5 +16,7 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
     List<VRequerimientos> findByIdEstadoOrderByIdRequerimientoDesc(Integer idEstado);
 
     List<VRequerimientos> findByIdSolicitante(Integer idSolicitante);
+
+    List<VRequerimientos> findByFechaSolicitudBetween(Date fechaInicio, Date fechaFin);
 
 }

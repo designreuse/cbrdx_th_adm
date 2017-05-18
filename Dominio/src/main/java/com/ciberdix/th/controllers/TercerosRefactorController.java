@@ -40,9 +40,9 @@ public class TercerosRefactorController {
         return tercerosRepository.queryTercero(cedula, id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisicas")
-    List<VTercerosCargosAreasFisicas> findAllTCAF() {
-        return (List<VTercerosCargosAreasFisicas>) vTercerosCargosAreasFisicasRefactorRepository.findAll();
+    @RequestMapping(method = RequestMethod.GET, value = "/tercerosCargosAreasFisica/{idTercero}")
+    VTercerosCargosAreasFisicas findAllTCAF(@PathVariable Long idTercero) {
+        return vTercerosCargosAreasFisicasRefactorRepository.findAllByIdTercero(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)
