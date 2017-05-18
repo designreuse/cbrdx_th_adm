@@ -3,15 +3,18 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 
 /**
- * Created by Danny on 17/05/2017.
+ * Created by Danny on 18/05/2017.
  */
 @Entity
 @Table(name = "V_TercerosCargosAreasFisicas", schema = "crz_th", catalog = "CREZCAMOS")
 public class VTercerosCargosAreasFisicas {
     private Long idTercero;
     private String nombreCompleto;
+    private Integer idCargo;
     private String cargo;
+    private Integer idArea;
     private String area;
+    private Integer idEstructuraFisica;
     private String direccionGeneral;
     private String correoTercero;
     private String correoUsuario;
@@ -37,6 +40,16 @@ public class VTercerosCargosAreasFisicas {
     }
 
     @Basic
+    @Column(name = "IdCargo", nullable = true)
+    public Integer getIdCargo() {
+        return idCargo;
+    }
+
+    public void setIdCargo(Integer idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    @Basic
     @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
@@ -47,6 +60,16 @@ public class VTercerosCargosAreasFisicas {
     }
 
     @Basic
+    @Column(name = "IdArea", nullable = true)
+    public Integer getIdArea() {
+        return idArea;
+    }
+
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
+    }
+
+    @Basic
     @Column(name = "Area", nullable = true, length = 50)
     public String getArea() {
         return area;
@@ -54,6 +77,16 @@ public class VTercerosCargosAreasFisicas {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraFisica", nullable = true)
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
     }
 
     @Basic
@@ -96,8 +129,12 @@ public class VTercerosCargosAreasFisicas {
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (nombreCompleto != null ? !nombreCompleto.equals(that.nombreCompleto) : that.nombreCompleto != null)
             return false;
+        if (idCargo != null ? !idCargo.equals(that.idCargo) : that.idCargo != null) return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
+        if (idArea != null ? !idArea.equals(that.idArea) : that.idArea != null) return false;
         if (area != null ? !area.equals(that.area) : that.area != null) return false;
+        if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
+            return false;
         if (direccionGeneral != null ? !direccionGeneral.equals(that.direccionGeneral) : that.direccionGeneral != null)
             return false;
         if (correoTercero != null ? !correoTercero.equals(that.correoTercero) : that.correoTercero != null)
@@ -112,8 +149,11 @@ public class VTercerosCargosAreasFisicas {
     public int hashCode() {
         int result = idTercero != null ? idTercero.hashCode() : 0;
         result = 31 * result + (nombreCompleto != null ? nombreCompleto.hashCode() : 0);
+        result = 31 * result + (idCargo != null ? idCargo.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (idArea != null ? idArea.hashCode() : 0);
         result = 31 * result + (area != null ? area.hashCode() : 0);
+        result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (direccionGeneral != null ? direccionGeneral.hashCode() : 0);
         result = 31 * result + (correoTercero != null ? correoTercero.hashCode() : 0);
         result = 31 * result + (correoUsuario != null ? correoUsuario.hashCode() : 0);

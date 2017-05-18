@@ -34,6 +34,9 @@ public class RequerimientosHistoricos {
     private Date fechaInicio;
     private Date fechaFin;
 
+    public RequerimientosHistoricos() {
+    }
+
     public RequerimientosHistoricos(Requerimientos req) {
         this.idRequerimiento = req.idRequerimiento;
         this.idSolicitante = req.idSolicitante;
