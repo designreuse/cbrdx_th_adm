@@ -2,6 +2,8 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.ListasItems;
 import com.ciberdix.th.model.RequerimientosAcciones;
+import com.ciberdix.th.model.RequerimientosHistoricos;
+import com.ciberdix.th.model.VRequerimientosAcciones;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,24 +34,25 @@ public class RequerimientosAccionesRefactorController {
     private String businessUrl;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<RequerimientosAcciones> findAll() {
+    List<VRequerimientosAcciones> findAll() {
         String serviceUrl = baseUrl + "/api/requerimientosAcciones/";
         RestTemplate restTemplate = new RestTemplate();
-        List<RequerimientosAcciones> requerimientosAcciones = Arrays.asList(restTemplate.getForObject(serviceUrl, RequerimientosAcciones[].class));
+        List<VRequerimientosAcciones> requerimientosAcciones = Arrays.asList(restTemplate.getForObject(serviceUrl, VRequerimientosAcciones[].class));
         return requerimientosAcciones;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    RequerimientosAcciones findOne(@PathVariable Integer id) {
+    VRequerimientosAcciones findOne(@PathVariable Integer id) {
         String serviceUrl = baseUrl + "/api/requerimientosAcciones/";
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + id, RequerimientosAcciones.class);
+        return restTemplate.getForObject(serviceUrl + id, VRequerimientosAcciones.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     RequerimientosAcciones create(@RequestBody RequerimientosAcciones o) {
         String serviceUrl = baseUrl + "/api/requerimientosAcciones/";
         RestTemplate restTemplate = new RestTemplate();
+        Integer idReqHist = null;
 
         ListasItems listasItems = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasRequerimientosAcciones/code/SOLAUT", ListasItems.class);
         if (o.getIdAccion().equals(listasItems.getIdLista())) {
@@ -59,6 +62,11 @@ public class RequerimientosAccionesRefactorController {
             String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login/" + token + "\">" + frontUrl + "/login/" + token + "</a>";
             UtilitiesController.sendMail("angel.luna@ciberdix.com", "Aprobacion", body);
         }
+        List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
+        for(RequerimientosHistoricos r : requerimientosHistoricos){
+            idReqHist = r.getIdRequerimientoHistorico();
+        }
+        o.setIdRequerimientoHistorico(idReqHist);
         return restTemplate.postForObject(serviceUrl, o, RequerimientosAcciones.class);
     }
 
