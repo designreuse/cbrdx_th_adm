@@ -10,6 +10,7 @@ public class RequerimientosAcciones {
     private Integer idRequerimientoAccion;
     private Integer idRequerimiento;
     private Integer idAccion;
+    private Integer idRequerimientoHistorico;
     private String observacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -36,6 +37,14 @@ public class RequerimientosAcciones {
 
     public void setIdAccion(Integer idAccion) {
         this.idAccion = idAccion;
+    }
+
+    public Integer getIdRequerimientoHistorico() {
+        return idRequerimientoHistorico;
+    }
+
+    public void setIdRequerimientoHistorico(Integer idRequerimientoHistorico) {
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
     }
 
     public String getObservacion() {

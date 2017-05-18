@@ -1,15 +1,13 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
+@Table(name = "RequerimientosTICS", schema = "crz_th", catalog = "CREZCAMOS")
 public class RequerimientosTics {
     private Integer idRequerimientoTic;
     private Integer idRequerimiento;
@@ -17,7 +15,18 @@ public class RequerimientosTics {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public RequerimientosTics() {
+    }
+
+    public RequerimientosTics(Integer idRequerimiento, Integer idTic, Integer auditoriaUsuario) {
+        this.idRequerimiento = idRequerimiento;
+        this.idTic = idTic;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdRequerimientoTIC")
     public Integer getIdRequerimientoTic() {
         return idRequerimientoTic;

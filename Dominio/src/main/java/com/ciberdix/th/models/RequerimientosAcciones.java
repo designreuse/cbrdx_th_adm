@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/05/2017.
+ * Created by Danny on 18/05/2017.
  */
 @Entity
 @Table(name = "RequerimientosAcciones", schema = "crz_th", catalog = "CREZCAMOS")
@@ -12,6 +12,7 @@ public class RequerimientosAcciones {
     private Integer idRequerimientoAccion;
     private Integer idRequerimiento;
     private Integer idAccion;
+    private Integer idRequerimientoHistorico;
     private String observacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -19,9 +20,10 @@ public class RequerimientosAcciones {
     public RequerimientosAcciones() {
     }
 
-    public RequerimientosAcciones(Integer idRequerimiento, Integer idAccion, String observacion, Integer auditoriaUsuario) {
+    public RequerimientosAcciones(Integer idRequerimiento, Integer idAccion, Integer idRequerimientoHistorico, String observacion, Integer auditoriaUsuario) {
         this.idRequerimiento = idRequerimiento;
         this.idAccion = idAccion;
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
         this.observacion = observacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -56,6 +58,16 @@ public class RequerimientosAcciones {
 
     public void setIdAccion(Integer idAccion) {
         this.idAccion = idAccion;
+    }
+
+    @Basic
+    @Column(name = "IdRequerimientoHistorico", nullable = true)
+    public Integer getIdRequerimientoHistorico() {
+        return idRequerimientoHistorico;
+    }
+
+    public void setIdRequerimientoHistorico(Integer idRequerimientoHistorico) {
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
     }
 
     @Basic
@@ -100,6 +112,8 @@ public class RequerimientosAcciones {
         if (idRequerimiento != null ? !idRequerimiento.equals(that.idRequerimiento) : that.idRequerimiento != null)
             return false;
         if (idAccion != null ? !idAccion.equals(that.idAccion) : that.idAccion != null) return false;
+        if (idRequerimientoHistorico != null ? !idRequerimientoHistorico.equals(that.idRequerimientoHistorico) : that.idRequerimientoHistorico != null)
+            return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
@@ -114,6 +128,7 @@ public class RequerimientosAcciones {
         int result = idRequerimientoAccion != null ? idRequerimientoAccion.hashCode() : 0;
         result = 31 * result + (idRequerimiento != null ? idRequerimiento.hashCode() : 0);
         result = 31 * result + (idAccion != null ? idAccion.hashCode() : 0);
+        result = 31 * result + (idRequerimientoHistorico != null ? idRequerimientoHistorico.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

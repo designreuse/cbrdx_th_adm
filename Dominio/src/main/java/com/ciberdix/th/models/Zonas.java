@@ -1,15 +1,13 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 17/04/2017.
  */
 @Entity
+@Table(name = "Zonas", schema = "crz_th", catalog = "CREZCAMOS")
 public class Zonas {
     private Integer idZona;
     private String zona;
@@ -17,8 +15,19 @@ public class Zonas {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public Zonas() {
+    }
+
+    public Zonas(String zona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.zona = zona;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdZona")
+    @GeneratedValue
+    @Column(name = "IdZona", nullable = false)
     public Integer getIdZona() {
         return idZona;
     }
@@ -28,7 +37,7 @@ public class Zonas {
     }
 
     @Basic
-    @Column(name = "Zona")
+    @Column(name = "Zona", nullable = true, length = 50)
     public String getZona() {
         return zona;
     }
@@ -38,7 +47,7 @@ public class Zonas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -48,7 +57,7 @@ public class Zonas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +67,7 @@ public class Zonas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
