@@ -47,7 +47,7 @@ public class RequerimientosComprasRefactorController {
         return requerimientosComprasRefactorRepository.save(
 
                 new RequerimientosCompras(o.getIdRequerimiento(),o.getIdCompra(),
-                        o.getAuditoriaUsuario())
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
         );
     }
 

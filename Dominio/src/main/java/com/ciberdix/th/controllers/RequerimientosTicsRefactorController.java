@@ -45,7 +45,7 @@ public class RequerimientosTicsRefactorController {
     RequerimientosTics create(@RequestBody RequerimientosTics o) {
         return requerimientosTicsRefactorRepository.save(
 
-                new RequerimientosTics(o.getIdRequerimiento(),o.getIdTic(),o.getAuditoriaUsuario())
+                new RequerimientosTics(o.getIdRequerimiento(),o.getIdTic(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
         );
     }
 
