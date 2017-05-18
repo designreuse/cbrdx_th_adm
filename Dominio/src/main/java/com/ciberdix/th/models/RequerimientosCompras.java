@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Danny on 18/05/2017.
  */
 @Entity
 @Table(name = "RequerimientosCompras", schema = "crz_th", catalog = "CREZCAMOS")
@@ -14,20 +14,22 @@ public class RequerimientosCompras {
     private Integer idCompra;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
 
     public RequerimientosCompras() {
     }
 
-    public RequerimientosCompras(Integer idRequerimiento, Integer idCompra, Integer auditoriaUsuario) {
+    public RequerimientosCompras(Integer idRequerimiento, Integer idCompra, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
         this.idRequerimiento = idRequerimiento;
         this.idCompra = idCompra;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRequerimientoCompra")
+    @Column(name = "IdRequerimientoCompra", nullable = false)
     public Integer getIdRequerimientoCompra() {
         return idRequerimientoCompra;
     }
@@ -37,7 +39,7 @@ public class RequerimientosCompras {
     }
 
     @Basic
-    @Column(name = "IdRequerimiento")
+    @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {
         return idRequerimiento;
     }
@@ -47,7 +49,7 @@ public class RequerimientosCompras {
     }
 
     @Basic
-    @Column(name = "IdCompra")
+    @Column(name = "IdCompra", nullable = true)
     public Integer getIdCompra() {
         return idCompra;
     }
@@ -57,7 +59,7 @@ public class RequerimientosCompras {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -67,13 +69,23 @@ public class RequerimientosCompras {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = true)
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Override
@@ -92,6 +104,8 @@ public class RequerimientosCompras {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
 
         return true;
     }
@@ -103,6 +117,7 @@ public class RequerimientosCompras {
         result = 31 * result + (idCompra != null ? idCompra.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         return result;
     }
 }

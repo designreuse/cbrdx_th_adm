@@ -59,8 +59,8 @@ public class RequerimientosAccionesRefactorController {
             Map<String, Object> map = new HashMap<>();
             map.put("URL", "/vacancies/approve/" + o.getIdRequerimiento());
             String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
-            String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login/" + token + "\">" + frontUrl + "/login/" + token + "</a>";
-            UtilitiesController.sendMail("angel.luna@ciberdix.com", "Aprobacion", body);
+            String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/aprobar.png\"></a>";
+            UtilitiesController.sendMail("angel.luna@ciberdix.com", "Aprobación", body);
         }
         List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
         for(RequerimientosHistoricos r : requerimientosHistoricos){

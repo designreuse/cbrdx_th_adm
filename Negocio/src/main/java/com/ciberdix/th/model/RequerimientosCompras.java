@@ -12,6 +12,15 @@ public class RequerimientosCompras {
     private Integer idCompra;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     public Integer getIdRequerimientoCompra() {
         return idRequerimientoCompra;
