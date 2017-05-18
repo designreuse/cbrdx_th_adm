@@ -36,11 +36,6 @@ public class CargosRefactorController {
         return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
-//    @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
-//    List<VCargos> findByWildCard(@PathVariable String query) {
-//        return (List<VCargos>) vCargosRefactorRepository.findByCargoContains(query);
-//    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
     ArrayList<VCargos> findByWildCard(@PathVariable String query){
 
@@ -56,6 +51,11 @@ public class CargosRefactorController {
 
         return listVCFinal;
 
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
+    List<Cargos> queryByIdEstructuraOrganizacional(@PathVariable String query, @PathVariable Integer idEstructuraOrganizacional) {
+        return cargosRefactorRepository.queryByIdEstructuraOrganizacional(query, idEstructuraOrganizacional);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
