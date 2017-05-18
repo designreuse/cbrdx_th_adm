@@ -45,9 +45,9 @@ public class TercerosRefactorController {
         return vTercerosCargosAreasFisicasRefactorRepository.findAllByIdTercero(idTercero);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idEstructuraFisica}")
-    List<VTercerosCargosAreasFisicas> findByIdEstructuraFisica(@PathVariable Integer idEstructuraFisica) {
-        return vTercerosCargosAreasFisicasRefactorRepository.findAllByIdEstructuraFisica(idEstructuraFisica);
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idArea}/{query}")
+    List<VTercerosCargosAreasFisicas> findByIdEstructuraFisica(@PathVariable Integer idArea, @PathVariable String query) {
+        return vTercerosCargosAreasFisicasRefactorRepository.queryAllByIdEstructuraFisica(idArea, query);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -239,6 +239,11 @@
         <mapping class="com.ciberdix.th.models.VTercerosCargosAreasFisicas"/>
         <mapping class="com.ciberdix.th.models.RequerimientosHistoricos"/>
         <mapping class="com.ciberdix.th.models.VRequerimientosCompras"/>
+        <mapping class="com.ciberdix.th.models.ListasFormasContrataciones"/>
+        <mapping class="com.ciberdix.th.models.VRequerimientosTics"/>
+        <mapping class="com.ciberdix.th.models.ListasTiCs"/>
+        <mapping class="com.ciberdix.th.models.ListasTiposCompras"/>
+        <mapping class="com.ciberdix.th.models.VRequerimientosAcciones"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
