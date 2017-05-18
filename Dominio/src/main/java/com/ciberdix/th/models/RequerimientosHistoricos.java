@@ -30,7 +30,7 @@ public class RequerimientosHistoricos {
     private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
-    private Integer idJefe;
+    private Long idJefe;
     private Integer idCategoria;
     private Integer idTipoSolicitud;
     private Date fechaInicio;
@@ -39,7 +39,7 @@ public class RequerimientosHistoricos {
     public RequerimientosHistoricos() {
     }
 
-    public RequerimientosHistoricos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Integer idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
+    public RequerimientosHistoricos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
         this.idRequerimiento = idRequerimiento;
         this.idSolicitante = idSolicitante;
         this.justificacion = justificacion;
@@ -269,11 +269,11 @@ public class RequerimientosHistoricos {
 
     @Basic
     @Column(name = "IdJefe", nullable = true)
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 

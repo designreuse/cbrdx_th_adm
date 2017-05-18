@@ -13,6 +13,7 @@ public class VRequerimientosTics {
     private Integer idTic;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
 
     public Integer getIdRequerimientoTic() {
         return idRequerimientoTic;
@@ -60,5 +61,13 @@ public class VRequerimientosTics {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }

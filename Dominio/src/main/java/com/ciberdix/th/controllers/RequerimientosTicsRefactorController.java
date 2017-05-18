@@ -38,7 +38,7 @@ public class RequerimientosTicsRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/requerimiento/{idRequerimiento}")
     List<VRequerimientosTics> findByIdRequerimiento(@PathVariable Integer idRequerimiento) {
-        return vRequerimientosTicsRefactorRepository.findByIdRequerimiento(idRequerimiento);
+        return vRequerimientosTicsRefactorRepository.findByIdRequerimientoAndIndicadorHabilitadoIsTrue(idRequerimiento);
     }
 
     @RequestMapping(method = RequestMethod.POST)

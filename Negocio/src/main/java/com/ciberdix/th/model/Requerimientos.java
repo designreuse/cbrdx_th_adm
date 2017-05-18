@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class Requerimientos {
 
     public Integer idRequerimiento;
-    public Long idSolicitante;
+    public Integer idSolicitante;
     public String justificacion;
     public Integer idCargo;
     public Integer idFormaContratacion;
@@ -27,7 +27,7 @@ public class Requerimientos {
     public Date fechaSolicitud;
     public Boolean indicadorAutorizacion;
     public Boolean indicadorAumentoPlazas;
-    public Integer idJefe;
+    public Long idJefe;
     public Integer idCategoria;
     public Integer idTipoSolicitud;
     public Date fechaInicio;
@@ -41,11 +41,11 @@ public class Requerimientos {
         this.idRequerimiento = idRequerimiento;
     }
 
-    public Long getIdSolicitante() {
+    public Integer getIdSolicitante() {
         return idSolicitante;
     }
 
-    public void setIdSolicitante(Long idSolicitante) {
+    public void setIdSolicitante(Integer idSolicitante) {
         this.idSolicitante = idSolicitante;
     }
 
@@ -185,11 +185,11 @@ public class Requerimientos {
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
     }
 
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
