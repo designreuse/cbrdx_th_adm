@@ -12,4 +12,6 @@ public interface VTercerosCargosAreasFisicasRefactorRepository extends CrudRepos
 
     VTercerosCargosAreasFisicas findAllByIdTercero(Long idTercero);
 
+    List<VTercerosCargosAreasFisicas> findAllByIdEstructuraFisica(Integer idEstructuraFisica);
+
 }

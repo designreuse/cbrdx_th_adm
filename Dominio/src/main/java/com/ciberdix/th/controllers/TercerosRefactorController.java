@@ -45,6 +45,11 @@ public class TercerosRefactorController {
         return vTercerosCargosAreasFisicasRefactorRepository.findAllByIdTercero(idTercero);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idEstructuraFisica}")
+    List<VTercerosCargosAreasFisicas> findByIdEstructuraFisica(@PathVariable Integer idEstructuraFisica) {
+        return vTercerosCargosAreasFisicasRefactorRepository.findAllByIdEstructuraFisica(idEstructuraFisica);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Terceros crearTercero(@RequestBody Terceros obj) {
         return tercerosRepository.save(new Terceros(obj.getPrimerNombre(), obj.getSegundoNombre(), obj.getPrimerApellido(), obj.getSegundoApellido(), obj.getImagen(), obj.getIdTipoDocumento(), obj.getNumeroDocumento(), obj.getFechaDocumento(), obj.getIdCiudadExpDocumento(), obj.getFechaNacimiento(), obj.getIdCiudadNacimiento(), obj.getIdGenero(), obj.getIdEstadoCivil(), obj.getIdFactorRh(), obj.getNroHijos(), obj.getIdLateralidad(), obj.getCorreoElectronico(), obj.getCorreoElectronico(), obj.getCorreoElectronico(), obj.getCorreoElectronico(), obj.getFechaCreacion(), obj.getIdTipoPersona(), obj.getRazonSocial(), obj.getTalla(), obj.getPeso(), obj.getImc(), obj.getIdProfesion(), obj.getIdNivelEducacion(), obj.getAuditoriaUsuario(), obj.getTelefonoFijo(), obj.getTelefonoCelular(), obj.getFechaDefuncion(), obj.getIdTipoOcupacion(), obj.getIdSectorEconomico(), obj.getIdActividadEconomica(), obj.getIdOcupacion(), obj.getIdEstadoJuridico(), obj.getIdCoberturaSalud(), obj.getIndicadorVivo(), obj.getIdTipoAfiliacion(), obj.getIndicadorHabilitado(), obj.getIdTipoTercero(), obj.getIdTallaCamisa(), obj.getIdTallaPantalon(), obj.getIdTallaCalzado()));
