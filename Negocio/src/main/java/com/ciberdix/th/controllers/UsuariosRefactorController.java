@@ -115,11 +115,11 @@ public class UsuariosRefactorController {
         String pass = UUID.randomUUID().toString().substring(0, 10);
         switch (tipo) {
             case 1: {
-                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Gestionamos - Bienvenida", "<h1>Bienvenido!</h1><br/><p>Se ha registrado en Gestionamos<br/><br/>Su usuario de acceso al Sistema es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su contraseña es: <h2>" + pass + "</h2></p>");
+                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Bienvenida", "<h1>Bienvenido!</h1><br/><p>Se ha registrado en Gestionamos<br/><br/>Su usuario de acceso al Sistema es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su contraseña es: <h2>" + pass + "</h2></p>");
                 break;
             }
             case 2: {
-                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Gestionamos - Cambio de Contraseña", "<h1>Cambio de Contraseña</h1><br/><p>De acuerdo a su solicitud se ha realizado el restablecimiento de Contraseña<br/><br/>Su usuario de Acceso es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su nueva contraseña de acceso es: <h2>" + pass + "</h2><br/></p>");
+                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Cambio de Contraseña", "<h1>Cambio de Contraseña</h1><br/><p>De acuerdo a su solicitud se ha realizado el restablecimiento de Contraseña<br/><br/>Su usuario de Acceso es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su nueva contraseña de acceso es: <h2>" + pass + "</h2><br/></p>");
                 break;
             }
         }

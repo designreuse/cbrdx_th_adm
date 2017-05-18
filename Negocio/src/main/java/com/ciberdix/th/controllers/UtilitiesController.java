@@ -4,13 +4,14 @@ import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class UtilitiesController {
+public class UtilitiesController {
 
     private static String AssembleBody(String Body) {
         return "<html>" +
@@ -40,15 +41,16 @@ class UtilitiesController {
         return list;
     }
 
-    static void sendMail(String recipients, String subject, String bodyHtml) {
+    public static void sendMail(String recipients, String subject, String bodyHtml) {
+        String systemName = "Gestionamos";
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
         message.setAutoText(true);
         message.setFromEmail("info@ciberdix.com");
-        message.setFromName("Gestionamos");
+        message.setFromName(systemName);
         message.setTo(AssembleRecipients(recipients));
         message.setPreserveRecipients(true);
-        message.setSubject(subject);
+        message.setSubject(systemName + " - " + subject);
         message.setHtml(AssembleBody(bodyHtml));
         try {
             MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
