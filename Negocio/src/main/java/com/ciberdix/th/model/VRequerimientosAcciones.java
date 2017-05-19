@@ -15,6 +15,8 @@ public class VRequerimientosAcciones {
     private String observacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String nombreTercero;
+    private String cargo;
 
     public Integer getIdRequerimientoAccion() {
         return idRequerimientoAccion;
@@ -78,5 +80,21 @@ public class VRequerimientosAcciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 }
