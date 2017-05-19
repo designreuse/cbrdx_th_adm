@@ -1,6 +1,5 @@
 package com.ciberdix.th.repositories;
 
-import com.ciberdix.th.models.RequerimientosAcciones;
 import com.ciberdix.th.models.VRequerimientosAcciones;
 import org.springframework.data.repository.CrudRepository;
 
