@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -58,13 +56,13 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    Requerimientos create(@RequestBody Requerimientos obj) {
-        return requerimientosRefactorRepository.save(new Requerimientos(obj.getIdSolicitante(), obj.getJustificacion(),
-                obj.getIdCargo(), obj.getIdFormaContratacion(), obj.getIdTipoContratacion(), obj.getCantidadVacantes(),
-                obj.getCantidadConvocados(), obj.getIdEstado(), obj.getAuditoriaUsuario(), obj.getIdResponsableSeleccion(),
-                obj.getIdFormaReclutamiento(), obj.getIdEstructuraOrganizacional(), obj.getIdZona(), obj.getIdEstructuraFisica(),
-                obj.getFechaSolicitud(), obj.getIndicadorAutorizacion(), obj.getIndicadorAumentoPlazas(), obj.getIdJefe(),
-                obj.getIdCategoria(), obj.getIdTipoSolicitud(), obj.getFechaInicio(), obj.getFechaFin()));
+    Requerimientos create(@RequestBody Requerimientos o) {
+        return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),
+                o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),o.getCantidadVacantes(),o.getCantidadConvocados(),
+                o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),o.getIdFormaReclutamiento(),
+                o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),o.getFechaSolicitud(),o.getIndicadorAutorizacion(),
+                o.getIndicadorAumentoPlazas(),o.getIdJefe(),o.getIdCategoria(),o.getIdTipoSolicitud(),o.getFechaInicio(),
+                o.getFechaFin()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

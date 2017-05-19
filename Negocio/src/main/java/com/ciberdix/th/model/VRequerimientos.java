@@ -38,8 +38,8 @@ public class VRequerimientos {
     private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
-    private String cargoJefe;
-    private Integer idJefe;
+    private String nombrejefe;
+    private Long idJefe;
     private String categoria;
     private Integer idCategoria;
     private String tipoSolicitud;
@@ -287,19 +287,19 @@ public class VRequerimientos {
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
     }
 
-    public String getCargoJefe() {
-        return cargoJefe;
+    public String getNombrejefe() {
+        return nombrejefe;
     }
 
-    public void setCargoJefe(String cargoJefe) {
-        this.cargoJefe = cargoJefe;
+    public void setNombrejefe(String nombrejefe) {
+        this.nombrejefe = nombrejefe;
     }
 
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 

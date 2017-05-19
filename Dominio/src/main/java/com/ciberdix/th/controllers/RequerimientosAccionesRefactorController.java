@@ -36,6 +36,11 @@ public class RequerimientosAccionesRefactorController {
         return vRequerimientosAccionesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/requerimiento/{idRequerimiento}")
+    List<VRequerimientosAcciones> findByIdRequerimiento(@PathVariable Integer idRequerimiento) {
+        return vRequerimientosAccionesRefactorRepository.findByIdRequerimiento(idRequerimiento);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     RequerimientosAcciones create(@RequestBody RequerimientosAcciones o) {
         return requerimientosAccionesRefactorRepository.save(

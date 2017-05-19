@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface VRequerimientosTicsRefactorRepository extends CrudRepository<VRequerimientosTics, Integer> {
 
-    List<VRequerimientosTics> findByIdRequerimiento(Integer idRequerimiento);
+    List<VRequerimientosTics> findByIdRequerimientoAndIndicadorHabilitadoIsTrue(Integer idRequerimiento);
 
 }

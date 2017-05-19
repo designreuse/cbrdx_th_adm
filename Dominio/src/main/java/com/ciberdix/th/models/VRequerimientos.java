@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 17/05/2017.
+ * Created by Danny on 18/05/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -40,8 +40,8 @@ public class VRequerimientos {
     private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
-    private String cargoJefe;
-    private Integer idJefe;
+    private String nombrejefe;
+    private Long idJefe;
     private String categoria;
     private Integer idCategoria;
     private String tipoSolicitud;
@@ -350,22 +350,22 @@ public class VRequerimientos {
     }
 
     @Basic
-    @Column(name = "CargoJefe", nullable = true, length = 100)
-    public String getCargoJefe() {
-        return cargoJefe;
+    @Column(name = "Nombrejefe", nullable = false, length = 259)
+    public String getNombrejefe() {
+        return nombrejefe;
     }
 
-    public void setCargoJefe(String cargoJefe) {
-        this.cargoJefe = cargoJefe;
+    public void setNombrejefe(String nombrejefe) {
+        this.nombrejefe = nombrejefe;
     }
 
     @Basic
     @Column(name = "IdJefe", nullable = true)
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
@@ -488,7 +488,7 @@ public class VRequerimientos {
             return false;
         if (indicadorAumentoPlazas != null ? !indicadorAumentoPlazas.equals(that.indicadorAumentoPlazas) : that.indicadorAumentoPlazas != null)
             return false;
-        if (cargoJefe != null ? !cargoJefe.equals(that.cargoJefe) : that.cargoJefe != null) return false;
+        if (nombrejefe != null ? !nombrejefe.equals(that.nombrejefe) : that.nombrejefe != null) return false;
         if (idJefe != null ? !idJefe.equals(that.idJefe) : that.idJefe != null) return false;
         if (categoria != null ? !categoria.equals(that.categoria) : that.categoria != null) return false;
         if (idCategoria != null ? !idCategoria.equals(that.idCategoria) : that.idCategoria != null) return false;
@@ -534,7 +534,7 @@ public class VRequerimientos {
         result = 31 * result + (fechaSolicitud != null ? fechaSolicitud.hashCode() : 0);
         result = 31 * result + (indicadorAutorizacion != null ? indicadorAutorizacion.hashCode() : 0);
         result = 31 * result + (indicadorAumentoPlazas != null ? indicadorAumentoPlazas.hashCode() : 0);
-        result = 31 * result + (cargoJefe != null ? cargoJefe.hashCode() : 0);
+        result = 31 * result + (nombrejefe != null ? nombrejefe.hashCode() : 0);
         result = 31 * result + (idJefe != null ? idJefe.hashCode() : 0);
         result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
         result = 31 * result + (idCategoria != null ? idCategoria.hashCode() : 0);
