@@ -67,7 +67,7 @@ public class AuthenticationRestController {
                 final String token = jwtTokenUtil.generateToken(userDetails, user, tercero);
                 return ResponseEntity.ok(new JwtAuthenticationResponse(token));
             } else {
-                return ResponseEntity.badRequest().build();
+                return ResponseEntity.ok(new JwtAuthenticationResponse(""));
             }
         } else {
             return ResponseEntity.badRequest().build();
