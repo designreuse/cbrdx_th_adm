@@ -7,8 +7,11 @@ public class VTercerosCargosAreasFisicas {
 
     private Long idTercero;
     private String nombreCompleto;
+    private Integer idCargo;
     private String cargo;
+    private Integer idArea;
     private String area;
+    private Integer idEstructuraFisica;
     private String direccionGeneral;
     private String correoTercero;
     private String correoUsuario;
@@ -29,6 +32,14 @@ public class VTercerosCargosAreasFisicas {
         this.nombreCompleto = nombreCompleto;
     }
 
+    public Integer getIdCargo() {
+        return idCargo;
+    }
+
+    public void setIdCargo(Integer idCargo) {
+        this.idCargo = idCargo;
+    }
+
     public String getCargo() {
         return cargo;
     }
@@ -37,12 +48,28 @@ public class VTercerosCargosAreasFisicas {
         this.cargo = cargo;
     }
 
+    public Integer getIdArea() {
+        return idArea;
+    }
+
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
+    }
+
     public String getArea() {
         return area;
     }
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
     }
 
     public String getDireccionGeneral() {

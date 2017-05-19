@@ -1,10 +1,8 @@
 package com.ciberdix.th.repositories;
 
 import com.ciberdix.th.models.VRequerimientos;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 

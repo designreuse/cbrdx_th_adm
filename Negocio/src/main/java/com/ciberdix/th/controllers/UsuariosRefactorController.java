@@ -1,14 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.Usuarios;
-import com.ciberdix.th.model.VUsuarios;
 import com.ciberdix.th.model.VHistoricoUsuarios;
-import com.ciberdix.th.security.controller.AuthenticationRestController;
+import com.ciberdix.th.model.VUsuarios;
 import com.ciberdix.th.security.providers.SystemAuthenticationProvider;
-import com.microtripit.mandrillapp.lutung.MandrillApi;
-import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
-import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
-import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,8 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -33,6 +26,9 @@ import java.util.UUID;
 @RequestMapping("/api/usuarios")
 @CrossOrigin
 public class UsuariosRefactorController {
+
+    private final static int NEW_USER = 1;
+    private final static int CHANGE_PASSWORD = 2;
 
     @Value("${domain.url}")
     private String baseUrl;
@@ -75,7 +71,7 @@ public class UsuariosRefactorController {
     Usuarios create(@RequestBody Usuarios usuario) {
         String serviceUrl = baseUrl + "/api/usuarios/";
         if (!usuario.getUsuarioLdap()) {
-            usuario = processMailInfoNew(usuario);
+            usuario = sendMailUser(usuario, NEW_USER);
         }
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, usuario, Usuarios.class);
@@ -84,9 +80,8 @@ public class UsuariosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void updateUsuario(@RequestBody Usuarios request) {
         String serviceUrl = baseUrl + "/api/usuarios/";
-        System.out.println(request.getContrasena());
         if (!request.getUsuarioLdap() && request.getContrasena() == null) {
-            request = processMailInfo(request);
+            request = sendMailUser(request, CHANGE_PASSWORD);
         }
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, request, Usuarios.class);
@@ -116,24 +111,19 @@ public class UsuariosRefactorController {
         }
     }
 
-    private Usuarios processMailInfoNew(Usuarios usuario) {
+    private Usuarios sendMailUser(Usuarios usuario, Integer tipo) {
         String pass = UUID.randomUUID().toString().substring(0, 10);
-        String user = usuario.getUsuarioSistema();
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
-        String hashedPassword = bCryptPasswordEncoder.encode(pass);
-        AuthenticationRestController authenticationRestController = new AuthenticationRestController();
-        authenticationRestController.processMailInfo(usuario, "Bienvenido a Gestionamos","<h1>Bienvenido!</h1><br />Se ha registrado en Gestionamos<br /> Su Usuario es: " + user + "<br />Su Contraseña es: " + pass + "<br />");
-        usuario.setContrasena(hashedPassword);
-        return usuario;
-    }
-
-    private Usuarios processMailInfo(Usuarios usuario) {
-        String pass = UUID.randomUUID().toString().substring(0, 10);
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
-        String hashedPassword = bCryptPasswordEncoder.encode(pass);
-        AuthenticationRestController authenticationRestController = new AuthenticationRestController();
-        authenticationRestController.processMailInfo(usuario, "Su Contraseña","<h1>Se ha realizado un cambio de Contraseña</h1><br />Su Nueva Contraseña es: " + pass + "<br />");
-        usuario.setContrasena(hashedPassword);
+        switch (tipo) {
+            case 1: {
+                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Bienvenida", "<h1>Bienvenido!</h1><br/><p>Se ha registrado en Gestionamos<br/><br/>Su usuario de acceso al Sistema es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su contraseña es: <h2>" + pass + "</h2></p>");
+                break;
+            }
+            case 2: {
+                UtilitiesController.sendMail(usuario.getCorreoElectronico(), "Cambio de Contraseña", "<h1>Cambio de Contraseña</h1><br/><p>De acuerdo a su solicitud se ha realizado el restablecimiento de Contraseña<br/><br/>Su usuario de Acceso es: <h2>" + usuario.getUsuarioSistema() + "</h2><br/>Su nueva contraseña de acceso es: <h2>" + pass + "</h2><br/></p>");
+                break;
+            }
+        }
+        usuario.setContrasena(UtilitiesController.passwordHash(pass));
         return usuario;
     }
 }

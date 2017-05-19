@@ -5,13 +5,13 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 15/05/2017.
+ * Created by Danny on 18/05/2017.
  */
 @Entity
 @Table(name = "Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
 public class Requerimientos {
     private Integer idRequerimiento;
-    private Long idSolicitante;
+    private Integer idSolicitante;
     private String justificacion;
     private Integer idCargo;
     private Integer idFormaContratacion;
@@ -29,7 +29,7 @@ public class Requerimientos {
     private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
-    private Integer idJefe;
+    private Long idJefe;
     private Integer idCategoria;
     private Integer idTipoSolicitud;
     private Date fechaInicio;
@@ -38,7 +38,7 @@ public class Requerimientos {
     public Requerimientos() {
     }
 
-    public Requerimientos(Long idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Integer idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
+    public Requerimientos(Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
         this.idSolicitante = idSolicitante;
         this.justificacion = justificacion;
         this.idCargo = idCargo;
@@ -54,46 +54,19 @@ public class Requerimientos {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;
+        this.fechaSolicitud = fechaSolicitud;
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
         this.idCategoria = idCategoria;
         this.idTipoSolicitud = idTipoSolicitud;
-        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
-        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
-    }
-
-    public Requerimientos(Integer idRequerimiento, Long idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Integer idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
-        this.idRequerimiento = idRequerimiento;
-        this.idSolicitante = idSolicitante;
-        this.justificacion = justificacion;
-        this.idCargo = idCargo;
-        this.idFormaContratacion = idFormaContratacion;
-        this.idTipoContratacion = idTipoContratacion;
-        this.cantidadVacantes = cantidadVacantes;
-        this.cantidadConvocados = cantidadConvocados;
-        this.idEstado = idEstado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idResponsableSeleccion = idResponsableSeleccion;
-        this.idFormaReclutamiento = idFormaReclutamiento;
-        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
-        this.idZona = idZona;
-        this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;
-        this.indicadorAutorizacion = indicadorAutorizacion;
-        this.indicadorAumentoPlazas = indicadorAumentoPlazas;
-        this.idJefe = idJefe;
-        this.idCategoria = idCategoria;
-        this.idTipoSolicitud = idTipoSolicitud;
-        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
-        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRequerimiento")
+    @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {
         return idRequerimiento;
     }
@@ -103,17 +76,17 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdSolicitante")
-    public Long getIdSolicitante() {
+    @Column(name = "IdSolicitante", nullable = true)
+    public Integer getIdSolicitante() {
         return idSolicitante;
     }
 
-    public void setIdSolicitante(Long idSolicitante) {
+    public void setIdSolicitante(Integer idSolicitante) {
         this.idSolicitante = idSolicitante;
     }
 
     @Basic
-    @Column(name = "Justificacion")
+    @Column(name = "Justificacion", nullable = true, length = 200)
     public String getJustificacion() {
         return justificacion;
     }
@@ -123,7 +96,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -133,7 +106,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdFormaContratacion")
+    @Column(name = "IdFormaContratacion", nullable = true)
     public Integer getIdFormaContratacion() {
         return idFormaContratacion;
     }
@@ -143,7 +116,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdTipoContratacion")
+    @Column(name = "IdTipoContratacion", nullable = true)
     public Integer getIdTipoContratacion() {
         return idTipoContratacion;
     }
@@ -153,7 +126,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "CantidadVacantes")
+    @Column(name = "CantidadVacantes", nullable = true)
     public Integer getCantidadVacantes() {
         return cantidadVacantes;
     }
@@ -163,7 +136,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "CantidadConvocados")
+    @Column(name = "CantidadConvocados", nullable = true)
     public Integer getCantidadConvocados() {
         return cantidadConvocados;
     }
@@ -173,7 +146,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -183,7 +156,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -193,7 +166,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -203,7 +176,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdResponsableSeleccion")
+    @Column(name = "IdResponsableSeleccion", nullable = true)
     public Integer getIdResponsableSeleccion() {
         return idResponsableSeleccion;
     }
@@ -213,7 +186,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdFormaReclutamiento")
+    @Column(name = "IdFormaReclutamiento", nullable = true)
     public Integer getIdFormaReclutamiento() {
         return idFormaReclutamiento;
     }
@@ -223,7 +196,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -233,7 +206,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdZona")
+    @Column(name = "IdZona", nullable = true)
     public Integer getIdZona() {
         return idZona;
     }
@@ -243,7 +216,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = true)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -253,7 +226,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "FechaSolicitud")
+    @Column(name = "FechaSolicitud", nullable = true)
     public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
@@ -263,7 +236,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IndicadorAutorizacion")
+    @Column(name = "IndicadorAutorizacion", nullable = true)
     public Boolean getIndicadorAutorizacion() {
         return indicadorAutorizacion;
     }
@@ -273,7 +246,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IndicadorAumentoPlazas")
+    @Column(name = "IndicadorAumentoPlazas", nullable = true)
     public Boolean getIndicadorAumentoPlazas() {
         return indicadorAumentoPlazas;
     }
@@ -283,17 +256,17 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdJefe")
-    public Integer getIdJefe() {
+    @Column(name = "IdJefe", nullable = true)
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
     @Basic
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = true)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -303,7 +276,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "IdTipoSolicitud")
+    @Column(name = "IdTipoSolicitud", nullable = true)
     public Integer getIdTipoSolicitud() {
         return idTipoSolicitud;
     }
@@ -313,7 +286,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -323,7 +296,7 @@ public class Requerimientos {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }

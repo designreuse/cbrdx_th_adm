@@ -10,7 +10,7 @@ public class RequerimientosHistoricos {
 
     private Integer idRequerimientoHistorico;
     private Integer idRequerimiento;
-    private Long idSolicitante;
+    private Integer idSolicitante;
     private String justificacion;
     private Integer idCargo;
     private Integer idFormaContratacion;
@@ -28,11 +28,14 @@ public class RequerimientosHistoricos {
     private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
-    private Integer idJefe;
+    private Long idJefe;
     private Integer idCategoria;
     private Integer idTipoSolicitud;
     private Date fechaInicio;
     private Date fechaFin;
+
+    public RequerimientosHistoricos() {
+    }
 
     public RequerimientosHistoricos(Requerimientos req) {
         this.idRequerimiento = req.idRequerimiento;
@@ -77,11 +80,11 @@ public class RequerimientosHistoricos {
         this.idRequerimiento = idRequerimiento;
     }
 
-    public Long getIdSolicitante() {
+    public Integer getIdSolicitante() {
         return idSolicitante;
     }
 
-    public void setIdSolicitante(Long idSolicitante) {
+    public void setIdSolicitante(Integer idSolicitante) {
         this.idSolicitante = idSolicitante;
     }
 
@@ -221,11 +224,11 @@ public class RequerimientosHistoricos {
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
     }
 
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
