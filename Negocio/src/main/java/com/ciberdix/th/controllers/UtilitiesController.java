@@ -1,15 +1,18 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.model.Constantes;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class UtilitiesController {
 
@@ -62,5 +65,18 @@ public class UtilitiesController {
     static String passwordHash(String pass) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
         return bCryptPasswordEncoder.encode(pass);
+    }
+
+    public Constantes findConstant(String code) {
+        try {
+            Properties prop = new Properties();
+            RestTemplate restTemplate = new RestTemplate();
+            InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties");
+            prop.load(input);
+            String domainUrl = prop.getProperty("url") + ":" + prop.getProperty("domain.port");
+            return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

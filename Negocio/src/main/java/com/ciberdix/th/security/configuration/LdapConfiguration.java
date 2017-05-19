@@ -1,6 +1,7 @@
 package com.ciberdix.th.security.configuration;
 
 import com.ciberdix.th.config.Globales;
+import com.ciberdix.th.controllers.UtilitiesController;
 import com.ciberdix.th.model.Constantes;
 import org.springframework.web.client.RestTemplate;
 
