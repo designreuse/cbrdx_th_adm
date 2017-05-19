@@ -38,14 +38,14 @@ public class RequerimientosTicsRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/requerimiento/{idRequerimiento}")
     List<VRequerimientosTics> findByIdRequerimiento(@PathVariable Integer idRequerimiento) {
-        return vRequerimientosTicsRefactorRepository.findByIdRequerimiento(idRequerimiento);
+        return vRequerimientosTicsRefactorRepository.findByIdRequerimientoAndIndicadorHabilitadoIsTrue(idRequerimiento);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     RequerimientosTics create(@RequestBody RequerimientosTics o) {
         return requerimientosTicsRefactorRepository.save(
 
-                new RequerimientosTics(o.getIdRequerimiento(),o.getIdTic(),o.getAuditoriaUsuario())
+                new RequerimientosTics(o.getIdRequerimiento(),o.getIdTic(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
         );
     }
 

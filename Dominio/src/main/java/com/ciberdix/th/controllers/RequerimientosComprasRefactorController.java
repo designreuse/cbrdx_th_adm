@@ -39,7 +39,7 @@ public class RequerimientosComprasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/requerimiento/{idRequerimiento}")
     List<VRequerimientosCompras> findByIdRequerimiento(@PathVariable Integer idRequerimiento) {
-        return vRequerimientosComprasRefactorRepository.findByIdRequerimiento(idRequerimiento);
+        return vRequerimientosComprasRefactorRepository.findByIdRequerimientoAndIndicadorHabilitadoIsTrue(idRequerimiento);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public class RequerimientosComprasRefactorController {
         return requerimientosComprasRefactorRepository.save(
 
                 new RequerimientosCompras(o.getIdRequerimiento(),o.getIdCompra(),
-                        o.getAuditoriaUsuario())
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
         );
     }
 

@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.RequerimientosHistoricos;
+import com.ciberdix.th.models.VRequerimientosHistoricos;
 import com.ciberdix.th.repositories.RequerimientosHistoricosRefactorRepository;
+import com.ciberdix.th.repositories.VRequerimientosHistoricosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +23,17 @@ public class RequerimientosHistoricosRefactorController {
     @Autowired
     private RequerimientosHistoricosRefactorRepository requerimientosHistoricosRefactorRepository;
 
+    @Autowired
+    private VRequerimientosHistoricosRefactorRepository vRequerimientosHistoricosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<RequerimientosHistoricos> findAll() {
         return (List<RequerimientosHistoricos>) requerimientosHistoricosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{idRequerimientoHistorico}")
-    RequerimientosHistoricos findOne(@PathVariable Integer idRequerimientoHistorico) {
-        return requerimientosHistoricosRefactorRepository.findOne(idRequerimientoHistorico);
+    VRequerimientosHistoricos findOne(@PathVariable Integer idRequerimientoHistorico) {
+        return vRequerimientosHistoricosRefactorRepository.findOne(idRequerimientoHistorico);
     }
 
     @RequestMapping(method = RequestMethod.POST)

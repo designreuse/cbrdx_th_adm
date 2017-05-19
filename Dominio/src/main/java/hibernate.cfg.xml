@@ -244,6 +244,10 @@
         <mapping class="com.ciberdix.th.models.ListasTiCs"/>
         <mapping class="com.ciberdix.th.models.ListasTiposCompras"/>
         <mapping class="com.ciberdix.th.models.VRequerimientosAcciones"/>
+        <mapping class="com.ciberdix.th.models.VRequerimientosHistoricos"/>
+        <mapping class="com.ciberdix.th.models.ListasCuestionarios"/>
+        <mapping class="com.ciberdix.th.models.RequerimientosCuestionarios"/>
+        <mapping class="com.ciberdix.th.models.VRequerimientosCuestionarios"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
