@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 18/05/2017.
+ * Created by Danny on 19/05/2017.
  */
 @Entity
 @Table(name = "V_RequerimientosHistoricos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -42,13 +42,15 @@ public class VRequerimientosHistoricos {
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
-    private Integer idJefe;
+    private Long idJefe;
     private String categoria;
     private Integer idCategoria;
     private String tipoSolicitud;
     private Integer idTipoSolicitud;
     private Date fechaInicio;
     private Date fechaFin;
+    private String nombreCargo;
+    private String funcionCargo;
 
     @Id
     @Column(name = "IdRequerimientoHistorico", nullable = false)
@@ -372,11 +374,11 @@ public class VRequerimientosHistoricos {
 
     @Basic
     @Column(name = "IdJefe", nullable = true)
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
@@ -438,6 +440,26 @@ public class VRequerimientosHistoricos {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    @Basic
+    @Column(name = "NombreCargo", nullable = true, length = 100)
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    @Basic
+    @Column(name = "FuncionCargo", nullable = true, length = 500)
+    public String getFuncionCargo() {
+        return funcionCargo;
+    }
+
+    public void setFuncionCargo(String funcionCargo) {
+        this.funcionCargo = funcionCargo;
     }
 
     @Override
@@ -511,6 +533,8 @@ public class VRequerimientosHistoricos {
             return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
+        if (nombreCargo != null ? !nombreCargo.equals(that.nombreCargo) : that.nombreCargo != null) return false;
+        if (funcionCargo != null ? !funcionCargo.equals(that.funcionCargo) : that.funcionCargo != null) return false;
 
         return true;
     }
@@ -556,6 +580,8 @@ public class VRequerimientosHistoricos {
         result = 31 * result + (idTipoSolicitud != null ? idTipoSolicitud.hashCode() : 0);
         result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
+        result = 31 * result + (nombreCargo != null ? nombreCargo.hashCode() : 0);
+        result = 31 * result + (funcionCargo != null ? funcionCargo.hashCode() : 0);
         return result;
     }
 }

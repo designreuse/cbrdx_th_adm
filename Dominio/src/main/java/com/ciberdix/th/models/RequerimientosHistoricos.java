@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 17/05/2017.
+ * Created by Danny on 19/05/2017.
  */
 @Entity
 @Table(name = "RequerimientosHistoricos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -35,11 +35,13 @@ public class RequerimientosHistoricos {
     private Integer idTipoSolicitud;
     private Date fechaInicio;
     private Date fechaFin;
+    private String nombreCargo;
+    private String funcionCargo;
 
     public RequerimientosHistoricos() {
     }
 
-    public RequerimientosHistoricos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin) {
+    public RequerimientosHistoricos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
         this.idRequerimiento = idRequerimiento;
         this.idSolicitante = idSolicitante;
         this.justificacion = justificacion;
@@ -64,6 +66,8 @@ public class RequerimientosHistoricos {
         this.idTipoSolicitud = idTipoSolicitud;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.nombreCargo = nombreCargo;
+        this.funcionCargo = funcionCargo;
     }
 
     @Id
@@ -317,6 +321,26 @@ public class RequerimientosHistoricos {
         this.fechaFin = fechaFin;
     }
 
+    @Basic
+    @Column(name = "NombreCargo", nullable = true, length = 100)
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    @Basic
+    @Column(name = "FuncionCargo", nullable = true, length = 500)
+    public String getFuncionCargo() {
+        return funcionCargo;
+    }
+
+    public void setFuncionCargo(String funcionCargo) {
+        this.funcionCargo = funcionCargo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -367,6 +391,8 @@ public class RequerimientosHistoricos {
             return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
+        if (nombreCargo != null ? !nombreCargo.equals(that.nombreCargo) : that.nombreCargo != null) return false;
+        if (funcionCargo != null ? !funcionCargo.equals(that.funcionCargo) : that.funcionCargo != null) return false;
 
         return true;
     }
@@ -398,6 +424,8 @@ public class RequerimientosHistoricos {
         result = 31 * result + (idTipoSolicitud != null ? idTipoSolicitud.hashCode() : 0);
         result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
+        result = 31 * result + (nombreCargo != null ? nombreCargo.hashCode() : 0);
+        result = 31 * result + (funcionCargo != null ? funcionCargo.hashCode() : 0);
         return result;
     }
 }

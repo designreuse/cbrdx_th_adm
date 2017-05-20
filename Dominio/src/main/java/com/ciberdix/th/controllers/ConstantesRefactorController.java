@@ -32,6 +32,11 @@ public class ConstantesRefactorController {
         return vConstantesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/codigo/{codigo}")
+    VConstantes findByCod(@PathVariable String codigo) {
+        return vConstantesRefactorRepository.findAllByConstante(codigo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Constantes crearActividadEconomica(@RequestBody Constantes constantes) {
         return ConstantesRepository.save(new Constantes(constantes.getConstante(), constantes.getIdTipoDato(), constantes.getValor(), constantes.getDescripcion(), constantes.getIndicadorHabilitado(), constantes.getAuditoriaUsuario()));

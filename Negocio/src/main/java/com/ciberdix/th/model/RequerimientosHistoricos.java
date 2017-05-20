@@ -33,6 +33,8 @@ public class RequerimientosHistoricos {
     private Integer idTipoSolicitud;
     private Date fechaInicio;
     private Date fechaFin;
+    private String nombreCargo;
+    private String funcionCargo;
 
     public RequerimientosHistoricos() {
     }
@@ -62,6 +64,8 @@ public class RequerimientosHistoricos {
         this.idTipoSolicitud = req.idTipoSolicitud;
         this.fechaInicio = req.fechaInicio;
         this.fechaFin = req.fechaFin;
+        this.nombreCargo = req.nombreCargo;
+        this.funcionCargo = req.funcionCargo;
     }
 
     public Integer getIdRequerimientoHistorico() {
@@ -262,5 +266,21 @@ public class RequerimientosHistoricos {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    public String getFuncionCargo() {
+        return funcionCargo;
+    }
+
+    public void setFuncionCargo(String funcionCargo) {
+        this.funcionCargo = funcionCargo;
     }
 }
