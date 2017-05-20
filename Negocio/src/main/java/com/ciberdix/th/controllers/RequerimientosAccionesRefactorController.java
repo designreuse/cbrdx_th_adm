@@ -61,17 +61,18 @@ public class RequerimientosAccionesRefactorController {
         String serviceUrl = baseUrl + "/api/requerimientosAcciones/";
         RestTemplate restTemplate = new RestTemplate();
         Integer idReqHist = null;
-
+        UtilitiesController utilitiesController = new UtilitiesController();
         ListasItems listasItems = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasRequerimientosAcciones/code/SOLAUT", ListasItems.class);
         if (o.getIdAccion().equals(listasItems.getIdLista())) {
             Map<String, Object> map = new HashMap<>();
             map.put("URL", "/vacancies/approve/" + o.getIdRequerimiento());
             String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
             String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/aprobar.png\"></a>";
-            UtilitiesController.sendMail("angel.luna@ciberdix.com", "Aprobación", body);
+            String recipients = utilitiesController.findConstant("CORAUT").getValor();
+            UtilitiesController.sendMail(recipients, "Aprobación", body);
         }
         List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
-        for(RequerimientosHistoricos r : requerimientosHistoricos){
+        for (RequerimientosHistoricos r : requerimientosHistoricos) {
             idReqHist = r.getIdRequerimientoHistorico();
         }
         o.setIdRequerimientoHistorico(idReqHist);
