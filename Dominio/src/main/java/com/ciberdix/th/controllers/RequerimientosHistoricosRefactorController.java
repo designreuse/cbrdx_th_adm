@@ -38,11 +38,12 @@ public class RequerimientosHistoricosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     RequerimientosHistoricos create(@RequestBody RequerimientosHistoricos o) {
-        return requerimientosHistoricosRefactorRepository.save(new RequerimientosHistoricos(o.getIdRequerimiento(),o.getIdSolicitante(),
-                o.getJustificacion(),o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),o.getCantidadVacantes(),
-                o.getCantidadConvocados(),o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),o.getIdFormaReclutamiento(),
-                o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),o.getFechaSolicitud(),o.getIndicadorAutorizacion(),
-                o.getIndicadorAumentoPlazas(),o.getIdJefe(),o.getIdCategoria(),o.getIdTipoSolicitud(),o.getFechaInicio(),o.getFechaFin()));
+        return requerimientosHistoricosRefactorRepository.save(new RequerimientosHistoricos(o.getIdRequerimiento(),
+                o.getIdSolicitante(),o.getJustificacion(),o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),
+                o.getCantidadVacantes(),o.getCantidadConvocados(),o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),
+                o.getIdFormaReclutamiento(),o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),
+                o.getFechaSolicitud(),o.getIndicadorAutorizacion(),o.getIndicadorAumentoPlazas(),o.getIdJefe(),o.getIdCategoria(),
+                o.getIdTipoSolicitud(),o.getFechaInicio(),o.getFechaFin(),o.getNombreCargo(),o.getFuncionCargo()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)

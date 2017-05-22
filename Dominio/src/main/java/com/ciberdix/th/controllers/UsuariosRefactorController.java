@@ -48,6 +48,11 @@ public class UsuariosRefactorController {
         return usuariosRepository.findOne(idLista);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{rol}")
+    List<VUsuarios> queryAllByIdRol(@PathVariable String rol) {
+        return vUsuariosRepository.queryAllByIdRol(rol);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/queryUsername/{idLista}/")
     Usuarios findUsername(@PathVariable String idLista) {
         return usuariosRepository.findByUsuarioSistema(idLista);
