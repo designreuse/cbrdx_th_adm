@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import sun.plugin.javascript.navig.Array;
 
 import java.util.Arrays;
 import java.util.List;
@@ -65,6 +66,14 @@ public class UsuariosRefactorController {
         String serviceUrl = baseUrl + "/api/usuarios/query/";
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + IdParametro, Usuarios.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{idRol}")
+    List<VUsuarios> queryAllByIdRol(@PathVariable Integer idRol) {
+        String serviceUrl = baseUrl + "/api/usuarios/usuarioRol/";
+        RestTemplate restTemplate = new RestTemplate();
+        VUsuarios[] usuarios =  restTemplate.getForObject(serviceUrl + idRol, VUsuarios[].class);
+        return Arrays.asList(usuarios);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -58,11 +58,12 @@ public class RequerimientosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),
-                o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),o.getCantidadVacantes(),o.getCantidadConvocados(),
-                o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),o.getIdFormaReclutamiento(),
-                o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),o.getFechaSolicitud(),o.getIndicadorAutorizacion(),
-                o.getIndicadorAumentoPlazas(),o.getIdJefe(),o.getIdCategoria(),o.getIdTipoSolicitud(),o.getFechaInicio(),
-                o.getFechaFin()));
+                o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),o.getCantidadVacantes(),
+                o.getCantidadConvocados(),o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),
+                o.getIdFormaReclutamiento(),o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),
+                o.getFechaSolicitud(),o.getIndicadorAutorizacion(),o.getIndicadorAumentoPlazas(),o.getIdJefe(),
+                o.getIdCategoria(),o.getIdTipoSolicitud(),o.getFechaInicio(),o.getFechaFin(),o.getNombreCargo(),
+                o.getFuncionCargo()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
