@@ -46,6 +46,12 @@ public class EstructuraOrganizacionalCargosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargoEstructura/{idCargo}/{idEstructura}")
+    VEstructuraOrganizacionalCargos findAllByIdCAndIdE(@PathVariable Integer idCargo, @PathVariable Integer idEstructura) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/buscarCargoEstructura/" + idCargo + "/" + idEstructura, VEstructuraOrganizacionalCargos.class);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     EstructuraOrganizacionalCargos create(@RequestBody EstructuraOrganizacionalCargos obj){
         RestTemplate restTemplate = new RestTemplate();
