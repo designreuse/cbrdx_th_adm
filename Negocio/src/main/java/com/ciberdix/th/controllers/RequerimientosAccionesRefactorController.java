@@ -87,7 +87,7 @@ public class RequerimientosAccionesRefactorController {
                     map.put("URL", "/vacancies/update/" + o.getIdRequerimiento());
                     String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
                     String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
-                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/query/" + idUsuario, Usuarios.class).getCorreoElectronico();
                     UtilitiesController.sendMail(recipients, "Revisión", body);
 
                     VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + idUsuario, VRequerimientos.class);
@@ -96,7 +96,7 @@ public class RequerimientosAccionesRefactorController {
                     map.put("URL", "/personnel_requirement/update/" + o.getIdRequerimiento());
                     token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
                     body = "Se ha aprobado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
-                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/query/" + idUsuario, Usuarios.class).getCorreoElectronico();
                     UtilitiesController.sendMail(recipients, "Revisión", body);
                 }else{
                     Integer idUsuario = last.getAuditoriaUsuario();
@@ -104,7 +104,7 @@ public class RequerimientosAccionesRefactorController {
                     map.put("URL", "/vacancies/detail/" + o.getIdRequerimiento());
                     String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
                     String body = "Se ha modificado un requerimiento de personal del cual usted solicito aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
-                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/query/" + idUsuario, Usuarios.class).getCorreoElectronico();
                     UtilitiesController.sendMail(recipients, "Revisión", body);
 
                     VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + idUsuario, VRequerimientos.class);
@@ -113,7 +113,7 @@ public class RequerimientosAccionesRefactorController {
                     map.put("URL", "/personnel_requirement/update/" + o.getIdRequerimiento());
                     token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
                     body = "Se ha modificado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
-                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/query/" + idUsuario, Usuarios.class).getCorreoElectronico();
                     UtilitiesController.sendMail(recipients, "Revisión", body);
                 }
             }
