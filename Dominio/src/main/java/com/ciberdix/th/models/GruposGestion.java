@@ -30,8 +30,8 @@ public class GruposGestion {
         this.responsabilidades = responsabilidades;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = new Date(fechaInicio.getTime());
-        this.fechaFin = new Date(fechaFin.getTime());
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.codigoGrupoGestion = codigoGrupoGestion;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
