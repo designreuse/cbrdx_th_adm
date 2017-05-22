@@ -16,4 +16,7 @@ public interface VTercerosCargosAreasFisicasRefactorRepository extends CrudRepos
     @Query("SELECT vt FROM VTercerosCargosAreasFisicas vt WHERE vt.idArea = ?1 AND vt.nombreCompleto LIKE CONCAT('%',?2,'%')")
     List<VTercerosCargosAreasFisicas> queryAllByIdEstructuraFisica(Integer idArea, String query);
 
+    @Query("SELECT vt FROM VTercerosCargosAreasFisicas vt WHERE vt.idArea = ?1 AND vt.idCargo = ?3 AND vt.nombreCompleto LIKE CONCAT('%',?2,'%')")
+    List<VTercerosCargosAreasFisicas> queryAllByIdEstructuraFisicaAndIdCargo(Integer idArea, String query, Integer idCargo);
+
 }
