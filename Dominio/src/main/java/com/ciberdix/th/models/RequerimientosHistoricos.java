@@ -58,14 +58,14 @@ public class RequerimientosHistoricos {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = new Date(fechaSolicitud.getTime());
+        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
         this.idCategoria = idCategoria;
         this.idTipoSolicitud = idTipoSolicitud;
-        this.fechaInicio = new Date(fechaInicio.getTime());
-        this.fechaFin = new Date(fechaFin.getTime());
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.nombreCargo = nombreCargo;
         this.funcionCargo = funcionCargo;
     }
