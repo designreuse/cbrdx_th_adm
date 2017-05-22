@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -56,14 +56,14 @@ public class Requerimientos {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = fechaSolicitud;
+        this.fechaSolicitud = new Date(fechaSolicitud.getTime());
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
         this.idCategoria = idCategoria;
         this.idTipoSolicitud = idTipoSolicitud;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = new Date(fechaInicio.getTime());
+        this.fechaFin = new Date(fechaFin.getTime());
         this.nombreCargo = nombreCargo;
         this.funcionCargo = funcionCargo;
     }

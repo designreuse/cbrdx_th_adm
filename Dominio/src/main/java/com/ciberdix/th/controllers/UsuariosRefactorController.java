@@ -48,9 +48,9 @@ public class UsuariosRefactorController {
         return usuariosRepository.findOne(idLista);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{idRol}")
-    List<VUsuarios> queryAllByIdRol(@PathVariable Integer idRol) {
-        return vUsuariosRepository.queryAllByIdRol(idRol);
+    @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{rol}")
+    List<VUsuarios> queryAllByIdRol(@PathVariable String rol) {
+        return vUsuariosRepository.queryAllByIdRol(rol);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/queryUsername/{idLista}/")
