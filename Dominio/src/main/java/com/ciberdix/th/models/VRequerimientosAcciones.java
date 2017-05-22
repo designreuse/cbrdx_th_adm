@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 18/05/2017.
+ * Created by Danny on 19/05/2017.
  */
 @Entity
 @Table(name = "V_RequerimientosAcciones", schema = "crz_th", catalog = "CREZCAMOS")
@@ -17,6 +17,8 @@ public class VRequerimientosAcciones {
     private String observacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String nombreTercero;
+    private String cargo;
 
     @Id
     @Column(name = "IdRequerimientoAccion", nullable = false)
@@ -39,7 +41,7 @@ public class VRequerimientosAcciones {
     }
 
     @Basic
-    @Column(name = "Accion", nullable = false, length = 100)
+    @Column(name = "Accion", nullable = true, length = 100)
     public String getAccion() {
         return accion;
     }
@@ -98,6 +100,26 @@ public class VRequerimientosAcciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "NombreTercero", nullable = false, length = 259)
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
+    @Column(name = "Cargo", nullable = true, length = 100)
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,6 +140,9 @@ public class VRequerimientosAcciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
+            return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
 
         return true;
     }
@@ -132,6 +157,8 @@ public class VRequerimientosAcciones {
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         return result;
     }
 }

@@ -67,6 +67,14 @@ public class UsuariosRefactorController {
         return restTemplate.getForObject(serviceUrl + IdParametro, Usuarios.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{rol}")
+    List<VUsuarios> queryAllByIdRol(@PathVariable String rol) {
+        String serviceUrl = baseUrl + "/api/usuarios/usuarioRol/";
+        RestTemplate restTemplate = new RestTemplate();
+        VUsuarios[] usuarios =  restTemplate.getForObject(serviceUrl + rol, VUsuarios[].class);
+        return Arrays.asList(usuarios);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Usuarios create(@RequestBody Usuarios usuario) {
         String serviceUrl = baseUrl + "/api/usuarios/";

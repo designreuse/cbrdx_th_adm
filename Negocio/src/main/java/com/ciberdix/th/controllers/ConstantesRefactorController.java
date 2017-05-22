@@ -33,6 +33,14 @@ public class ConstantesRefactorController {
         return actividad;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/codigo/{codigo}")
+    VConstantes findByCodigo(@PathVariable String codigo) {
+        RestTemplate restTemplate = new RestTemplate();
+        VConstantes actividad = restTemplate.getForObject(serviceUrl + "codigo/" + codigo, VConstantes.class);
+
+        return actividad;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Constantes create(@RequestBody Constantes obj) {
         RestTemplate restTemplate = new RestTemplate();

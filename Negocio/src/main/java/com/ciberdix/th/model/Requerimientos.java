@@ -32,6 +32,8 @@ public class Requerimientos {
     public Integer idTipoSolicitud;
     public Date fechaInicio;
     public Date fechaFin;
+    public String nombreCargo;
+    public String funcionCargo;
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
@@ -223,5 +225,21 @@ public class Requerimientos {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    public String getFuncionCargo() {
+        return funcionCargo;
+    }
+
+    public void setFuncionCargo(String funcionCargo) {
+        this.funcionCargo = funcionCargo;
     }
 }

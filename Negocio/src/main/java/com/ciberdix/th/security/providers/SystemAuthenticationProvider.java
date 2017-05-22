@@ -57,7 +57,7 @@ public class SystemAuthenticationProvider implements AuthenticationProvider {
                 }
             } else {
                 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
-                if (bCryptPasswordEncoder.matches(password, user.getContrasena()) && !userDetails.getAuthorities().isEmpty()) {
+                if (bCryptPasswordEncoder.matches(password, user.getContrasena())) {
                     return authentication;
                 } else {
                     return null;

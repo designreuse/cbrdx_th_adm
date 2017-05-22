@@ -40,13 +40,15 @@ public class VRequerimientosHistoricos {
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
-    private Integer idJefe;
+    private Long idJefe;
     private String categoria;
     private Integer idCategoria;
     private String tipoSolicitud;
     private Integer idTipoSolicitud;
     private Date fechaInicio;
     private Date fechaFin;
+    private String nombreCargo;
+    private String funcionCargo;
 
     public Integer getIdRequerimientoHistorico() {
         return idRequerimientoHistorico;
@@ -304,11 +306,11 @@ public class VRequerimientosHistoricos {
         this.nombrejefe = nombrejefe;
     }
 
-    public Integer getIdJefe() {
+    public Long getIdJefe() {
         return idJefe;
     }
 
-    public void setIdJefe(Integer idJefe) {
+    public void setIdJefe(Long idJefe) {
         this.idJefe = idJefe;
     }
 
@@ -358,5 +360,21 @@ public class VRequerimientosHistoricos {
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    public String getFuncionCargo() {
+        return funcionCargo;
+    }
+
+    public void setFuncionCargo(String funcionCargo) {
+        this.funcionCargo = funcionCargo;
     }
 }
