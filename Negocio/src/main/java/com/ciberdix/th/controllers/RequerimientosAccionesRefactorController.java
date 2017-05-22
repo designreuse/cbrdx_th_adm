@@ -1,9 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.ListasItems;
-import com.ciberdix.th.model.RequerimientosAcciones;
-import com.ciberdix.th.model.RequerimientosHistoricos;
-import com.ciberdix.th.model.VRequerimientosAcciones;
+import com.ciberdix.th.model.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,9 +64,59 @@ public class RequerimientosAccionesRefactorController {
             Map<String, Object> map = new HashMap<>();
             map.put("URL", "/vacancies/approve/" + o.getIdRequerimiento());
             String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
-            String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/aprobar.png\"></a>";
+            String body = "Se ha creado un requerimiento de personal que requiere su aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
             String recipients = utilitiesController.findConstant("CORAUT").getValor();
             UtilitiesController.sendMail(recipients, "Aprobación", body);
+        }
+        Integer aprb = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasRequerimientosAcciones/code/APRB", ListasItems.class).getIdLista();
+        Integer rchz = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasRequerimientosAcciones/code/RCHZ", ListasItems.class).getIdLista();
+        Integer devcam = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasRequerimientosAcciones/code/DEVCAM", ListasItems.class).getIdLista();
+        if (o.getIdAccion().equals(aprb) || o.getIdAccion().equals(rchz) || o.getIdAccion().equals(devcam)) {
+            List<VRequerimientosAcciones> vRequerimientosAcciones = Arrays.asList(restTemplate.getForObject(businessUrl + "/api/requerimientosAcciones/requerimiento/" + o.getIdRequerimiento(), VRequerimientosAcciones[].class));
+            VRequerimientosAcciones last = new VRequerimientosAcciones();
+            last.setIdRequerimientoAccion(1);
+            for (VRequerimientosAcciones r : vRequerimientosAcciones) {
+                if (last.getIdRequerimientoAccion() < r.getIdRequerimientoAccion()) {
+                    last = r;
+                }
+            }
+            if (last.getIdAccion().equals(listasItems.getIdLista())) {
+                if (o.getIdAccion().equals(aprb)) {
+                    Integer idUsuario = last.getAuditoriaUsuario();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("URL", "/vacancies/update/" + o.getIdRequerimiento());
+                    String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+                    String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
+                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    UtilitiesController.sendMail(recipients, "Revisión", body);
+
+                    VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + idUsuario, VRequerimientos.class);
+                    idUsuario = vRequerimientos.getIdSolicitante();
+                    map = new HashMap<>();
+                    map.put("URL", "/personnel_requirement/update/" + o.getIdRequerimiento());
+                    token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+                    body = "Se ha aprobado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
+                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    UtilitiesController.sendMail(recipients, "Revisión", body);
+                }else{
+                    Integer idUsuario = last.getAuditoriaUsuario();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("URL", "/vacancies/detail/" + o.getIdRequerimiento());
+                    String token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+                    String body = "Se ha modificado un requerimiento de personal del cual usted solicito aprobacion: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
+                    String recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    UtilitiesController.sendMail(recipients, "Revisión", body);
+
+                    VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + idUsuario, VRequerimientos.class);
+                    idUsuario = vRequerimientos.getIdSolicitante();
+                    map = new HashMap<>();
+                    map.put("URL", "/personnel_requirement/update/" + o.getIdRequerimiento());
+                    token = Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+                    body = "Se ha modificado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a>";
+                    recipients = restTemplate.getForObject(baseUrl + "/api/usuarios/" + idUsuario, Usuarios.class).getCorreoElectronico();
+                    UtilitiesController.sendMail(recipients, "Revisión", body);
+                }
+            }
         }
         List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
         for (RequerimientosHistoricos r : requerimientosHistoricos) {
