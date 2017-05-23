@@ -27,6 +27,15 @@ public class TercerosLocalizaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosLocalizaciones(Integer idTerceroLocalizacion, Long idTercero, Integer idlocalizacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
+        this.idTercero = idTercero;
+        this.idlocalizacion = idlocalizacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroLocalizacion")

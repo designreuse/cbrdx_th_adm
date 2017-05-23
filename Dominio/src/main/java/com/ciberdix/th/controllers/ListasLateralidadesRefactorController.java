@@ -62,6 +62,8 @@ public class ListasLateralidadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasLateralidades update(@RequestBody ListasLateralidades obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasLateralidades(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

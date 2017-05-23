@@ -40,6 +40,8 @@ public class TercerosResidenciasRefactorController {
         if (obj.getIndicadorHabilitado()) {
             TercerosResidenciasRepository.updateChecks(obj.getIdTerceroLocalizacion());
         }
-        TercerosResidenciasRepository.save(obj);
+        TercerosResidenciasRepository.save(
+                new TercerosResidencias(obj.getIdTerceroResidencia(),obj.getIdTerceroLocalizacion(), obj.getIdTipoVivienda(), obj.getIdTipoConstruccionVivienda(), obj.getIdEstrato(), obj.getIdClasesViviendas(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

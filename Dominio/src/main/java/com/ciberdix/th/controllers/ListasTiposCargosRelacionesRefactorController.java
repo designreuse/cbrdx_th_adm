@@ -58,6 +58,8 @@ public class ListasTiposCargosRelacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposCargosRelaciones update(@RequestBody ListasTiposCargosRelaciones obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposCargosRelaciones(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

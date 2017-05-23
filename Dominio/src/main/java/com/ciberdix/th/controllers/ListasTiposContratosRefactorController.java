@@ -56,6 +56,8 @@ public class ListasTiposContratosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposContratos update(@RequestBody ListasTiposContratos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposContratos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

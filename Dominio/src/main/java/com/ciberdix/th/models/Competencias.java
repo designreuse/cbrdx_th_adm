@@ -29,6 +29,16 @@ public class Competencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Competencias(Integer idCompetencia, Integer idGrupoCompetencia, String competencia, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCompetencia = idCompetencia;
+        this.idGrupoCompetencia = idGrupoCompetencia;
+        this.competencia = competencia;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCompetencia")

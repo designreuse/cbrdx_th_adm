@@ -36,7 +36,22 @@ public class FuncionalidadesControles {
         this.indicadorVisible = indicadorVisible;
         this.indicadorImprimir = indicadorImprimir;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idPadre = idPadre;
+        this.indicadorSeccion = indicadorSeccion;
+    }
+
+    public FuncionalidadesControles(Integer idFuncionalidadControl, String codigo, String control, Integer idClasificacion, Integer idFuncionalidad, Boolean indicadorVisible, Boolean indicadorImprimir, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, Boolean indicadorSeccion) {
+        this.idFuncionalidadControl = idFuncionalidadControl;
+        this.codigo = codigo;
+        this.control = control;
+        this.idClasificacion = idClasificacion;
+        this.idFuncionalidad = idFuncionalidad;
+        this.indicadorVisible = indicadorVisible;
+        this.indicadorImprimir = indicadorImprimir;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idPadre = idPadre;
         this.indicadorSeccion = indicadorSeccion;

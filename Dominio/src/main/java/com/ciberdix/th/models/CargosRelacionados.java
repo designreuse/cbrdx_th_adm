@@ -29,6 +29,16 @@ public class CargosRelacionados {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosRelacionados(Integer idCargoRelacionado, Integer idTipoRelacion, Integer idCargo, Integer auditoriaUsuario, Integer idCargoRelacion, Boolean indicadorHabilitado) {
+        this.idCargoRelacionado = idCargoRelacionado;
+        this.idTipoRelacion = idTipoRelacion;
+        this.idCargo = idCargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idCargoRelacion = idCargoRelacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoRelacionado")

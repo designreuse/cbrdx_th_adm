@@ -33,6 +33,18 @@ public class Productividades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Productividades(Integer idProductividad, String productividad, Integer minimoIq, Integer maximoIq, Integer minimoAptitud, Integer maximoAptitud, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idProductividad = idProductividad;
+        this.productividad = productividad;
+        this.minimoIq = minimoIq;
+        this.maximoIq = maximoIq;
+        this.minimoAptitud = minimoAptitud;
+        this.maximoAptitud = maximoAptitud;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdProductividad")
     public Integer getIdProductividad() {

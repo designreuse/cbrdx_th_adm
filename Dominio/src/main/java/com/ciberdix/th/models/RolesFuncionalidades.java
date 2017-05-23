@@ -33,6 +33,18 @@ public class RolesFuncionalidades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RolesFuncionalidades(Integer idRolFuncionalidad, Integer idRol, Integer idFuncionalidad, Boolean indicadorHabilitado, Boolean indicadorExportar, Boolean indicadorImprimir, Boolean indicadorInsertar, Integer auditoriaUsuario) {
+        this.idRolFuncionalidad = idRolFuncionalidad;
+        this.idRol = idRol;
+        this.idFuncionalidad = idFuncionalidad;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.indicadorExportar = indicadorExportar;
+        this.indicadorImprimir = indicadorImprimir;
+        this.indicadorInsertar = indicadorInsertar;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario:1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRolFuncionalidad")

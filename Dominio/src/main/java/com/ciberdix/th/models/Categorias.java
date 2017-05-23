@@ -33,6 +33,18 @@ public class Categorias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Categorias(Integer idCategoria, String categoria, Integer puntosMinimos, Integer puntosMaximos, Integer idNivel, String nivel, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCategoria = idCategoria;
+        this.categoria = categoria;
+        this.puntosMinimos = puntosMinimos;
+        this.puntosMaximos = puntosMaximos;
+        this.idNivel = idNivel;
+        this.nivel = nivel;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCategoria")

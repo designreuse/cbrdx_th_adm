@@ -57,6 +57,8 @@ public class ListasTiposNomenclaturasComplementariasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposNomenclaturasComplementarias update(@RequestBody ListasTiposNomenclaturasComplementarias obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposNomenclaturasComplementarias(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -29,6 +29,16 @@ public class CargosEstadosObservaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosEstadosObservaciones(Integer idCargoEstadoObservacion, Integer idCargo, Integer idEstadoCargo, String observacion, Integer idUsuario, Integer auditoriaUsuario) {
+        this.idCargoEstadoObservacion = idCargoEstadoObservacion;
+        this.idCargo = idCargo;
+        this.idEstadoCargo = idEstadoCargo;
+        this.observacion = observacion;
+        this.idUsuario = idUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoEstadoObservacion")

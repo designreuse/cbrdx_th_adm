@@ -50,6 +50,10 @@ public class TercerosVehiculosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosVehiculos obj){
-        tercerosVehiculosRefactorRepository.save(obj);
+        tercerosVehiculosRefactorRepository.save(
+                new TercerosVehiculos(obj.getIdTerceroVehiculo(),obj.getIdTercero(),obj.getIdTipoVehiculo(),obj.getIdTipoServicio(),
+                        obj.getIdMarca(),obj.getModelo(),obj.getPlaca(),obj.getIdCiudad(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

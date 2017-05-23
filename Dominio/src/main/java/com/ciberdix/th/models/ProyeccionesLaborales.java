@@ -48,6 +48,24 @@ public class ProyeccionesLaborales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public ProyeccionesLaborales(Integer idProyecccionLaboral, Integer idEstructuraOrganizacional, Integer idCargo, Integer plazasActuales, Integer plazasProyectadas, Double costoActual, Double costoProyectado, Integer idEstadoProyeccion, Integer idUsuarioProyecta, Integer idUsuarioAprueba, Integer anio, String observacion, String observacionAprobacion, Integer auditoriaUsuario) {
+        this.idProyecccionLaboral = idProyecccionLaboral;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idCargo = idCargo;
+        this.plazasActuales = plazasActuales;
+        this.plazasProyectadas = plazasProyectadas;
+        this.costoActual = costoActual;
+        this.costoProyectado = costoProyectado;
+        this.idEstadoProyeccion = idEstadoProyeccion;
+        this.idUsuarioProyecta = idUsuarioProyecta;
+        this.idUsuarioAprueba = idUsuarioAprueba;
+        this.anio = anio;
+        this.observacion = observacion;
+        this.observacionAprobacion = observacionAprobacion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdProyecccionLaboral")

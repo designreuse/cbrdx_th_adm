@@ -80,6 +80,41 @@ public class Cargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso) {
+        this.idCargo = idCargo;
+        this.cargo = cargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.personaACargoDir = personaACargoDir;
+        this.personaACargoInd = personaACargoInd;
+        this.idCargoJefe = idCargoJefe;
+        this.mision = mision;
+        this.puntos = puntos;
+        this.idCategoria = idCategoria;
+        this.salario = salario;
+        this.indicadorRequiereFormacion = indicadorRequiereFormacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.interrelacionesInternas = interrelacionesInternas;
+        this.interrelacionesExternas = interrelacionesExternas;
+        this.responsabilidadesAd = responsabilidadesAd;
+        this.tomaDecisiones = tomaDecisiones;
+        this.actividadesSupervisa = actividadesSupervisa;
+        this.idNivelEducacion = idNivelEducacion;
+        this.conocimientosBasicos = conocimientosBasicos;
+        this.tiempoExperiencia = tiempoExperiencia;
+        this.otrosRequisitos = otrosRequisitos;
+        this.edad = edad;
+        this.cargaFisica = cargaFisica;
+        this.cargaMental = cargaMental;
+        this.nivelPsicoSocial = nivelPsicoSocial;
+        this.codigoCargo = codigoCargo;
+        this.idEstructuraArea = idEstructuraArea;
+        this.idGenero = idGenero;
+        this.idEstadoCivil = idEstadoCivil;
+        this.idEstado = idEstado;
+        this.paso = paso;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargo")

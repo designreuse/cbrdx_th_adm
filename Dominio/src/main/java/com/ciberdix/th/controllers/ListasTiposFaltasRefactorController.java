@@ -56,6 +56,8 @@ public class ListasTiposFaltasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposFaltas update(@RequestBody ListasTiposFaltas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposFaltas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

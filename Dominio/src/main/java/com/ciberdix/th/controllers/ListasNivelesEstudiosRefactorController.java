@@ -54,6 +54,8 @@ public class ListasNivelesEstudiosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasNivelesEstudios update(@RequestBody ListasNivelesEstudios obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasNivelesEstudios(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

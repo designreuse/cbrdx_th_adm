@@ -21,7 +21,15 @@ public class Funcionalidades {
     public Funcionalidades(Integer idMenu, Boolean indicadorHabilitado, Integer auditoriaUsuario){
         this.idMenu = idMenu;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Funcionalidades(Integer idFuncionalidad, Integer idMenu, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idFuncionalidad = idFuncionalidad;
+        this.idMenu = idMenu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 

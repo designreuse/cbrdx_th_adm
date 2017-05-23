@@ -58,6 +58,8 @@ public class ListasTiposDireccionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposDirecciones update(@RequestBody ListasTiposDirecciones obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposDirecciones(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -25,6 +25,14 @@ public class Criterios {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Criterios(Integer idCriterio, String criterio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCriterio = idCriterio;
+        this.criterio = criterio;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdCriterio")
     public Integer getIdCriterio() {

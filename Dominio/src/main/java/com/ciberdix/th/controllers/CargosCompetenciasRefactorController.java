@@ -32,7 +32,10 @@ public class CargosCompetenciasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody CargosCompetencias obj) {
-        CargosCompetenciasRefactorRepository.save(obj);
+    void update(@RequestBody CargosCompetencias o) {
+        CargosCompetenciasRefactorRepository.save(
+                new CargosCompetencias(o.getIdCargoCompetencia(),o.getIdCargo(), o.getIdCompetencia(),
+                        o.getIdPonderacion(), o.getAuditoriaUsuario())
+        );
     }
 }

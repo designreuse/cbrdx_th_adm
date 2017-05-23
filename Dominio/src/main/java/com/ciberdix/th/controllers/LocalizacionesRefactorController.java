@@ -43,6 +43,8 @@ public class LocalizacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     Localizaciones update(@RequestBody Localizaciones localizaciones) {
-        return localizacionesRefactorRepository.save(localizaciones);
+        return localizacionesRefactorRepository.save(
+                new Localizaciones(localizaciones.getIdLocalizacion(),localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario())
+        );
     }
 }

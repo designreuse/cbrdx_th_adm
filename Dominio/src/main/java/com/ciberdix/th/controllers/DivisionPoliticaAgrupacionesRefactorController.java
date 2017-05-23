@@ -26,6 +26,11 @@ public class DivisionPoliticaAgrupacionesRefactorController {
         return divisionPoliticaAgrupacionesRefactorRepository.findOne(idLista);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarAgrupacion/{idLista}")
+    List<DivisionPoliticaAgrupaciones> findParemt(@PathVariable Integer idLista) {
+        return divisionPoliticaAgrupacionesRefactorRepository.findByIdDivisionPoliticaAndIndicadorHabilitadoTrue(idLista);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DivisionPoliticaAgrupaciones createList(@RequestBody DivisionPoliticaAgrupaciones c) {
         return divisionPoliticaAgrupacionesRefactorRepository.save(new DivisionPoliticaAgrupaciones(c.getIdDivisionPolitica(), c.getIdDivisionPoliticaArea(), c.getAgrupacion(), c.getIdTipoAgrupacion(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario()));

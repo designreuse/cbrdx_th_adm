@@ -31,6 +31,17 @@ public class CargosExamenes {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosExamenes(Integer idCargoExamen, Integer idCargo, Integer idExamen, Boolean indicadorIngreso, Boolean indicadorPeriodicidad, Boolean indicadorRetiro, Integer auditoriaUsuario) {
+        this.idCargoExamen = idCargoExamen;
+        this.idCargo = idCargo;
+        this.idExamen = idExamen;
+        this.indicadorIngreso = indicadorIngreso;
+        this.indicadorPeriodicidad = indicadorPeriodicidad;
+        this.indicadorRetiro = indicadorRetiro;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoExamen")

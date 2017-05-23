@@ -56,6 +56,8 @@ public class ListasEstadosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosCargos update(@RequestBody ListasEstadosCargos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosCargos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

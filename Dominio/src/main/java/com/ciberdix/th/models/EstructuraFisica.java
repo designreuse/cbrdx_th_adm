@@ -39,6 +39,21 @@ public class EstructuraFisica {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public EstructuraFisica(Integer idEstructuraFisica, String codigo, String estructuraFisica, Integer idClasificacionSede, Integer idLocalizacion, String telefono, String celular, String correoElectronico, Boolean indicadorVirtual, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.codigo = codigo;
+        this.estructuraFisica = estructuraFisica;
+        this.idClasificacionSede = idClasificacionSede;
+        this.idLocalizacion = idLocalizacion;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.indicadorVirtual = indicadorVirtual;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdEstructuraFisica")

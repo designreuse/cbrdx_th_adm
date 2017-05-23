@@ -60,6 +60,10 @@ public class EstructuraOrganizacionalCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody EstructuraOrganizacionalCargos obj) {
-        estructuraOrganizacionalCargosRefactorRepository.save(obj);
+        estructuraOrganizacionalCargosRefactorRepository.save(
+                new EstructuraOrganizacionalCargos(obj.getIdEstructuraOrganizacionalCargo(),obj.getIdEstructuraOrganizacional(),
+                        obj.getIdCargo(),obj.getPlazas(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -44,6 +44,9 @@ public class CentrosCostosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CentrosCostos obj) {
-        centrosCostosRefactorRepository.save(obj);
+        centrosCostosRefactorRepository.save(
+                new CentrosCostos(obj.getIdCentroCostos(),obj.getCentroCostos(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario(),obj.getCodigoCentroCostos())
+        );
     }
 }

@@ -56,6 +56,8 @@ public class ListasTiposElementosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposElementos update(@RequestBody ListasTiposElementos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposElementos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

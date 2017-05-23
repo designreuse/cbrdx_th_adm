@@ -54,6 +54,9 @@ public class CargosResponsabilidadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosResponsabilidades obj) {
-        cargosResponsabilidadesRefactorRepository.save(obj);
+        cargosResponsabilidadesRefactorRepository.save(
+                new CargosResponsabilidades(obj.getIdCargoResponsabilidad(),obj.getIdResponsabilidad(),obj.getIdCargo(),
+                        obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -62,6 +62,8 @@ public class ListasTiposOcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposOcupaciones update(@RequestBody ListasTiposOcupaciones obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposOcupaciones(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

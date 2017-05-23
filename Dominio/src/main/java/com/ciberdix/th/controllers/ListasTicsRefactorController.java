@@ -56,6 +56,8 @@ public class ListasTicsRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiCs update(@RequestBody ListasTiCs obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiCs(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }
