@@ -56,7 +56,7 @@ public class Requerimientos {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;
+        this.fechaSolicitud = new Date(System.currentTimeMillis());
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
