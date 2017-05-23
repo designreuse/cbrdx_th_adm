@@ -47,8 +47,15 @@ public class RequerimientosHistoricosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody RequerimientosHistoricos obj) {
-        requerimientosHistoricosRefactorRepository.save(obj);
+    void update(@RequestBody RequerimientosHistoricos o) {
+        requerimientosHistoricosRefactorRepository.save(
+                new RequerimientosHistoricos(o.getIdRequerimientoHistorico(),o.getIdRequerimiento(),o.getIdSolicitante(),
+                        o.getJustificacion(),o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),
+                        o.getCantidadVacantes(),o.getCantidadConvocados(),o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),
+                        o.getIdFormaReclutamiento(),o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),
+                        o.getFechaSolicitud(),o.getIndicadorAutorizacion(),o.getIndicadorAumentoPlazas(),o.getIdJefe(),o.getIdCategoria(),
+                        o.getIdTipoSolicitud(),o.getFechaInicio(),o.getFechaFin(),o.getNombreCargo(),o.getFuncionCargo())
+        );
     }
 
 }

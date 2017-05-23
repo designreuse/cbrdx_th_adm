@@ -67,8 +67,16 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Requerimientos obj) {
-        requerimientosRefactorRepository.save(obj);
+    void update(@RequestBody Requerimientos o) {
+        requerimientosRefactorRepository.save(
+                new Requerimientos(o.getIdRequerimiento(),o.getIdSolicitante(),o.getJustificacion(),
+                        o.getIdCargo(),o.getIdFormaContratacion(),o.getIdTipoContratacion(),o.getCantidadVacantes(),
+                        o.getCantidadConvocados(),o.getIdEstado(),o.getAuditoriaUsuario(),o.getIdResponsableSeleccion(),
+                        o.getIdFormaReclutamiento(),o.getIdEstructuraOrganizacional(),o.getIdZona(),o.getIdEstructuraFisica(),
+                        o.getFechaSolicitud(),o.getIndicadorAutorizacion(),o.getIndicadorAumentoPlazas(),o.getIdJefe(),
+                        o.getIdCategoria(),o.getIdTipoSolicitud(),o.getFechaInicio(),o.getFechaFin(),o.getNombreCargo(),
+                        o.getFuncionCargo())
+        );
     }
 
 }

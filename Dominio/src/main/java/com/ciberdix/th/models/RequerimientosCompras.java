@@ -27,6 +27,15 @@ public class RequerimientosCompras {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    public RequerimientosCompras(Integer idRequerimientoCompra, Integer idRequerimiento, Integer idCompra, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idRequerimientoCompra = idRequerimientoCompra;
+        this.idRequerimiento = idRequerimiento;
+        this.idCompra = idCompra;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoCompra", nullable = false)

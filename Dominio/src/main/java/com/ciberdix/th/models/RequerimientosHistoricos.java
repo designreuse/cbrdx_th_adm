@@ -70,6 +70,36 @@ public class RequerimientosHistoricos {
         this.funcionCargo = funcionCargo;
     }
 
+    public RequerimientosHistoricos(Integer idRequerimientoHistorico, Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
+        this.idRequerimiento = idRequerimiento;
+        this.idSolicitante = idSolicitante;
+        this.justificacion = justificacion;
+        this.idCargo = idCargo;
+        this.idFormaContratacion = idFormaContratacion;
+        this.idTipoContratacion = idTipoContratacion;
+        this.cantidadVacantes = cantidadVacantes;
+        this.cantidadConvocados = cantidadConvocados;
+        this.idEstado = idEstado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idResponsableSeleccion = idResponsableSeleccion;
+        this.idFormaReclutamiento = idFormaReclutamiento;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idZona = idZona;
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;
+        this.indicadorAutorizacion = indicadorAutorizacion;
+        this.indicadorAumentoPlazas = indicadorAumentoPlazas;
+        this.idJefe = idJefe;
+        this.idCategoria = idCategoria;
+        this.idTipoSolicitud = idTipoSolicitud;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.nombreCargo = nombreCargo;
+        this.funcionCargo = funcionCargo;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoHistorico", nullable = false)

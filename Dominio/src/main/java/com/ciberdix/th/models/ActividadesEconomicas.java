@@ -31,6 +31,17 @@ public class ActividadesEconomicas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public ActividadesEconomicas(Integer idActividadEconomica, Integer idActividadPadre, Integer idActividadTipo, String actividadEconomica, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigoActividadEconomica) {
+        this.idActividadEconomica = idActividadEconomica;
+        this.idActividadPadre = idActividadPadre;
+        this.idActividadTipo = idActividadTipo;
+        this.actividadEconomica = actividadEconomica;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigoActividadEconomica = codigoActividadEconomica;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdActividadEconomica")

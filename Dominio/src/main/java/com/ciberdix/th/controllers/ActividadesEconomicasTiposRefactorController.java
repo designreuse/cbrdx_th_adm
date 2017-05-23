@@ -32,7 +32,10 @@ public class ActividadesEconomicasTiposRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    ActividadesEconomicasTipos updateActividadEconbomicaTipo(@RequestBody ActividadesEconomicasTipos centrosCostosEntity) {
-        return actividadesEconomicasRepository.save(centrosCostosEntity);
+    ActividadesEconomicasTipos updateActividadEconbomicaTipo(@RequestBody ActividadesEconomicasTipos o) {
+        return actividadesEconomicasRepository.save(
+                new ActividadesEconomicasTipos(o.getIdActividadEconomicaTipo(),o.getCodigoActividadTipo(),
+                        o.getDescripcionActividadTipo(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario())
+        );
     }
 }

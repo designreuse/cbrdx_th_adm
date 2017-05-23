@@ -51,8 +51,11 @@ public class RequerimientosAccionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody RequerimientosAcciones obj) {
-        requerimientosAccionesRefactorRepository.save(obj);
+    void update(@RequestBody RequerimientosAcciones o) {
+        requerimientosAccionesRefactorRepository.save(
+                new RequerimientosAcciones(o.getIdRequerimientoAccion(),o.getIdRequerimiento(),
+                        o.getIdAccion(),o.getIdRequerimientoHistorico(),o.getObservacion(),o.getAuditoriaUsuario())
+        );
     }
 
 }

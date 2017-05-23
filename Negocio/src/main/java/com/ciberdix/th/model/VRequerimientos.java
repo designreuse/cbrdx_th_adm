@@ -1,6 +1,6 @@
 package com.ciberdix.th.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -39,6 +39,7 @@ public class VRequerimientos {
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
+    private String cargoJefe;
     private Long idJefe;
     private String categoria;
     private Integer idCategoria;
@@ -295,6 +296,14 @@ public class VRequerimientos {
 
     public void setNombrejefe(String nombrejefe) {
         this.nombrejefe = nombrejefe;
+    }
+
+    public String getCargoJefe() {
+        return cargoJefe;
+    }
+
+    public void setCargoJefe(String cargoJefe) {
+        this.cargoJefe = cargoJefe;
     }
 
     public Long getIdJefe() {

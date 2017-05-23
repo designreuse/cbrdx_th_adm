@@ -29,6 +29,16 @@ public class RequerimientosAcciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RequerimientosAcciones(Integer idRequerimientoAccion, Integer idRequerimiento, Integer idAccion, Integer idRequerimientoHistorico, String observacion, Integer auditoriaUsuario) {
+        this.idRequerimientoAccion = idRequerimientoAccion;
+        this.idRequerimiento = idRequerimiento;
+        this.idAccion = idAccion;
+        this.idRequerimientoHistorico = idRequerimientoHistorico;
+        this.observacion = observacion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoAccion", nullable = false)
