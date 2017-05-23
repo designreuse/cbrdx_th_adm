@@ -37,8 +37,10 @@ public class ZonasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Zonas obj) {
-        zonasRefactorRepository.save(obj);
+    void update(@RequestBody Zonas o) {
+        zonasRefactorRepository.save(
+                new Zonas(o.getIdZona(),o.getZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario())
+        );
     }
 
 }

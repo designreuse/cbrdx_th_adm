@@ -35,6 +35,19 @@ public class Localizaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Localizaciones(Integer idLocalizacion, Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
+        this.idLocalizacion = idLocalizacion;
+        this.idTipoDireccion = idTipoDireccion;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.comoLlegar = comoLlegar;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.idDivisionPolitica = idDivisionPolitica;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdLocalizacion")

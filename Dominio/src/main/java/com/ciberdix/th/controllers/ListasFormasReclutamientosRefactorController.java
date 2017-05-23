@@ -58,7 +58,9 @@ public class ListasFormasReclutamientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasFormasReclutamientos update(@RequestBody ListasFormasReclutamientos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasFormasReclutamientos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 
 }

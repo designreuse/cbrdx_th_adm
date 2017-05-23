@@ -58,6 +58,8 @@ public class ListasNivelesCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasNivelesCargos update(@RequestBody ListasNivelesCargos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasNivelesCargos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

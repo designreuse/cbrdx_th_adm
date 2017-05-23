@@ -57,7 +57,9 @@ public class ListasCuestionariosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasCuestionarios update(@RequestBody ListasCuestionarios obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasCuestionarios(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 
 }

@@ -25,6 +25,14 @@ public class Zonas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Zonas(Integer idZona, String zona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idZona = idZona;
+        this.zona = zona;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdZona", nullable = false)

@@ -52,6 +52,12 @@ public class EstructuraFisicaRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody EstructuraFisica obj) {
-        estructuraFisicaRefactorRepository.save(obj);
+        estructuraFisicaRefactorRepository.save(
+                new EstructuraFisica(obj.getIdEstructuraFisica(),obj.getCodigo(),obj.getEstructuraFisica(),
+                        obj.getIdClasificacionSede(),obj.getIdLocalizacion(),
+                        obj.getTelefono(),obj.getCelular(),obj.getCorreoElectronico(),
+                        obj.getIndicadorVirtual(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

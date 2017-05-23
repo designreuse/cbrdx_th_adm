@@ -26,6 +26,13 @@ public class DivisionPoliticaAgrupacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarAgrupacion/{idLista}")
+    List<DivisionPoliticaAgrupaciones> findAll(@PathVariable Integer idLista) {
+        RestTemplate restTemplate = new RestTemplate();
+        DivisionPoliticaAgrupaciones[] parametros = restTemplate.getForObject(serviceUrl+ "/buscarAgrupacion/" + idLista, DivisionPoliticaAgrupaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/{idLista}")
     DivisionPoliticaAgrupaciones findOne(@PathVariable Integer idLista) {
         RestTemplate restTemplate = new RestTemplate();

@@ -29,6 +29,16 @@ public class Faltas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Faltas(Integer idFalta, String falta, Integer idTipoFalta, String accion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idFalta = idFalta;
+        this.falta = falta;
+        this.idTipoFalta = idTipoFalta;
+        this.accion = accion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdFalta")

@@ -53,6 +53,9 @@ public class RolesWidgetsRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RolesWidgets obj) {
-        rolesWidgetsRefactorRepository.save(obj);
+        rolesWidgetsRefactorRepository.save(
+                new RolesWidgets(obj.getIdRolWidget(),obj.getIdRol(),obj.getIdWidget(),obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

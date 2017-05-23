@@ -58,6 +58,8 @@ public class ListasParentescosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasParentescos update(@RequestBody ListasParentescos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasParentescos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

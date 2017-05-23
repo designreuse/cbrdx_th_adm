@@ -27,6 +27,15 @@ public class CargosElementos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosElementos(Integer idCargoElemento, Integer idCargo, Integer idTipoElemento, String descripcion, Integer auditoriaUsuario) {
+        this.idCargoElemento = idCargoElemento;
+        this.idCargo = idCargo;
+        this.idTipoElemento = idTipoElemento;
+        this.descripcion = descripcion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoElemento")

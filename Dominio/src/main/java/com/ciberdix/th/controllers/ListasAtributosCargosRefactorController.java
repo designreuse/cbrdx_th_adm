@@ -49,11 +49,15 @@ public class ListasAtributosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasAtributosCargos create(@RequestBody ListasAtributosCargos obj) {
-        return repository.save(new ListasAtributosCargos(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return repository.save(new ListasAtributosCargos(obj.getCodigo(), obj.getNombre(), obj.getOrden(),
+                obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasAtributosCargos update(@RequestBody ListasAtributosCargos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasAtributosCargos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(),
+                        obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -56,6 +56,8 @@ public class ListasMarcasVehiculosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasMarcasVehiculos update(@RequestBody ListasMarcasVehiculos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasMarcasVehiculos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -49,6 +49,9 @@ public class CargosExamenesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosExamenes obj) {
-        cargosExamenesRefactorRepository.save(obj);
+        cargosExamenesRefactorRepository.save(
+                new CargosExamenes(obj.getIdCargoExamen(),obj.getIdCargo(), obj.getIdExamen(), obj.getIndicadorIngreso(),
+                        obj.getIndicadorPeriodicidad(), obj.getIndicadorRetiro(), obj.getAuditoriaUsuario())
+        );
     }
 }

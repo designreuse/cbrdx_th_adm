@@ -58,6 +58,8 @@ public class ListasEstadosRequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosRequerimientos update(@RequestBody ListasEstadosRequerimientos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosRequerimientos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

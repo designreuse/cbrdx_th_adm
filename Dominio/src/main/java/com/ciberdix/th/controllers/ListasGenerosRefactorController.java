@@ -57,6 +57,8 @@ public class ListasGenerosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasGeneros update(@RequestBody ListasGeneros obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasGeneros(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

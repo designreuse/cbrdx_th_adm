@@ -45,6 +45,10 @@ public class CategoriasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Categorias obj) {
-        categoriasRefactorRepository.save(obj);
+        categoriasRefactorRepository.save(
+                new Categorias(obj.getIdCategoria(),obj.getCategoria(), obj.getPuntosMinimos(), obj.getPuntosMaximos(),
+                        obj.getIdNivel(), obj.getNivel(), obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

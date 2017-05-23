@@ -57,6 +57,8 @@ public class ListasTiposAfiliacionRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposAfiliacion update(@RequestBody ListasTiposAfiliacion obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposAfiliacion(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

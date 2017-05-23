@@ -32,12 +32,16 @@ public class CargosProductividadesRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     CargosProductividades create(@RequestBody CargosProductividades obj) {
         return cargosRefactorRepository.save(
-                new CargosProductividades(obj.getIdCargo(), obj.getIdProductividad(), obj.getIdProductividadIq(), obj.getIdProductividadAptitud(), obj.getAuditoriaUsuario())
+                new CargosProductividades(obj.getIdCargo(), obj.getIdProductividad(), obj.getIdProductividadIq(),
+                        obj.getIdProductividadAptitud(), obj.getAuditoriaUsuario())
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosProductividades obj) {
-        cargosRefactorRepository.save(obj);
+        cargosRefactorRepository.save(
+                new CargosProductividades(obj.getIdCargoProductividad(),obj.getIdCargo(), obj.getIdProductividad(),
+                        obj.getIdProductividadIq(),obj.getIdProductividadAptitud(), obj.getAuditoriaUsuario())
+        );
     }
 }

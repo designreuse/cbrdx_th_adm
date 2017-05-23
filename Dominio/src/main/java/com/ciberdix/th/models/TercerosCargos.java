@@ -24,14 +24,26 @@ public class TercerosCargos {
     public TercerosCargos() {
     }
 
-    public TercerosCargos(Integer idTipoContrato, Integer auditoriaUsuario, Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idZona, Boolean indicadorHabilitado) {
-        this.idTipoContrato = idTipoContrato;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+    public TercerosCargos(Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idTipoContrato, Integer idZona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
         this.asignadoDesde = asignadoDesde;
+        this.idTipoContrato = idTipoContrato;
         this.idZona = idZona;
         this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosCargos(Integer idTerceroCargo, Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idTipoContrato, Integer idZona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroCargo = idTerceroCargo;
+        this.idTercero = idTercero;
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
+        this.asignadoDesde = asignadoDesde;
+        this.idTipoContrato = idTipoContrato;
+        this.idZona = idZona;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 

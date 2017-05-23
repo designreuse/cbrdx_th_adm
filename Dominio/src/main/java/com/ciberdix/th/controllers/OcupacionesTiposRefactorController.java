@@ -41,8 +41,10 @@ public class OcupacionesTiposRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    OcupacionesTipos updateOcupacionTipo(@RequestBody OcupacionesTipos centrosCostosEntity) {
-        return ocupacionesTiposRefactorRepository.save(centrosCostosEntity);
+    OcupacionesTipos updateOcupacionTipo(@RequestBody OcupacionesTipos c) {
+        return ocupacionesTiposRefactorRepository.save(
+                new OcupacionesTipos(c.getIdOcupacionTipo(),c.getCodigoOcupacionTipo(), c.getDescripcionOcupacionTipo(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario())
+        );
     }
 
 }

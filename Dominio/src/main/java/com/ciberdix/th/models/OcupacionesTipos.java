@@ -27,6 +27,15 @@ public class OcupacionesTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public OcupacionesTipos(Integer idOcupacionTipo, Integer codigoOcupacionTipo, String descripcionOcupacionTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idOcupacionTipo = idOcupacionTipo;
+        this.codigoOcupacionTipo = codigoOcupacionTipo;
+        this.descripcionOcupacionTipo = descripcionOcupacionTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdOcupacionTipo")

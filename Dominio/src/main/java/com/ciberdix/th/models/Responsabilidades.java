@@ -27,6 +27,15 @@ public class Responsabilidades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Responsabilidades(Integer idResponsabilidad, String responsabilidad, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idResponsabilidad = idResponsabilidad;
+        this.responsabilidad = responsabilidad;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdResponsabilidad")
     public Integer getIdResponsabilidad() {

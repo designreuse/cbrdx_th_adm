@@ -44,6 +44,9 @@ public class CargosEstadosObservacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosEstadosObservaciones obj) {
-        cargosEstadosObservacionesRefactorRepository.save(obj);
+        cargosEstadosObservacionesRefactorRepository.save(
+                new CargosEstadosObservaciones(obj.getIdCargoEstadoObservacion(),obj.getIdCargo(),obj.getIdEstadoCargo(),
+                        obj.getObservacion(),obj.getIdUsuario(),obj.getAuditoriaUsuario())
+        );
     }
 }

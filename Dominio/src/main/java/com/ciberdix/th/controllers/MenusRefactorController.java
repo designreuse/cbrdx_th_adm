@@ -47,6 +47,8 @@ public class MenusRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     Menus update(@RequestBody Menus menus) {
-        return menusRefactorRepository.save(menus);
+        return menusRefactorRepository.save(
+                new Menus(menus.getIdMenu(),menus.getMenu(), menus.getIndicadorHabilitado(), menus.getAuditoriaUsuario(), menus.getIdPadre(), menus.getCodigoMenu(), menus.getRuta(), menus.getSecuencia(), menus.getClase())
+        );
     }
 }

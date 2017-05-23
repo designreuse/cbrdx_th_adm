@@ -27,6 +27,15 @@ public class CargosRolesProcesos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosRolesProcesos(Integer idCargoRolProceso, Integer idRolProceso, Integer idCargo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCargoRolProceso = idCargoRolProceso;
+        this.idRolProceso = idRolProceso;
+        this.idCargo = idCargo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoRolProceso")

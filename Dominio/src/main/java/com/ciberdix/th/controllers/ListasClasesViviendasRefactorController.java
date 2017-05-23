@@ -56,6 +56,8 @@ public class ListasClasesViviendasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasClasesViviendas update(@RequestBody ListasClasesViviendas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasClasesViviendas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

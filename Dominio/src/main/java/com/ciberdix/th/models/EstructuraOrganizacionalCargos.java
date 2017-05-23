@@ -29,6 +29,16 @@ public class EstructuraOrganizacionalCargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public EstructuraOrganizacionalCargos(Integer idEstructuraOrganizacionalCargo, Integer idEstructuraOrganizacional, Integer idCargo, Integer plazas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idCargo = idCargo;
+        this.plazas = plazas;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdEstructuraOrganizacionalCargo")

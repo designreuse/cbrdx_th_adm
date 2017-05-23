@@ -39,6 +39,19 @@ public class DiagnosticosCie {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public DiagnosticosCie(Integer idDiagnosticoCie, String codigo, String simbolo, String descripcion, Integer sexo, Integer limiteInferior, Integer limiteSuperior, Integer noAfeccion, Integer auditoriaUsuario) {
+        this.idDiagnosticoCie = idDiagnosticoCie;
+        this.codigo = codigo;
+        this.simbolo = simbolo;
+        this.descripcion = descripcion;
+        this.sexo = sexo;
+        this.limiteInferior = limiteInferior;
+        this.limiteSuperior = limiteSuperior;
+        this.noAfeccion = noAfeccion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @Column(name = "IdDiagnosticoCIE")
     public Integer getIdDiagnosticoCie() {

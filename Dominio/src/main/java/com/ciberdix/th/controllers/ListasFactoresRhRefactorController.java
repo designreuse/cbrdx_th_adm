@@ -57,6 +57,8 @@ public class ListasFactoresRhRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasFactoresRh update(@RequestBody ListasFactoresRh obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasFactoresRh(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }
