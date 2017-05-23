@@ -18,6 +18,9 @@ public class DivisionPoliticaAgrupaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public DivisionPoliticaAgrupaciones() {
+    }
+
     public DivisionPoliticaAgrupaciones(Integer idDivisionPolitica, Integer idDivisionPoliticaArea, String agrupacion, Integer idTipoAgrupacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idDivisionPolitica = idDivisionPolitica;
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
