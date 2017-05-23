@@ -71,11 +71,17 @@ public class ActividadesEconomicasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ActividadesEconomicas crearActividadEconomica(@RequestBody ActividadesEconomicas obj) {
-        return actividadesEconomicasRepository.save(new ActividadesEconomicas(obj.getIdActividadPadre(), obj.getIdActividadTipo(), obj.getActividadEconomica(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario(), obj.getCodigoActividadEconomica()));
+        return actividadesEconomicasRepository.save(new ActividadesEconomicas(obj.getIdActividadPadre(),
+                obj.getIdActividadTipo(),obj.getActividadEconomica(),obj.getIndicadorHabilitado(),
+                obj.getAuditoriaUsuario(),obj.getCodigoActividadEconomica()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void actualizarActividadEconomica(@RequestBody ActividadesEconomicas obj) {
-        actividadesEconomicasRepository.save(obj);
+    void actualizarActividadEconomica(@RequestBody ActividadesEconomicas o) {
+        actividadesEconomicasRepository.save(
+                new ActividadesEconomicas(o.getIdActividadEconomica(),o.getIdActividadPadre(), o.getIdActividadTipo(),
+                        o.getActividadEconomica(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(),
+                        o.getCodigoActividadEconomica())
+        );
     }
 }

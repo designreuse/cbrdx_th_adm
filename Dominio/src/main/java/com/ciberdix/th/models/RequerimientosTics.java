@@ -27,6 +27,15 @@ public class RequerimientosTics {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    public RequerimientosTics(Integer idRequerimientoTic, Integer idRequerimiento, Integer idTic, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idRequerimientoTic = idRequerimientoTic;
+        this.idRequerimiento = idRequerimiento;
+        this.idTic = idTic;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoTIC", nullable = false)

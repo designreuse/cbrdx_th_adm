@@ -53,7 +53,10 @@ public class RequerimientosCuestionariosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RequerimientosCuestionarios o) {
-        requerimientosCuestionariosRefactorRepository.save(o);
+        requerimientosCuestionariosRefactorRepository.save(
+                new RequerimientosCuestionarios(o.getIdRequerimientoCuestionario(),o.getIdRequerimiento(),
+                        o.getIdCuestionario(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
+        );
     }
 
 }
