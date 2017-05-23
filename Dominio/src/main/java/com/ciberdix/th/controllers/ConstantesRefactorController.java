@@ -44,6 +44,9 @@ public class ConstantesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody Constantes constantes) {
-        ConstantesRepository.save(constantes);
+        ConstantesRepository.save(
+                new Constantes(constantes.getIdConstante(),constantes.getConstante(), constantes.getIdTipoDato(), constantes.getValor(),
+                        constantes.getDescripcion(), constantes.getIndicadorHabilitado(), constantes.getAuditoriaUsuario())
+        );
     }
 }

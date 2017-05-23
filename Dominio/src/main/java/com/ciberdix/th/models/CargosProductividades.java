@@ -29,6 +29,16 @@ public class CargosProductividades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosProductividades(Integer idCargoProductividad, Integer idCargo, Integer idProductividad, Integer idProductividadIq, Integer idProductividadAptitud, Integer auditoriaUsuario) {
+        this.idCargoProductividad = idCargoProductividad;
+        this.idCargo = idCargo;
+        this.idProductividad = idProductividad;
+        this.idProductividadIq = idProductividadIq;
+        this.idProductividadAptitud = idProductividadAptitud;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoProductividad")

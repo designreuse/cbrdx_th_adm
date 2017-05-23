@@ -27,6 +27,15 @@ public class RolesWidgets {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RolesWidgets(Integer idRolWidget, Integer idRol, Integer idWidget, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRolWidget = idRolWidget;
+        this.idRol = idRol;
+        this.idWidget = idWidget;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRolWidget")

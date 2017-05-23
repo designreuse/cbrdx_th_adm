@@ -27,6 +27,15 @@ public class CargosResponsabilidades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosResponsabilidades(Integer idCargoResponsabilidad, Integer idResponsabilidad, Integer idCargo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCargoResponsabilidad = idCargoResponsabilidad;
+        this.idResponsabilidad = idResponsabilidad;
+        this.idCargo = idCargo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoResponsabilidad")

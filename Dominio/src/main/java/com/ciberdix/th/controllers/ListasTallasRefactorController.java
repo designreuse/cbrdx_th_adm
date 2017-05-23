@@ -62,6 +62,8 @@ public class ListasTallasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTallas update(@RequestBody ListasTallas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTallas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -35,6 +35,9 @@ public class GruposCompetenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody GruposCompetencias obj) {
-        GruposCompetenciasRefactorRepository.save(obj);
+        GruposCompetenciasRefactorRepository.save(
+                new GruposCompetencias(obj.getIdGrupoCompetencia(),obj.getGrupoCompetencia(), obj.getDescripcion(),
+                        obj.getPonderacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

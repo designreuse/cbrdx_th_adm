@@ -56,6 +56,8 @@ public class ListasRolesProcesoRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasRolesProceso update(@RequestBody ListasRolesProceso obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasRolesProceso(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

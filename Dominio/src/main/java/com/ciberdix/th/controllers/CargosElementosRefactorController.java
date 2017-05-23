@@ -49,6 +49,9 @@ public class CargosElementosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosElementos obj) {
-        cargosElementosRefactorRepository.save(obj);
+        cargosElementosRefactorRepository.save(
+                new CargosElementos(obj.getIdCargoElemento(),obj.getIdCargo(), obj.getIdTipoElemento(),
+                        obj.getDescripcion(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -33,6 +33,18 @@ public class TercerosContactos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosContactos(Integer idTerceroContacto, Long idTercero, String contacto, String telefono, String celular, Integer idListaParentesco, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroContacto = idTerceroContacto;
+        this.idTercero = idTercero;
+        this.contacto = contacto;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.idListaParentesco = idListaParentesco;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroContacto")

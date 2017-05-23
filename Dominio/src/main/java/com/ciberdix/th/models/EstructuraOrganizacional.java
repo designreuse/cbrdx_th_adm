@@ -57,6 +57,30 @@ public class EstructuraOrganizacional {
         this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 
+    public EstructuraOrganizacional(Integer idEstructuraOrganizacional, String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.idPadre = idPadre;
+        this.idTipoEstructura = idTipoEstructura;
+        this.idCentroCostos = idCentroCostos;
+        this.idTipoArea = idTipoArea;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.idLocalizacion = idLocalizacion;
+        this.razonSocial = razonSocial;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.paginaWeb = paginaWeb;
+        this.idLogo = idLogo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdEstructuraOrganizacional")

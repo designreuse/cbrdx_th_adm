@@ -57,6 +57,8 @@ public class ListasEstadosCivilesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosCiviles update(@RequestBody ListasEstadosCiviles obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosCiviles(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

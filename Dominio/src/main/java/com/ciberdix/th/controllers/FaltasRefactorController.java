@@ -47,6 +47,9 @@ public class FaltasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Faltas obj) {
-        faltasRefactorRepository.save(obj);
+        faltasRefactorRepository.save(
+                new Faltas(obj.getIdFalta(),obj.getFalta(),obj.getIdTipoFalta(),
+                        obj.getAccion(),obj.getIndicadorHabilitado(),obj.getAuditoriaUsuario())
+        );
     }
 }

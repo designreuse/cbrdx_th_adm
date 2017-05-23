@@ -33,11 +33,15 @@ public class CompetenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Competencias create(@RequestBody Competencias obj) {
-        return CompetenciasRefactorRepository.save(new Competencias(obj.getIdGrupoCompetencia(), obj.getCompetencia(), obj.getDescripcion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return CompetenciasRefactorRepository.save(new Competencias(obj.getIdGrupoCompetencia(), obj.getCompetencia(),
+                obj.getDescripcion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Competencias obj) {
-        CompetenciasRefactorRepository.save(obj);
+        CompetenciasRefactorRepository.save(
+                new Competencias(obj.getIdCompetencia(),obj.getIdGrupoCompetencia(), obj.getCompetencia(),
+                        obj.getDescripcion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

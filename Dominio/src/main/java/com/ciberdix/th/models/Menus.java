@@ -32,6 +32,19 @@ public class Menus {
         this.clase = clase;
     }
 
+    public Menus(Integer idMenu, String menu, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, String codigoMenu, String ruta, Integer secuencia, String clase) {
+        this.idMenu = idMenu;
+        this.menu = menu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idPadre = idPadre;
+        this.codigoMenu = codigoMenu;
+        this.ruta = ruta;
+        this.secuencia = secuencia;
+        this.clase = clase;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdMenu")

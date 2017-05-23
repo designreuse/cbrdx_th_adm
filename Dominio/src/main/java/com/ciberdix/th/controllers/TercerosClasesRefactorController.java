@@ -51,7 +51,11 @@ public class TercerosClasesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     TercerosClases update(@RequestBody TercerosClases tercerosClases) {
-        return tercerosClasesRefactorRepository.save(tercerosClases);
+        return tercerosClasesRefactorRepository.save(
+                new TercerosClases(tercerosClases.getIdTerceroClase(),tercerosClases.getIdTercero(),
+                        tercerosClases.getIdClaseTercero(), tercerosClases.getIndicadorHabilitado(),
+                        tercerosClases.getAuditoriaUsuario())
+        );
     }
 
 }

@@ -17,6 +17,16 @@ public class Listas {
     private Timestamp auditoriaFecha;
     private String descripcion;
 
+    public Listas(Integer idLista, String nombreTabla, String lista, Boolean indicadorEditable, Integer auditoriaUsuario, String descripcion) {
+        this.idLista = idLista;
+        this.nombreTabla = nombreTabla;
+        this.lista = lista;
+        this.indicadorEditable = indicadorEditable;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.descripcion = descripcion;
+    }
+
     @Id
     @Column(name = "IdLista")
     public Integer getIdLista() {

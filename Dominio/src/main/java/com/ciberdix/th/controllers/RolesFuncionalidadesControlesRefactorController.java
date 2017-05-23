@@ -53,6 +53,10 @@ public class RolesFuncionalidadesControlesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RolesFuncionalidadesControles obj) {
-        rolesFuncionalidadesControlesRefactorRepository.save(obj);
+        rolesFuncionalidadesControlesRefactorRepository.save(
+                new RolesFuncionalidadesControles(obj.getIdRolFuncionalidadControl(),obj.getIdRol(),
+                        obj.getIdFuncionalidadControl(),obj.getIndicadorEditar(), obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

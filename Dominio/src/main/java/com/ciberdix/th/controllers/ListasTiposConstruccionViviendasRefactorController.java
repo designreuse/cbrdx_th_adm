@@ -56,6 +56,8 @@ public class ListasTiposConstruccionViviendasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposConstruccionViviendas update(@RequestBody ListasTiposConstruccionViviendas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposConstruccionViviendas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

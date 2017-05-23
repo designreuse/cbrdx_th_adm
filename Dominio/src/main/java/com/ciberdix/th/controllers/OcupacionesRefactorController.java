@@ -62,6 +62,8 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarOcupaciones(@RequestBody Ocupaciones obj) {
-        ocupacionesRepository.save(obj);
+        ocupacionesRepository.save(
+                new Ocupaciones(obj.getIdOcupacion(),obj.getIdOcupacionPadre(), obj.getIdOcupacionTipo(), obj.getCodigoOcupacion(), obj.getOcupacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

@@ -33,6 +33,18 @@ public class CargosCriterios {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosCriterios(Integer idCargoCriterio, Integer idCriterio, Integer idCargo, Integer auditoriaUsuario, String descripcion, Double meta, Double factor, Boolean indicadorHabilitado) {
+        this.idCargoCriterio = idCargoCriterio;
+        this.idCriterio = idCriterio;
+        this.idCargo = idCargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.descripcion = descripcion;
+        this.meta = meta;
+        this.factor = factor;
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoCriterio")

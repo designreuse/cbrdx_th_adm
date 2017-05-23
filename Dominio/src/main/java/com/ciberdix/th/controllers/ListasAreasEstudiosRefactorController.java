@@ -53,11 +53,15 @@ public class ListasAreasEstudiosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ListasAreasEstudios create(@RequestBody ListasAreasEstudios obj) {
-        return repository.save(new ListasAreasEstudios(obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+        return repository.save(new ListasAreasEstudios(obj.getCodigo(), obj.getNombre(), obj.getOrden(),
+                obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasAreasEstudios update(@RequestBody ListasAreasEstudios obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasAreasEstudios(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(),
+                        obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

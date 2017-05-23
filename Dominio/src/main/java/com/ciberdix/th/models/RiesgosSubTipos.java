@@ -27,6 +27,15 @@ public class RiesgosSubTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RiesgosSubTipos(Integer idRiesgoSubTipo, Integer idRiesgoTipo, String riesgoSubTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRiesgoSubTipo = idRiesgoSubTipo;
+        this.idRiesgoTipo = idRiesgoTipo;
+        this.riesgoSubTipo = riesgoSubTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRiesgoSubTipo")

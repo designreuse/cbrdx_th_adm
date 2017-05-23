@@ -34,6 +34,8 @@ public class ProductividadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody Productividades productividades) {
-        ProductividadesRepository.save(productividades);
+        ProductividadesRepository.save(
+                new Productividades(productividades.getIdProductividad(),productividades.getProductividad(), productividades.getMinimoIq(), productividades.getMaximoIq(), productividades.getMinimoAptitud(), productividades.getMaximoAptitud(), productividades.getIndicadorHabilitado(), productividades.getAuditoriaUsuario())
+        );
     }
 }

@@ -152,7 +152,14 @@ public class CargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Cargos obj) {
-        cargosRefactorRepository.save(obj);
+    void update(@RequestBody Cargos o) {
+        cargosRefactorRepository.save(
+                new Cargos(o.getIdCargo(),o.getCargo(),o.getAuditoriaUsuario(),o.getPersonaACargoDir(),o.getPersonaACargoInd(),
+                        o.getIdCargoJefe(),o.getMision(),o.getPuntos(),o.getIdCategoria(),o.getSalario(),o.getIndicadorRequiereFormacion(),
+                        o.getIndicadorHabilitado(),o.getInterrelacionesInternas(),o.getInterrelacionesExternas(),o.getResponsabilidadesAd(),
+                        o.getTomaDecisiones(),o.getActividadesSupervisa(),o.getIdNivelEducacion(),o.getConocimientosBasicos(),o.getTiempoExperiencia(),
+                        o.getOtrosRequisitos(),o.getEdad(),o.getCargaFisica(),o.getCargaMental(),o.getNivelPsicoSocial(),o.getCodigoCargo(),
+                        o.getIdEstructuraArea(),o.getIdGenero(),o.getIdEstadoCivil(),o.getIdEstado(),o.getPaso())
+        );
     }
 }

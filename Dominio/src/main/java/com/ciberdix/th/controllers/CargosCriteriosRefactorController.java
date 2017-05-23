@@ -46,7 +46,10 @@ public class CargosCriteriosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody CargosCriterios obj) {
-        cargosCriteriosRefactorRepository.save(obj);
+    void update(@RequestBody CargosCriterios o) {
+        cargosCriteriosRefactorRepository.save(
+                new CargosCriterios(o.getIdCargoCriterio(),o.getIdCriterio(), o.getIdCargo(), o.getAuditoriaUsuario(),
+                        o.getDescripcion(), o.getMeta(), o.getFactor(), o.getIndicadorHabilitado())
+        );
     }
 }

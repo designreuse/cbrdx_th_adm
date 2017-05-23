@@ -58,7 +58,9 @@ public class ListasClasesTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasClasesTerceros update(@RequestBody ListasClasesTerceros obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasClasesTerceros(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 
 }

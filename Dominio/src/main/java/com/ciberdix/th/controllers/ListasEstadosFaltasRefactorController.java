@@ -55,6 +55,8 @@ public class ListasEstadosFaltasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosFaltas update(@RequestBody ListasEstadosFaltas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosFaltas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

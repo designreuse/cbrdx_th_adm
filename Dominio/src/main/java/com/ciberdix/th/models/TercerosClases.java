@@ -25,8 +25,17 @@ public class TercerosClases {
         this.idTercero = idTercero;
         this.idClaseTercero = idClaseTercero;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosClases(Integer idTerceroClase, Long idTercero, Integer idClaseTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroClase = idTerceroClase;
+        this.idTercero = idTercero;
+        this.idClaseTercero = idClaseTercero;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id

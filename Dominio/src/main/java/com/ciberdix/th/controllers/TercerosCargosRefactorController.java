@@ -50,15 +50,17 @@ public class TercerosCargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosCargos create(@RequestBody TercerosCargos obj) {
+    TercerosCargos create(@RequestBody TercerosCargos o) {
         return tercerosCargosRefactorRepository.save(
-                new TercerosCargos(obj.getIdTipoContrato(),
-                        obj.getAuditoriaUsuario(), obj.getIdTercero(), obj.getIdEstructuraOrganizacionalCargo(),
-                        obj.getAsignadoDesde(), obj.getIdZona(), obj.getIndicadorHabilitado()));
+                new TercerosCargos(o.getIdTercero(),o.getIdEstructuraOrganizacionalCargo(),o.getAsignadoDesde(),
+                        o.getIdTipoContrato(),o.getIdZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody TercerosCargos obj) {
-        tercerosCargosRefactorRepository.save(obj);
+    void update(@RequestBody TercerosCargos o) {
+        tercerosCargosRefactorRepository.save(
+                new TercerosCargos(o.getIdTerceroCargo(),o.getIdTercero(),o.getIdEstructuraOrganizacionalCargo(),o.getAsignadoDesde(),
+                        o.getIdTipoContrato(),o.getIdZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario())
+        );
     }
 }

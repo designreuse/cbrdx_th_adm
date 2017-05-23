@@ -48,6 +48,8 @@ public class TercerosLocalizacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     TercerosLocalizaciones update(@RequestBody TercerosLocalizaciones tercerosLocalizaciones) {
-        return tercerosLocalizacionesRefactorRepository.save(tercerosLocalizaciones);
+        return tercerosLocalizacionesRefactorRepository.save(
+                new TercerosLocalizaciones(tercerosLocalizaciones.getIdTerceroLocalizacion(),tercerosLocalizaciones.getIdTercero(), tercerosLocalizaciones.getIdlocalizacion(), tercerosLocalizaciones.getIndicadorHabilitado(), tercerosLocalizaciones.getAuditoriaUsuario())
+        );
     }
 }

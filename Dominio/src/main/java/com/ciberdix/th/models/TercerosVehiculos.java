@@ -37,6 +37,20 @@ public class TercerosVehiculos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosVehiculos(Integer idTerceroVehiculo, Long idTercero, Integer idTipoVehiculo, Integer idTipoServicio, Integer idMarca, Integer modelo, String placa, Integer idCiudad, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroVehiculo = idTerceroVehiculo;
+        this.idTercero = idTercero;
+        this.idTipoVehiculo = idTipoVehiculo;
+        this.idTipoServicio = idTipoServicio;
+        this.idMarca = idMarca;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.idCiudad = idCiudad;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroVehiculo")

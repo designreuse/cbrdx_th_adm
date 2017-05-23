@@ -33,11 +33,15 @@ public class CargosRelacionadosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     CargosRelacionados create(@RequestBody CargosRelacionados obj) {
-        return CargosRelacionadosRefactorRepository.save(new CargosRelacionados(obj.getIdTipoRelacion(), obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getIdCargoRelacion(), obj.getIndicadorHabilitado()));
+        return CargosRelacionadosRefactorRepository.save(new CargosRelacionados(obj.getIdTipoRelacion(),
+                obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getIdCargoRelacion(), obj.getIndicadorHabilitado()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosRelacionados obj) {
-        CargosRelacionadosRefactorRepository.save(obj);
+        CargosRelacionadosRefactorRepository.save(
+                new CargosRelacionados(obj.getIdCargoRelacion(),obj.getIdTipoRelacion(),
+                        obj.getIdCargo(), obj.getAuditoriaUsuario(), obj.getIdCargoRelacion(), obj.getIndicadorHabilitado())
+        );
     }
 }

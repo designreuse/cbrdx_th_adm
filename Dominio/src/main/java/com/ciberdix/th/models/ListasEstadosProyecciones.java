@@ -29,6 +29,15 @@ public class ListasEstadosProyecciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public ListasEstadosProyecciones(Integer idLista, String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idLista = idLista;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdLista")

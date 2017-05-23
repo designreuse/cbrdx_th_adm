@@ -33,6 +33,18 @@ public class TercerosResidencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosResidencias(Integer idTerceroResidencia, Integer idTerceroLocalizacion, Integer idTipoVivienda, Integer idTipoConstruccionVivienda, Integer idEstrato, Integer idClasesViviendas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroResidencia = idTerceroResidencia;
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
+        this.idTipoVivienda = idTipoVivienda;
+        this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
+        this.idEstrato = idEstrato;
+        this.idClasesViviendas = idClasesViviendas;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroResidencia")

@@ -39,6 +39,21 @@ public class TercerosInmuebles {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosInmuebles(Integer idTerceroInmueble, Long idTercero, Integer idTipoVivienda, Integer idClaseVivienda, Integer idTipoConstruccionVivienda, Integer anioConstruccion, Integer numeroPisos, Integer numeroSotanos, Integer idEstrato, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroInmueble = idTerceroInmueble;
+        this.idTercero = idTercero;
+        this.idTipoVivienda = idTipoVivienda;
+        this.idClaseVivienda = idClaseVivienda;
+        this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
+        this.anioConstruccion = anioConstruccion;
+        this.numeroPisos = numeroPisos;
+        this.numeroSotanos = numeroSotanos;
+        this.idEstrato = idEstrato;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTerceroInmueble")

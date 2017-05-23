@@ -27,6 +27,15 @@ public class CargosPersonalidadAtributos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosPersonalidadAtributos(Integer idCargoPersonalidadAtributo, Integer idCargo, Integer idAtributo, String descripcion, Integer auditoriaUsuario) {
+        this.idCargoPersonalidadAtributo = idCargoPersonalidadAtributo;
+        this.idCargo = idCargo;
+        this.idAtributo = idAtributo;
+        this.descripcion = descripcion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdCargoPersonalidadAtributo")

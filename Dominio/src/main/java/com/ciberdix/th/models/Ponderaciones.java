@@ -29,6 +29,16 @@ public class Ponderaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Ponderaciones(Integer idPonderacion, String ponderacion, Double minimo, Double maximo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idPonderacion = idPonderacion;
+        this.ponderacion = ponderacion;
+        this.minimo = minimo;
+        this.maximo = maximo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdPonderacion")
