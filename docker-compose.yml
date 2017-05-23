@@ -1,4 +1,4 @@
-version: '3'
+version: "2"
 services:
     dominio:
         image: crezcamos/dominio
@@ -7,17 +7,13 @@ services:
             dockerfile: ./Dominio/src/main/docker/Dockerfile
 
         ports:
-            - "8444:8444"
+            - "8446:8446"
     negocio:
         image: crezcamos/logica
         build: 
             context: . 
             dockerfile: ./Negocio/src/main/docker/Dockerfile
         ports:
-            - "8448:8448"
+            - "8449:8449"
         links:
             - dominio
-networks: 
-    default: 
-        external: 
-            name: nat 
