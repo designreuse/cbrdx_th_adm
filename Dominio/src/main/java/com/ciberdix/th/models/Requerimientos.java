@@ -41,6 +41,7 @@ public class Requerimientos {
     }
 
     public Requerimientos(Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
+        long time = System.currentTimeMillis();
         this.idSolicitante = idSolicitante;
         this.justificacion = justificacion;
         this.idCargo = idCargo;
@@ -50,13 +51,13 @@ public class Requerimientos {
         this.cantidadConvocados = cantidadConvocados;
         this.idEstado = idEstado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaFecha = new Timestamp(time);
         this.idResponsableSeleccion = idResponsableSeleccion;
         this.idFormaReclutamiento = idFormaReclutamiento;
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = new Date(System.currentTimeMillis());
+        this.fechaSolicitud = new Date(time);
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
