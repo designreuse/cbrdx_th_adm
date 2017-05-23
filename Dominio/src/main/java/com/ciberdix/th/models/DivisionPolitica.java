@@ -17,19 +17,17 @@ public class DivisionPolitica {
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
-    private Integer idDivisionPoliticaResguardo;
+    private Long idDivisionPoliticaAgrupacion;
     private Integer idEstratoDivisionPolitica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idDivisionPoliticaComuna;
-    private Integer idDivisionPoliticaLocalidad;
     private String gentilicio;
 
     public DivisionPolitica() {
     }
 
-    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad, String gentilicio) {
+    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Long idDivisionPoliticaAgrupacion, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, String gentilicio) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
@@ -37,14 +35,12 @@ public class DivisionPolitica {
         this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
         this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
         this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
-        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaUsuario = auditoriaUsuario;
         this.gentilicio = gentilicio;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
@@ -129,13 +125,13 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaResguardo")
-    public Integer getIdDivisionPoliticaResguardo() {
-        return idDivisionPoliticaResguardo;
+    @Column(name = "IdDivisionPoliticaAgrupacion")
+    public Long getIdDivisionPoliticaAgrupacion() {
+        return idDivisionPoliticaAgrupacion;
     }
 
-    public void setIdDivisionPoliticaResguardo(Integer idDivisionPoliticaResguardo) {
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+    public void setIdDivisionPoliticaAgrupacion(Long idDivisionPoliticaAgrupacion) {
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
     }
 
     @Basic
@@ -179,26 +175,6 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaComuna")
-    public Integer getIdDivisionPoliticaComuna() {
-        return idDivisionPoliticaComuna;
-    }
-
-    public void setIdDivisionPoliticaComuna(Integer idDivisionPoliticaComuna) {
-        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
-    }
-
-    @Basic
-    @Column(name = "IdDivisionPoliticaLocalidad")
-    public Integer getIdDivisionPoliticaLocalidad() {
-        return idDivisionPoliticaLocalidad;
-    }
-
-    public void setIdDivisionPoliticaLocalidad(Integer idDivisionPoliticaLocalidad) {
-        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
-    }
-
-    @Basic
     @Column(name = "Gentilicio")
     public String getGentilicio() {
         return gentilicio;
@@ -232,8 +208,6 @@ public class DivisionPolitica {
             return false;
         if (idDivisionPoliticaArea != null ? !idDivisionPoliticaArea.equals(that.idDivisionPoliticaArea) : that.idDivisionPoliticaArea != null)
             return false;
-        if (idDivisionPoliticaResguardo != null ? !idDivisionPoliticaResguardo.equals(that.idDivisionPoliticaResguardo) : that.idDivisionPoliticaResguardo != null)
-            return false;
         if (idEstratoDivisionPolitica != null ? !idEstratoDivisionPolitica.equals(that.idEstratoDivisionPolitica) : that.idEstratoDivisionPolitica != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
@@ -241,10 +215,6 @@ public class DivisionPolitica {
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-        if (idDivisionPoliticaComuna != null ? !idDivisionPoliticaComuna.equals(that.idDivisionPoliticaComuna) : that.idDivisionPoliticaComuna != null)
-            return false;
-        if (idDivisionPoliticaLocalidad != null ? !idDivisionPoliticaLocalidad.equals(that.idDivisionPoliticaLocalidad) : that.idDivisionPoliticaLocalidad != null)
             return false;
         if (gentilicio != null ? !gentilicio.equals(that.gentilicio) : that.gentilicio != null)
             return false;
@@ -261,13 +231,10 @@ public class DivisionPolitica {
         result = 31 * result + (codigoPostalDivisionPolitica != null ? codigoPostalDivisionPolitica.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaTipo != null ? idDivisionPoliticaTipo.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaArea != null ? idDivisionPoliticaArea.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaResguardo != null ? idDivisionPoliticaResguardo.hashCode() : 0);
         result = 31 * result + (idEstratoDivisionPolitica != null ? idEstratoDivisionPolitica.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaComuna != null ? idDivisionPoliticaComuna.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaLocalidad != null ? idDivisionPoliticaLocalidad.hashCode() : 0);
         result = 31 * result + (gentilicio != null ? gentilicio.hashCode() : 0);
         return result;
     }

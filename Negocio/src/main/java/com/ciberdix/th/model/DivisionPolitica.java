@@ -14,22 +14,12 @@ public class DivisionPolitica {
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
-    private Integer idDivisionPoliticaResguardo;
+    private Long idDivisionPoliticaAgrupacion;
     private Integer idEstratoDivisionPolitica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idDivisionPoliticaComuna;
-    private Integer idDivisionPoliticaLocalidad;
     private String gentilicio;
-
-    public String getGentilicio() {
-        return gentilicio;
-    }
-
-    public void setGentilicio(String gentilicio) {
-        this.gentilicio = gentilicio;
-    }
 
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
@@ -95,12 +85,12 @@ public class DivisionPolitica {
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
     }
 
-    public Integer getIdDivisionPoliticaResguardo() {
-        return idDivisionPoliticaResguardo;
+    public Long getIdDivisionPoliticaAgrupacion() {
+        return idDivisionPoliticaAgrupacion;
     }
 
-    public void setIdDivisionPoliticaResguardo(Integer idDivisionPoliticaResguardo) {
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+    public void setIdDivisionPoliticaAgrupacion(Long idDivisionPoliticaAgrupacion) {
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
     }
 
     public Integer getIdEstratoDivisionPolitica() {
@@ -135,19 +125,11 @@ public class DivisionPolitica {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Integer getIdDivisionPoliticaComuna() {
-        return idDivisionPoliticaComuna;
+    public String getGentilicio() {
+        return gentilicio;
     }
 
-    public void setIdDivisionPoliticaComuna(Integer idDivisionPoliticaComuna) {
-        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
-    }
-
-    public Integer getIdDivisionPoliticaLocalidad() {
-        return idDivisionPoliticaLocalidad;
-    }
-
-    public void setIdDivisionPoliticaLocalidad(Integer idDivisionPoliticaLocalidad) {
-        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
+    public void setGentilicio(String gentilicio) {
+        this.gentilicio = gentilicio;
     }
 }

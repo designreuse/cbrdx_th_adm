@@ -14,9 +14,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
 
         config.exposeIdsFor(DivisionPolitica.class);
         config.exposeIdsFor(DivisionPoliticaAreas.class);
-        config.exposeIdsFor(DivisionPoliticaComunas.class);
-        config.exposeIdsFor(DivisionPoliticaLocalidades.class);
-        config.exposeIdsFor(DivisionPoliticaResguardos.class);
         config.exposeIdsFor(DivisionPoliticaTipos.class);
         config.exposeIdsFor(VDivisionPoliticaRec.class);
         config.exposeIdsFor(ListasTiposReferencias.class);
@@ -197,5 +194,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(ListasCuestionarios.class);
         config.exposeIdsFor(VRequerimientosCuestionarios.class);
         config.exposeIdsFor(RequerimientosCuestionarios.class);
+        config.exposeIdsFor(DivisionPoliticaAgrupaciones.class);
+        config.exposeIdsFor(ListasTiposAgrupaciones.class);
     }
 }
