@@ -51,7 +51,10 @@ public class RequerimientosTicsRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RequerimientosTics o) {
-        requerimientosTicsRefactorRepository.save(o);
+        requerimientosTicsRefactorRepository.save(
+                new RequerimientosTics(o.getIdRequerimientoTic(),o.getIdRequerimiento(),o.getIdTic(),o.getAuditoriaUsuario(),
+                        o.getIndicadorHabilitado())
+        );
     }
 
 }

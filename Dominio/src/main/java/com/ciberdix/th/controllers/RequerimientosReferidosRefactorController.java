@@ -49,7 +49,10 @@ public class RequerimientosReferidosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RequerimientosReferidos o) {
-        requerimientosReferidosRefactorRepository.save(o);
+        requerimientosReferidosRefactorRepository.save(
+                new RequerimientosReferidos(o.getIdRequerimientoReferido(),o.getIdRequerimiento(), o.getNombre(), o.getTelefono(),
+                        o.getCorreoElectronico(),o.getFechaReferencia(), o.getIdEstado(), o.getAuditoriaUsuario())
+        );
     }
 
 }

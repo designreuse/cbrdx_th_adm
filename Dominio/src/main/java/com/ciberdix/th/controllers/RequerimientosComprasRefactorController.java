@@ -53,7 +53,10 @@ public class RequerimientosComprasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RequerimientosCompras o) {
-        requerimientosComprasRefactorRepository.save(o);
+        requerimientosComprasRefactorRepository.save(
+                new RequerimientosCompras(o.getIdRequerimientoCompra(),o.getIdRequerimiento(),o.getIdCompra(),
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
+        );
     }
 
 }

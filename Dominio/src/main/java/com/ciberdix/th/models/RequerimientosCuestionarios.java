@@ -27,6 +27,15 @@ public class RequerimientosCuestionarios {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    public RequerimientosCuestionarios(Integer idRequerimientoCuestionario, Integer idRequerimiento, Integer idCuestionario, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idRequerimientoCuestionario = idRequerimientoCuestionario;
+        this.idRequerimiento = idRequerimiento;
+        this.idCuestionario = idCuestionario;
+        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoCuestionario", nullable = false)
