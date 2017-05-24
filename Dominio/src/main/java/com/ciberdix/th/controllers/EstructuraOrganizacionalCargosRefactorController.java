@@ -44,11 +44,6 @@ public class EstructuraOrganizacionalCargosRefactorController {
         return vEstructuraOrganizacionalCargosRefactorRepository.findAllByIndicadorHabilitadoIsTrueAndIdCargoAndIdEstructuraOrganizacional(idCargo,idEstructura);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/search/{idEstructuraOrganizacional}/{query}")
-    List<VEstructuraOrganizacionalCargos> findAllByQndIdE(@PathVariable Integer idEstructuraOrganizacional, @PathVariable String query) {
-        return vEstructuraOrganizacionalCargosRefactorRepository.queryAllByIndicadorHabilitadoIsTrueAndIdEstructuraOrganizacionalAndCargoIsLike(idEstructuraOrganizacional,query);
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VEstructuraOrganizacionalCargos findOne(@PathVariable Integer id) {
         return vEstructuraOrganizacionalCargosRefactorRepository.findOne(id);

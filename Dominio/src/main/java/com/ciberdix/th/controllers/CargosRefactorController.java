@@ -53,6 +53,11 @@ public class CargosRefactorController {
 
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
+    List<Cargos> queryByIdEstructuraOrganizacional(@PathVariable String query, @PathVariable Integer idEstructuraOrganizacional) {
+        return cargosRefactorRepository.queryByIdEstructuraOrganizacional(query, idEstructuraOrganizacional);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargos findOne(@PathVariable Integer id) {
         return vCargosRefactorRepository.findOne(id);

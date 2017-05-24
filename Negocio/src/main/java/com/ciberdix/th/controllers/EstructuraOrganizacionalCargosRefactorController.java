@@ -53,14 +53,6 @@ public class EstructuraOrganizacionalCargosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/buscarCargoEstructura/" + idCargo + "/" + idEstructura, VEstructuraOrganizacionalCargos.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/search/{idEstructuraOrganizacional}/{query}")
-    List<VEstructuraOrganizacionalCargos> findAllByQndIdE(@PathVariable Integer idEstructuraOrganizacional, @PathVariable String query) {
-        RestTemplate restTemplate = new RestTemplate();
-        VEstructuraOrganizacionalCargos[] vEstructuraOrganizacionalCargos =  restTemplate.getForObject(serviceUrl + "/search/" + idEstructuraOrganizacional + "/" + query, VEstructuraOrganizacionalCargos[].class);
-        return Arrays.asList(vEstructuraOrganizacionalCargos);
-    }
-
-
     @RequestMapping(method = RequestMethod.POST)
     EstructuraOrganizacionalCargos create(@RequestBody EstructuraOrganizacionalCargos obj){
         RestTemplate restTemplate = new RestTemplate();

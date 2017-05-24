@@ -32,7 +32,9 @@ public class DivisionPoliticaAreasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    DivisionPoliticaAreas updateList(@RequestBody DivisionPoliticaAreas centrosCostosEntity) {
-        return divisionPoliticaAreasRefactorRepository.save(centrosCostosEntity);
+    DivisionPoliticaAreas updateList(@RequestBody DivisionPoliticaAreas c) {
+        return divisionPoliticaAreasRefactorRepository.save(
+                new DivisionPoliticaAreas(c.getIdDivisionPoliticaArea(),c.getDescripcionDivisionPoliticaArea(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario())
+        );
     }
 }
