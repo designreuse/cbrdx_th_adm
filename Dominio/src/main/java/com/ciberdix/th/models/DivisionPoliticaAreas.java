@@ -25,6 +25,14 @@ public class DivisionPoliticaAreas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public DivisionPoliticaAreas(Integer idDivisionPoliticaArea, String descripcionDivisionPoliticaArea, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idDivisionPoliticaArea = idDivisionPoliticaArea;
+        this.descripcionDivisionPoliticaArea = descripcionDivisionPoliticaArea;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "IdDivisionPoliticaArea")

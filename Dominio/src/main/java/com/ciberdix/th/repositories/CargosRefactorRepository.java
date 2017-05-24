@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CargosRefactorRepository extends CrudRepository<Cargos, Integer> {
 
-    @Query("SELECT c FROM Cargos c WHERE (c.codigoCargo LIKE CONCAT('%',?1,'%') OR c.cargo LIKE CONCAT('%',?1,'%')) AND c.idCargo IN (SELECT eoc.idCargo FROM EstructuraOrganizacionalCargos eoc WHERE eoc.idEstructuraOrganizacional = ?2)")
+    @Query("SELECT c FROM Cargos c WHERE (c.codigoCargo LIKE CONCAT('%',?1,'%') OR c.cargo LIKE CONCAT('%',?1,'%')) AND c.idCargo IN (SELECT eoc.idCargo FROM EstructuraOrganizacionalCargos eoc WHERE eoc.idEstructuraOrganizacional = ?2 AND eoc.indicadorHabilitado = 1)")
     List<Cargos> queryByIdEstructuraOrganizacional(String query, Integer idEstructuraOrganicacional);
 
 }

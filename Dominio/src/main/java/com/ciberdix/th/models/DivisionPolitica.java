@@ -38,9 +38,26 @@ public class DivisionPolitica {
         this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
         this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.gentilicio = gentilicio;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.gentilicio = gentilicio;
+    }
+
+    public DivisionPolitica(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Long idDivisionPoliticaAgrupacion, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, String gentilicio) {
+        this.idDivisionPolitica = idDivisionPolitica;
+        this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
+        this.codigoDivisionPolitica = codigoDivisionPolitica;
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
+        this.indicativoDivisonPolitica = indicativoDivisonPolitica;
+        this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
+        this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
+        this.idDivisionPoliticaArea = idDivisionPoliticaArea;
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
+        this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.gentilicio = gentilicio;
     }
 
     @Id
