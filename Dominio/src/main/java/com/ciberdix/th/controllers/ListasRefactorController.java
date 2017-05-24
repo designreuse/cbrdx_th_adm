@@ -34,7 +34,7 @@ public class ListasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     Listas update(@RequestBody Listas o) {
         return listasRefactorRepository.save(
-                new Listas(o.getIdLista(),o.getNombreTabla(),o.getLista(),o.getIndicadorEditable(),o.getAuditoriaUsuario(),o.getDescripcion())
+                new Listas(o.getIdLista(),o.getNombreTabla(),o.getLista(),o.getIndicadorEditable(),o.getAuditoriaUsuario(),o.getDescripcion(),o.getIdRol())
         );
     }
 }
