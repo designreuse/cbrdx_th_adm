@@ -90,6 +90,7 @@ public class CargosRefactorController {
         cargo.setIndicadorHabilitado(obj.getIndicadorHabilitado());
         cargo.setCodigoCargo(obj.getCodigoCargo());
         cargo.setIdEstructuraArea(obj.getIdEstructuraArea());
+        cargo.setIndicadorZona(obj.getIndicadorZona());
 
         return cargosRefactorRepository.save(cargo);
     }
