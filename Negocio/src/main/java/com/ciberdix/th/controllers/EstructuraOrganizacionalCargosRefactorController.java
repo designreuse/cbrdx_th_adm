@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.EstructuraOrganizacionalCargos;
+import com.ciberdix.th.model.VEstructuraOrganizacional;
 import com.ciberdix.th.model.VEstructuraOrganizacionalCargos;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -51,6 +52,14 @@ public class EstructuraOrganizacionalCargosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/buscarCargoEstructura/" + idCargo + "/" + idEstructura, VEstructuraOrganizacionalCargos.class);
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{idEstructuraOrganizacional}/{query}")
+    List<VEstructuraOrganizacionalCargos> findAllByQndIdE(@PathVariable Integer idEstructuraOrganizacional, @PathVariable String query) {
+        RestTemplate restTemplate = new RestTemplate();
+        VEstructuraOrganizacionalCargos[] vEstructuraOrganizacionalCargos =  restTemplate.getForObject(serviceUrl + "/search/" + idEstructuraOrganizacional + "/" + query, VEstructuraOrganizacionalCargos[].class);
+        return Arrays.asList(vEstructuraOrganizacionalCargos);
+    }
+
 
     @RequestMapping(method = RequestMethod.POST)
     EstructuraOrganizacionalCargos create(@RequestBody EstructuraOrganizacionalCargos obj){
