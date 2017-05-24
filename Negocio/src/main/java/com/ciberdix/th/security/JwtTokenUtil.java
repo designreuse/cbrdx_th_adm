@@ -26,6 +26,7 @@ public class JwtTokenUtil implements Serializable {
     static final String CLAIM_NOMBRE_TERCERO = "nombre";
     static final String CLAIM_NOMBRE_TERCERO_CORTO = "nombreCorto";
     static final String CLAIM_AVATAR = "avatar";
+    static final String CLAIM_AUTHORITIES = "authorities";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
@@ -156,11 +157,12 @@ public class JwtTokenUtil implements Serializable {
         //claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
         claims.put(CLAIM_KEY_CREATED, new Date());
         claims.put(CLAIM_USUARIO, user);
+        claims.put(CLAIM_AUTHORITIES, userDetails.getAuthorities());
 
-        String primerNombre = tercero.getPrimerNombre() != null ? tercero.getPrimerNombre(): "";
-        String segundoNombre = tercero.getSegundoNombre() != null ? tercero.getSegundoNombre(): "";
-        String primerApellido = tercero.getPrimerApellido() != null ? tercero.getPrimerApellido(): "";
-        String segundoApellido = tercero.getSegundoApellido() != null ? tercero.getSegundoApellido(): "";
+        String primerNombre = tercero.getPrimerNombre() != null ? tercero.getPrimerNombre() : "";
+        String segundoNombre = tercero.getSegundoNombre() != null ? tercero.getSegundoNombre() : "";
+        String primerApellido = tercero.getPrimerApellido() != null ? tercero.getPrimerApellido() : "";
+        String segundoApellido = tercero.getSegundoApellido() != null ? tercero.getSegundoApellido() : "";
 
         claims.put(CLAIM_NOMBRE_TERCERO, primerNombre + " " + segundoNombre + " " + primerApellido + " " + segundoApellido);
         claims.put(CLAIM_NOMBRE_TERCERO_CORTO, tercero.getPrimerNombre() + " " + tercero.getPrimerApellido());
