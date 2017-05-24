@@ -48,13 +48,6 @@ public class CargosRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
-    List<VCargos> queryByIdEstructuraOrganizacional(@PathVariable String query, @PathVariable Integer idEstructuraOrganizacional) {
-        RestTemplate restTemplate = new RestTemplate();
-        VCargos[] parametros = restTemplate.getForObject(serviceUrl + "/search/" + query + "/" + idEstructuraOrganizacional, VCargos[].class);
-        return Arrays.asList(parametros);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     Cargos create(@RequestBody Cargos obj){
         RestTemplate restTemplate = new RestTemplate();
