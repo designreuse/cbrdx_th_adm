@@ -28,13 +28,13 @@ public class DivisionPoliticaAreasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     DivisionPoliticaAreas createList(@RequestBody DivisionPoliticaAreas c) {
-        return divisionPoliticaAreasRefactorRepository.save(new DivisionPoliticaAreas(c.getDescripcionDivisionPoliticaArea(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario()));
+        return divisionPoliticaAreasRefactorRepository.save(new DivisionPoliticaAreas(c.getDescripcionDivisionPoliticaArea(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(),c.getCodigo()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     DivisionPoliticaAreas updateList(@RequestBody DivisionPoliticaAreas c) {
         return divisionPoliticaAreasRefactorRepository.save(
-                new DivisionPoliticaAreas(c.getIdDivisionPoliticaArea(),c.getDescripcionDivisionPoliticaArea(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario())
+                new DivisionPoliticaAreas(c.getIdDivisionPoliticaArea(),c.getDescripcionDivisionPoliticaArea(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(),c.getCodigo())
         );
     }
 }

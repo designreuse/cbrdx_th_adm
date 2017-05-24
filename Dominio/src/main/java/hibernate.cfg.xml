@@ -248,6 +248,7 @@
         <mapping class="com.ciberdix.th.models.ListasCuestionarios"/>
         <mapping class="com.ciberdix.th.models.RequerimientosCuestionarios"/>
         <mapping class="com.ciberdix.th.models.VRequerimientosCuestionarios"/>
+        <mapping class="com.ciberdix.th.model.Cargos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

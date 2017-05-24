@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
+ * Created by Danny on 24/05/2017.
  */
 @Entity
 @Table(name = "Cargos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -42,13 +42,12 @@ public class Cargos {
     private Integer idEstadoCivil;
     private Integer idEstado;
     private Integer paso;
+    private Boolean indicadorZona;
 
-    public Cargos() {
-    }
-
-    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso) {
+    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona) {
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.personaACargoDir = personaACargoDir;
         this.personaACargoInd = personaACargoInd;
         this.idCargoJefe = idCargoJefe;
@@ -77,14 +76,13 @@ public class Cargos {
         this.idEstadoCivil = idEstadoCivil;
         this.idEstado = idEstado;
         this.paso = paso;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorZona = indicadorZona;
     }
 
-    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso) {
+    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona) {
         this.idCargo = idCargo;
         this.cargo = cargo;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaUsuario = auditoriaUsuario;
         this.personaACargoDir = personaACargoDir;
         this.personaACargoInd = personaACargoInd;
         this.idCargoJefe = idCargoJefe;
@@ -113,11 +111,12 @@ public class Cargos {
         this.idEstadoCivil = idEstadoCivil;
         this.idEstado = idEstado;
         this.paso = paso;
+        this.indicadorZona = indicadorZona;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -127,7 +126,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -137,7 +136,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -147,7 +146,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -157,7 +156,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "PersonaACargoDir")
+    @Column(name = "PersonaACargoDir", nullable = true, precision = 0)
     public Integer getPersonaACargoDir() {
         return personaACargoDir;
     }
@@ -167,7 +166,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "PersonaACargoInd")
+    @Column(name = "PersonaACargoInd", nullable = true, precision = 0)
     public Integer getPersonaACargoInd() {
         return personaACargoInd;
     }
@@ -177,7 +176,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdCargoJefe")
+    @Column(name = "IdCargoJefe", nullable = true)
     public Integer getIdCargoJefe() {
         return idCargoJefe;
     }
@@ -187,7 +186,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "Mision")
+    @Column(name = "Mision", nullable = true, length = 500)
     public String getMision() {
         return mision;
     }
@@ -197,7 +196,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "Puntos")
+    @Column(name = "Puntos", nullable = true, precision = 0)
     public Integer getPuntos() {
         return puntos;
     }
@@ -207,7 +206,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = true)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -217,7 +216,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "Salario")
+    @Column(name = "Salario", nullable = true, precision = 0)
     public Integer getSalario() {
         return salario;
     }
@@ -227,7 +226,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IndicadorRequiereFormacion")
+    @Column(name = "IndicadorRequiereFormacion", nullable = true)
     public Boolean getIndicadorRequiereFormacion() {
         return indicadorRequiereFormacion;
     }
@@ -237,7 +236,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -247,7 +246,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "InterrelacionesInternas")
+    @Column(name = "InterrelacionesInternas", nullable = true, length = 500)
     public String getInterrelacionesInternas() {
         return interrelacionesInternas;
     }
@@ -257,7 +256,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "InterrelacionesExternas")
+    @Column(name = "InterrelacionesExternas", nullable = true, length = 500)
     public String getInterrelacionesExternas() {
         return interrelacionesExternas;
     }
@@ -267,7 +266,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "ResponsabilidadesAd")
+    @Column(name = "ResponsabilidadesAd", nullable = true, length = 500)
     public String getResponsabilidadesAd() {
         return responsabilidadesAd;
     }
@@ -277,7 +276,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "TomaDecisiones")
+    @Column(name = "TomaDecisiones", nullable = true, length = 500)
     public String getTomaDecisiones() {
         return tomaDecisiones;
     }
@@ -287,7 +286,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "ActividadesSupervisa")
+    @Column(name = "ActividadesSupervisa", nullable = true, length = 500)
     public String getActividadesSupervisa() {
         return actividadesSupervisa;
     }
@@ -297,7 +296,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdNivelEducacion")
+    @Column(name = "IdNivelEducacion", nullable = true)
     public Integer getIdNivelEducacion() {
         return idNivelEducacion;
     }
@@ -307,7 +306,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "ConocimientosBasicos")
+    @Column(name = "ConocimientosBasicos", nullable = true, length = 500)
     public String getConocimientosBasicos() {
         return conocimientosBasicos;
     }
@@ -317,7 +316,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "TiempoExperiencia")
+    @Column(name = "TiempoExperiencia", nullable = true, length = 200)
     public String getTiempoExperiencia() {
         return tiempoExperiencia;
     }
@@ -327,7 +326,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "OtrosRequisitos")
+    @Column(name = "OtrosRequisitos", nullable = true, length = 200)
     public String getOtrosRequisitos() {
         return otrosRequisitos;
     }
@@ -337,7 +336,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "Edad")
+    @Column(name = "Edad", nullable = true, precision = 0)
     public BigInteger getEdad() {
         return edad;
     }
@@ -347,7 +346,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "CargaFisica")
+    @Column(name = "CargaFisica", nullable = true, length = 100)
     public String getCargaFisica() {
         return cargaFisica;
     }
@@ -357,7 +356,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "CargaMental")
+    @Column(name = "CargaMental", nullable = true, length = 100)
     public String getCargaMental() {
         return cargaMental;
     }
@@ -367,7 +366,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "NivelPsicoSocial")
+    @Column(name = "NivelPsicoSocial", nullable = true, length = 100)
     public String getNivelPsicoSocial() {
         return nivelPsicoSocial;
     }
@@ -377,7 +376,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "CodigoCargo")
+    @Column(name = "CodigoCargo", nullable = true, length = 50)
     public String getCodigoCargo() {
         return codigoCargo;
     }
@@ -387,13 +386,63 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraArea")
+    @Column(name = "IdEstructuraArea", nullable = true)
     public Integer getIdEstructuraArea() {
         return idEstructuraArea;
     }
 
     public void setIdEstructuraArea(Integer idEstructuraArea) {
         this.idEstructuraArea = idEstructuraArea;
+    }
+
+    @Basic
+    @Column(name = "IdGenero", nullable = true)
+    public Integer getIdGenero() {
+        return idGenero;
+    }
+
+    public void setIdGenero(Integer idGenero) {
+        this.idGenero = idGenero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoCivil", nullable = true)
+    public Integer getIdEstadoCivil() {
+        return idEstadoCivil;
+    }
+
+    public void setIdEstadoCivil(Integer idEstadoCivil) {
+        this.idEstadoCivil = idEstadoCivil;
+    }
+
+    @Basic
+    @Column(name = "IdEstado", nullable = true)
+    public Integer getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Integer idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    @Basic
+    @Column(name = "Paso", nullable = true)
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
+    }
+
+    @Basic
+    @Column(name = "IndicadorZona", nullable = true)
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 
     @Override
@@ -448,6 +497,13 @@ public class Cargos {
         if (codigoCargo != null ? !codigoCargo.equals(cargos.codigoCargo) : cargos.codigoCargo != null) return false;
         if (idEstructuraArea != null ? !idEstructuraArea.equals(cargos.idEstructuraArea) : cargos.idEstructuraArea != null)
             return false;
+        if (idGenero != null ? !idGenero.equals(cargos.idGenero) : cargos.idGenero != null) return false;
+        if (idEstadoCivil != null ? !idEstadoCivil.equals(cargos.idEstadoCivil) : cargos.idEstadoCivil != null)
+            return false;
+        if (idEstado != null ? !idEstado.equals(cargos.idEstado) : cargos.idEstado != null) return false;
+        if (paso != null ? !paso.equals(cargos.paso) : cargos.paso != null) return false;
+        if (indicadorZona != null ? !indicadorZona.equals(cargos.indicadorZona) : cargos.indicadorZona != null)
+            return false;
 
         return true;
     }
@@ -482,46 +538,11 @@ public class Cargos {
         result = 31 * result + (nivelPsicoSocial != null ? nivelPsicoSocial.hashCode() : 0);
         result = 31 * result + (codigoCargo != null ? codigoCargo.hashCode() : 0);
         result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
+        result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
+        result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
+        result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
+        result = 31 * result + (paso != null ? paso.hashCode() : 0);
+        result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IdGenero")
-    public Integer getIdGenero() {
-        return idGenero;
-    }
-
-    public void setIdGenero(Integer idGenero) {
-        this.idGenero = idGenero;
-    }
-
-    @Basic
-    @Column(name = "IdEstadoCivil")
-    public Integer getIdEstadoCivil() {
-        return idEstadoCivil;
-    }
-
-    public void setIdEstadoCivil(Integer idEstadoCivil) {
-        this.idEstadoCivil = idEstadoCivil;
-    }
-
-    @Basic
-    @Column(name = "IdEstado")
-    public Integer getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
-    }
-
-    @Basic
-    @Column(name = "Paso")
-    public Integer getPaso() {
-        return paso;
-    }
-
-    public void setPaso(Integer paso) {
-        this.paso = paso;
     }
 }

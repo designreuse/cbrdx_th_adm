@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 23/05/2017.
+ * Created by Danny on 24/05/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
@@ -42,6 +42,7 @@ public class VRequerimientos {
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
     private String cargoJefe;
+    private Integer idCargoJefe;
     private Long idJefe;
     private String categoria;
     private Integer idCategoria;
@@ -373,6 +374,16 @@ public class VRequerimientos {
     }
 
     @Basic
+    @Column(name = "IdCargoJefe", nullable = true)
+    public Integer getIdCargoJefe() {
+        return idCargoJefe;
+    }
+
+    public void setIdCargoJefe(Integer idCargoJefe) {
+        this.idCargoJefe = idCargoJefe;
+    }
+
+    @Basic
     @Column(name = "IdJefe", nullable = true)
     public Long getIdJefe() {
         return idJefe;
@@ -523,6 +534,7 @@ public class VRequerimientos {
             return false;
         if (nombrejefe != null ? !nombrejefe.equals(that.nombrejefe) : that.nombrejefe != null) return false;
         if (cargoJefe != null ? !cargoJefe.equals(that.cargoJefe) : that.cargoJefe != null) return false;
+        if (idCargoJefe != null ? !idCargoJefe.equals(that.idCargoJefe) : that.idCargoJefe != null) return false;
         if (idJefe != null ? !idJefe.equals(that.idJefe) : that.idJefe != null) return false;
         if (categoria != null ? !categoria.equals(that.categoria) : that.categoria != null) return false;
         if (idCategoria != null ? !idCategoria.equals(that.idCategoria) : that.idCategoria != null) return false;
@@ -572,6 +584,7 @@ public class VRequerimientos {
         result = 31 * result + (indicadorAumentoPlazas != null ? indicadorAumentoPlazas.hashCode() : 0);
         result = 31 * result + (nombrejefe != null ? nombrejefe.hashCode() : 0);
         result = 31 * result + (cargoJefe != null ? cargoJefe.hashCode() : 0);
+        result = 31 * result + (idCargoJefe != null ? idCargoJefe.hashCode() : 0);
         result = 31 * result + (idJefe != null ? idJefe.hashCode() : 0);
         result = 31 * result + (categoria != null ? categoria.hashCode() : 0);
         result = 31 * result + (idCategoria != null ? idCategoria.hashCode() : 0);
