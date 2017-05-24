@@ -39,6 +39,7 @@ public class Cargos {
     private Integer idEstadoCivil;
     private Integer idEstado;
     private Integer paso;
+    private Boolean indicadorZona;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -294,5 +295,13 @@ public class Cargos {
 
     public void setPaso(Integer paso) {
         this.paso = paso;
+    }
+
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 }

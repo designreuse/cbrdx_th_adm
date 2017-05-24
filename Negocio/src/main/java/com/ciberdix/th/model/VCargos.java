@@ -46,6 +46,7 @@ public class VCargos {
     private Integer idEstado;
     private String estado;
     private Integer paso;
+    private Boolean indicadorZona;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -357,5 +358,13 @@ public class VCargos {
 
     public void setPaso(Integer paso) {
         this.paso = paso;
+    }
+
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 }
