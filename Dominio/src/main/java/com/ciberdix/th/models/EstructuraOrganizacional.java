@@ -30,11 +30,12 @@ public class EstructuraOrganizacional {
     private Timestamp auditoriaFecha;
     private Integer idEstructuraFisica;
     private Boolean indicadorPlantaConfirmada;
+    private Boolean indicadorZona;
 
     public EstructuraOrganizacional() {
     }
 
-    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada,Boolean indicadorZona) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idPadre = idPadre;
@@ -55,9 +56,10 @@ public class EstructuraOrganizacional {
         this.idEstructuraFisica = idEstructuraFisica;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+        this.indicadorZona = indicadorZona;
     }
 
-    public EstructuraOrganizacional(Integer idEstructuraOrganizacional, String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
+    public EstructuraOrganizacional(Integer idEstructuraOrganizacional, String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada, Boolean indicadorZona) {
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -79,6 +81,7 @@ public class EstructuraOrganizacional {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idEstructuraFisica = idEstructuraFisica;
         this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+        this.indicadorZona = indicadorZona;
     }
 
     @Id
@@ -282,6 +285,26 @@ public class EstructuraOrganizacional {
         this.idEstructuraFisica = idEstructuraFisica;
     }
 
+    @Basic
+    @Column(name = "IndicadorPlantaConfirmada")
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+    }
+
+    @Basic
+    @Column(name = "IndicadorZona")
+    public Boolean getIndicadorZona() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -289,8 +312,7 @@ public class EstructuraOrganizacional {
 
         EstructuraOrganizacional that = (EstructuraOrganizacional) o;
 
-        if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
-            return false;
+        if (!idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional)) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
@@ -314,16 +336,18 @@ public class EstructuraOrganizacional {
         if (idLogo != null ? !idLogo.equals(that.idLogo) : that.idLogo != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+        if (indicadorPlantaConfirmada != null ? !indicadorPlantaConfirmada.equals(that.indicadorPlantaConfirmada) : that.indicadorPlantaConfirmada != null)
             return false;
-        return idEstructuraFisica != null ? idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica == null;
+        return indicadorZona != null ? indicadorZona.equals(that.indicadorZona) : that.indicadorZona == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0;
+        int result = idEstructuraOrganizacional.hashCode();
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
@@ -340,19 +364,11 @@ public class EstructuraOrganizacional {
         result = 31 * result + (paginaWeb != null ? paginaWeb.hashCode() : 0);
         result = 31 * result + (idLogo != null ? idLogo.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
+        result = 31 * result + (indicadorPlantaConfirmada != null ? indicadorPlantaConfirmada.hashCode() : 0);
+        result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IndicadorPlantaConfirmada")
-    public Boolean getIndicadorPlantaConfirmada() {
-        return indicadorPlantaConfirmada;
-    }
-
-    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
-        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }
