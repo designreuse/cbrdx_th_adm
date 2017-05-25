@@ -96,7 +96,7 @@ public class Zonas {
         return codigo;
     }
 
-    public void setCodigo(String auditoriaFecha) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
