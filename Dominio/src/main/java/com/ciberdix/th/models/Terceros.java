@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Terceros", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Terceros", schema = "dbo", catalog = "CREZCAMOS")
 public class Terceros {
     private Long idTercero;
     private String primerNombre;
