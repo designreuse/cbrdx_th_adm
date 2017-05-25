@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ciberdix.th</groupId>
+    <!--<groupId>com.ciberdix.th</groupId>-->
     <artifactId>dominio</artifactId>
-    <version>0.0.2-TH</version>
+    <!--<version>0.0.2-TH</version>-->
     <packaging>jar</packaging>
 
     <name>dominio</name>
@@ -17,8 +17,8 @@
         <version>0.0.1</version>
     </parent>
 
-    <name>dominio</name>
-    <description>Dominio para el proyecto de Talento Humano</description>
+    <!--<name>dominio</name>-->
+    <!--<description>Dominio para el proyecto de Talento Humano</description>-->
 
     <!--<parent>-->
         <!--<groupId>org.springframework.boot</groupId>-->
