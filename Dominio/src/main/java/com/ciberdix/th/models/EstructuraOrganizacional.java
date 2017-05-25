@@ -298,7 +298,7 @@ public class EstructuraOrganizacional {
     @Basic
     @Column(name = "IndicadorZona")
     public Boolean getIndicadorZona() {
-        return indicadorPlantaConfirmada;
+        return indicadorZona;
     }
 
     public void setIndicadorZona(Boolean indicadorZona) {
