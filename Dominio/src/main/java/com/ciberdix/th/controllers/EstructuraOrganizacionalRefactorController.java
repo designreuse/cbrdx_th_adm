@@ -58,20 +58,20 @@ public class EstructuraOrganizacionalRefactorController {
                         obj.getIdTipoDocumento(), obj.getNumeroDocumento(), obj.getIdLocalizacion(),
                         obj.getRazonSocial(), obj.getTelefono(), obj.getCelular(), obj.getCorreoElectronico(),
                         obj.getPaginaWeb(), obj.getIdLogo(), obj.getIndicadorHabilitado(),
-                        obj.getAuditoriaUsuario(), obj.getIdEstructuraFisica(), obj.getIndicadorPlantaConfirmada())
+                        obj.getAuditoriaUsuario(), obj.getIdEstructuraFisica(), obj.getIndicadorPlantaConfirmada(), obj.getIndicadorZona())
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody EstructuraOrganizacional obj) {
         estructuraOrganizacionalRefactorRepository.save(
-                new EstructuraOrganizacional(obj.getIdEstructuraOrganizacional(),obj.getCodigo(), obj.getNombre(),
+                new EstructuraOrganizacional(obj.getIdEstructuraOrganizacional(), obj.getCodigo(), obj.getNombre(),
                         obj.getIdPadre(), obj.getIdTipoEstructura(),
                         obj.getIdCentroCostos(), obj.getIdTipoArea(),
                         obj.getIdTipoDocumento(), obj.getNumeroDocumento(), obj.getIdLocalizacion(),
                         obj.getRazonSocial(), obj.getTelefono(), obj.getCelular(), obj.getCorreoElectronico(),
                         obj.getPaginaWeb(), obj.getIdLogo(), obj.getIndicadorHabilitado(),
-                        obj.getAuditoriaUsuario(), obj.getIdEstructuraFisica(), obj.getIndicadorPlantaConfirmada())
+                        obj.getAuditoriaUsuario(), obj.getIdEstructuraFisica(), obj.getIndicadorPlantaConfirmada(), obj.getIndicadorZona())
         );
     }
 }
