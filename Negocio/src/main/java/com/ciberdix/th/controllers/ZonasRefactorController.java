@@ -35,6 +35,14 @@ public class ZonasRefactorController {
         return restTemplate.getForObject(serviceUrl + id, Zonas.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byEstrucOrganizacional/{idEstructuraOrganizacional}")
+    List<Zonas> findAllByIdEstructuraOrganizacional(@PathVariable Integer idEstructuraOrganizacional) {
+        String serviceUrl = baseUrl + "/api/zonas/byEstrucOrganizacional/";
+        RestTemplate restTemplate = new RestTemplate();
+        List<Zonas> zonas = Arrays.asList(restTemplate.getForObject(serviceUrl + idEstructuraOrganizacional, Zonas[].class));
+        return zonas;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Zonas create(@RequestBody Zonas o) {
         String serviceUrl = baseUrl + "/api/zonas/";
