@@ -14,9 +14,9 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-url: http://localhost
+url: http://40.71.92.147
 front:
-  address: http://localhost
+  address: http://40.71.92.147
   port: 5557
   url: ${front.address}:${front.port}
 domain:
