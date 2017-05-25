@@ -12,6 +12,24 @@ public class Zonas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigo;
+    private Integer idEstructuraOrganizacional;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Integer getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
+    }
+
+    public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+    }
 
     public Integer getIdZona() {
         return idZona;
