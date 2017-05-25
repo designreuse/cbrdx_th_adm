@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@NamedStoredProcedureQuery(name = "GenProy", procedureName = "crz_th.GenerarProyeccion", parameters = {
+@NamedStoredProcedureQuery(name = "GenProy", procedureName = "dbo.GenerarProyeccion", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Usuario", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "Output", type = Integer.class)})
 @Table(name = "ProyeccionesLaborales", schema = "dbo", catalog = "CREZCAMOS")
