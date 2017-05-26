@@ -48,14 +48,14 @@ public class RolesWidgetsRefactorController {
     RolesWidgets create(@RequestBody RolesWidgets obj) {
         return rolesWidgetsRefactorRepository.save(
                 new RolesWidgets(obj.getIdRol(),obj.getIdWidget(),obj.getIndicadorHabilitado(),
-                        obj.getAuditoriaUsuario()));
+                        obj.getAuditoriaUsuario(), obj.getIndicadorObligatorio()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody RolesWidgets obj) {
         rolesWidgetsRefactorRepository.save(
                 new RolesWidgets(obj.getIdRolWidget(),obj.getIdRol(),obj.getIdWidget(),obj.getIndicadorHabilitado(),
-                        obj.getAuditoriaUsuario())
+                        obj.getAuditoriaUsuario(), obj.getIndicadorObligatorio())
         );
     }
 }
