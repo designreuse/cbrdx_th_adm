@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by robertochajin on 26/04/17.
  */
 @Entity
-@Table(name = "V_PolicyRules", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_PolicyRules", schema = "dbo", catalog = "CREZCAMOS")
 public class VPolicyRules {
     private Integer idRolFuncionalidad;
     private Integer idFuncionalidad;

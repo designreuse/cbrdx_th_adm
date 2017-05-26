@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by Felipe Aguirre on 24/03/2017.
  */
 @Entity
-@Table(name = "GruposGestion", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "GruposGestion", schema = "dbo", catalog = "CREZCAMOS")
 public class GruposGestion {
     private Integer idGrupoGestion;
     private String grupoGestion;
