@@ -11,7 +11,7 @@ services:
         image: crezcamos/logica
         environment:
             PUERTO_SERVICIO: 8449
-            HOST: 40.71.92.147
+            HOST: localhost
             RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
         ports:
             - "8449:8449"
