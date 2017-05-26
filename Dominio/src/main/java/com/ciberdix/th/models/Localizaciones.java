@@ -50,7 +50,7 @@ public class Localizaciones {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = false)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -60,7 +60,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "IdTipoDireccion")
+    @Column(name = "IdTipoDireccion", nullable = true)
     public Integer getIdTipoDireccion() {
         return idTipoDireccion;
     }
@@ -70,7 +70,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "Direccion")
+    @Column(name = "Direccion", nullable = true, length = 512)
     public String getDireccion() {
         return direccion;
     }
@@ -80,7 +80,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "Latitud")
+    @Column(name = "Latitud", nullable = true, length = 30)
     public String getLatitud() {
         return latitud;
     }
@@ -90,7 +90,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "Longitud")
+    @Column(name = "Longitud", nullable = true, length = 30)
     public String getLongitud() {
         return longitud;
     }
@@ -100,7 +100,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "ComoLlegar")
+    @Column(name = "ComoLlegar", nullable = true, length = 512)
     public String getComoLlegar() {
         return comoLlegar;
     }
@@ -110,7 +110,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -120,7 +120,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = true)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -130,7 +130,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -140,7 +140,7 @@ public class Localizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -38,7 +38,7 @@ public class DivisionPoliticaTipos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdDivisionPoliticaTipo")
+    @Column(name = "IdDivisionPoliticaTipo", nullable = false)
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -48,7 +48,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "DescripcionTipo")
+    @Column(name = "DescripcionTipo", nullable = false, length = 20)
     public String getDescripcionTipo() {
         return descripcionTipo;
     }
@@ -58,7 +58,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "CodigoDivisionPoliticaTipo")
+    @Column(name = "CodigoDivisionPoliticaTipo", nullable = false, length = 10)
     public String getCodigoDivisionPoliticaTipo() {
         return codigoDivisionPoliticaTipo;
     }
@@ -68,7 +68,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +78,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

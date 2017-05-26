@@ -70,9 +70,13 @@ public class TercerosReferencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaVerificado(Timestamp fechaVerificado) {
+        this.fechaVerificado = fechaVerificado;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroReferencia")
+    @Column(name = "IdTerceroReferencia", nullable = false)
     public Integer getIdTerceroReferencia() {
         return idTerceroReferencia;
     }
@@ -82,7 +86,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -92,7 +96,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IdTipoReferencia")
+    @Column(name = "IdTipoReferencia", nullable = false)
     public Integer getIdTipoReferencia() {
         return idTipoReferencia;
     }
@@ -102,7 +106,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "Empresa")
+    @Column(name = "Empresa", nullable = true, length = 100)
     public String getEmpresa() {
         return empresa;
     }
@@ -112,7 +116,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "PrimerNombre")
+    @Column(name = "PrimerNombre", nullable = true, length = 50)
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -122,7 +126,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "SegundoNombre")
+    @Column(name = "SegundoNombre", nullable = true, length = 50)
     public String getSegundoNombre() {
         return segundoNombre;
     }
@@ -132,7 +136,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "PrimerApellido")
+    @Column(name = "PrimerApellido", nullable = true, length = 50)
     public String getPrimerApellido() {
         return primerApellido;
     }
@@ -142,7 +146,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "SegundoApellido")
+    @Column(name = "SegundoApellido", nullable = true, length = 50)
     public String getSegundoApellido() {
         return segundoApellido;
     }
@@ -152,7 +156,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "TelefonoFijo")
+    @Column(name = "TelefonoFijo", nullable = true, length = 50)
     public String getTelefonoFijo() {
         return telefonoFijo;
     }
@@ -162,7 +166,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "TelefonoMovil")
+    @Column(name = "TelefonoMovil", nullable = true, length = 50)
     public String getTelefonoMovil() {
         return telefonoMovil;
     }
@@ -172,7 +176,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -182,7 +186,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -192,7 +196,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -202,7 +206,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -212,7 +216,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -222,7 +226,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IndicadorVerificado")
+    @Column(name = "IndicadorVerificado", nullable = true)
     public Boolean getIndicadorVerificado() {
         return indicadorVerificado;
     }
@@ -232,7 +236,7 @@ public class TercerosReferencias {
     }
 
     @Basic
-    @Column(name = "FechaVerificado")
+    @Column(name = "FechaVerificado", nullable = true)
     public Date getFechaVerificado() {
         return fechaVerificado;
     }

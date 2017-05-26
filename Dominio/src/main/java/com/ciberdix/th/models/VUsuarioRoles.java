@@ -20,8 +20,17 @@ public class VUsuarioRoles {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdUsuarioRol")
+    @Column(name = "IdUsuarioRol", nullable = false)
     public Integer getIdUsuarioRol() {
         return idUsuarioRol;
     }
@@ -31,7 +40,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -41,7 +50,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = false)
     public Integer getIdRol() {
         return idRol;
     }
@@ -51,7 +60,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -61,7 +70,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -71,7 +80,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -81,7 +90,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -91,7 +100,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -101,7 +110,7 @@ public class VUsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

@@ -19,7 +19,7 @@ public class ProveedoresServicios {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdProveedorServicio")
+    @Column(name = "IdProveedorServicio", nullable = false)
     public Integer getIdProveedorServicio() {
         return idProveedorServicio;
     }
@@ -29,7 +29,7 @@ public class ProveedoresServicios {
     }
 
     @Basic
-    @Column(name = "IdProveedor")
+    @Column(name = "IdProveedor", nullable = false)
     public Integer getIdProveedor() {
         return idProveedor;
     }
@@ -39,7 +39,7 @@ public class ProveedoresServicios {
     }
 
     @Basic
-    @Column(name = "IdServicio")
+    @Column(name = "IdServicio", nullable = true)
     public Integer getIdServicio() {
         return idServicio;
     }
@@ -49,7 +49,7 @@ public class ProveedoresServicios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -59,7 +59,7 @@ public class ProveedoresServicios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +69,7 @@ public class ProveedoresServicios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

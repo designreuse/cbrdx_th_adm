@@ -18,7 +18,7 @@ public class TercerosAdaptacionesLaboralesAdjuntos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroAdaptacionLaboralAdjunto")
+    @Column(name = "IdTerceroAdaptacionLaboralAdjunto", nullable = false)
     public Integer getIdTerceroAdaptacionLaboralAdjunto() {
         return idTerceroAdaptacionLaboralAdjunto;
     }
@@ -28,7 +28,7 @@ public class TercerosAdaptacionesLaboralesAdjuntos {
     }
 
     @Basic
-    @Column(name = "IdTerceroAdaptacionLaboral")
+    @Column(name = "IdTerceroAdaptacionLaboral", nullable = true)
     public Integer getIdTerceroAdaptacionLaboral() {
         return idTerceroAdaptacionLaboral;
     }
@@ -38,7 +38,7 @@ public class TercerosAdaptacionesLaboralesAdjuntos {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -48,7 +48,7 @@ public class TercerosAdaptacionesLaboralesAdjuntos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +58,7 @@ public class TercerosAdaptacionesLaboralesAdjuntos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -19,8 +19,9 @@ public class VTercerosReferencias {
     private String telefonoMovil;
     private String descripcionDivisonPolitica;
 
+    @Basic
     @Id
-    @Column(name = "IdTerceroReferencia")
+    @Column(name = "IdTerceroReferencia", nullable = false)
     public Integer getIdTerceroReferencia() {
         return idTerceroReferencia;
     }
@@ -30,7 +31,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -40,7 +41,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "TipoReferencia")
+    @Column(name = "TipoReferencia", nullable = false, length = 100)
     public String getTipoReferencia() {
         return tipoReferencia;
     }
@@ -50,7 +51,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "PrimerNombre")
+    @Column(name = "PrimerNombre", nullable = true, length = 50)
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -60,7 +61,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "SegundoNombre")
+    @Column(name = "SegundoNombre", nullable = true, length = 50)
     public String getSegundoNombre() {
         return segundoNombre;
     }
@@ -70,7 +71,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "PrimerApellido")
+    @Column(name = "PrimerApellido", nullable = true, length = 50)
     public String getPrimerApellido() {
         return primerApellido;
     }
@@ -80,7 +81,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "SegundoApellido")
+    @Column(name = "SegundoApellido", nullable = true, length = 50)
     public String getSegundoApellido() {
         return segundoApellido;
     }
@@ -90,7 +91,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "TelefonoFijo")
+    @Column(name = "TelefonoFijo", nullable = true, length = 50)
     public String getTelefonoFijo() {
         return telefonoFijo;
     }
@@ -100,7 +101,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "TelefonoMovil")
+    @Column(name = "TelefonoMovil", nullable = true, length = 50)
     public String getTelefonoMovil() {
         return telefonoMovil;
     }
@@ -110,7 +111,7 @@ public class VTercerosReferencias {
     }
 
     @Basic
-    @Column(name = "DescripcionDivisonPolitica")
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
     public String getDescripcionDivisonPolitica() {
         return descripcionDivisonPolitica;
     }

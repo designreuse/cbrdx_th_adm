@@ -51,6 +51,7 @@ public class VCargos {
     private Integer paso;
     private Boolean indicadorZona;
 
+    @Basic
     @Id
     @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {

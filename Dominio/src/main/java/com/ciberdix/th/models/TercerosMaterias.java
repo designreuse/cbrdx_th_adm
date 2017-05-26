@@ -21,7 +21,7 @@ public class TercerosMaterias {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroMateria")
+    @Column(name = "IdTerceroMateria", nullable = false)
     public Integer getIdTerceroMateria() {
         return idTerceroMateria;
     }
@@ -31,7 +31,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -41,7 +41,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -51,7 +51,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "IdMateria")
+    @Column(name = "IdMateria", nullable = true)
     public Integer getIdMateria() {
         return idMateria;
     }
@@ -61,7 +61,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "Calificacion")
+    @Column(name = "Calificacion", nullable = true, precision = 1)
     public BigDecimal getCalificacion() {
         return calificacion;
     }
@@ -71,7 +71,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -81,7 +81,7 @@ public class TercerosMaterias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

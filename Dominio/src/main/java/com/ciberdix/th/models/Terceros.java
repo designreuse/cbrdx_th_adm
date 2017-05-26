@@ -58,10 +58,8 @@ public class Terceros {
     private Integer idTallaPantalon;
     private Integer idTallaCalzado;
     private String sitioWeb;
-
     public Terceros() {
     }
-
     public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -110,7 +108,6 @@ public class Terceros {
         this.idTallaCalzado = idTallaCalzado;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
-
     public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb) {
         this.idTercero = idTercero;
         this.primerNombre = primerNombre;
@@ -162,9 +159,25 @@ public class Terceros {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaDocumento(java.sql.Date fechaDocumento) {
+        this.fechaDocumento = fechaDocumento;
+    }
+
+    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public void setFechaCreacion(java.sql.Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public void setFechaDefuncion(java.sql.Date fechaDefuncion) {
+        this.fechaDefuncion = fechaDefuncion;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -174,7 +187,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "PrimerNombre")
+    @Column(name = "PrimerNombre", nullable = true, length = 64)
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -184,7 +197,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "SegundoNombre")
+    @Column(name = "SegundoNombre", nullable = true, length = 64)
     public String getSegundoNombre() {
         return segundoNombre;
     }
@@ -194,7 +207,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "PrimerApellido")
+    @Column(name = "PrimerApellido", nullable = true, length = 64)
     public String getPrimerApellido() {
         return primerApellido;
     }
@@ -204,7 +217,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "SegundoApellido")
+    @Column(name = "SegundoApellido", nullable = true, length = 64)
     public String getSegundoApellido() {
         return segundoApellido;
     }
@@ -214,7 +227,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "Imagen")
+    @Column(name = "Imagen", nullable = true, length = 64)
     public String getImagen() {
         return imagen;
     }
@@ -224,7 +237,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -234,7 +247,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "NumeroDocumento")
+    @Column(name = "NumeroDocumento", nullable = true, length = 13)
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
@@ -244,7 +257,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "FechaDocumento")
+    @Column(name = "FechaDocumento", nullable = true)
     public Date getFechaDocumento() {
         return fechaDocumento;
     }
@@ -254,7 +267,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdCiudadExpDocumento")
+    @Column(name = "IdCiudadExpDocumento", nullable = true)
     public Integer getIdCiudadExpDocumento() {
         return idCiudadExpDocumento;
     }
@@ -264,7 +277,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "FechaNacimiento")
+    @Column(name = "FechaNacimiento", nullable = false)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -274,7 +287,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdCiudadNacimiento")
+    @Column(name = "IdCiudadNacimiento", nullable = true)
     public Integer getIdCiudadNacimiento() {
         return idCiudadNacimiento;
     }
@@ -284,7 +297,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdGenero")
+    @Column(name = "IdGenero", nullable = true)
     public Integer getIdGenero() {
         return idGenero;
     }
@@ -294,7 +307,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdEstadoCivil")
+    @Column(name = "IdEstadoCivil", nullable = true)
     public Integer getIdEstadoCivil() {
         return idEstadoCivil;
     }
@@ -304,7 +317,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdFactorRh")
+    @Column(name = "IdFactorRh", nullable = true)
     public Integer getIdFactorRh() {
         return idFactorRh;
     }
@@ -314,7 +327,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "NroHijos")
+    @Column(name = "NroHijos", nullable = true)
     public Integer getNroHijos() {
         return nroHijos;
     }
@@ -324,7 +337,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdLateralidad")
+    @Column(name = "IdLateralidad", nullable = true)
     public Integer getIdLateralidad() {
         return idLateralidad;
     }
@@ -334,7 +347,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 128)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -344,7 +357,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "FechaCreacion")
+    @Column(name = "FechaCreacion", nullable = true)
     public Date getFechaCreacion() {
         return fechaCreacion;
     }
@@ -354,7 +367,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoPersona")
+    @Column(name = "IdTipoPersona", nullable = true)
     public Integer getIdTipoPersona() {
         return idTipoPersona;
     }
@@ -364,7 +377,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "RazonSocial")
+    @Column(name = "RazonSocial", nullable = true, length = 128)
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -374,7 +387,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "Talla")
+    @Column(name = "Talla", nullable = true, precision = 0)
     public Double getTalla() {
         return talla;
     }
@@ -384,7 +397,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "Peso")
+    @Column(name = "Peso", nullable = true, precision = 0)
     public Double getPeso() {
         return peso;
     }
@@ -394,7 +407,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IMC")
+    @Column(name = "IMC", nullable = true, precision = 0)
     public Double getImc() {
         return imc;
     }
@@ -404,7 +417,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdProfesion")
+    @Column(name = "IdProfesion", nullable = true)
     public Integer getIdProfesion() {
         return idProfesion;
     }
@@ -414,7 +427,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdNivelEducacion")
+    @Column(name = "IdNivelEducacion", nullable = true)
     public Integer getIdNivelEducacion() {
         return idNivelEducacion;
     }
@@ -424,7 +437,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -434,7 +447,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -444,7 +457,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "TelefonoFijo")
+    @Column(name = "TelefonoFijo", nullable = true, length = 25)
     public String getTelefonoFijo() {
         return telefonoFijo;
     }
@@ -454,7 +467,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "TelefonoCelular")
+    @Column(name = "TelefonoCelular", nullable = true, length = 15)
     public String getTelefonoCelular() {
         return telefonoCelular;
     }
@@ -572,7 +585,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "FechaDefuncion")
+    @Column(name = "FechaDefuncion", nullable = true)
     public Date getFechaDefuncion() {
         return fechaDefuncion;
     }
@@ -582,7 +595,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoOcupacion")
+    @Column(name = "IdTipoOcupacion", nullable = true)
     public Integer getIdTipoOcupacion() {
         return idTipoOcupacion;
     }
@@ -592,7 +605,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdSectorEconomico")
+    @Column(name = "IdSectorEconomico", nullable = true)
     public Integer getIdSectorEconomico() {
         return idSectorEconomico;
     }
@@ -602,7 +615,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdActividadEconomica")
+    @Column(name = "IdActividadEconomica", nullable = true)
     public Integer getIdActividadEconomica() {
         return idActividadEconomica;
     }
@@ -612,7 +625,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdOcupacion")
+    @Column(name = "IdOcupacion", nullable = true)
     public Integer getIdOcupacion() {
         return idOcupacion;
     }
@@ -622,7 +635,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdEstadoJuridico")
+    @Column(name = "IdEstadoJuridico", nullable = true)
     public Integer getIdEstadoJuridico() {
         return idEstadoJuridico;
     }
@@ -632,7 +645,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdCoberturaSalud")
+    @Column(name = "IdCoberturaSalud", nullable = true)
     public Integer getIdCoberturaSalud() {
         return idCoberturaSalud;
     }
@@ -642,7 +655,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IndicadorVivo")
+    @Column(name = "IndicadorVivo", nullable = true)
     public Boolean getIndicadorVivo() {
         return indicadorVivo;
     }
@@ -652,7 +665,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoAfiliacion")
+    @Column(name = "IdTipoAfiliacion", nullable = true)
     public Integer getIdTipoAfiliacion() {
         return idTipoAfiliacion;
     }
@@ -662,7 +675,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -672,7 +685,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTipoTercero")
+    @Column(name = "IdTipoTercero", nullable = true)
     public Integer getIdTipoTercero() {
         return idTipoTercero;
     }
@@ -682,7 +695,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTallaCamisa")
+    @Column(name = "IdTallaCamisa", nullable = true)
     public Integer getIdTallaCamisa() {
         return idTallaCamisa;
     }
@@ -692,7 +705,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTallaPantalon")
+    @Column(name = "IdTallaPantalon", nullable = true)
     public Integer getIdTallaPantalon() {
         return idTallaPantalon;
     }
@@ -702,7 +715,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "IdTallaCalzado")
+    @Column(name = "IdTallaCalzado", nullable = true)
     public Integer getIdTallaCalzado() {
         return idTallaCalzado;
     }
@@ -712,7 +725,7 @@ public class Terceros {
     }
 
     @Basic
-    @Column(name = "SitioWeb")
+    @Column(name = "SitioWeb", nullable = true, length = 256)
     public String getSitioWeb() {
         return sitioWeb;
     }

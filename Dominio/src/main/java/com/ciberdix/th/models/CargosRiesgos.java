@@ -32,7 +32,7 @@ public class CargosRiesgos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoRiesgo")
+    @Column(name = "IdCargoRiesgo", nullable = false)
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;
     }
@@ -42,7 +42,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -52,7 +52,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -62,7 +62,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -72,7 +72,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

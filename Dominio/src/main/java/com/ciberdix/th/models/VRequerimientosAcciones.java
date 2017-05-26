@@ -20,6 +20,7 @@ public class VRequerimientosAcciones {
     private String nombreTercero;
     private String cargo;
 
+    @Basic
     @Id
     @Column(name = "IdRequerimientoAccion", nullable = false)
     public Integer getIdRequerimientoAccion() {

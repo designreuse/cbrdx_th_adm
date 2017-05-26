@@ -34,7 +34,7 @@ public class Criterios {
     }
 
     @Id
-    @Column(name = "IdCriterio")
+    @Column(name = "IdCriterio", nullable = false)
     public Integer getIdCriterio() {
         return idCriterio;
     }
@@ -44,7 +44,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "Criterio")
+    @Column(name = "Criterio", nullable = true, length = 64)
     public String getCriterio() {
         return criterio;
     }
@@ -54,7 +54,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -64,7 +64,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -74,7 +74,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -41,7 +41,7 @@ public class CargosRelacionados {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoRelacionado")
+    @Column(name = "IdCargoRelacionado", nullable = false)
     public Integer getIdCargoRelacionado() {
         return idCargoRelacionado;
     }
@@ -51,7 +51,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdTipoRelacion")
+    @Column(name = "IdTipoRelacion", nullable = false)
     public Integer getIdTipoRelacion() {
         return idTipoRelacion;
     }
@@ -61,7 +61,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -71,7 +71,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -81,7 +81,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -91,7 +91,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdCargoRelacion")
+    @Column(name = "IdCargoRelacion", nullable = true)
     public Integer getIdCargoRelacion() {
         return idCargoRelacion;
     }
@@ -101,7 +101,7 @@ public class CargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

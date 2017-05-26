@@ -47,7 +47,7 @@ public class Categorias {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = false)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -57,7 +57,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "Categoria")
+    @Column(name = "Categoria", nullable = true, length = 30)
     public String getCategoria() {
         return categoria;
     }
@@ -67,7 +67,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "PuntosMinimos")
+    @Column(name = "PuntosMinimos", nullable = true, precision = 0)
     public Integer getPuntosMinimos() {
         return puntosMinimos;
     }
@@ -77,7 +77,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "PuntosMaximos")
+    @Column(name = "PuntosMaximos", nullable = true, precision = 0)
     public Integer getPuntosMaximos() {
         return puntosMaximos;
     }
@@ -87,7 +87,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "IdNivel")
+    @Column(name = "IdNivel", nullable = true)
     public Integer getIdNivel() {
         return idNivel;
     }
@@ -97,7 +97,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "Nivel")
+    @Column(name = "Nivel", nullable = true, length = 2)
     public String getNivel() {
         return nivel;
     }
@@ -107,7 +107,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -117,7 +117,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -127,7 +127,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

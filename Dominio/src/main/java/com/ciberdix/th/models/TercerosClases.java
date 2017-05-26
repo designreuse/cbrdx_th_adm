@@ -40,7 +40,7 @@ public class TercerosClases {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroClase")
+    @Column(name = "IdTerceroClase", nullable = false)
     public Integer getIdTerceroClase() {
         return idTerceroClase;
     }
@@ -50,7 +50,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -60,7 +60,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IdClaseTercero")
+    @Column(name = "IdClaseTercero", nullable = true)
     public Integer getIdClaseTercero() {
         return idClaseTercero;
     }
@@ -70,7 +70,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -80,7 +80,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -90,7 +90,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

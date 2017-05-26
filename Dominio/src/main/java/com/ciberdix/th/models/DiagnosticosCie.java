@@ -53,7 +53,7 @@ public class DiagnosticosCie {
     }
 
     @Id
-    @Column(name = "IdDiagnosticoCIE")
+    @Column(name = "IdDiagnosticoCIE", nullable = false)
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
     }
@@ -63,7 +63,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 4)
     public String getCodigo() {
         return codigo;
     }
@@ -73,7 +73,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "Simbolo")
+    @Column(name = "Simbolo", nullable = true, length = 1)
     public String getSimbolo() {
         return simbolo;
     }
@@ -83,7 +83,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = false, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -93,7 +93,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "Sexo")
+    @Column(name = "Sexo", nullable = false)
     public Integer getSexo() {
         return sexo;
     }
@@ -103,7 +103,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "LimiteInferior")
+    @Column(name = "LimiteInferior", nullable = true, precision = 0)
     public Integer getLimiteInferior() {
         return limiteInferior;
     }
@@ -113,7 +113,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "LimiteSuperior")
+    @Column(name = "LimiteSuperior", nullable = true, precision = 0)
     public Integer getLimiteSuperior() {
         return limiteSuperior;
     }
@@ -123,7 +123,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "NoAfeccion")
+    @Column(name = "NoAfeccion", nullable = true, precision = 0)
     public Integer getNoAfeccion() {
         return noAfeccion;
     }
@@ -133,7 +133,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -143,7 +143,7 @@ public class DiagnosticosCie {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

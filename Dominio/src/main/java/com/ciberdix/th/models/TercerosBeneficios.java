@@ -20,7 +20,7 @@ public class TercerosBeneficios {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroBeneficio")
+    @Column(name = "IdTerceroBeneficio", nullable = false)
     public Integer getIdTerceroBeneficio() {
         return idTerceroBeneficio;
     }
@@ -30,7 +30,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -40,7 +40,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -50,7 +50,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "IdBeneficio")
+    @Column(name = "IdBeneficio", nullable = true)
     public Integer getIdBeneficio() {
         return idBeneficio;
     }
@@ -60,7 +60,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "FechaAsignacion")
+    @Column(name = "FechaAsignacion", nullable = true)
     public Timestamp getFechaAsignacion() {
         return fechaAsignacion;
     }
@@ -70,7 +70,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -80,7 +80,7 @@ public class TercerosBeneficios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

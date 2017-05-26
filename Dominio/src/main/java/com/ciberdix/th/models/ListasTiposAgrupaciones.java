@@ -24,7 +24,7 @@ public class ListasTiposAgrupaciones {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdLista")
+    @Column(name = "IdLista", nullable = false)
     public Integer getIdLista() {
         return idLista;
     }
@@ -34,7 +34,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -44,7 +44,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -54,7 +54,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "Orden")
+    @Column(name = "Orden", nullable = false)
     public Integer getOrden() {
         return orden;
     }
@@ -64,7 +64,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -74,7 +74,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -84,7 +84,7 @@ public class ListasTiposAgrupaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

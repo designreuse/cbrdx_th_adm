@@ -86,7 +86,7 @@ public class EstructuraOrganizacional {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = false)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -96,7 +96,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -106,7 +106,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = true, length = 50)
     public String getNombre() {
         return nombre;
     }
@@ -116,7 +116,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -126,7 +126,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoEstructura")
+    @Column(name = "IdTipoEstructura", nullable = true)
     public Integer getIdTipoEstructura() {
         return idTipoEstructura;
     }
@@ -136,7 +136,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdCentroCostos")
+    @Column(name = "IdCentroCostos", nullable = true)
     public Integer getIdCentroCostos() {
         return idCentroCostos;
     }
@@ -146,7 +146,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoArea")
+    @Column(name = "IdTipoArea", nullable = true)
     public Integer getIdTipoArea() {
         return idTipoArea;
     }
@@ -156,7 +156,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -166,7 +166,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "NumeroDocumento")
+    @Column(name = "NumeroDocumento", nullable = true, length = 50)
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
@@ -176,7 +176,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -186,7 +186,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "RazonSocial")
+    @Column(name = "RazonSocial", nullable = true, length = 50)
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -196,7 +196,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 50)
     public String getTelefono() {
         return telefono;
     }
@@ -206,7 +206,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 50)
     public String getCelular() {
         return celular;
     }
@@ -216,7 +216,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -226,7 +226,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "PaginaWeb")
+    @Column(name = "PaginaWeb", nullable = true, length = 50)
     public String getPaginaWeb() {
         return paginaWeb;
     }
@@ -236,7 +236,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLogo")
+    @Column(name = "IdLogo", nullable = true)
     public Integer getIdLogo() {
         return idLogo;
     }
@@ -246,7 +246,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -256,7 +256,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -266,7 +266,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -276,7 +276,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = true)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -286,7 +286,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorPlantaConfirmada")
+    @Column(name = "IndicadorPlantaConfirmada", nullable = true)
     public Boolean getIndicadorPlantaConfirmada() {
         return indicadorPlantaConfirmada;
     }
@@ -296,7 +296,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorZona")
+    @Column(name = "IndicadorZona", nullable = true)
     public Boolean getIndicadorZona() {
         return indicadorZona;
     }

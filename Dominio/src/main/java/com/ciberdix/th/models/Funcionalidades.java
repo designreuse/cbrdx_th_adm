@@ -35,7 +35,7 @@ public class Funcionalidades {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = false)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -45,7 +45,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = true)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -55,7 +55,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -65,7 +65,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -75,7 +75,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

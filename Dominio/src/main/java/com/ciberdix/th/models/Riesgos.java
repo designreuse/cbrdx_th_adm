@@ -41,7 +41,7 @@ public class Riesgos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -51,7 +51,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IdSubTipoRiesgo")
+    @Column(name = "IdSubTipoRiesgo", nullable = true)
     public Integer getIdSubTipoRiesgo() {
         return idSubTipoRiesgo;
     }
@@ -61,7 +61,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IdTipoRiesgo")
+    @Column(name = "IdTipoRiesgo", nullable = true)
     public Integer getIdTipoRiesgo() {
         return idTipoRiesgo;
     }
@@ -71,7 +71,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "Riesgo")
+    @Column(name = "Riesgo", nullable = true, length = 100)
     public String getRiesgo() {
         return riesgo;
     }
@@ -81,7 +81,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -91,7 +91,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +101,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

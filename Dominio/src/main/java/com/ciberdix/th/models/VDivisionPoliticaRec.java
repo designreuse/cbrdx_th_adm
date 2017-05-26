@@ -17,7 +17,7 @@ public class VDivisionPoliticaRec {
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
-    private Integer idDivisionPoliticaAgrupacion;
+    private Long idDivisionPoliticaAgrupacion;
     private Integer idEstratoDivisionPolitica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -26,7 +26,7 @@ public class VDivisionPoliticaRec {
     private String gentilicio;
 
     @Id
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = false)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -36,7 +36,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaPadre")
+    @Column(name = "IdDivisionPoliticaPadre", nullable = false)
     public Integer getIdDivisionPoliticaPadre() {
         return idDivisionPoliticaPadre;
     }
@@ -46,7 +46,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "CodigoDivisionPolitica")
+    @Column(name = "CodigoDivisionPolitica", nullable = true, length = 10)
     public String getCodigoDivisionPolitica() {
         return codigoDivisionPolitica;
     }
@@ -56,7 +56,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "DescripcionDivisonPolitica")
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
     public String getDescripcionDivisonPolitica() {
         return descripcionDivisonPolitica;
     }
@@ -66,7 +66,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IndicativoDivisonPolitica")
+    @Column(name = "IndicativoDivisonPolitica", nullable = true, length = 20)
     public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
@@ -76,7 +76,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "CodigoPostalDivisionPolitica")
+    @Column(name = "CodigoPostalDivisionPolitica", nullable = true, length = 10)
     public String getCodigoPostalDivisionPolitica() {
         return codigoPostalDivisionPolitica;
     }
@@ -86,7 +86,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaTipo")
+    @Column(name = "IdDivisionPoliticaTipo", nullable = true)
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -96,7 +96,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaArea")
+    @Column(name = "IdDivisionPoliticaArea", nullable = true)
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
@@ -106,17 +106,17 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaAgrupacion")
-    public Integer getIdDivisionPoliticaAgrupacion() {
+    @Column(name = "IdDivisionPoliticaAgrupacion", nullable = true)
+    public Long getIdDivisionPoliticaAgrupacion() {
         return idDivisionPoliticaAgrupacion;
     }
 
-    public void setIdDivisionPoliticaAgrupacion(Integer idDivisionPoliticaAgrupacion) {
+    public void setIdDivisionPoliticaAgrupacion(Long idDivisionPoliticaAgrupacion) {
         this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
     }
 
     @Basic
-    @Column(name = "IdEstratoDivisionPolitica")
+    @Column(name = "IdEstratoDivisionPolitica", nullable = false)
     public Integer getIdEstratoDivisionPolitica() {
         return idEstratoDivisionPolitica;
     }
@@ -126,7 +126,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -136,7 +136,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -146,7 +146,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -156,7 +156,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "CAMINO")
+    @Column(name = "CAMINO", nullable = true, length = 100)
     public String getCamino() {
         return camino;
     }
@@ -166,7 +166,7 @@ public class VDivisionPoliticaRec {
     }
 
     @Basic
-    @Column(name = "Gentilicio")
+    @Column(name = "Gentilicio", nullable = true, length = 100)
     public String getGentilicio() {
         return gentilicio;
     }

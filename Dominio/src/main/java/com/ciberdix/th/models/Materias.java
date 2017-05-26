@@ -22,7 +22,7 @@ public class Materias {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdMateria")
+    @Column(name = "IdMateria", nullable = false)
     public Integer getIdMateria() {
         return idMateria;
     }
@@ -32,7 +32,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -42,7 +42,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "Objetivo")
+    @Column(name = "Objetivo", nullable = true, length = 200)
     public String getObjetivo() {
         return objetivo;
     }
@@ -52,7 +52,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "CalificacionMinima")
+    @Column(name = "CalificacionMinima", nullable = true, precision = 1)
     public BigDecimal getCalificacionMinima() {
         return calificacionMinima;
     }
@@ -62,7 +62,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "Ponderacion")
+    @Column(name = "Ponderacion", nullable = true, precision = 1)
     public BigDecimal getPonderacion() {
         return ponderacion;
     }
@@ -72,7 +72,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -82,7 +82,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -92,7 +92,7 @@ public class Materias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

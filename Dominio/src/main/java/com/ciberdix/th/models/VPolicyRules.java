@@ -20,8 +20,9 @@ public class VPolicyRules {
     private String ruta;
     private Integer secuencia;
 
+    @Basic
     @Id
-    @Column(name = "IdRolFuncionalidad")
+    @Column(name = "IdRolFuncionalidad", nullable = false)
     public Integer getIdRolFuncionalidad() {
         return idRolFuncionalidad;
     }
@@ -31,7 +32,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = true)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -41,7 +42,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "IndicadorInsertar")
+    @Column(name = "IndicadorInsertar", nullable = true)
     public Boolean getIndicadorInsertar() {
         return indicadorInsertar;
     }
@@ -51,7 +52,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -61,7 +62,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -71,7 +72,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = true)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -81,7 +82,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "Menu")
+    @Column(name = "Menu", nullable = true, length = 64)
     public String getMenu() {
         return menu;
     }
@@ -91,7 +92,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "CodigoMenu")
+    @Column(name = "CodigoMenu", nullable = true, length = 50)
     public String getCodigoMenu() {
         return codigoMenu;
     }
@@ -101,7 +102,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -111,7 +112,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "Ruta")
+    @Column(name = "Ruta", nullable = true, length = 50)
     public String getRuta() {
         return ruta;
     }
@@ -121,7 +122,7 @@ public class VPolicyRules {
     }
 
     @Basic
-    @Column(name = "Secuencia")
+    @Column(name = "Secuencia", nullable = true)
     public Integer getSecuencia() {
         return secuencia;
     }

@@ -43,9 +43,17 @@ public class UsuarioRoles {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdUsuarioRol")
+    @Column(name = "IdUsuarioRol", nullable = false)
     public Integer getIdUsuarioRol() {
         return idUsuarioRol;
     }
@@ -55,7 +63,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -65,7 +73,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -75,7 +83,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -85,7 +93,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -95,7 +103,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -105,7 +113,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -115,7 +123,7 @@ public class UsuarioRoles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

@@ -23,7 +23,7 @@ public class TercerosDotacionesEntregas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroDotacionEntrega")
+    @Column(name = "IdTerceroDotacionEntrega", nullable = false)
     public Integer getIdTerceroDotacionEntrega() {
         return idTerceroDotacionEntrega;
     }
@@ -33,7 +33,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -43,7 +43,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -53,7 +53,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "FechaEntrega")
+    @Column(name = "FechaEntrega", nullable = true)
     public Timestamp getFechaEntrega() {
         return fechaEntrega;
     }
@@ -63,7 +63,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 100)
     public String getObservacion() {
         return observacion;
     }
@@ -73,7 +73,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -83,7 +83,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "Motivo")
+    @Column(name = "Motivo", nullable = true, length = 100)
     public String getMotivo() {
         return motivo;
     }
@@ -93,7 +93,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "Detalle")
+    @Column(name = "Detalle", nullable = true, length = 100)
     public String getDetalle() {
         return detalle;
     }
@@ -103,7 +103,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -113,7 +113,7 @@ public class TercerosDotacionesEntregas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

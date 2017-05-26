@@ -34,8 +34,13 @@ public class VTercerosFamiliares {
     private Integer idDivisionPolitica;
     private Timestamp auditoriaFecha;
 
+    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdTerceroFamiliar")
+    @Column(name = "IdTerceroFamiliar", nullable = false)
     public Integer getIdTerceroFamiliar() {
         return idTerceroFamiliar;
     }
@@ -45,7 +50,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -55,7 +60,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdFamiliar")
+    @Column(name = "IdFamiliar", nullable = false)
     public Long getIdFamiliar() {
         return idFamiliar;
     }
@@ -65,7 +70,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -75,7 +80,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "TipoDocumento")
+    @Column(name = "TipoDocumento", nullable = true, length = 100)
     public String getTipoDocumento() {
         return tipoDocumento;
     }
@@ -85,7 +90,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "PrimerNombre")
+    @Column(name = "PrimerNombre", nullable = true, length = 64)
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -95,7 +100,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "SegundoNombre")
+    @Column(name = "SegundoNombre", nullable = true, length = 64)
     public String getSegundoNombre() {
         return segundoNombre;
     }
@@ -105,7 +110,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "PrimerApellido")
+    @Column(name = "PrimerApellido", nullable = true, length = 64)
     public String getPrimerApellido() {
         return primerApellido;
     }
@@ -115,7 +120,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "SegundoApellido")
+    @Column(name = "SegundoApellido", nullable = true, length = 64)
     public String getSegundoApellido() {
         return segundoApellido;
     }
@@ -125,7 +130,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "FechaNacimiento")
+    @Column(name = "FechaNacimiento", nullable = false)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -135,7 +140,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 128)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -145,7 +150,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "NumeroDocumento")
+    @Column(name = "NumeroDocumento", nullable = true, length = 13)
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
@@ -155,7 +160,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdConvivencia")
+    @Column(name = "IdConvivencia", nullable = false)
     public Integer getIdConvivencia() {
         return idConvivencia;
     }
@@ -165,7 +170,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdParentesco")
+    @Column(name = "IdParentesco", nullable = false)
     public Integer getIdParentesco() {
         return idParentesco;
     }
@@ -175,7 +180,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "Parentesco")
+    @Column(name = "Parentesco", nullable = true, length = 100)
     public String getParentesco() {
         return parentesco;
     }
@@ -185,7 +190,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "TelefonoFijo")
+    @Column(name = "TelefonoFijo", nullable = true, length = 25)
     public String getTelefonoFijo() {
         return telefonoFijo;
     }
@@ -195,7 +200,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "TelefonoCelular")
+    @Column(name = "TelefonoCelular", nullable = true, length = 15)
     public String getTelefonoCelular() {
         return telefonoCelular;
     }
@@ -205,7 +210,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -215,7 +220,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -225,7 +230,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "Direccion")
+    @Column(name = "Direccion", nullable = true, length = 512)
     public String getDireccion() {
         return direccion;
     }
@@ -235,7 +240,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdTipoDireccion")
+    @Column(name = "IdTipoDireccion", nullable = true)
     public Integer getIdTipoDireccion() {
         return idTipoDireccion;
     }
@@ -245,7 +250,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = true)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -255,7 +260,7 @@ public class VTercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

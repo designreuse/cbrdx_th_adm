@@ -68,7 +68,6 @@ public class Requerimientos {
         this.nombreCargo = nombreCargo;
         this.funcionCargo = funcionCargo;
     }
-
     public Requerimientos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
         long time = System.currentTimeMillis();
         this.idRequerimiento = idRequerimiento;
@@ -97,6 +96,18 @@ public class Requerimientos {
         this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.nombreCargo = nombreCargo;
         this.funcionCargo = funcionCargo;
+    }
+
+    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     @Id

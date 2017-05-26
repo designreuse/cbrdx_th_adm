@@ -44,7 +44,7 @@ public class CargosExamenes {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoExamen")
+    @Column(name = "IdCargoExamen", nullable = false)
     public Integer getIdCargoExamen() {
         return idCargoExamen;
     }
@@ -54,7 +54,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -64,7 +64,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "IdExamen")
+    @Column(name = "IdExamen", nullable = true)
     public Integer getIdExamen() {
         return idExamen;
     }
@@ -74,7 +74,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorIngreso")
+    @Column(name = "IndicadorIngreso", nullable = true)
     public Boolean getIndicadorIngreso() {
         return indicadorIngreso;
     }
@@ -84,7 +84,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorPeriodicidad")
+    @Column(name = "IndicadorPeriodicidad", nullable = true)
     public Boolean getIndicadorPeriodicidad() {
         return indicadorPeriodicidad;
     }
@@ -94,7 +94,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorRetiro")
+    @Column(name = "IndicadorRetiro", nullable = true)
     public Boolean getIndicadorRetiro() {
         return indicadorRetiro;
     }
@@ -104,7 +104,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -114,7 +114,7 @@ public class CargosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

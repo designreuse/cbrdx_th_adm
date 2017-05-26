@@ -22,7 +22,7 @@ public class BeneficiosSolicitudes {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdBeneficioSolicitud")
+    @Column(name = "IdBeneficioSolicitud", nullable = false)
     public Integer getIdBeneficioSolicitud() {
         return idBeneficioSolicitud;
     }
@@ -32,7 +32,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "IdBeneficio")
+    @Column(name = "IdBeneficio", nullable = true)
     public Integer getIdBeneficio() {
         return idBeneficio;
     }
@@ -42,7 +42,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -52,7 +52,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "FechaSolicitud")
+    @Column(name = "FechaSolicitud", nullable = true)
     public Timestamp getFechaSolicitud() {
         return fechaSolicitud;
     }
@@ -62,7 +62,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -72,7 +72,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 100)
     public String getObservacion() {
         return observacion;
     }
@@ -82,7 +82,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -92,7 +92,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -102,7 +102,7 @@ public class BeneficiosSolicitudes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

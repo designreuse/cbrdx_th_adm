@@ -18,7 +18,7 @@ public class CargosProfesiones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoProfesion")
+    @Column(name = "IdCargoProfesion", nullable = false)
     public Integer getIdCargoProfesion() {
         return idCargoProfesion;
     }
@@ -28,7 +28,7 @@ public class CargosProfesiones {
     }
 
     @Basic
-    @Column(name = "IdProfesion")
+    @Column(name = "IdProfesion", nullable = true)
     public Integer getIdProfesion() {
         return idProfesion;
     }
@@ -38,7 +38,7 @@ public class CargosProfesiones {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -48,7 +48,7 @@ public class CargosProfesiones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +58,7 @@ public class CargosProfesiones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

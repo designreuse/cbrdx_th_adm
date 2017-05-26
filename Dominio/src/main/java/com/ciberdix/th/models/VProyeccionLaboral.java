@@ -31,7 +31,7 @@ public class VProyeccionLaboral {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdProyecccionLaboral")
+    @Column(name = "IdProyecccionLaboral", nullable = false)
     public Integer getIdProyecccionLaboral() {
         return idProyecccionLaboral;
     }
@@ -41,7 +41,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -51,7 +51,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "EstructuraOrganizacional")
+    @Column(name = "EstructuraOrganizacional", nullable = true, length = 50)
     public String getEstructuraOrganizacional() {
         return estructuraOrganizacional;
     }
@@ -61,7 +61,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -71,7 +71,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -81,7 +81,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "PlazasActuales")
+    @Column(name = "PlazasActuales", nullable = true)
     public Integer getPlazasActuales() {
         return plazasActuales;
     }
@@ -91,7 +91,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "PlazasProyectadas")
+    @Column(name = "PlazasProyectadas", nullable = true)
     public Integer getPlazasProyectadas() {
         return plazasProyectadas;
     }
@@ -101,7 +101,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "CostoActual")
+    @Column(name = "CostoActual", nullable = true, precision = 0)
     public Double getCostoActual() {
         return costoActual;
     }
@@ -111,7 +111,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "CostoProyectado")
+    @Column(name = "CostoProyectado", nullable = true, precision = 0)
     public Double getCostoProyectado() {
         return costoProyectado;
     }
@@ -121,7 +121,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "IdEstadoProyeccion")
+    @Column(name = "IdEstadoProyeccion", nullable = true)
     public Integer getIdEstadoProyeccion() {
         return idEstadoProyeccion;
     }
@@ -131,7 +131,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "EstadoProyeccion")
+    @Column(name = "EstadoProyeccion", nullable = true, length = 100)
     public String getEstadoProyeccion() {
         return estadoProyeccion;
     }
@@ -141,7 +141,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "IdUsuarioProyecta")
+    @Column(name = "IdUsuarioProyecta", nullable = true)
     public Integer getIdUsuarioProyecta() {
         return idUsuarioProyecta;
     }
@@ -151,7 +151,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "UsuarioProyecta")
+    @Column(name = "UsuarioProyecta", nullable = false, length = 259)
     public String getUsuarioProyecta() {
         return usuarioProyecta;
     }
@@ -161,7 +161,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "IdUsuarioAprueba")
+    @Column(name = "IdUsuarioAprueba", nullable = true)
     public Integer getIdUsuarioAprueba() {
         return idUsuarioAprueba;
     }
@@ -171,7 +171,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "UsuarioAprueba")
+    @Column(name = "UsuarioAprueba", nullable = true, length = 259)
     public String getUsuarioAprueba() {
         return usuarioAprueba;
     }
@@ -181,17 +181,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "Año")
-    public Integer getAnio() {
-        return anio;
-    }
-
-    public void setAnio(Integer año) {
-        this.anio = año;
-    }
-
-    @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 500)
     public String getObservacion() {
         return observacion;
     }
@@ -201,7 +191,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "ObservacionAprobacion")
+    @Column(name = "ObservacionAprobacion", nullable = true, length = 500)
     public String getObservacionAprobacion() {
         return observacionAprobacion;
     }
@@ -211,7 +201,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -221,7 +211,7 @@ public class VProyeccionLaboral {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -299,5 +289,15 @@ public class VProyeccionLaboral {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "Año", nullable = true)
+    public Integer getAño() {
+        return anio;
+    }
+
+    public void setAño(Integer año) {
+        this.anio = año;
     }
 }

@@ -53,7 +53,7 @@ public class TercerosVehiculos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroVehiculo")
+    @Column(name = "IdTerceroVehiculo", nullable = false)
     public Integer getIdTerceroVehiculo() {
         return idTerceroVehiculo;
     }
@@ -63,7 +63,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -73,7 +73,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTipoVehiculo")
+    @Column(name = "IdTipoVehiculo", nullable = true)
     public Integer getIdTipoVehiculo() {
         return idTipoVehiculo;
     }
@@ -83,7 +83,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTipoServicio")
+    @Column(name = "IdTipoServicio", nullable = true)
     public Integer getIdTipoServicio() {
         return idTipoServicio;
     }
@@ -93,7 +93,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdMarca")
+    @Column(name = "IdMarca", nullable = true)
     public Integer getIdMarca() {
         return idMarca;
     }
@@ -103,7 +103,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "Modelo")
+    @Column(name = "Modelo", nullable = true)
     public Integer getModelo() {
         return modelo;
     }
@@ -113,7 +113,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "Placa")
+    @Column(name = "Placa", nullable = true, length = 20)
     public String getPlaca() {
         return placa;
     }
@@ -123,7 +123,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = true)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -133,7 +133,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -143,7 +143,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -153,7 +153,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

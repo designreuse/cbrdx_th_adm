@@ -38,7 +38,7 @@ public class CargosPersonalidadAtributos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoPersonalidadAtributo")
+    @Column(name = "IdCargoPersonalidadAtributo", nullable = false)
     public Integer getIdCargoPersonalidadAtributo() {
         return idCargoPersonalidadAtributo;
     }
@@ -48,7 +48,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -58,7 +58,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "IdAtributo")
+    @Column(name = "IdAtributo", nullable = true)
     public Integer getIdAtributo() {
         return idAtributo;
     }
@@ -68,7 +68,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -78,7 +78,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

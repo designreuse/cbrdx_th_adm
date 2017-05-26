@@ -41,7 +41,7 @@ public class CargosEstadosObservaciones {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoEstadoObservacion")
+    @Column(name = "IdCargoEstadoObservacion", nullable = false)
     public Integer getIdCargoEstadoObservacion() {
         return idCargoEstadoObservacion;
     }
@@ -51,7 +51,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -61,7 +61,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "IdEstadoCargo")
+    @Column(name = "IdEstadoCargo", nullable = true)
     public Integer getIdEstadoCargo() {
         return idEstadoCargo;
     }
@@ -71,7 +71,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 500)
     public String getObservacion() {
         return observacion;
     }
@@ -81,7 +81,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -91,7 +91,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +101,7 @@ public class CargosEstadosObservaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
