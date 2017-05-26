@@ -12,7 +12,7 @@ public class Globales {
 
     public Globales() {
         try {
-            input = getClass().getClassLoader().getResourceAsStream("application.yml");
+            input = getClass().getClassLoader().getResourceAsStream("application.properties");
             prop.load(input);
             setUrl(prop.getProperty("url")+":"+prop.getProperty("domain.port"));
         } catch (IOException ex) {
