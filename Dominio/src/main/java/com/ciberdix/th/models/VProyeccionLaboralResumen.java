@@ -6,10 +6,10 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@NamedStoredProcedureQuery(name = "ConProy", procedureName = "crz_th.ConfirmarProyeccion", parameters = {
+@NamedStoredProcedureQuery(name = "ConProy", procedureName = "dbo.ConfirmarProyeccion", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "Output", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Usuario", type = Integer.class)})
-@Table(name = "V_ProyeccionLaboral_Resumen", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_ProyeccionLaboral_Resumen", schema = "dbo", catalog = "CREZCAMOS")
 public class VProyeccionLaboralResumen {
     private Long idProyeccionLaboralResumen;
     private Integer idArea;

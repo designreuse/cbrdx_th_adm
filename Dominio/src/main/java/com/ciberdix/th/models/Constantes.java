@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Constantes", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Constantes", schema = "dbo", catalog = "CREZCAMOS")
 public class Constantes {
     private Integer idConstante;
     private String constante;

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "ListasTiposAgrupaciones", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ListasTiposAgrupaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class ListasTiposAgrupaciones {
     private Integer idLista;
     private String codigo;
