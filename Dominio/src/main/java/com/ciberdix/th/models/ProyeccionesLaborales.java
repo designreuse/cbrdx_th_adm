@@ -274,14 +274,4 @@ public class ProyeccionesLaborales {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
     }
-
-    @Basic
-    @Column(name = "Año", nullable = true)
-    public Integer getAño() {
-        return año;
-    }
-
-    public void setAño(Integer año) {
-        this.año = año;
-    }
 }
