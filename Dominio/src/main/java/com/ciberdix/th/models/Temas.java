@@ -20,7 +20,7 @@ public class Temas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTema")
+    @Column(name = "IdTema", nullable = false)
     public Integer getIdTema() {
         return idTema;
     }
@@ -30,7 +30,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "IdMateria")
+    @Column(name = "IdMateria", nullable = true)
     public Integer getIdMateria() {
         return idMateria;
     }
@@ -40,7 +40,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "Tema")
+    @Column(name = "Tema", nullable = true, length = 50)
     public String getTema() {
         return tema;
     }
@@ -50,7 +50,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 200)
     public String getDescripcion() {
         return descripcion;
     }
@@ -60,7 +60,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -70,7 +70,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -80,7 +80,7 @@ public class Temas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

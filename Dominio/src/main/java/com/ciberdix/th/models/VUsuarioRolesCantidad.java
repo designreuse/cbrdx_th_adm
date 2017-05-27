@@ -11,8 +11,9 @@ public class VUsuarioRolesCantidad {
     private String rol;
     private Integer cantidad;
 
+    @Basic
     @Id
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -22,7 +23,7 @@ public class VUsuarioRolesCantidad {
     }
 
     @Basic
-    @Column(name = "Cantidad")
+    @Column(name = "Cantidad", nullable = true)
     public Integer getCantidad() {
         return cantidad;
     }

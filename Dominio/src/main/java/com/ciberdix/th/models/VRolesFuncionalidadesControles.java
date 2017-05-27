@@ -20,8 +20,9 @@ public class VRolesFuncionalidadesControles {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdRolFuncionalidadControl")
+    @Column(name = "IdRolFuncionalidadControl", nullable = false)
     public Integer getIdRolFuncionalidadControl() {
         return idRolFuncionalidadControl;
     }
@@ -31,7 +32,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -41,7 +42,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -51,7 +52,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidadControl")
+    @Column(name = "IdFuncionalidadControl", nullable = true)
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;
     }
@@ -61,7 +62,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Control")
+    @Column(name = "Control", nullable = true, length = 50)
     public String getControl() {
         return control;
     }
@@ -71,7 +72,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorSeccion")
+    @Column(name = "IndicadorSeccion", nullable = true)
     public Boolean getIndicadorSeccion() {
         return indicadorSeccion;
     }
@@ -81,7 +82,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorEditar")
+    @Column(name = "IndicadorEditar", nullable = true)
     public Boolean getIndicadorEditar() {
         return indicadorEditar;
     }
@@ -91,7 +92,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -101,7 +102,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -111,7 +112,7 @@ public class VRolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -20,7 +20,7 @@ public class Proveedores {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdProveedor")
+    @Column(name = "IdProveedor", nullable = false)
     public Integer getIdProveedor() {
         return idProveedor;
     }
@@ -30,7 +30,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -40,7 +40,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "FechaInicial")
+    @Column(name = "FechaInicial", nullable = true)
     public Timestamp getFechaInicial() {
         return fechaInicial;
     }
@@ -50,7 +50,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "FechaFinal")
+    @Column(name = "FechaFinal", nullable = true)
     public Timestamp getFechaFinal() {
         return fechaFinal;
     }
@@ -60,7 +60,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -70,7 +70,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -80,7 +80,7 @@ public class Proveedores {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

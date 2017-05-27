@@ -47,7 +47,7 @@ public class Menus {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = false)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -57,7 +57,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Menu")
+    @Column(name = "Menu", nullable = true, length = 64)
     public String getMenu() {
         return menu;
     }
@@ -67,7 +67,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -77,7 +77,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -87,7 +87,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -97,7 +97,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -107,7 +107,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "CodigoMenu")
+    @Column(name = "CodigoMenu", nullable = true, length = 50)
     public String getCodigoMenu() {
         return codigoMenu;
     }
@@ -117,7 +117,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Ruta")
+    @Column(name = "Ruta", nullable = true, length = 50)
     public String getRuta() {
         return ruta;
     }
@@ -127,7 +127,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Secuencia")
+    @Column(name = "Secuencia", nullable = true)
     public Integer getSecuencia() {
         return secuencia;
     }
@@ -137,7 +137,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Clase")
+    @Column(name = "Clase", nullable = true, length = 100)
     public String getClase() {
         return clase;
     }

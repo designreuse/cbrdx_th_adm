@@ -34,7 +34,7 @@ public class Listas {
     }
 
     @Id
-    @Column(name = "IdLista")
+    @Column(name = "IdLista", nullable = false)
     public Integer getIdLista() {
         return idLista;
     }
@@ -44,7 +44,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "NombreTabla")
+    @Column(name = "NombreTabla", nullable = true, length = 100)
     public String getNombreTabla() {
         return nombreTabla;
     }
@@ -54,7 +54,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "Lista")
+    @Column(name = "Lista", nullable = true, length = 250)
     public String getLista() {
         return lista;
     }
@@ -64,7 +64,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "IndicadorEditable")
+    @Column(name = "IndicadorEditable", nullable = true)
     public Boolean getIndicadorEditable() {
         return indicadorEditable;
     }
@@ -74,7 +74,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -84,7 +84,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -94,7 +94,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -104,7 +104,7 @@ public class Listas {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }

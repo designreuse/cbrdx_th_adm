@@ -38,7 +38,7 @@ public class RiesgosSubTipos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRiesgoSubTipo")
+    @Column(name = "IdRiesgoSubTipo", nullable = false)
     public Integer getIdRiesgoSubTipo() {
         return idRiesgoSubTipo;
     }
@@ -48,7 +48,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "IdRiesgoTipo")
+    @Column(name = "IdRiesgoTipo", nullable = false)
     public Integer getIdRiesgoTipo() {
         return idRiesgoTipo;
     }
@@ -58,7 +58,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "RiesgoSubTipo")
+    @Column(name = "RiesgoSubTipo", nullable = true, length = 100)
     public String getRiesgoSubTipo() {
         return riesgoSubTipo;
     }
@@ -68,7 +68,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +78,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

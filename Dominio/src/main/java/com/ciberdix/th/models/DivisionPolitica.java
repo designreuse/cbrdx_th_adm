@@ -62,7 +62,7 @@ public class DivisionPolitica {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = false)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -72,7 +72,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaPadre")
+    @Column(name = "IdDivisionPoliticaPadre", nullable = false)
     public Integer getIdDivisionPoliticaPadre() {
         return idDivisionPoliticaPadre;
     }
@@ -82,7 +82,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "CodigoDivisionPolitica")
+    @Column(name = "CodigoDivisionPolitica", nullable = true, length = 10)
     public String getCodigoDivisionPolitica() {
         return codigoDivisionPolitica;
     }
@@ -92,7 +92,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "DescripcionDivisonPolitica")
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
     public String getDescripcionDivisonPolitica() {
         return descripcionDivisonPolitica;
     }
@@ -102,7 +102,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IndicativoDivisonPolitica")
+    @Column(name = "IndicativoDivisonPolitica", nullable = true, length = 20)
     public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
@@ -112,7 +112,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "CodigoPostalDivisionPolitica")
+    @Column(name = "CodigoPostalDivisionPolitica", nullable = true, length = 10)
     public String getCodigoPostalDivisionPolitica() {
         return codigoPostalDivisionPolitica;
     }
@@ -122,7 +122,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaTipo")
+    @Column(name = "IdDivisionPoliticaTipo", nullable = true)
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -132,7 +132,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaArea")
+    @Column(name = "IdDivisionPoliticaArea", nullable = true)
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
@@ -142,7 +142,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaAgrupacion")
+    @Column(name = "IdDivisionPoliticaAgrupacion", nullable = true)
     public Long getIdDivisionPoliticaAgrupacion() {
         return idDivisionPoliticaAgrupacion;
     }
@@ -152,7 +152,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdEstratoDivisionPolitica")
+    @Column(name = "IdEstratoDivisionPolitica", nullable = false)
     public Integer getIdEstratoDivisionPolitica() {
         return idEstratoDivisionPolitica;
     }
@@ -162,7 +162,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -172,7 +172,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -182,7 +182,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -192,7 +192,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "Gentilicio")
+    @Column(name = "Gentilicio", nullable = true, length = 200)
     public String getGentilicio() {
         return gentilicio;
     }

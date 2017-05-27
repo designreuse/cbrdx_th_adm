@@ -17,6 +17,7 @@ public class VRequerimientosCuestionarios {
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
 
+    @Basic
     @Id
     @Column(name = "IdRequerimientoCuestionario", nullable = false)
     public Integer getIdRequerimientoCuestionario() {

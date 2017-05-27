@@ -11,8 +11,13 @@ public class VOcupaciones {
     private int value;
     private String label;
 
+    public void setValue(Integer value) {
+        this.value = value;
+    }
+
+    @Basic
     @Id
-    @Column(name = "Value")
+    @Column(name = "Value", nullable = false)
     public int getValue() {
         return value;
     }
@@ -22,7 +27,7 @@ public class VOcupaciones {
     }
 
     @Basic
-    @Column(name = "Label")
+    @Column(name = "Label", nullable = false, length = 352)
     public String getLabel() {
         return label;
     }

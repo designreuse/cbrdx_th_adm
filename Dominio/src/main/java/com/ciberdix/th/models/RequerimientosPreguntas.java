@@ -19,7 +19,7 @@ public class RequerimientosPreguntas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdRequerimientoPregunta")
+    @Column(name = "IdRequerimientoPregunta", nullable = false)
     public Integer getIdRequerimientoPregunta() {
         return idRequerimientoPregunta;
     }
@@ -29,7 +29,7 @@ public class RequerimientosPreguntas {
     }
 
     @Basic
-    @Column(name = "IdRequerimiento")
+    @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {
         return idRequerimiento;
     }
@@ -39,7 +39,7 @@ public class RequerimientosPreguntas {
     }
 
     @Basic
-    @Column(name = "IdCuestionarioPregunta")
+    @Column(name = "IdCuestionarioPregunta", nullable = true)
     public Integer getIdCuestionarioPregunta() {
         return idCuestionarioPregunta;
     }
@@ -49,7 +49,7 @@ public class RequerimientosPreguntas {
     }
 
     @Basic
-    @Column(name = "Respuesta")
+    @Column(name = "Respuesta", nullable = true, length = 200)
     public String getRespuesta() {
         return respuesta;
     }
@@ -59,7 +59,7 @@ public class RequerimientosPreguntas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +69,7 @@ public class RequerimientosPreguntas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

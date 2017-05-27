@@ -19,6 +19,7 @@ public class VTercerosCargosAreasFisicas {
     private String correoTercero;
     private String correoUsuario;
 
+    @Basic
     @Id
     @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {

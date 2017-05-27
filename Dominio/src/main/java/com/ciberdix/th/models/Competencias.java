@@ -41,7 +41,7 @@ public class Competencias {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCompetencia")
+    @Column(name = "IdCompetencia", nullable = false)
     public Integer getIdCompetencia() {
         return idCompetencia;
     }
@@ -51,7 +51,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "IdGrupoCompetencia")
+    @Column(name = "IdGrupoCompetencia", nullable = true)
     public Integer getIdGrupoCompetencia() {
         return idGrupoCompetencia;
     }
@@ -61,7 +61,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "Competencia")
+    @Column(name = "Competencia", nullable = true, length = 64)
     public String getCompetencia() {
         return competencia;
     }
@@ -71,7 +71,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -81,7 +81,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -91,7 +91,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +101,7 @@ public class Competencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

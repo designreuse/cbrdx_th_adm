@@ -15,8 +15,21 @@ public class VListasRolesProcesoCargoRolesProceso {
     private int idCargo;
     private Boolean indicadorHabilitado;
 
+    public void setIdCargoRolProceso(Integer idCargoRolProceso) {
+        this.idCargoRolProceso = idCargoRolProceso;
+    }
+
+    public void setIdLista(Integer idLista) {
+        this.idLista = idLista;
+    }
+
+    public void setIdCargo(Integer idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdCargoRolProceso")
+    @Column(name = "IdCargoRolProceso", nullable = false)
     public int getIdCargoRolProceso() {
         return idCargoRolProceso;
     }
@@ -26,7 +39,7 @@ public class VListasRolesProcesoCargoRolesProceso {
     }
 
     @Basic
-    @Column(name = "IdLista")
+    @Column(name = "IdLista", nullable = false)
     public int getIdLista() {
         return idLista;
     }
@@ -36,7 +49,7 @@ public class VListasRolesProcesoCargoRolesProceso {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -46,7 +59,7 @@ public class VListasRolesProcesoCargoRolesProceso {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -56,7 +69,7 @@ public class VListasRolesProcesoCargoRolesProceso {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public int getIdCargo() {
         return idCargo;
     }
@@ -66,7 +79,7 @@ public class VListasRolesProcesoCargoRolesProceso {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

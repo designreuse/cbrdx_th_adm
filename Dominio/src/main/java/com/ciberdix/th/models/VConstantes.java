@@ -19,8 +19,9 @@ public class VConstantes {
     private Timestamp auditoriaFecha;
     private Integer auditoriaUsuario;
 
+    @Basic
     @Id
-    @Column(name = "IdConstante")
+    @Column(name = "IdConstante", nullable = false)
     public Integer getIdConstante() {
         return idConstante;
     }
@@ -30,7 +31,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "Constante")
+    @Column(name = "Constante", nullable = true, length = 6)
     public String getConstante() {
         return constante;
     }
@@ -40,7 +41,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "IdTipoDato")
+    @Column(name = "IdTipoDato", nullable = true)
     public Integer getIdTipoDato() {
         return idTipoDato;
     }
@@ -50,7 +51,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "TipoDato")
+    @Column(name = "TipoDato", nullable = true, length = 100)
     public String getTipoDato() {
         return tipoDato;
     }
@@ -60,7 +61,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "Valor")
+    @Column(name = "Valor", nullable = true, length = 250)
     public String getValor() {
         return valor;
     }
@@ -70,7 +71,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 250)
     public String getDescripcion() {
         return descripcion;
     }
@@ -80,7 +81,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -90,7 +91,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -100,7 +101,7 @@ public class VConstantes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }

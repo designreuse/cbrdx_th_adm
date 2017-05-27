@@ -29,8 +29,13 @@ public class VTercerosCargos {
     private Timestamp auditoriaFecha;
     private Integer idEstructuraOrganizacional;
 
+    public void setAsignadoDesde(java.sql.Date asignadoDesde) {
+        this.asignadoDesde = asignadoDesde;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdTerceroCargo")
+    @Column(name = "IdTerceroCargo", nullable = false)
     public Integer getIdTerceroCargo() {
         return idTerceroCargo;
     }
@@ -40,7 +45,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacionalCargo")
+    @Column(name = "IdEstructuraOrganizacionalCargo", nullable = true)
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
     }
@@ -50,7 +55,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -60,7 +65,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -70,7 +75,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -80,7 +85,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "PrimerNombre")
+    @Column(name = "PrimerNombre", nullable = true, length = 64)
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -90,7 +95,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "PrimerApellido")
+    @Column(name = "PrimerApellido", nullable = true, length = 64)
     public String getPrimerApellido() {
         return primerApellido;
     }
@@ -100,7 +105,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "SegundoNombre")
+    @Column(name = "SegundoNombre", nullable = true, length = 64)
     public String getSegundoNombre() {
         return segundoNombre;
     }
@@ -110,7 +115,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "SegundoApellido")
+    @Column(name = "SegundoApellido", nullable = true, length = 64)
     public String getSegundoApellido() {
         return segundoApellido;
     }
@@ -120,7 +125,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdTipoContrato")
+    @Column(name = "IdTipoContrato", nullable = true)
     public Integer getIdTipoContrato() {
         return idTipoContrato;
     }
@@ -130,7 +135,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "TipoContrato")
+    @Column(name = "TipoContrato", nullable = true, length = 100)
     public String getTipoContrato() {
         return tipoContrato;
     }
@@ -140,7 +145,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdZona")
+    @Column(name = "IdZona", nullable = true)
     public Integer getIdZona() {
         return idZona;
     }
@@ -150,7 +155,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "Zona")
+    @Column(name = "Zona", nullable = true, length = 50)
     public String getZona() {
         return zona;
     }
@@ -160,7 +165,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "AsignadoDesde")
+    @Column(name = "AsignadoDesde", nullable = true)
     public Date getAsignadoDesde() {
         return asignadoDesde;
     }
@@ -170,7 +175,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -180,7 +185,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -190,7 +195,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -200,7 +205,7 @@ public class VTercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }

@@ -47,7 +47,7 @@ public class CargosCriterios {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoCriterio")
+    @Column(name = "IdCargoCriterio", nullable = false)
     public Integer getIdCargoCriterio() {
         return idCargoCriterio;
     }
@@ -57,7 +57,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IdCriterio")
+    @Column(name = "IdCriterio", nullable = false)
     public Integer getIdCriterio() {
         return idCriterio;
     }
@@ -67,7 +67,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -77,7 +77,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -87,7 +87,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -97,7 +97,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -107,7 +107,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Meta")
+    @Column(name = "Meta", nullable = true, precision = 0)
     public Double getMeta() {
         return meta;
     }
@@ -117,7 +117,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Factor")
+    @Column(name = "Factor", nullable = true, precision = 0)
     public Double getFactor() {
         return factor;
     }
@@ -162,7 +162,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

@@ -38,7 +38,7 @@ public class CargosRolesProcesos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoRolProceso")
+    @Column(name = "IdCargoRolProceso", nullable = false)
     public Integer getIdCargoRolProceso() {
         return idCargoRolProceso;
     }
@@ -48,7 +48,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdRolProceso")
+    @Column(name = "IdRolProceso", nullable = false)
     public Integer getIdRolProceso() {
         return idRolProceso;
     }
@@ -58,7 +58,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -68,7 +68,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +78,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

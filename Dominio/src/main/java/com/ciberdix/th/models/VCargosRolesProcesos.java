@@ -18,8 +18,9 @@ public class VCargosRolesProcesos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdCargoRolProceso")
+    @Column(name = "IdCargoRolProceso", nullable = false)
     public Integer getIdCargoRolProceso() {
         return idCargoRolProceso;
     }
@@ -29,7 +30,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdRolProceso")
+    @Column(name = "IdRolProceso", nullable = false)
     public Integer getIdRolProceso() {
         return idRolProceso;
     }
@@ -39,7 +40,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "CragoRolProceso")
+    @Column(name = "CragoRolProceso", nullable = true, length = 100)
     public String getCragoRolProceso() {
         return cragoRolProceso;
     }
@@ -49,7 +50,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -59,7 +60,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -69,7 +70,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -79,7 +80,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -89,7 +90,7 @@ public class VCargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

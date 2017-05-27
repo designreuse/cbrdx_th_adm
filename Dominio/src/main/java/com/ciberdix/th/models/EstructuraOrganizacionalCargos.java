@@ -41,7 +41,7 @@ public class EstructuraOrganizacionalCargos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraOrganizacionalCargo")
+    @Column(name = "IdEstructuraOrganizacionalCargo", nullable = false)
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
     }
@@ -51,7 +51,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -61,7 +61,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -71,7 +71,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Plazas")
+    @Column(name = "Plazas", nullable = true)
     public Integer getPlazas() {
         return plazas;
     }
@@ -81,7 +81,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -91,7 +91,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +101,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

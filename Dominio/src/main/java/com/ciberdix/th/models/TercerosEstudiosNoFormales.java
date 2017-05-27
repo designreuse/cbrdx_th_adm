@@ -29,10 +29,8 @@ public class TercerosEstudiosNoFormales {
     private Timestamp auditoriaFecha;
     private Boolean indicadorVerificado;
     private Date fechaVerificado;
-
     public TercerosEstudiosNoFormales() {
     }
-
     public TercerosEstudiosNoFormales(Long idTercero, Integer idTipoEstudio, String otroEstudio, Integer idAreaEstudio, String tituloEstudio, String institucion, Integer idIntensidadHoraria, String descripcion, Integer idCiudad, Boolean indicadorTerminacion, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorVerificado, Date fechaVerificado) {
         this.idTercero = idTercero;
         this.idTipoEstudio = idTipoEstudio;
@@ -76,9 +74,21 @@ public class TercerosEstudiosNoFormales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaIngresa(java.sql.Date fechaIngresa) {
+        this.fechaIngresa = fechaIngresa;
+    }
+
+    public void setFechaTermina(java.sql.Date fechaTermina) {
+        this.fechaTermina = fechaTermina;
+    }
+
+    public void setFechaVerificado(Timestamp fechaVerificado) {
+        this.fechaVerificado = fechaVerificado;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroEstudioNoFormal")
+    @Column(name = "IdTerceroEstudioNoFormal", nullable = false)
     public Integer getIdTerceroEstudioNoFormal() {
         return idTerceroEstudioNoFormal;
     }
@@ -88,7 +98,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -98,7 +108,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdTipoEstudio")
+    @Column(name = "IdTipoEstudio", nullable = true)
     public Integer getIdTipoEstudio() {
         return idTipoEstudio;
     }
@@ -108,7 +118,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "OtroEstudio")
+    @Column(name = "OtroEstudio", nullable = true, length = 100)
     public String getOtroEstudio() {
         return otroEstudio;
     }
@@ -118,7 +128,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdAreaEstudio")
+    @Column(name = "IdAreaEstudio", nullable = false)
     public Integer getIdAreaEstudio() {
         return idAreaEstudio;
     }
@@ -128,7 +138,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "TituloEstudio")
+    @Column(name = "TituloEstudio", nullable = false, length = 100)
     public String getTituloEstudio() {
         return tituloEstudio;
     }
@@ -138,7 +148,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "Institucion")
+    @Column(name = "Institucion", nullable = true, length = 100)
     public String getInstitucion() {
         return institucion;
     }
@@ -148,7 +158,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdIntensidadHoraria")
+    @Column(name = "IdIntensidadHoraria", nullable = false)
     public Integer getIdIntensidadHoraria() {
         return idIntensidadHoraria;
     }
@@ -158,7 +168,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 200)
     public String getDescripcion() {
         return descripcion;
     }
@@ -168,7 +178,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = false)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -178,7 +188,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IndicadorTerminacion")
+    @Column(name = "IndicadorTerminacion", nullable = false)
     public Boolean getIndicadorTerminacion() {
         return indicadorTerminacion;
     }
@@ -188,7 +198,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "FechaIngresa")
+    @Column(name = "FechaIngresa", nullable = false)
     public Date getFechaIngresa() {
         return fechaIngresa;
     }
@@ -198,7 +208,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "FechaTermina")
+    @Column(name = "FechaTermina", nullable = true)
     public Date getFechaTermina() {
         return fechaTermina;
     }
@@ -208,7 +218,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -218,7 +228,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -228,7 +238,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -238,7 +248,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -248,7 +258,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "IndicadorVerificado")
+    @Column(name = "IndicadorVerificado", nullable = true)
     public Boolean getIndicadorVerificado() {
         return indicadorVerificado;
     }
@@ -258,7 +268,7 @@ public class TercerosEstudiosNoFormales {
     }
 
     @Basic
-    @Column(name = "FechaVerificado")
+    @Column(name = "FechaVerificado", nullable = true)
     public Date getFechaVerificado() {
         return fechaVerificado;
     }

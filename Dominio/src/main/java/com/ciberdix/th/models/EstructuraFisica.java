@@ -56,7 +56,7 @@ public class EstructuraFisica {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = false)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -66,7 +66,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -76,7 +76,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "EstructuraFisica")
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
     public String getEstructuraFisica() {
         return estructuraFisica;
     }
@@ -86,7 +86,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IdClasificacionSede")
+    @Column(name = "IdClasificacionSede", nullable = true)
     public Integer getIdClasificacionSede() {
         return idClasificacionSede;
     }
@@ -96,7 +96,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -106,7 +106,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 50)
     public String getTelefono() {
         return telefono;
     }
@@ -116,7 +116,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 50)
     public String getCelular() {
         return celular;
     }
@@ -126,7 +126,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -136,7 +136,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IndicadorVirtual")
+    @Column(name = "IndicadorVirtual", nullable = true)
     public Boolean getIndicadorVirtual() {
         return indicadorVirtual;
     }
@@ -146,7 +146,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -156,7 +156,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -166,7 +166,7 @@ public class EstructuraFisica {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

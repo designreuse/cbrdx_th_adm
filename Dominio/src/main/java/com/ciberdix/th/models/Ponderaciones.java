@@ -41,7 +41,7 @@ public class Ponderaciones {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdPonderacion")
+    @Column(name = "IdPonderacion", nullable = false)
     public Integer getIdPonderacion() {
         return idPonderacion;
     }
@@ -51,7 +51,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Ponderacion")
+    @Column(name = "Ponderacion", nullable = true, length = 50)
     public String getPonderacion() {
         return ponderacion;
     }
@@ -61,7 +61,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Minimo")
+    @Column(name = "Minimo", nullable = true, precision = 0)
     public Double getMinimo() {
         return minimo;
     }
@@ -71,7 +71,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Maximo")
+    @Column(name = "Maximo", nullable = true, precision = 0)
     public Double getMaximo() {
         return maximo;
     }
@@ -81,7 +81,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -91,7 +91,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +101,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

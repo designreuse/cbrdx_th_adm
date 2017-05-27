@@ -19,10 +19,9 @@ public class TercerosCargos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
-
     public TercerosCargos() {
     }
+
 
     public TercerosCargos(Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idTipoContrato, Integer idZona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
@@ -47,9 +46,13 @@ public class TercerosCargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setAsignadoDesde(java.sql.Date asignadoDesde) {
+        this.asignadoDesde = asignadoDesde;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroCargo")
+    @Column(name = "IdTerceroCargo", nullable = false)
     public Integer getIdTerceroCargo() {
         return idTerceroCargo;
     }
@@ -59,7 +62,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdTipoContrato")
+    @Column(name = "IdTipoContrato", nullable = true)
     public Integer getIdTipoContrato() {
         return idTipoContrato;
     }
@@ -69,7 +72,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +82,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -89,7 +92,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -129,7 +132,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacionalCargo")
+    @Column(name = "IdEstructuraOrganizacionalCargo", nullable = true)
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
     }
@@ -139,7 +142,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "AsignadoDesde")
+    @Column(name = "AsignadoDesde", nullable = true)
     public Date getAsignadoDesde() {
         return asignadoDesde;
     }
@@ -149,7 +152,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "IdZona")
+    @Column(name = "IdZona", nullable = true)
     public Integer getIdZona() {
         return idZona;
     }
@@ -159,7 +162,7 @@ public class TercerosCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

@@ -37,7 +37,7 @@ public class Responsabilidades {
     }
 
     @Id
-    @Column(name = "IdResponsabilidad")
+    @Column(name = "IdResponsabilidad", nullable = false)
     public Integer getIdResponsabilidad() {
         return idResponsabilidad;
     }
@@ -47,7 +47,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "Responsabilidad")
+    @Column(name = "Responsabilidad", nullable = true, length = 64)
     public String getResponsabilidad() {
         return responsabilidad;
     }
@@ -57,7 +57,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -67,7 +67,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -77,7 +77,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -87,7 +87,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

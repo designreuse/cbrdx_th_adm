@@ -44,7 +44,7 @@ public class ActividadesEconomicas {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdActividadEconomica")
+    @Column(name = "IdActividadEconomica", nullable = false)
     public Integer getIdActividadEconomica() {
         return idActividadEconomica;
     }
@@ -54,7 +54,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "IdActividadPadre")
+    @Column(name = "IdActividadPadre", nullable = false)
     public Integer getIdActividadPadre() {
         return idActividadPadre;
     }
@@ -64,7 +64,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "IdActividadTipo")
+    @Column(name = "IdActividadTipo", nullable = false)
     public Integer getIdActividadTipo() {
         return idActividadTipo;
     }
@@ -74,7 +74,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "ActividadEconomica")
+    @Column(name = "ActividadEconomica", nullable = false, length = 300)
     public String getActividadEconomica() {
         return actividadEconomica;
     }
@@ -84,7 +84,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -94,7 +94,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -104,7 +104,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -114,7 +114,7 @@ public class ActividadesEconomicas {
     }
 
     @Basic
-    @Column(name = "CodigoActividadEconomica")
+    @Column(name = "CodigoActividadEconomica", nullable = true, length = 30)
     public String getCodigoActividadEconomica() {
         return codigoActividadEconomica;
     }

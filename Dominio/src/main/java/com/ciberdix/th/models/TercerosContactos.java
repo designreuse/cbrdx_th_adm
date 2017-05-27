@@ -47,7 +47,7 @@ public class TercerosContactos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroContacto")
+    @Column(name = "IdTerceroContacto", nullable = false)
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
     }
@@ -57,7 +57,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -67,7 +67,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Contacto")
+    @Column(name = "Contacto", nullable = true, length = 250)
     public String getContacto() {
         return contacto;
     }
@@ -77,7 +77,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 25)
     public String getTelefono() {
         return telefono;
     }
@@ -87,7 +87,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 15)
     public String getCelular() {
         return celular;
     }
@@ -97,7 +97,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdListaParentesco")
+    @Column(name = "IdListaParentesco", nullable = true)
     public Integer getIdListaParentesco() {
         return idListaParentesco;
     }
@@ -107,7 +107,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -117,7 +117,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -127,7 +127,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -42,7 +42,7 @@ public class Widgets {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdWidget")
+    @Column(name = "IdWidget", nullable = false)
     public Integer getIdWidget() {
         return idWidget;
     }
@@ -52,7 +52,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "Widget")
+    @Column(name = "Widget", nullable = true, length = 50)
     public String getWidget() {
         return widget;
     }
@@ -62,7 +62,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "CodigoWidget")
+    @Column(name = "CodigoWidget", nullable = true, length = 50)
     public String getCodigoWidget() {
         return codigoWidget;
     }
@@ -72,7 +72,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -82,7 +82,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -92,7 +92,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -102,7 +102,7 @@ public class Widgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

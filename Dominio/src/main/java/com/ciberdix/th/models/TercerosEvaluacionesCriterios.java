@@ -20,7 +20,7 @@ public class TercerosEvaluacionesCriterios {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroEvaluacionCriterio")
+    @Column(name = "IdTerceroEvaluacionCriterio", nullable = false)
     public Integer getIdTerceroEvaluacionCriterio() {
         return idTerceroEvaluacionCriterio;
     }
@@ -30,7 +30,7 @@ public class TercerosEvaluacionesCriterios {
     }
 
     @Basic
-    @Column(name = "IdTerceroEvaluacion")
+    @Column(name = "IdTerceroEvaluacion", nullable = false)
     public Integer getIdTerceroEvaluacion() {
         return idTerceroEvaluacion;
     }
@@ -40,7 +40,7 @@ public class TercerosEvaluacionesCriterios {
     }
 
     @Basic
-    @Column(name = "IdCriterio")
+    @Column(name = "IdCriterio", nullable = true)
     public Integer getIdCriterio() {
         return idCriterio;
     }
@@ -50,7 +50,7 @@ public class TercerosEvaluacionesCriterios {
     }
 
     @Basic
-    @Column(name = "Nota")
+    @Column(name = "Nota", nullable = true, precision = 1)
     public BigDecimal getNota() {
         return nota;
     }
@@ -60,7 +60,7 @@ public class TercerosEvaluacionesCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -70,7 +70,7 @@ public class TercerosEvaluacionesCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

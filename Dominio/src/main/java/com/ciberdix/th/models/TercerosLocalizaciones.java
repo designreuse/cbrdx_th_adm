@@ -38,7 +38,7 @@ public class TercerosLocalizaciones {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroLocalizacion")
+    @Column(name = "IdTerceroLocalizacion", nullable = false)
     public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;
     }
@@ -48,7 +48,7 @@ public class TercerosLocalizaciones {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -58,7 +58,7 @@ public class TercerosLocalizaciones {
     }
 
     @Basic
-    @Column(name = "Idlocalizacion")
+    @Column(name = "Idlocalizacion", nullable = false)
     public Integer getIdlocalizacion() {
         return idlocalizacion;
     }
@@ -68,7 +68,7 @@ public class TercerosLocalizaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +78,7 @@ public class TercerosLocalizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class TercerosLocalizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

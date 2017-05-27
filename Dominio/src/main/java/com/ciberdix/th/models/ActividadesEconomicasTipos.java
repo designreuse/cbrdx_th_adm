@@ -38,7 +38,7 @@ public class ActividadesEconomicasTipos {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdActividadEconomicaTipo")
+    @Column(name = "IdActividadEconomicaTipo", nullable = false)
     public Integer getIdActividadEconomicaTipo() {
         return idActividadEconomicaTipo;
     }
@@ -48,7 +48,7 @@ public class ActividadesEconomicasTipos {
     }
 
     @Basic
-    @Column(name = "CodigoActividadTipo")
+    @Column(name = "CodigoActividadTipo", nullable = false)
     public Integer getCodigoActividadTipo() {
         return codigoActividadTipo;
     }
@@ -58,7 +58,7 @@ public class ActividadesEconomicasTipos {
     }
 
     @Basic
-    @Column(name = "DescripcionActividadTipo")
+    @Column(name = "DescripcionActividadTipo", nullable = false, length = 50)
     public String getDescripcionActividadTipo() {
         return descripcionActividadTipo;
     }
@@ -68,7 +68,7 @@ public class ActividadesEconomicasTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +78,7 @@ public class ActividadesEconomicasTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -88,7 +88,7 @@ public class ActividadesEconomicasTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

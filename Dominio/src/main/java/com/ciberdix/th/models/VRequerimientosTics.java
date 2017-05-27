@@ -17,6 +17,7 @@ public class VRequerimientosTics {
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
 
+    @Basic
     @Id
     @Column(name = "IdRequerimientoTIC", nullable = false)
     public Integer getIdRequerimientoTic() {
@@ -38,7 +39,7 @@ public class VRequerimientosTics {
     }
 
     @Basic
-    @Column(name = "TIC", nullable = false, length = 100)
+    @Column(name = "TIC", nullable = true, length = 100)
     public String getTic() {
         return tic;
     }

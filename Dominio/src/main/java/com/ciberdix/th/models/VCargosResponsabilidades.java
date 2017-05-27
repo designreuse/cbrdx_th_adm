@@ -18,8 +18,9 @@ public class VCargosResponsabilidades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdCargoResponsabilidad")
+    @Column(name = "IdCargoResponsabilidad", nullable = false)
     public Integer getIdCargoResponsabilidad() {
         return idCargoResponsabilidad;
     }
@@ -29,7 +30,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -39,7 +40,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -49,7 +50,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "IdResponsabilidad")
+    @Column(name = "IdResponsabilidad", nullable = false)
     public Integer getIdResponsabilidad() {
         return idResponsabilidad;
     }
@@ -59,7 +60,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "Responsabilidad")
+    @Column(name = "Responsabilidad", nullable = true, length = 64)
     public String getResponsabilidad() {
         return responsabilidad;
     }
@@ -69,7 +70,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -79,7 +80,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -89,7 +90,7 @@ public class VCargosResponsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -52,6 +52,19 @@ public class VRequerimientosHistoricos {
     private String nombreCargo;
     private String funcionCargo;
 
+    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    @Basic
     @Id
     @Column(name = "IdRequerimientoHistorico", nullable = false)
     public Integer getIdRequerimientoHistorico() {

@@ -23,7 +23,7 @@ public class TiposNovedades {
     private Integer indicadorAdaptacionLaboral;
 
     @Id
-    @Column(name = "IdTipoNovedad")
+    @Column(name = "IdTipoNovedad", nullable = false)
     public Integer getIdTipoNovedad() {
         return idTipoNovedad;
     }
@@ -33,7 +33,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "TipoNovedad")
+    @Column(name = "TipoNovedad", nullable = true, length = 100)
     public String getTipoNovedad() {
         return tipoNovedad;
     }
@@ -43,7 +43,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IdPerfil")
+    @Column(name = "IdPerfil", nullable = true)
     public Integer getIdPerfil() {
         return idPerfil;
     }
@@ -53,7 +53,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -63,7 +63,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IndicadorCorreo")
+    @Column(name = "IndicadorCorreo", nullable = true)
     public Boolean getIndicadorCorreo() {
         return indicadorCorreo;
     }
@@ -73,7 +73,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IndicadorAusentismo")
+    @Column(name = "IndicadorAusentismo", nullable = true)
     public Boolean getIndicadorAusentismo() {
         return indicadorAusentismo;
     }
@@ -83,7 +83,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IndicadorAdjunto")
+    @Column(name = "IndicadorAdjunto", nullable = true)
     public Boolean getIndicadorAdjunto() {
         return indicadorAdjunto;
     }
@@ -93,7 +93,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -103,7 +103,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -113,7 +113,7 @@ public class TiposNovedades {
     }
 
     @Basic
-    @Column(name = "IndicadorAdaptacionLaboral")
+    @Column(name = "IndicadorAdaptacionLaboral", nullable = true)
     public Integer getIndicadorAdaptacionLaboral() {
         return indicadorAdaptacionLaboral;
     }

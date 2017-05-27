@@ -28,7 +28,7 @@ public class TercerosAdaptacionesLaborales {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroAdaptacionLaboral")
+    @Column(name = "IdTerceroAdaptacionLaboral", nullable = false)
     public Integer getIdTerceroAdaptacionLaboral() {
         return idTerceroAdaptacionLaboral;
     }
@@ -38,7 +38,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -48,7 +48,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -58,7 +58,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "FechaEvento")
+    @Column(name = "FechaEvento", nullable = true)
     public Timestamp getFechaEvento() {
         return fechaEvento;
     }
@@ -68,7 +68,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "FechaRecomendaciones")
+    @Column(name = "FechaRecomendaciones", nullable = true)
     public Timestamp getFechaRecomendaciones() {
         return fechaRecomendaciones;
     }
@@ -78,7 +78,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdTipoReincorporacion")
+    @Column(name = "IdTipoReincorporacion", nullable = true)
     public Boolean getIdTipoReincorporacion() {
         return idTipoReincorporacion;
     }
@@ -88,7 +88,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Tareas")
+    @Column(name = "Tareas", nullable = true, length = 100)
     public String getTareas() {
         return tareas;
     }
@@ -98,7 +98,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Materiales")
+    @Column(name = "Materiales", nullable = true, length = 100)
     public String getMateriales() {
         return materiales;
     }
@@ -108,7 +108,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Ayudas")
+    @Column(name = "Ayudas", nullable = true, length = 100)
     public String getAyudas() {
         return ayudas;
     }
@@ -118,7 +118,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Estandares")
+    @Column(name = "Estandares", nullable = true, length = 100)
     public String getEstandares() {
         return estandares;
     }
@@ -128,7 +128,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Posturas")
+    @Column(name = "Posturas", nullable = true, length = 100)
     public String getPosturas() {
         return posturas;
     }
@@ -138,7 +138,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "Pausas")
+    @Column(name = "Pausas", nullable = true, length = 100)
     public String getPausas() {
         return pausas;
     }
@@ -148,7 +148,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "FechaControl")
+    @Column(name = "FechaControl", nullable = true)
     public Timestamp getFechaControl() {
         return fechaControl;
     }
@@ -158,7 +158,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -168,7 +168,7 @@ public class TercerosAdaptacionesLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -16,8 +16,9 @@ public class VFuncionalidades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = false)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -27,7 +28,7 @@ public class VFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = true)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -37,7 +38,7 @@ public class VFuncionalidades {
     }
 
     @Basic
-    @Column(name = "Menu")
+    @Column(name = "Menu", nullable = true, length = 64)
     public String getMenu() {
         return menu;
     }
@@ -47,7 +48,7 @@ public class VFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -57,7 +58,7 @@ public class VFuncionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -67,7 +68,7 @@ public class VFuncionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

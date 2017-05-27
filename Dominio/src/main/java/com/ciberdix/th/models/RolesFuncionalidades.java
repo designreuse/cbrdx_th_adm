@@ -47,7 +47,7 @@ public class RolesFuncionalidades {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRolFuncionalidad")
+    @Column(name = "IdRolFuncionalidad", nullable = false)
     public Integer getIdRolFuncionalidad() {
         return idRolFuncionalidad;
     }
@@ -57,7 +57,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -67,7 +67,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = true)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -77,7 +77,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -87,7 +87,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorExportar")
+    @Column(name = "IndicadorExportar", nullable = true)
     public Boolean getIndicadorExportar() {
         return indicadorExportar;
     }
@@ -97,7 +97,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorImprimir")
+    @Column(name = "IndicadorImprimir", nullable = true)
     public Boolean getIndicadorImprimir() {
         return indicadorImprimir;
     }
@@ -107,7 +107,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorInsertar")
+    @Column(name = "IndicadorInsertar", nullable = true)
     public Boolean getIndicadorInsertar() {
         return indicadorInsertar;
     }
@@ -117,7 +117,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -127,7 +127,7 @@ public class RolesFuncionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

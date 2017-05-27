@@ -20,8 +20,9 @@ public class VRolesWidgets {
     private Timestamp auditoriaFecha;
     private Boolean indicadorObligatorio;
 
+    @Basic
     @Id
-    @Column(name = "IdRolWidget")
+    @Column(name = "IdRolWidget", nullable = false)
     public Integer getIdRolWidget() {
         return idRolWidget;
     }
@@ -31,7 +32,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -41,7 +42,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -51,7 +52,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdWidget")
+    @Column(name = "IdWidget", nullable = true)
     public Integer getIdWidget() {
         return idWidget;
     }
@@ -61,7 +62,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "CodigoWidget")
+    @Column(name = "CodigoWidget", nullable = true, length = 50)
     public String getCodigoWidget() {
         return codigoWidget;
     }
@@ -71,7 +72,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "Widget")
+    @Column(name = "Widget", nullable = true, length = 50)
     public String getWidget() {
         return widget;
     }
@@ -81,7 +82,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -91,7 +92,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -101,7 +102,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -111,7 +112,7 @@ public class VRolesWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorObligatorio")
+    @Column(name = "IndicadorObligatorio", nullable = true)
     public Boolean getIndicadorObligatorio() {
         return indicadorObligatorio;
     }

@@ -53,6 +53,7 @@ public class VRequerimientos {
     private String nombreCargo;
     private String funcionCargo;
 
+    @Basic
     @Id
     @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {

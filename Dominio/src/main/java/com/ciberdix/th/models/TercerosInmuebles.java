@@ -56,7 +56,7 @@ public class TercerosInmuebles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroInmueble")
+    @Column(name = "IdTerceroInmueble", nullable = false)
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
     }
@@ -66,7 +66,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -76,7 +76,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
+    @Column(name = "IdTipoVivienda", nullable = true)
     public Integer getIdTipoVivienda() {
         return idTipoVivienda;
     }
@@ -86,7 +86,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdClaseVivienda")
+    @Column(name = "IdClaseVivienda", nullable = true)
     public Integer getIdClaseVivienda() {
         return idClaseVivienda;
     }
@@ -96,7 +96,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoConstruccionVivienda")
+    @Column(name = "IdTipoConstruccionVivienda", nullable = true)
     public Integer getIdTipoConstruccionVivienda() {
         return idTipoConstruccionVivienda;
     }
@@ -106,7 +106,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AnioConstruccion")
+    @Column(name = "AnioConstruccion", nullable = true)
     public Integer getAnioConstruccion() {
         return anioConstruccion;
     }
@@ -116,7 +116,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroPisos")
+    @Column(name = "NumeroPisos", nullable = true)
     public Integer getNumeroPisos() {
         return numeroPisos;
     }
@@ -126,7 +126,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroSotanos")
+    @Column(name = "NumeroSotanos", nullable = true)
     public Integer getNumeroSotanos() {
         return numeroSotanos;
     }
@@ -136,7 +136,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdEstrato")
+    @Column(name = "IdEstrato", nullable = true)
     public Integer getIdEstrato() {
         return idEstrato;
     }
@@ -146,7 +146,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -156,7 +156,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -166,7 +166,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

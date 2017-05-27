@@ -17,8 +17,9 @@ public class VCargosRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdCargoRiesgo")
+    @Column(name = "IdCargoRiesgo", nullable = false)
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;
     }
@@ -28,7 +29,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -38,7 +39,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -48,7 +49,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -58,7 +59,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "Riesgo")
+    @Column(name = "Riesgo", nullable = true, length = 100)
     public String getRiesgo() {
         return riesgo;
     }
@@ -68,7 +69,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -78,7 +79,7 @@ public class VCargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

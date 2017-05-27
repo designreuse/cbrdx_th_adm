@@ -11,8 +11,9 @@ public class VDivisionPolitica {
     private Integer value;
     private String label;
 
+    @Basic
     @Id
-    @Column(name = "Value")
+    @Column(name = "Value", nullable = false)
     public Integer getValue() {
         return value;
     }
@@ -22,7 +23,7 @@ public class VDivisionPolitica {
     }
 
     @Basic
-    @Column(name = "Label")
+    @Column(name = "Label", nullable = false, length = 222)
     public String getLabel() {
         return label;
     }

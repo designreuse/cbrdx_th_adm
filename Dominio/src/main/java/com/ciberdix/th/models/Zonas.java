@@ -91,7 +91,7 @@ public class Zonas {
     }
 
     @Basic
-    @Column(name = "Codigo", nullable = true)
+    @Column(name = "Codigo", nullable = true, length = 10)
     public String getCodigo() {
         return codigo;
     }

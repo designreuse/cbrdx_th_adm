@@ -41,7 +41,7 @@ public class RolesWidgets {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRolWidget")
+    @Column(name = "IdRolWidget", nullable = false)
     public Integer getIdRolWidget() {
         return idRolWidget;
     }
@@ -51,7 +51,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -61,7 +61,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdWidget")
+    @Column(name = "IdWidget", nullable = true)
     public Integer getIdWidget() {
         return idWidget;
     }
@@ -71,7 +71,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +81,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +91,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -101,7 +101,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorObligatorio")
+    @Column(name = "IndicadorObligatorio", nullable = true)
     public Boolean getIndicadorObligatorio() {
         return indicadorObligatorio;
     }

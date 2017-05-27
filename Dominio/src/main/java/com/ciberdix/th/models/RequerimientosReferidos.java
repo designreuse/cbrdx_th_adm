@@ -19,7 +19,6 @@ public class RequerimientosReferidos {
     private Integer idEstado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
     public RequerimientosReferidos() {
     }
 
@@ -44,6 +43,10 @@ public class RequerimientosReferidos {
         this.idEstado = idEstado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public void setFechaReferencia(java.sql.Date fechaReferencia) {
+        this.fechaReferencia = fechaReferencia;
     }
 
     @Id
