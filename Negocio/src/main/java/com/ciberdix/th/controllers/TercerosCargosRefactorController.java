@@ -53,6 +53,12 @@ public class TercerosCargosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VTercerosCargos[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos obj){
         RestTemplate restTemplate = new RestTemplate();

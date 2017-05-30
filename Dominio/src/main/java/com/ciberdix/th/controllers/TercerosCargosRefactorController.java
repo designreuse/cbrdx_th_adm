@@ -35,13 +35,18 @@ public class TercerosCargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
-    List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
+    List<VTercerosCargos> findByIdEstructuraOrganizacionalCargo(@PathVariable Integer id) {
         return vTercerosCargosRefactorRepository.findByIdEstructuraOrganizacionalCargo(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
     List<VTercerosCargos> findByIdEstructuraOrganizacional(@PathVariable Integer id) {
         return vTercerosCargosRefactorRepository.findByIndicadorHabilitadoTrueAndIdEstructuraOrganizacional(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
+    List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
+        return vTercerosCargosRefactorRepository.findAllByIdCargo(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
