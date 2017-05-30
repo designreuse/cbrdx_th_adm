@@ -55,6 +55,16 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findByFechaSolicitudBetween(fInicio.parse(fechaInicio), fFin.parse(fechaFin));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
+    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion) {
+        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdResponsableSeleccion(idEstado, idResponsableSeleccion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}/{idTipoSolicitud}")
+    List<VRequerimientos> findIdEstadoAndIdRespSelecAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, @PathVariable Integer idTipoSolicitud) {
+        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdResponsableSeleccionAndIdTipoSolicitud(idEstado, idResponsableSeleccion, idTipoSolicitud);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),
