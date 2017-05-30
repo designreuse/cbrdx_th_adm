@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Menus", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Menus", schema = "dbo", catalog = "CREZCAMOS")
 public class Menus {
     private Integer idMenu;
     private String menu;
@@ -32,9 +32,22 @@ public class Menus {
         this.clase = clase;
     }
 
+    public Menus(Integer idMenu, String menu, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, String codigoMenu, String ruta, Integer secuencia, String clase) {
+        this.idMenu = idMenu;
+        this.menu = menu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idPadre = idPadre;
+        this.codigoMenu = codigoMenu;
+        this.ruta = ruta;
+        this.secuencia = secuencia;
+        this.clase = clase;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = false)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -44,7 +57,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Menu")
+    @Column(name = "Menu", nullable = true, length = 64)
     public String getMenu() {
         return menu;
     }
@@ -54,7 +67,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -64,7 +77,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -74,7 +87,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -84,7 +97,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -94,7 +107,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "CodigoMenu")
+    @Column(name = "CodigoMenu", nullable = true, length = 50)
     public String getCodigoMenu() {
         return codigoMenu;
     }
@@ -104,7 +117,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Ruta")
+    @Column(name = "Ruta", nullable = true, length = 50)
     public String getRuta() {
         return ruta;
     }
@@ -114,7 +127,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Secuencia")
+    @Column(name = "Secuencia", nullable = true)
     public Integer getSecuencia() {
         return secuencia;
     }
@@ -124,7 +137,7 @@ public class Menus {
     }
 
     @Basic
-    @Column(name = "Clase")
+    @Column(name = "Clase", nullable = true, length = 100)
     public String getClase() {
         return clase;
     }

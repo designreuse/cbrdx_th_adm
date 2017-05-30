@@ -6,13 +6,14 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_UsuarioRolesCantidad", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_UsuarioRolesCantidad", schema = "dbo", catalog = "CREZCAMOS")
 public class VUsuarioRolesCantidad {
     private String rol;
     private Integer cantidad;
 
+    @Basic
     @Id
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -22,7 +23,7 @@ public class VUsuarioRolesCantidad {
     }
 
     @Basic
-    @Column(name = "Cantidad")
+    @Column(name = "Cantidad", nullable = true)
     public Integer getCantidad() {
         return cantidad;
     }

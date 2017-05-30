@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Riesgos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Riesgos", schema = "dbo", catalog = "CREZCAMOS")
 public class Riesgos {
     private Integer idRiesgo;
     private Integer idSubTipoRiesgo;
@@ -29,9 +29,19 @@ public class Riesgos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Riesgos(Integer idRiesgo, Integer idSubTipoRiesgo, Integer idTipoRiesgo, String riesgo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRiesgo = idRiesgo;
+        this.idSubTipoRiesgo = idSubTipoRiesgo;
+        this.idTipoRiesgo = idTipoRiesgo;
+        this.riesgo = riesgo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -41,7 +51,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IdSubTipoRiesgo")
+    @Column(name = "IdSubTipoRiesgo", nullable = true)
     public Integer getIdSubTipoRiesgo() {
         return idSubTipoRiesgo;
     }
@@ -51,7 +61,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IdTipoRiesgo")
+    @Column(name = "IdTipoRiesgo", nullable = true)
     public Integer getIdTipoRiesgo() {
         return idTipoRiesgo;
     }
@@ -61,7 +71,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "Riesgo")
+    @Column(name = "Riesgo", nullable = true, length = 100)
     public String getRiesgo() {
         return riesgo;
     }
@@ -71,7 +81,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +91,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class Riesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

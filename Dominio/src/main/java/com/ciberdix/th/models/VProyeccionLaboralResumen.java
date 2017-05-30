@@ -6,10 +6,10 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@NamedStoredProcedureQuery(name = "ConProy", procedureName = "crz_th.ConfirmarProyeccion", parameters = {
+@NamedStoredProcedureQuery(name = "ConProy", procedureName = "dbo.ConfirmarProyeccion", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "Output", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Usuario", type = Integer.class)})
-@Table(name = "V_ProyeccionLaboral_Resumen", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_ProyeccionLaboral_Resumen", schema = "dbo", catalog = "CREZCAMOS")
 public class VProyeccionLaboralResumen {
     private Long idProyeccionLaboralResumen;
     private Integer idArea;
@@ -17,8 +17,9 @@ public class VProyeccionLaboralResumen {
     private String estado;
     private Integer cantidad;
 
+    @Basic
     @Id
-    @Column(name = "IdProyeccionLaboralResumen")
+    @Column(name = "IdProyeccionLaboralResumen", nullable = true)
     public Long getIdProyeccionLaboralResumen() {
         return idProyeccionLaboralResumen;
     }
@@ -28,7 +29,7 @@ public class VProyeccionLaboralResumen {
     }
 
     @Basic
-    @Column(name = "IdArea")
+    @Column(name = "IdArea", nullable = false)
     public Integer getIdArea() {
         return idArea;
     }
@@ -38,7 +39,7 @@ public class VProyeccionLaboralResumen {
     }
 
     @Basic
-    @Column(name = "Area")
+    @Column(name = "Area", nullable = true, length = 50)
     public String getArea() {
         return area;
     }
@@ -48,7 +49,7 @@ public class VProyeccionLaboralResumen {
     }
 
     @Basic
-    @Column(name = "Estado")
+    @Column(name = "Estado", nullable = false, length = 100)
     public String getEstado() {
         return estado;
     }
@@ -58,7 +59,7 @@ public class VProyeccionLaboralResumen {
     }
 
     @Basic
-    @Column(name = "Cantidad")
+    @Column(name = "Cantidad", nullable = true)
     public Integer getCantidad() {
         return cantidad;
     }

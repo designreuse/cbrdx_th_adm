@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@Table(name = "RolesWidgets", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RolesWidgets", schema = "dbo", catalog = "CREZCAMOS")
 public class RolesWidgets {
     private Integer idRolWidget;
     private Integer idRol;
@@ -15,21 +15,33 @@ public class RolesWidgets {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorObligatorio;
 
     public RolesWidgets() {
     }
 
-    public RolesWidgets(Integer idRol, Integer idWidget, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public RolesWidgets(Integer idRol, Integer idWidget, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorObligatorio) {
         this.idRol = idRol;
         this.idWidget = idWidget;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorObligatorio = indicadorObligatorio;
+    }
+
+    public RolesWidgets(Integer idRolWidget, Integer idRol, Integer idWidget, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorObligatorio) {
+        this.idRolWidget = idRolWidget;
+        this.idRol = idRol;
+        this.idWidget = idWidget;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorObligatorio = indicadorObligatorio;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdRolWidget")
+    @Column(name = "IdRolWidget", nullable = false)
     public Integer getIdRolWidget() {
         return idRolWidget;
     }
@@ -39,7 +51,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -49,7 +61,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IdWidget")
+    @Column(name = "IdWidget", nullable = true)
     public Integer getIdWidget() {
         return idWidget;
     }
@@ -59,7 +71,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +81,7 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,13 +91,23 @@ public class RolesWidgets {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    @Basic
+    @Column(name = "IndicadorObligatorio", nullable = true)
+    public Boolean getIndicadorObligatorio() {
+        return indicadorObligatorio;
+    }
+
+    public void setIndicadorObligatorio(Boolean indicadorObligatorio) {
+        this.indicadorObligatorio = indicadorObligatorio;
     }
 
     @Override
@@ -95,27 +117,25 @@ public class RolesWidgets {
 
         RolesWidgets that = (RolesWidgets) o;
 
-        if (idRolWidget != null ? !idRolWidget.equals(that.idRolWidget) : that.idRolWidget != null) return false;
+        if (!idRolWidget.equals(that.idRolWidget)) return false;
         if (idRol != null ? !idRol.equals(that.idRol) : that.idRol != null) return false;
         if (idWidget != null ? !idWidget.equals(that.idWidget) : that.idWidget != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        return indicadorObligatorio != null ? indicadorObligatorio.equals(that.indicadorObligatorio) : that.indicadorObligatorio == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idRolWidget != null ? idRolWidget.hashCode() : 0;
+        int result = idRolWidget.hashCode();
         result = 31 * result + (idRol != null ? idRol.hashCode() : 0);
         result = 31 * result + (idWidget != null ? idWidget.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (indicadorObligatorio != null ? indicadorObligatorio.hashCode() : 0);
         return result;
     }
 }

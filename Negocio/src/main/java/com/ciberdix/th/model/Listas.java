@@ -13,6 +13,7 @@ public class Listas {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String descripcion;
+    private Integer idRol;
 
     public Integer getIdLista() {
         return idLista;
@@ -68,5 +69,13 @@ public class Listas {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
     }
 }

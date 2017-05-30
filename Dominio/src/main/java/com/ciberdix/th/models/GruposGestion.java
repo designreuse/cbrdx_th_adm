@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by Felipe Aguirre on 24/03/2017.
  */
 @Entity
-@Table(name = "GruposGestion", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "GruposGestion", schema = "dbo", catalog = "CREZCAMOS")
 public class GruposGestion {
     private Integer idGrupoGestion;
     private String grupoGestion;
@@ -30,8 +30,8 @@ public class GruposGestion {
         this.responsabilidades = responsabilidades;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = new Date(fechaInicio.getTime());
-        this.fechaFin = new Date(fechaFin.getTime());
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.codigoGrupoGestion = codigoGrupoGestion;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
@@ -43,15 +43,23 @@ public class GruposGestion {
         this.responsabilidades = responsabilidades;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.fechaInicio = new Date(fechaInicio.getTime());
-        this.fechaFin = new Date(fechaFin.getTime());
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.codigoGrupoGestion = codigoGrupoGestion;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdGrupoGestion")
+    @Column(name = "IdGrupoGestion", nullable = false)
     public Integer getIdGrupoGestion() {
         return idGrupoGestion;
     }
@@ -61,7 +69,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "GrupoGestion")
+    @Column(name = "GrupoGestion", nullable = true, length = 64)
     public String getGrupoGestion() {
         return grupoGestion;
     }
@@ -71,7 +79,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "Funciones")
+    @Column(name = "Funciones", nullable = true, length = 500)
     public String getFunciones() {
         return funciones;
     }
@@ -81,7 +89,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "Responsabilidades")
+    @Column(name = "Responsabilidades", nullable = true, length = 500)
     public String getResponsabilidades() {
         return responsabilidades;
     }
@@ -91,7 +99,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -101,7 +109,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -111,7 +119,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -121,7 +129,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -131,7 +139,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -141,7 +149,7 @@ public class GruposGestion {
     }
 
     @Basic
-    @Column(name = "CodigoGrupoGestion")
+    @Column(name = "CodigoGrupoGestion", nullable = true, length = 10)
     public String getCodigoGrupoGestion() {
         return codigoGrupoGestion;
     }

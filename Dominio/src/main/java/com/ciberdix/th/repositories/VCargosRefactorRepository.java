@@ -17,7 +17,7 @@ public interface VCargosRefactorRepository extends CrudRepository<VCargos, Integ
 
     List<VCargos> findByCargoContains(String query);
 
-    @Query("SELECT c FROM VCargos c WHERE "+
+    @Query("SELECT c FROM VCargos c WHERE c.indicadorHabilitado = 1 AND "+
     "lower(" +
             "REPLACE(" +
             "REPLACE(" +
@@ -121,7 +121,7 @@ public interface VCargosRefactorRepository extends CrudRepository<VCargos, Integ
     "ORDER BY c.cargo")
     List<VCargos> queryVCargosByCargo(String str);
 
-    @Query("SELECT c FROM VCargos c WHERE "+
+    @Query("SELECT c FROM VCargos c WHERE c.indicadorHabilitado = 1 AND "+
             "lower(" +
             "REPLACE(" +
             "REPLACE(" +

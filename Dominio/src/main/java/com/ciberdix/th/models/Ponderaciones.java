@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-@Table(name = "Ponderaciones", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Ponderaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Ponderaciones {
     private Integer idPonderacion;
     private String ponderacion;
@@ -29,9 +29,19 @@ public class Ponderaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Ponderaciones(Integer idPonderacion, String ponderacion, Double minimo, Double maximo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idPonderacion = idPonderacion;
+        this.ponderacion = ponderacion;
+        this.minimo = minimo;
+        this.maximo = maximo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdPonderacion")
+    @Column(name = "IdPonderacion", nullable = false)
     public Integer getIdPonderacion() {
         return idPonderacion;
     }
@@ -41,7 +51,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Ponderacion")
+    @Column(name = "Ponderacion", nullable = true, length = 50)
     public String getPonderacion() {
         return ponderacion;
     }
@@ -51,7 +61,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Minimo")
+    @Column(name = "Minimo", nullable = true, precision = 0)
     public Double getMinimo() {
         return minimo;
     }
@@ -61,7 +71,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "Maximo")
+    @Column(name = "Maximo", nullable = true, precision = 0)
     public Double getMaximo() {
         return maximo;
     }
@@ -71,7 +81,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +91,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class Ponderaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

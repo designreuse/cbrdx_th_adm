@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 23/04/2017.
  */
 @Entity
-@Table(name = "V_FuncionalidadesControles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_FuncionalidadesControles", schema = "dbo", catalog = "CREZCAMOS")
 public class VFuncionalidadesControles {
     private Integer idFuncionalidadControl;
     private String codigo;
@@ -23,8 +23,9 @@ public class VFuncionalidadesControles {
     private Integer idPadre;
     private Boolean indicadorSeccion;
 
+    @Basic
     @Id
-    @Column(name = "IdFuncionalidadControl")
+    @Column(name = "IdFuncionalidadControl", nullable = false)
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;
     }
@@ -34,7 +35,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -44,7 +45,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Control")
+    @Column(name = "Control", nullable = true, length = 50)
     public String getControl() {
         return control;
     }
@@ -54,7 +55,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdClasificacion")
+    @Column(name = "IdClasificacion", nullable = true)
     public Integer getIdClasificacion() {
         return idClasificacion;
     }
@@ -64,7 +65,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Clasificacion")
+    @Column(name = "Clasificacion", nullable = true, length = 100)
     public String getClasificacion() {
         return clasificacion;
     }
@@ -74,7 +75,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = true)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -84,7 +85,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorVisible")
+    @Column(name = "IndicadorVisible", nullable = true)
     public Boolean getIndicadorVisible() {
         return indicadorVisible;
     }
@@ -94,7 +95,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorImprimir")
+    @Column(name = "IndicadorImprimir", nullable = true)
     public Boolean getIndicadorImprimir() {
         return indicadorImprimir;
     }
@@ -104,7 +105,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -114,7 +115,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -124,7 +125,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -134,7 +135,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -144,7 +145,7 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorSeccion")
+    @Column(name = "IndicadorSeccion", nullable = true)
     public Boolean getIndicadorSeccion() {
         return indicadorSeccion;
     }

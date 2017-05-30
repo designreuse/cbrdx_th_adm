@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "CargosPersonalidadAtributos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CargosPersonalidadAtributos", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosPersonalidadAtributos {
     private Integer idCargoPersonalidadAtributo;
     private Integer idCargo;
@@ -27,9 +27,18 @@ public class CargosPersonalidadAtributos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosPersonalidadAtributos(Integer idCargoPersonalidadAtributo, Integer idCargo, Integer idAtributo, String descripcion, Integer auditoriaUsuario) {
+        this.idCargoPersonalidadAtributo = idCargoPersonalidadAtributo;
+        this.idCargo = idCargo;
+        this.idAtributo = idAtributo;
+        this.descripcion = descripcion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoPersonalidadAtributo")
+    @Column(name = "IdCargoPersonalidadAtributo", nullable = false)
     public Integer getIdCargoPersonalidadAtributo() {
         return idCargoPersonalidadAtributo;
     }
@@ -39,7 +48,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -49,7 +58,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "IdAtributo")
+    @Column(name = "IdAtributo", nullable = true)
     public Integer getIdAtributo() {
         return idAtributo;
     }
@@ -59,7 +68,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -69,7 +78,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class CargosPersonalidadAtributos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

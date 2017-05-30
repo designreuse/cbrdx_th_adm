@@ -7,27 +7,39 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "DivisionPoliticaAreas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "DivisionPoliticaAreas", schema = "dbo", catalog = "CREZCAMOS")
 public class DivisionPoliticaAreas {
     private Integer idDivisionPoliticaArea;
     private String descripcionDivisionPoliticaArea;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigo;
+
 
     public DivisionPoliticaAreas() {
     }
 
-    public DivisionPoliticaAreas(String descripcionDivisionPoliticaArea, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public DivisionPoliticaAreas(String descripcionDivisionPoliticaArea, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo) {
         this.descripcionDivisionPoliticaArea = descripcionDivisionPoliticaArea;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
+    }
+
+    public DivisionPoliticaAreas(Integer idDivisionPoliticaArea, String descripcionDivisionPoliticaArea, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo) {
+        this.idDivisionPoliticaArea = idDivisionPoliticaArea;
+        this.descripcionDivisionPoliticaArea = descripcionDivisionPoliticaArea;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdDivisionPoliticaArea")
+    @Column(name = "IdDivisionPoliticaArea", nullable = false)
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
@@ -37,7 +49,7 @@ public class DivisionPoliticaAreas {
     }
 
     @Basic
-    @Column(name = "DescripcionDivisionPoliticaArea")
+    @Column(name = "DescripcionDivisionPoliticaArea", nullable = false, length = 20)
     public String getDescripcionDivisionPoliticaArea() {
         return descripcionDivisionPoliticaArea;
     }
@@ -47,7 +59,7 @@ public class DivisionPoliticaAreas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -57,7 +69,7 @@ public class DivisionPoliticaAreas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -67,13 +79,23 @@ public class DivisionPoliticaAreas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    @Basic
+    @Column(name = "Codigo", nullable = true, length = 10)
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Override
@@ -83,27 +105,24 @@ public class DivisionPoliticaAreas {
 
         DivisionPoliticaAreas that = (DivisionPoliticaAreas) o;
 
-        if (idDivisionPoliticaArea != null ? !idDivisionPoliticaArea.equals(that.idDivisionPoliticaArea) : that.idDivisionPoliticaArea != null)
-            return false;
+        if (!idDivisionPoliticaArea.equals(that.idDivisionPoliticaArea)) return false;
         if (descripcionDivisionPoliticaArea != null ? !descripcionDivisionPoliticaArea.equals(that.descripcionDivisionPoliticaArea) : that.descripcionDivisionPoliticaArea != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        return codigo != null ? codigo.equals(that.codigo) : that.codigo == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idDivisionPoliticaArea != null ? idDivisionPoliticaArea.hashCode() : 0;
+        int result = idDivisionPoliticaArea.hashCode();
         result = 31 * result + (descripcionDivisionPoliticaArea != null ? descripcionDivisionPoliticaArea.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         return result;
     }
 }

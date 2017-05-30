@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by robertochajin on 20/04/17.
  */
 @Entity
-@Table(name = "Usuarios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Usuarios", schema = "dbo", catalog = "CREZCAMOS")
 public class Usuarios {
     private Integer idUsuario;
     private String usuarioSistema;
@@ -20,7 +20,6 @@ public class Usuarios {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String correoElectronico;
-
     public Usuarios() {
     }
 
@@ -51,7 +50,7 @@ public class Usuarios {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = false)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -61,7 +60,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "UsuarioSistema")
+    @Column(name = "UsuarioSistema", nullable = true, length = 64)
     public String getUsuarioSistema() {
         return usuarioSistema;
     }
@@ -71,7 +70,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "Contrasena")
+    @Column(name = "Contrasena", nullable = true, length = 128)
     public String getContrasena() {
         return contrasena;
     }
@@ -81,7 +80,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "UsuarioLDAP")
+    @Column(name = "UsuarioLDAP", nullable = true)
     public Boolean getUsuarioLdap() {
         return usuarioLdap;
     }
@@ -91,7 +90,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "FechaInactivacion")
+    @Column(name = "FechaInactivacion", nullable = true)
     public Date getFechaInactivacion() {
         return fechaInactivacion;
     }
@@ -101,7 +100,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -111,7 +110,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -121,7 +120,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -131,7 +130,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -141,7 +140,7 @@ public class Usuarios {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 64)
     public String getCorreoElectronico() {
         return correoElectronico;
     }

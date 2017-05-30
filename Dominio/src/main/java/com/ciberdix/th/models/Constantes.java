@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Constantes", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Constantes", schema = "dbo", catalog = "CREZCAMOS")
 public class Constantes {
     private Integer idConstante;
     private String constante;
@@ -31,9 +31,20 @@ public class Constantes {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Constantes(Integer idConstante, String constante, Integer idTipoDato, String valor, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idConstante = idConstante;
+        this.constante = constante;
+        this.idTipoDato = idTipoDato;
+        this.valor = valor;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdConstante")
+    @Column(name = "IdConstante", nullable = false)
     public Integer getIdConstante() {
         return idConstante;
     }
@@ -43,7 +54,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "Constante")
+    @Column(name = "Constante", nullable = true, length = 6)
     public String getConstante() {
         return constante;
     }
@@ -53,7 +64,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "IdTipoDato")
+    @Column(name = "IdTipoDato", nullable = true)
     public Integer getIdTipoDato() {
         return idTipoDato;
     }
@@ -63,7 +74,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "Valor")
+    @Column(name = "Valor", nullable = true, length = 250)
     public String getValor() {
         return valor;
     }
@@ -73,7 +84,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 250)
     public String getDescripcion() {
         return descripcion;
     }
@@ -83,7 +94,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -93,7 +104,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -103,7 +114,7 @@ public class Constantes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

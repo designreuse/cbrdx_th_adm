@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Danny on 18/05/2017.
  */
 @Entity
-@Table(name = "RequerimientosCompras", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RequerimientosCompras", schema = "dbo", catalog = "CREZCAMOS")
 public class RequerimientosCompras {
     private Integer idRequerimientoCompra;
     private Integer idRequerimiento;
@@ -20,6 +20,15 @@ public class RequerimientosCompras {
     }
 
     public RequerimientosCompras(Integer idRequerimiento, Integer idCompra, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idRequerimiento = idRequerimiento;
+        this.idCompra = idCompra;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public RequerimientosCompras(Integer idRequerimientoCompra, Integer idRequerimiento, Integer idCompra, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idRequerimientoCompra = idRequerimientoCompra;
         this.idRequerimiento = idRequerimiento;
         this.idCompra = idCompra;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;

@@ -21,7 +21,7 @@ public class TercerosDotaciones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroDotacion")
+    @Column(name = "IdTerceroDotacion", nullable = false)
     public Integer getIdTerceroDotacion() {
         return idTerceroDotacion;
     }
@@ -31,7 +31,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "IdTerceroDotacionEntrega")
+    @Column(name = "IdTerceroDotacionEntrega", nullable = true)
     public Integer getIdTerceroDotacionEntrega() {
         return idTerceroDotacionEntrega;
     }
@@ -41,7 +41,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -51,7 +51,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -61,7 +61,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "IdDotacion")
+    @Column(name = "IdDotacion", nullable = true)
     public Integer getIdDotacion() {
         return idDotacion;
     }
@@ -71,7 +71,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "Cantidad")
+    @Column(name = "Cantidad", nullable = true)
     public Integer getCantidad() {
         return cantidad;
     }
@@ -81,7 +81,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +91,7 @@ public class TercerosDotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

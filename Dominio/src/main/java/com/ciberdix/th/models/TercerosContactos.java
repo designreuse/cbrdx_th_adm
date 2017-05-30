@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
-@Table(name = "TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosContactos", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosContactos {
     private Integer idTerceroContacto;
     private Long idTercero;
@@ -33,9 +33,21 @@ public class TercerosContactos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosContactos(Integer idTerceroContacto, Long idTercero, String contacto, String telefono, String celular, Integer idListaParentesco, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroContacto = idTerceroContacto;
+        this.idTercero = idTercero;
+        this.contacto = contacto;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.idListaParentesco = idListaParentesco;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroContacto")
+    @Column(name = "IdTerceroContacto", nullable = false)
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
     }
@@ -45,7 +57,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -55,7 +67,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Contacto")
+    @Column(name = "Contacto", nullable = true, length = 250)
     public String getContacto() {
         return contacto;
     }
@@ -65,7 +77,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 25)
     public String getTelefono() {
         return telefono;
     }
@@ -75,7 +87,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 15)
     public String getCelular() {
         return celular;
     }
@@ -85,7 +97,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdListaParentesco")
+    @Column(name = "IdListaParentesco", nullable = true)
     public Integer getIdListaParentesco() {
         return idListaParentesco;
     }
@@ -95,7 +107,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -105,7 +117,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -115,7 +127,7 @@ public class TercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

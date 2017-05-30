@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "RiesgosSubTipos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RiesgosSubTipos", schema = "dbo", catalog = "CREZCAMOS")
 public class RiesgosSubTipos {
     private Integer idRiesgoSubTipo;
     private Integer idRiesgoTipo;
@@ -27,9 +27,18 @@ public class RiesgosSubTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RiesgosSubTipos(Integer idRiesgoSubTipo, Integer idRiesgoTipo, String riesgoSubTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRiesgoSubTipo = idRiesgoSubTipo;
+        this.idRiesgoTipo = idRiesgoTipo;
+        this.riesgoSubTipo = riesgoSubTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdRiesgoSubTipo")
+    @Column(name = "IdRiesgoSubTipo", nullable = false)
     public Integer getIdRiesgoSubTipo() {
         return idRiesgoSubTipo;
     }
@@ -39,7 +48,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "IdRiesgoTipo")
+    @Column(name = "IdRiesgoTipo", nullable = false)
     public Integer getIdRiesgoTipo() {
         return idRiesgoTipo;
     }
@@ -49,7 +58,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "RiesgoSubTipo")
+    @Column(name = "RiesgoSubTipo", nullable = true, length = 100)
     public String getRiesgoSubTipo() {
         return riesgoSubTipo;
     }
@@ -59,7 +68,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +78,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class RiesgosSubTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

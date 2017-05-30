@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Danny on 26/04/2017.
  */
 @Entity
-@Table(name = "ListasClasesTerceros", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ListasClasesTerceros", schema = "dbo", catalog = "CREZCAMOS")
 public class ListasClasesTerceros {
     private Integer idLista;
     private String codigo;
@@ -19,19 +19,36 @@ public class ListasClasesTerceros {
 
     public ListasClasesTerceros (){
     }
-
     public ListasClasesTerceros(String codigo, String nombre, Integer orden, boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.orden = orden;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public ListasClasesTerceros(Integer idLista, String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idLista = idLista;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdLista")
+    @Column(name = "IdLista", nullable = false)
     public Integer getIdLista() {
         return idLista;
     }
@@ -41,7 +58,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -51,7 +68,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -61,7 +78,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "Orden")
+    @Column(name = "Orden", nullable = false)
     public Integer getOrden() {
         return orden;
     }
@@ -71,7 +88,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +98,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +108,7 @@ public class ListasClasesTerceros {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

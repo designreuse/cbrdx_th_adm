@@ -58,6 +58,8 @@ public class ListasTiposReferenciasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposReferencias update(@RequestBody ListasTiposReferencias obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposReferencias(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

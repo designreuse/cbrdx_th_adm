@@ -72,6 +72,14 @@ public class TercerosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idArea}/{query}/{idCargo}")
+    @ApiOperation(value = "Obtener tercerosCargosAreasFisicas por idEstructuraFisica", notes = "Retorna el listado de tercerosCargosAreasFisica por idEstructuraFisica")
+    List<VTercerosCargosAreasFisicas> findByIdEstructuraFisica(@PathVariable Integer idArea, @PathVariable String query, @PathVariable Integer idCargo) {
+        RestTemplate restTemplate = new RestTemplate();
+        VTercerosCargosAreasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "api/terceros/buscarJefes/" + idArea + "/" + query + "/" + idCargo, VTercerosCargosAreasFisicas[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Crear tercero", notes = "Retorna el tercero creado")
     Terceros crearTercero(@RequestBody Terceros t) {

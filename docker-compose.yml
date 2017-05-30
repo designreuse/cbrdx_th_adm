@@ -1,23 +1,19 @@
-version: '3'
+version: "2"
 services:
     dominio:
         image: crezcamos/dominio
-        build: 
-            context: . 
-            dockerfile: ./Dominio/src/main/docker/Dockerfile
-
+        environment:
+            PUERTO_SERVICIO: 8446
+            HOST: bd-ciberdix.database.windows.net
         ports:
-            - "8444:8444"
+            - "8446:8446"
     negocio:
         image: crezcamos/logica
-        build: 
-            context: . 
-            dockerfile: ./Negocio/src/main/docker/Dockerfile
+        environment:
+            PUERTO_SERVICIO: 8449
+            HOST: 52.168.77.111
+            RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
         ports:
-            - "8448:8448"
+            - "8449:8449"
         links:
             - dominio
-networks: 
-    default: 
-        external: 
-            name: nat 

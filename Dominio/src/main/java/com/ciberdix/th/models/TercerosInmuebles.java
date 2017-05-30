@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
-@Table(name = "TercerosInmuebles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosInmuebles", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosInmuebles {
     private Integer idTerceroInmueble;
     private Long idTercero;
@@ -39,9 +39,24 @@ public class TercerosInmuebles {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosInmuebles(Integer idTerceroInmueble, Long idTercero, Integer idTipoVivienda, Integer idClaseVivienda, Integer idTipoConstruccionVivienda, Integer anioConstruccion, Integer numeroPisos, Integer numeroSotanos, Integer idEstrato, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroInmueble = idTerceroInmueble;
+        this.idTercero = idTercero;
+        this.idTipoVivienda = idTipoVivienda;
+        this.idClaseVivienda = idClaseVivienda;
+        this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
+        this.anioConstruccion = anioConstruccion;
+        this.numeroPisos = numeroPisos;
+        this.numeroSotanos = numeroSotanos;
+        this.idEstrato = idEstrato;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroInmueble")
+    @Column(name = "IdTerceroInmueble", nullable = false)
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
     }
@@ -51,7 +66,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -61,7 +76,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
+    @Column(name = "IdTipoVivienda", nullable = true)
     public Integer getIdTipoVivienda() {
         return idTipoVivienda;
     }
@@ -71,7 +86,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdClaseVivienda")
+    @Column(name = "IdClaseVivienda", nullable = true)
     public Integer getIdClaseVivienda() {
         return idClaseVivienda;
     }
@@ -81,7 +96,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoConstruccionVivienda")
+    @Column(name = "IdTipoConstruccionVivienda", nullable = true)
     public Integer getIdTipoConstruccionVivienda() {
         return idTipoConstruccionVivienda;
     }
@@ -91,7 +106,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AnioConstruccion")
+    @Column(name = "AnioConstruccion", nullable = true)
     public Integer getAnioConstruccion() {
         return anioConstruccion;
     }
@@ -101,7 +116,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroPisos")
+    @Column(name = "NumeroPisos", nullable = true)
     public Integer getNumeroPisos() {
         return numeroPisos;
     }
@@ -111,7 +126,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroSotanos")
+    @Column(name = "NumeroSotanos", nullable = true)
     public Integer getNumeroSotanos() {
         return numeroSotanos;
     }
@@ -121,7 +136,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdEstrato")
+    @Column(name = "IdEstrato", nullable = true)
     public Integer getIdEstrato() {
         return idEstrato;
     }
@@ -131,7 +146,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -141,7 +156,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -151,7 +166,7 @@ public class TercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

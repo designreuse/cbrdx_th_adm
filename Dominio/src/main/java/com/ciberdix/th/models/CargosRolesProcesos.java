@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "CargosRolesProcesos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CargosRolesProcesos", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosRolesProcesos {
     private Integer idCargoRolProceso;
     private Integer idRolProceso;
@@ -27,9 +27,18 @@ public class CargosRolesProcesos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosRolesProcesos(Integer idCargoRolProceso, Integer idRolProceso, Integer idCargo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCargoRolProceso = idCargoRolProceso;
+        this.idRolProceso = idRolProceso;
+        this.idCargo = idCargo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoRolProceso")
+    @Column(name = "IdCargoRolProceso", nullable = false)
     public Integer getIdCargoRolProceso() {
         return idCargoRolProceso;
     }
@@ -39,7 +48,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdRolProceso")
+    @Column(name = "IdRolProceso", nullable = false)
     public Integer getIdRolProceso() {
         return idRolProceso;
     }
@@ -49,7 +58,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -59,7 +68,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +78,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class CargosRolesProcesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

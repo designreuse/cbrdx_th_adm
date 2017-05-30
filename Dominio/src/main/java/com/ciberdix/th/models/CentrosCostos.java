@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "CentrosCostos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CentrosCostos", schema = "dbo", catalog = "CREZCAMOS")
 public class CentrosCostos {
     private Integer idCentroCostos;
     private String centroCostos;
@@ -27,9 +27,18 @@ public class CentrosCostos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CentrosCostos(Integer idCentroCostos, String centroCostos, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigoCentroCostos) {
+        this.idCentroCostos = idCentroCostos;
+        this.centroCostos = centroCostos;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigoCentroCostos = codigoCentroCostos;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCentroCostos")
+    @Column(name = "IdCentroCostos", nullable = false)
     public Integer getIdCentroCostos() {
         return idCentroCostos;
     }
@@ -39,7 +48,7 @@ public class CentrosCostos {
     }
 
     @Basic
-    @Column(name = "CentroCostos")
+    @Column(name = "CentroCostos", nullable = true, length = 30)
     public String getCentroCostos() {
         return centroCostos;
     }
@@ -49,7 +58,7 @@ public class CentrosCostos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -59,7 +68,7 @@ public class CentrosCostos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +78,7 @@ public class CentrosCostos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -79,7 +88,7 @@ public class CentrosCostos {
     }
 
     @Basic
-    @Column(name = "CodigoCentroCostos")
+    @Column(name = "CodigoCentroCostos", nullable = true, length = 30)
     public String getCodigoCentroCostos() {
         return codigoCentroCostos;
     }

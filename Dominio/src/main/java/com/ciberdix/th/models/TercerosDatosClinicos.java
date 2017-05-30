@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
-@Table(name = "TercerosDatosClinicos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosDatosClinicos", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosDatosClinicos {
     private Integer idTerceroDatoClinico;
     private Long idTercero;
@@ -18,10 +18,8 @@ public class TercerosDatosClinicos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
     public TercerosDatosClinicos() {
     }
-
     public TercerosDatosClinicos(Long idTercero, Integer idDiagnostico, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.idDiagnostico = idDiagnostico;
@@ -43,9 +41,17 @@ public class TercerosDatosClinicos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdTerceroDatoClinico")
+    @Column(name = "IdTerceroDatoClinico", nullable = false)
     public Integer getIdTerceroDatoClinico() {
         return idTerceroDatoClinico;
     }
@@ -55,7 +61,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -65,7 +71,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdDiagnostico")
+    @Column(name = "IdDiagnostico", nullable = true)
     public Integer getIdDiagnostico() {
         return idDiagnostico;
     }
@@ -75,7 +81,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -85,7 +91,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -95,7 +101,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -105,7 +111,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -115,7 +121,7 @@ public class TercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

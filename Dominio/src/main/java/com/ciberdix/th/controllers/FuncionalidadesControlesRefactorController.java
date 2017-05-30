@@ -66,7 +66,12 @@ public class FuncionalidadesControlesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     FuncionalidadesControles updateList(@RequestBody FuncionalidadesControles fc) {
-        return funcionalidadesControlesRefactorRepository.save(fc);
+        return funcionalidadesControlesRefactorRepository.save(
+                new FuncionalidadesControles(fc.getIdFuncionalidadControl(),fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
+                        fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
+                        fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
+                        fc.getIdPadre(), fc.getIndicadorSeccion())
+        );
     }
 
 }

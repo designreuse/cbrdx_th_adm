@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_TercerosEstudiosFormales", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosEstudiosFormales", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosEstudiosFormales {
     private Integer idTerceroEstudioFormal;
     private Long idTercero;
@@ -31,8 +31,17 @@ public class VTercerosEstudiosFormales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public void setFechaIngresa(java.sql.Date fechaIngresa) {
+        this.fechaIngresa = fechaIngresa;
+    }
+
+    public void setFechaTermina(java.sql.Date fechaTermina) {
+        this.fechaTermina = fechaTermina;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdTerceroEstudioFormal")
+    @Column(name = "IdTerceroEstudioFormal", nullable = false)
     public Integer getIdTerceroEstudioFormal() {
         return idTerceroEstudioFormal;
     }
@@ -42,7 +51,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -52,7 +61,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdNivelEstudio")
+    @Column(name = "IdNivelEstudio", nullable = false)
     public Integer getIdNivelEstudio() {
         return idNivelEstudio;
     }
@@ -62,7 +71,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "NivelEstudio")
+    @Column(name = "NivelEstudio", nullable = true, length = 100)
     public String getNivelEstudio() {
         return nivelEstudio;
     }
@@ -72,7 +81,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdAreaEstudio")
+    @Column(name = "IdAreaEstudio", nullable = false)
     public Integer getIdAreaEstudio() {
         return idAreaEstudio;
     }
@@ -82,7 +91,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "AreaEstudio")
+    @Column(name = "AreaEstudio", nullable = true, length = 100)
     public String getAreaEstudio() {
         return areaEstudio;
     }
@@ -92,7 +101,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "TituloEstudio")
+    @Column(name = "TituloEstudio", nullable = false, length = 100)
     public String getTituloEstudio() {
         return tituloEstudio;
     }
@@ -102,7 +111,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdInstitucion")
+    @Column(name = "IdInstitucion", nullable = true)
     public Integer getIdInstitucion() {
         return idInstitucion;
     }
@@ -112,7 +121,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "Institucion")
+    @Column(name = "Institucion", nullable = true, length = 100)
     public String getInstitucion() {
         return institucion;
     }
@@ -122,7 +131,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "OtraInstitucion")
+    @Column(name = "OtraInstitucion", nullable = true, length = 100)
     public String getOtraInstitucion() {
         return otraInstitucion;
     }
@@ -132,7 +141,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = false)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -142,7 +151,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "Ciudad")
+    @Column(name = "Ciudad", nullable = true, length = 100)
     public String getCiudad() {
         return ciudad;
     }
@@ -152,7 +161,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = false)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -162,7 +171,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "EstadoEstudio")
+    @Column(name = "EstadoEstudio", nullable = true, length = 100)
     public String getEstadoEstudio() {
         return estadoEstudio;
     }
@@ -172,7 +181,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "FechaIngresa")
+    @Column(name = "FechaIngresa", nullable = false)
     public Date getFechaIngresa() {
         return fechaIngresa;
     }
@@ -182,7 +191,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "FechaTermina")
+    @Column(name = "FechaTermina", nullable = true)
     public Date getFechaTermina() {
         return fechaTermina;
     }
@@ -192,7 +201,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -202,7 +211,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -212,7 +221,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -222,7 +231,7 @@ public class VTercerosEstudiosFormales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

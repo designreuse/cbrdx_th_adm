@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 
 @Entity
-@Table(name = "TercerosClases", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosClases", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosClases {
 
     private Integer idTerceroClase;
@@ -25,13 +25,22 @@ public class TercerosClases {
         this.idTercero = idTercero;
         this.idClaseTercero = idClaseTercero;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public TercerosClases(Integer idTerceroClase, Long idTercero, Integer idClaseTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroClase = idTerceroClase;
+        this.idTercero = idTercero;
+        this.idClaseTercero = idClaseTercero;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroClase")
+    @Column(name = "IdTerceroClase", nullable = false)
     public Integer getIdTerceroClase() {
         return idTerceroClase;
     }
@@ -41,7 +50,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -51,7 +60,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IdClaseTercero")
+    @Column(name = "IdClaseTercero", nullable = true)
     public Integer getIdClaseTercero() {
         return idClaseTercero;
     }
@@ -61,7 +70,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -71,7 +80,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -81,7 +90,7 @@ public class TercerosClases {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

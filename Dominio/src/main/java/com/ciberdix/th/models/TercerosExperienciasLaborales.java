@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "TercerosExperienciasLaborales", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosExperienciasLaborales", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosExperienciasLaborales {
     private Integer idTerceroExperienciaLaboral;
     private Long idTercero;
@@ -29,10 +29,8 @@ public class TercerosExperienciasLaborales {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
     public TercerosExperienciasLaborales() {
     }
-
     public TercerosExperienciasLaborales(Long idTercero, String empresa, String telefonoEmpresa, Integer idSectorEmpresa, Integer idSubSectorEmpresa, String cargo, Integer idNivelCargo, String areaCargo, String jefeInmediato, String tiempoExperiencia, Integer idCiudad, Boolean indicadorActualmente, Date fechaIngresa, Date fechaTermina, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.empresa = empresa;
@@ -76,9 +74,17 @@ public class TercerosExperienciasLaborales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaIngresa(java.sql.Date fechaIngresa) {
+        this.fechaIngresa = fechaIngresa;
+    }
+
+    public void setFechaTermina(java.sql.Date fechaTermina) {
+        this.fechaTermina = fechaTermina;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroExperienciaLaboral")
+    @Column(name = "IdTerceroExperienciaLaboral", nullable = false)
     public Integer getIdTerceroExperienciaLaboral() {
         return idTerceroExperienciaLaboral;
     }
@@ -88,7 +94,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -98,7 +104,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "Empresa")
+    @Column(name = "Empresa", nullable = false, length = 100)
     public String getEmpresa() {
         return empresa;
     }
@@ -108,7 +114,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "TelefonoEmpresa")
+    @Column(name = "TelefonoEmpresa", nullable = false, length = 100)
     public String getTelefonoEmpresa() {
         return telefonoEmpresa;
     }
@@ -118,7 +124,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdSectorEmpresa")
+    @Column(name = "IdSectorEmpresa", nullable = false)
     public Integer getIdSectorEmpresa() {
         return idSectorEmpresa;
     }
@@ -128,7 +134,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdSubSectorEmpresa")
+    @Column(name = "IdSubSectorEmpresa", nullable = false)
     public Integer getIdSubSectorEmpresa() {
         return idSubSectorEmpresa;
     }
@@ -138,7 +144,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = false, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -148,7 +154,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdNivelCargo")
+    @Column(name = "IdNivelCargo", nullable = false)
     public Integer getIdNivelCargo() {
         return idNivelCargo;
     }
@@ -158,7 +164,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AreaCargo")
+    @Column(name = "AreaCargo", nullable = false, length = 100)
     public String getAreaCargo() {
         return areaCargo;
     }
@@ -168,7 +174,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "JefeInmediato")
+    @Column(name = "JefeInmediato", nullable = false, length = 100)
     public String getJefeInmediato() {
         return jefeInmediato;
     }
@@ -178,7 +184,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "TiempoExperiencia")
+    @Column(name = "TiempoExperiencia", nullable = false, length = 100)
     public String getTiempoExperiencia() {
         return tiempoExperiencia;
     }
@@ -188,7 +194,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = false)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -198,7 +204,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IndicadorActualmente")
+    @Column(name = "IndicadorActualmente", nullable = false)
     public Boolean getIndicadorActualmente() {
         return indicadorActualmente;
     }
@@ -208,7 +214,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "FechaIngresa")
+    @Column(name = "FechaIngresa", nullable = false)
     public Date getFechaIngresa() {
         return fechaIngresa;
     }
@@ -218,7 +224,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "FechaTermina")
+    @Column(name = "FechaTermina", nullable = true)
     public Date getFechaTermina() {
         return fechaTermina;
     }
@@ -228,7 +234,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -238,7 +244,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -248,7 +254,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -258,7 +264,7 @@ public class TercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

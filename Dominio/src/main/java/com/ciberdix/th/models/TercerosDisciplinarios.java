@@ -23,7 +23,7 @@ public class TercerosDisciplinarios {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroDisciplinario")
+    @Column(name = "IdTerceroDisciplinario", nullable = false)
     public Integer getIdTerceroDisciplinario() {
         return idTerceroDisciplinario;
     }
@@ -33,7 +33,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -43,7 +43,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -53,7 +53,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "IdFalta")
+    @Column(name = "IdFalta", nullable = false)
     public Integer getIdFalta() {
         return idFalta;
     }
@@ -63,7 +63,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "FechaIncidente")
+    @Column(name = "FechaIncidente", nullable = false)
     public Timestamp getFechaIncidente() {
         return fechaIncidente;
     }
@@ -73,7 +73,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "Detalle")
+    @Column(name = "Detalle", nullable = true, length = 300)
     public String getDetalle() {
         return detalle;
     }
@@ -83,7 +83,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = false)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -93,7 +93,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "IdReporta")
+    @Column(name = "IdReporta", nullable = true)
     public Integer getIdReporta() {
         return idReporta;
     }
@@ -103,7 +103,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -113,7 +113,7 @@ public class TercerosDisciplinarios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -56,6 +56,8 @@ public class ListasTiposVehiculosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposVehiculos update(@RequestBody ListasTiposVehiculos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposVehiculos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

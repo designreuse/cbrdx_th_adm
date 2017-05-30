@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_EstructuraOrganizacionalCargos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_EstructuraOrganizacionalCargos", schema = "dbo", catalog = "CREZCAMOS")
 public class VEstructuraOrganizacionalCargos {
     private Integer idEstructuraOrganizacionalCargo;
     private Integer idEstructuraOrganizacional;
@@ -21,8 +21,9 @@ public class VEstructuraOrganizacionalCargos {
     private Timestamp auditoriaFecha;
     private Integer ocupados;
 
+    @Basic
     @Id
-    @Column(name = "IdEstructuraOrganizacionalCargo")
+    @Column(name = "IdEstructuraOrganizacionalCargo", nullable = false)
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
     }
@@ -32,7 +33,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -42,7 +43,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "EstructuraOrganizacional")
+    @Column(name = "EstructuraOrganizacional", nullable = true, length = 50)
     public String getEstructuraOrganizacional() {
         return estructuraOrganizacional;
     }
@@ -52,7 +53,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -62,7 +63,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -72,7 +73,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Salario")
+    @Column(name = "Salario", nullable = true, precision = 0)
     public Integer getSalario() {
         return salario;
     }
@@ -82,7 +83,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Plazas")
+    @Column(name = "Plazas", nullable = true)
     public Integer getPlazas() {
         return plazas;
     }
@@ -92,7 +93,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -102,7 +103,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -112,7 +113,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -122,7 +123,7 @@ public class VEstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Ocupados")
+    @Column(name = "Ocupados", nullable = true)
     public Integer getOcupados() {
         return ocupados;
     }

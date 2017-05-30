@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
-@Table(name = "Criterios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Criterios", schema = "dbo", catalog = "CREZCAMOS")
 public class Criterios {
     private Integer idCriterio;
     private String criterio;
@@ -25,8 +25,16 @@ public class Criterios {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Criterios(Integer idCriterio, String criterio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCriterio = idCriterio;
+        this.criterio = criterio;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdCriterio")
+    @Column(name = "IdCriterio", nullable = false)
     public Integer getIdCriterio() {
         return idCriterio;
     }
@@ -36,7 +44,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "Criterio")
+    @Column(name = "Criterio", nullable = true, length = 64)
     public String getCriterio() {
         return criterio;
     }
@@ -46,7 +54,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -56,7 +64,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -66,7 +74,7 @@ public class Criterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

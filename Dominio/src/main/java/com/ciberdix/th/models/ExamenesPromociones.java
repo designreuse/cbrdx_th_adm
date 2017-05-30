@@ -19,7 +19,7 @@ public class ExamenesPromociones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdExamenPromocion")
+    @Column(name = "IdExamenPromocion", nullable = false)
     public Integer getIdExamenPromocion() {
         return idExamenPromocion;
     }
@@ -29,7 +29,7 @@ public class ExamenesPromociones {
     }
 
     @Basic
-    @Column(name = "ExamenPromocion")
+    @Column(name = "ExamenPromocion", nullable = true, length = 50)
     public String getExamenPromocion() {
         return examenPromocion;
     }
@@ -39,7 +39,7 @@ public class ExamenesPromociones {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 200)
     public String getDescripcion() {
         return descripcion;
     }
@@ -49,7 +49,7 @@ public class ExamenesPromociones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -59,7 +59,7 @@ public class ExamenesPromociones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +69,7 @@ public class ExamenesPromociones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

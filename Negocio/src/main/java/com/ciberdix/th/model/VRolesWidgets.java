@@ -15,6 +15,7 @@ public class VRolesWidgets {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorObligatorio;
 
     public Integer getIdRolWidget() {
         return idRolWidget;
@@ -86,5 +87,13 @@ public class VRolesWidgets {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorObligatorio() {
+        return indicadorObligatorio;
+    }
+
+    public void setIndicadorObligatorio(Boolean indicadorObligatorio) {
+        this.indicadorObligatorio = indicadorObligatorio;
     }
 }

@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/4/2017.
  */
 @Entity
-@Table(name = "TercerosVehiculos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosVehiculos", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosVehiculos {
     private Integer idTerceroVehiculo;
     private Long idTercero;
@@ -37,9 +37,23 @@ public class TercerosVehiculos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosVehiculos(Integer idTerceroVehiculo, Long idTercero, Integer idTipoVehiculo, Integer idTipoServicio, Integer idMarca, Integer modelo, String placa, Integer idCiudad, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroVehiculo = idTerceroVehiculo;
+        this.idTercero = idTercero;
+        this.idTipoVehiculo = idTipoVehiculo;
+        this.idTipoServicio = idTipoServicio;
+        this.idMarca = idMarca;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.idCiudad = idCiudad;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroVehiculo")
+    @Column(name = "IdTerceroVehiculo", nullable = false)
     public Integer getIdTerceroVehiculo() {
         return idTerceroVehiculo;
     }
@@ -49,7 +63,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -59,7 +73,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTipoVehiculo")
+    @Column(name = "IdTipoVehiculo", nullable = true)
     public Integer getIdTipoVehiculo() {
         return idTipoVehiculo;
     }
@@ -69,7 +83,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdTipoServicio")
+    @Column(name = "IdTipoServicio", nullable = true)
     public Integer getIdTipoServicio() {
         return idTipoServicio;
     }
@@ -79,7 +93,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdMarca")
+    @Column(name = "IdMarca", nullable = true)
     public Integer getIdMarca() {
         return idMarca;
     }
@@ -89,7 +103,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "Modelo")
+    @Column(name = "Modelo", nullable = true)
     public Integer getModelo() {
         return modelo;
     }
@@ -99,7 +113,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "Placa")
+    @Column(name = "Placa", nullable = true, length = 20)
     public String getPlaca() {
         return placa;
     }
@@ -109,7 +123,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = true)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -119,7 +133,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -129,7 +143,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -139,7 +153,7 @@ public class TercerosVehiculos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

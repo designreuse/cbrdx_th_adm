@@ -38,6 +38,8 @@ public class GruposGestionRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     GruposGestion updateList(@RequestBody GruposGestion c) {
-        return gruposGestionRepository.save(new GruposGestion(c.getIdGrupoGestion(), c.getGrupoGestion(), c.getFunciones(), c.getResponsabilidades(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getFechaInicio(), c.getFechaFin(), c.getCodigoGrupoGestion()));
+        return gruposGestionRepository.save(new GruposGestion(c.getIdGrupoGestion(), c.getGrupoGestion(), c.getFunciones(),
+                c.getResponsabilidades(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getFechaInicio(),
+                c.getFechaFin(), c.getCodigoGrupoGestion()));
     }
 }

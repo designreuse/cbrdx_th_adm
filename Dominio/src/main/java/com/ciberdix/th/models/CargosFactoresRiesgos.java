@@ -19,7 +19,7 @@ public class CargosFactoresRiesgos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoFactorRiesgo")
+    @Column(name = "IdCargoFactorRiesgo", nullable = false)
     public Integer getIdCargoFactorRiesgo() {
         return idCargoFactorRiesgo;
     }
@@ -29,7 +29,7 @@ public class CargosFactoresRiesgos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -39,7 +39,7 @@ public class CargosFactoresRiesgos {
     }
 
     @Basic
-    @Column(name = "IdFactor")
+    @Column(name = "IdFactor", nullable = true)
     public Integer getIdFactor() {
         return idFactor;
     }
@@ -49,7 +49,7 @@ public class CargosFactoresRiesgos {
     }
 
     @Basic
-    @Column(name = "IdPeriodicidad")
+    @Column(name = "IdPeriodicidad", nullable = true)
     public Integer getIdPeriodicidad() {
         return idPeriodicidad;
     }
@@ -59,7 +59,7 @@ public class CargosFactoresRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +69,7 @@ public class CargosFactoresRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

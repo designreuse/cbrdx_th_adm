@@ -18,7 +18,7 @@ public class Profesiones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdProfesion")
+    @Column(name = "IdProfesion", nullable = false)
     public Integer getIdProfesion() {
         return idProfesion;
     }
@@ -28,7 +28,7 @@ public class Profesiones {
     }
 
     @Basic
-    @Column(name = "Profesion")
+    @Column(name = "Profesion", nullable = true, length = 512)
     public String getProfesion() {
         return profesion;
     }
@@ -38,7 +38,7 @@ public class Profesiones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -48,7 +48,7 @@ public class Profesiones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +58,7 @@ public class Profesiones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

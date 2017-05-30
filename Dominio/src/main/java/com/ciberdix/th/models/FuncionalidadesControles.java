@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@Table(name = "FuncionalidadesControles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "FuncionalidadesControles", schema = "dbo", catalog = "CREZCAMOS")
 public class FuncionalidadesControles {
     private Integer idFuncionalidadControl;
     private String codigo;
@@ -36,7 +36,22 @@ public class FuncionalidadesControles {
         this.indicadorVisible = indicadorVisible;
         this.indicadorImprimir = indicadorImprimir;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idPadre = idPadre;
+        this.indicadorSeccion = indicadorSeccion;
+    }
+
+    public FuncionalidadesControles(Integer idFuncionalidadControl, String codigo, String control, Integer idClasificacion, Integer idFuncionalidad, Boolean indicadorVisible, Boolean indicadorImprimir, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, Boolean indicadorSeccion) {
+        this.idFuncionalidadControl = idFuncionalidadControl;
+        this.codigo = codigo;
+        this.control = control;
+        this.idClasificacion = idClasificacion;
+        this.idFuncionalidad = idFuncionalidad;
+        this.indicadorVisible = indicadorVisible;
+        this.indicadorImprimir = indicadorImprimir;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idPadre = idPadre;
         this.indicadorSeccion = indicadorSeccion;
@@ -44,7 +59,7 @@ public class FuncionalidadesControles {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdFuncionalidadControl")
+    @Column(name = "IdFuncionalidadControl", nullable = false)
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;
     }
@@ -54,7 +69,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -64,7 +79,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "Control")
+    @Column(name = "Control", nullable = true, length = 50)
     public String getControl() {
         return control;
     }
@@ -74,7 +89,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdClasificacion")
+    @Column(name = "IdClasificacion", nullable = true)
     public Integer getIdClasificacion() {
         return idClasificacion;
     }
@@ -84,7 +99,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = true)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -94,7 +109,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorVisible")
+    @Column(name = "IndicadorVisible", nullable = true)
     public Boolean getIndicadorVisible() {
         return indicadorVisible;
     }
@@ -104,7 +119,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorImprimir")
+    @Column(name = "IndicadorImprimir", nullable = true)
     public Boolean getIndicadorImprimir() {
         return indicadorImprimir;
     }
@@ -114,7 +129,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -124,7 +139,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -134,7 +149,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -144,7 +159,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -154,7 +169,7 @@ public class FuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorSeccion")
+    @Column(name = "IndicadorSeccion", nullable = true)
     public Boolean getIndicadorSeccion() {
         return indicadorSeccion;
     }

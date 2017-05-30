@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Responsabilidades", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Responsabilidades", schema = "dbo", catalog = "CREZCAMOS")
 public class Responsabilidades {
     private Integer idResponsabilidad;
     private String responsabilidad;
@@ -27,8 +27,17 @@ public class Responsabilidades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Responsabilidades(Integer idResponsabilidad, String responsabilidad, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idResponsabilidad = idResponsabilidad;
+        this.responsabilidad = responsabilidad;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdResponsabilidad")
+    @Column(name = "IdResponsabilidad", nullable = false)
     public Integer getIdResponsabilidad() {
         return idResponsabilidad;
     }
@@ -38,7 +47,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "Responsabilidad")
+    @Column(name = "Responsabilidad", nullable = true, length = 64)
     public String getResponsabilidad() {
         return responsabilidad;
     }
@@ -48,7 +57,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -58,7 +67,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -68,7 +77,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -78,7 +87,7 @@ public class Responsabilidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

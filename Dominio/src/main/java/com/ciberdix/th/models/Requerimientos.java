@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by Danny on 19/05/2017.
  */
 @Entity
-@Table(name = "Requerimientos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Requerimientos", schema = "dbo", catalog = "CREZCAMOS")
 public class Requerimientos {
     private Integer idRequerimiento;
     private Integer idSolicitante;
@@ -41,6 +41,7 @@ public class Requerimientos {
     }
 
     public Requerimientos(Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
+        long time = System.currentTimeMillis();
         this.idSolicitante = idSolicitante;
         this.justificacion = justificacion;
         this.idCargo = idCargo;
@@ -50,22 +51,63 @@ public class Requerimientos {
         this.cantidadConvocados = cantidadConvocados;
         this.idEstado = idEstado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaFecha = new Timestamp(time);
         this.idResponsableSeleccion = idResponsableSeleccion;
         this.idFormaReclutamiento = idFormaReclutamiento;
         this.idEstructuraOrganizacional = idEstructuraOrganizacional;
         this.idZona = idZona;
         this.idEstructuraFisica = idEstructuraFisica;
-        this.fechaSolicitud = new Date(fechaSolicitud.getTime());
+        this.fechaSolicitud = new Date(time);
         this.indicadorAutorizacion = indicadorAutorizacion;
         this.indicadorAumentoPlazas = indicadorAumentoPlazas;
         this.idJefe = idJefe;
         this.idCategoria = idCategoria;
         this.idTipoSolicitud = idTipoSolicitud;
-        this.fechaInicio = new Date(fechaInicio.getTime());
-        this.fechaFin = new Date(fechaFin.getTime());
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.nombreCargo = nombreCargo;
         this.funcionCargo = funcionCargo;
+    }
+    public Requerimientos(Integer idRequerimiento, Integer idSolicitante, String justificacion, Integer idCargo, Integer idFormaContratacion, Integer idTipoContratacion, Integer cantidadVacantes, Integer cantidadConvocados, Integer idEstado, Integer auditoriaUsuario, Integer idResponsableSeleccion, Integer idFormaReclutamiento, Integer idEstructuraOrganizacional, Integer idZona, Integer idEstructuraFisica, Date fechaSolicitud, Boolean indicadorAutorizacion, Boolean indicadorAumentoPlazas, Long idJefe, Integer idCategoria, Integer idTipoSolicitud, Date fechaInicio, Date fechaFin, String nombreCargo, String funcionCargo) {
+        long time = System.currentTimeMillis();
+        this.idRequerimiento = idRequerimiento;
+        this.idSolicitante = idSolicitante;
+        this.justificacion = justificacion;
+        this.idCargo = idCargo;
+        this.idFormaContratacion = idFormaContratacion;
+        this.idTipoContratacion = idTipoContratacion;
+        this.cantidadVacantes = cantidadVacantes;
+        this.cantidadConvocados = cantidadConvocados;
+        this.idEstado = idEstado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(time);
+        this.idResponsableSeleccion = idResponsableSeleccion;
+        this.idFormaReclutamiento = idFormaReclutamiento;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idZona = idZona;
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.fechaSolicitud = new Date(time);
+        this.indicadorAutorizacion = indicadorAutorizacion;
+        this.indicadorAumentoPlazas = indicadorAumentoPlazas;
+        this.idJefe = idJefe;
+        this.idCategoria = idCategoria;
+        this.idTipoSolicitud = idTipoSolicitud;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.nombreCargo = nombreCargo;
+        this.funcionCargo = funcionCargo;
+    }
+
+    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     @Id

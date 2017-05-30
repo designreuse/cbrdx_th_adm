@@ -56,6 +56,8 @@ public class ListasClasificacionesSedesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasClasificacionesSedes update(@RequestBody ListasClasificacionesSedes obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasClasificacionesSedes(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

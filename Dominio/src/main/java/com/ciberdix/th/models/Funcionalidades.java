@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@Table(name = "Funcionalidades", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Funcionalidades", schema = "dbo", catalog = "CREZCAMOS")
 public class Funcionalidades {
     private Integer idFuncionalidad;
     private Integer idMenu;
@@ -21,13 +21,21 @@ public class Funcionalidades {
     public Funcionalidades(Integer idMenu, Boolean indicadorHabilitado, Integer auditoriaUsuario){
         this.idMenu = idMenu;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public Funcionalidades(Integer idFuncionalidad, Integer idMenu, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idFuncionalidad = idFuncionalidad;
+        this.idMenu = idMenu;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdFuncionalidad")
+    @Column(name = "IdFuncionalidad", nullable = false)
     public Integer getIdFuncionalidad() {
         return idFuncionalidad;
     }
@@ -37,7 +45,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "IdMenu")
+    @Column(name = "IdMenu", nullable = true)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -47,7 +55,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -57,7 +65,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -67,7 +75,7 @@ public class Funcionalidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -56,6 +56,8 @@ public class ListasEstratosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstratos update(@RequestBody ListasEstratos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstratos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

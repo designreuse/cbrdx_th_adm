@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_TercerosDatosClinicos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosDatosClinicos", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosDatosClinicos {
     private Integer idDiagnosticoCie;
     private String codigo;
@@ -22,8 +22,16 @@ public class VTercerosDatosClinicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     @Basic
-    @Column(name = "IdDiagnosticoCIE")
+    @Column(name = "IdDiagnosticoCIE", nullable = false)
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
     }
@@ -33,7 +41,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 4)
     public String getCodigo() {
         return codigo;
     }
@@ -43,7 +51,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = false, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -52,8 +60,9 @@ public class VTercerosDatosClinicos {
         this.descripcion = descripcion;
     }
 
+    @Basic
     @Id
-    @Column(name = "IdTerceroDatoClinico")
+    @Column(name = "IdTerceroDatoClinico", nullable = false)
     public Integer getIdTerceroDatoClinico() {
         return idTerceroDatoClinico;
     }
@@ -63,7 +72,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -73,7 +82,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IdDiagnostico")
+    @Column(name = "IdDiagnostico", nullable = true)
     public Integer getIdDiagnostico() {
         return idDiagnostico;
     }
@@ -83,7 +92,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -93,7 +102,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -103,7 +112,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -113,7 +122,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -123,7 +132,7 @@ public class VTercerosDatosClinicos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

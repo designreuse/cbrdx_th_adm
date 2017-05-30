@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Danny on 4/05/2017.
  */
 @Entity
-@Table(name = "V_CargosRelacionados", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_CargosRelacionados", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargosRelacionados {
     private int idCargoRelacionado;
     private int idTipoRelacion;
@@ -18,8 +18,25 @@ public class VCargosRelacionados {
     private Integer idCargoRelacion;
     private Boolean indicadorHabilitado;
 
+    public void setIdCargoRelacionado(Integer idCargoRelacionado) {
+        this.idCargoRelacionado = idCargoRelacionado;
+    }
+
+    public void setIdTipoRelacion(Integer idTipoRelacion) {
+        this.idTipoRelacion = idTipoRelacion;
+    }
+
+    public void setIdCargo(Integer idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdCargoRelacionado")
+    @Column(name = "IdCargoRelacionado", nullable = false)
     public int getIdCargoRelacionado() {
         return idCargoRelacionado;
     }
@@ -29,7 +46,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdTipoRelacion")
+    @Column(name = "IdTipoRelacion", nullable = false)
     public int getIdTipoRelacion() {
         return idTipoRelacion;
     }
@@ -39,7 +56,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public int getIdCargo() {
         return idCargo;
     }
@@ -49,7 +66,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public int getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -59,7 +76,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -69,7 +86,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -79,7 +96,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IdCargoRelacion")
+    @Column(name = "IdCargoRelacion", nullable = true)
     public Integer getIdCargoRelacion() {
         return idCargoRelacion;
     }
@@ -89,7 +106,7 @@ public class VCargosRelacionados {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

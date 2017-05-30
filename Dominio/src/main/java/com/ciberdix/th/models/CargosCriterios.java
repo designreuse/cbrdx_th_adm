@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/8/2017.
  */
 @Entity
-@Table(name = "CargosCriterios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CargosCriterios", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosCriterios {
     private Integer idCargoCriterio;
     private Integer idCriterio;
@@ -33,9 +33,21 @@ public class CargosCriterios {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosCriterios(Integer idCargoCriterio, Integer idCriterio, Integer idCargo, Integer auditoriaUsuario, String descripcion, Double meta, Double factor, Boolean indicadorHabilitado) {
+        this.idCargoCriterio = idCargoCriterio;
+        this.idCriterio = idCriterio;
+        this.idCargo = idCargo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.descripcion = descripcion;
+        this.meta = meta;
+        this.factor = factor;
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoCriterio")
+    @Column(name = "IdCargoCriterio", nullable = false)
     public Integer getIdCargoCriterio() {
         return idCargoCriterio;
     }
@@ -45,7 +57,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IdCriterio")
+    @Column(name = "IdCriterio", nullable = false)
     public Integer getIdCriterio() {
         return idCriterio;
     }
@@ -55,7 +67,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -65,7 +77,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -75,7 +87,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -85,7 +97,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -95,7 +107,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Meta")
+    @Column(name = "Meta", nullable = true, precision = 0)
     public Double getMeta() {
         return meta;
     }
@@ -105,7 +117,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "Factor")
+    @Column(name = "Factor", nullable = true, precision = 0)
     public Double getFactor() {
         return factor;
     }
@@ -150,7 +162,7 @@ public class CargosCriterios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

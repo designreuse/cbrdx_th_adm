@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "DivisionPoliticaTipos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "DivisionPoliticaTipos", schema = "dbo", catalog = "CREZCAMOS")
 public class DivisionPoliticaTipos {
     private Integer idDivisionPoliticaTipo;
     private String descripcionTipo;
@@ -27,9 +27,18 @@ public class DivisionPoliticaTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public DivisionPoliticaTipos(Integer idDivisionPoliticaTipo, String descripcionTipo, String codigoDivisionPoliticaTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
+        this.descripcionTipo = descripcionTipo;
+        this.codigoDivisionPoliticaTipo = codigoDivisionPoliticaTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdDivisionPoliticaTipo")
+    @Column(name = "IdDivisionPoliticaTipo", nullable = false)
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -39,7 +48,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "DescripcionTipo")
+    @Column(name = "DescripcionTipo", nullable = false, length = 20)
     public String getDescripcionTipo() {
         return descripcionTipo;
     }
@@ -49,7 +58,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "CodigoDivisionPoliticaTipo")
+    @Column(name = "CodigoDivisionPoliticaTipo", nullable = false, length = 10)
     public String getCodigoDivisionPoliticaTipo() {
         return codigoDivisionPoliticaTipo;
     }
@@ -59,7 +68,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +78,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class DivisionPoliticaTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

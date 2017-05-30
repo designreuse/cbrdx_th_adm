@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-@Table(name = "CargosProductividades", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CargosProductividades", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosProductividades {
     private Integer idCargoProductividad;
     private Integer idCargo;
@@ -29,9 +29,19 @@ public class CargosProductividades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosProductividades(Integer idCargoProductividad, Integer idCargo, Integer idProductividad, Integer idProductividadIq, Integer idProductividadAptitud, Integer auditoriaUsuario) {
+        this.idCargoProductividad = idCargoProductividad;
+        this.idCargo = idCargo;
+        this.idProductividad = idProductividad;
+        this.idProductividadIq = idProductividadIq;
+        this.idProductividadAptitud = idProductividadAptitud;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoProductividad")
+    @Column(name = "IdCargoProductividad", nullable = false)
     public Integer getIdCargoProductividad() {
         return idCargoProductividad;
     }
@@ -41,7 +51,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -51,7 +61,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "IdProductividad")
+    @Column(name = "IdProductividad", nullable = true)
     public Integer getIdProductividad() {
         return idProductividad;
     }
@@ -61,7 +71,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "IdProductividadIQ")
+    @Column(name = "IdProductividadIQ", nullable = true)
     public Integer getIdProductividadIq() {
         return idProductividadIq;
     }
@@ -71,7 +81,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "IdProductividadAptitud")
+    @Column(name = "IdProductividadAptitud", nullable = true)
     public Integer getIdProductividadAptitud() {
         return idProductividadAptitud;
     }
@@ -81,7 +91,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class CargosProductividades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

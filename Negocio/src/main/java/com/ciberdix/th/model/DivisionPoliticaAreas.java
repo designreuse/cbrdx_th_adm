@@ -11,7 +11,8 @@ public class DivisionPoliticaAreas {
     private String descripcionDivisionPoliticaArea;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
-    private Timestamp auditoriaFecha;    
+    private Timestamp auditoriaFecha;
+    private String codigo;
 
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
@@ -51,5 +52,13 @@ public class DivisionPoliticaAreas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }

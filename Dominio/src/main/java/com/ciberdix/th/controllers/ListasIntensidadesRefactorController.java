@@ -58,6 +58,8 @@ public class ListasIntensidadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasIntensidades update(@RequestBody ListasIntensidades obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasIntensidades(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

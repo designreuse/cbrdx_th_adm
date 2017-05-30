@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_CargosExamenes", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_CargosExamenes", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargosExamenes {
     private Integer idCargoExamen;
     private Integer idCargo;
@@ -20,8 +20,9 @@ public class VCargosExamenes {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdCargoExamen")
+    @Column(name = "IdCargoExamen", nullable = false)
     public Integer getIdCargoExamen() {
         return idCargoExamen;
     }
@@ -31,7 +32,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -41,7 +42,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -51,7 +52,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "IdExamen")
+    @Column(name = "IdExamen", nullable = true)
     public Integer getIdExamen() {
         return idExamen;
     }
@@ -61,7 +62,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "Examen")
+    @Column(name = "Examen", nullable = true, length = 100)
     public String getExamen() {
         return examen;
     }
@@ -71,7 +72,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorIngreso")
+    @Column(name = "IndicadorIngreso", nullable = true)
     public Boolean getIndicadorIngreso() {
         return indicadorIngreso;
     }
@@ -81,7 +82,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorPeriodicidad")
+    @Column(name = "IndicadorPeriodicidad", nullable = true)
     public Boolean getIndicadorPeriodicidad() {
         return indicadorPeriodicidad;
     }
@@ -91,7 +92,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorRetiro")
+    @Column(name = "IndicadorRetiro", nullable = true)
     public Boolean getIndicadorRetiro() {
         return indicadorRetiro;
     }
@@ -101,7 +102,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -111,7 +112,7 @@ public class VCargosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

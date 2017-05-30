@@ -1,5 +1,7 @@
 package com.ciberdix.th.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.sql.Timestamp;
 
 /**
@@ -12,6 +14,7 @@ public class RolesWidgets {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean  indicadorObligatorio;
 
     public Integer getIdRolWidget() {
         return idRolWidget;
@@ -59,5 +62,13 @@ public class RolesWidgets {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorObligatorio() {
+        return indicadorObligatorio;
+    }
+
+    public void setIndicadorObligatorio(Boolean indicadorObligatorio) {
+        this.indicadorObligatorio = indicadorObligatorio;
     }
 }

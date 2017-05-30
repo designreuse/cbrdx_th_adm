@@ -18,7 +18,7 @@ public class Adjuntos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = false)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -28,7 +28,7 @@ public class Adjuntos {
     }
 
     @Basic
-    @Column(name = "IdTipoAdjunto")
+    @Column(name = "IdTipoAdjunto", nullable = true)
     public Integer getIdTipoAdjunto() {
         return idTipoAdjunto;
     }
@@ -38,7 +38,7 @@ public class Adjuntos {
     }
 
     @Basic
-    @Column(name = "Adjunto")
+    @Column(name = "Adjunto", nullable = true, length = 100)
     public String getAdjunto() {
         return adjunto;
     }
@@ -48,7 +48,7 @@ public class Adjuntos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +58,7 @@ public class Adjuntos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

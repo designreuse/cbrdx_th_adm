@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "OcupacionesTipos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "OcupacionesTipos", schema = "dbo", catalog = "CREZCAMOS")
 public class OcupacionesTipos {
     private Integer idOcupacionTipo;
     private Integer codigoOcupacionTipo;
@@ -27,9 +27,18 @@ public class OcupacionesTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public OcupacionesTipos(Integer idOcupacionTipo, Integer codigoOcupacionTipo, String descripcionOcupacionTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idOcupacionTipo = idOcupacionTipo;
+        this.codigoOcupacionTipo = codigoOcupacionTipo;
+        this.descripcionOcupacionTipo = descripcionOcupacionTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdOcupacionTipo")
+    @Column(name = "IdOcupacionTipo", nullable = false)
     public Integer getIdOcupacionTipo() {
         return idOcupacionTipo;
     }
@@ -39,7 +48,7 @@ public class OcupacionesTipos {
     }
 
     @Basic
-    @Column(name = "CodigoOcupacionTipo")
+    @Column(name = "CodigoOcupacionTipo", nullable = false)
     public Integer getCodigoOcupacionTipo() {
         return codigoOcupacionTipo;
     }
@@ -49,7 +58,7 @@ public class OcupacionesTipos {
     }
 
     @Basic
-    @Column(name = "DescripcionOcupacionTipo")
+    @Column(name = "DescripcionOcupacionTipo", nullable = false, length = 50)
     public String getDescripcionOcupacionTipo() {
         return descripcionOcupacionTipo;
     }
@@ -59,7 +68,7 @@ public class OcupacionesTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +78,7 @@ public class OcupacionesTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class OcupacionesTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

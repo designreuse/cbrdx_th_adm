@@ -33,6 +33,15 @@ public class VEstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorPlantaConfirmada;
+    private Boolean indicadorZona;
+
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
+    }
 
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;

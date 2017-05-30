@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 17/04/2017.
  */
 @Entity
-@Table(name = "EstructuraOrganizacional", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "EstructuraOrganizacional", schema = "dbo", catalog = "CREZCAMOS")
 public class EstructuraOrganizacional {
     private Integer idEstructuraOrganizacional;
     private String codigo;
@@ -30,11 +30,12 @@ public class EstructuraOrganizacional {
     private Timestamp auditoriaFecha;
     private Integer idEstructuraFisica;
     private Boolean indicadorPlantaConfirmada;
+    private Boolean indicadorZona;
 
     public EstructuraOrganizacional() {
     }
 
-    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada) {
+    public EstructuraOrganizacional(String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada,Boolean indicadorZona) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.idPadre = idPadre;
@@ -55,11 +56,37 @@ public class EstructuraOrganizacional {
         this.idEstructuraFisica = idEstructuraFisica;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+        this.indicadorZona = indicadorZona;
+    }
+
+    public EstructuraOrganizacional(Integer idEstructuraOrganizacional, String codigo, String nombre, Integer idPadre, Integer idTipoEstructura, Integer idCentroCostos, Integer idTipoArea, Integer idTipoDocumento, String numeroDocumento, Integer idLocalizacion, String razonSocial, String telefono, String celular, String correoElectronico, String paginaWeb, Integer idLogo, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idEstructuraFisica, Boolean indicadorPlantaConfirmada, Boolean indicadorZona) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.idPadre = idPadre;
+        this.idTipoEstructura = idTipoEstructura;
+        this.idCentroCostos = idCentroCostos;
+        this.idTipoArea = idTipoArea;
+        this.idTipoDocumento = idTipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.idLocalizacion = idLocalizacion;
+        this.razonSocial = razonSocial;
+        this.telefono = telefono;
+        this.celular = celular;
+        this.correoElectronico = correoElectronico;
+        this.paginaWeb = paginaWeb;
+        this.idLogo = idLogo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idEstructuraFisica = idEstructuraFisica;
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+        this.indicadorZona = indicadorZona;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = false)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -69,7 +96,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -79,7 +106,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = true, length = 50)
     public String getNombre() {
         return nombre;
     }
@@ -89,7 +116,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -99,7 +126,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoEstructura")
+    @Column(name = "IdTipoEstructura", nullable = true)
     public Integer getIdTipoEstructura() {
         return idTipoEstructura;
     }
@@ -109,7 +136,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdCentroCostos")
+    @Column(name = "IdCentroCostos", nullable = true)
     public Integer getIdCentroCostos() {
         return idCentroCostos;
     }
@@ -119,7 +146,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoArea")
+    @Column(name = "IdTipoArea", nullable = true)
     public Integer getIdTipoArea() {
         return idTipoArea;
     }
@@ -129,7 +156,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -139,7 +166,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "NumeroDocumento")
+    @Column(name = "NumeroDocumento", nullable = true, length = 50)
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
@@ -149,7 +176,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -159,7 +186,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "RazonSocial")
+    @Column(name = "RazonSocial", nullable = true, length = 50)
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -169,7 +196,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 50)
     public String getTelefono() {
         return telefono;
     }
@@ -179,7 +206,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 50)
     public String getCelular() {
         return celular;
     }
@@ -189,7 +216,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -199,7 +226,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "PaginaWeb")
+    @Column(name = "PaginaWeb", nullable = true, length = 50)
     public String getPaginaWeb() {
         return paginaWeb;
     }
@@ -209,7 +236,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLogo")
+    @Column(name = "IdLogo", nullable = true)
     public Integer getIdLogo() {
         return idLogo;
     }
@@ -219,7 +246,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -229,7 +256,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -239,7 +266,7 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -249,13 +276,33 @@ public class EstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = true)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
 
     public void setIdEstructuraFisica(Integer idEstructuraFisica) {
         this.idEstructuraFisica = idEstructuraFisica;
+    }
+
+    @Basic
+    @Column(name = "IndicadorPlantaConfirmada", nullable = true)
+    public Boolean getIndicadorPlantaConfirmada() {
+        return indicadorPlantaConfirmada;
+    }
+
+    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
+        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+    }
+
+    @Basic
+    @Column(name = "IndicadorZona", nullable = true)
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 
     @Override
@@ -265,8 +312,7 @@ public class EstructuraOrganizacional {
 
         EstructuraOrganizacional that = (EstructuraOrganizacional) o;
 
-        if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
-            return false;
+        if (!idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional)) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
@@ -290,16 +336,18 @@ public class EstructuraOrganizacional {
         if (idLogo != null ? !idLogo.equals(that.idLogo) : that.idLogo != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+        if (indicadorPlantaConfirmada != null ? !indicadorPlantaConfirmada.equals(that.indicadorPlantaConfirmada) : that.indicadorPlantaConfirmada != null)
             return false;
-        return idEstructuraFisica != null ? idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica == null;
+        return indicadorZona != null ? indicadorZona.equals(that.indicadorZona) : that.indicadorZona == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0;
+        int result = idEstructuraOrganizacional.hashCode();
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
@@ -316,19 +364,11 @@ public class EstructuraOrganizacional {
         result = 31 * result + (paginaWeb != null ? paginaWeb.hashCode() : 0);
         result = 31 * result + (idLogo != null ? idLogo.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
+        result = 31 * result + (indicadorPlantaConfirmada != null ? indicadorPlantaConfirmada.hashCode() : 0);
+        result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "IndicadorPlantaConfirmada")
-    public Boolean getIndicadorPlantaConfirmada() {
-        return indicadorPlantaConfirmada;
-    }
-
-    public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
-        this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
     }
 }

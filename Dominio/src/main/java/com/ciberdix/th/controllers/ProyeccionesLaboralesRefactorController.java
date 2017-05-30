@@ -72,6 +72,12 @@ public class ProyeccionesLaboralesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj) {
-        proyeccionesLaboralesRefactorRepository.save(obj);
+        proyeccionesLaboralesRefactorRepository.save(
+                new ProyeccionesLaborales(obj.getIdProyecccionLaboral(),obj.getIdEstructuraOrganizacional(),
+                        obj.getIdCargo(),obj.getPlazasActuales(), obj.getPlazasProyectadas(), obj.getCostoActual(),
+                        obj.getCostoProyectado(), obj.getIdEstadoProyeccion(), obj.getIdUsuarioProyecta(),
+                        obj.getIdUsuarioAprueba(), obj.getAnio(), obj.getObservacion(),
+                        obj.getObservacionAprobacion(), obj.getAuditoriaUsuario())
+        );
     }
 }

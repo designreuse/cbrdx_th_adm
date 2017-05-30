@@ -19,7 +19,7 @@ public class TercerosEvaluacionesCompetencias {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroEvaluacionCompetencia")
+    @Column(name = "IdTerceroEvaluacionCompetencia", nullable = false)
     public Integer getIdTerceroEvaluacionCompetencia() {
         return idTerceroEvaluacionCompetencia;
     }
@@ -29,7 +29,7 @@ public class TercerosEvaluacionesCompetencias {
     }
 
     @Basic
-    @Column(name = "IdTerceroEvaluacion")
+    @Column(name = "IdTerceroEvaluacion", nullable = false)
     public Integer getIdTerceroEvaluacion() {
         return idTerceroEvaluacion;
     }
@@ -39,7 +39,7 @@ public class TercerosEvaluacionesCompetencias {
     }
 
     @Basic
-    @Column(name = "IdCargoCompetencia")
+    @Column(name = "IdCargoCompetencia", nullable = false)
     public Integer getIdCargoCompetencia() {
         return idCargoCompetencia;
     }
@@ -49,7 +49,7 @@ public class TercerosEvaluacionesCompetencias {
     }
 
     @Basic
-    @Column(name = "IdCalificacion")
+    @Column(name = "IdCalificacion", nullable = true)
     public Integer getIdCalificacion() {
         return idCalificacion;
     }
@@ -59,7 +59,7 @@ public class TercerosEvaluacionesCompetencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -69,7 +69,7 @@ public class TercerosEvaluacionesCompetencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

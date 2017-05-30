@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_EstructuraFisica", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_EstructuraFisica", schema = "dbo", catalog = "CREZCAMOS")
 public class VEstructuraFisica {
     private Integer idEstructuraFisica;
     private String codigo;
@@ -25,8 +25,9 @@ public class VEstructuraFisica {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = false)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -36,7 +37,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -46,7 +47,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "EstructuraFisica")
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
     public String getEstructuraFisica() {
         return estructuraFisica;
     }
@@ -56,7 +57,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IdClasificacionSede")
+    @Column(name = "IdClasificacionSede", nullable = true)
     public Integer getIdClasificacionSede() {
         return idClasificacionSede;
     }
@@ -66,7 +67,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "ClasificacionSede")
+    @Column(name = "ClasificacionSede", nullable = true, length = 100)
     public String getClasificacionSede() {
         return clasificacionSede;
     }
@@ -76,7 +77,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -86,7 +87,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Direccion")
+    @Column(name = "Direccion", nullable = true, length = 512)
     public String getDireccion() {
         return direccion;
     }
@@ -96,7 +97,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Camino")
+    @Column(name = "Camino", nullable = true, length = 100)
     public String getCamino() {
         return camino;
     }
@@ -106,7 +107,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 50)
     public String getTelefono() {
         return telefono;
     }
@@ -116,7 +117,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 50)
     public String getCelular() {
         return celular;
     }
@@ -126,7 +127,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -136,7 +137,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IndicadorVirtual")
+    @Column(name = "IndicadorVirtual", nullable = true)
     public Boolean getIndicadorVirtual() {
         return indicadorVirtual;
     }
@@ -146,7 +147,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -156,7 +157,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -166,7 +167,7 @@ public class VEstructuraFisica {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

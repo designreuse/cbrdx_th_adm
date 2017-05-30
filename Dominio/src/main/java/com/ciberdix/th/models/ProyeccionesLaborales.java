@@ -7,10 +7,10 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@NamedStoredProcedureQuery(name = "GenProy", procedureName = "crz_th.GenerarProyeccion", parameters = {
+@NamedStoredProcedureQuery(name = "GenProy", procedureName = "dbo.GenerarProyeccion", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Usuario", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "Output", type = Integer.class)})
-@Table(name = "ProyeccionesLaborales", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ProyeccionesLaborales", schema = "dbo", catalog = "CREZCAMOS")
 public class ProyeccionesLaborales {
     private Integer idProyecccionLaboral;
     private Integer idEstructuraOrganizacional;
@@ -27,6 +27,7 @@ public class ProyeccionesLaborales {
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer año;
 
     public ProyeccionesLaborales() {
     }
@@ -48,9 +49,27 @@ public class ProyeccionesLaborales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public ProyeccionesLaborales(Integer idProyecccionLaboral, Integer idEstructuraOrganizacional, Integer idCargo, Integer plazasActuales, Integer plazasProyectadas, Double costoActual, Double costoProyectado, Integer idEstadoProyeccion, Integer idUsuarioProyecta, Integer idUsuarioAprueba, Integer anio, String observacion, String observacionAprobacion, Integer auditoriaUsuario) {
+        this.idProyecccionLaboral = idProyecccionLaboral;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idCargo = idCargo;
+        this.plazasActuales = plazasActuales;
+        this.plazasProyectadas = plazasProyectadas;
+        this.costoActual = costoActual;
+        this.costoProyectado = costoProyectado;
+        this.idEstadoProyeccion = idEstadoProyeccion;
+        this.idUsuarioProyecta = idUsuarioProyecta;
+        this.idUsuarioAprueba = idUsuarioAprueba;
+        this.anio = anio;
+        this.observacion = observacion;
+        this.observacionAprobacion = observacionAprobacion;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdProyecccionLaboral")
+    @Column(name = "IdProyecccionLaboral", nullable = false)
     public Integer getIdProyecccionLaboral() {
         return idProyecccionLaboral;
     }
@@ -60,7 +79,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -70,7 +89,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -80,7 +99,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "PlazasActuales")
+    @Column(name = "PlazasActuales", nullable = true)
     public Integer getPlazasActuales() {
         return plazasActuales;
     }
@@ -90,7 +109,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "PlazasProyectadas")
+    @Column(name = "PlazasProyectadas", nullable = true)
     public Integer getPlazasProyectadas() {
         return plazasProyectadas;
     }
@@ -100,7 +119,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "CostoActual")
+    @Column(name = "CostoActual", nullable = true, precision = 0)
     public Double getCostoActual() {
         return costoActual;
     }
@@ -110,7 +129,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "CostoProyectado")
+    @Column(name = "CostoProyectado", nullable = true, precision = 0)
     public Double getCostoProyectado() {
         return costoProyectado;
     }
@@ -120,7 +139,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdEstadoProyeccion")
+    @Column(name = "IdEstadoProyeccion", nullable = true)
     public Integer getIdEstadoProyeccion() {
         return idEstadoProyeccion;
     }
@@ -130,7 +149,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdUsuarioProyecta")
+    @Column(name = "IdUsuarioProyecta", nullable = true)
     public Integer getIdUsuarioProyecta() {
         return idUsuarioProyecta;
     }
@@ -140,7 +159,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "IdUsuarioAprueba")
+    @Column(name = "IdUsuarioAprueba", nullable = true)
     public Integer getIdUsuarioAprueba() {
         return idUsuarioAprueba;
     }
@@ -160,7 +179,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 500)
     public String getObservacion() {
         return observacion;
     }
@@ -170,7 +189,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "ObservacionAprobacion")
+    @Column(name = "ObservacionAprobacion", nullable = true, length = 500)
     public String getObservacionAprobacion() {
         return observacionAprobacion;
     }
@@ -180,7 +199,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -190,7 +209,7 @@ public class ProyeccionesLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

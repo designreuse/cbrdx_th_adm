@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 18/04/2017.
  */
 @Entity
-@Table(name = "RolesFuncionalidadesControles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RolesFuncionalidadesControles", schema = "dbo", catalog = "CREZCAMOS")
 public class RolesFuncionalidadesControles {
     private Integer idRolFuncionalidadControl;
     private Integer idRol;
@@ -29,9 +29,19 @@ public class RolesFuncionalidadesControles {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RolesFuncionalidadesControles(Integer idRolFuncionalidadControl, Integer idRol, Integer idFuncionalidadControl, Boolean indicadorEditar, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRolFuncionalidadControl = idRolFuncionalidadControl;
+        this.idRol = idRol;
+        this.idFuncionalidadControl = idFuncionalidadControl;
+        this.indicadorEditar = indicadorEditar;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdRolFuncionalidadControl")
+    @Column(name = "IdRolFuncionalidadControl", nullable = false)
     public Integer getIdRolFuncionalidadControl() {
         return idRolFuncionalidadControl;
     }
@@ -41,7 +51,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = true)
     public Integer getIdRol() {
         return idRol;
     }
@@ -51,7 +61,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IdFuncionalidadControl")
+    @Column(name = "IdFuncionalidadControl", nullable = true)
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;
     }
@@ -61,7 +71,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorEditar")
+    @Column(name = "IndicadorEditar", nullable = true)
     public Boolean getIndicadorEditar() {
         return indicadorEditar;
     }
@@ -71,7 +81,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +91,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class RolesFuncionalidadesControles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

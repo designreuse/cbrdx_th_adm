@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_TercerosExperienciasLaborales", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosExperienciasLaborales", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosExperienciasLaborales {
     private Integer idTerceroExperienciaLaboral;
     private Long idTercero;
@@ -34,8 +34,17 @@ public class VTercerosExperienciasLaborales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public void setFechaIngresa(java.sql.Date fechaIngresa) {
+        this.fechaIngresa = fechaIngresa;
+    }
+
+    public void setFechaTermina(java.sql.Date fechaTermina) {
+        this.fechaTermina = fechaTermina;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdTerceroExperienciaLaboral")
+    @Column(name = "IdTerceroExperienciaLaboral", nullable = false)
     public Integer getIdTerceroExperienciaLaboral() {
         return idTerceroExperienciaLaboral;
     }
@@ -45,7 +54,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -55,7 +64,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "Empresa")
+    @Column(name = "Empresa", nullable = false, length = 100)
     public String getEmpresa() {
         return empresa;
     }
@@ -65,7 +74,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "TelefonoEmpresa")
+    @Column(name = "TelefonoEmpresa", nullable = false, length = 100)
     public String getTelefonoEmpresa() {
         return telefonoEmpresa;
     }
@@ -75,7 +84,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdSectorEmpresa")
+    @Column(name = "IdSectorEmpresa", nullable = false)
     public Integer getIdSectorEmpresa() {
         return idSectorEmpresa;
     }
@@ -85,7 +94,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "SectorEmpresa")
+    @Column(name = "SectorEmpresa", nullable = true, length = 300)
     public String getSectorEmpresa() {
         return sectorEmpresa;
     }
@@ -95,7 +104,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdSubSectorEmpresa")
+    @Column(name = "IdSubSectorEmpresa", nullable = false)
     public Integer getIdSubSectorEmpresa() {
         return idSubSectorEmpresa;
     }
@@ -105,7 +114,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "SubSectorEmpresa")
+    @Column(name = "SubSectorEmpresa", nullable = true, length = 300)
     public String getSubSectorEmpresa() {
         return subSectorEmpresa;
     }
@@ -115,7 +124,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = false, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -125,7 +134,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdNivelCargo")
+    @Column(name = "IdNivelCargo", nullable = false)
     public Integer getIdNivelCargo() {
         return idNivelCargo;
     }
@@ -135,7 +144,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "NivelCargo")
+    @Column(name = "NivelCargo", nullable = true, length = 100)
     public String getNivelCargo() {
         return nivelCargo;
     }
@@ -145,7 +154,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AreaCargo")
+    @Column(name = "AreaCargo", nullable = false, length = 100)
     public String getAreaCargo() {
         return areaCargo;
     }
@@ -155,7 +164,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "JefeInmediato")
+    @Column(name = "JefeInmediato", nullable = false, length = 100)
     public String getJefeInmediato() {
         return jefeInmediato;
     }
@@ -165,7 +174,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "TiempoExperiencia")
+    @Column(name = "TiempoExperiencia", nullable = false, length = 100)
     public String getTiempoExperiencia() {
         return tiempoExperiencia;
     }
@@ -175,7 +184,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdCiudad")
+    @Column(name = "IdCiudad", nullable = false)
     public Integer getIdCiudad() {
         return idCiudad;
     }
@@ -185,7 +194,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "Ciudad")
+    @Column(name = "Ciudad", nullable = true, length = 100)
     public String getCiudad() {
         return ciudad;
     }
@@ -195,7 +204,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IndicadorActualmente")
+    @Column(name = "IndicadorActualmente", nullable = false)
     public Boolean getIndicadorActualmente() {
         return indicadorActualmente;
     }
@@ -205,7 +214,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "FechaIngresa")
+    @Column(name = "FechaIngresa", nullable = false)
     public Date getFechaIngresa() {
         return fechaIngresa;
     }
@@ -215,7 +224,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "FechaTermina")
+    @Column(name = "FechaTermina", nullable = true)
     public Date getFechaTermina() {
         return fechaTermina;
     }
@@ -225,7 +234,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = true)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -235,7 +244,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -245,7 +254,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -255,7 +264,7 @@ public class VTercerosExperienciasLaborales {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

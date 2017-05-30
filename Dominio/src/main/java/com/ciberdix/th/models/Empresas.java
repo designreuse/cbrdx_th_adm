@@ -25,7 +25,7 @@ public class Empresas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdEmpresa")
+    @Column(name = "IdEmpresa", nullable = false)
     public Integer getIdEmpresa() {
         return idEmpresa;
     }
@@ -35,7 +35,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -45,7 +45,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "Documento")
+    @Column(name = "Documento", nullable = true)
     public Long getDocumento() {
         return documento;
     }
@@ -55,7 +55,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "RazonSocial")
+    @Column(name = "RazonSocial", nullable = true, length = 256)
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -65,7 +65,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -75,7 +75,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true)
     public Long getTelefono() {
         return telefono;
     }
@@ -85,7 +85,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true)
     public Long getCelular() {
         return celular;
     }
@@ -95,7 +95,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 128)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -105,7 +105,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "Logo")
+    @Column(name = "Logo", nullable = true, length = 128)
     public String getLogo() {
         return logo;
     }
@@ -115,7 +115,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -125,7 +125,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -135,7 +135,7 @@ public class Empresas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

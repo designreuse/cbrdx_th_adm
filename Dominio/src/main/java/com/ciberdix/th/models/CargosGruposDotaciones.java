@@ -18,7 +18,7 @@ public class CargosGruposDotaciones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCargoGrupoDotacion")
+    @Column(name = "IdCargoGrupoDotacion", nullable = false)
     public Integer getIdCargoGrupoDotacion() {
         return idCargoGrupoDotacion;
     }
@@ -28,7 +28,7 @@ public class CargosGruposDotaciones {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -38,7 +38,7 @@ public class CargosGruposDotaciones {
     }
 
     @Basic
-    @Column(name = "IdGrupoDotacion")
+    @Column(name = "IdGrupoDotacion", nullable = true)
     public Integer getIdGrupoDotacion() {
         return idGrupoDotacion;
     }
@@ -48,7 +48,7 @@ public class CargosGruposDotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -58,7 +58,7 @@ public class CargosGruposDotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

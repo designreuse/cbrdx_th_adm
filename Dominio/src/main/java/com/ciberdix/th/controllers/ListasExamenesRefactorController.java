@@ -56,6 +56,8 @@ public class ListasExamenesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasExamenes update(@RequestBody ListasExamenes obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasExamenes(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

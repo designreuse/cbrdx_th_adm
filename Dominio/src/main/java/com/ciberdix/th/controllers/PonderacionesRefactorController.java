@@ -33,6 +33,8 @@ public class PonderacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Ponderaciones obj) {
-        PonderacionesRefactorRepository.save(obj);
+        PonderacionesRefactorRepository.save(
+                new Ponderaciones(obj.getIdPonderacion(),obj.getPonderacion(), obj.getMinimo(), obj.getMaximo(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

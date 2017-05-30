@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "GruposCompetencias", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "GruposCompetencias", schema = "dbo", catalog = "CREZCAMOS")
 public class GruposCompetencias {
     private Integer idGrupoCompetencia;
     private String grupoCompetencia;
@@ -30,9 +30,19 @@ public class GruposCompetencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public GruposCompetencias(Integer idGrupoCompetencia, String grupoCompetencia, String descripcion, BigDecimal ponderacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idGrupoCompetencia = idGrupoCompetencia;
+        this.grupoCompetencia = grupoCompetencia;
+        this.descripcion = descripcion;
+        this.ponderacion = ponderacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdGrupoCompetencia")
+    @Column(name = "IdGrupoCompetencia", nullable = false)
     public Integer getIdGrupoCompetencia() {
         return idGrupoCompetencia;
     }
@@ -42,7 +52,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "GrupoCompetencia")
+    @Column(name = "GrupoCompetencia", nullable = true, length = 64)
     public String getGrupoCompetencia() {
         return grupoCompetencia;
     }
@@ -52,7 +62,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -62,7 +72,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "Ponderacion")
+    @Column(name = "Ponderacion", nullable = true, precision = 1)
     public BigDecimal getPonderacion() {
         return ponderacion;
     }
@@ -72,7 +82,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -82,7 +92,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -92,7 +102,7 @@ public class GruposCompetencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

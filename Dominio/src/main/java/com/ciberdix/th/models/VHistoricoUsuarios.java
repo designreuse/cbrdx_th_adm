@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_Historico_Usuarios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Historico_Usuarios", schema = "dbo", catalog = "CREZCAMOS")
 public class VHistoricoUsuarios {
     private Integer usuario;
     private String objeto;
@@ -17,8 +17,9 @@ public class VHistoricoUsuarios {
     private String historia;
     private Long idAuditoria;
 
+    @Basic
     @Id
-    @Column(name = "Usuario")
+    @Column(name = "Usuario", nullable = false)
     public Integer getUsuario() {
         return usuario;
     }
@@ -28,7 +29,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "Objeto")
+    @Column(name = "Objeto", nullable = false, length = 100)
     public String getObjeto() {
         return objeto;
     }
@@ -38,7 +39,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "IdObjeto")
+    @Column(name = "IdObjeto", nullable = false)
     public Long getIdObjeto() {
         return idObjeto;
     }
@@ -48,7 +49,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "Item")
+    @Column(name = "Item", nullable = false, length = 100)
     public String getItem() {
         return item;
     }
@@ -58,7 +59,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "ValorAnterior")
+    @Column(name = "ValorAnterior", nullable = true, length = 50)
     public String getValorAnterior() {
         return valorAnterior;
     }
@@ -68,7 +69,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "ValorNuevo")
+    @Column(name = "ValorNuevo", nullable = true, length = 50)
     public String getValorNuevo() {
         return valorNuevo;
     }
@@ -78,7 +79,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "historia")
+    @Column(name = "historia", nullable = true, length = 8000)
     public String getHistoria() {
         return historia;
     }
@@ -88,7 +89,7 @@ public class VHistoricoUsuarios {
     }
 
     @Basic
-    @Column(name = "IdAuditoria")
+    @Column(name = "IdAuditoria", nullable = false)
     public Long getIdAuditoria() {
         return idAuditoria;
     }

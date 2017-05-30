@@ -14,7 +14,7 @@ public class VDivisionPoliticaRec {
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
-    private Integer idDivisionPoliticaResguardo;
+    private Integer idDivisionPoliticaAgrupacion;
     private Integer idEstratoDivisionPolitica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -86,12 +86,12 @@ public class VDivisionPoliticaRec {
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
     }
 
-    public Integer getIdDivisionPoliticaResguardo() {
-        return idDivisionPoliticaResguardo;
+    public Integer getIdDivisionPoliticaAgrupacion() {
+        return idDivisionPoliticaAgrupacion;
     }
 
-    public void setIdDivisionPoliticaResguardo(Integer idDivisionPoliticaResguardo) {
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+    public void setIdDivisionPoliticaAgrupacion(Integer idDivisionPoliticaAgrupacion) {
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
     }
 
     public Integer getIdEstratoDivisionPolitica() {

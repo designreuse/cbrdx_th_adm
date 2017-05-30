@@ -29,7 +29,7 @@ public class Capacitaciones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdCapacitacion")
+    @Column(name = "IdCapacitacion", nullable = false)
     public Integer getIdCapacitacion() {
         return idCapacitacion;
     }
@@ -39,7 +39,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "Titulo")
+    @Column(name = "Titulo", nullable = true, length = 50)
     public String getTitulo() {
         return titulo;
     }
@@ -49,7 +49,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "Temas")
+    @Column(name = "Temas", nullable = true, length = 400)
     public String getTemas() {
         return temas;
     }
@@ -59,7 +59,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IdTipoCapacitacion")
+    @Column(name = "IdTipoCapacitacion", nullable = true)
     public Integer getIdTipoCapacitacion() {
         return idTipoCapacitacion;
     }
@@ -69,7 +69,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IdModalidad")
+    @Column(name = "IdModalidad", nullable = true)
     public Integer getIdModalidad() {
         return idModalidad;
     }
@@ -79,7 +79,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "Intensidad")
+    @Column(name = "Intensidad", nullable = true, precision = 0)
     public Integer getIntensidad() {
         return intensidad;
     }
@@ -89,7 +89,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "Cupos")
+    @Column(name = "Cupos", nullable = true, precision = 0)
     public Integer getCupos() {
         return cupos;
     }
@@ -99,7 +99,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Timestamp getFechaInicio() {
         return fechaInicio;
     }
@@ -109,7 +109,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Timestamp getFechaFin() {
         return fechaFin;
     }
@@ -119,7 +119,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorNota")
+    @Column(name = "IndicadorNota", nullable = true)
     public Boolean getIndicadorNota() {
         return indicadorNota;
     }
@@ -129,7 +129,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorInscripcion")
+    @Column(name = "IndicadorInscripcion", nullable = true)
     public Boolean getIndicadorInscripcion() {
         return indicadorInscripcion;
     }
@@ -139,7 +139,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IdDirigidaA")
+    @Column(name = "IdDirigidaA", nullable = true)
     public Integer getIdDirigidaA() {
         return idDirigidaA;
     }
@@ -149,7 +149,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IdLugar")
+    @Column(name = "IdLugar", nullable = true)
     public Integer getIdLugar() {
         return idLugar;
     }
@@ -159,7 +159,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -169,7 +169,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -179,7 +179,7 @@ public class Capacitaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

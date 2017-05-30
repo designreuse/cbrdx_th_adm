@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_TercerosContactos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosContactos", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosContactos {
     private String codigo;
     private String nombre;
@@ -22,7 +22,7 @@ public class VTercerosContactos {
     private Timestamp auditoriaFecha;
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -32,7 +32,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -41,8 +41,9 @@ public class VTercerosContactos {
         this.nombre = nombre;
     }
 
+    @Basic
     @Id
-    @Column(name = "IdTerceroContacto")
+    @Column(name = "IdTerceroContacto", nullable = false)
     public Integer getIdTerceroContacto() {
         return idTerceroContacto;
     }
@@ -52,7 +53,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -62,7 +63,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "Contacto")
+    @Column(name = "Contacto", nullable = true, length = 250)
     public String getContacto() {
         return contacto;
     }
@@ -72,7 +73,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 25)
     public String getTelefono() {
         return telefono;
     }
@@ -82,7 +83,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 15)
     public String getCelular() {
         return celular;
     }
@@ -92,7 +93,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "IdListaParentesco")
+    @Column(name = "IdListaParentesco", nullable = true)
     public Integer getIdListaParentesco() {
         return idListaParentesco;
     }
@@ -102,7 +103,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -112,7 +113,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -122,7 +123,7 @@ public class VTercerosContactos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

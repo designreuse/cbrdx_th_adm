@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "DivisionPolitica", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "DivisionPolitica", schema = "dbo", catalog = "CREZCAMOS")
 public class DivisionPolitica {
     private Integer idDivisionPolitica;
     private Integer idDivisionPoliticaPadre;
@@ -17,19 +17,17 @@ public class DivisionPolitica {
     private String codigoPostalDivisionPolitica;
     private Integer idDivisionPoliticaTipo;
     private Integer idDivisionPoliticaArea;
-    private Integer idDivisionPoliticaResguardo;
+    private Long idDivisionPoliticaAgrupacion;
     private Integer idEstratoDivisionPolitica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer idDivisionPoliticaComuna;
-    private Integer idDivisionPoliticaLocalidad;
     private String gentilicio;
 
     public DivisionPolitica() {
     }
 
-    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Integer idDivisionPoliticaResguardo, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idDivisionPoliticaComuna, Integer idDivisionPoliticaLocalidad, String gentilicio) {
+    public DivisionPolitica(Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Long idDivisionPoliticaAgrupacion, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, String gentilicio) {
         this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
         this.codigoDivisionPolitica = codigoDivisionPolitica;
         this.descripcionDivisonPolitica = descripcionDivisonPolitica;
@@ -37,19 +35,34 @@ public class DivisionPolitica {
         this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
         this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
         this.idDivisionPoliticaArea = idDivisionPoliticaArea;
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
         this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
-        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.gentilicio = gentilicio;
+    }
+
+    public DivisionPolitica(Integer idDivisionPolitica, Integer idDivisionPoliticaPadre, String codigoDivisionPolitica, String descripcionDivisonPolitica, String indicativoDivisonPolitica, String codigoPostalDivisionPolitica, Integer idDivisionPoliticaTipo, Integer idDivisionPoliticaArea, Long idDivisionPoliticaAgrupacion, Integer idEstratoDivisionPolitica, Boolean indicadorHabilitado, Integer auditoriaUsuario, String gentilicio) {
+        this.idDivisionPolitica = idDivisionPolitica;
+        this.idDivisionPoliticaPadre = idDivisionPoliticaPadre;
+        this.codigoDivisionPolitica = codigoDivisionPolitica;
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
+        this.indicativoDivisonPolitica = indicativoDivisonPolitica;
+        this.codigoPostalDivisionPolitica = codigoPostalDivisionPolitica;
+        this.idDivisionPoliticaTipo = idDivisionPoliticaTipo;
+        this.idDivisionPoliticaArea = idDivisionPoliticaArea;
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
+        this.idEstratoDivisionPolitica = idEstratoDivisionPolitica;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.gentilicio = gentilicio;
     }
 
     @Id
     @GeneratedValue
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = false)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -59,7 +72,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaPadre")
+    @Column(name = "IdDivisionPoliticaPadre", nullable = false)
     public Integer getIdDivisionPoliticaPadre() {
         return idDivisionPoliticaPadre;
     }
@@ -69,7 +82,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "CodigoDivisionPolitica")
+    @Column(name = "CodigoDivisionPolitica", nullable = true, length = 10)
     public String getCodigoDivisionPolitica() {
         return codigoDivisionPolitica;
     }
@@ -79,7 +92,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "DescripcionDivisonPolitica")
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
     public String getDescripcionDivisonPolitica() {
         return descripcionDivisonPolitica;
     }
@@ -89,7 +102,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IndicativoDivisonPolitica")
+    @Column(name = "IndicativoDivisonPolitica", nullable = true, length = 20)
     public String getIndicativoDivisonPolitica() {
         return indicativoDivisonPolitica;
     }
@@ -99,7 +112,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "CodigoPostalDivisionPolitica")
+    @Column(name = "CodigoPostalDivisionPolitica", nullable = true, length = 10)
     public String getCodigoPostalDivisionPolitica() {
         return codigoPostalDivisionPolitica;
     }
@@ -109,7 +122,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaTipo")
+    @Column(name = "IdDivisionPoliticaTipo", nullable = true)
     public Integer getIdDivisionPoliticaTipo() {
         return idDivisionPoliticaTipo;
     }
@@ -119,7 +132,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaArea")
+    @Column(name = "IdDivisionPoliticaArea", nullable = true)
     public Integer getIdDivisionPoliticaArea() {
         return idDivisionPoliticaArea;
     }
@@ -129,17 +142,17 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaResguardo")
-    public Integer getIdDivisionPoliticaResguardo() {
-        return idDivisionPoliticaResguardo;
+    @Column(name = "IdDivisionPoliticaAgrupacion", nullable = true)
+    public Long getIdDivisionPoliticaAgrupacion() {
+        return idDivisionPoliticaAgrupacion;
     }
 
-    public void setIdDivisionPoliticaResguardo(Integer idDivisionPoliticaResguardo) {
-        this.idDivisionPoliticaResguardo = idDivisionPoliticaResguardo;
+    public void setIdDivisionPoliticaAgrupacion(Long idDivisionPoliticaAgrupacion) {
+        this.idDivisionPoliticaAgrupacion = idDivisionPoliticaAgrupacion;
     }
 
     @Basic
-    @Column(name = "IdEstratoDivisionPolitica")
+    @Column(name = "IdEstratoDivisionPolitica", nullable = false)
     public Integer getIdEstratoDivisionPolitica() {
         return idEstratoDivisionPolitica;
     }
@@ -149,7 +162,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -159,7 +172,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -169,7 +182,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -179,27 +192,7 @@ public class DivisionPolitica {
     }
 
     @Basic
-    @Column(name = "IdDivisionPoliticaComuna")
-    public Integer getIdDivisionPoliticaComuna() {
-        return idDivisionPoliticaComuna;
-    }
-
-    public void setIdDivisionPoliticaComuna(Integer idDivisionPoliticaComuna) {
-        this.idDivisionPoliticaComuna = idDivisionPoliticaComuna;
-    }
-
-    @Basic
-    @Column(name = "IdDivisionPoliticaLocalidad")
-    public Integer getIdDivisionPoliticaLocalidad() {
-        return idDivisionPoliticaLocalidad;
-    }
-
-    public void setIdDivisionPoliticaLocalidad(Integer idDivisionPoliticaLocalidad) {
-        this.idDivisionPoliticaLocalidad = idDivisionPoliticaLocalidad;
-    }
-
-    @Basic
-    @Column(name = "Gentilicio")
+    @Column(name = "Gentilicio", nullable = true, length = 200)
     public String getGentilicio() {
         return gentilicio;
     }
@@ -232,8 +225,6 @@ public class DivisionPolitica {
             return false;
         if (idDivisionPoliticaArea != null ? !idDivisionPoliticaArea.equals(that.idDivisionPoliticaArea) : that.idDivisionPoliticaArea != null)
             return false;
-        if (idDivisionPoliticaResguardo != null ? !idDivisionPoliticaResguardo.equals(that.idDivisionPoliticaResguardo) : that.idDivisionPoliticaResguardo != null)
-            return false;
         if (idEstratoDivisionPolitica != null ? !idEstratoDivisionPolitica.equals(that.idEstratoDivisionPolitica) : that.idEstratoDivisionPolitica != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
@@ -241,10 +232,6 @@ public class DivisionPolitica {
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-        if (idDivisionPoliticaComuna != null ? !idDivisionPoliticaComuna.equals(that.idDivisionPoliticaComuna) : that.idDivisionPoliticaComuna != null)
-            return false;
-        if (idDivisionPoliticaLocalidad != null ? !idDivisionPoliticaLocalidad.equals(that.idDivisionPoliticaLocalidad) : that.idDivisionPoliticaLocalidad != null)
             return false;
         if (gentilicio != null ? !gentilicio.equals(that.gentilicio) : that.gentilicio != null)
             return false;
@@ -261,13 +248,10 @@ public class DivisionPolitica {
         result = 31 * result + (codigoPostalDivisionPolitica != null ? codigoPostalDivisionPolitica.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaTipo != null ? idDivisionPoliticaTipo.hashCode() : 0);
         result = 31 * result + (idDivisionPoliticaArea != null ? idDivisionPoliticaArea.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaResguardo != null ? idDivisionPoliticaResguardo.hashCode() : 0);
         result = 31 * result + (idEstratoDivisionPolitica != null ? idEstratoDivisionPolitica.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaComuna != null ? idDivisionPoliticaComuna.hashCode() : 0);
-        result = 31 * result + (idDivisionPoliticaLocalidad != null ? idDivisionPoliticaLocalidad.hashCode() : 0);
         result = 31 * result + (gentilicio != null ? gentilicio.hashCode() : 0);
         return result;
     }

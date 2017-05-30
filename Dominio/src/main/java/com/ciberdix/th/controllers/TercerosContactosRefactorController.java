@@ -49,6 +49,10 @@ public class TercerosContactosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosContactos obj) {
-        tercerosContactosRefactorRepository.save(obj);
+        tercerosContactosRefactorRepository.save(
+                new TercerosContactos(obj.getIdTerceroContacto(),obj.getIdTercero(), obj.getContacto(), obj.getTelefono(),
+                        obj.getCelular(), obj.getIdListaParentesco(), obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario())
+        );
     }
 }

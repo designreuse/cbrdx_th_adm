@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "ListasIntensidades", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "ListasIntensidades", schema = "dbo", catalog = "CREZCAMOS")
 public class ListasIntensidades {
     private Integer idLista;
     private String codigo;
@@ -29,8 +29,18 @@ public class ListasIntensidades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public ListasIntensidades(Integer idLista, String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idLista = idLista;
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.orden = orden;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
-    @Column(name = "IdLista")
+    @Column(name = "IdLista", nullable = false)
     public Integer getIdLista() {
         return idLista;
     }
@@ -40,7 +50,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = false, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -50,7 +60,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -60,7 +70,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "Orden")
+    @Column(name = "Orden", nullable = false)
     public Integer getOrden() {
         return orden;
     }
@@ -70,7 +80,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -80,7 +90,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -90,7 +100,7 @@ public class ListasIntensidades {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

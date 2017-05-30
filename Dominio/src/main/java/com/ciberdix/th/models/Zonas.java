@@ -7,22 +7,36 @@ import java.sql.Timestamp;
  * Created by felip on 17/04/2017.
  */
 @Entity
-@Table(name = "Zonas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Zonas", schema = "dbo", catalog = "CREZCAMOS")
 public class Zonas {
     private Integer idZona;
     private String zona;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigo;
+    private Integer idEstructuraOrganizacional;
 
     public Zonas() {
     }
 
-    public Zonas(String zona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Zonas(String zona, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo, Integer idEstructuraOrganizacional) {
         this.zona = zona;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+    }
+
+    public Zonas(Integer idZona, String zona, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo, Integer idEstructuraOrganizacional) {
+        this.idZona = idZona;
+        this.zona = zona;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
     }
 
     @Id
@@ -76,6 +90,26 @@ public class Zonas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "Codigo", nullable = true, length = 10)
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
+    public Integer getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
+    }
+
+    public void setIdEstructuraOrganizacional(Integer idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,25 +117,25 @@ public class Zonas {
 
         Zonas zonas = (Zonas) o;
 
-        if (idZona != null ? !idZona.equals(zonas.idZona) : zonas.idZona != null) return false;
+        if (!idZona.equals(zonas.idZona)) return false;
         if (zona != null ? !zona.equals(zonas.zona) : zonas.zona != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(zonas.indicadorHabilitado) : zonas.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(zonas.auditoriaUsuario) : zonas.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(zonas.auditoriaFecha) : zonas.auditoriaFecha != null)
-            return false;
-
-        return true;
+        if (!auditoriaUsuario.equals(zonas.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(zonas.auditoriaFecha)) return false;
+        if (codigo != null ? !codigo.equals(zonas.codigo) : zonas.codigo != null) return false;
+        return idEstructuraOrganizacional != null ? idEstructuraOrganizacional.equals(zonas.idEstructuraOrganizacional) : zonas.idEstructuraOrganizacional == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idZona != null ? idZona.hashCode() : 0;
+        int result = idZona.hashCode();
         result = 31 * result + (zona != null ? zona.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0);
         return result;
     }
 }

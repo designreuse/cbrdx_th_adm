@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_Localizaciones", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Localizaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class VLocalizaciones {
     private Integer idLocalizacion;
     private Integer idTipoDireccion;
@@ -22,8 +22,9 @@ public class VLocalizaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = false)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -33,7 +34,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "IdTipoDireccion")
+    @Column(name = "IdTipoDireccion", nullable = true)
     public Integer getIdTipoDireccion() {
         return idTipoDireccion;
     }
@@ -43,7 +44,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = true, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -53,7 +54,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "Direccion")
+    @Column(name = "Direccion", nullable = true, length = 512)
     public String getDireccion() {
         return direccion;
     }
@@ -63,7 +64,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "Latitud")
+    @Column(name = "Latitud", nullable = true, length = 30)
     public String getLatitud() {
         return latitud;
     }
@@ -73,7 +74,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "Longitud")
+    @Column(name = "Longitud", nullable = true, length = 30)
     public String getLongitud() {
         return longitud;
     }
@@ -83,7 +84,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "ComoLlegar")
+    @Column(name = "ComoLlegar", nullable = true, length = 512)
     public String getComoLlegar() {
         return comoLlegar;
     }
@@ -93,7 +94,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -103,7 +104,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "IdDivisionPolitica")
+    @Column(name = "IdDivisionPolitica", nullable = true)
     public Integer getIdDivisionPolitica() {
         return idDivisionPolitica;
     }
@@ -113,7 +114,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "DivisionPolitica")
+    @Column(name = "DivisionPolitica", nullable = true, length = 100)
     public String getDivisionPolitica() {
         return divisionPolitica;
     }
@@ -123,7 +124,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -133,7 +134,7 @@ public class VLocalizaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

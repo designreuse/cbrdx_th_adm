@@ -26,7 +26,7 @@ public class Dotaciones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdDotacion")
+    @Column(name = "IdDotacion", nullable = false)
     public Integer getIdDotacion() {
         return idDotacion;
     }
@@ -36,7 +36,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "IdGrupoDotacion")
+    @Column(name = "IdGrupoDotacion", nullable = true)
     public Integer getIdGrupoDotacion() {
         return idGrupoDotacion;
     }
@@ -46,7 +46,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "Dotacion")
+    @Column(name = "Dotacion", nullable = true, length = 64)
     public String getDotacion() {
         return dotacion;
     }
@@ -56,7 +56,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 200)
     public String getDescripcion() {
         return descripcion;
     }
@@ -66,7 +66,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "Costo")
+    @Column(name = "Costo", nullable = true, precision = 1)
     public BigDecimal getCosto() {
         return costo;
     }
@@ -76,7 +76,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "DetalleProveedor")
+    @Column(name = "DetalleProveedor", nullable = true, length = 200)
     public String getDetalleProveedor() {
         return detalleProveedor;
     }
@@ -86,7 +86,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "IdCicloEntrega")
+    @Column(name = "IdCicloEntrega", nullable = true)
     public Integer getIdCicloEntrega() {
         return idCicloEntrega;
     }
@@ -96,7 +96,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "IdTipoTalla")
+    @Column(name = "IdTipoTalla", nullable = true)
     public Integer getIdTipoTalla() {
         return idTipoTalla;
     }
@@ -106,7 +106,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "Cantidad")
+    @Column(name = "Cantidad", nullable = true)
     public Integer getCantidad() {
         return cantidad;
     }
@@ -116,7 +116,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -126,7 +126,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -136,7 +136,7 @@ public class Dotaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

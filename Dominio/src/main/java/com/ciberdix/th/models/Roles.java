@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Roles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Roles", schema = "dbo", catalog = "CREZCAMOS")
 public class Roles {
     private Integer idRol;
     private String rol;
@@ -46,9 +46,17 @@ public class Roles {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdRol")
+    @Column(name = "IdRol", nullable = false)
     public Integer getIdRol() {
         return idRol;
     }
@@ -58,7 +66,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "Rol")
+    @Column(name = "Rol", nullable = true, length = 64)
     public String getRol() {
         return rol;
     }
@@ -68,7 +76,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -78,7 +86,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 128)
     public String getDescripcion() {
         return descripcion;
     }
@@ -88,7 +96,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -98,7 +106,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -108,7 +116,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "CodigoRol")
+    @Column(name = "CodigoRol", nullable = true, length = 8)
     public String getCodigoRol() {
         return codigoRol;
     }
@@ -118,7 +126,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -128,7 +136,7 @@ public class Roles {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }

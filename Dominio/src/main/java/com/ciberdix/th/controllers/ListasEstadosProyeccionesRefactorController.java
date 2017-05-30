@@ -56,6 +56,8 @@ public class ListasEstadosProyeccionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosProyecciones update(@RequestBody ListasEstadosProyecciones obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosProyecciones(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

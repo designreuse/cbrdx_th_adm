@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "TercerosFamiliares", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosFamiliares", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosFamiliares {
     private Integer idTerceroFamiliar;
     private Long idTercero;
@@ -48,7 +48,7 @@ public class TercerosFamiliares {
 
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroFamiliar")
+    @Column(name = "IdTerceroFamiliar", nullable = false)
     public Integer getIdTerceroFamiliar() {
         return idTerceroFamiliar;
     }
@@ -58,7 +58,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -68,7 +68,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdFamiliar")
+    @Column(name = "IdFamiliar", nullable = false)
     public Long getIdFamiliar() {
         return idFamiliar;
     }
@@ -78,7 +78,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdParentesco")
+    @Column(name = "IdParentesco", nullable = false)
     public Integer getIdParentesco() {
         return idParentesco;
     }
@@ -88,7 +88,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdConvivencia")
+    @Column(name = "IdConvivencia", nullable = false)
     public Integer getIdConvivencia() {
         return idConvivencia;
     }
@@ -98,7 +98,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -108,7 +108,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -118,7 +118,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -165,7 +165,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -175,7 +175,7 @@ public class TercerosFamiliares {
     }
 
     @Basic
-    @Column(name = "Direccion")
+    @Column(name = "Direccion", nullable = true, length = 128)
     public String getDireccion() {
         return direccion;
     }

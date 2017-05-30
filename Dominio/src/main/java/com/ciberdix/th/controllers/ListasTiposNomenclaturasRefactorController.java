@@ -57,6 +57,8 @@ public class ListasTiposNomenclaturasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasTiposNomenclaturas update(@RequestBody ListasTiposNomenclaturas obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasTiposNomenclaturas(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

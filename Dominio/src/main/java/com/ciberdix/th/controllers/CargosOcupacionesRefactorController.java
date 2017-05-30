@@ -42,11 +42,15 @@ public class CargosOcupacionesRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     CargosOcupaciones create(@RequestBody CargosOcupaciones obj) {
         return cargosOcupacionesRefactorRepository.save(
-                new CargosOcupaciones(obj.getIdCargo(), obj.getIdOcupacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario()));
+                new CargosOcupaciones(obj.getIdCargo(), obj.getIdOcupacion(), obj.getIndicadorHabilitado(),
+                        obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosOcupaciones obj) {
-        cargosOcupacionesRefactorRepository.save(obj);
+        cargosOcupacionesRefactorRepository.save(
+                new CargosOcupaciones(obj.getIdCargoOcupacion(),obj.getIdCargo(), obj.getIdOcupacion(),
+                        obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

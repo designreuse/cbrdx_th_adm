@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_Faltas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Faltas", schema = "dbo", catalog = "CREZCAMOS")
 public class VFaltas {
     private Integer idFalta;
     private String falta;
@@ -18,8 +18,9 @@ public class VFaltas {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdFalta")
+    @Column(name = "IdFalta", nullable = false)
     public Integer getIdFalta() {
         return idFalta;
     }
@@ -29,7 +30,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "Falta")
+    @Column(name = "Falta", nullable = true, length = 100)
     public String getFalta() {
         return falta;
     }
@@ -39,7 +40,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "IdTipoFalta")
+    @Column(name = "IdTipoFalta", nullable = true)
     public Integer getIdTipoFalta() {
         return idTipoFalta;
     }
@@ -49,7 +50,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "TipoFalta")
+    @Column(name = "TipoFalta", nullable = true, length = 100)
     public String getTipoFalta() {
         return tipoFalta;
     }
@@ -59,7 +60,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "Accion")
+    @Column(name = "Accion", nullable = true, length = 1000)
     public String getAccion() {
         return accion;
     }
@@ -69,7 +70,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -79,7 +80,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -89,7 +90,7 @@ public class VFaltas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

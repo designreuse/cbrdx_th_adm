@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_CargosElementos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_CargosElementos", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargosElementos {
     private Integer idCargoElemento;
     private Integer idCargo;
@@ -18,8 +18,9 @@ public class VCargosElementos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdCargoElemento")
+    @Column(name = "IdCargoElemento", nullable = false)
     public Integer getIdCargoElemento() {
         return idCargoElemento;
     }
@@ -29,7 +30,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -39,7 +40,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -49,7 +50,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "IdTipoElemento")
+    @Column(name = "IdTipoElemento", nullable = true)
     public Integer getIdTipoElemento() {
         return idTipoElemento;
     }
@@ -59,7 +60,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "TipoElemento")
+    @Column(name = "TipoElemento", nullable = true, length = 100)
     public String getTipoElemento() {
         return tipoElemento;
     }
@@ -69,7 +70,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = false, length = 100)
     public String getDescripcion() {
         return descripcion;
     }
@@ -79,7 +80,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -89,7 +90,7 @@ public class VCargosElementos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

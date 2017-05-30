@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 17/04/2017.
  */
 @Entity
-@Table(name = "EstructuraOrganizacionalCargos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "EstructuraOrganizacionalCargos", schema = "dbo", catalog = "CREZCAMOS")
 public class EstructuraOrganizacionalCargos {
     private Integer idEstructuraOrganizacionalCargo;
     private Integer idEstructuraOrganizacional;
@@ -29,9 +29,19 @@ public class EstructuraOrganizacionalCargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public EstructuraOrganizacionalCargos(Integer idEstructuraOrganizacionalCargo, Integer idEstructuraOrganizacional, Integer idCargo, Integer plazas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
+        this.idCargo = idCargo;
+        this.plazas = plazas;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraOrganizacionalCargo")
+    @Column(name = "IdEstructuraOrganizacionalCargo", nullable = false)
     public Integer getIdEstructuraOrganizacionalCargo() {
         return idEstructuraOrganizacionalCargo;
     }
@@ -41,7 +51,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = true)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -51,7 +61,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -61,7 +71,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "Plazas")
+    @Column(name = "Plazas", nullable = true)
     public Integer getPlazas() {
         return plazas;
     }
@@ -71,7 +81,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +91,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class EstructuraOrganizacionalCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

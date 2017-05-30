@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Ocupaciones", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Ocupaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Ocupaciones {
     private Integer idOcupacion;
     private Integer idOcupacionPadre;
@@ -31,9 +31,20 @@ public class Ocupaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Ocupaciones(Integer idOcupacion, Integer idOcupacionPadre, Integer idOcupacionTipo, String codigoOcupacion, String ocupacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idOcupacion = idOcupacion;
+        this.idOcupacionPadre = idOcupacionPadre;
+        this.idOcupacionTipo = idOcupacionTipo;
+        this.codigoOcupacion = codigoOcupacion;
+        this.ocupacion = ocupacion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdOcupacion")
+    @Column(name = "IdOcupacion", nullable = false)
     public Integer getIdOcupacion() {
         return idOcupacion;
     }
@@ -43,7 +54,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "IdOcupacionPadre")
+    @Column(name = "IdOcupacionPadre", nullable = false)
     public Integer getIdOcupacionPadre() {
         return idOcupacionPadre;
     }
@@ -53,7 +64,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "IdOcupacionTipo")
+    @Column(name = "IdOcupacionTipo", nullable = false)
     public Integer getIdOcupacionTipo() {
         return idOcupacionTipo;
     }
@@ -63,7 +74,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "CodigoOcupacion")
+    @Column(name = "CodigoOcupacion", nullable = true, length = 30)
     public String getCodigoOcupacion() {
         return codigoOcupacion;
     }
@@ -73,7 +84,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "Ocupacion")
+    @Column(name = "Ocupacion", nullable = false, length = 300)
     public String getOcupacion() {
         return ocupacion;
     }
@@ -83,7 +94,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -93,7 +104,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -103,7 +114,7 @@ public class Ocupaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -28,11 +28,15 @@ public class CargosPersonalidadAtributosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     CargosPersonalidadAtributos create(@RequestBody CargosPersonalidadAtributos obj) {
-        return CargosPersonalidadAtributosRefactorRepository.save(new CargosPersonalidadAtributos(obj.getIdCargo(), obj.getIdAtributo(), obj.getDescripcion(), obj.getAuditoriaUsuario()));
+        return CargosPersonalidadAtributosRefactorRepository.save(new CargosPersonalidadAtributos(obj.getIdCargo(),
+                obj.getIdAtributo(), obj.getDescripcion(), obj.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosPersonalidadAtributos obj) {
-        CargosPersonalidadAtributosRefactorRepository.save(obj);
+        CargosPersonalidadAtributosRefactorRepository.save(
+                new CargosPersonalidadAtributos(obj.getIdCargoPersonalidadAtributo(),obj.getIdCargo(),
+                        obj.getIdAtributo(), obj.getDescripcion(), obj.getAuditoriaUsuario())
+        );
     }
 }

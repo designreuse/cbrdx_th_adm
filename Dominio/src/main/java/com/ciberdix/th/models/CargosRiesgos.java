@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "CargosRiesgos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "CargosRiesgos", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosRiesgos {
     private Integer idCargoRiesgo;
     private Integer idCargo;
@@ -22,9 +22,17 @@ public class CargosRiesgos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public CargosRiesgos(Integer idCargoRiesgo, Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario) {
+        this.idCargoRiesgo = idCargoRiesgo;
+        this.idCargo = idCargo;
+        this.idRiesgo = idRiesgo;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCargoRiesgo")
+    @Column(name = "IdCargoRiesgo", nullable = false)
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;
     }
@@ -34,7 +42,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -44,7 +52,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -54,7 +62,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -64,7 +72,7 @@ public class CargosRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

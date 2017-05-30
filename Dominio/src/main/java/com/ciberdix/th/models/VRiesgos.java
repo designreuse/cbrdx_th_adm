@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_Riesgos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Riesgos", schema = "dbo", catalog = "CREZCAMOS")
 public class VRiesgos {
     private Integer idRiesgo;
     private String riesgo;
@@ -19,8 +19,9 @@ public class VRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdRiesgo")
+    @Column(name = "IdRiesgo", nullable = false)
     public Integer getIdRiesgo() {
         return idRiesgo;
     }
@@ -30,7 +31,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "Riesgo")
+    @Column(name = "Riesgo", nullable = true, length = 100)
     public String getRiesgo() {
         return riesgo;
     }
@@ -40,7 +41,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "IdTipoRiesgo")
+    @Column(name = "IdTipoRiesgo", nullable = true)
     public Integer getIdTipoRiesgo() {
         return idTipoRiesgo;
     }
@@ -50,7 +51,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "RiesgoTipo")
+    @Column(name = "RiesgoTipo", nullable = true, length = 100)
     public String getRiesgoTipo() {
         return riesgoTipo;
     }
@@ -60,7 +61,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "IdSubTipoRiesgo")
+    @Column(name = "IdSubTipoRiesgo", nullable = true)
     public Integer getIdSubTipoRiesgo() {
         return idSubTipoRiesgo;
     }
@@ -70,7 +71,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "RiesgoSubTipo")
+    @Column(name = "RiesgoSubTipo", nullable = true, length = 100)
     public String getRiesgoSubTipo() {
         return riesgoSubTipo;
     }
@@ -80,7 +81,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -90,7 +91,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -100,7 +101,7 @@ public class VRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

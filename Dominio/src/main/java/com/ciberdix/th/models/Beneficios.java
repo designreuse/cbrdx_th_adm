@@ -23,7 +23,7 @@ public class Beneficios {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdBeneficio")
+    @Column(name = "IdBeneficio", nullable = false)
     public Integer getIdBeneficio() {
         return idBeneficio;
     }
@@ -33,7 +33,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "IdGrupoBeneficio")
+    @Column(name = "IdGrupoBeneficio", nullable = true)
     public Integer getIdGrupoBeneficio() {
         return idGrupoBeneficio;
     }
@@ -43,7 +43,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "IdTipoBeneficio")
+    @Column(name = "IdTipoBeneficio", nullable = true)
     public Integer getIdTipoBeneficio() {
         return idTipoBeneficio;
     }
@@ -53,7 +53,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "Beneficio")
+    @Column(name = "Beneficio", nullable = true, length = 50)
     public String getBeneficio() {
         return beneficio;
     }
@@ -63,7 +63,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "Costo")
+    @Column(name = "Costo", nullable = true, precision = 0)
     public Integer getCosto() {
         return costo;
     }
@@ -73,7 +73,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "IndicadorSolicitable")
+    @Column(name = "IndicadorSolicitable", nullable = true)
     public Boolean getIndicadorSolicitable() {
         return indicadorSolicitable;
     }
@@ -83,7 +83,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -93,7 +93,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -103,7 +103,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -113,7 +113,7 @@ public class Beneficios {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

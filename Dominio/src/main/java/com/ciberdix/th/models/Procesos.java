@@ -21,7 +21,7 @@ public class Procesos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdProceso")
+    @Column(name = "IdProceso", nullable = false)
     public Integer getIdProceso() {
         return idProceso;
     }
@@ -31,7 +31,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "Orden")
+    @Column(name = "Orden", nullable = false)
     public Integer getOrden() {
         return orden;
     }
@@ -41,7 +41,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -51,7 +51,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "IdAccion")
+    @Column(name = "IdAccion", nullable = true)
     public Integer getIdAccion() {
         return idAccion;
     }
@@ -61,7 +61,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "DescripcionAccion")
+    @Column(name = "DescripcionAccion", nullable = true, length = 100)
     public String getDescripcionAccion() {
         return descripcionAccion;
     }
@@ -71,7 +71,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "IndicadorActividad")
+    @Column(name = "IndicadorActividad", nullable = true)
     public Boolean getIndicadorActividad() {
         return indicadorActividad;
     }
@@ -81,7 +81,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +91,7 @@ public class Procesos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

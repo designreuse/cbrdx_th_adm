@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "EstructuraAreas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "EstructuraAreas", schema = "dbo", catalog = "CREZCAMOS")
 public class EstructuraAreas {
     private Integer idEstructuraArea;
     private String estructuraArea;
@@ -27,9 +27,18 @@ public class EstructuraAreas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public EstructuraAreas(Integer idEstructuraArea, String estructuraArea, String codigoArea, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idEstructuraArea = idEstructuraArea;
+        this.estructuraArea = estructuraArea;
+        this.codigoArea = codigoArea;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdEstructuraArea")
+    @Column(name = "IdEstructuraArea", nullable = false)
     public Integer getIdEstructuraArea() {
         return idEstructuraArea;
     }
@@ -39,7 +48,7 @@ public class EstructuraAreas {
     }
 
     @Basic
-    @Column(name = "EstructuraArea")
+    @Column(name = "EstructuraArea", nullable = true, length = 40)
     public String getEstructuraArea() {
         return estructuraArea;
     }
@@ -49,7 +58,7 @@ public class EstructuraAreas {
     }
 
     @Basic
-    @Column(name = "CodigoArea")
+    @Column(name = "CodigoArea", nullable = true, length = 8)
     public String getCodigoArea() {
         return codigoArea;
     }
@@ -59,7 +68,7 @@ public class EstructuraAreas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = false)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -69,7 +78,7 @@ public class EstructuraAreas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -79,7 +88,7 @@ public class EstructuraAreas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

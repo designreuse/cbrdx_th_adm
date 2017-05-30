@@ -57,6 +57,8 @@ public class ListasCoberturasSaludRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasCoberturasSalud update(@RequestBody ListasCoberturasSalud obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasCoberturasSalud(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

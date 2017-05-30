@@ -20,7 +20,7 @@ public class TiposNovedadesCampos {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTipoNovedadCampo")
+    @Column(name = "IdTipoNovedadCampo", nullable = false)
     public Integer getIdTipoNovedadCampo() {
         return idTipoNovedadCampo;
     }
@@ -30,7 +30,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "TipoNovedadCampo")
+    @Column(name = "TipoNovedadCampo", nullable = false, length = 100)
     public String getTipoNovedadCampo() {
         return tipoNovedadCampo;
     }
@@ -40,7 +40,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "IdTipoNovedad")
+    @Column(name = "IdTipoNovedad", nullable = false)
     public Integer getIdTipoNovedad() {
         return idTipoNovedad;
     }
@@ -50,7 +50,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "IdTipoCampo")
+    @Column(name = "IdTipoCampo", nullable = false)
     public Integer getIdTipoCampo() {
         return idTipoCampo;
     }
@@ -60,7 +60,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "IndicadorRequerido")
+    @Column(name = "IndicadorRequerido", nullable = true)
     public Boolean getIndicadorRequerido() {
         return indicadorRequerido;
     }
@@ -70,7 +70,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -80,7 +80,7 @@ public class TiposNovedadesCampos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -58,6 +58,8 @@ public class ListasInstitucionesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasInstituciones update(@RequestBody ListasInstituciones obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasInstituciones(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

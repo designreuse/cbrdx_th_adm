@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/6/2017.
  */
 @Entity
-@Table(name = "Faltas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Faltas", schema = "dbo", catalog = "CREZCAMOS")
 public class Faltas {
     private Integer idFalta;
     private String falta;
@@ -29,9 +29,19 @@ public class Faltas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Faltas(Integer idFalta, String falta, Integer idTipoFalta, String accion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idFalta = idFalta;
+        this.falta = falta;
+        this.idTipoFalta = idTipoFalta;
+        this.accion = accion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdFalta")
+    @Column(name = "IdFalta", nullable = false)
     public Integer getIdFalta() {
         return idFalta;
     }
@@ -41,7 +51,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "Falta")
+    @Column(name = "Falta", nullable = true, length = 100)
     public String getFalta() {
         return falta;
     }
@@ -51,7 +61,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "IdTipoFalta")
+    @Column(name = "IdTipoFalta", nullable = true)
     public Integer getIdTipoFalta() {
         return idTipoFalta;
     }
@@ -61,7 +71,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "Accion")
+    @Column(name = "Accion", nullable = true, length = 1000)
     public String getAccion() {
         return accion;
     }
@@ -71,7 +81,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +91,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +101,7 @@ public class Faltas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

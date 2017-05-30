@@ -25,7 +25,7 @@ public class TercerosNovedadesPlanes {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdTerceroNovedadPlan")
+    @Column(name = "IdTerceroNovedadPlan", nullable = false)
     public Integer getIdTerceroNovedadPlan() {
         return idTerceroNovedadPlan;
     }
@@ -35,7 +35,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "IdTerceroNovedad")
+    @Column(name = "IdTerceroNovedad", nullable = false)
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
     }
@@ -45,7 +45,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "Actividad")
+    @Column(name = "Actividad", nullable = true, length = 300)
     public String getActividad() {
         return actividad;
     }
@@ -55,7 +55,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "IdResponsable")
+    @Column(name = "IdResponsable", nullable = false)
     public Long getIdResponsable() {
         return idResponsable;
     }
@@ -65,7 +65,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "IdDirigidoA")
+    @Column(name = "IdDirigidoA", nullable = true)
     public Integer getIdDirigidoA() {
         return idDirigidoA;
     }
@@ -75,7 +75,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "FechaLimite")
+    @Column(name = "FechaLimite", nullable = true)
     public Timestamp getFechaLimite() {
         return fechaLimite;
     }
@@ -85,7 +85,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "FechaVerificacion")
+    @Column(name = "FechaVerificacion", nullable = true)
     public Timestamp getFechaVerificacion() {
         return fechaVerificacion;
     }
@@ -95,7 +95,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -105,7 +105,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "Seguimiento")
+    @Column(name = "Seguimiento", nullable = true, length = 300)
     public String getSeguimiento() {
         return seguimiento;
     }
@@ -115,7 +115,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "IdAdjunto")
+    @Column(name = "IdAdjunto", nullable = false)
     public Integer getIdAdjunto() {
         return idAdjunto;
     }
@@ -125,7 +125,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -135,7 +135,7 @@ public class TercerosNovedadesPlanes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

@@ -44,6 +44,10 @@ public class DiagnosticosCieRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody DiagnosticosCie obj) {
-        diagnosticosCieRefactorRepository.save(obj);
+        diagnosticosCieRefactorRepository.save(
+                new DiagnosticosCie(obj.getIdDiagnosticoCie(),obj.getCodigo(), obj.getSimbolo(),
+                        obj.getDescripcion(), obj.getSexo(), obj.getLimiteInferior(), obj.getLimiteSuperior(),
+                        obj.getNoAfeccion(), obj.getAuditoriaUsuario())
+        );
     }
 }

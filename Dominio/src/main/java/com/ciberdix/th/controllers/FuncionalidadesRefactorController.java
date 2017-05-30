@@ -49,8 +49,11 @@ public class FuncionalidadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    Funcionalidades updateList(@RequestBody Funcionalidades funcionalidades) {
-        return funcionalidadesRefactorRepository.save(funcionalidades);
+    Funcionalidades updateList(@RequestBody Funcionalidades f) {
+        return funcionalidadesRefactorRepository.save(
+                new Funcionalidades(f.getIdFuncionalidad(),f.getIdMenu(), f.getIndicadorHabilitado(),
+                        f.getAuditoriaUsuario())
+        );
     }
 
 }

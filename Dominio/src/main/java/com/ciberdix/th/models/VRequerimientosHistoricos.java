@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by Danny on 19/05/2017.
  */
 @Entity
-@Table(name = "V_RequerimientosHistoricos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_RequerimientosHistoricos", schema = "dbo", catalog = "CREZCAMOS")
 public class VRequerimientosHistoricos {
     private Integer idRequerimientoHistorico;
     private Integer idRequerimiento;
@@ -52,6 +52,19 @@ public class VRequerimientosHistoricos {
     private String nombreCargo;
     private String funcionCargo;
 
+    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    @Basic
     @Id
     @Column(name = "IdRequerimientoHistorico", nullable = false)
     public Integer getIdRequerimientoHistorico() {

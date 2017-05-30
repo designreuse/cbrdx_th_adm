@@ -23,7 +23,7 @@ public class GruposFormaciones {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdGrupoFormacion")
+    @Column(name = "IdGrupoFormacion", nullable = false)
     public Integer getIdGrupoFormacion() {
         return idGrupoFormacion;
     }
@@ -33,7 +33,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = true)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -43,7 +43,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "GrupoFormacion")
+    @Column(name = "GrupoFormacion", nullable = true, length = 50)
     public String getGrupoFormacion() {
         return grupoFormacion;
     }
@@ -53,7 +53,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = true, length = 200)
     public String getDescripcion() {
         return descripcion;
     }
@@ -63,7 +63,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Timestamp getFechaInicio() {
         return fechaInicio;
     }
@@ -73,7 +73,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Timestamp getFechaFin() {
         return fechaFin;
     }
@@ -83,7 +83,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "IdFormador")
+    @Column(name = "IdFormador", nullable = true)
     public Long getIdFormador() {
         return idFormador;
     }
@@ -93,7 +93,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -103,7 +103,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -113,7 +113,7 @@ public class GruposFormaciones {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

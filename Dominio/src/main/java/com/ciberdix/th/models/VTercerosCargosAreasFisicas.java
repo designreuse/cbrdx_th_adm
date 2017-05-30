@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Danny on 18/05/2017.
  */
 @Entity
-@Table(name = "V_TercerosCargosAreasFisicas", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosCargosAreasFisicas", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosCargosAreasFisicas {
     private Long idTercero;
     private String nombreCompleto;
@@ -19,6 +19,7 @@ public class VTercerosCargosAreasFisicas {
     private String correoTercero;
     private String correoUsuario;
 
+    @Basic
     @Id
     @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {

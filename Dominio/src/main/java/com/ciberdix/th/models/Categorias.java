@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "Categorias", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "Categorias", schema = "dbo", catalog = "CREZCAMOS")
 public class Categorias {
     private Integer idCategoria;
     private String categoria;
@@ -33,9 +33,21 @@ public class Categorias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public Categorias(Integer idCategoria, String categoria, Integer puntosMinimos, Integer puntosMaximos, Integer idNivel, String nivel, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCategoria = idCategoria;
+        this.categoria = categoria;
+        this.puntosMinimos = puntosMinimos;
+        this.puntosMaximos = puntosMaximos;
+        this.idNivel = idNivel;
+        this.nivel = nivel;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = false)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -45,7 +57,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "Categoria")
+    @Column(name = "Categoria", nullable = true, length = 30)
     public String getCategoria() {
         return categoria;
     }
@@ -55,7 +67,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "PuntosMinimos")
+    @Column(name = "PuntosMinimos", nullable = true, precision = 0)
     public Integer getPuntosMinimos() {
         return puntosMinimos;
     }
@@ -65,7 +77,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "PuntosMaximos")
+    @Column(name = "PuntosMaximos", nullable = true, precision = 0)
     public Integer getPuntosMaximos() {
         return puntosMaximos;
     }
@@ -75,7 +87,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "IdNivel")
+    @Column(name = "IdNivel", nullable = true)
     public Integer getIdNivel() {
         return idNivel;
     }
@@ -85,7 +97,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "Nivel")
+    @Column(name = "Nivel", nullable = true, length = 2)
     public String getNivel() {
         return nivel;
     }
@@ -95,7 +107,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -105,7 +117,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -115,7 +127,7 @@ public class Categorias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

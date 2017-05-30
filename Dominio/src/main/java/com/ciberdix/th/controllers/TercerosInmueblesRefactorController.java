@@ -51,6 +51,11 @@ public class TercerosInmueblesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosInmuebles obj) {
-        tercerosInmueblesRefactorRepository.save(obj);
+        tercerosInmueblesRefactorRepository.save(
+                new TercerosInmuebles(obj.getIdTerceroInmueble(),obj.getIdTercero(), obj.getIdTipoVivienda(),
+                        obj.getIdClaseVivienda(), obj.getIdTipoConstruccionVivienda(),
+                        obj.getAnioConstruccion(), obj.getNumeroPisos(), obj.getNumeroSotanos(),
+                        obj.getIdEstrato(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

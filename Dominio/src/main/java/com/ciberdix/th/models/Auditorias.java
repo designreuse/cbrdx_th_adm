@@ -22,7 +22,7 @@ public class Auditorias {
     private Long idObjeto;
 
     @Id
-    @Column(name = "IdAuditoria")
+    @Column(name = "IdAuditoria", nullable = false)
     public Long getIdAuditoria() {
         return idAuditoria;
     }
@@ -32,7 +32,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "Usuario")
+    @Column(name = "Usuario", nullable = false)
     public Integer getUsuario() {
         return usuario;
     }
@@ -42,7 +42,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "Fecha")
+    @Column(name = "Fecha", nullable = false)
     public Timestamp getFecha() {
         return fecha;
     }
@@ -52,7 +52,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "Objeto")
+    @Column(name = "Objeto", nullable = false, length = 100)
     public String getObjeto() {
         return objeto;
     }
@@ -62,7 +62,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "Item")
+    @Column(name = "Item", nullable = false, length = 100)
     public String getItem() {
         return item;
     }
@@ -72,7 +72,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "Accion")
+    @Column(name = "Accion", nullable = false, length = 100)
     public String getAccion() {
         return accion;
     }
@@ -82,7 +82,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "ValorAnterior")
+    @Column(name = "ValorAnterior", nullable = true, length = 50)
     public String getValorAnterior() {
         return valorAnterior;
     }
@@ -92,7 +92,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "ValorNuevo")
+    @Column(name = "ValorNuevo", nullable = true, length = 50)
     public String getValorNuevo() {
         return valorNuevo;
     }
@@ -102,7 +102,7 @@ public class Auditorias {
     }
 
     @Basic
-    @Column(name = "IdObjeto")
+    @Column(name = "IdObjeto", nullable = false)
     public Long getIdObjeto() {
         return idObjeto;
     }

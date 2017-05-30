@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 @Entity
-@Table(name = "RiesgosTipos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RiesgosTipos", schema = "dbo", catalog = "CREZCAMOS")
 public class RiesgosTipos {
     private Integer idRiesgoTipo;
     private String riesgoTipo;
@@ -25,9 +25,17 @@ public class RiesgosTipos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public RiesgosTipos(Integer idRiesgoTipo, String riesgoTipo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idRiesgoTipo = idRiesgoTipo;
+        this.riesgoTipo = riesgoTipo;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdRiesgoTipo")
+    @Column(name = "IdRiesgoTipo", nullable = false)
     public Integer getIdRiesgoTipo() {
         return idRiesgoTipo;
     }
@@ -37,7 +45,7 @@ public class RiesgosTipos {
     }
 
     @Basic
-    @Column(name = "RiesgoTipo")
+    @Column(name = "RiesgoTipo", nullable = true, length = 100)
     public String getRiesgoTipo() {
         return riesgoTipo;
     }
@@ -47,7 +55,7 @@ public class RiesgosTipos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -57,7 +65,7 @@ public class RiesgosTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -67,7 +75,7 @@ public class RiesgosTipos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

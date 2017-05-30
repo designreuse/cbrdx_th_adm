@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Danny on 18/05/2017.
  */
 @Entity
-@Table(name = "V_RequerimientosTics", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_RequerimientosTics", schema = "dbo", catalog = "CREZCAMOS")
 public class VRequerimientosTics {
     private Integer idRequerimientoTic;
     private Integer idRequerimiento;
@@ -17,6 +17,7 @@ public class VRequerimientosTics {
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
 
+    @Basic
     @Id
     @Column(name = "IdRequerimientoTIC", nullable = false)
     public Integer getIdRequerimientoTic() {
@@ -38,7 +39,7 @@ public class VRequerimientosTics {
     }
 
     @Basic
-    @Column(name = "TIC", nullable = false, length = 100)
+    @Column(name = "TIC", nullable = true, length = 100)
     public String getTic() {
         return tic;
     }

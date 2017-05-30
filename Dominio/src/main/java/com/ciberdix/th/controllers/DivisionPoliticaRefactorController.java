@@ -64,7 +64,7 @@ public class DivisionPoliticaRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
-    ArrayList<VDivisionPolitica> findByWildCard(@PathVariable String label){
+    ArrayList<VDivisionPolitica> findByWildCard(@PathVariable String label) {
 
         String queryOutSChars = OutSpecialChars.getStr(label);
 
@@ -72,7 +72,7 @@ public class DivisionPoliticaRefactorController {
 
         listVCFinal = (ArrayList<VDivisionPolitica>) vDivisionPoliticaRefactorRepository.queryVDivsByLabel(queryOutSChars);
 
-        if (listVCFinal.size()<1){
+        if (listVCFinal.size() < 1) {
             listVCFinal = (ArrayList<VDivisionPolitica>) vDivisionPoliticaRefactorRepository.queryVDivByLabelAll(queryOutSChars);
         }
 
@@ -80,12 +80,14 @@ public class DivisionPoliticaRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    DivisionPolitica create(@RequestBody DivisionPolitica divisionPolitica) {
-        return divisionPoliticaRefactorRepository.save(new DivisionPolitica(divisionPolitica.getIdDivisionPoliticaPadre(), divisionPolitica.getCodigoDivisionPolitica(), divisionPolitica.getDescripcionDivisonPolitica(), divisionPolitica.getIndicativoDivisonPolitica(), divisionPolitica.getCodigoPostalDivisionPolitica(), divisionPolitica.getIdDivisionPoliticaTipo(), divisionPolitica.getIdDivisionPoliticaArea(), divisionPolitica.getIdDivisionPoliticaResguardo(), divisionPolitica.getIdEstratoDivisionPolitica(), divisionPolitica.getIndicadorHabilitado(), divisionPolitica.getAuditoriaUsuario(), divisionPolitica.getIdDivisionPoliticaComuna(), divisionPolitica.getIdDivisionPoliticaLocalidad(),divisionPolitica.getGentilicio()));
+    DivisionPolitica create(@RequestBody DivisionPolitica c) {
+        return divisionPoliticaRefactorRepository.save(new DivisionPolitica(c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(), c.getDescripcionDivisonPolitica(), c.getIndicativoDivisonPolitica(), c.getCodigoPostalDivisionPolitica(), c.getIdDivisionPoliticaTipo(), c.getIdDivisionPoliticaArea(), c.getIdDivisionPoliticaAgrupacion(), c.getIdEstratoDivisionPolitica(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getGentilicio()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    DivisionPolitica update(@RequestBody DivisionPolitica divisionPolitica) {
-        return divisionPoliticaRefactorRepository.save(divisionPolitica);
+    DivisionPolitica update(@RequestBody DivisionPolitica c) {
+        return divisionPoliticaRefactorRepository.save(
+                new DivisionPolitica(c.getIdDivisionPolitica(),c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(), c.getDescripcionDivisonPolitica(), c.getIndicativoDivisonPolitica(), c.getCodigoPostalDivisionPolitica(), c.getIdDivisionPoliticaTipo(), c.getIdDivisionPoliticaArea(), c.getIdDivisionPoliticaAgrupacion(), c.getIdEstratoDivisionPolitica(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getGentilicio())
+        );
     }
 }

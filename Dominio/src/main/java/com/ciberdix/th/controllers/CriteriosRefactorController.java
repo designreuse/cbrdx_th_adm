@@ -41,6 +41,8 @@ public class CriteriosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Criterios obj) {
-        cargosCriteriosRefactorRepository.save(obj);
+        cargosCriteriosRefactorRepository.save(
+                new Criterios(obj.getIdCriterio(),obj.getCriterio(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

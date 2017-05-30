@@ -16,7 +16,7 @@ public class UsuariosWidgets {
     private Boolean indicadorHabilitado;
 
     @Id
-    @Column(name = "IdUsuarioWidget")
+    @Column(name = "IdUsuarioWidget", nullable = false)
     public Integer getIdUsuarioWidget() {
         return idUsuarioWidget;
     }
@@ -26,7 +26,7 @@ public class UsuariosWidgets {
     }
 
     @Basic
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -36,7 +36,7 @@ public class UsuariosWidgets {
     }
 
     @Basic
-    @Column(name = "IdWidget")
+    @Column(name = "IdWidget", nullable = true)
     public Integer getIdWidget() {
         return idWidget;
     }
@@ -46,7 +46,7 @@ public class UsuariosWidgets {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

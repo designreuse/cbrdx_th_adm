@@ -5,10 +5,10 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 24/05/2017.
  */
 @Entity
-@Table(name = "V_Cargos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Cargos", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargos {
     private Integer idCargo;
     private String cargo;
@@ -49,9 +49,11 @@ public class VCargos {
     private Integer idEstado;
     private String estado;
     private Integer paso;
+    private Boolean indicadorZona;
 
+    @Basic
     @Id
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -61,7 +63,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Cargo")
+    @Column(name = "Cargo", nullable = true, length = 100)
     public String getCargo() {
         return cargo;
     }
@@ -71,7 +73,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -81,7 +83,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -91,7 +93,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "PersonaACargoDir")
+    @Column(name = "PersonaACargoDir", nullable = true, precision = 0)
     public Integer getPersonaACargoDir() {
         return personaACargoDir;
     }
@@ -101,7 +103,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "PersonaACargoInd")
+    @Column(name = "PersonaACargoInd", nullable = true, precision = 0)
     public Integer getPersonaACargoInd() {
         return personaACargoInd;
     }
@@ -111,7 +113,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdCargoJefe")
+    @Column(name = "IdCargoJefe", nullable = true)
     public Integer getIdCargoJefe() {
         return idCargoJefe;
     }
@@ -121,7 +123,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "CargoJefe")
+    @Column(name = "CargoJefe", nullable = true, length = 100)
     public String getCargoJefe() {
         return cargoJefe;
     }
@@ -131,7 +133,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Mision")
+    @Column(name = "Mision", nullable = true, length = 500)
     public String getMision() {
         return mision;
     }
@@ -141,7 +143,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Puntos")
+    @Column(name = "Puntos", nullable = true, precision = 0)
     public Integer getPuntos() {
         return puntos;
     }
@@ -151,7 +153,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdCategoria")
+    @Column(name = "IdCategoria", nullable = true)
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -161,7 +163,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Categoria")
+    @Column(name = "Categoria", nullable = true, length = 30)
     public String getCategoria() {
         return categoria;
     }
@@ -171,7 +173,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Salario")
+    @Column(name = "Salario", nullable = true, precision = 0)
     public Integer getSalario() {
         return salario;
     }
@@ -181,7 +183,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorRequiereFormacion")
+    @Column(name = "IndicadorRequiereFormacion", nullable = true)
     public Boolean getIndicadorRequiereFormacion() {
         return indicadorRequiereFormacion;
     }
@@ -191,7 +193,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -201,7 +203,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "InterrelacionesInternas")
+    @Column(name = "InterrelacionesInternas", nullable = true, length = 500)
     public String getInterrelacionesInternas() {
         return interrelacionesInternas;
     }
@@ -211,7 +213,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "InterrelacionesExternas")
+    @Column(name = "InterrelacionesExternas", nullable = true, length = 500)
     public String getInterrelacionesExternas() {
         return interrelacionesExternas;
     }
@@ -221,7 +223,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "ResponsabilidadesAd")
+    @Column(name = "ResponsabilidadesAd", nullable = true, length = 500)
     public String getResponsabilidadesAd() {
         return responsabilidadesAd;
     }
@@ -231,7 +233,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "TomaDecisiones")
+    @Column(name = "TomaDecisiones", nullable = true, length = 500)
     public String getTomaDecisiones() {
         return tomaDecisiones;
     }
@@ -241,7 +243,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "ActividadesSupervisa")
+    @Column(name = "ActividadesSupervisa", nullable = true, length = 500)
     public String getActividadesSupervisa() {
         return actividadesSupervisa;
     }
@@ -251,7 +253,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdNivelEducacion")
+    @Column(name = "IdNivelEducacion", nullable = true)
     public Integer getIdNivelEducacion() {
         return idNivelEducacion;
     }
@@ -261,7 +263,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "NivelEducacion")
+    @Column(name = "NivelEducacion", nullable = true, length = 100)
     public String getNivelEducacion() {
         return nivelEducacion;
     }
@@ -271,7 +273,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "ConocimientosBasicos")
+    @Column(name = "ConocimientosBasicos", nullable = true, length = 500)
     public String getConocimientosBasicos() {
         return conocimientosBasicos;
     }
@@ -281,7 +283,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "TiempoExperiencia")
+    @Column(name = "TiempoExperiencia", nullable = true, length = 200)
     public String getTiempoExperiencia() {
         return tiempoExperiencia;
     }
@@ -291,7 +293,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "OtrosRequisitos")
+    @Column(name = "OtrosRequisitos", nullable = true, length = 200)
     public String getOtrosRequisitos() {
         return otrosRequisitos;
     }
@@ -301,7 +303,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Edad")
+    @Column(name = "Edad", nullable = true, precision = 0)
     public BigInteger getEdad() {
         return edad;
     }
@@ -311,7 +313,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "CargaFisica")
+    @Column(name = "CargaFisica", nullable = true, length = 100)
     public String getCargaFisica() {
         return cargaFisica;
     }
@@ -321,7 +323,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "CargaMental")
+    @Column(name = "CargaMental", nullable = true, length = 100)
     public String getCargaMental() {
         return cargaMental;
     }
@@ -331,7 +333,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "NivelPsicoSocial")
+    @Column(name = "NivelPsicoSocial", nullable = true, length = 100)
     public String getNivelPsicoSocial() {
         return nivelPsicoSocial;
     }
@@ -341,7 +343,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "CodigoCargo")
+    @Column(name = "CodigoCargo", nullable = true, length = 50)
     public String getCodigoCargo() {
         return codigoCargo;
     }
@@ -351,7 +353,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdEstructuraArea")
+    @Column(name = "IdEstructuraArea", nullable = true)
     public Integer getIdEstructuraArea() {
         return idEstructuraArea;
     }
@@ -361,7 +363,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "EstructuraArea")
+    @Column(name = "EstructuraArea", nullable = true, length = 40)
     public String getEstructuraArea() {
         return estructuraArea;
     }
@@ -371,7 +373,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdGenero")
+    @Column(name = "IdGenero", nullable = true)
     public Integer getIdGenero() {
         return idGenero;
     }
@@ -381,7 +383,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Genero")
+    @Column(name = "Genero", nullable = true, length = 100)
     public String getGenero() {
         return genero;
     }
@@ -391,7 +393,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdEstadoCivil")
+    @Column(name = "IdEstadoCivil", nullable = true)
     public Integer getIdEstadoCivil() {
         return idEstadoCivil;
     }
@@ -401,7 +403,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "EstadoCivil")
+    @Column(name = "EstadoCivil", nullable = true, length = 100)
     public String getEstadoCivil() {
         return estadoCivil;
     }
@@ -411,7 +413,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }
@@ -421,7 +423,7 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Estado")
+    @Column(name = "Estado", nullable = true, length = 100)
     public String getEstado() {
         return estado;
     }
@@ -431,13 +433,23 @@ public class VCargos {
     }
 
     @Basic
-    @Column(name = "Paso")
+    @Column(name = "Paso", nullable = true)
     public Integer getPaso() {
         return paso;
     }
 
     public void setPaso(Integer paso) {
         this.paso = paso;
+    }
+
+    @Basic
+    @Column(name = "IndicadorZona", nullable = true)
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 
     @Override
@@ -506,6 +518,8 @@ public class VCargos {
         if (idEstado != null ? !idEstado.equals(vCargos.idEstado) : vCargos.idEstado != null) return false;
         if (estado != null ? !estado.equals(vCargos.estado) : vCargos.estado != null) return false;
         if (paso != null ? !paso.equals(vCargos.paso) : vCargos.paso != null) return false;
+        if (indicadorZona != null ? !indicadorZona.equals(vCargos.indicadorZona) : vCargos.indicadorZona != null)
+            return false;
 
         return true;
     }
@@ -551,6 +565,7 @@ public class VCargos {
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
+        result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         return result;
     }
 }

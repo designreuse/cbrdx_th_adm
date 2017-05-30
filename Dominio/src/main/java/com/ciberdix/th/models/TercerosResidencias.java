@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Felipe Alejandro Aguirre Santos on 4/5/2017.
  */
 @Entity
-@Table(name = "TercerosResidencias", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "TercerosResidencias", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosResidencias {
     private Integer idTerceroResidencia;
     private Integer idTerceroLocalizacion;
@@ -33,9 +33,21 @@ public class TercerosResidencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
+    public TercerosResidencias(Integer idTerceroResidencia, Integer idTerceroLocalizacion, Integer idTipoVivienda, Integer idTipoConstruccionVivienda, Integer idEstrato, Integer idClasesViviendas, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroResidencia = idTerceroResidencia;
+        this.idTerceroLocalizacion = idTerceroLocalizacion;
+        this.idTipoVivienda = idTipoVivienda;
+        this.idTipoConstruccionVivienda = idTipoConstruccionVivienda;
+        this.idEstrato = idEstrato;
+        this.idClasesViviendas = idClasesViviendas;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
     @GeneratedValue
-    @Column(name = "IdTerceroResidencia")
+    @Column(name = "IdTerceroResidencia", nullable = false)
     public Integer getIdTerceroResidencia() {
         return idTerceroResidencia;
     }
@@ -45,7 +57,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IdTerceroLocalizacion")
+    @Column(name = "IdTerceroLocalizacion", nullable = true)
     public Integer getIdTerceroLocalizacion() {
         return idTerceroLocalizacion;
     }
@@ -55,7 +67,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
+    @Column(name = "IdTipoVivienda", nullable = true)
     public Integer getIdTipoVivienda() {
         return idTipoVivienda;
     }
@@ -65,7 +77,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IdTipoConstruccionVivienda")
+    @Column(name = "IdTipoConstruccionVivienda", nullable = true)
     public Integer getIdTipoConstruccionVivienda() {
         return idTipoConstruccionVivienda;
     }
@@ -75,7 +87,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IdEstrato")
+    @Column(name = "IdEstrato", nullable = true)
     public Integer getIdEstrato() {
         return idEstrato;
     }
@@ -85,7 +97,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IdClasesViviendas")
+    @Column(name = "IdClasesViviendas", nullable = true)
     public Integer getIdClasesViviendas() {
         return idClasesViviendas;
     }
@@ -95,7 +107,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -105,7 +117,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -115,7 +127,7 @@ public class TercerosResidencias {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

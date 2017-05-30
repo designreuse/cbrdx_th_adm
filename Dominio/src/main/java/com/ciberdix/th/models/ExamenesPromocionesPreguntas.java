@@ -21,7 +21,7 @@ public class ExamenesPromocionesPreguntas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdExamenPromocionPregunta")
+    @Column(name = "IdExamenPromocionPregunta", nullable = false)
     public Integer getIdExamenPromocionPregunta() {
         return idExamenPromocionPregunta;
     }
@@ -31,7 +31,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "IdExamenPromocion")
+    @Column(name = "IdExamenPromocion", nullable = true)
     public Integer getIdExamenPromocion() {
         return idExamenPromocion;
     }
@@ -41,7 +41,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "Pregunta")
+    @Column(name = "Pregunta", nullable = true, length = 100)
     public String getPregunta() {
         return pregunta;
     }
@@ -51,7 +51,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "IdTipoPregunta")
+    @Column(name = "IdTipoPregunta", nullable = true)
     public Integer getIdTipoPregunta() {
         return idTipoPregunta;
     }
@@ -61,7 +61,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "IndicadorObligatorio")
+    @Column(name = "IndicadorObligatorio", nullable = true)
     public Boolean getIndicadorObligatorio() {
         return indicadorObligatorio;
     }
@@ -71,7 +71,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -81,7 +81,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -91,7 +91,7 @@ public class ExamenesPromocionesPreguntas {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

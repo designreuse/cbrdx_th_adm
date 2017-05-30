@@ -25,7 +25,7 @@ public class TercerosExamenes {
     private Integer idEstado;
 
     @Id
-    @Column(name = "IdTerceroExamen")
+    @Column(name = "IdTerceroExamen", nullable = false)
     public Integer getIdTerceroExamen() {
         return idTerceroExamen;
     }
@@ -35,7 +35,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -45,7 +45,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdCargo")
+    @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
         return idCargo;
     }
@@ -55,7 +55,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdProveedor")
+    @Column(name = "IdProveedor", nullable = false)
     public Integer getIdProveedor() {
         return idProveedor;
     }
@@ -65,7 +65,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdProveedorServicio")
+    @Column(name = "IdProveedorServicio", nullable = false)
     public Integer getIdProveedorServicio() {
         return idProveedorServicio;
     }
@@ -75,7 +75,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "FechaProgramada")
+    @Column(name = "FechaProgramada", nullable = false)
     public Timestamp getFechaProgramada() {
         return fechaProgramada;
     }
@@ -85,7 +85,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "Observacion")
+    @Column(name = "Observacion", nullable = true, length = 100)
     public String getObservacion() {
         return observacion;
     }
@@ -95,7 +95,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IndicadorNovedad")
+    @Column(name = "IndicadorNovedad", nullable = true)
     public Boolean getIndicadorNovedad() {
         return indicadorNovedad;
     }
@@ -105,7 +105,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdDiagnosticoCIE")
+    @Column(name = "IdDiagnosticoCIE", nullable = true)
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
     }
@@ -115,7 +115,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -125,7 +125,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -135,7 +135,7 @@ public class TercerosExamenes {
     }
 
     @Basic
-    @Column(name = "IdEstado")
+    @Column(name = "IdEstado", nullable = true)
     public Integer getIdEstado() {
         return idEstado;
     }

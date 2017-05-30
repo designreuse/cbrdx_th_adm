@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
  * Created by Danny on 16/05/2017.
  */
 @Entity
-@Table(name = "RequerimientosReferidos", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "RequerimientosReferidos", schema = "dbo", catalog = "CREZCAMOS")
 public class RequerimientosReferidos {
     private Integer idRequerimientoReferido;
     private Integer idRequerimiento;
@@ -19,7 +19,6 @@ public class RequerimientosReferidos {
     private Integer idEstado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
     public RequerimientosReferidos() {
     }
 
@@ -44,6 +43,10 @@ public class RequerimientosReferidos {
         this.idEstado = idEstado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public void setFechaReferencia(java.sql.Date fechaReferencia) {
+        this.fechaReferencia = fechaReferencia;
     }
 
     @Id

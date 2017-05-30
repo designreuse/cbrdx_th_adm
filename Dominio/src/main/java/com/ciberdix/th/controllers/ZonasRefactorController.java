@@ -31,14 +31,21 @@ public class ZonasRefactorController {
         return zonasRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byEstrucOrganizacional/{idEstructuraOrganizacional}")
+    List<Zonas> findAllByIdEstructuraOrganizacional(@PathVariable Integer idEstructuraOrganizacional) {
+        return (List<Zonas>) zonasRefactorRepository.findAllByIdEstructuraOrganizacional(idEstructuraOrganizacional);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Zonas create(@RequestBody Zonas o) {
-        return zonasRefactorRepository.save(new Zonas(o.getZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()));
+        return zonasRefactorRepository.save(new Zonas(o.getZona(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getCodigo(), o.getIdEstructuraOrganizacional()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Zonas obj) {
-        zonasRefactorRepository.save(obj);
+    void update(@RequestBody Zonas o) {
+        zonasRefactorRepository.save(
+                new Zonas(o.getIdZona(), o.getZona(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getCodigo(), o.getIdEstructuraOrganizacional())
+        );
     }
 
 }

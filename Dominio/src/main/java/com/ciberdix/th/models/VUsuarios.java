@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_Usuarios", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_Usuarios", schema = "dbo", catalog = "CREZCAMOS")
 public class VUsuarios {
     private Integer idUsuario;
     private String usuario;
@@ -14,8 +14,9 @@ public class VUsuarios {
     private String documento;
     private String nombre;
 
+    @Basic
     @Id
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = false)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -25,7 +26,7 @@ public class VUsuarios {
     }
 
     @Basic
-    @Column(name = "Usuario")
+    @Column(name = "Usuario", nullable = true, length = 64)
     public String getUsuario() {
         return usuario;
     }
@@ -35,7 +36,7 @@ public class VUsuarios {
     }
 
     @Basic
-    @Column(name = "Ind_Hab")
+    @Column(name = "Ind_Hab", nullable = true)
     public Boolean getIndHab() {
         return indHab;
     }
@@ -45,7 +46,7 @@ public class VUsuarios {
     }
 
     @Basic
-    @Column(name = "Documento")
+    @Column(name = "Documento", nullable = true, length = 13)
     public String getDocumento() {
         return documento;
     }
@@ -55,7 +56,7 @@ public class VUsuarios {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = false, length = 259)
     public String getNombre() {
         return nombre;
     }

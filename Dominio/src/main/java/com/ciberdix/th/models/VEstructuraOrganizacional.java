@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_EstructuraOrganizacional", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_EstructuraOrganizacional", schema = "dbo", catalog = "CREZCAMOS")
 public class VEstructuraOrganizacional {
     private Integer idEstructuraOrganizacional;
     private String codigo;
@@ -36,9 +36,11 @@ public class VEstructuraOrganizacional {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorPlantaConfirmada;
+    private Boolean indicadorZona;
 
+    @Basic
     @Id
-    @Column(name = "IdEstructuraOrganizacional")
+    @Column(name = "IdEstructuraOrganizacional", nullable = false)
     public Integer getIdEstructuraOrganizacional() {
         return idEstructuraOrganizacional;
     }
@@ -48,7 +50,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Codigo")
+    @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
     }
@@ -58,7 +60,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Nombre")
+    @Column(name = "Nombre", nullable = true, length = 50)
     public String getNombre() {
         return nombre;
     }
@@ -68,7 +70,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdPadre")
+    @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
     }
@@ -78,7 +80,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoEstructura")
+    @Column(name = "IdTipoEstructura", nullable = true)
     public Integer getIdTipoEstructura() {
         return idTipoEstructura;
     }
@@ -88,7 +90,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "TipoEstructura")
+    @Column(name = "TipoEstructura", nullable = true, length = 100)
     public String getTipoEstructura() {
         return tipoEstructura;
     }
@@ -98,7 +100,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdCentroCostos")
+    @Column(name = "IdCentroCostos", nullable = true)
     public Integer getIdCentroCostos() {
         return idCentroCostos;
     }
@@ -108,7 +110,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "CentroCostos")
+    @Column(name = "CentroCostos", nullable = true, length = 30)
     public String getCentroCostos() {
         return centroCostos;
     }
@@ -118,7 +120,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoArea")
+    @Column(name = "IdTipoArea", nullable = true)
     public Integer getIdTipoArea() {
         return idTipoArea;
     }
@@ -128,7 +130,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "TipoArea")
+    @Column(name = "TipoArea", nullable = true, length = 40)
     public String getTipoArea() {
         return tipoArea;
     }
@@ -138,7 +140,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdEstructuraFisica")
+    @Column(name = "IdEstructuraFisica", nullable = true)
     public Integer getIdEstructuraFisica() {
         return idEstructuraFisica;
     }
@@ -148,7 +150,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "EstructuraFisica")
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
     public String getEstructuraFisica() {
         return estructuraFisica;
     }
@@ -158,7 +160,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdTipoDocumento")
+    @Column(name = "IdTipoDocumento", nullable = true)
     public Integer getIdTipoDocumento() {
         return idTipoDocumento;
     }
@@ -168,7 +170,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "TipoDocumento")
+    @Column(name = "TipoDocumento", nullable = true, length = 100)
     public String getTipoDocumento() {
         return tipoDocumento;
     }
@@ -178,7 +180,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "NumeroDocumento")
+    @Column(name = "NumeroDocumento", nullable = true, length = 50)
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
@@ -188,7 +190,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLocalizacion")
+    @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
     }
@@ -198,7 +200,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Localizacion")
+    @Column(name = "Localizacion", nullable = true, length = 512)
     public String getLocalizacion() {
         return localizacion;
     }
@@ -208,7 +210,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "RazonSocial")
+    @Column(name = "RazonSocial", nullable = true, length = 50)
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -218,7 +220,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Telefono")
+    @Column(name = "Telefono", nullable = true, length = 50)
     public String getTelefono() {
         return telefono;
     }
@@ -228,7 +230,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "Celular")
+    @Column(name = "Celular", nullable = true, length = 50)
     public String getCelular() {
         return celular;
     }
@@ -238,7 +240,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "CorreoElectronico")
+    @Column(name = "CorreoElectronico", nullable = true, length = 50)
     public String getCorreoElectronico() {
         return correoElectronico;
     }
@@ -248,7 +250,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "PaginaWeb")
+    @Column(name = "PaginaWeb", nullable = true, length = 50)
     public String getPaginaWeb() {
         return paginaWeb;
     }
@@ -258,7 +260,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IdLogo")
+    @Column(name = "IdLogo", nullable = true)
     public Integer getIdLogo() {
         return idLogo;
     }
@@ -268,7 +270,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -278,7 +280,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -288,7 +290,7 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -298,13 +300,23 @@ public class VEstructuraOrganizacional {
     }
 
     @Basic
-    @Column(name = "IndicadorPlantaConfirmada")
+    @Column(name = "IndicadorPlantaConfirmada", nullable = true)
     public Boolean getIndicadorPlantaConfirmada() {
         return indicadorPlantaConfirmada;
     }
 
     public void setIndicadorPlantaConfirmada(Boolean indicadorPlantaConfirmada) {
         this.indicadorPlantaConfirmada = indicadorPlantaConfirmada;
+    }
+
+    @Basic
+    @Column(name = "IndicadorZona", nullable = true)
+    public Boolean getIndicadorZona() {
+        return indicadorZona;
+    }
+
+    public void setIndicadorZona(Boolean indicadorZona) {
+        this.indicadorZona = indicadorZona;
     }
 
     @Override
@@ -314,8 +326,7 @@ public class VEstructuraOrganizacional {
 
         VEstructuraOrganizacional that = (VEstructuraOrganizacional) o;
 
-        if (idEstructuraOrganizacional != null ? !idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional) : that.idEstructuraOrganizacional != null)
-            return false;
+        if (!idEstructuraOrganizacional.equals(that.idEstructuraOrganizacional)) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
@@ -350,19 +361,16 @@ public class VEstructuraOrganizacional {
         if (idLogo != null ? !idLogo.equals(that.idLogo) : that.idLogo != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
         if (indicadorPlantaConfirmada != null ? !indicadorPlantaConfirmada.equals(that.indicadorPlantaConfirmada) : that.indicadorPlantaConfirmada != null)
             return false;
-
-        return true;
+        return indicadorZona != null ? indicadorZona.equals(that.indicadorZona) : that.indicadorZona == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idEstructuraOrganizacional != null ? idEstructuraOrganizacional.hashCode() : 0;
+        int result = idEstructuraOrganizacional.hashCode();
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
@@ -386,9 +394,10 @@ public class VEstructuraOrganizacional {
         result = 31 * result + (paginaWeb != null ? paginaWeb.hashCode() : 0);
         result = 31 * result + (idLogo != null ? idLogo.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
         result = 31 * result + (indicadorPlantaConfirmada != null ? indicadorPlantaConfirmada.hashCode() : 0);
+        result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         return result;
     }
 }

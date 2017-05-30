@@ -61,6 +61,8 @@ public class ListasEstadosJuridicosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     ListasEstadosJuridicos update(@RequestBody ListasEstadosJuridicos obj) {
-        return repository.save(obj);
+        return repository.save(
+                new ListasEstadosJuridicos(obj.getIdLista(),obj.getCodigo(), obj.getNombre(), obj.getOrden(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
+        );
     }
 }

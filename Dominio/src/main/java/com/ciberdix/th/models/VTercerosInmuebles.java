@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_TercerosInmuebles", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_TercerosInmuebles", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosInmuebles {
     private Integer idTerceroInmueble;
     private Long idTercero;
@@ -26,8 +26,9 @@ public class VTercerosInmuebles {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    @Basic
     @Id
-    @Column(name = "IdTerceroInmueble")
+    @Column(name = "IdTerceroInmueble", nullable = false)
     public Integer getIdTerceroInmueble() {
         return idTerceroInmueble;
     }
@@ -37,7 +38,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTercero")
+    @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
     }
@@ -47,7 +48,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoVivienda")
+    @Column(name = "IdTipoVivienda", nullable = true)
     public Integer getIdTipoVivienda() {
         return idTipoVivienda;
     }
@@ -57,7 +58,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "TipoVivienda")
+    @Column(name = "TipoVivienda", nullable = true, length = 100)
     public String getTipoVivienda() {
         return tipoVivienda;
     }
@@ -67,7 +68,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdClaseVivienda")
+    @Column(name = "IdClaseVivienda", nullable = true)
     public Integer getIdClaseVivienda() {
         return idClaseVivienda;
     }
@@ -77,7 +78,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "ClaseVivienda")
+    @Column(name = "ClaseVivienda", nullable = true, length = 100)
     public String getClaseVivienda() {
         return claseVivienda;
     }
@@ -87,7 +88,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdTipoConstruccionVivienda")
+    @Column(name = "IdTipoConstruccionVivienda", nullable = true)
     public Integer getIdTipoConstruccionVivienda() {
         return idTipoConstruccionVivienda;
     }
@@ -97,7 +98,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "TipoConstruccionVivienda")
+    @Column(name = "TipoConstruccionVivienda", nullable = true, length = 100)
     public String getTipoConstruccionVivienda() {
         return tipoConstruccionVivienda;
     }
@@ -107,7 +108,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AnioConstruccion")
+    @Column(name = "AnioConstruccion", nullable = true)
     public Integer getAnioConstruccion() {
         return anioConstruccion;
     }
@@ -117,7 +118,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroPisos")
+    @Column(name = "NumeroPisos", nullable = true)
     public Integer getNumeroPisos() {
         return numeroPisos;
     }
@@ -127,7 +128,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "NumeroSotanos")
+    @Column(name = "NumeroSotanos", nullable = true)
     public Integer getNumeroSotanos() {
         return numeroSotanos;
     }
@@ -137,7 +138,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IdEstrato")
+    @Column(name = "IdEstrato", nullable = true)
     public Integer getIdEstrato() {
         return idEstrato;
     }
@@ -147,7 +148,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "Estrato")
+    @Column(name = "Estrato", nullable = true, length = 100)
     public String getEstrato() {
         return estrato;
     }
@@ -157,7 +158,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -167,7 +168,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario")
+    @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -177,7 +178,7 @@ public class VTercerosInmuebles {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha")
+    @Column(name = "AuditoriaFecha", nullable = true)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }

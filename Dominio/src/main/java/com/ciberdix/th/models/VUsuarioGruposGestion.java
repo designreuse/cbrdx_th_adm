@@ -1,13 +1,13 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by felip on 21/04/2017.
  */
 @Entity
-@Table(name = "V_UsuarioGruposGestion", schema = "crz_th", catalog = "CREZCAMOS")
+@Table(name = "V_UsuarioGruposGestion", schema = "dbo", catalog = "CREZCAMOS")
 public class VUsuarioGruposGestion {
     private Integer idUsuarioGrupoGestion;
     private Integer idUsuario;
@@ -16,8 +16,17 @@ public class VUsuarioGruposGestion {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
+    public void setFechaInicio(java.sql.Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(java.sql.Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    @Basic
     @Id
-    @Column(name = "IdUsuarioGrupoGestion")
+    @Column(name = "IdUsuarioGrupoGestion", nullable = false)
     public Integer getIdUsuarioGrupoGestion() {
         return idUsuarioGrupoGestion;
     }
@@ -27,7 +36,7 @@ public class VUsuarioGruposGestion {
     }
 
     @Basic
-    @Column(name = "IdUsuario")
+    @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -37,7 +46,7 @@ public class VUsuarioGruposGestion {
     }
 
     @Basic
-    @Column(name = "GrupoGestion")
+    @Column(name = "GrupoGestion", nullable = true, length = 64)
     public String getGrupoGestion() {
         return grupoGestion;
     }
@@ -47,7 +56,7 @@ public class VUsuarioGruposGestion {
     }
 
     @Basic
-    @Column(name = "FechaInicio")
+    @Column(name = "FechaInicio", nullable = true)
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -57,7 +66,7 @@ public class VUsuarioGruposGestion {
     }
 
     @Basic
-    @Column(name = "FechaFin")
+    @Column(name = "FechaFin", nullable = true)
     public Date getFechaFin() {
         return fechaFin;
     }
@@ -67,7 +76,7 @@ public class VUsuarioGruposGestion {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado")
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }

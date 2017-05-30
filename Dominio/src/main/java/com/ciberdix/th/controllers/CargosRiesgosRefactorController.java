@@ -47,6 +47,8 @@ public class CargosRiesgosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CargosRiesgos obj) {
-        cargosRiesgosRefactorRepository.save(obj);
+        cargosRiesgosRefactorRepository.save(
+                new CargosRiesgos(obj.getIdCargoRiesgo(),obj.getIdCargo(), obj.getIdRiesgo(), obj.getAuditoriaUsuario())
+        );
     }
 }

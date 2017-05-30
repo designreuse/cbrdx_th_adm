@@ -1,6 +1,7 @@
 package com.ciberdix.th.repositories;
 
 import com.ciberdix.th.models.VEstructuraOrganizacionalCargos;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface VEstructuraOrganizacionalCargosRefactorRepository extends CrudRepository<VEstructuraOrganizacionalCargos, Integer> {
     List<VEstructuraOrganizacionalCargos> findByIndicadorHabilitadoIsTrue();
     List<VEstructuraOrganizacionalCargos> findByIndicadorHabilitadoIsTrueAndIdEstructuraOrganizacional(Integer id);
+    VEstructuraOrganizacionalCargos findAllByIndicadorHabilitadoIsTrueAndIdCargoAndIdEstructuraOrganizacional(Integer idCargo, Integer idEstructura);
 }
