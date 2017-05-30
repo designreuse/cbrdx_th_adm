@@ -48,10 +48,6 @@ public class Usuarios {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaInactivacion(java.sql.Date fechaInactivacion) {
-        this.fechaInactivacion = fechaInactivacion;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdUsuario", nullable = false)
