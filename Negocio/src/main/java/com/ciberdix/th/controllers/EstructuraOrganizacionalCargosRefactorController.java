@@ -64,4 +64,10 @@ public class EstructuraOrganizacionalCargosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/disabled/{idCargo}")
+    void disabled(@PathVariable Integer idCargo){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(serviceUrl + "/disabled/" + idCargo, VEstructuraOrganizacionalCargos.class);
+    }
 }

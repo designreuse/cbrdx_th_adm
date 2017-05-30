@@ -66,4 +66,9 @@ public class EstructuraOrganizacionalCargosRefactorController {
                         obj.getAuditoriaUsuario())
         );
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/disabled/{idCargo}")
+    void disabledEOC(@PathVariable Integer idCargo) {
+        estructuraOrganizacionalCargosRefactorRepository.disabled(idCargo);
+    }
 }

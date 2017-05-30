@@ -163,4 +163,9 @@ public class CargosRefactorController {
                         o.getIdEstructuraArea(),o.getIdGenero(),o.getIdEstadoCivil(),o.getIdEstado(),o.getPaso(),o.getIndicadorZona())
         );
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/disabled/{idCargo}")
+    void disabledEOC(@PathVariable Integer idCargo) {
+        cargosRefactorRepository.disabled(idCargo);
+    }
 }
