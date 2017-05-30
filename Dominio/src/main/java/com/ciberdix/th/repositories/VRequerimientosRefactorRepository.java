@@ -17,4 +17,8 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
 
     List<VRequerimientos> findByFechaSolicitudBetween(Date fechaInicio, Date fechaFin);
 
+    List<VRequerimientos> findAllByIdEstadoAndIdResponsableSeleccion(Integer idEstado, Integer idResponsableSeleccion);
+
+    List<VRequerimientos> findAllByIdEstadoAndIdResponsableSeleccionAndIdTipoSolicitud(Integer idEstado, Integer idResponsableSeleccion, Integer idTipoSolicitud);
+
 }
