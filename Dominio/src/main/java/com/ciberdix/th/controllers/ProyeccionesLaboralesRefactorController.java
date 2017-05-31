@@ -59,6 +59,11 @@ public class ProyeccionesLaboralesRefactorController {
         return vProyeccionLaboralResumenRefactorRepository.executeConfirmation(1);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/anio/{anio}")
+    List<VProyeccionLaboral> findAllByAño(@PathVariable Integer anio) {
+        return vProyeccionLaboralRefactorRepository.findAllByAnio(anio);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionesLaborales crearListasEstadosJuridicos(@RequestBody ProyeccionesLaborales obj) {
         return proyeccionesLaboralesRefactorRepository.save(
