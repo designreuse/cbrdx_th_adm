@@ -1,18 +1,21 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.config.XProperties;
 import com.ciberdix.th.model.Constantes;
+import com.ciberdix.th.model.ListasItems;
+import com.ciberdix.th.model.Usuarios;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class UtilitiesController {
 
@@ -67,14 +70,35 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
-    public Constantes findConstant(String code) {
+    static Constantes findConstant(String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        String domainUrl = readParameter("domain.url");
+        return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
+    }
+
+    static ListasItems findListItem(String tableName, String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        String serviceURL = readParameter("business.url") + "/api/listas/tabla/" + tableName + "/code/" + code.toUpperCase();
+        return restTemplate.getForObject(serviceURL, ListasItems.class);
+    }
+
+    static String generateURLToken(String URL) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("URL", URL);
+        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+    }
+
+    static Usuarios findUser(Integer idUsuario) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(readParameter("business.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
+    }
+
+    static String readParameter(String parameter) {
+        Properties prop = new XProperties();
         try {
-            Properties prop = new Properties();
-            RestTemplate restTemplate = new RestTemplate();
-            InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties");
-            prop.load(input);
-            String domainUrl = prop.getProperty("url") + ":" + prop.getProperty("domain.port");
-            return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
+            InputStream inputStream = ClassLoader.getSystemResourceAsStream("application.properties");
+            prop.load(inputStream);
+            return prop.getProperty(parameter);
         } catch (IOException e) {
             return null;
         }
