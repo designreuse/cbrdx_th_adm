@@ -35,7 +35,7 @@ public class VRequerimientos {
     private Integer idZona;
     private String estructuraFisica;
     private Integer idEstructuraFisica;
-    private Date fechaSolicitud;
+    private java.sql.Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
@@ -46,10 +46,24 @@ public class VRequerimientos {
     private Integer idCategoria;
     private String tipoSolicitud;
     private Integer idTipoSolicitud;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private java.sql.Date fechaInicio;
+    private java.sql.Date fechaFin;
     private String nombreCargo;
     private String funcionCargo;
+    private Integer idPublicacion;
+    private java.sql.Date fechaInicioPublicacion;
+    private java.sql.Date fechaFinPublicacion;
+    private Boolean indicadorSalario;
+    private Boolean indicadorBonificacion;
+    private String nivelEducacion;
+    private Integer idNivelEducacion;
+    private String tipoTrabajo;
+    private Integer idTipoTrabajo;
+    private String descripcionGeneral;
+    private String lugarTrabajo;
+    private String competenciasLaborales;
+    private Boolean indicadorObservacion;
+    private String observacion;
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
@@ -267,11 +281,11 @@ public class VRequerimientos {
         this.idEstructuraFisica = idEstructuraFisica;
     }
 
-    public Date getFechaSolicitud() {
+    public java.sql.Date getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Date fechaSolicitud) {
+    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
@@ -355,19 +369,19 @@ public class VRequerimientos {
         this.idTipoSolicitud = idTipoSolicitud;
     }
 
-    public Date getFechaInicio() {
+    public java.sql.Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(java.sql.Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaFin() {
+    public java.sql.Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(Date fechaFin) {
+    public void setFechaFin(java.sql.Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -385,5 +399,117 @@ public class VRequerimientos {
 
     public void setFuncionCargo(String funcionCargo) {
         this.funcionCargo = funcionCargo;
+    }
+
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+
+    public java.sql.Date getFechaInicioPublicacion() {
+        return fechaInicioPublicacion;
+    }
+
+    public void setFechaInicioPublicacion(java.sql.Date fechaInicioPublicacion) {
+        this.fechaInicioPublicacion = fechaInicioPublicacion;
+    }
+
+    public java.sql.Date getFechaFinPublicacion() {
+        return fechaFinPublicacion;
+    }
+
+    public void setFechaFinPublicacion(java.sql.Date fechaFinPublicacion) {
+        this.fechaFinPublicacion = fechaFinPublicacion;
+    }
+
+    public Boolean getIndicadorSalario() {
+        return indicadorSalario;
+    }
+
+    public void setIndicadorSalario(Boolean indicadorSalario) {
+        this.indicadorSalario = indicadorSalario;
+    }
+
+    public Boolean getIndicadorBonificacion() {
+        return indicadorBonificacion;
+    }
+
+    public void setIndicadorBonificacion(Boolean indicadorBonificacion) {
+        this.indicadorBonificacion = indicadorBonificacion;
+    }
+
+    public String getNivelEducacion() {
+        return nivelEducacion;
+    }
+
+    public void setNivelEducacion(String nivelEducacion) {
+        this.nivelEducacion = nivelEducacion;
+    }
+
+    public Integer getIdNivelEducacion() {
+        return idNivelEducacion;
+    }
+
+    public void setIdNivelEducacion(Integer idNivelEducacion) {
+        this.idNivelEducacion = idNivelEducacion;
+    }
+
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
+    }
+
+    public Integer getIdTipoTrabajo() {
+        return idTipoTrabajo;
+    }
+
+    public void setIdTipoTrabajo(Integer idTipoTrabajo) {
+        this.idTipoTrabajo = idTipoTrabajo;
+    }
+
+    public String getDescripcionGeneral() {
+        return descripcionGeneral;
+    }
+
+    public void setDescripcionGeneral(String descripcionGeneral) {
+        this.descripcionGeneral = descripcionGeneral;
+    }
+
+    public String getLugarTrabajo() {
+        return lugarTrabajo;
+    }
+
+    public void setLugarTrabajo(String lugarTrabajo) {
+        this.lugarTrabajo = lugarTrabajo;
+    }
+
+    public String getCompetenciasLaborales() {
+        return competenciasLaborales;
+    }
+
+    public void setCompetenciasLaborales(String competenciasLaborales) {
+        this.competenciasLaborales = competenciasLaborales;
+    }
+
+    public Boolean getIndicadorObservacion() {
+        return indicadorObservacion;
+    }
+
+    public void setIndicadorObservacion(Boolean indicadorObservacion) {
+        this.indicadorObservacion = indicadorObservacion;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 }

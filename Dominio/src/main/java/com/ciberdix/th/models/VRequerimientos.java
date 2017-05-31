@@ -5,7 +5,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 24/05/2017.
+ * Created by Danny on 31/05/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "dbo", catalog = "CREZCAMOS")
@@ -52,8 +52,21 @@ public class VRequerimientos {
     private Date fechaFin;
     private String nombreCargo;
     private String funcionCargo;
+    private Integer idPublicacion;
+    private Date fechaInicioPublicacion;
+    private Date fechaFinPublicacion;
+    private Boolean indicadorSalario;
+    private Boolean indicadorBonificacion;
+    private String nivelEducacion;
+    private Integer idNivelEducacion;
+    private String tipoTrabajo;
+    private Integer idTipoTrabajo;
+    private String descripcionGeneral;
+    private String lugarTrabajo;
+    private String competenciasLaborales;
+    private Boolean indicadorObservacion;
+    private String observacion;
 
-    @Basic
     @Id
     @Column(name = "IdRequerimiento", nullable = false)
     public Integer getIdRequerimiento() {
@@ -474,6 +487,146 @@ public class VRequerimientos {
         this.funcionCargo = funcionCargo;
     }
 
+    @Basic
+    @Column(name = "IdPublicacion", nullable = true)
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+
+    @Basic
+    @Column(name = "FechaInicioPublicacion", nullable = true)
+    public Date getFechaInicioPublicacion() {
+        return fechaInicioPublicacion;
+    }
+
+    public void setFechaInicioPublicacion(Date fechaInicioPublicacion) {
+        this.fechaInicioPublicacion = fechaInicioPublicacion;
+    }
+
+    @Basic
+    @Column(name = "FechaFinPublicacion", nullable = true)
+    public Date getFechaFinPublicacion() {
+        return fechaFinPublicacion;
+    }
+
+    public void setFechaFinPublicacion(Date fechaFinPublicacion) {
+        this.fechaFinPublicacion = fechaFinPublicacion;
+    }
+
+    @Basic
+    @Column(name = "IndicadorSalario", nullable = true)
+    public Boolean getIndicadorSalario() {
+        return indicadorSalario;
+    }
+
+    public void setIndicadorSalario(Boolean indicadorSalario) {
+        this.indicadorSalario = indicadorSalario;
+    }
+
+    @Basic
+    @Column(name = "IndicadorBonificacion", nullable = true)
+    public Boolean getIndicadorBonificacion() {
+        return indicadorBonificacion;
+    }
+
+    public void setIndicadorBonificacion(Boolean indicadorBonificacion) {
+        this.indicadorBonificacion = indicadorBonificacion;
+    }
+
+    @Basic
+    @Column(name = "NivelEducacion", nullable = true, length = 100)
+    public String getNivelEducacion() {
+        return nivelEducacion;
+    }
+
+    public void setNivelEducacion(String nivelEducacion) {
+        this.nivelEducacion = nivelEducacion;
+    }
+
+    @Basic
+    @Column(name = "IdNivelEducacion", nullable = true)
+    public Integer getIdNivelEducacion() {
+        return idNivelEducacion;
+    }
+
+    public void setIdNivelEducacion(Integer idNivelEducacion) {
+        this.idNivelEducacion = idNivelEducacion;
+    }
+
+    @Basic
+    @Column(name = "TipoTrabajo", nullable = true, length = 100)
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
+    }
+
+    @Basic
+    @Column(name = "IdTipoTrabajo", nullable = true)
+    public Integer getIdTipoTrabajo() {
+        return idTipoTrabajo;
+    }
+
+    public void setIdTipoTrabajo(Integer idTipoTrabajo) {
+        this.idTipoTrabajo = idTipoTrabajo;
+    }
+
+    @Basic
+    @Column(name = "DescripcionGeneral", nullable = true, length = 500)
+    public String getDescripcionGeneral() {
+        return descripcionGeneral;
+    }
+
+    public void setDescripcionGeneral(String descripcionGeneral) {
+        this.descripcionGeneral = descripcionGeneral;
+    }
+
+    @Basic
+    @Column(name = "LugarTrabajo", nullable = true, length = 500)
+    public String getLugarTrabajo() {
+        return lugarTrabajo;
+    }
+
+    public void setLugarTrabajo(String lugarTrabajo) {
+        this.lugarTrabajo = lugarTrabajo;
+    }
+
+    @Basic
+    @Column(name = "CompetenciasLaborales", nullable = true, length = 500)
+    public String getCompetenciasLaborales() {
+        return competenciasLaborales;
+    }
+
+    public void setCompetenciasLaborales(String competenciasLaborales) {
+        this.competenciasLaborales = competenciasLaborales;
+    }
+
+    @Basic
+    @Column(name = "IndicadorObservacion", nullable = true)
+    public Boolean getIndicadorObservacion() {
+        return indicadorObservacion;
+    }
+
+    public void setIndicadorObservacion(Boolean indicadorObservacion) {
+        this.indicadorObservacion = indicadorObservacion;
+    }
+
+    @Basic
+    @Column(name = "Observacion", nullable = true, length = 500)
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -547,6 +700,31 @@ public class VRequerimientos {
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
         if (nombreCargo != null ? !nombreCargo.equals(that.nombreCargo) : that.nombreCargo != null) return false;
         if (funcionCargo != null ? !funcionCargo.equals(that.funcionCargo) : that.funcionCargo != null) return false;
+        if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
+            return false;
+        if (fechaInicioPublicacion != null ? !fechaInicioPublicacion.equals(that.fechaInicioPublicacion) : that.fechaInicioPublicacion != null)
+            return false;
+        if (fechaFinPublicacion != null ? !fechaFinPublicacion.equals(that.fechaFinPublicacion) : that.fechaFinPublicacion != null)
+            return false;
+        if (indicadorSalario != null ? !indicadorSalario.equals(that.indicadorSalario) : that.indicadorSalario != null)
+            return false;
+        if (indicadorBonificacion != null ? !indicadorBonificacion.equals(that.indicadorBonificacion) : that.indicadorBonificacion != null)
+            return false;
+        if (nivelEducacion != null ? !nivelEducacion.equals(that.nivelEducacion) : that.nivelEducacion != null)
+            return false;
+        if (idNivelEducacion != null ? !idNivelEducacion.equals(that.idNivelEducacion) : that.idNivelEducacion != null)
+            return false;
+        if (tipoTrabajo != null ? !tipoTrabajo.equals(that.tipoTrabajo) : that.tipoTrabajo != null) return false;
+        if (idTipoTrabajo != null ? !idTipoTrabajo.equals(that.idTipoTrabajo) : that.idTipoTrabajo != null)
+            return false;
+        if (descripcionGeneral != null ? !descripcionGeneral.equals(that.descripcionGeneral) : that.descripcionGeneral != null)
+            return false;
+        if (lugarTrabajo != null ? !lugarTrabajo.equals(that.lugarTrabajo) : that.lugarTrabajo != null) return false;
+        if (competenciasLaborales != null ? !competenciasLaborales.equals(that.competenciasLaborales) : that.competenciasLaborales != null)
+            return false;
+        if (indicadorObservacion != null ? !indicadorObservacion.equals(that.indicadorObservacion) : that.indicadorObservacion != null)
+            return false;
+        if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
 
         return true;
     }
@@ -595,6 +773,20 @@ public class VRequerimientos {
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
         result = 31 * result + (nombreCargo != null ? nombreCargo.hashCode() : 0);
         result = 31 * result + (funcionCargo != null ? funcionCargo.hashCode() : 0);
+        result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
+        result = 31 * result + (fechaInicioPublicacion != null ? fechaInicioPublicacion.hashCode() : 0);
+        result = 31 * result + (fechaFinPublicacion != null ? fechaFinPublicacion.hashCode() : 0);
+        result = 31 * result + (indicadorSalario != null ? indicadorSalario.hashCode() : 0);
+        result = 31 * result + (indicadorBonificacion != null ? indicadorBonificacion.hashCode() : 0);
+        result = 31 * result + (nivelEducacion != null ? nivelEducacion.hashCode() : 0);
+        result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
+        result = 31 * result + (tipoTrabajo != null ? tipoTrabajo.hashCode() : 0);
+        result = 31 * result + (idTipoTrabajo != null ? idTipoTrabajo.hashCode() : 0);
+        result = 31 * result + (descripcionGeneral != null ? descripcionGeneral.hashCode() : 0);
+        result = 31 * result + (lugarTrabajo != null ? lugarTrabajo.hashCode() : 0);
+        result = 31 * result + (competenciasLaborales != null ? competenciasLaborales.hashCode() : 0);
+        result = 31 * result + (indicadorObservacion != null ? indicadorObservacion.hashCode() : 0);
+        result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         return result;
     }
 }

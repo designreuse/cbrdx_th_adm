@@ -32,8 +32,8 @@ public class Publicaciones {
 
     public Publicaciones(Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
         this.idRequerimiento = idRequerimiento;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.indicadorSalario = indicadorSalario;
         this.indicadorBonificacion = indicadorBonificacion;
         this.idNivelEducacion = idNivelEducacion;
@@ -51,8 +51,8 @@ public class Publicaciones {
     public Publicaciones(Integer idPublicacion, Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
         this.idPublicacion = idPublicacion;
         this.idRequerimiento = idRequerimiento;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.indicadorSalario = indicadorSalario;
         this.indicadorBonificacion = indicadorBonificacion;
         this.idNivelEducacion = idNivelEducacion;

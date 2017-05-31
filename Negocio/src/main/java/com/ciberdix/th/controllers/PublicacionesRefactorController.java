@@ -41,9 +41,10 @@ public class PublicacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Publicaciones request) {
+    String update(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, request, Publicaciones.class);
+        return request.getFechaFin().toString();
     }
 
 }
