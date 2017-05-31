@@ -56,61 +56,68 @@ public class CargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    Cargos create(@RequestBody Cargos obj){
+    Cargos create(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, Cargos.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Cargos obj){
+    void update(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab1")
-    void updateTab1(@RequestBody Cargos obj){
+    void updateTab1(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab1", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
-    void updateTab2(@RequestBody Cargos obj){
+    void updateTab2(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
+        if (estadoActual.getPaso().equals(15) && obj.getPaso().equals(16)) {
+            String recipients = UtilitiesController.findConstant("CORAUT").getValor();
+            String token = UtilitiesController.generateURLToken("/position/update/" + obj.getIdCargo());
+            String body = "" + token;
+            UtilitiesController.sendMail(recipients, "Aprobación Cargo", body);
+        }
         restTemplate.put(serviceUrl + "/tab2", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab3")
-    void updateTab3(@RequestBody Cargos obj){
+    void updateTab3(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab3", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab4")
-    void updateTab4(@RequestBody Cargos obj){
+    void updateTab4(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab4", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab5")
-    void updateTab5(@RequestBody Cargos obj){
+    void updateTab5(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab5", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab6")
-    void updateTab6(@RequestBody Cargos obj){
+    void updateTab6(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab6", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
-    void updateTab7(@RequestBody Cargos obj){
+    void updateTab7(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/tab7", obj);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/disabled/{idCargo}")
-    void disabled(@PathVariable Integer idCargo){
+    void disabled(@PathVariable Integer idCargo) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl + "/disabled/" + idCargo, VCargos.class);
     }
