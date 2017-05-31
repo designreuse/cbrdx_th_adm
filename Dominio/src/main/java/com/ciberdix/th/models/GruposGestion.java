@@ -49,14 +49,6 @@ public class GruposGestion {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(java.sql.Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdGrupoGestion", nullable = false)

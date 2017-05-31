@@ -68,18 +68,6 @@ public class TercerosEstudiosFormales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaIngresa(java.sql.Date fechaIngresa) {
-        this.fechaIngresa = fechaIngresa;
-    }
-
-    public void setFechaTermina(java.sql.Date fechaTermina) {
-        this.fechaTermina = fechaTermina;
-    }
-
-    public void setFechaVerificado(Timestamp fechaVerificado) {
-        this.fechaVerificado = fechaVerificado;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroEstudioFormal", nullable = false)

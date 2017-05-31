@@ -34,14 +34,6 @@ public class VTercerosExperienciasLaborales {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public void setFechaIngresa(java.sql.Date fechaIngresa) {
-        this.fechaIngresa = fechaIngresa;
-    }
-
-    public void setFechaTermina(java.sql.Date fechaTermina) {
-        this.fechaTermina = fechaTermina;
-    }
-
     @Basic
     @Id
     @Column(name = "IdTerceroExperienciaLaboral", nullable = false)

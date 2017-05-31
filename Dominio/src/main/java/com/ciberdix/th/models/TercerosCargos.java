@@ -46,10 +46,6 @@ public class TercerosCargos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setAsignadoDesde(java.sql.Date asignadoDesde) {
-        this.asignadoDesde = asignadoDesde;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroCargo", nullable = false)

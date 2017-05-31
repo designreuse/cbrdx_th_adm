@@ -98,18 +98,6 @@ public class Requerimientos {
         this.funcionCargo = funcionCargo;
     }
 
-    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
-        this.fechaSolicitud = fechaSolicitud;
-    }
-
-    public void setFechaInicio(java.sql.Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(java.sql.Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimiento", nullable = false)

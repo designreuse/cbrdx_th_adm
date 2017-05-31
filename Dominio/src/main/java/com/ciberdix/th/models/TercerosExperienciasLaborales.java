@@ -74,14 +74,6 @@ public class TercerosExperienciasLaborales {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaIngresa(java.sql.Date fechaIngresa) {
-        this.fechaIngresa = fechaIngresa;
-    }
-
-    public void setFechaTermina(java.sql.Date fechaTermina) {
-        this.fechaTermina = fechaTermina;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroExperienciaLaboral", nullable = false)
