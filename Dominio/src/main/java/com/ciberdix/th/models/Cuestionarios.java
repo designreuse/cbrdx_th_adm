@@ -1,15 +1,13 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Danny on 31/05/2017.
  */
 @Entity
+@Table(name = "Cuestionarios", schema = "dbo", catalog = "CREZCAMOS")
 public class Cuestionarios {
     private Integer idCuestionario;
     private String cuestionario;
@@ -17,8 +15,32 @@ public class Cuestionarios {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigo;
+
+    public Cuestionarios() {
+    }
+
+    public Cuestionarios(String cuestionario, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo) {
+        this.cuestionario = cuestionario;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
+    }
+
+    public Cuestionarios(Integer idCuestionario, String cuestionario, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigo) {
+        this.idCuestionario = idCuestionario;
+        this.cuestionario = cuestionario;
+        this.descripcion = descripcion;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigo = codigo;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdCuestionario", nullable = false)
     public Integer getIdCuestionario() {
         return idCuestionario;
@@ -78,6 +100,16 @@ public class Cuestionarios {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "Codigo", nullable = false)
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,28 +117,25 @@ public class Cuestionarios {
 
         Cuestionarios that = (Cuestionarios) o;
 
-        if (idCuestionario != null ? !idCuestionario.equals(that.idCuestionario) : that.idCuestionario != null)
-            return false;
+        if (!idCuestionario.equals(that.idCuestionario)) return false;
         if (cuestionario != null ? !cuestionario.equals(that.cuestionario) : that.cuestionario != null) return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        return codigo != null ? codigo.equals(that.codigo) : that.codigo == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idCuestionario != null ? idCuestionario.hashCode() : 0;
+        int result = idCuestionario.hashCode();
         result = 31 * result + (cuestionario != null ? cuestionario.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         return result;
     }
 }
