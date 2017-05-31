@@ -26,7 +26,7 @@ public class TercerosCargos {
     public TercerosCargos(Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idTipoContrato, Integer idZona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
-        this.asignadoDesde = asignadoDesde;
+        this.asignadoDesde = asignadoDesde != null ? new Date(asignadoDesde.getTime()) : null;
         this.idTipoContrato = idTipoContrato;
         this.idZona = idZona;
         this.indicadorHabilitado = indicadorHabilitado;
@@ -38,7 +38,7 @@ public class TercerosCargos {
         this.idTerceroCargo = idTerceroCargo;
         this.idTercero = idTercero;
         this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
-        this.asignadoDesde = asignadoDesde;
+        this.asignadoDesde = asignadoDesde != null ? new Date(asignadoDesde.getTime()) : null;
         this.idTipoContrato = idTipoContrato;
         this.idZona = idZona;
         this.indicadorHabilitado = indicadorHabilitado;
