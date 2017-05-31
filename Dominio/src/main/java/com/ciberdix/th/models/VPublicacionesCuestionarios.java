@@ -12,6 +12,7 @@ public class VPublicacionesCuestionarios {
     private Integer idPublicacionCustionario;
     private Integer idPublicacion;
     private String cuestionario;
+    private String descripcion;
     private Integer idCuestionario;
     private Integer orden;
     private Boolean indicadorHabilitado;
@@ -46,6 +47,16 @@ public class VPublicacionesCuestionarios {
 
     public void setCuestionario(String cuestionario) {
         this.cuestionario = cuestionario;
+    }
+
+    @Basic
+    @Column(name = "Descripcion", nullable = true, length = 200)
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Basic
@@ -110,6 +121,7 @@ public class VPublicacionesCuestionarios {
         if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
             return false;
         if (cuestionario != null ? !cuestionario.equals(that.cuestionario) : that.cuestionario != null) return false;
+        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (idCuestionario != null ? !idCuestionario.equals(that.idCuestionario) : that.idCuestionario != null)
             return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
@@ -128,6 +140,7 @@ public class VPublicacionesCuestionarios {
         int result = idPublicacionCustionario != null ? idPublicacionCustionario.hashCode() : 0;
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
         result = 31 * result + (cuestionario != null ? cuestionario.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (idCuestionario != null ? idCuestionario.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

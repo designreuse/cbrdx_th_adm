@@ -36,6 +36,11 @@ public class PublicacionesCuestionariosRefactorController {
         return vPublicacionesCuestionariosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}")
+    List<VPublicacionesCuestionarios> findByIdPublicacion(@PathVariable Integer id) {
+        return vPublicacionesCuestionariosRefactorRepository.findAllByIdPublicacion(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     PublicacionesCuestionarios crearActividadEconomica(@RequestBody PublicacionesCuestionarios o) {
         return publicacionesCuestionariosRefactorRepository.save(
