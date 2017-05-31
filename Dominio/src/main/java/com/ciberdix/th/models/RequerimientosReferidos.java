@@ -45,10 +45,6 @@ public class RequerimientosReferidos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaReferencia(java.sql.Date fechaReferencia) {
-        this.fechaReferencia = fechaReferencia;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdRequerimientoReferido", nullable = false)

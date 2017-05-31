@@ -16,14 +16,6 @@ public class VUsuarioGruposGestion {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(java.sql.Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Basic
     @Id
     @Column(name = "IdUsuarioGrupoGestion", nullable = false)

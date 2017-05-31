@@ -34,10 +34,6 @@ public class VTercerosFamiliares {
     private Integer idDivisionPolitica;
     private Timestamp auditoriaFecha;
 
-    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     @Basic
     @Id
     @Column(name = "IdTerceroFamiliar", nullable = false)
