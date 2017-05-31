@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.PublicacionesCuestionarios;
+import com.ciberdix.th.model.VPublicacionesCuestionarios;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,16 +22,16 @@ public class PublicacionesCuestionariosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/publicacionesCuestionarios";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<PublicacionesCuestionarios> findAll() {
+    List<VPublicacionesCuestionarios> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        PublicacionesCuestionarios[] parametros = restTemplate.getForObject(serviceUrl, PublicacionesCuestionarios[].class);
+        VPublicacionesCuestionarios[] parametros = restTemplate.getForObject(serviceUrl, VPublicacionesCuestionarios[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    PublicacionesCuestionarios findOne(@PathVariable Integer id) {
+    VPublicacionesCuestionarios findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        PublicacionesCuestionarios parametro = restTemplate.getForObject(serviceUrl + "/" + id, PublicacionesCuestionarios.class);
+        VPublicacionesCuestionarios parametro = restTemplate.getForObject(serviceUrl + "/" + id, VPublicacionesCuestionarios.class);
         return parametro;
     }
 

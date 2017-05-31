@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Publicaciones;
+import com.ciberdix.th.models.VCantidadPublicacion;
 import com.ciberdix.th.repositories.PublicacionesRefactorRepository;
+import com.ciberdix.th.repositories.VCantidadPublicacionRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class PublicacionesRefactorController {
     @Autowired
     private PublicacionesRefactorRepository publicacionesRefactorRepository;
 
+    @Autowired
+    private VCantidadPublicacionRefactorRepository vCantidadPublicacionRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     List<Publicaciones> listarProductividades() {
         return (List<Publicaciones>) publicacionesRefactorRepository.findAll();
@@ -39,6 +44,11 @@ public class PublicacionesRefactorController {
                         o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
                         o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
         );
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/cantidadPublicacion")
+    List<VCantidadPublicacion> findCant(@PathVariable Integer id) {
+        return (List<VCantidadPublicacion>) vCantidadPublicacionRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.PUT)

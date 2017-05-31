@@ -65,6 +65,21 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdTipoSolicitud(idEstado, idTipoSolicitud);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{idPublicacion}")
+    VRequerimientos findByIdPublicacion(@PathVariable Integer idPublicacion) {
+        return vRequerimientosRefactorRepository.findByIdPublicacion(idPublicacion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/byResponsable/{idResponsableSeleccion}")
+    List<VRequerimientos> findAllByIdResponsableSeleccion(@PathVariable Integer idResponsableSeleccion) {
+        return vRequerimientosRefactorRepository.findAllByIdResponsableSeleccion(idResponsableSeleccion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    List<VRequerimientos> queryAllByFechaActual() {
+        return vRequerimientosRefactorRepository.queryAllByFechaActual();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),
