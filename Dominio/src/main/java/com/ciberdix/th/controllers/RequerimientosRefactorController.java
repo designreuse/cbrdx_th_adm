@@ -55,6 +55,31 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findByFechaSolicitudBetween(fInicio.parse(fechaInicio), fFin.parse(fechaFin));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
+    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion) {
+        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdResponsableSeleccion(idEstado, idResponsableSeleccion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
+    List<VRequerimientos> findIdEstadoAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idTipoSolicitud) {
+        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdTipoSolicitud(idEstado, idTipoSolicitud);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{idPublicacion}")
+    VRequerimientos findByIdPublicacion(@PathVariable Integer idPublicacion) {
+        return vRequerimientosRefactorRepository.findByIdPublicacion(idPublicacion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/byResponsable/{idResponsableSeleccion}")
+    List<VRequerimientos> findAllByIdResponsableSeleccion(@PathVariable Integer idResponsableSeleccion) {
+        return vRequerimientosRefactorRepository.findAllByIdResponsableSeleccion(idResponsableSeleccion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    List<VRequerimientos> queryAllByFechaActual() {
+        return vRequerimientosRefactorRepository.queryAllByFechaActual();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),

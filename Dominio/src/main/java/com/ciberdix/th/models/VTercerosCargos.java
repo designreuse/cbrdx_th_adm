@@ -29,10 +29,6 @@ public class VTercerosCargos {
     private Timestamp auditoriaFecha;
     private Integer idEstructuraOrganizacional;
 
-    public void setAsignadoDesde(java.sql.Date asignadoDesde) {
-        this.asignadoDesde = asignadoDesde;
-    }
-
     @Basic
     @Id
     @Column(name = "IdTerceroCargo", nullable = false)

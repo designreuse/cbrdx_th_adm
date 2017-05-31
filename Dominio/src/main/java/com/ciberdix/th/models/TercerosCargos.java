@@ -26,7 +26,7 @@ public class TercerosCargos {
     public TercerosCargos(Long idTercero, Integer idEstructuraOrganizacionalCargo, Date asignadoDesde, Integer idTipoContrato, Integer idZona, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTercero = idTercero;
         this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
-        this.asignadoDesde = asignadoDesde;
+        this.asignadoDesde = asignadoDesde != null ? new Date(asignadoDesde.getTime()) : null;
         this.idTipoContrato = idTipoContrato;
         this.idZona = idZona;
         this.indicadorHabilitado = indicadorHabilitado;
@@ -38,16 +38,12 @@ public class TercerosCargos {
         this.idTerceroCargo = idTerceroCargo;
         this.idTercero = idTercero;
         this.idEstructuraOrganizacionalCargo = idEstructuraOrganizacionalCargo;
-        this.asignadoDesde = asignadoDesde;
+        this.asignadoDesde = asignadoDesde != null ? new Date(asignadoDesde.getTime()) : null;
         this.idTipoContrato = idTipoContrato;
         this.idZona = idZona;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public void setAsignadoDesde(java.sql.Date asignadoDesde) {
-        this.asignadoDesde = asignadoDesde;
     }
 
     @Id

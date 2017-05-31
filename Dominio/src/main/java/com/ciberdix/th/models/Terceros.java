@@ -159,22 +159,6 @@ public class Terceros {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaDocumento(java.sql.Date fechaDocumento) {
-        this.fechaDocumento = fechaDocumento;
-    }
-
-    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public void setFechaCreacion(java.sql.Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public void setFechaDefuncion(java.sql.Date fechaDefuncion) {
-        this.fechaDefuncion = fechaDefuncion;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTercero", nullable = false)

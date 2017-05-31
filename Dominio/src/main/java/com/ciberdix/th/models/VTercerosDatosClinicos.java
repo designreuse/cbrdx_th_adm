@@ -22,14 +22,6 @@ public class VTercerosDatosClinicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(java.sql.Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Basic
     @Column(name = "IdDiagnosticoCIE", nullable = false)
     public Integer getIdDiagnosticoCie() {

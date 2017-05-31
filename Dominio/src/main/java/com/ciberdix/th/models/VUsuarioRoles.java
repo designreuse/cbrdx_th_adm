@@ -20,14 +20,6 @@ public class VUsuarioRoles {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaFin(java.sql.Date fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
     @Basic
     @Id
     @Column(name = "IdUsuarioRol", nullable = false)

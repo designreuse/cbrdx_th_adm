@@ -72,6 +72,45 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
+    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion) {
+        String serviceUrl = baseUrl + "/api/requerimientos/filtroReq/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
+    List<VRequerimientos> findIdEstadoAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idTipoSolicitud) {
+        String serviceUrl = baseUrl + "/api/requerimientos/filtroReq2/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idEstado + "/" + idTipoSolicitud, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{idPublicacion}")
+    VRequerimientos findByIdPublicacion(@PathVariable Integer idPublicacion) {
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacion/";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + idPublicacion, VRequerimientos.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/byResponsable/{idResponsableSeleccion}")
+    List<VRequerimientos> findAllByIdResponsableSeleccion(@PathVariable Integer idResponsableSeleccion) {
+        String serviceUrl = baseUrl + "/api/requerimientos/byResponsable/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idResponsableSeleccion, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    List<VRequerimientos> queryAllByFechaActual() {
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/entreFechas";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";

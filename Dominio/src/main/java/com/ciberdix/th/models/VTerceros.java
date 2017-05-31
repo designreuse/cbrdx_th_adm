@@ -78,22 +78,6 @@ public class VTerceros {
     private String tipoTercero;
     private String sitioWeb;
 
-    public void setFechaDocumento(java.sql.Date fechaDocumento) {
-        this.fechaDocumento = fechaDocumento;
-    }
-
-    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public void setFechaCreacion(java.sql.Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public void setFechaDefuncion(java.sql.Date fechaDefuncion) {
-        this.fechaDefuncion = fechaDefuncion;
-    }
-
     @Basic
     @Id
     @Column(name = "IdTercero", nullable = false)
