@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -78,6 +79,28 @@ public class RequerimientosRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
     List<VRequerimientos> queryAllByFechaActual() {
         return vRequerimientosRefactorRepository.queryAllByFechaActual();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/cantidadN/{cantidad}")
+    ArrayList<VRequerimientos> queryAllByFechaActualCantN(@PathVariable Integer cantidad) {
+
+        ArrayList<VRequerimientos> vR = new ArrayList<>();
+        ArrayList<VRequerimientos> vRe = (ArrayList<VRequerimientos>) vRequerimientosRefactorRepository.queryAllByFechaActualCantN();
+
+        Integer count = 0;
+
+        if(cantidad < vRe.size())
+        {
+            count = cantidad;
+        }else{
+            count = vRe.size();
+        }
+
+        for(int i=0; i<count; i++){
+            vR.add(vRe.get(i));
+        }
+
+        return vR;
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -111,6 +111,14 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/cantidadN/{cantidad}")
+    List<VRequerimientos> queryAllByFechaActualCantN(@PathVariable Integer cantidad) {
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/cantidadN/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + cantidad, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";

@@ -10,6 +10,7 @@ public class VPublicacionesCuestionarios {
     private Integer idPublicacionCustionario;
     private Integer idPublicacion;
     private String cuestionario;
+    private String descripcion;
     private Integer idCuestionario;
     private Integer orden;
     private Boolean indicadorHabilitado;
@@ -38,6 +39,14 @@ public class VPublicacionesCuestionarios {
 
     public void setCuestionario(String cuestionario) {
         this.cuestionario = cuestionario;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getIdCuestionario() {

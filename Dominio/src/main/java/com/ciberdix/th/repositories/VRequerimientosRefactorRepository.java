@@ -26,7 +26,9 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
 
     VRequerimientos findByIdPublicacion(Integer idPublicacion);
 
-    @Query("SELECT v FROM VRequerimientos v WHERE GETDATE() BETWEEN v.fechaInicioPublicacion AND v.fechaFinPublicacion")
+    @Query("SELECT v FROM VRequerimientos v WHERE (v.fechaInicioPublicacion <= GETDATE() AND v.fechaFinPublicacion >= GETDATE())")
     List<VRequerimientos> queryAllByFechaActual();
 
+    @Query("SELECT v FROM VRequerimientos v WHERE (v.fechaInicioPublicacion <= GETDATE() AND v.fechaFinPublicacion >= GETDATE()) ORDER BY v.idPublicacion DESC")
+    List<VRequerimientos> queryAllByFechaActualCantN();
 }
