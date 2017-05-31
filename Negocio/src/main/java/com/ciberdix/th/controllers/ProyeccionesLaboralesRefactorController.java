@@ -61,6 +61,13 @@ public class ProyeccionesLaboralesRefactorController {
         return restTemplate.getForObject(serviceUrl + "/confirmarProyeccion", Integer.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/anio/{anio}")
+    List<VProyeccionLaboral> findAllByAño(@PathVariable Integer anio) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProyeccionLaboral[] parametros = restTemplate.getForObject(serviceUrl + "/anio/" + anio, VProyeccionLaboral[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionesLaborales create(@RequestBody ProyeccionesLaborales request) {
         RestTemplate restTemplate = new RestTemplate();

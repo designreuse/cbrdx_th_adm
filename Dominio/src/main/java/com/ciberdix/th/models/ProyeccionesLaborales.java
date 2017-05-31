@@ -27,7 +27,6 @@ public class ProyeccionesLaborales {
     private String observacionAprobacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Integer año;
 
     public ProyeccionesLaborales() {
     }

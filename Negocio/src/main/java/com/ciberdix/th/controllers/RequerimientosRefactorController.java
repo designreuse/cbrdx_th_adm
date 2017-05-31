@@ -80,11 +80,11 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}/{idTipoSolicitud}")
-    List<VRequerimientos> findIdEstadoAndIdRespSelecAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, @PathVariable Integer idTipoSolicitud) {
-        String serviceUrl = baseUrl + "/api/requerimientos/filtroReq/";
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
+    List<VRequerimientos> findIdEstadoAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idTipoSolicitud) {
+        String serviceUrl = baseUrl + "/api/requerimientos/filtroReq2/";
         RestTemplate restTemplate = new RestTemplate();
-        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idEstado + "/" + idResponsableSeleccion + "/" + idTipoSolicitud, VRequerimientos[].class);
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idEstado + "/" + idTipoSolicitud, VRequerimientos[].class);
         return Arrays.asList(parametros);
     }
 

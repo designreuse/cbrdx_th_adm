@@ -60,9 +60,9 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdResponsableSeleccion(idEstado, idResponsableSeleccion);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}/{idTipoSolicitud}")
-    List<VRequerimientos> findIdEstadoAndIdRespSelecAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, @PathVariable Integer idTipoSolicitud) {
-        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdResponsableSeleccionAndIdTipoSolicitud(idEstado, idResponsableSeleccion, idTipoSolicitud);
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
+    List<VRequerimientos> findIdEstadoAndIdTipoSoli(@PathVariable Integer idEstado, @PathVariable Integer idTipoSolicitud) {
+        return vRequerimientosRefactorRepository.findAllByIdEstadoAndIdTipoSolicitud(idEstado, idTipoSolicitud);
     }
 
     @RequestMapping(method = RequestMethod.POST)

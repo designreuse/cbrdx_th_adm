@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface VProyeccionLaboralRefactorRepository extends CrudRepository<VProyeccionLaboral, Integer> {
     List<VProyeccionLaboral> findByIdEstructuraOrganizacional(Integer idEstructuraOrganizacional);
+
+    List<VProyeccionLaboral> findAllByAnio(Integer anio);
 }

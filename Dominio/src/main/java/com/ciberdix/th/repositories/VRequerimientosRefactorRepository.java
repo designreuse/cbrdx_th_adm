@@ -19,6 +19,6 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
 
     List<VRequerimientos> findAllByIdEstadoAndIdResponsableSeleccion(Integer idEstado, Integer idResponsableSeleccion);
 
-    List<VRequerimientos> findAllByIdEstadoAndIdResponsableSeleccionAndIdTipoSolicitud(Integer idEstado, Integer idResponsableSeleccion, Integer idTipoSolicitud);
+    List<VRequerimientos> findAllByIdEstadoAndIdTipoSolicitud(Integer idEstado, Integer idTipoSolicitud);
 
 }

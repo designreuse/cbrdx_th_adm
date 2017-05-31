@@ -220,6 +220,16 @@ public class VProyeccionLaboral {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "Año", nullable = true)
+    public Integer getAnio() {
+        return anio;
+    }
+
+    public void setAnio(Integer anio) {
+        this.anio = anio;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -291,13 +301,4 @@ public class VProyeccionLaboral {
         return result;
     }
 
-    @Basic
-    @Column(name = "Año", nullable = true)
-    public Integer getAño() {
-        return anio;
-    }
-
-    public void setAño(Integer año) {
-        this.anio = año;
-    }
 }
