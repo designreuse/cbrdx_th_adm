@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Publicaciones;
+import com.ciberdix.th.model.VCantidadPublicacion;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,6 +33,13 @@ public class PublicacionesRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         Publicaciones parametro = restTemplate.getForObject(serviceUrl + "/" + id, Publicaciones.class);
         return parametro;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/cantidadPublicacion")
+    List<VCantidadPublicacion> findCant() {
+        RestTemplate restTemplate = new RestTemplate();
+        VCantidadPublicacion[] parametros = restTemplate.getForObject(serviceUrl + "/cantidadPublicacion", VCantidadPublicacion[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)

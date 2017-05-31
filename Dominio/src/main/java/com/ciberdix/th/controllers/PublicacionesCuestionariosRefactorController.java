@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.PublicacionesCuestionarios;
+import com.ciberdix.th.models.VPublicacionesCuestionarios;
 import com.ciberdix.th.repositories.PublicacionesCuestionariosRefactorRepository;
+import com.ciberdix.th.repositories.VPublicacionesCuestionariosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +23,17 @@ public class PublicacionesCuestionariosRefactorController {
     @Autowired
     private PublicacionesCuestionariosRefactorRepository publicacionesCuestionariosRefactorRepository;
 
+    @Autowired
+    private VPublicacionesCuestionariosRefactorRepository vPublicacionesCuestionariosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<PublicacionesCuestionarios> listarProductividades() {
-        return (List<PublicacionesCuestionarios>) publicacionesCuestionariosRefactorRepository.findAll();
+    List<VPublicacionesCuestionarios> listarProductividades() {
+        return (List<VPublicacionesCuestionarios>) vPublicacionesCuestionariosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    PublicacionesCuestionarios parent(@PathVariable Integer id) {
-        return publicacionesCuestionariosRefactorRepository.findOne(id);
+    VPublicacionesCuestionarios parent(@PathVariable Integer id) {
+        return vPublicacionesCuestionariosRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
