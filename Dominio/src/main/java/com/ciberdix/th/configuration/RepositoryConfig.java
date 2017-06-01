@@ -186,6 +186,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VRequerimientosCompras.class);
         config.exposeIdsFor(RequerimientosHistoricos.class);
         config.exposeIdsFor(VRequerimientosHistoricos.class);
+        config.exposeIdsFor(VRequerimientosAcciones.class);
         config.exposeIdsFor(RequerimientosTics.class);
         config.exposeIdsFor(VRequerimientosTics.class);
         config.exposeIdsFor(ListasTiposCompras.class);
