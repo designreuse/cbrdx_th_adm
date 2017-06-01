@@ -103,6 +103,11 @@ public class RequerimientosRefactorController {
         return vR;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byIdCargo/{idCargo}")
+    List<VRequerimientos> findByIdCargo(@PathVariable Integer idCargo) {
+        return vRequerimientosRefactorRepository.findAllByIdCargo(idCargo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),

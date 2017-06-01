@@ -18,7 +18,7 @@ public class VUsuariosWidgets {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
+
     @Id
     @Column(name = "IdUsuario", nullable = true)
     public Integer getIdUsuario() {
