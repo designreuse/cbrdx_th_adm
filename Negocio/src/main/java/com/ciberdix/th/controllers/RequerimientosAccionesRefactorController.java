@@ -98,7 +98,7 @@ public class RequerimientosAccionesRefactorController {
                         int year = now.get(Calendar.YEAR) + 1;
                         VProyeccionLaboral vProyeccionLaboralAfectada = null;
                         List<VProyeccionLaboral> vProyeccionLaborals = new ArrayList<>();
-                        VProyeccionLaboral[] vProyeccionLaborales = restTemplate.getForObject(businessUrl + "/api/proyeccionLaboral/anio/" + year, VProyeccionLaboral[].class);
+                        VProyeccionLaboral[] vProyeccionLaborales = restTemplate.getForObject(businessUrl + "/api/proyeccionesLaborales/anio/" + year, VProyeccionLaboral[].class);
                         if (vProyeccionLaborales != null && vProyeccionLaborales.length > 0) {
                             vProyeccionLaborals = Arrays.asList(vProyeccionLaborales);
                             for (VProyeccionLaboral vProyeccionLaboral : vProyeccionLaborals) {
