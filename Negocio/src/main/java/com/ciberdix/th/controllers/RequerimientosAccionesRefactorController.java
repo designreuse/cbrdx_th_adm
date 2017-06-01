@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -94,13 +95,17 @@ public class RequerimientosAccionesRefactorController {
                         UtilitiesController.sendMail(usuarioRequerimiento.getCorreoElectronico(), "Revisión", body);
 
                         Calendar now = Calendar.getInstance();
-                        int year = now.get(Calendar.YEAR);
-                        List<VProyeccionLaboral> vProyeccionLaborals = Arrays.asList(restTemplate.getForObject(businessUrl + "/api/proyeccionLaboral/anio/" + year, VProyeccionLaboral[].class));
+                        int year = now.get(Calendar.YEAR) + 1;
                         VProyeccionLaboral vProyeccionLaboralAfectada = null;
-                        for (VProyeccionLaboral vProyeccionLaboral : vProyeccionLaborals) {
-                            if (vProyeccionLaboral.getIdEstructuraOrganizacional().equals(vRequerimientos.getIdEstructuraOrganizacional()) && vProyeccionLaboral.getIdCargo().equals(vRequerimientos.getIdCargo())) {
-                                vProyeccionLaboralAfectada = vProyeccionLaboral;
-                                break;
+                        List<VProyeccionLaboral> vProyeccionLaborals = new ArrayList<>();
+                        VProyeccionLaboral[] vProyeccionLaborales = restTemplate.getForObject(businessUrl + "/api/proyeccionLaboral/anio/" + year, VProyeccionLaboral[].class);
+                        if (vProyeccionLaborales != null && vProyeccionLaborales.length > 0) {
+                            vProyeccionLaborals = Arrays.asList(vProyeccionLaborales);
+                            for (VProyeccionLaboral vProyeccionLaboral : vProyeccionLaborals) {
+                                if (vProyeccionLaboral.getIdEstructuraOrganizacional().equals(vRequerimientos.getIdEstructuraOrganizacional()) && vProyeccionLaboral.getIdCargo().equals(vRequerimientos.getIdCargo())) {
+                                    vProyeccionLaboralAfectada = vProyeccionLaboral;
+                                    break;
+                                }
                             }
                         }
                         VCargos vCargos = restTemplate.getForObject(businessUrl + "/api/cargos/" + vRequerimientos.getIdCargo(), VCargos.class);
