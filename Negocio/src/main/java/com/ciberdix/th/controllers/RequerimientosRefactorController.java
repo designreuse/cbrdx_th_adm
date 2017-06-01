@@ -119,12 +119,11 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/byIdCargo/{idCargo}")
-    List<VRequerimientos> findByIdCargo(@PathVariable Integer idCargo) {
+    @RequestMapping(method = RequestMethod.GET, path = "/byIdCargo/{idCargo}/{idTipoSolicitud}")
+    VRequerimientos findByIdCargo(@PathVariable Integer idCargo, @PathVariable Integer idTipoSolicitud) {
         String serviceUrl = baseUrl + "/api/requerimientos/byIdCargo/";
         RestTemplate restTemplate = new RestTemplate();
-        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idCargo, VRequerimientos[].class);
-        return Arrays.asList(parametros);
+        return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
