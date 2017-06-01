@@ -108,7 +108,10 @@ public class RequerimientosAccionesRefactorController {
                                 }
                             }
                         }
-                        VCargos vCargos = restTemplate.getForObject(businessUrl + "/api/cargos/" + vRequerimientos.getIdCargo(), VCargos.class);
+                        VCargos vCargos = new VCargos();
+                        if (vRequerimientos.getIdCargo() != null) {
+                            vCargos = restTemplate.getForObject(businessUrl + "/api/cargos/" + vRequerimientos.getIdCargo(), VCargos.class);
+                        }
                         Integer aplnt = utilitiesController.findListItem("ListasTiposSolicitudes", "APLNT").getIdLista();
                         Integer dmnplnt = utilitiesController.findListItem("ListasTiposSolicitudes", "DMNPLNT").getIdLista();
                         Integer crgnvarea = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVAREA").getIdLista();
