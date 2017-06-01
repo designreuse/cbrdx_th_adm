@@ -1,21 +1,36 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by felip on 18/04/2017.
  */
 @Entity
+@Table(name = "UsuariosWidgets", schema = "dbo", catalog = "CREZCAMOS")
 public class UsuariosWidgets {
     private Integer idUsuarioWidget;
     private Integer idUsuario;
     private Integer idWidget;
     private Boolean indicadorHabilitado;
 
+    public UsuariosWidgets() {
+    }
+
+    public UsuariosWidgets(Integer idUsuario, Integer idWidget, Boolean indicadorHabilitado) {
+        this.idUsuario = idUsuario;
+        this.idWidget = idWidget;
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public UsuariosWidgets(Integer idUsuarioWidget, Integer idUsuario, Integer idWidget, Boolean indicadorHabilitado) {
+        this.idUsuarioWidget = idUsuarioWidget;
+        this.idUsuario = idUsuario;
+        this.idWidget = idWidget;
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdUsuarioWidget", nullable = false)
     public Integer getIdUsuarioWidget() {
         return idUsuarioWidget;
