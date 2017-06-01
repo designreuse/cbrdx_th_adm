@@ -33,7 +33,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<VCargos> findEnabled() {
-        return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
@@ -91,7 +91,7 @@ public class CargosRefactorController {
         cargo.setCodigoCargo(obj.getCodigoCargo());
         cargo.setIdEstructuraArea(obj.getIdEstructuraArea());
         cargo.setIndicadorZona(obj.getIndicadorZona());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -108,7 +108,7 @@ public class CargosRefactorController {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setInterrelacionesExternas(obj.getInterrelacionesExternas());
         cargo.setInterrelacionesInternas(obj.getInterrelacionesInternas());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -116,6 +116,7 @@ public class CargosRefactorController {
     Cargos updateTab4(@RequestBody Cargos obj) {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setResponsabilidadesAd(obj.getResponsabilidadesAd());
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -124,7 +125,7 @@ public class CargosRefactorController {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setTomaDecisiones(obj.getTomaDecisiones());
         cargo.setActividadesSupervisa(obj.getActividadesSupervisa());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -138,6 +139,7 @@ public class CargosRefactorController {
         cargo.setIdGenero(obj.getIdGenero());
         cargo.setIdEstadoCivil(obj.getIdEstadoCivil());
         cargo.setIdNivelEducacion(obj.getIdNivelEducacion());
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -148,7 +150,7 @@ public class CargosRefactorController {
         cargo.setIdCategoria(obj.getIdCategoria());
         cargo.setSalario(obj.getSalario());
         cargo.setIndicadorRequiereFormacion(obj.getIndicadorRequiereFormacion());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
