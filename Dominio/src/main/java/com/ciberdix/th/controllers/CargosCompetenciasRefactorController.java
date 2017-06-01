@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.CargosCompetencias;
+import com.ciberdix.th.models.VCargosCompetencias;
 import com.ciberdix.th.repositories.CargosCompetenciasRefactorRepository;
+import com.ciberdix.th.repositories.VCargosCompetenciasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +18,22 @@ public class CargosCompetenciasRefactorController {
     @Autowired
     private CargosCompetenciasRefactorRepository CargosCompetenciasRefactorRepository;
 
+    @Autowired
+    private VCargosCompetenciasRefactorRepository vCargosCompetenciasRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<CargosCompetencias> findAll() {
-        return (List<CargosCompetencias>) CargosCompetenciasRefactorRepository.findAll();
+    List<VCargosCompetencias> findAll() {
+        return (List<VCargosCompetencias>) vCargosCompetenciasRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VCargosCompetencias findOne(@PathVariable Integer id) {
+        return vCargosCompetenciasRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{idCargo}")
-    List<CargosCompetencias> findEnabled(@PathVariable Integer idCargo) {
-        return (List<CargosCompetencias>) CargosCompetenciasRefactorRepository.findByIdCargo(idCargo);
+    List<VCargosCompetencias> findEnabled(@PathVariable Integer idCargo) {
+        return vCargosCompetenciasRefactorRepository.findByIdCargo(idCargo);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.CargosCompetencias;
+import com.ciberdix.th.model.VCargosCompetencias;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -19,16 +20,22 @@ public class CargosCompetenciasRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/cargosCompetencias";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<CargosCompetencias> findAll() {
+    List<VCargosCompetencias> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        CargosCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl, CargosCompetencias[].class);
+        VCargosCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl, VCargosCompetencias[].class);
         return Arrays.asList(cargosCompetencias);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{idCargo}")
-    List<CargosCompetencias> findEnabled(@PathVariable Integer idCargo) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    VCargosCompetencias findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        CargosCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + idCargo, CargosCompetencias[].class);
+        return restTemplate.getForObject(serviceUrl + "/" +  id, VCargosCompetencias.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{idCargo}")
+    List<VCargosCompetencias> findEnabled(@PathVariable Integer idCargo) {
+        RestTemplate restTemplate = new RestTemplate();
+        VCargosCompetencias[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/buscarCargo/" + idCargo, VCargosCompetencias[].class);
         return Arrays.asList(cargosCompetencias);
     }
 
