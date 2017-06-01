@@ -106,9 +106,10 @@ public class CargosRefactorController {
     @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
     void updateTab7(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController utilitiesController = new UtilitiesController();
         Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
         if (estadoActual.getPaso().equals(15) && obj.getPaso().equals(16)) {
-            String recipients = UtilitiesController.findConstant("CORAUT").getValor();
+            String recipients = utilitiesController.findConstant("CORAUT").getValor();
             String token = UtilitiesController.generateURLToken("/positions/update/" + obj.getIdCargo());
             String body = "" + token;
             UtilitiesController.sendMail(recipients, "Aprobación Cargo", body);
