@@ -2,6 +2,8 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Cargos;
+import com.ciberdix.th.model.Requerimientos;
+import com.ciberdix.th.model.RequerimientosAcciones;
 import com.ciberdix.th.model.VCargos;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
@@ -76,6 +78,25 @@ public class CargosRefactorController {
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
     void updateTab2(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController utilitiesController = new UtilitiesController();
+        String logica = utilitiesController.readParameter("business.url");
+        Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
+        Integer c = utilitiesController.findListItem("ListasEstadosCargos", "CONST").getIdLista();
+        Integer a = utilitiesController.findListItem("ListasEstadosCargos", "APROB").getIdLista();
+        if (estadoActual.getIdEstado().equals(c) && obj.getIdEstado().equals(a)) {
+            Integer tipoSol = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
+            Requerimientos requerimientos = restTemplate.getForObject(logica + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
+            RequerimientosAcciones requerimientosAcciones = new RequerimientosAcciones();
+            requerimientosAcciones.setIdRequerimiento(requerimientos.getIdRequerimiento());
+            requerimientosAcciones.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+            requerimientosAcciones.setObservacion("Cargo Creado Satisfactoriamente");
+            Integer idAccion = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRPER").getIdLista();
+            requerimientosAcciones.setIdAccion(idAccion);
+            restTemplate.postForObject(logica + "/api/requerimientosAcciones", requerimientosAcciones, RequerimientosAcciones.class);
+            Integer reqEstado = utilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
+            requerimientos.setIdEstado(reqEstado);
+            restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
+        }
         restTemplate.put(serviceUrl + "/tab2", obj);
     }
 
@@ -111,7 +132,7 @@ public class CargosRefactorController {
         if (estadoActual.getPaso().equals(15) && obj.getPaso().equals(16)) {
             String recipients = utilitiesController.findConstant("CORAUT").getValor();
             String token = UtilitiesController.generateURLToken("/positions/update/" + obj.getIdCargo());
-            String body = "" + token;
+            String body = "Se ha creado un nuevo cargo que requiere su aprobación. haga click en el siguiente boton para acceder a la información: <p style=\"align:center;\"><a href=\"" + utilitiesController.readParameter("front.url") + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
             UtilitiesController.sendMail(recipients, "Aprobación Cargo", body);
         }
         restTemplate.put(serviceUrl + "/tab7", obj);

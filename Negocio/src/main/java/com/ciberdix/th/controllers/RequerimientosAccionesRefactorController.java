@@ -52,11 +52,21 @@ public class RequerimientosAccionesRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         Integer idReqHist = null;
         ListasItems solaut = utilitiesController.findListItem("ListasRequerimientosAcciones", "SOLAUT");
+        ListasItems aprper = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRPER");
+        VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + o.getIdRequerimiento(), VRequerimientos.class);
         if (o.getIdAccion().equals(solaut.getIdLista())) {
             String token = UtilitiesController.generateURLToken("/vacancies/approve/" + o.getIdRequerimiento());
             String body = "Se ha creado un requerimiento de personal que requiere su aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
             String recipients = utilitiesController.findConstant("CORAUT").getValor();
             UtilitiesController.sendMail(recipients, "Aprobación", body);
+        } else if (o.getIdAccion().equals(aprper.getIdLista())) {
+            EstructuraOrganizacionalCargos estructuraOrganizacionalCargos = new EstructuraOrganizacionalCargos();
+            estructuraOrganizacionalCargos.setAuditoriaUsuario(o.getAuditoriaUsuario());
+            estructuraOrganizacionalCargos.setIdCargo(vRequerimientos.getIdCargo());
+            estructuraOrganizacionalCargos.setIdEstructuraOrganizacional(vRequerimientos.getIdEstructuraOrganizacional());
+            estructuraOrganizacionalCargos.setPlazas(vRequerimientos.getIdEstructuraOrganizacional());
+            estructuraOrganizacionalCargos.setIndicadorHabilitado(true);
+            restTemplate.postForObject(businessUrl + "/api/estructuraOrganizacionalCargos", estructuraOrganizacionalCargos, EstructuraOrganizacionalCargos.class);
         } else {
             Integer aprb = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRB").getIdLista();
             Integer rchz = utilitiesController.findListItem("ListasRequerimientosAcciones", "RCHZ").getIdLista();
@@ -71,13 +81,12 @@ public class RequerimientosAccionesRefactorController {
                     }
                 }
                 if (last.getAuditoriaUsuario() != null && last.getIdAccion().equals(solaut.getIdLista())) {
-                    VRequerimientos vRequerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + o.getIdRequerimiento(), VRequerimientos.class);
                     Usuarios usuarioSolicitud = utilitiesController.findUser(last.getAuditoriaUsuario());
                     Usuarios usuarioRequerimiento = utilitiesController.findUser(vRequerimientos.getIdSolicitante());
 
                     if (o.getIdAccion().equals(aprb)) {
                         String token = UtilitiesController.generateURLToken("/vacancies/update/" + o.getIdRequerimiento());
-                        String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
+                        String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p style=\"align:center;\"><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
                         UtilitiesController.sendMail(usuarioSolicitud.getCorreoElectronico(), "Revisión", body);
 
                         token = UtilitiesController.generateURLToken("/personnel-requirement/detail/" + o.getIdRequerimiento());
