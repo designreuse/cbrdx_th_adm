@@ -83,7 +83,8 @@ public class CargosRefactorController {
         Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
         Integer c = utilitiesController.findListItem("ListasEstadosCargos", "CONST").getIdLista();
         Integer a = utilitiesController.findListItem("ListasEstadosCargos", "APROB").getIdLista();
-        if (estadoActual.getIdEstado().equals(c) && obj.getIdEstado().equals(a)) {
+        Integer n = utilitiesController.findListItem("ListasEstadosCargos", "NOAPR").getIdLista();
+        if ((estadoActual.getIdEstado().equals(c) || estadoActual.getIdEstado().equals(n)) && obj.getIdEstado().equals(a)) {
             Integer tipoSol = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
             Requerimientos requerimientos = restTemplate.getForObject(logica + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
             RequerimientosAcciones requerimientosAcciones = new RequerimientosAcciones();
