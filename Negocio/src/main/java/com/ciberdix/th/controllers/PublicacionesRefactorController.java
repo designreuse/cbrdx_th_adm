@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Publicaciones;
 import com.ciberdix.th.model.VCantidadPublicacion;
+import com.ciberdix.th.model.VPublicaciones;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,16 +23,16 @@ public class PublicacionesRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/publicaciones";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Publicaciones> findAll() {
+    List<VPublicaciones> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Publicaciones[] parametros = restTemplate.getForObject(serviceUrl, Publicaciones[].class);
+        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl, VPublicaciones[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Publicaciones findOne(@PathVariable Integer id) {
+    VPublicaciones findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        Publicaciones parametro = restTemplate.getForObject(serviceUrl + "/" + id, Publicaciones.class);
+        VPublicaciones parametro = restTemplate.getForObject(serviceUrl + "/" + id, VPublicaciones.class);
         return parametro;
     }
 
