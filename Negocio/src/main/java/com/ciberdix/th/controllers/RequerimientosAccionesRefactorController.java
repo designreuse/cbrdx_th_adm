@@ -65,8 +65,8 @@ public class RequerimientosAccionesRefactorController {
         } else if (o.getIdAccion().equals(crrd.getIdLista()) && vRequerimientos.getIdTipoSolicitud().equals(crgelmn.getIdLista())) {
             Integer crrd_i = utilitiesController.findListItem("ListasEstadosRequerimientos", "CRRD").getIdLista();
             vRequerimientos.setIdEstado(crrd_i);
-            restTemplate.put(baseUrl + "/api/estructuraOrganizacionalCargos/disabled/" + vRequerimientos.getIdRequerimiento(), vRequerimientos);
-            restTemplate.put(baseUrl + "/api/cargos/disabled/" + vRequerimientos.getIdRequerimiento(), vRequerimientos);
+            restTemplate.put(baseUrl + "/api/estructuraOrganizacionalCargos/disabled/" + vRequerimientos.getIdCargo(), vRequerimientos);
+            restTemplate.put(baseUrl + "/api/cargos/disabled/" + vRequerimientos.getIdCargo(), vRequerimientos);
             restTemplate.put(baseUrl + "/api/requerimientos/", vRequerimientos, VRequerimientos.class);
         } else if (o.getIdAccion().equals(aprper.getIdLista())) {
             EstructuraOrganizacionalCargos estructuraOrganizacionalCargos = new EstructuraOrganizacionalCargos();
