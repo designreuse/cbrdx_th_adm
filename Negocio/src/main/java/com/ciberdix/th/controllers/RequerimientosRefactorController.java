@@ -103,9 +103,9 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/todasActivas")
     List<VRequerimientos> queryAllByFechaActual() {
-        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/entreFechas";
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/todasActivas";
         RestTemplate restTemplate = new RestTemplate();
         VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
         return Arrays.asList(parametros);
