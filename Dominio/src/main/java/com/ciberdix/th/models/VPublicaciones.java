@@ -8,15 +8,17 @@ import java.sql.Timestamp;
  * Created by Danny on 2/06/2017.
  */
 @Entity
-@Table(name = "Publicaciones", schema = "dbo", catalog = "CREZCAMOS")
-public class Publicaciones {
+@Table(name = "V_Publicaciones", schema = "dbo", catalog = "CREZCAMOS")
+public class VPublicaciones {
     private Integer idPublicacion;
     private Integer idRequerimiento;
     private Date fechaInicio;
     private Date fechaFin;
     private Boolean indicadorSalario;
     private Boolean indicadorBonificacion;
+    private String nivelEducacion;
     private Integer idNivelEducacion;
+    private String tipoTrabajo;
     private Integer idTipoTrabajo;
     private String descripcionGeneral;
     private String lugarTrabajo;
@@ -27,54 +29,10 @@ public class Publicaciones {
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
     private Boolean indicadorPublicacion;
+    private String formaReclutamiento;
     private Integer idFormaReclutamiento;
 
-    public Publicaciones() {
-    }
-
-    public Publicaciones(Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento) {
-        this.idRequerimiento = idRequerimiento;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.indicadorSalario = indicadorSalario;
-        this.indicadorBonificacion = indicadorBonificacion;
-        this.idNivelEducacion = idNivelEducacion;
-        this.idTipoTrabajo = idTipoTrabajo;
-        this.descripcionGeneral = descripcionGeneral;
-        this.lugarTrabajo = lugarTrabajo;
-        this.competenciasLaborales = competenciasLaborales;
-        this.indicadorObservacion = indicadorObservacion;
-        this.observacion = observacion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.indicadorPublicacion = indicadorPublicacion;
-        this.idFormaReclutamiento = idFormaReclutamiento;
-    }
-
-    public Publicaciones(Integer idPublicacion, Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento) {
-        this.idPublicacion = idPublicacion;
-        this.idRequerimiento = idRequerimiento;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.indicadorSalario = indicadorSalario;
-        this.indicadorBonificacion = indicadorBonificacion;
-        this.idNivelEducacion = idNivelEducacion;
-        this.idTipoTrabajo = idTipoTrabajo;
-        this.descripcionGeneral = descripcionGeneral;
-        this.lugarTrabajo = lugarTrabajo;
-        this.competenciasLaborales = competenciasLaborales;
-        this.indicadorObservacion = indicadorObservacion;
-        this.observacion = observacion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.indicadorPublicacion = indicadorPublicacion;
-        this.idFormaReclutamiento = idFormaReclutamiento;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdPublicacion", nullable = false)
     public Integer getIdPublicacion() {
         return idPublicacion;
@@ -135,6 +93,16 @@ public class Publicaciones {
     }
 
     @Basic
+    @Column(name = "NivelEducacion", nullable = true, length = 100)
+    public String getNivelEducacion() {
+        return nivelEducacion;
+    }
+
+    public void setNivelEducacion(String nivelEducacion) {
+        this.nivelEducacion = nivelEducacion;
+    }
+
+    @Basic
     @Column(name = "IdNivelEducacion", nullable = true)
     public Integer getIdNivelEducacion() {
         return idNivelEducacion;
@@ -142,6 +110,16 @@ public class Publicaciones {
 
     public void setIdNivelEducacion(Integer idNivelEducacion) {
         this.idNivelEducacion = idNivelEducacion;
+    }
+
+    @Basic
+    @Column(name = "TipoTrabajo", nullable = true, length = 100)
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
     }
 
     @Basic
@@ -245,6 +223,16 @@ public class Publicaciones {
     }
 
     @Basic
+    @Column(name = "FormaReclutamiento", nullable = true, length = 100)
+    public String getFormaReclutamiento() {
+        return formaReclutamiento;
+    }
+
+    public void setFormaReclutamiento(String formaReclutamiento) {
+        this.formaReclutamiento = formaReclutamiento;
+    }
+
+    @Basic
     @Column(name = "IdFormaReclutamiento", nullable = true)
     public Integer getIdFormaReclutamiento() {
         return idFormaReclutamiento;
@@ -259,7 +247,7 @@ public class Publicaciones {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Publicaciones that = (Publicaciones) o;
+        VPublicaciones that = (VPublicaciones) o;
 
         if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
             return false;
@@ -271,8 +259,11 @@ public class Publicaciones {
             return false;
         if (indicadorBonificacion != null ? !indicadorBonificacion.equals(that.indicadorBonificacion) : that.indicadorBonificacion != null)
             return false;
+        if (nivelEducacion != null ? !nivelEducacion.equals(that.nivelEducacion) : that.nivelEducacion != null)
+            return false;
         if (idNivelEducacion != null ? !idNivelEducacion.equals(that.idNivelEducacion) : that.idNivelEducacion != null)
             return false;
+        if (tipoTrabajo != null ? !tipoTrabajo.equals(that.tipoTrabajo) : that.tipoTrabajo != null) return false;
         if (idTipoTrabajo != null ? !idTipoTrabajo.equals(that.idTipoTrabajo) : that.idTipoTrabajo != null)
             return false;
         if (descripcionGeneral != null ? !descripcionGeneral.equals(that.descripcionGeneral) : that.descripcionGeneral != null)
@@ -291,6 +282,8 @@ public class Publicaciones {
             return false;
         if (indicadorPublicacion != null ? !indicadorPublicacion.equals(that.indicadorPublicacion) : that.indicadorPublicacion != null)
             return false;
+        if (formaReclutamiento != null ? !formaReclutamiento.equals(that.formaReclutamiento) : that.formaReclutamiento != null)
+            return false;
         if (idFormaReclutamiento != null ? !idFormaReclutamiento.equals(that.idFormaReclutamiento) : that.idFormaReclutamiento != null)
             return false;
 
@@ -305,7 +298,9 @@ public class Publicaciones {
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
         result = 31 * result + (indicadorSalario != null ? indicadorSalario.hashCode() : 0);
         result = 31 * result + (indicadorBonificacion != null ? indicadorBonificacion.hashCode() : 0);
+        result = 31 * result + (nivelEducacion != null ? nivelEducacion.hashCode() : 0);
         result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
+        result = 31 * result + (tipoTrabajo != null ? tipoTrabajo.hashCode() : 0);
         result = 31 * result + (idTipoTrabajo != null ? idTipoTrabajo.hashCode() : 0);
         result = 31 * result + (descripcionGeneral != null ? descripcionGeneral.hashCode() : 0);
         result = 31 * result + (lugarTrabajo != null ? lugarTrabajo.hashCode() : 0);
@@ -316,6 +311,7 @@ public class Publicaciones {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (indicadorPublicacion != null ? indicadorPublicacion.hashCode() : 0);
+        result = 31 * result + (formaReclutamiento != null ? formaReclutamiento.hashCode() : 0);
         result = 31 * result + (idFormaReclutamiento != null ? idFormaReclutamiento.hashCode() : 0);
         return result;
     }

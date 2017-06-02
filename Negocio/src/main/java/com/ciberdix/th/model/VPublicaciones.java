@@ -1,20 +1,22 @@
 package com.ciberdix.th.model;
 
-import java.sql.Timestamp;
 import java.util.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by Danny on 31/05/2017.
+ * Created by Danny on 2/06/2017.
  */
-public class Publicaciones {
+public class VPublicaciones {
 
     private Integer idPublicacion;
     private Integer idRequerimiento;
-    private java.sql.Date fechaInicio;
-    private java.sql.Date fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private Boolean indicadorSalario;
     private Boolean indicadorBonificacion;
+    private String nivelEducacion;
     private Integer idNivelEducacion;
+    private String tipoTrabajo;
     private Integer idTipoTrabajo;
     private String descripcionGeneral;
     private String lugarTrabajo;
@@ -25,6 +27,7 @@ public class Publicaciones {
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
     private Boolean indicadorPublicacion;
+    private String formaReclutamiento;
     private Integer idFormaReclutamiento;
 
     public Integer getIdPublicacion() {
@@ -43,19 +46,19 @@ public class Publicaciones {
         this.idRequerimiento = idRequerimiento;
     }
 
-    public java.sql.Date getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public java.sql.Date getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(java.sql.Date fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -75,12 +78,28 @@ public class Publicaciones {
         this.indicadorBonificacion = indicadorBonificacion;
     }
 
+    public String getNivelEducacion() {
+        return nivelEducacion;
+    }
+
+    public void setNivelEducacion(String nivelEducacion) {
+        this.nivelEducacion = nivelEducacion;
+    }
+
     public Integer getIdNivelEducacion() {
         return idNivelEducacion;
     }
 
     public void setIdNivelEducacion(Integer idNivelEducacion) {
         this.idNivelEducacion = idNivelEducacion;
+    }
+
+    public String getTipoTrabajo() {
+        return tipoTrabajo;
+    }
+
+    public void setTipoTrabajo(String tipoTrabajo) {
+        this.tipoTrabajo = tipoTrabajo;
     }
 
     public Integer getIdTipoTrabajo() {
@@ -161,6 +180,14 @@ public class Publicaciones {
 
     public void setIndicadorPublicacion(Boolean indicadorPublicacion) {
         this.indicadorPublicacion = indicadorPublicacion;
+    }
+
+    public String getFormaReclutamiento() {
+        return formaReclutamiento;
+    }
+
+    public void setFormaReclutamiento(String formaReclutamiento) {
+        this.formaReclutamiento = formaReclutamiento;
     }
 
     public Integer getIdFormaReclutamiento() {

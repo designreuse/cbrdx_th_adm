@@ -47,6 +47,13 @@ public class EstructuraOrganizacionalCargosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarTercerosHabInEstrucOrgCarg/{id}")
+    List<VEstructuraOrganizacionalCargos> queryAllByIdCargo(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VEstructuraOrganizacionalCargos[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTercerosHabInEstrucOrgCarg/" + id, VEstructuraOrganizacionalCargos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCargoEstructura/{idCargo}/{idEstructura}")
     VEstructuraOrganizacionalCargos findAllByIdCAndIdE(@PathVariable Integer idCargo, @PathVariable Integer idEstructura) {
         RestTemplate restTemplate = new RestTemplate();
