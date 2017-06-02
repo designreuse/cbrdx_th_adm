@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Publicaciones;
+import com.ciberdix.th.model.RequerimientosReferidos;
 import com.ciberdix.th.model.VCantidadPublicacion;
 import com.ciberdix.th.model.VPublicaciones;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,17 @@ public class PublicacionesRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     String update(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();
+        if (request.getIndicadorPublicacion()) {
+            List<RequerimientosReferidos> requerimientosReferidos = Arrays.asList(restTemplate.getForObject("", RequerimientosReferidos[].class));
+            StringBuilder correos = new StringBuilder();
+            for (int i = 0; i < requerimientosReferidos.size(); i++) {
+                correos.append(requerimientosReferidos.get(i).getCorreoElectronico());
+                if (i != requerimientosReferidos.size() - 1) {
+                    correos.append(";");
+                }
+            }
+            UtilitiesController.sendMail(correos.toString(), "Vacante", "Se ha publicado una vacante para");
+        }
         restTemplate.put(serviceUrl, request, Publicaciones.class);
         return request.getFechaFin().toString();
     }
