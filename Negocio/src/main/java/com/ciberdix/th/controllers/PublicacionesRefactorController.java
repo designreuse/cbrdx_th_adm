@@ -54,7 +54,7 @@ public class PublicacionesRefactorController {
     String update(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();
         if (request.getIndicadorPublicacion()) {
-            List<RequerimientosReferidos> requerimientosReferidos = Arrays.asList(restTemplate.getForObject("", RequerimientosReferidos[].class));
+            List<RequerimientosReferidos> requerimientosReferidos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/requerimientosReferidos/requerimientos/" + request.getIdRequerimiento(), RequerimientosReferidos[].class));
             StringBuilder correos = new StringBuilder();
             for (int i = 0; i < requerimientosReferidos.size(); i++) {
                 correos.append(requerimientosReferidos.get(i).getCorreoElectronico());
