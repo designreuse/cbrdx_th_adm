@@ -1,10 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.Publicaciones;
-import com.ciberdix.th.model.RequerimientosReferidos;
-import com.ciberdix.th.model.VCantidadPublicacion;
-import com.ciberdix.th.model.VPublicaciones;
+import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -62,7 +59,10 @@ public class PublicacionesRefactorController {
                     correos.append(";");
                 }
             }
-            UtilitiesController.sendMail(correos.toString(), "Vacante", "Se ha publicado una vacante para");
+            Requerimientos requerimientos = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + request.getIdRequerimiento(), Requerimientos.class);
+            Cargos cargos = restTemplate.getForObject(globales.getUrl() + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
+            VEstructuraFisica vEstructuraFisica = restTemplate.getForObject(globales.getUrl() + "/api/estructuraFisica/" + requerimientos.getIdEstructuraFisica(), VEstructuraFisica.class);
+            UtilitiesController.sendMail(correos.toString(), "Vacante", "Usted ha sido postulado para el cargo " + cargos.getCargo() + " en la oficina " + vEstructuraFisica.getEstructuraFisica() + " de la ciudad de " + vEstructuraFisica.getCamino() + ", para aplicar a dicha vacante debe ingresar a <a href=\"http://www.crezcamos.com\">http://www.crezcamos.com</a>");
         }
         restTemplate.put(serviceUrl, request, Publicaciones.class);
         return request.getFechaFin().toString();
