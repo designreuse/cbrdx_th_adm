@@ -73,7 +73,7 @@ public class RequerimientosAccionesRefactorController {
             estructuraOrganizacionalCargos.setAuditoriaUsuario(o.getAuditoriaUsuario());
             estructuraOrganizacionalCargos.setIdCargo(vRequerimientos.getIdCargo());
             estructuraOrganizacionalCargos.setIdEstructuraOrganizacional(vRequerimientos.getIdEstructuraOrganizacional());
-            estructuraOrganizacionalCargos.setPlazas(vRequerimientos.getIdEstructuraOrganizacional());
+            estructuraOrganizacionalCargos.setPlazas(vRequerimientos.getCantidadVacantes());
             estructuraOrganizacionalCargos.setIndicadorHabilitado(true);
             restTemplate.postForObject(businessUrl + "/api/estructuraOrganizacionalCargos", estructuraOrganizacionalCargos, EstructuraOrganizacionalCargos.class);
         } else {
