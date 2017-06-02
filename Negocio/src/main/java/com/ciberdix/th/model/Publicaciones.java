@@ -10,8 +10,8 @@ public class Publicaciones {
 
     private Integer idPublicacion;
     private Integer idRequerimiento;
-    private java.sql.Date fechaInicio;
-    private java.sql.Date fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private Boolean indicadorSalario;
     private Boolean indicadorBonificacion;
     private Integer idNivelEducacion;
@@ -43,19 +43,19 @@ public class Publicaciones {
         this.idRequerimiento = idRequerimiento;
     }
 
-    public java.sql.Date getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public java.sql.Date getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(java.sql.Date fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
