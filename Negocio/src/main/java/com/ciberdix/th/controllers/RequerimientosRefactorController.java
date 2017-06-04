@@ -103,12 +103,27 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/todasActivas")
     List<VRequerimientos> queryAllByFechaActual() {
-        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/entreFechas";
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/todasActivas";
         RestTemplate restTemplate = new RestTemplate();
         VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
         return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/cantidadN/{cantidad}")
+    List<VRequerimientos> queryAllByFechaActualCantN(@PathVariable Integer cantidad) {
+        String serviceUrl = baseUrl + "/api/requerimientos/publicacionFechas/cantidadN/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + cantidad, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/byIdCargo/{idCargo}/{idTipoSolicitud}")
+    VRequerimientos findByIdCargo(@PathVariable Integer idCargo, @PathVariable Integer idTipoSolicitud) {
+        String serviceUrl = baseUrl + "/api/requerimientos/byIdCargo/";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

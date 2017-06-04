@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,9 +76,36 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findAllByIdResponsableSeleccion(idResponsableSeleccion);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/entreFechas")
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/todasActivas")
     List<VRequerimientos> queryAllByFechaActual() {
         return vRequerimientosRefactorRepository.queryAllByFechaActual();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/cantidadN/{cantidad}")
+    ArrayList<VRequerimientos> queryAllByFechaActualCantN(@PathVariable Integer cantidad) {
+
+        ArrayList<VRequerimientos> vR = new ArrayList<>();
+        ArrayList<VRequerimientos> vRe = (ArrayList<VRequerimientos>) vRequerimientosRefactorRepository.queryAllByFechaActualCantN();
+
+        Integer count = 0;
+
+        if(cantidad < vRe.size())
+        {
+            count = cantidad;
+        }else{
+            count = vRe.size();
+        }
+
+        for(int i=0; i<count; i++){
+            vR.add(vRe.get(i));
+        }
+
+        return vR;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/byIdCargo/{idCargo}/{idTipoSolicitud}")
+    VRequerimientos findByIdCargo(@PathVariable Integer idCargo, @PathVariable Integer idTipoSolicitud) {
+        return vRequerimientosRefactorRepository.findAllByIdCargoAndIdTipoSolicitud(idCargo, idTipoSolicitud);
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -21,9 +21,6 @@ public class WidgetsRefactorController {
     @Autowired
     private WidgetsRefactorRepository widgetsRefactorRepository;
 
-    @Autowired
-    private VUsuariosWidgetsRefactorRepository vUsuariosWidgetsRefactorRepository;
-
     @RequestMapping(method = RequestMethod.GET)
     List<Widgets> findAll() {
         return (List<Widgets>) widgetsRefactorRepository.findAll();

@@ -2,8 +2,10 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Publicaciones;
 import com.ciberdix.th.models.VCantidadPublicacion;
+import com.ciberdix.th.models.VPublicaciones;
 import com.ciberdix.th.repositories.PublicacionesRefactorRepository;
 import com.ciberdix.th.repositories.VCantidadPublicacionRefactorRepository;
+import com.ciberdix.th.repositories.VPublicacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -24,16 +26,19 @@ public class PublicacionesRefactorController {
     private PublicacionesRefactorRepository publicacionesRefactorRepository;
 
     @Autowired
+    private VPublicacionesRefactorRepository vPublicacionesRefactorRepository;
+
+    @Autowired
     private VCantidadPublicacionRefactorRepository vCantidadPublicacionRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Publicaciones> listarProductividades() {
-        return (List<Publicaciones>) publicacionesRefactorRepository.findAll();
+    List<VPublicaciones> listarProductividades() {
+        return (List<VPublicaciones>) vPublicacionesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Publicaciones parent(@PathVariable Integer id) {
-        return publicacionesRefactorRepository.findOne(id);
+    VPublicaciones parent(@PathVariable Integer id) {
+        return vPublicacionesRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -42,7 +47,7 @@ public class PublicacionesRefactorController {
                 new Publicaciones(o.getIdRequerimiento(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorSalario(),
                         o.getIndicadorBonificacion(),o.getIdNivelEducacion(),o.getIdTipoTrabajo(),o.getDescripcionGeneral(),
                         o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
-                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento())
         );
     }
 
@@ -57,7 +62,7 @@ public class PublicacionesRefactorController {
                 new Publicaciones(o.getIdPublicacion(),o.getIdRequerimiento(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorSalario(),
                         o.getIndicadorBonificacion(),o.getIdNivelEducacion(),o.getIdTipoTrabajo(),o.getDescripcionGeneral(),
                         o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
-                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado())
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento())
         );
     }
 

@@ -33,11 +33,11 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<VCargos> findEnabled() {
-        return (List<VCargos>) vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return vCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
-    ArrayList<VCargos> findByWildCard(@PathVariable String query){
+    ArrayList<VCargos> findByWildCard(@PathVariable String query) {
 
         String queryOutSChars = OutSpecialChars.getStr(query);
 
@@ -45,7 +45,7 @@ public class CargosRefactorController {
 
         listVCFinal = (ArrayList<VCargos>) vCargosRefactorRepository.queryVCargosByCargo(queryOutSChars);
 
-        if (listVCFinal.size()<1){
+        if (listVCFinal.size() < 1) {
             listVCFinal = (ArrayList<VCargos>) vCargosRefactorRepository.queryVCargosByCargoAll(queryOutSChars);
         }
 
@@ -53,7 +53,7 @@ public class CargosRefactorController {
 
     }
 
-        @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
+    @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
     List<Cargos> queryByIdEstructuraOrganizacional(@PathVariable String query, @PathVariable Integer idEstructuraOrganizacional) {
         return cargosRefactorRepository.queryByIdEstructuraOrganizacional(query, idEstructuraOrganizacional);
     }
@@ -75,7 +75,7 @@ public class CargosRefactorController {
                         obj.getIdNivelEducacion(), obj.getConocimientosBasicos(), obj.getTiempoExperiencia(),
                         obj.getOtrosRequisitos(), obj.getEdad(), obj.getCargaFisica(), obj.getCargaMental(),
                         obj.getNivelPsicoSocial(), obj.getCodigoCargo(), obj.getIdEstructuraArea(), obj.getIdGenero(),
-                        obj.getIdEstadoCivil(), obj.getIdEstado(), obj.getPaso(),obj.getIndicadorZona())
+                        obj.getIdEstadoCivil(), obj.getIdEstado(), obj.getPaso(), obj.getIndicadorZona())
         );
     }
 
@@ -91,7 +91,7 @@ public class CargosRefactorController {
         cargo.setCodigoCargo(obj.getCodigoCargo());
         cargo.setIdEstructuraArea(obj.getIdEstructuraArea());
         cargo.setIndicadorZona(obj.getIndicadorZona());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -100,6 +100,7 @@ public class CargosRefactorController {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setIdEstado(obj.getIdEstado());
         cargo.setPaso(obj.getPaso());
+        cargo.setIndicadorHabilitado(obj.getIndicadorHabilitado());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -108,7 +109,7 @@ public class CargosRefactorController {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setInterrelacionesExternas(obj.getInterrelacionesExternas());
         cargo.setInterrelacionesInternas(obj.getInterrelacionesInternas());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -116,6 +117,7 @@ public class CargosRefactorController {
     Cargos updateTab4(@RequestBody Cargos obj) {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setResponsabilidadesAd(obj.getResponsabilidadesAd());
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -124,7 +126,7 @@ public class CargosRefactorController {
         Cargos cargo = cargosRefactorRepository.findOne(obj.getIdCargo());
         cargo.setTomaDecisiones(obj.getTomaDecisiones());
         cargo.setActividadesSupervisa(obj.getActividadesSupervisa());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -138,6 +140,7 @@ public class CargosRefactorController {
         cargo.setIdGenero(obj.getIdGenero());
         cargo.setIdEstadoCivil(obj.getIdEstadoCivil());
         cargo.setIdNivelEducacion(obj.getIdNivelEducacion());
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -148,19 +151,19 @@ public class CargosRefactorController {
         cargo.setIdCategoria(obj.getIdCategoria());
         cargo.setSalario(obj.getSalario());
         cargo.setIndicadorRequiereFormacion(obj.getIndicadorRequiereFormacion());
-
+        cargo.setPaso(obj.getPaso());
         return cargosRefactorRepository.save(cargo);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Cargos o) {
         cargosRefactorRepository.save(
-                new Cargos(o.getIdCargo(),o.getCargo(),o.getAuditoriaUsuario(),o.getPersonaACargoDir(),o.getPersonaACargoInd(),
-                        o.getIdCargoJefe(),o.getMision(),o.getPuntos(),o.getIdCategoria(),o.getSalario(),o.getIndicadorRequiereFormacion(),
-                        o.getIndicadorHabilitado(),o.getInterrelacionesInternas(),o.getInterrelacionesExternas(),o.getResponsabilidadesAd(),
-                        o.getTomaDecisiones(),o.getActividadesSupervisa(),o.getIdNivelEducacion(),o.getConocimientosBasicos(),o.getTiempoExperiencia(),
-                        o.getOtrosRequisitos(),o.getEdad(),o.getCargaFisica(),o.getCargaMental(),o.getNivelPsicoSocial(),o.getCodigoCargo(),
-                        o.getIdEstructuraArea(),o.getIdGenero(),o.getIdEstadoCivil(),o.getIdEstado(),o.getPaso(),o.getIndicadorZona())
+                new Cargos(o.getIdCargo(), o.getCargo(), o.getAuditoriaUsuario(), o.getPersonaACargoDir(), o.getPersonaACargoInd(),
+                        o.getIdCargoJefe(), o.getMision(), o.getPuntos(), o.getIdCategoria(), o.getSalario(), o.getIndicadorRequiereFormacion(),
+                        o.getIndicadorHabilitado(), o.getInterrelacionesInternas(), o.getInterrelacionesExternas(), o.getResponsabilidadesAd(),
+                        o.getTomaDecisiones(), o.getActividadesSupervisa(), o.getIdNivelEducacion(), o.getConocimientosBasicos(), o.getTiempoExperiencia(),
+                        o.getOtrosRequisitos(), o.getEdad(), o.getCargaFisica(), o.getCargaMental(), o.getNivelPsicoSocial(), o.getCodigoCargo(),
+                        o.getIdEstructuraArea(), o.getIdGenero(), o.getIdEstadoCivil(), o.getIdEstado(), o.getPaso(), o.getIndicadorZona())
         );
     }
 

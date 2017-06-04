@@ -12,5 +12,5 @@ public interface VTercerosCargosRefactorRepository extends CrudRepository<VTerce
     List<VTercerosCargos> findByIndicadorHabilitadoIsTrue();
     List<VTercerosCargos> findByIdEstructuraOrganizacionalCargo(Integer id);
     List<VTercerosCargos> findByIndicadorHabilitadoTrueAndIdEstructuraOrganizacional(Integer id);
-    List<VTercerosCargos> findAllByIdCargo(Integer idCargo);
+    List<VTercerosCargos> findAllByIdCargoAndIndicadorHabilitadoIsTrue(Integer idCargo);
 }

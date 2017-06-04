@@ -13,4 +13,7 @@ public interface VEstructuraOrganizacionalCargosRefactorRepository extends CrudR
     List<VEstructuraOrganizacionalCargos> findByIndicadorHabilitadoIsTrue();
     List<VEstructuraOrganizacionalCargos> findByIndicadorHabilitadoIsTrueAndIdEstructuraOrganizacional(Integer id);
     VEstructuraOrganizacionalCargos findAllByIndicadorHabilitadoIsTrueAndIdCargoAndIdEstructuraOrganizacional(Integer idCargo, Integer idEstructura);
+
+    @Query("SELECT ve FROM VEstructuraOrganizacionalCargos ve WHERE ve.idCargo = ?1 AND ve.idEstructuraOrganizacionalCargo IN (SELECT vt.idEstructuraOrganizacionalCargo FROM VTercerosCargos vt WHERE vt.indicadorHabilitado = 1)")
+    List<VEstructuraOrganizacionalCargos> queryAllByIdCargo(Integer idCargo);
 }

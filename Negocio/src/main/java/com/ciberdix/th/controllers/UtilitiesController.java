@@ -70,33 +70,33 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
-    static Constantes findConstant(String code) {
-        RestTemplate restTemplate = new RestTemplate();
-        String domainUrl = readParameter("domain.url");
-        return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
-    }
-
-    static ListasItems findListItem(String tableName, String code) {
-        RestTemplate restTemplate = new RestTemplate();
-        String serviceURL = readParameter("business.url") + "/api/listas/tabla/" + tableName + "/code/" + code.toUpperCase();
-        return restTemplate.getForObject(serviceURL, ListasItems.class);
-    }
-
     static String generateURLToken(String URL) {
         Map<String, Object> map = new HashMap<>();
         map.put("URL", URL);
         return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
     }
 
-    static Usuarios findUser(Integer idUsuario) {
+    Constantes findConstant(String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        String domainUrl = readParameter("domain.url");
+        return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
+    }
+
+    ListasItems findListItem(String tableName, String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        String serviceURL = readParameter("business.url") + "/api/listas/tabla/" + tableName + "/code/" + code.toUpperCase();
+        return restTemplate.getForObject(serviceURL, ListasItems.class);
+    }
+
+    Usuarios findUser(Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(readParameter("business.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
     }
 
-    static String readParameter(String parameter) {
+    String readParameter(String parameter) {
         Properties prop = new XProperties();
         try {
-            InputStream inputStream = ClassLoader.getSystemResourceAsStream("application.properties");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("application.properties");
             prop.load(inputStream);
             return prop.getProperty(parameter);
         } catch (IOException e) {
