@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Procesos;
+import com.ciberdix.th.model.VProcesos;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -23,16 +24,16 @@ public class ProcesosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/procesos";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Procesos> findAll() {
+    List<VProcesos> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Procesos[] cargosCompetencias = restTemplate.getForObject(serviceUrl, Procesos[].class);
+        VProcesos[] cargosCompetencias = restTemplate.getForObject(serviceUrl, VProcesos[].class);
         return Arrays.asList(cargosCompetencias);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Procesos findOne(@PathVariable Integer id) {
+    VProcesos findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, Procesos.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VProcesos.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

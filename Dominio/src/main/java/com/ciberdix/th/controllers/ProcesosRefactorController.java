@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Procesos;
+import com.ciberdix.th.models.VProcesos;
 import com.ciberdix.th.repositories.ProcesosRefactorRepository;
+import com.ciberdix.th.repositories.VProcesosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +23,17 @@ public class ProcesosRefactorController {
     @Autowired
     private ProcesosRefactorRepository procesosRefactorRepository;
 
+    @Autowired
+    private VProcesosRefactorRepository vProcesosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<Procesos> findAll() {
-        return (List<Procesos>) procesosRefactorRepository.findAll();
+    List<VProcesos> findAll() {
+        return (List<VProcesos>) vProcesosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Procesos findOne(@PathVariable Integer id) {
-        return procesosRefactorRepository.findOne(id);
+    VProcesos findOne(@PathVariable Integer id) {
+        return vProcesosRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
