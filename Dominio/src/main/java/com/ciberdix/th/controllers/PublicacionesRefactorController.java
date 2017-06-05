@@ -52,8 +52,18 @@ public class PublicacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/cantidadPublicacion")
-    List<VCantidadPublicacion> findCant(@PathVariable Integer id) {
+    List<VCantidadPublicacion> findCant() {
         return (List<VCantidadPublicacion>) vCantidadPublicacionRefactorRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
+    List<VPublicaciones> findIntMix() {
+        return vPublicacionesRefactorRepository.queryAllByIdFormaReclutamientoIntMix();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
+    List<VPublicaciones> findExtMix() {
+        return vPublicacionesRefactorRepository.queryAllByIdFormaReclutamientoExtMix();
     }
 
     @RequestMapping(method = RequestMethod.PUT)

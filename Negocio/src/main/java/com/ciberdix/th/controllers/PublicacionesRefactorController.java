@@ -41,6 +41,20 @@ public class PublicacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
+    List<VPublicaciones> findIntMix() {
+        RestTemplate restTemplate = new RestTemplate();
+        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl + "/internaMixta", VPublicaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
+    List<VPublicaciones> findExtMix() {
+        RestTemplate restTemplate = new RestTemplate();
+        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl + "/externaMixta", VPublicaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Publicaciones create(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();
