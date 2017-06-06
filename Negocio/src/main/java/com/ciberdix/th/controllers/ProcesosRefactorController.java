@@ -66,6 +66,12 @@ public class ProcesosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Procesos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController utilitiesController = new UtilitiesController();
+        ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
+        ListasItems cerrado = utilitiesController.findListItem("ListasEstadosProcesos", "CLOSE");
+        if (obj.getIdEstado().equals(publico.getIdLista()) && obj.getIndicadorHabilitado()) {
+            restTemplate.postForObject(serviceUrl + "/disable/" + cerrado.getIdLista(), null, Procesos.class);
+        }
         restTemplate.put(serviceUrl, obj);
     }
 
