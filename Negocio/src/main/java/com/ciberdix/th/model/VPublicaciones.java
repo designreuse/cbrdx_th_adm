@@ -29,6 +29,7 @@ public class VPublicaciones {
     private Boolean indicadorPublicacion;
     private String formaReclutamiento;
     private Integer idFormaReclutamiento;
+    private Integer idProceso;
 
     public Integer getIdPublicacion() {
         return idPublicacion;
@@ -196,5 +197,13 @@ public class VPublicaciones {
 
     public void setIdFormaReclutamiento(Integer idFormaReclutamiento) {
         this.idFormaReclutamiento = idFormaReclutamiento;
+    }
+
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
     }
 }

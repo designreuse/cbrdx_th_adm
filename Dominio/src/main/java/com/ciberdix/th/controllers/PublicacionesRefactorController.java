@@ -41,16 +41,6 @@ public class PublicacionesRefactorController {
         return vPublicacionesRefactorRepository.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    Publicaciones crearActividadEconomica(@RequestBody Publicaciones o) {
-        return publicacionesRefactorRepository.save(
-                new Publicaciones(o.getIdRequerimiento(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorSalario(),
-                        o.getIndicadorBonificacion(),o.getIdNivelEducacion(),o.getIdTipoTrabajo(),o.getDescripcionGeneral(),
-                        o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
-                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento())
-        );
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/cantidadPublicacion")
     List<VCantidadPublicacion> findCant() {
         return (List<VCantidadPublicacion>) vCantidadPublicacionRefactorRepository.findAll();
@@ -66,13 +56,25 @@ public class PublicacionesRefactorController {
         return vPublicacionesRefactorRepository.queryAllByIdFormaReclutamientoExtMix();
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    Publicaciones crearActividadEconomica(@RequestBody Publicaciones o) {
+        return publicacionesRefactorRepository.save(
+                new Publicaciones(o.getIdRequerimiento(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorSalario(),
+                        o.getIndicadorBonificacion(),o.getIdNivelEducacion(),o.getIdTipoTrabajo(),o.getDescripcionGeneral(),
+                        o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento(),
+                        o.getIdProceso())
+        );
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody Publicaciones o) {
         publicacionesRefactorRepository.save(
                 new Publicaciones(o.getIdPublicacion(),o.getIdRequerimiento(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorSalario(),
                         o.getIndicadorBonificacion(),o.getIdNivelEducacion(),o.getIdTipoTrabajo(),o.getDescripcionGeneral(),
                         o.getLugarTrabajo(),o.getCompetenciasLaborales(),o.getIndicadorObservacion(),o.getObservacion(),
-                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento())
+                        o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIndicadorPublicacion(),o.getIdFormaReclutamiento(),
+                        o.getIdProceso())
         );
     }
 

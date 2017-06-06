@@ -36,6 +36,13 @@ public class ProcesosPasosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, VProcesosPasos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/proceso/{idProceso}")
+    List<VProcesosPasos> findAllByIdProceso(@PathVariable Integer idProceso) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProcesosPasos[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/proceso/" + idProceso, VProcesosPasos[].class);
+        return Arrays.asList(cargosCompetencias);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProcesosPasos create(@RequestBody ProcesosPasos obj) {
         RestTemplate restTemplate = new RestTemplate();
