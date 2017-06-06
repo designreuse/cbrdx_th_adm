@@ -5,7 +5,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 2/06/2017.
+ * Created by Danny on 6/06/2017.
  */
 @Entity
 @Table(name = "Publicaciones", schema = "dbo", catalog = "CREZCAMOS")
@@ -28,11 +28,12 @@ public class Publicaciones {
     private Boolean indicadorHabilitado;
     private Boolean indicadorPublicacion;
     private Integer idFormaReclutamiento;
+    private Integer idProceso;
 
     public Publicaciones() {
     }
 
-    public Publicaciones(Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento) {
+    public Publicaciones(Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento, Integer idProceso) {
         this.idRequerimiento = idRequerimiento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -45,14 +46,15 @@ public class Publicaciones {
         this.competenciasLaborales = competenciasLaborales;
         this.indicadorObservacion = indicadorObservacion;
         this.observacion = observacion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
         this.indicadorPublicacion = indicadorPublicacion;
         this.idFormaReclutamiento = idFormaReclutamiento;
+        this.idProceso = idProceso;
     }
 
-    public Publicaciones(Integer idPublicacion, Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento) {
+    public Publicaciones(Integer idPublicacion, Integer idRequerimiento, Date fechaInicio, Date fechaFin, Boolean indicadorSalario, Boolean indicadorBonificacion, Integer idNivelEducacion, Integer idTipoTrabajo, String descripcionGeneral, String lugarTrabajo, String competenciasLaborales, Boolean indicadorObservacion, String observacion, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorPublicacion, Integer idFormaReclutamiento, Integer idProceso) {
         this.idPublicacion = idPublicacion;
         this.idRequerimiento = idRequerimiento;
         this.fechaInicio = fechaInicio;
@@ -66,11 +68,12 @@ public class Publicaciones {
         this.competenciasLaborales = competenciasLaborales;
         this.indicadorObservacion = indicadorObservacion;
         this.observacion = observacion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
         this.indicadorPublicacion = indicadorPublicacion;
         this.idFormaReclutamiento = idFormaReclutamiento;
+        this.idProceso = idProceso;
     }
 
     @Id
@@ -254,6 +257,16 @@ public class Publicaciones {
         this.idFormaReclutamiento = idFormaReclutamiento;
     }
 
+    @Basic
+    @Column(name = "IdProceso", nullable = true)
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -293,6 +306,7 @@ public class Publicaciones {
             return false;
         if (idFormaReclutamiento != null ? !idFormaReclutamiento.equals(that.idFormaReclutamiento) : that.idFormaReclutamiento != null)
             return false;
+        if (idProceso != null ? !idProceso.equals(that.idProceso) : that.idProceso != null) return false;
 
         return true;
     }
@@ -317,6 +331,7 @@ public class Publicaciones {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (indicadorPublicacion != null ? indicadorPublicacion.hashCode() : 0);
         result = 31 * result + (idFormaReclutamiento != null ? idFormaReclutamiento.hashCode() : 0);
+        result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
         return result;
     }
 }

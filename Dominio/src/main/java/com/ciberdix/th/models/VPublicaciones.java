@@ -5,7 +5,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 2/06/2017.
+ * Created by Danny on 6/06/2017.
  */
 @Entity
 @Table(name = "V_Publicaciones", schema = "dbo", catalog = "CREZCAMOS")
@@ -31,6 +31,7 @@ public class VPublicaciones {
     private Boolean indicadorPublicacion;
     private String formaReclutamiento;
     private Integer idFormaReclutamiento;
+    private Integer idProceso;
 
     @Id
     @Column(name = "IdPublicacion", nullable = false)
@@ -242,6 +243,16 @@ public class VPublicaciones {
         this.idFormaReclutamiento = idFormaReclutamiento;
     }
 
+    @Basic
+    @Column(name = "IdProceso", nullable = true)
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -286,6 +297,7 @@ public class VPublicaciones {
             return false;
         if (idFormaReclutamiento != null ? !idFormaReclutamiento.equals(that.idFormaReclutamiento) : that.idFormaReclutamiento != null)
             return false;
+        if (idProceso != null ? !idProceso.equals(that.idProceso) : that.idProceso != null) return false;
 
         return true;
     }
@@ -313,6 +325,7 @@ public class VPublicaciones {
         result = 31 * result + (indicadorPublicacion != null ? indicadorPublicacion.hashCode() : 0);
         result = 31 * result + (formaReclutamiento != null ? formaReclutamiento.hashCode() : 0);
         result = 31 * result + (idFormaReclutamiento != null ? idFormaReclutamiento.hashCode() : 0);
+        result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
         return result;
     }
 }
