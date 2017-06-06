@@ -46,11 +46,6 @@ public class PublicacionesRefactorController {
         return (List<VCantidadPublicacion>) vCantidadPublicacionRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
-    List<VPublicaciones> findIntMix() {
-        return vPublicacionesRefactorRepository.queryAllByIdFormaReclutamientoIntMix();
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/agregarIdProceso/{idPublicacion}/{idProceso}")
     void updateIdProceso(@PathVariable Integer idPublicacion, @PathVariable Integer idProceso) {
         publicacionesRefactorRepository.queryUpdateIdProceso(idPublicacion, idProceso);

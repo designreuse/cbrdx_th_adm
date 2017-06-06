@@ -108,6 +108,16 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findAllByIdCargoAndIdTipoSolicitud(idCargo, idTipoSolicitud);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
+    List<VRequerimientos> findIntMix() {
+        return vRequerimientosRefactorRepository.queryAllByIdFormaReclutamientoIntMix();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
+    List<VRequerimientos> findExtMix() {
+        return vRequerimientosRefactorRepository.queryAllByIdFormaReclutamientoExtMix();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),

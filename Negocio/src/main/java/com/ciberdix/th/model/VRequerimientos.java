@@ -65,6 +65,7 @@ public class VRequerimientos {
     private Boolean indicadorObservacion;
     private String observacion;
     private Integer idProceso;
+    private Boolean indicadorHabilitadoPublicaciones;
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
@@ -520,5 +521,13 @@ public class VRequerimientos {
 
     public void setIdProceso(Integer idProceso) {
         this.idProceso = idProceso;
+    }
+
+    public Boolean getIndicadorHabilitadoPublicaciones() {
+        return indicadorHabilitadoPublicaciones;
+    }
+
+    public void setIndicadorHabilitadoPublicaciones(Boolean indicadorHabilitadoPublicaciones) {
+        this.indicadorHabilitadoPublicaciones = indicadorHabilitadoPublicaciones;
     }
 }

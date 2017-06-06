@@ -41,20 +41,6 @@ public class PublicacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
-    List<VPublicaciones> findIntMix() {
-        RestTemplate restTemplate = new RestTemplate();
-        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl + "/internaMixta", VPublicaciones[].class);
-        return Arrays.asList(parametros);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
-    List<VPublicaciones> findExtMix() {
-        RestTemplate restTemplate = new RestTemplate();
-        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl + "/externaMixta", VPublicaciones[].class);
-        return Arrays.asList(parametros);
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/agregarIdProceso/{idPublicacion}")
     void updateIdProceso(@PathVariable Integer idPublicacion) {
         Integer idProceso = 0;

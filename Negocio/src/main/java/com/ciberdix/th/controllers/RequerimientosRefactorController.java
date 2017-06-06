@@ -126,6 +126,22 @@ public class RequerimientosRefactorController {
         return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
+    List<VRequerimientos> findIntMix() {
+        String serviceUrl = baseUrl + "/api/requerimientos/internaMixta";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
+    List<VRequerimientos> findExtMix() {
+        String serviceUrl = baseUrl + "/api/requerimientos/externaMixta";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";
