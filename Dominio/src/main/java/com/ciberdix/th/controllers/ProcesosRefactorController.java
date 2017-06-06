@@ -39,15 +39,30 @@ public class ProcesosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Procesos create(@RequestBody Procesos o) {
         return procesosRefactorRepository.save(new Procesos(
-                o.getIdEstado(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                o.getIdEstado(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario()
         ));
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/disable/{idEstado}")
+    void disableRegisters(@PathVariable Integer idEstado) {
+        procesosRefactorRepository.disableRegisters(idEstado);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/disabled/{idEstado}")
+    List<Procesos> disabledRegisters(@PathVariable Integer idEstado) {
+        return procesosRefactorRepository.findByIndicadorHabilitadoFalseAndIdEstado(idEstado);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idEstado}")
+    List<Procesos> enabledRegisters(@PathVariable Integer idEstado) {
+        return procesosRefactorRepository.findByIndicadorHabilitadoTrueAndIdEstado(idEstado);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Procesos o) {
         procesosRefactorRepository.save(
                 new Procesos(
-                        o.getIdProceso(),o.getIdEstado(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdProceso(), o.getIdEstado(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario()
                 )
         );
     }
