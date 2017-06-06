@@ -13,6 +13,6 @@ public interface ProcesosRefactorRepository extends CrudRepository<Procesos, Int
 
     @Transactional
     @Modifying
-    @Query("UPDATE Procesos SET Procesos.indicadorHabilitado = 0, Procesos.idEstado = ?1")
+    @Query("UPDATE Procesos P SET P.indicadorHabilitado = 0, P.idEstado = ?1")
     void disableRegisters(Integer idEstado);
 }
