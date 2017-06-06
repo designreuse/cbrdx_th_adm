@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Danny on 5/06/2017.
  */
@@ -15,4 +17,8 @@ public interface ProcesosRefactorRepository extends CrudRepository<Procesos, Int
     @Modifying
     @Query("UPDATE Procesos P SET P.indicadorHabilitado = 0, P.idEstado = ?1")
     void disableRegisters(Integer idEstado);
+
+    List<Procesos> findByIndicadorHabilitadoTrueAndIdEstado(Integer idEstado);
+
+    List<Procesos> findByIndicadorHabilitadoFalseAndIdEstado(Integer idEstado);
 }

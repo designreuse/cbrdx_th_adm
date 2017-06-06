@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
+import com.ciberdix.th.model.ListasItems;
 import com.ciberdix.th.model.Procesos;
 import com.ciberdix.th.model.VProcesos;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,26 @@ public class ProcesosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, VProcesos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/current/")
+    Procesos findCurrent() {
+        RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController utilitiesController = new UtilitiesController();
+        ListasItems edicion = utilitiesController.findListItem("ListasEstadosProcesos", "EDIT");
+        ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
+        List<Procesos> procesosEdicion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/disabled/" + edicion.getIdLista(), Procesos[].class));
+        List<Procesos> procesosPublicos = Arrays.asList(restTemplate.getForObject(serviceUrl + "/enabled/" + publico.getIdLista(), Procesos[].class));
+        if (procesosEdicion.size() == 0 && procesosPublicos.size() == 0) {
+            Procesos procesos = new Procesos();
+            procesos.setIndicadorHabilitado(false);
+            procesos.setIdEstado(edicion.getIdLista());
+            return restTemplate.postForObject(serviceUrl, procesos, Procesos.class);
+        } else if (procesosEdicion.size() != 0) {
+            return procesosEdicion.get(0);
+        } else {
+            return procesosPublicos.get(0);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Procesos create(@RequestBody Procesos obj) {
         RestTemplate restTemplate = new RestTemplate();
@@ -47,5 +68,6 @@ public class ProcesosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }
+
 
 }
