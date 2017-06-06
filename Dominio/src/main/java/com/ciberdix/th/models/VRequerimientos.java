@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 31/05/2017.
+ * Created by Danny on 6/06/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "dbo", catalog = "CREZCAMOS")
@@ -67,6 +67,7 @@ public class VRequerimientos {
     private Boolean indicadorObservacion;
     private String observacion;
     private Integer idProceso;
+    private Boolean indicadorHabilitadoPublicaciones;
 
     @Id
     @Column(name = "IdRequerimiento", nullable = false)
@@ -638,6 +639,16 @@ public class VRequerimientos {
         this.idProceso = idProceso;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitadoPublicaciones", nullable = true)
+    public Boolean getIndicadorHabilitadoPublicaciones() {
+        return indicadorHabilitadoPublicaciones;
+    }
+
+    public void setIndicadorHabilitadoPublicaciones(Boolean indicadorHabilitadoPublicaciones) {
+        this.indicadorHabilitadoPublicaciones = indicadorHabilitadoPublicaciones;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -645,7 +656,8 @@ public class VRequerimientos {
 
         VRequerimientos that = (VRequerimientos) o;
 
-        if (!idRequerimiento.equals(that.idRequerimiento)) return false;
+        if (idRequerimiento != null ? !idRequerimiento.equals(that.idRequerimiento) : that.idRequerimiento != null)
+            return false;
         if (nombreSolicitante != null ? !nombreSolicitante.equals(that.nombreSolicitante) : that.nombreSolicitante != null)
             return false;
         if (idSolicitante != null ? !idSolicitante.equals(that.idSolicitante) : that.idSolicitante != null)
@@ -669,8 +681,10 @@ public class VRequerimientos {
             return false;
         if (estado != null ? !estado.equals(that.estado) : that.estado != null) return false;
         if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
-        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
-        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
         if (nombreResponsableSeleccion != null ? !nombreResponsableSeleccion.equals(that.nombreResponsableSeleccion) : that.nombreResponsableSeleccion != null)
             return false;
         if (idResponsableSeleccion != null ? !idResponsableSeleccion.equals(that.idResponsableSeleccion) : that.idResponsableSeleccion != null)
@@ -733,12 +747,16 @@ public class VRequerimientos {
         if (indicadorObservacion != null ? !indicadorObservacion.equals(that.indicadorObservacion) : that.indicadorObservacion != null)
             return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
-        return idProceso != null ? idProceso.equals(that.idProceso) : that.idProceso == null;
+        if (idProceso != null ? !idProceso.equals(that.idProceso) : that.idProceso != null) return false;
+        if (indicadorHabilitadoPublicaciones != null ? !indicadorHabilitadoPublicaciones.equals(that.indicadorHabilitadoPublicaciones) : that.indicadorHabilitadoPublicaciones != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idRequerimiento.hashCode();
+        int result = idRequerimiento != null ? idRequerimiento.hashCode() : 0;
         result = 31 * result + (nombreSolicitante != null ? nombreSolicitante.hashCode() : 0);
         result = 31 * result + (idSolicitante != null ? idSolicitante.hashCode() : 0);
         result = 31 * result + (justificacion != null ? justificacion.hashCode() : 0);
@@ -753,8 +771,8 @@ public class VRequerimientos {
         result = 31 * result + (cantidadConvocados != null ? cantidadConvocados.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
-        result = 31 * result + auditoriaUsuario.hashCode();
-        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
+        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (nombreResponsableSeleccion != null ? nombreResponsableSeleccion.hashCode() : 0);
         result = 31 * result + (idResponsableSeleccion != null ? idResponsableSeleccion.hashCode() : 0);
         result = 31 * result + (formaReclutamiento != null ? formaReclutamiento.hashCode() : 0);
@@ -795,6 +813,7 @@ public class VRequerimientos {
         result = 31 * result + (indicadorObservacion != null ? indicadorObservacion.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitadoPublicaciones != null ? indicadorHabilitadoPublicaciones.hashCode() : 0);
         return result;
     }
 }
