@@ -64,6 +64,7 @@ public class VRequerimientos {
     private String competenciasLaborales;
     private Boolean indicadorObservacion;
     private String observacion;
+    private Integer idProceso;
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
@@ -511,5 +512,13 @@ public class VRequerimientos {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
     }
 }

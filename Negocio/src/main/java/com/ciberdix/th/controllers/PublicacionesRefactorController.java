@@ -55,6 +55,19 @@ public class PublicacionesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/agregarIdProceso/{idPublicacion}")
+    void updateIdProceso(@PathVariable Integer idPublicacion) {
+        Integer idProceso = 0;
+        RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController utilitiesController = new UtilitiesController();
+        ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
+        List<Procesos> procesosPublicos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/procesos/enabled/" + publico.getIdLista(), Procesos[].class));
+        if (procesosPublicos.size()>0) {
+            idProceso = procesosPublicos.get(0).getIdProceso();
+            restTemplate.getForObject(serviceUrl + "/agregarIdProceso/" + idPublicacion + "/" + idProceso, Publicaciones.class);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Publicaciones create(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();
