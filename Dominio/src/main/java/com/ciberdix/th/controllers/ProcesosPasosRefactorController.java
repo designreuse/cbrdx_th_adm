@@ -41,7 +41,7 @@ public class ProcesosPasosRefactorController {
         return vProcesosPasosRefactorRepository.findAllByIdProceso(idProceso);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/lastPaso/{idProceso}")
+    @RequestMapping(method = RequestMethod.GET, path = "/ultimoPaso/{idProceso}")
     VProcesosPasos queryLastPaso(@PathVariable Integer idProceso) {
         return vProcesosPasosRefactorRepository.queryLastPaso(idProceso);
     }
