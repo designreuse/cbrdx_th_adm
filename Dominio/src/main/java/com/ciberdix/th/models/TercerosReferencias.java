@@ -70,10 +70,6 @@ public class TercerosReferencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public void setFechaVerificado(Timestamp fechaVerificado) {
-        this.fechaVerificado = fechaVerificado;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "IdTerceroReferencia", nullable = false)
