@@ -9,6 +9,9 @@ public class VUsuarios {
     private Boolean indHab;
     private String documento;
     private String nombre;
+    private String facebook;
+    private String google;
+    private String linkedin;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -48,5 +51,29 @@ public class VUsuarios {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getGoogle() {
+        return google;
+    }
+
+    public void setGoogle(String google) {
+        this.google = google;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
     }
 }
