@@ -43,10 +43,10 @@ public class ProcesosPasosRefactorController {
         return Arrays.asList(cargosCompetencias);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/lastPaso/{idProceso}")
+    @RequestMapping(method = RequestMethod.GET, path = "/ultimoPaso/{idProceso}")
     VProcesosPasos queryLastPaso(@PathVariable Integer idProceso) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/lastPaso/" + idProceso, VProcesosPasos.class);
+        return restTemplate.getForObject(serviceUrl + "/ultimoPaso/" + idProceso, VProcesosPasos.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
