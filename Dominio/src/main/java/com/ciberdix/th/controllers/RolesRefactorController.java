@@ -37,6 +37,11 @@ public class RolesRefactorController {
         return rolesRefactorRepository.findUserAvaliable(idUsuario);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/rol/{codigoRol}")
+    List<Roles> findByCodigoRol(@PathVariable String codigoRol) {
+        return rolesRefactorRepository.findAllByCodigoRol(codigoRol);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/dashboard")
     List<VUsuarioRolesCantidad> getVLists() {
         return (List<VUsuarioRolesCantidad>) vUsuarioRolesCantidadRefactorRepository.findAll();

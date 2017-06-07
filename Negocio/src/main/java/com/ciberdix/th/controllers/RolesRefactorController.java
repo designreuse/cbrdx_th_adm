@@ -40,6 +40,14 @@ public class RolesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/rol/{codigoRol}")
+    List<Roles> findByCodigoRol(@PathVariable String codigoRol) {
+        String serviceUrl = baseUrl + "/api/roles/rol/";
+        RestTemplate restTemplate = new RestTemplate();
+        Roles[] parametros = restTemplate.getForObject(serviceUrl + codigoRol, Roles[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/dashboard/")
     List<VUsuarioRolesCantidad> findDashboard() {
         String serviceUrl = baseUrl + "/api/roles/";
