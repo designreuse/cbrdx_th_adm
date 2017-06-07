@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.ListasItems;
 import com.ciberdix.th.model.Procesos;
+import com.ciberdix.th.model.ProcesosPasos;
 import com.ciberdix.th.model.VProcesos;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -57,10 +58,23 @@ public class ProcesosRefactorController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    Procesos create(@RequestBody Procesos obj) {
+    @RequestMapping(method = RequestMethod.POST, path = "/{idUsuario}")
+    Procesos create(@PathVariable Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, obj, Procesos.class);
+        UtilitiesController utilitiesController = new UtilitiesController();
+        ListasItems edicion = utilitiesController.findListItem("ListasEstadosProcesos", "EDIT");
+        Procesos procesos = new Procesos();
+        procesos.setIndicadorHabilitado(false);
+        procesos.setIdEstado(edicion.getIdLista());
+        procesos = restTemplate.postForObject(serviceUrl, procesos, Procesos.class);
+        ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
+        List<Procesos> procesosPublicos = Arrays.asList(restTemplate.getForObject(serviceUrl + "/enabled/" + publico.getIdLista(), Procesos[].class));
+        List<ProcesosPasos> pasos = Arrays.asList(restTemplate.getForObject(serviceUrl + "Pasos/proceso/", ProcesosPasos[].class));
+        for (ProcesosPasos paso : pasos) {
+            paso.setIdProceso(procesos.getIdProceso());
+            restTemplate.postForObject(serviceUrl + "Pasos", paso, ProcesosPasos.class);
+        }
+        return procesos;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -74,6 +88,4 @@ public class ProcesosRefactorController {
         }
         restTemplate.put(serviceUrl, obj);
     }
-
-
 }
