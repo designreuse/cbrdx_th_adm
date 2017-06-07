@@ -88,7 +88,7 @@ public class AuthenticationRestController {
             } else if (authenticationRequest.getProvider().equals("linkein")) {
                 usuarios.setLinkedin(authenticationRequest.getProvider());
             }
-            user = restTemplate.postForObject(domainUrl + "", usuarios, Usuarios.class);
+            user = restTemplate.postForObject(domainUrl + "/api/usuarios", usuarios, Usuarios.class);
             Roles roles = restTemplate.getForObject("/api/roles/rol/" + "ROLE_ADMINISTRADOR", Roles.class);
             UsuarioRoles request = new UsuarioRoles();
             request.setIdUsuario(user.getIdUsuario());
