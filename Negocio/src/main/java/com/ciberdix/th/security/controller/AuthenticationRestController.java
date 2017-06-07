@@ -34,14 +34,11 @@ import java.util.UUID;
 @RestController
 public class AuthenticationRestController {
 
-    private String tokenHeader = "Authorization";
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
     @Autowired
     UserDetailsService userDetailsService;
-
+    private String tokenHeader = "Authorization";
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     @Value("${recaptcha.url}")
     private String recaptchaUrl;
 
@@ -72,6 +69,60 @@ public class AuthenticationRestController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @RequestMapping(value = "/auth/externalUser", method = RequestMethod.POST)
+    public ResponseEntity<?> createUser(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
+        RestTemplate restTemplate = new RestTemplate();
+        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + authenticationRequest.getUsername() + "/", Usuarios.class);
+        if (user == null) {
+            Usuarios usuarios = new Usuarios();
+            usuarios.setCorreoElectronico(authenticationRequest.getUsername());
+            usuarios.setUsuarioSistema(authenticationRequest.getUsername());
+            usuarios.setUsuarioLdap(false);
+            usuarios.setIndicadorHabilitado(true);
+            if (authenticationRequest.getProvider().equals("facebook")) {
+                usuarios.setFacebook(authenticationRequest.getProvider());
+            } else if (authenticationRequest.getProvider().equals("google")) {
+                usuarios.setGoogle(authenticationRequest.getProvider());
+            } else if (authenticationRequest.getProvider().equals("linkein")) {
+                usuarios.setLinkedin(authenticationRequest.getProvider());
+            }
+            user = restTemplate.postForObject(domainUrl + "", usuarios, Usuarios.class);
+            Roles roles = restTemplate.getForObject("/api/roles/rol/" + "ROLE_ADMINISTRADOR", Roles.class);
+            UsuarioRoles request = new UsuarioRoles();
+            request.setIdUsuario(user.getIdUsuario());
+            request.setIdRol(roles.getIdRol());
+            restTemplate.postForObject("/api/usuariosRoles/", request, UsuarioRoles.class);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+            String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+            return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+        } else {
+            switch (authenticationRequest.getProvider()) {
+                case "facebook":
+                    if (user.getFacebook().equals(authenticationRequest.getPassword())) {
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    }
+                    break;
+                case "google":
+                    if (user.getGoogle().equals(authenticationRequest.getPassword())) {
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    }
+                    break;
+                case "linkein":
+                    if (user.getLinkedin().equals(authenticationRequest.getPassword())) {
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    }
+                    break;
+            }
+        }
+        return null;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/usuarioActivo")
