@@ -1,5 +1,6 @@
 package com.ciberdix.th.model;
 
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -22,7 +23,7 @@ public class TercerosReferencias {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorVerificado;
-    private Timestamp fechaVerificado;
+    private Date fechaVerificado;
 
     public Integer getIdTerceroReferencia() {
         return idTerceroReferencia;
@@ -152,11 +153,11 @@ public class TercerosReferencias {
         this.indicadorVerificado = indicadorVerificado;
     }
 
-    public Timestamp getFechaVerificado() {
+    public Date getFechaVerificado() {
         return fechaVerificado;
     }
 
-    public void setFechaVerificado(Timestamp fechaVerificado) {
+    public void setFechaVerificado(Date fechaVerificado) {
         this.fechaVerificado = fechaVerificado;
     }
 }
