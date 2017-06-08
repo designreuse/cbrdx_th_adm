@@ -17,29 +17,38 @@ public class TercerosPublicaciones {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorFinalizado;
+    private String codigo;
+    private Integer paso;
 
     public TercerosPublicaciones() {
     }
 
-    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorFinalizado = indicadorFinalizado;
+        this.codigo = codigo;
+        this.paso = paso;
     }
 
-    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
         this.idTercerosPublicaciones = idTercerosPublicaciones;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorFinalizado = indicadorFinalizado;
+        this.codigo = codigo;
+        this.paso = paso;
     }
 
     @Id
@@ -123,6 +132,36 @@ public class TercerosPublicaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorFinalizado", nullable = true)
+    public Boolean getIndicadorFinalizado() {
+        return indicadorFinalizado;
+    }
+
+    public void setIndicadorFinalizado(Boolean indicadorFinalizado) {
+        this.indicadorFinalizado = indicadorFinalizado;
+    }
+
+    @Basic
+    @Column(name = "Codigo", nullable = true, length = 6)
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Basic
+    @Column(name = "Paso", nullable = true)
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -145,6 +184,10 @@ public class TercerosPublicaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorFinalizado != null ? !indicadorFinalizado.equals(that.indicadorFinalizado) : that.indicadorFinalizado != null)
+            return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (paso != null ? !paso.equals(that.paso) : that.paso != null) return false;
 
         return true;
     }
@@ -159,6 +202,9 @@ public class TercerosPublicaciones {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorFinalizado != null ? indicadorFinalizado.hashCode() : 0);
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (paso != null ? paso.hashCode() : 0);
         return result;
     }
 }

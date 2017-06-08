@@ -36,7 +36,8 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
                         o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),o.getIndicadorCentrales(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorFinalizado(),o.getCodigo(),
+                        o.getPaso()
                 ));
     }
 
@@ -45,7 +46,8 @@ public class TercerosPublicacionesRefactorController {
         tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
                         o.getIdTercerosPublicaciones(),o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),
-                        o.getIndicadorCentrales(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIndicadorCentrales(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
+                        o.getIndicadorFinalizado(),o.getCodigo(),o.getPaso()
                 ));
     }
 
