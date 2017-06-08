@@ -51,9 +51,9 @@ public class ProcesosPasosRefactorController {
         return procesosPasosRefactorRepository.save(new ProcesosPasos(
                 o.getIdProceso(),o.getCodigo(),o.getOrden(),o.getNombre(),o.getIdRol(),o.getIdTipoConvocatoria(),
                 o.getIndicadorInterfazInterna(),o.getInterfazInterna(),o.getIndicadorBloqueante(),
-                o.getIndicadorObservacion(),o.getIndicadorCorreo(),o.getIndicadorAdjunto(),o.getIndicadorLlamada(),
-                o.getIndicadorCalendario(),o.getIndicadorContratado(),o.getIndicadorCuestionarios(),o.getIdCuestionario(),
-                o.getIndicadorInterfaz(),o.getInterfaz(),o.getDescripcion(),o.getAuditoriaUsuario()
+                o.getIndicadorObservacion(),o.getIndicadorCorreo(),o.getIndicadorAdjunto(),
+                o.getIndicadorCalendario(),o.getIndicadorCuestionarios(),o.getIdCuestionario(),
+                o.getIndicadorInterfaz(),o.getInterfaz(),o.getDescripcion(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado()
         ));
     }
 
@@ -62,10 +62,11 @@ public class ProcesosPasosRefactorController {
         procesosPasosRefactorRepository.save(
                 new ProcesosPasos(
                         o.getIdProcesoPaso(),o.getIdProceso(),o.getCodigo(),o.getOrden(),o.getNombre(),o.getIdRol(),
-                        o.getIdTipoConvocatoria(),o.getIndicadorInterfazInterna(),o.getInterfazInterna(),o.getIndicadorBloqueante(),
-                        o.getIndicadorObservacion(),o.getIndicadorCorreo(),o.getIndicadorAdjunto(),o.getIndicadorLlamada(),
-                        o.getIndicadorCalendario(),o.getIndicadorContratado(),o.getIndicadorCuestionarios(),o.getIdCuestionario(),
-                        o.getIndicadorInterfaz(),o.getInterfaz(),o.getDescripcion(),o.getAuditoriaUsuario()
+                        o.getIdTipoConvocatoria(),o.getIndicadorInterfazInterna(),o.getInterfazInterna(),
+                        o.getIndicadorBloqueante(),o.getIndicadorObservacion(),o.getIndicadorCorreo(),o.getIndicadorAdjunto(),
+                        o.getIndicadorCalendario(),o.getIndicadorCuestionarios(),o.getIdCuestionario(),
+                        o.getIndicadorInterfaz(),o.getInterfaz(),o.getDescripcion(),o.getAuditoriaUsuario(),
+                        o.getIndicadorHabilitado()
                 )
         );
     }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 5/06/2017.
+ * Created by Danny on 8/06/2017.
  */
 @Entity
 @Table(name = "ProcesosPasos", schema = "dbo", catalog = "CREZCAMOS")
@@ -22,9 +22,7 @@ public class ProcesosPasos {
     private Boolean indicadorObservacion;
     private Boolean indicadorCorreo;
     private Boolean indicadorAdjunto;
-    private Boolean indicadorLlamada;
     private Boolean indicadorCalendario;
-    private Boolean indicadorContratado;
     private Boolean indicadorCuestionarios;
     private Integer idCuestionario;
     private Boolean indicadorInterfaz;
@@ -32,11 +30,12 @@ public class ProcesosPasos {
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
 
     public ProcesosPasos() {
     }
 
-    public ProcesosPasos(Integer idProceso, String codigo, Integer orden, String nombre, Integer idRol, Integer idTipoConvocatoria, Boolean indicadorInterfazInterna, String interfazInterna, Boolean indicadorBloqueante, Boolean indicadorObservacion, Boolean indicadorCorreo, Boolean indicadorAdjunto, Boolean indicadorLlamada, Boolean indicadorCalendario, Boolean indicadorContratado, Boolean indicadorCuestionarios, Integer idCuestionario, Boolean indicadorInterfaz, String interfaz, String descripcion, Integer auditoriaUsuario) {
+    public ProcesosPasos(Integer idProceso, String codigo, Integer orden, String nombre, Integer idRol, Integer idTipoConvocatoria, Boolean indicadorInterfazInterna, String interfazInterna, Boolean indicadorBloqueante, Boolean indicadorObservacion, Boolean indicadorCorreo, Boolean indicadorAdjunto, Boolean indicadorCalendario, Boolean indicadorCuestionarios, Integer idCuestionario, Boolean indicadorInterfaz, String interfaz, String descripcion, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
         this.idProceso = idProceso;
         this.codigo = codigo;
         this.orden = orden;
@@ -49,9 +48,7 @@ public class ProcesosPasos {
         this.indicadorObservacion = indicadorObservacion;
         this.indicadorCorreo = indicadorCorreo;
         this.indicadorAdjunto = indicadorAdjunto;
-        this.indicadorLlamada = indicadorLlamada;
         this.indicadorCalendario = indicadorCalendario;
-        this.indicadorContratado = indicadorContratado;
         this.indicadorCuestionarios = indicadorCuestionarios;
         this.idCuestionario = idCuestionario;
         this.indicadorInterfaz = indicadorInterfaz;
@@ -59,9 +56,10 @@ public class ProcesosPasos {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
-    public ProcesosPasos(Integer idProcesoPaso, Integer idProceso, String codigo, Integer orden, String nombre, Integer idRol, Integer idTipoConvocatoria, Boolean indicadorInterfazInterna, String interfazInterna, Boolean indicadorBloqueante, Boolean indicadorObservacion, Boolean indicadorCorreo, Boolean indicadorAdjunto, Boolean indicadorLlamada, Boolean indicadorCalendario, Boolean indicadorContratado, Boolean indicadorCuestionarios, Integer idCuestionario, Boolean indicadorInterfaz, String interfaz, String descripcion, Integer auditoriaUsuario) {
+    public ProcesosPasos(Integer idProcesoPaso, Integer idProceso, String codigo, Integer orden, String nombre, Integer idRol, Integer idTipoConvocatoria, Boolean indicadorInterfazInterna, String interfazInterna, Boolean indicadorBloqueante, Boolean indicadorObservacion, Boolean indicadorCorreo, Boolean indicadorAdjunto, Boolean indicadorCalendario, Boolean indicadorCuestionarios, Integer idCuestionario, Boolean indicadorInterfaz, String interfaz, String descripcion, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
         this.idProcesoPaso = idProcesoPaso;
         this.idProceso = idProceso;
         this.codigo = codigo;
@@ -75,9 +73,7 @@ public class ProcesosPasos {
         this.indicadorObservacion = indicadorObservacion;
         this.indicadorCorreo = indicadorCorreo;
         this.indicadorAdjunto = indicadorAdjunto;
-        this.indicadorLlamada = indicadorLlamada;
         this.indicadorCalendario = indicadorCalendario;
-        this.indicadorContratado = indicadorContratado;
         this.indicadorCuestionarios = indicadorCuestionarios;
         this.idCuestionario = idCuestionario;
         this.indicadorInterfaz = indicadorInterfaz;
@@ -85,6 +81,7 @@ public class ProcesosPasos {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     @Id
@@ -219,16 +216,6 @@ public class ProcesosPasos {
     }
 
     @Basic
-    @Column(name = "IndicadorLlamada", nullable = true)
-    public Boolean getIndicadorLlamada() {
-        return indicadorLlamada;
-    }
-
-    public void setIndicadorLlamada(Boolean indicadorLlamada) {
-        this.indicadorLlamada = indicadorLlamada;
-    }
-
-    @Basic
     @Column(name = "IndicadorCalendario", nullable = true)
     public Boolean getIndicadorCalendario() {
         return indicadorCalendario;
@@ -236,16 +223,6 @@ public class ProcesosPasos {
 
     public void setIndicadorCalendario(Boolean indicadorCalendario) {
         this.indicadorCalendario = indicadorCalendario;
-    }
-
-    @Basic
-    @Column(name = "IndicadorContratado", nullable = true)
-    public Boolean getIndicadorContratado() {
-        return indicadorContratado;
-    }
-
-    public void setIndicadorContratado(Boolean indicadorContratado) {
-        this.indicadorContratado = indicadorContratado;
     }
 
     @Basic
@@ -318,6 +295,16 @@ public class ProcesosPasos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = true)
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -346,11 +333,7 @@ public class ProcesosPasos {
             return false;
         if (indicadorAdjunto != null ? !indicadorAdjunto.equals(that.indicadorAdjunto) : that.indicadorAdjunto != null)
             return false;
-        if (indicadorLlamada != null ? !indicadorLlamada.equals(that.indicadorLlamada) : that.indicadorLlamada != null)
-            return false;
         if (indicadorCalendario != null ? !indicadorCalendario.equals(that.indicadorCalendario) : that.indicadorCalendario != null)
-            return false;
-        if (indicadorContratado != null ? !indicadorContratado.equals(that.indicadorContratado) : that.indicadorContratado != null)
             return false;
         if (indicadorCuestionarios != null ? !indicadorCuestionarios.equals(that.indicadorCuestionarios) : that.indicadorCuestionarios != null)
             return false;
@@ -363,6 +346,8 @@ public class ProcesosPasos {
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
 
         return true;
@@ -383,9 +368,7 @@ public class ProcesosPasos {
         result = 31 * result + (indicadorObservacion != null ? indicadorObservacion.hashCode() : 0);
         result = 31 * result + (indicadorCorreo != null ? indicadorCorreo.hashCode() : 0);
         result = 31 * result + (indicadorAdjunto != null ? indicadorAdjunto.hashCode() : 0);
-        result = 31 * result + (indicadorLlamada != null ? indicadorLlamada.hashCode() : 0);
         result = 31 * result + (indicadorCalendario != null ? indicadorCalendario.hashCode() : 0);
-        result = 31 * result + (indicadorContratado != null ? indicadorContratado.hashCode() : 0);
         result = 31 * result + (indicadorCuestionarios != null ? indicadorCuestionarios.hashCode() : 0);
         result = 31 * result + (idCuestionario != null ? idCuestionario.hashCode() : 0);
         result = 31 * result + (indicadorInterfaz != null ? indicadorInterfaz.hashCode() : 0);
@@ -393,6 +376,7 @@ public class ProcesosPasos {
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         return result;
     }
 }
