@@ -82,18 +82,18 @@ public class AuthenticationRestController {
             usuarios.setUsuarioLdap(false);
             usuarios.setIndicadorHabilitado(true);
             if (authenticationRequest.getProvider().equals("facebook")) {
-                usuarios.setFacebook(authenticationRequest.getProvider());
+                usuarios.setFacebook(authenticationRequest.getPassword());
             } else if (authenticationRequest.getProvider().equals("google")) {
-                usuarios.setGoogle(authenticationRequest.getProvider());
-            } else if (authenticationRequest.getProvider().equals("linkein")) {
-                usuarios.setLinkedin(authenticationRequest.getProvider());
+                usuarios.setGoogle(authenticationRequest.getPassword());
+            } else if (authenticationRequest.getProvider().equals("linkedin")) {
+                usuarios.setLinkedin(authenticationRequest.getPassword());
             }
-            user = restTemplate.postForObject(domainUrl + "", usuarios, Usuarios.class);
-            Roles roles = restTemplate.getForObject("/api/roles/rol/" + "ROLE_ADMINISTRADOR", Roles.class);
+            user = restTemplate.postForObject(domainUrl + "/api/usuarios", usuarios, Usuarios.class);
+            Roles roles = restTemplate.getForObject(domainUrl + "/api/roles/rol/" + "ADM", Roles.class);
             UsuarioRoles request = new UsuarioRoles();
             request.setIdUsuario(user.getIdUsuario());
             request.setIdRol(roles.getIdRol());
-            restTemplate.postForObject("/api/usuariosRoles/", request, UsuarioRoles.class);
+            restTemplate.postForObject(domainUrl + "/api/usuariosRoles", request, UsuarioRoles.class);
             UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
             String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
             return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -104,6 +104,12 @@ public class AuthenticationRestController {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    } else if (user.getLinkedin() != null || user.getGoogle() != null) {
+                        user.setFacebook(authenticationRequest.getPassword());
+                        restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
                     break;
                 case "google":
@@ -111,10 +117,22 @@ public class AuthenticationRestController {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    } else if (user.getLinkedin() != null || user.getFacebook() != null) {
+                        user.setGoogle(authenticationRequest.getPassword());
+                        restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
                     break;
-                case "linkein":
+                case "linkedin":
                     if (user.getLinkedin().equals(authenticationRequest.getPassword())) {
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
+                        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+                    } else if (user.getFacebook() != null || user.getGoogle() != null) {
+                        user.setLinkedin(authenticationRequest.getPassword());
+                        restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
