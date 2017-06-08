@@ -214,5 +214,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VProcesosPasos.class);
         config.exposeIdsFor(ProcesoSeleccion.class);
         config.exposeIdsFor(VProcesoSeleccion.class);
+        config.exposeIdsFor(TercerosPublicaciones.class);
     }
 }

@@ -22,9 +22,7 @@ public class VProcesosPasos {
     private Boolean indicadorObservacion;
     private Boolean indicadorCorreo;
     private Boolean indicadorAdjunto;
-    private Boolean indicadorLlamada;
     private Boolean indicadorCalendario;
-    private Boolean indicadorContratado;
     private Boolean indicadorCuestionarios;
     private String cuestionario;
     private String descripcionCuestionario;
@@ -34,6 +32,7 @@ public class VProcesosPasos {
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
 
     public Integer getIdProcesoPaso() {
         return idProcesoPaso;
@@ -155,28 +154,12 @@ public class VProcesosPasos {
         this.indicadorAdjunto = indicadorAdjunto;
     }
 
-    public Boolean getIndicadorLlamada() {
-        return indicadorLlamada;
-    }
-
-    public void setIndicadorLlamada(Boolean indicadorLlamada) {
-        this.indicadorLlamada = indicadorLlamada;
-    }
-
     public Boolean getIndicadorCalendario() {
         return indicadorCalendario;
     }
 
     public void setIndicadorCalendario(Boolean indicadorCalendario) {
         this.indicadorCalendario = indicadorCalendario;
-    }
-
-    public Boolean getIndicadorContratado() {
-        return indicadorContratado;
-    }
-
-    public void setIndicadorContratado(Boolean indicadorContratado) {
-        this.indicadorContratado = indicadorContratado;
     }
 
     public Boolean getIndicadorCuestionarios() {
@@ -249,5 +232,13 @@ public class VProcesosPasos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }
