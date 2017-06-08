@@ -85,7 +85,7 @@ public class AuthenticationRestController {
                 usuarios.setFacebook(authenticationRequest.getPassword());
             } else if (authenticationRequest.getProvider().equals("google")) {
                 usuarios.setGoogle(authenticationRequest.getPassword());
-            } else if (authenticationRequest.getProvider().equals("linkedin")) {
+            } else if (authenticationRequest.getProvider().equals("linkedIN")) {
                 usuarios.setLinkedin(authenticationRequest.getPassword());
             }
             user = restTemplate.postForObject(domainUrl + "/api/usuarios", usuarios, Usuarios.class);
@@ -100,7 +100,7 @@ public class AuthenticationRestController {
         } else {
             switch (authenticationRequest.getProvider()) {
                 case "facebook":
-                    if (user.getFacebook().equals(authenticationRequest.getPassword())) {
+                    if (user.getFacebook() != null && user.getFacebook().equals(authenticationRequest.getPassword())) {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -113,7 +113,7 @@ public class AuthenticationRestController {
                     }
                     break;
                 case "google":
-                    if (user.getGoogle().equals(authenticationRequest.getPassword())) {
+                    if (user.getGoogle() != null && user.getGoogle().equals(authenticationRequest.getPassword())) {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -125,8 +125,8 @@ public class AuthenticationRestController {
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
                     break;
-                case "linkedin":
-                    if (user.getLinkedin().equals(authenticationRequest.getPassword())) {
+                case "linkedIN":
+                    if (user.getLinkedin() != null && user.getLinkedin().equals(authenticationRequest.getPassword())) {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
