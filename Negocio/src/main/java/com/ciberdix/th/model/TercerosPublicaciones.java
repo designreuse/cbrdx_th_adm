@@ -15,6 +15,9 @@ public class TercerosPublicaciones {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorFinalizado;
+    private String codigo;
+    private Integer paso;
 
     public Integer getIdTercerosPublicaciones() {
         return idTercerosPublicaciones;
@@ -78,5 +81,29 @@ public class TercerosPublicaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorFinalizado() {
+        return indicadorFinalizado;
+    }
+
+    public void setIndicadorFinalizado(Boolean indicadorFinalizado) {
+        this.indicadorFinalizado = indicadorFinalizado;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Integer getPaso() {
+        return paso;
+    }
+
+    public void setPaso(Integer paso) {
+        this.paso = paso;
     }
 }
