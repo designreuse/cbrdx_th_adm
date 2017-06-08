@@ -70,7 +70,7 @@ public class ProcesosRefactorController {
         procesos = restTemplate.postForObject(serviceUrl, procesos, Procesos.class);
         ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
         List<Procesos> procesosPublicos = Arrays.asList(restTemplate.getForObject(serviceUrl + "/enabled/" + publico.getIdLista(), Procesos[].class));
-        List<ProcesosPasos> pasos = Arrays.asList(restTemplate.getForObject(serviceUrl + "Pasos/proceso/", ProcesosPasos[].class));
+        List<ProcesosPasos> pasos = Arrays.asList(restTemplate.getForObject(serviceUrl + "Pasos/proceso/" + procesosPublicos.get(0).getIdProceso(), ProcesosPasos[].class));
         for (ProcesosPasos paso : pasos) {
             paso.setIdProceso(procesos.getIdProceso());
             paso.setAuditoriaUsuario(idUsuario);
