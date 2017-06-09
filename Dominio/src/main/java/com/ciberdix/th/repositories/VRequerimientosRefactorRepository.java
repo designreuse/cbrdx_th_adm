@@ -33,4 +33,10 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
 
     @Query("SELECT v FROM VRequerimientos v WHERE (v.fechaInicioPublicacion <= GETDATE() AND v.fechaFinPublicacion >= GETDATE()) ORDER BY v.idPublicacion DESC")
     List<VRequerimientos> queryAllByFechaActualCantN();
+
+    @Query("SELECT v FROM VRequerimientos v WHERE (v.fechaInicioPublicacion <= GETDATE() AND v.fechaFinPublicacion >= GETDATE()) AND v.idFormaReclutamientoPublicacion IN (SELECT l.idLista FROM ListasFormasReclutamientos l WHERE (l.codigo = 'INT') OR (l.codigo = 'MIX')) AND v.indicadorHabilitadoPublicaciones = 1")
+    List<VRequerimientos> queryAllByIdFormaReclutamientoIntMix();
+
+    @Query("SELECT v FROM VRequerimientos v WHERE (v.fechaInicioPublicacion <= GETDATE() AND v.fechaFinPublicacion >= GETDATE()) AND v.idFormaReclutamientoPublicacion IN (SELECT l.idLista FROM ListasFormasReclutamientos l WHERE (l.codigo = 'MIX') OR (l.codigo = 'EXT')) AND v.indicadorHabilitadoPublicaciones = 1")
+    List<VRequerimientos> queryAllByIdFormaReclutamientoExtMix();
 }

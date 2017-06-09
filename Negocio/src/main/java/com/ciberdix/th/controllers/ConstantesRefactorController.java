@@ -6,6 +6,7 @@ import com.ciberdix.th.model.VConstantes;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,6 +40,15 @@ public class ConstantesRefactorController {
         VConstantes actividad = restTemplate.getForObject(serviceUrl + "codigo/" + codigo, VConstantes.class);
 
         return actividad;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/codigos")
+    ArrayList<VConstantes> constantes() {
+        RestTemplate restTemplate = new RestTemplate();
+        ArrayList<VConstantes> constantes = new ArrayList<>();
+        constantes.add(restTemplate.getForObject(serviceUrl + "/codigo/" + "APLNMO", VConstantes.class));
+        constantes.add(restTemplate.getForObject(serviceUrl + "/codigo/" + "APLBON", VConstantes.class));
+        return constantes;
     }
 
     @RequestMapping(method = RequestMethod.POST)

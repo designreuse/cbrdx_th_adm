@@ -63,7 +63,7 @@ public class UsuariosRefactorController {
         return usuariosRepository.save(
                 new Usuarios(c.getUsuarioSistema(), c.getContrasena(), c.getUsuarioLdap(),
                         c.getFechaInactivacion(), c.getIdTercero(), c.getIndicadorHabilitado(),
-                        c.getAuditoriaUsuario(), c.getCorreoElectronico()));
+                        c.getAuditoriaUsuario(), c.getCorreoElectronico(),c.getFacebook(),c.getGoogle(),c.getLinkedin()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -72,7 +72,11 @@ public class UsuariosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass")
-    void updatePass(@RequestBody Usuarios u) {
-        usuariosRepository.save(new Usuarios(u.getIdUsuario(), u.getUsuarioSistema(), u.getContrasena(), u.getUsuarioLdap(), u.getFechaInactivacion(), u.getIdTercero(), u.getIndicadorHabilitado(), u.getAuditoriaUsuario(), u.getCorreoElectronico()));
+    void updatePass(@RequestBody Usuarios c) {
+        usuariosRepository.save(new Usuarios(
+                c.getIdUsuario(), c.getUsuarioSistema(), c.getContrasena(), c.getUsuarioLdap(),
+                c.getFechaInactivacion(), c.getIdTercero(), c.getIndicadorHabilitado(),
+                c.getAuditoriaUsuario(), c.getCorreoElectronico(),c.getFacebook(),c.getGoogle(),c.getLinkedin()
+        ));
     }
 }

@@ -5,7 +5,6 @@ import com.ciberdix.th.security.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -53,12 +52,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
-                //.antMatchers("/auth/**").permitAll()
+                //.antMatchers("/**").permitAll()
+                .antMatchers("/auth/**").permitAll()
                 //.antMatchers("/swagger-ui.html").permitAll()
                 //.antMatchers("/webjars/**").permitAll()
                 //.antMatchers("/swagger-resources/**").permitAll()
                 //.antMatchers("/v2/**").permitAll()
+                .antMatchers("/api/requerimientos/externaMixta").permitAll()
+                .antMatchers("/api/constantes/codigos").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);

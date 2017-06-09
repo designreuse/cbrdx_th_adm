@@ -220,5 +220,4 @@ public interface VDivisionPoliticaRefactorRepository extends CrudRepository<VDiv
             "LIKE '%' || ?1 || '%'" +
             "ORDER BY c.label")
     List<VDivisionPolitica> queryVDivByLabelAll(String str);
-
 }

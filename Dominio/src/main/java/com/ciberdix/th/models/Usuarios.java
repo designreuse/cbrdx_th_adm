@@ -20,10 +20,14 @@ public class Usuarios {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String correoElectronico;
+    private String facebook;
+    private String google;
+    private String linkedin;
+    
     public Usuarios() {
     }
 
-    public Usuarios(String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
+    public Usuarios(String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico, String facebook, String google, String linkedin) {
         this.usuarioSistema = usuarioSistema;
         this.contrasena = contrasena;
         this.usuarioLdap = usuarioLdap;
@@ -33,9 +37,12 @@ public class Usuarios {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.correoElectronico = correoElectronico;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.facebook = facebook;
+        this.google = google;
+        this.linkedin = linkedin;
     }
 
-    public Usuarios(Integer idUsuario, String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico) {
+    public Usuarios(Integer idUsuario, String usuarioSistema, String contrasena, Boolean usuarioLdap, Date fechaInactivacion, Long idTercero, Boolean indicadorHabilitado, Integer auditoriaUsuario, String correoElectronico, String facebook, String google, String linkedin) {
         this.idUsuario = idUsuario;
         this.usuarioSistema = usuarioSistema;
         this.contrasena = contrasena;
@@ -46,6 +53,9 @@ public class Usuarios {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.correoElectronico = correoElectronico;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.facebook = facebook;
+        this.google = google;
+        this.linkedin = linkedin;
     }
 
     @Id
@@ -149,6 +159,36 @@ public class Usuarios {
         this.correoElectronico = correoElectronico;
     }
 
+    @Basic
+    @Column(name = "Facebook", nullable = true, length = 30)
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    @Basic
+    @Column(name = "Google", nullable = true, length = 30)
+    public String getGoogle() {
+        return google;
+    }
+
+    public void setGoogle(String google) {
+        this.google = google;
+    }
+
+    @Basic
+    @Column(name = "Linkedin", nullable = true, length = 30)
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,7 +196,7 @@ public class Usuarios {
 
         Usuarios usuarios = (Usuarios) o;
 
-        if (idUsuario != null ? !idUsuario.equals(usuarios.idUsuario) : usuarios.idUsuario != null) return false;
+        if (!idUsuario.equals(usuarios.idUsuario)) return false;
         if (usuarioSistema != null ? !usuarioSistema.equals(usuarios.usuarioSistema) : usuarios.usuarioSistema != null)
             return false;
         if (contrasena != null ? !contrasena.equals(usuarios.contrasena) : usuarios.contrasena != null) return false;
@@ -167,28 +207,30 @@ public class Usuarios {
         if (idTercero != null ? !idTercero.equals(usuarios.idTercero) : usuarios.idTercero != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(usuarios.indicadorHabilitado) : usuarios.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(usuarios.auditoriaUsuario) : usuarios.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(usuarios.auditoriaFecha) : usuarios.auditoriaFecha != null)
-            return false;
+        if (!auditoriaUsuario.equals(usuarios.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(usuarios.auditoriaFecha)) return false;
         if (correoElectronico != null ? !correoElectronico.equals(usuarios.correoElectronico) : usuarios.correoElectronico != null)
             return false;
-
-        return true;
+        if (facebook != null ? !facebook.equals(usuarios.facebook) : usuarios.facebook != null) return false;
+        if (google != null ? !google.equals(usuarios.google) : usuarios.google != null) return false;
+        return linkedin != null ? linkedin.equals(usuarios.linkedin) : usuarios.linkedin == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idUsuario != null ? idUsuario.hashCode() : 0;
+        int result = idUsuario.hashCode();
         result = 31 * result + (usuarioSistema != null ? usuarioSistema.hashCode() : 0);
         result = 31 * result + (contrasena != null ? contrasena.hashCode() : 0);
         result = 31 * result + (usuarioLdap != null ? usuarioLdap.hashCode() : 0);
         result = 31 * result + (fechaInactivacion != null ? fechaInactivacion.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
         result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (google != null ? google.hashCode() : 0);
+        result = 31 * result + (linkedin != null ? linkedin.hashCode() : 0);
         return result;
     }
 }

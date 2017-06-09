@@ -35,7 +35,7 @@ public class VRequerimientos {
     private Integer idZona;
     private String estructuraFisica;
     private Integer idEstructuraFisica;
-    private java.sql.Date fechaSolicitud;
+    private Date fechaSolicitud;
     private Boolean indicadorAutorizacion;
     private Boolean indicadorAumentoPlazas;
     private String nombrejefe;
@@ -46,13 +46,13 @@ public class VRequerimientos {
     private Integer idCategoria;
     private String tipoSolicitud;
     private Integer idTipoSolicitud;
-    private java.sql.Date fechaInicio;
-    private java.sql.Date fechaFin;
+    private Date fechaInicio;
+    private Date fechaFin;
     private String nombreCargo;
     private String funcionCargo;
     private Integer idPublicacion;
-    private java.sql.Date fechaInicioPublicacion;
-    private java.sql.Date fechaFinPublicacion;
+    private Date fechaInicioPublicacion;
+    private Date fechaFinPublicacion;
     private Boolean indicadorSalario;
     private Boolean indicadorBonificacion;
     private String nivelEducacion;
@@ -64,6 +64,11 @@ public class VRequerimientos {
     private String competenciasLaborales;
     private Boolean indicadorObservacion;
     private String observacion;
+    private Boolean indicadorHabilitadoPublicaciones;
+    private Boolean indicadorPublicacion;
+    private String formaReclutamientoPublicacion;
+    private Integer idFormaReclutamientoPublicacion;
+    private Integer idProceso;
 
     public Integer getIdRequerimiento() {
         return idRequerimiento;
@@ -281,11 +286,11 @@ public class VRequerimientos {
         this.idEstructuraFisica = idEstructuraFisica;
     }
 
-    public java.sql.Date getFechaSolicitud() {
+    public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(java.sql.Date fechaSolicitud) {
+    public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
@@ -369,19 +374,19 @@ public class VRequerimientos {
         this.idTipoSolicitud = idTipoSolicitud;
     }
 
-    public java.sql.Date getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(java.sql.Date fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public java.sql.Date getFechaFin() {
+    public Date getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(java.sql.Date fechaFin) {
+    public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -409,19 +414,19 @@ public class VRequerimientos {
         this.idPublicacion = idPublicacion;
     }
 
-    public java.sql.Date getFechaInicioPublicacion() {
+    public Date getFechaInicioPublicacion() {
         return fechaInicioPublicacion;
     }
 
-    public void setFechaInicioPublicacion(java.sql.Date fechaInicioPublicacion) {
+    public void setFechaInicioPublicacion(Date fechaInicioPublicacion) {
         this.fechaInicioPublicacion = fechaInicioPublicacion;
     }
 
-    public java.sql.Date getFechaFinPublicacion() {
+    public Date getFechaFinPublicacion() {
         return fechaFinPublicacion;
     }
 
-    public void setFechaFinPublicacion(java.sql.Date fechaFinPublicacion) {
+    public void setFechaFinPublicacion(Date fechaFinPublicacion) {
         this.fechaFinPublicacion = fechaFinPublicacion;
     }
 
@@ -511,5 +516,45 @@ public class VRequerimientos {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    public Boolean getIndicadorHabilitadoPublicaciones() {
+        return indicadorHabilitadoPublicaciones;
+    }
+
+    public void setIndicadorHabilitadoPublicaciones(Boolean indicadorHabilitadoPublicaciones) {
+        this.indicadorHabilitadoPublicaciones = indicadorHabilitadoPublicaciones;
+    }
+
+    public Boolean getIndicadorPublicacion() {
+        return indicadorPublicacion;
+    }
+
+    public void setIndicadorPublicacion(Boolean indicadorPublicacion) {
+        this.indicadorPublicacion = indicadorPublicacion;
+    }
+
+    public String getFormaReclutamientoPublicacion() {
+        return formaReclutamientoPublicacion;
+    }
+
+    public void setFormaReclutamientoPublicacion(String formaReclutamientoPublicacion) {
+        this.formaReclutamientoPublicacion = formaReclutamientoPublicacion;
+    }
+
+    public Integer getIdFormaReclutamientoPublicacion() {
+        return idFormaReclutamientoPublicacion;
+    }
+
+    public void setIdFormaReclutamientoPublicacion(Integer idFormaReclutamientoPublicacion) {
+        this.idFormaReclutamientoPublicacion = idFormaReclutamientoPublicacion;
+    }
+
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
     }
 }

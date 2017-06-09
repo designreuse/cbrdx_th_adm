@@ -1,7 +1,5 @@
 package com.ciberdix.th.security;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import java.io.Serializable;
 
 public class JwtAuthenticationRequest implements Serializable {
@@ -10,6 +8,7 @@ public class JwtAuthenticationRequest implements Serializable {
 
     private String username;
     private String password;
+    private String provider;
 
     public JwtAuthenticationRequest() {
         super();
@@ -34,5 +33,13 @@ public class JwtAuthenticationRequest implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 }

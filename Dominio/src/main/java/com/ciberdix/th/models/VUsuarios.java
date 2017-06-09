@@ -13,6 +13,9 @@ public class VUsuarios {
     private Boolean indHab;
     private String documento;
     private String nombre;
+    private String facebook;
+    private String google;
+    private String linkedin;
 
     @Basic
     @Id
@@ -65,6 +68,36 @@ public class VUsuarios {
         this.nombre = nombre;
     }
 
+    @Basic
+    @Column(name = "Facebook", nullable = true, length = 30)
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    @Basic
+    @Column(name = "Google", nullable = true, length = 30)
+    public String getGoogle() {
+        return google;
+    }
+
+    public void setGoogle(String google) {
+        this.google = google;
+    }
+
+    @Basic
+    @Column(name = "Linkedin", nullable = true, length = 30)
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,22 +105,26 @@ public class VUsuarios {
 
         VUsuarios vUsuarios = (VUsuarios) o;
 
-        if (idUsuario != null ? !idUsuario.equals(vUsuarios.idUsuario) : vUsuarios.idUsuario != null) return false;
+        if (!idUsuario.equals(vUsuarios.idUsuario)) return false;
         if (usuario != null ? !usuario.equals(vUsuarios.usuario) : vUsuarios.usuario != null) return false;
         if (indHab != null ? !indHab.equals(vUsuarios.indHab) : vUsuarios.indHab != null) return false;
         if (documento != null ? !documento.equals(vUsuarios.documento) : vUsuarios.documento != null) return false;
         if (nombre != null ? !nombre.equals(vUsuarios.nombre) : vUsuarios.nombre != null) return false;
-
-        return true;
+        if (facebook != null ? !facebook.equals(vUsuarios.facebook) : vUsuarios.facebook != null) return false;
+        if (google != null ? !google.equals(vUsuarios.google) : vUsuarios.google != null) return false;
+        return linkedin != null ? linkedin.equals(vUsuarios.linkedin) : vUsuarios.linkedin == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idUsuario != null ? idUsuario.hashCode() : 0;
+        int result = idUsuario.hashCode();
         result = 31 * result + (usuario != null ? usuario.hashCode() : 0);
         result = 31 * result + (indHab != null ? indHab.hashCode() : 0);
         result = 31 * result + (documento != null ? documento.hashCode() : 0);
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (google != null ? google.hashCode() : 0);
+        result = 31 * result + (linkedin != null ? linkedin.hashCode() : 0);
         return result;
     }
 }

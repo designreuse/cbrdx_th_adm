@@ -26,6 +26,7 @@ public class Publicaciones {
     private Boolean indicadorHabilitado;
     private Boolean indicadorPublicacion;
     private Integer idFormaReclutamiento;
+    private Integer idProceso;
 
     public Integer getIdPublicacion() {
         return idPublicacion;
@@ -169,5 +170,13 @@ public class Publicaciones {
 
     public void setIdFormaReclutamiento(Integer idFormaReclutamiento) {
         this.idFormaReclutamiento = idFormaReclutamiento;
+    }
+
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
     }
 }

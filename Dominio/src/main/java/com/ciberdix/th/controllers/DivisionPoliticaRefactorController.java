@@ -79,6 +79,11 @@ public class DivisionPoliticaRefactorController {
         return listVCFinal;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPublicacion")
+    List<DivisionPolitica> findByPublicacion() {
+        return divisionPoliticaRefactorRepository.queryAllByPublicacion();
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DivisionPolitica create(@RequestBody DivisionPolitica c) {
         return divisionPoliticaRefactorRepository.save(new DivisionPolitica(c.getIdDivisionPoliticaPadre(), c.getCodigoDivisionPolitica(), c.getDescripcionDivisonPolitica(), c.getIndicativoDivisonPolitica(), c.getCodigoPostalDivisionPolitica(), c.getIdDivisionPoliticaTipo(), c.getIdDivisionPoliticaArea(), c.getIdDivisionPoliticaAgrupacion(), c.getIdEstratoDivisionPolitica(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getGentilicio()));

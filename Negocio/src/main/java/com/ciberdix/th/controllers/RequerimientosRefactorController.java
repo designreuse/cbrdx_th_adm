@@ -65,7 +65,7 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/fecha/{fechaInicio}/{fechaFin}")
-    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin){
+    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin) {
         String serviceUrl = baseUrl + "/api/requerimientos/fecha/";
         RestTemplate restTemplate = new RestTemplate();
         VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + fechaInicio + "/" + fechaFin, VRequerimientos[].class);
@@ -126,6 +126,22 @@ public class RequerimientosRefactorController {
         return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/internaMixta")
+    List<VRequerimientos> findIntMix() {
+        String serviceUrl = baseUrl + "/api/requerimientos/internaMixta";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/externaMixta")
+    List<VRequerimientos> findExtMix() {
+        String serviceUrl = baseUrl + "/api/requerimientos/externaMixta";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";
@@ -135,15 +151,39 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Requerimientos requerimientos) {
+        updateTR(requerimientos);
+        /*
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
-        ListasItems EstadoAnterior = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasEstadosRequerimientos/idItem/" + req.getIdEstado(), ListasItems.class);
-        ListasItems EstadoActual = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasEstadosRequerimientos/idItem/" + requerimientos.getIdEstado(), ListasItems.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
         if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
             if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
                 RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
                 restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
+            }
+        }
+        restTemplate.put(serviceUrl, requerimientos);*/
+    }
+
+    public void update(VRequerimientos requerimientos) {
+        updateTR(requerimientos);
+    }
+
+    public void updateTR(Object requ) {
+        Requerimientos requerimientos = (Requerimientos) requ;
+        UtilitiesController utilitiesController = new UtilitiesController();
+        String dominio = utilitiesController.readParameter("domain.url");
+        String serviceUrl = dominio + "/api/requerimientos/";
+        RestTemplate restTemplate = new RestTemplate();
+        Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
+        if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
+            if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
+                RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
+                restTemplate.postForObject(dominio + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
             }
         }
         restTemplate.put(serviceUrl, requerimientos);

@@ -74,4 +74,11 @@ public class DivisionPoliticaRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "/search/" + label , VDivisionPolitica[].class));
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPublicacion")
+    List<DivisionPolitica> findByPublicacion() {
+        RestTemplate restTemplate = new RestTemplate();
+        DivisionPolitica[] parametros = restTemplate.getForObject(serviceUrl + "/divisionPublicacion", DivisionPolitica[].class);
+        return Arrays.asList(parametros);
+    }
 }

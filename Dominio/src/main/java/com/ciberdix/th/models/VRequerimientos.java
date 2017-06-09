@@ -5,7 +5,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 31/05/2017.
+ * Created by Danny on 6/06/2017.
  */
 @Entity
 @Table(name = "V_Requerimientos", schema = "dbo", catalog = "CREZCAMOS")
@@ -66,6 +66,11 @@ public class VRequerimientos {
     private String competenciasLaborales;
     private Boolean indicadorObservacion;
     private String observacion;
+    private Boolean indicadorHabilitadoPublicaciones;
+    private Boolean indicadorPublicacion;
+    private String formaReclutamientoPublicacion;
+    private Integer idFormaReclutamientoPublicacion;
+    private Integer idProceso;
 
     @Id
     @Column(name = "IdRequerimiento", nullable = false)
@@ -627,6 +632,56 @@ public class VRequerimientos {
         this.observacion = observacion;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitadoPublicaciones", nullable = true)
+    public Boolean getIndicadorHabilitadoPublicaciones() {
+        return indicadorHabilitadoPublicaciones;
+    }
+
+    public void setIndicadorHabilitadoPublicaciones(Boolean indicadorHabilitadoPublicaciones) {
+        this.indicadorHabilitadoPublicaciones = indicadorHabilitadoPublicaciones;
+    }
+
+    @Basic
+    @Column(name = "IndicadorPublicacion", nullable = true)
+    public Boolean getIndicadorPublicacion() {
+        return indicadorPublicacion;
+    }
+
+    public void setIndicadorPublicacion(Boolean indicadorPublicacion) {
+        this.indicadorPublicacion = indicadorPublicacion;
+    }
+
+    @Basic
+    @Column(name = "FormaReclutamientoPublicacion", nullable = true, length = 100)
+    public String getFormaReclutamientoPublicacion() {
+        return formaReclutamientoPublicacion;
+    }
+
+    public void setFormaReclutamientoPublicacion(String formaReclutamientoPublicacion) {
+        this.formaReclutamientoPublicacion = formaReclutamientoPublicacion;
+    }
+
+    @Basic
+    @Column(name = "IdFormaReclutamientoPublicacion", nullable = true)
+    public Integer getIdFormaReclutamientoPublicacion() {
+        return idFormaReclutamientoPublicacion;
+    }
+
+    public void setIdFormaReclutamientoPublicacion(Integer idFormaReclutamientoPublicacion) {
+        this.idFormaReclutamientoPublicacion = idFormaReclutamientoPublicacion;
+    }
+
+    @Basic
+    @Column(name = "IdProceso", nullable = true)
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -725,6 +780,15 @@ public class VRequerimientos {
         if (indicadorObservacion != null ? !indicadorObservacion.equals(that.indicadorObservacion) : that.indicadorObservacion != null)
             return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
+        if (indicadorHabilitadoPublicaciones != null ? !indicadorHabilitadoPublicaciones.equals(that.indicadorHabilitadoPublicaciones) : that.indicadorHabilitadoPublicaciones != null)
+            return false;
+        if (indicadorPublicacion != null ? !indicadorPublicacion.equals(that.indicadorPublicacion) : that.indicadorPublicacion != null)
+            return false;
+        if (formaReclutamientoPublicacion != null ? !formaReclutamientoPublicacion.equals(that.formaReclutamientoPublicacion) : that.formaReclutamientoPublicacion != null)
+            return false;
+        if (idFormaReclutamientoPublicacion != null ? !idFormaReclutamientoPublicacion.equals(that.idFormaReclutamientoPublicacion) : that.idFormaReclutamientoPublicacion != null)
+            return false;
+        if (idProceso != null ? !idProceso.equals(that.idProceso) : that.idProceso != null) return false;
 
         return true;
     }
@@ -787,6 +851,11 @@ public class VRequerimientos {
         result = 31 * result + (competenciasLaborales != null ? competenciasLaborales.hashCode() : 0);
         result = 31 * result + (indicadorObservacion != null ? indicadorObservacion.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitadoPublicaciones != null ? indicadorHabilitadoPublicaciones.hashCode() : 0);
+        result = 31 * result + (indicadorPublicacion != null ? indicadorPublicacion.hashCode() : 0);
+        result = 31 * result + (formaReclutamientoPublicacion != null ? formaReclutamientoPublicacion.hashCode() : 0);
+        result = 31 * result + (idFormaReclutamientoPublicacion != null ? idFormaReclutamientoPublicacion.hashCode() : 0);
+        result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
         return result;
     }
 }
