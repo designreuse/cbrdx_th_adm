@@ -84,13 +84,13 @@ public class UtilitiesController {
 
     ListasItems findListItem(String tableName, String code) {
         RestTemplate restTemplate = new RestTemplate();
-        String serviceURL = readParameter("business.url") + "/api/listas/tabla/" + tableName + "/code/" + code.toUpperCase();
+        String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/code/" + code.toUpperCase();
         return restTemplate.getForObject(serviceURL, ListasItems.class);
     }
 
     Usuarios findUser(Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(readParameter("business.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
+        return restTemplate.getForObject(readParameter("domain.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
     }
 
     String readParameter(String parameter) {
