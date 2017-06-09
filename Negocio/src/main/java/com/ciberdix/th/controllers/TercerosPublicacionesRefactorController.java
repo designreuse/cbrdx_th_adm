@@ -36,11 +36,10 @@ public class TercerosPublicacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/terceroPublicacion/{idTercero}/{idPublicacion}")
-    List<TercerosPublicaciones> findByIdTerceroAndIdPublicacion(@PathVariable Long idTercero, @PathVariable Integer idPublicacion) {
+    TercerosPublicaciones findByIdTerceroAndIdPublicacion(@PathVariable Long idTercero, @PathVariable Integer idPublicacion) {
         String serviceUrl = baseUrl + "/api/tercerosPublicaciones/terceroPublicacion/";
         RestTemplate restTemplate = new RestTemplate();
-        TercerosPublicaciones[] params = restTemplate.getForObject(serviceUrl + idTercero + "/" + idPublicacion, TercerosPublicaciones[].class);
-        return Arrays.asList(params);
+        return restTemplate.getForObject(serviceUrl + idTercero + "/" + idPublicacion, TercerosPublicaciones.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)

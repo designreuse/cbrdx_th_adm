@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface TercerosPublicacionesRefactorRepository extends CrudRepository<TercerosPublicaciones, Integer> {
 
-    List<TercerosPublicaciones> findAllByIdTerceroAndIdPublicacion(Long idTercero, Integer idPublicacion);
+    TercerosPublicaciones findAllByIdTerceroAndIdPublicacion(Long idTercero, Integer idPublicacion);
 
 }
