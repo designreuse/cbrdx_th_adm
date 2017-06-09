@@ -21,9 +21,6 @@ public class RequerimientosAccionesRefactorController {
     @Value("${front.url}")
     private String frontUrl;
 
-    @Value("${business.url}")
-    private String businessUrl;
-
     @RequestMapping(method = RequestMethod.GET)
     List<VRequerimientosAcciones> findAll() {
         String serviceUrl = baseUrl + "/api/requerimientosAcciones/";
@@ -75,13 +72,13 @@ public class RequerimientosAccionesRefactorController {
             estructuraOrganizacionalCargos.setIdEstructuraOrganizacional(vRequerimientos.getIdEstructuraOrganizacional());
             estructuraOrganizacionalCargos.setPlazas(vRequerimientos.getCantidadVacantes());
             estructuraOrganizacionalCargos.setIndicadorHabilitado(true);
-            restTemplate.postForObject(businessUrl + "/api/estructuraOrganizacionalCargos", estructuraOrganizacionalCargos, EstructuraOrganizacionalCargos.class);
+            restTemplate.postForObject(baseUrl + "/api/estructuraOrganizacionalCargos", estructuraOrganizacionalCargos, EstructuraOrganizacionalCargos.class);
         } else {
             Integer aprb = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRB").getIdLista();
             Integer rchz = utilitiesController.findListItem("ListasRequerimientosAcciones", "RCHZ").getIdLista();
             Integer devcam = utilitiesController.findListItem("ListasRequerimientosAcciones", "DEVCAM").getIdLista();
             if (o.getIdAccion().equals(aprb) || o.getIdAccion().equals(rchz) || o.getIdAccion().equals(devcam)) {
-                List<VRequerimientosAcciones> vRequerimientosAcciones = Arrays.asList(restTemplate.getForObject(businessUrl + "/api/requerimientosAcciones/requerimiento/" + o.getIdRequerimiento(), VRequerimientosAcciones[].class));
+                List<VRequerimientosAcciones> vRequerimientosAcciones = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosAcciones/requerimiento/" + o.getIdRequerimiento(), VRequerimientosAcciones[].class));
                 VRequerimientosAcciones last = new VRequerimientosAcciones();
                 last.setIdRequerimientoAccion(1);
                 for (VRequerimientosAcciones r : vRequerimientosAcciones) {
@@ -106,7 +103,7 @@ public class RequerimientosAccionesRefactorController {
                         int year = now.get(Calendar.YEAR) + 1;
                         VProyeccionLaboral vProyeccionLaboralAfectada = null;
                         List<VProyeccionLaboral> vProyeccionLaborals = new ArrayList<>();
-                        VProyeccionLaboral[] vProyeccionLaborales = restTemplate.getForObject(businessUrl + "/api/proyeccionesLaborales/anio/" + year, VProyeccionLaboral[].class);
+                        VProyeccionLaboral[] vProyeccionLaborales = restTemplate.getForObject(baseUrl + "/api/proyeccionesLaborales/anio/" + year, VProyeccionLaboral[].class);
                         if (vProyeccionLaborales != null && vProyeccionLaborales.length > 0) {
                             vProyeccionLaborals = Arrays.asList(vProyeccionLaborales);
                             for (VProyeccionLaboral vProyeccionLaboral : vProyeccionLaborals) {
@@ -118,34 +115,34 @@ public class RequerimientosAccionesRefactorController {
                         }
                         VCargos vCargos = new VCargos();
                         if (vRequerimientos.getIdCargo() != null) {
-                            vCargos = restTemplate.getForObject(businessUrl + "/api/cargos/" + vRequerimientos.getIdCargo(), VCargos.class);
+                            vCargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + vRequerimientos.getIdCargo(), VCargos.class);
                         }
                         Integer aplnt = utilitiesController.findListItem("ListasTiposSolicitudes", "APLNT").getIdLista();
                         Integer dmnplnt = utilitiesController.findListItem("ListasTiposSolicitudes", "DMNPLNT").getIdLista();
                         Integer crgnvarea = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVAREA").getIdLista();
                         if (vRequerimientos.getIdTipoSolicitud().equals(aplnt)) {
-                            VEstructuraOrganizacionalCargos data = restTemplate.getForObject(businessUrl + "/api/estructuraOrganizacionalCargos/buscarCargoEstructura/" + vRequerimientos.getIdCargo() + "/" + vRequerimientos.getIdEstructuraOrganizacional(), VEstructuraOrganizacionalCargos.class);
+                            VEstructuraOrganizacionalCargos data = restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacionalCargos/buscarCargoEstructura/" + vRequerimientos.getIdCargo() + "/" + vRequerimientos.getIdEstructuraOrganizacional(), VEstructuraOrganizacionalCargos.class);
                             data.setPlazas(data.getPlazas() + vRequerimientos.getCantidadVacantes());
-                            restTemplate.put(businessUrl + "/api/estructuraOrganizacionalCargos", data, EstructuraOrganizacional.class);
+                            restTemplate.put(baseUrl + "/api/estructuraOrganizacionalCargos", data, EstructuraOrganizacional.class);
                             if (vProyeccionLaboralAfectada != null) {
                                 vProyeccionLaboralAfectada.setPlazasActuales(vProyeccionLaboralAfectada.getPlazasActuales() + vRequerimientos.getCantidadVacantes());
                                 vProyeccionLaboralAfectada.setPlazasProyectadas(vProyeccionLaboralAfectada.getPlazasProyectadas() + vRequerimientos.getCantidadVacantes());
                                 vProyeccionLaboralAfectada.setCostoActual((double) (vCargos.getSalario() * vProyeccionLaboralAfectada.getPlazasActuales()));
                                 Double aDouble = Double.parseDouble(utilitiesController.findConstant("AUMSUE").getValor());
                                 vProyeccionLaboralAfectada.setCostoProyectado(vCargos.getSalario() * aDouble * vProyeccionLaboralAfectada.getPlazasProyectadas());
-                                restTemplate.postForObject(businessUrl + "/api/proyeccionLaboral", vProyeccionLaboralAfectada, VProyeccionLaboral.class);
+                                restTemplate.postForObject(baseUrl + "/api/proyeccionLaboral", vProyeccionLaboralAfectada, VProyeccionLaboral.class);
                             }
                         } else if (vRequerimientos.getIdTipoSolicitud().equals(dmnplnt)) {
-                            VEstructuraOrganizacionalCargos data = restTemplate.getForObject(businessUrl + "/api/estructuraOrganizacionalCargos/buscarCargoEstructura/" + vRequerimientos.getIdCargo() + "/" + vRequerimientos.getIdEstructuraOrganizacional(), VEstructuraOrganizacionalCargos.class);
+                            VEstructuraOrganizacionalCargos data = restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacionalCargos/buscarCargoEstructura/" + vRequerimientos.getIdCargo() + "/" + vRequerimientos.getIdEstructuraOrganizacional(), VEstructuraOrganizacionalCargos.class);
                             data.setPlazas(data.getPlazas() - vRequerimientos.getCantidadVacantes());
-                            restTemplate.put(businessUrl + "/api/estructuraOrganizacionalCargos", data, EstructuraOrganizacional.class);
+                            restTemplate.put(baseUrl + "/api/estructuraOrganizacionalCargos", data, EstructuraOrganizacional.class);
                             if (vProyeccionLaboralAfectada != null) {
                                 vProyeccionLaboralAfectada.setPlazasActuales(vProyeccionLaboralAfectada.getPlazasActuales() - vRequerimientos.getCantidadVacantes());
                                 vProyeccionLaboralAfectada.setPlazasProyectadas(vProyeccionLaboralAfectada.getPlazasProyectadas() - vRequerimientos.getCantidadVacantes());
                                 vProyeccionLaboralAfectada.setCostoActual((double) (vCargos.getSalario() * vProyeccionLaboralAfectada.getPlazasActuales()));
                                 Double aDouble = Double.parseDouble(utilitiesController.findConstant("AUMSUE").getValor());
                                 vProyeccionLaboralAfectada.setCostoProyectado(vCargos.getSalario() * aDouble * vProyeccionLaboralAfectada.getPlazasProyectadas());
-                                restTemplate.postForObject(businessUrl + "/api/proyeccionLaboral", vProyeccionLaboralAfectada, VProyeccionLaboral.class);
+                                restTemplate.postForObject(baseUrl + "/api/proyeccionLaboral", vProyeccionLaboralAfectada, VProyeccionLaboral.class);
                             }
                         } else if (vRequerimientos.getIdTipoSolicitud().equals(crgnvarea)) {
                             EstructuraOrganizacionalCargos cargos = new EstructuraOrganizacionalCargos();
@@ -154,7 +151,7 @@ public class RequerimientosAccionesRefactorController {
                             cargos.setIdEstructuraOrganizacional(vRequerimientos.getIdEstructuraOrganizacional());
                             cargos.setIndicadorHabilitado(true);
                             cargos.setAuditoriaUsuario(vRequerimientos.getIdSolicitante());
-                            restTemplate.postForObject(businessUrl + "/api/estructuraOrganizacionalCargos", cargos, EstructuraOrganizacional.class);
+                            restTemplate.postForObject(baseUrl + "/api/estructuraOrganizacionalCargos", cargos, EstructuraOrganizacional.class);
 
                             if (!vProyeccionLaborals.isEmpty()) {
                                 ProyeccionesLaborales proyeccionesLaborales = new ProyeccionesLaborales();
@@ -167,7 +164,7 @@ public class RequerimientosAccionesRefactorController {
                                 proyeccionesLaborales.setIdUsuarioProyecta(o.getAuditoriaUsuario());
                                 proyeccionesLaborales.setObservacion("Proyección Creada Automaticamente por Requerimiento de Personal");
                                 proyeccionesLaborales.setIdEstadoProyeccion(utilitiesController.findListItem("ListasEstadosProyecciones", "").getIdLista());
-                                restTemplate.postForObject(businessUrl + "/api/proyeccionLaboral", proyeccionesLaborales, VProyeccionLaboral.class);
+                                restTemplate.postForObject(baseUrl + "/api/proyeccionLaboral", proyeccionesLaborales, VProyeccionLaboral.class);
                             }
 
                         }
