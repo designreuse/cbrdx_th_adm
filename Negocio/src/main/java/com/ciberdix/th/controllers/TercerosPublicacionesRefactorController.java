@@ -55,7 +55,8 @@ public class TercerosPublicacionesRefactorController {
             o.setIndicadorFinalizado(false);
         }
         if (o.getIndicadorFinalizado()){
-            UtilitiesController.sendMail(t.getCorreoElectronico(),"Bienvenido al proceso de Selección","<h2>The haz postulado a la vacante " + r.getCargo() + "</h2><br/><p>Hola " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</p>");
+            UtilitiesController.sendMail(t.getCorreoElectronico(),"Bienvenido al proceso de Selección","<h2>The haz postulado a la vacante " + r.getCargo() + "</h2><br/><p>Hola " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</p><p>Gracias por aplicar al empleo ofrecido por nuestra compañía. Muy pronto revisaremos tu perfil con mucha atención. Si tu perfil encaja -o no- con el cargo " + r.getCargo() + ", nos pondremos en contacto para comunicarte cuáles fueron tus resultados.</p>" +
+                    "<p>Si estás interesado en otra de las vacantes que tenemos, por favor ingresa a nuestra página web <a href=\"www.crezcamos.com/trabajeconnosotros\">www.crezcamos.com/trabajeconnosotros</a> y aplica a la opción que más te interese.</p><p>¡Gracias por preferirnos!</p>");
         }
         restTemplate.put(serviceUrl, o);
     }
