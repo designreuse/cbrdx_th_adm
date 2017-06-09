@@ -31,6 +31,11 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicacionesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/terceroPublicacion/{idTercero}/{idPublicacion}")
+    List<TercerosPublicaciones> findByIdTerceroAndIdPublicacion(@PathVariable Long idTercero, @PathVariable Integer idPublicacion) {
+        return tercerosPublicacionesRefactorRepository.findAllByIdTerceroAndIdPublicacion(idTercero, idPublicacion);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosPublicaciones crearTercero(@RequestBody TercerosPublicaciones o) {
         return tercerosPublicacionesRefactorRepository.save(
