@@ -182,7 +182,7 @@ public class RequerimientosAccionesRefactorController {
                 }
             }
         }
-        List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
+        List<RequerimientosHistoricos> requerimientosHistoricos = Arrays.asList(restTemplate.getForObject(domain + "/api/requerimientosHistoricos", RequerimientosHistoricos[].class));
         for (RequerimientosHistoricos r : requerimientosHistoricos) {
             idReqHist = r.getIdRequerimientoHistorico();
         }
