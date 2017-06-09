@@ -154,8 +154,8 @@ public class RequerimientosRefactorController {
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
-        ListasItems EstadoAnterior = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasEstadosRequerimientos/idItem/" + req.getIdEstado(), ListasItems.class);
-        ListasItems EstadoActual = restTemplate.getForObject(businessUrl + "/api/listas/tabla/ListasEstadosRequerimientos/idItem/" + requerimientos.getIdEstado(), ListasItems.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(businessUrl + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(businessUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
         if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
             if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
                 RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
