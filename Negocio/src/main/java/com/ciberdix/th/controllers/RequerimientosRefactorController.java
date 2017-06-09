@@ -186,4 +186,10 @@ public class RequerimientosRefactorController {
         }
         restTemplate.put(serviceUrl, requerimientos);
     }
+
+    VRequerimientos findIdCargo(Integer idCargo, Integer idTipoSolicitud) {
+        String serviceUrl = baseUrl + "/api/requerimientos/byIdCargo/";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
+    }
 }
