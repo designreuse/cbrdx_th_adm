@@ -65,7 +65,7 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/fecha/{fechaInicio}/{fechaFin}")
-    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin){
+    List<VRequerimientos> findByFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin) {
         String serviceUrl = baseUrl + "/api/requerimientos/fecha/";
         RestTemplate restTemplate = new RestTemplate();
         VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + fechaInicio + "/" + fechaFin, VRequerimientos[].class);
@@ -151,6 +151,21 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Requerimientos requerimientos) {
+        String serviceUrl = baseUrl + "/api/requerimientos/";
+        RestTemplate restTemplate = new RestTemplate();
+        Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
+        if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
+            if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
+                RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
+                restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
+            }
+        }
+        restTemplate.put(serviceUrl, requerimientos);
+    }
+
+    public void update(VRequerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
