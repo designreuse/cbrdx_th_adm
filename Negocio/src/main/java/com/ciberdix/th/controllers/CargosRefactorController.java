@@ -2,9 +2,9 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Cargos;
-import com.ciberdix.th.model.Requerimientos;
 import com.ciberdix.th.model.RequerimientosAcciones;
 import com.ciberdix.th.model.VCargos;
+import com.ciberdix.th.model.VRequerimientos;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -77,6 +77,8 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
     void updateTab2(@RequestBody Cargos obj) {
+        RequerimientosRefactorController requerimientosRefactorController = new RequerimientosRefactorController();
+        RequerimientosAccionesRefactorController requerimientosAccionesRefactorController = new RequerimientosAccionesRefactorController();
         RestTemplate restTemplate = new RestTemplate();
         UtilitiesController utilitiesController = new UtilitiesController();
         String logica = utilitiesController.readParameter("business.url");
@@ -86,17 +88,20 @@ public class CargosRefactorController {
         Integer n = utilitiesController.findListItem("ListasEstadosCargos", "NOAPR").getIdLista();
         if ((estadoActual.getIdEstado().equals(c) || estadoActual.getIdEstado().equals(n)) && obj.getIdEstado().equals(a)) {
             Integer tipoSol = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
-            Requerimientos requerimientos = restTemplate.getForObject(logica + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
+            VRequerimientos requerimientos = requerimientosRefactorController.findIdCargo(obj.getIdCargo(), tipoSol);
+            //Requerimientos requerimientos = restTemplate.getForObject(logica + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
             RequerimientosAcciones requerimientosAcciones = new RequerimientosAcciones();
             requerimientosAcciones.setIdRequerimiento(requerimientos.getIdRequerimiento());
             requerimientosAcciones.setAuditoriaUsuario(obj.getAuditoriaUsuario());
             requerimientosAcciones.setObservacion("Cargo Creado Satisfactoriamente");
             Integer idAccion = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRPER").getIdLista();
             requerimientosAcciones.setIdAccion(idAccion);
-            restTemplate.postForObject(logica + "/api/requerimientosAcciones", requerimientosAcciones, RequerimientosAcciones.class);
+            requerimientosAccionesRefactorController.create(requerimientosAcciones);
+            //restTemplate.postForObject(logica + "/api/requerimientosAcciones", requerimientosAcciones, RequerimientosAcciones.class);
             Integer reqEstado = utilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
             requerimientos.setIdEstado(reqEstado);
-            restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
+            //restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
+            requerimientosRefactorController.update(requerimientos);
         }
         restTemplate.put(serviceUrl + "/tab2", obj);
     }
