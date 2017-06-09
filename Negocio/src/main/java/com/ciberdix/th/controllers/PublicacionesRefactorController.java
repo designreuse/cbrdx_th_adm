@@ -54,6 +54,13 @@ public class PublicacionesRefactorController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPolitica/{idDivisionPolitica}")
+    List<VPublicaciones> findByDivisionPolitica(@PathVariable Integer idDivisionPolitica) {
+        RestTemplate restTemplate = new RestTemplate();
+        VPublicaciones[] parametros = restTemplate.getForObject(serviceUrl + "/divisionPolitica/" + idDivisionPolitica, VPublicaciones[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Publicaciones create(@RequestBody Publicaciones request) {
         RestTemplate restTemplate = new RestTemplate();

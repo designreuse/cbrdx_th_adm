@@ -51,6 +51,11 @@ public class PublicacionesRefactorController {
         publicacionesRefactorRepository.queryUpdateIdProceso(idPublicacion, idProceso);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPolitica/{idDivisionPolitica}")
+    List<VPublicaciones> findByDivisionPolitica(@PathVariable Integer idDivisionPolitica) {
+        return vPublicacionesRefactorRepository.queryAllByDivPolitica(idDivisionPolitica);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Publicaciones crearActividadEconomica(@RequestBody Publicaciones o) {
         return publicacionesRefactorRepository.save(
