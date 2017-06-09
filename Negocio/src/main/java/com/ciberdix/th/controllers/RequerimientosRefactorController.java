@@ -151,7 +151,7 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Requerimientos requerimientos) {
-        update(requerimientos);
+        updateTR(requerimientos);
         /*
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
@@ -168,10 +168,10 @@ public class RequerimientosRefactorController {
     }
 
     public void update(VRequerimientos requerimientos) {
-        update(requerimientos);
+        updateTR(requerimientos);
     }
 
-    public void update(Object requ) {
+    public void updateTR(Object requ) {
         Requerimientos requerimientos = (Requerimientos) requ;
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
