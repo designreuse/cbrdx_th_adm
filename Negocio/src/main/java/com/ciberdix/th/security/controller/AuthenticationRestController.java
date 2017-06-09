@@ -71,6 +71,19 @@ public class AuthenticationRestController {
         }
     }
 
+    @RequestMapping(value = "/auth/externalRefresh", method = RequestMethod.GET)
+    public ResponseEntity<?> refreshExternalToken(HttpServletRequest request) {
+        RestTemplate restTemplate = new RestTemplate();
+        String token = request.getHeader(tokenHeader);
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+        Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
+        token = jwtTokenUtil.generateToken(userDetails, user, tercero);
+        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+
+    }
+
     @RequestMapping(value = "/auth/externalUser", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
         RestTemplate restTemplate = new RestTemplate();
