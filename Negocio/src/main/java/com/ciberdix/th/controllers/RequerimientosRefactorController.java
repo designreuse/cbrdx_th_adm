@@ -173,23 +173,19 @@ public class RequerimientosRefactorController {
 
     public void updateTR(Object requ) {
         Requerimientos requerimientos = (Requerimientos) requ;
-        String serviceUrl = baseUrl + "/api/requerimientos/";
+        UtilitiesController utilitiesController = new UtilitiesController();
+        String dominio = utilitiesController.readParameter("domain.url");
+        String serviceUrl = dominio + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
-        ListasItems EstadoAnterior = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
-        ListasItems EstadoActual = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
         if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
             if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
                 RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
-                restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
+                restTemplate.postForObject(dominio + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
             }
         }
         restTemplate.put(serviceUrl, requerimientos);
-    }
-
-    VRequerimientos findIdCargo(Integer idCargo, Integer idTipoSolicitud) {
-        String serviceUrl = baseUrl + "/api/requerimientos/byIdCargo/";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + idCargo + "/" + idTipoSolicitud, VRequerimientos.class);
     }
 }

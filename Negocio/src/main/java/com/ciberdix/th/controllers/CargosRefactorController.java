@@ -2,9 +2,9 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Cargos;
+import com.ciberdix.th.model.Requerimientos;
 import com.ciberdix.th.model.RequerimientosAcciones;
 import com.ciberdix.th.model.VCargos;
-import com.ciberdix.th.model.VRequerimientos;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -88,8 +88,7 @@ public class CargosRefactorController {
         Integer n = utilitiesController.findListItem("ListasEstadosCargos", "NOAPR").getIdLista();
         if ((estadoActual.getIdEstado().equals(c) || estadoActual.getIdEstado().equals(n)) && obj.getIdEstado().equals(a)) {
             Integer tipoSol = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
-            VRequerimientos requerimientos = requerimientosRefactorController.findIdCargo(obj.getIdCargo(), tipoSol);
-            //Requerimientos requerimientos = restTemplate.getForObject(logica + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
+            Requerimientos requerimientos = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
             RequerimientosAcciones requerimientosAcciones = new RequerimientosAcciones();
             requerimientosAcciones.setIdRequerimiento(requerimientos.getIdRequerimiento());
             requerimientosAcciones.setAuditoriaUsuario(obj.getAuditoriaUsuario());
