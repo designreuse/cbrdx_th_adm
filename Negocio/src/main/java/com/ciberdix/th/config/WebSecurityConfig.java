@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/swagger-resources/**").permitAll()
                 //.antMatchers("/v2/**").permitAll()
                 .antMatchers("/api/requerimientos/externaMixta").permitAll()
-                .antMatchers("/api/constantes/codigos").permitAll()
+                .antMatchers("/api/constantes/codigosexternaMixta").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
