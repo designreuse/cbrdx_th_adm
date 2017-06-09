@@ -151,6 +151,8 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Requerimientos requerimientos) {
+        update(requerimientos);
+        /*
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
@@ -162,10 +164,15 @@ public class RequerimientosRefactorController {
                 restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
             }
         }
-        restTemplate.put(serviceUrl, requerimientos);
+        restTemplate.put(serviceUrl, requerimientos);*/
     }
 
     public void update(VRequerimientos requerimientos) {
+        update(requerimientos);
+    }
+
+    public void update(Object requ) {
+        Requerimientos requerimientos = (Requerimientos) requ;
         String serviceUrl = baseUrl + "/api/requerimientos/";
         RestTemplate restTemplate = new RestTemplate();
         Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);

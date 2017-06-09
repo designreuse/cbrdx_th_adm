@@ -1,7 +1,10 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.*;
+import com.ciberdix.th.model.Cargos;
+import com.ciberdix.th.model.RequerimientosAcciones;
+import com.ciberdix.th.model.VCargos;
+import com.ciberdix.th.model.VRequerimientos;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -97,7 +100,7 @@ public class CargosRefactorController {
             //restTemplate.postForObject(logica + "/api/requerimientosAcciones", requerimientosAcciones, RequerimientosAcciones.class);
             Integer reqEstado = utilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
             requerimientos.setIdEstado(reqEstado);
-            restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
+            //restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
             requerimientosRefactorController.update(requerimientos);
         }
         restTemplate.put(serviceUrl + "/tab2", obj);
