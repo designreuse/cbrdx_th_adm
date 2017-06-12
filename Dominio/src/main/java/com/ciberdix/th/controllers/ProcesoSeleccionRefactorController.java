@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/procesoSeleccion")
+    @RequestMapping("/api/procesoSeleccion")
 public class ProcesoSeleccionRefactorController {
 
     @Autowired
@@ -34,6 +34,16 @@ public class ProcesoSeleccionRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/{idProcesoSeleccion}")
     VProcesoSeleccion findOne(@PathVariable Integer idProcesoSeleccion) {
         return vProcesoSeleccionRefactorRepository.findOne(idProcesoSeleccion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{idPublicacion}")
+    List<VProcesoSeleccion> findByIdPublicacion(@PathVariable Integer idPublicacion) {
+        return vProcesoSeleccionRefactorRepository.findAllByIdPublicacion(idPublicacion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroPublicacion/{idPublicacion}/{idTercero}")
+    List<VProcesoSeleccion> findByIdPublicacionAndIdTercero(@PathVariable Integer idPublicacion, @PathVariable Long idTercero) {
+        return vProcesoSeleccionRefactorRepository.findAllByIdPublicacionAndIdTercero(idPublicacion, idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)

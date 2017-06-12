@@ -52,14 +52,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                //.antMatchers("/**").permitAll()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/**").permitAll()
+                //.antMatchers("/auth/**").permitAll()
                 //.antMatchers("/swagger-ui.html").permitAll()
                 //.antMatchers("/webjars/**").permitAll()
                 //.antMatchers("/swagger-resources/**").permitAll()
                 //.antMatchers("/v2/**").permitAll()
                 .antMatchers("/api/requerimientos/externaMixta").permitAll()
                 .antMatchers("/api/constantes/codigos").permitAll()
+                .antMatchers("/api/divisionPolitica/divisionPublicacion").permitAll()
+                .antMatchers("/api/requerimientos/divisionPolitica/{idDivisionPublicacion}").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);

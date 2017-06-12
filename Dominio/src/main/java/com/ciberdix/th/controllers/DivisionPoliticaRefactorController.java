@@ -39,8 +39,8 @@ public class DivisionPoliticaRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idDivisionPolitica}")
-    DivisionPolitica findOne(@PathVariable Integer idDivisionPolitica) {
-        return divisionPoliticaRefactorRepository.findOne(idDivisionPolitica);
+    VDivisionPoliticaRec findOne(@PathVariable Integer idDivisionPolitica) {
+        return vDivisionPoliticaRecRefactorRepository.findOne(idDivisionPolitica);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarHijos/{idDivisionPoliticaPadre}")
