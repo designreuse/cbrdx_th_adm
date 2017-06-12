@@ -36,9 +36,9 @@ public class DivisionPoliticaRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idDivisionPolitica}")
-    DivisionPolitica findOne(@PathVariable Integer idDivisionPolitica) {
+    VDivisionPoliticaRec findOne(@PathVariable Integer idDivisionPolitica) {
         RestTemplate restTemplate = new RestTemplate();
-        DivisionPolitica parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idDivisionPolitica, DivisionPolitica.class);
+        VDivisionPoliticaRec parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idDivisionPolitica, VDivisionPoliticaRec.class);
         return parametro;
     }
 
