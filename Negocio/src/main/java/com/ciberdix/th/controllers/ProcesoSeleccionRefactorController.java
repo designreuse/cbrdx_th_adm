@@ -69,11 +69,17 @@ public class ProcesoSeleccionRefactorController {
         return OPS;
     }
 
+//    @RequestMapping(method = RequestMethod.POST)
+//    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
+//        RestTemplate restTemplate = new RestTemplate();
+//        String avatarGuardado = storageService.store(file, "procesoSeleccion");
+//        obj.setAdjunto(avatarGuardado);
+//        return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
+//    }
+
     @RequestMapping(method = RequestMethod.POST)
-    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
+    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj) {
         RestTemplate restTemplate = new RestTemplate();
-        String avatarGuardado = storageService.store(file, "procesoSeleccion");
-        obj.setAdjunto(avatarGuardado);
         return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
     }
 

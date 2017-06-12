@@ -49,7 +49,7 @@ public class ProcesoSeleccionRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion o) {
         return procesoSeleccionRefactorRepository.save(new ProcesoSeleccion(
-                o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getAdjunto(),o.getIdResponsable(),
+                o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),
                 o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorContProceso(),
                 o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
         ));
@@ -59,7 +59,7 @@ public class ProcesoSeleccionRefactorController {
     void update(@RequestBody ProcesoSeleccion o) {
         procesoSeleccionRefactorRepository.save(
                 new ProcesoSeleccion(
-                        o.getIdProcesoSeleccion(),o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getAdjunto(),o.getIdResponsable(),
+                        o.getIdProcesoSeleccion(),o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),
                         o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorContProceso(),
                         o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
                 ));

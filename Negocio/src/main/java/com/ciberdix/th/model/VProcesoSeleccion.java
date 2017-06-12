@@ -12,7 +12,6 @@ public class VProcesoSeleccion {
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
-    private String adjunto;
     private String nombreResponsable;
     private Integer idResponsable;
     private String nombreTercero;
@@ -55,14 +54,6 @@ public class VProcesoSeleccion {
 
     public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-    }
-
-    public String getAdjunto() {
-        return adjunto;
-    }
-
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
     }
 
     public String getNombreResponsable() {
