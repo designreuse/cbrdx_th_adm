@@ -20,6 +20,7 @@ public class ProcesoSeleccion {
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorNoAplica;
 
     public Integer getIdProcesoSeleccion() {
         return idProcesoSeleccion;
@@ -45,12 +46,12 @@ public class ProcesoSeleccion {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
     }
 
-    public String getIdAdjunto() {
+    public String getAdjunto() {
         return adjunto;
     }
 
-    public void setIdAdjunto(String idAdjunto) {
-        this.adjunto = idAdjunto;
+    public void setAdjunto(String adjunto) {
+        this.adjunto = adjunto;
     }
 
     public Integer getIdResponsable() {
@@ -115,5 +116,13 @@ public class ProcesoSeleccion {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorNoAplica() {
+        return indicadorNoAplica;
+    }
+
+    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 }

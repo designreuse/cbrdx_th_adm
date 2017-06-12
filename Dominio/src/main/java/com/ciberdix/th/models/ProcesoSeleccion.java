@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/06/2017.
+ * Created by Danny on 12/06/2017.
  */
 @Entity
 @Table(name = "ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -22,11 +22,12 @@ public class ProcesoSeleccion {
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorNoAplica;
 
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.adjunto = adjunto;
@@ -38,9 +39,10 @@ public class ProcesoSeleccion {
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
@@ -53,6 +55,7 @@ public class ProcesoSeleccion {
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 
     @Id
@@ -87,13 +90,13 @@ public class ProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "Adjunto", nullable = true)
-    public String getIdAdjunto() {
+    @Column(name = "Adjunto", nullable = true, length = 100)
+    public String getAdjunto() {
         return adjunto;
     }
 
-    public void setIdAdjunto(String idAdjunto) {
-        this.adjunto = idAdjunto;
+    public void setAdjunto(String adjunto) {
+        this.adjunto = adjunto;
     }
 
     @Basic
@@ -176,6 +179,16 @@ public class ProcesoSeleccion {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorNoAplica", nullable = true)
+    public Boolean getIndicadorNoAplica() {
+        return indicadorNoAplica;
+    }
+
+    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
+        this.indicadorNoAplica = indicadorNoAplica;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -203,6 +216,8 @@ public class ProcesoSeleccion {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorNoAplica != null ? !indicadorNoAplica.equals(that.indicadorNoAplica) : that.indicadorNoAplica != null)
+            return false;
 
         return true;
     }
@@ -221,6 +236,7 @@ public class ProcesoSeleccion {
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorNoAplica != null ? indicadorNoAplica.hashCode() : 0);
         return result;
     }
 }

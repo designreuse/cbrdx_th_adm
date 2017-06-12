@@ -13,7 +13,6 @@ public class VProcesoSeleccion {
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
     private String adjunto;
-    private Integer idAdjunto;
     private String nombreResponsable;
     private Integer idResponsable;
     private String nombreTercero;
@@ -24,6 +23,7 @@ public class VProcesoSeleccion {
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorNoAplica;
 
     public Integer getIdProcesoSeleccion() {
         return idProcesoSeleccion;
@@ -63,14 +63,6 @@ public class VProcesoSeleccion {
 
     public void setAdjunto(String adjunto) {
         this.adjunto = adjunto;
-    }
-
-    public Integer getIdAdjunto() {
-        return idAdjunto;
-    }
-
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
     }
 
     public String getNombreResponsable() {
@@ -151,5 +143,13 @@ public class VProcesoSeleccion {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorNoAplica() {
+        return indicadorNoAplica;
+    }
+
+    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 }
