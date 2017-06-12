@@ -118,6 +118,11 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.queryAllByIdFormaReclutamientoExtMix();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPolitica/{idDivisionPolitica}")
+    List<VRequerimientos> findByDivisionPolitica(@PathVariable Integer idDivisionPolitica) {
+        return vRequerimientosRefactorRepository.queryAllByDivPolitica(idDivisionPolitica);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos o) {
         return requerimientosRefactorRepository.save(new Requerimientos(o.getIdSolicitante(),o.getJustificacion(),

@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/requerimientos/externaMixta").permitAll()
                 .antMatchers("/api/constantes/codigos").permitAll()
                 .antMatchers("/api/divisionPolitica/divisionPublicacion").permitAll()
-                .antMatchers("/api/publicaciones/divisionPolitica/{idDivisionPublicacion}").permitAll()
+                .antMatchers("/api/requerimientos/divisionPolitica/{idDivisionPublicacion}").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
