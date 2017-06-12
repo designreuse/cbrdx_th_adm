@@ -14,7 +14,6 @@ public class VProcesoSeleccion {
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
-    private String adjunto;
     private String nombreResponsable;
     private Integer idResponsable;
     private String nombreTercero;
@@ -65,16 +64,6 @@ public class VProcesoSeleccion {
 
     public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-    }
-
-    @Basic
-    @Column(name = "Adjunto", nullable = true, length = 100)
-    public String getAdjunto() {
-        return adjunto;
-    }
-
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
     }
 
     @Basic
@@ -202,7 +191,6 @@ public class VProcesoSeleccion {
             return false;
         if (idEstadoDiligenciado != null ? !idEstadoDiligenciado.equals(that.idEstadoDiligenciado) : that.idEstadoDiligenciado != null)
             return false;
-        if (adjunto != null ? !adjunto.equals(that.adjunto) : that.adjunto != null) return false;
         if (nombreResponsable != null ? !nombreResponsable.equals(that.nombreResponsable) : that.nombreResponsable != null)
             return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
@@ -232,7 +220,6 @@ public class VProcesoSeleccion {
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (estadoDiligenciado != null ? estadoDiligenciado.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
-        result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
         result = 31 * result + (nombreResponsable != null ? nombreResponsable.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);

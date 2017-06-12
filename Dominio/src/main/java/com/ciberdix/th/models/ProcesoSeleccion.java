@@ -13,7 +13,6 @@ public class ProcesoSeleccion {
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
-    private String adjunto;
     private Integer idResponsable;
     private Long idTercero;
     private Integer idPublicacion;
@@ -27,10 +26,9 @@ public class ProcesoSeleccion {
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.adjunto = adjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -42,11 +40,10 @@ public class ProcesoSeleccion {
         this.indicadorNoAplica = indicadorNoAplica;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.adjunto = adjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -87,16 +84,6 @@ public class ProcesoSeleccion {
 
     public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-    }
-
-    @Basic
-    @Column(name = "Adjunto", nullable = true, length = 100)
-    public String getAdjunto() {
-        return adjunto;
-    }
-
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
     }
 
     @Basic
@@ -202,7 +189,6 @@ public class ProcesoSeleccion {
             return false;
         if (idEstadoDiligenciado != null ? !idEstadoDiligenciado.equals(that.idEstadoDiligenciado) : that.idEstadoDiligenciado != null)
             return false;
-        if (adjunto != null ? !adjunto.equals(that.adjunto) : that.adjunto != null) return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
@@ -227,7 +213,6 @@ public class ProcesoSeleccion {
         int result = idProcesoSeleccion != null ? idProcesoSeleccion.hashCode() : 0;
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
-        result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
