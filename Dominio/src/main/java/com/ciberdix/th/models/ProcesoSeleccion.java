@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/06/2017.
+ * Created by Danny on 12/06/2017.
  */
 @Entity
 @Table(name = "ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -13,7 +13,6 @@ public class ProcesoSeleccion {
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
-    private Integer idAdjunto;
     private Integer idResponsable;
     private Long idTercero;
     private Integer idPublicacion;
@@ -22,14 +21,14 @@ public class ProcesoSeleccion {
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorNoAplica;
 
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idAdjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.idAdjunto = idAdjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -38,13 +37,13 @@ public class ProcesoSeleccion {
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idAdjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.idAdjunto = idAdjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -53,6 +52,7 @@ public class ProcesoSeleccion {
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorNoAplica = indicadorNoAplica;
     }
 
     @Id
@@ -84,16 +84,6 @@ public class ProcesoSeleccion {
 
     public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-    }
-
-    @Basic
-    @Column(name = "IdAdjunto", nullable = true)
-    public Integer getIdAdjunto() {
-        return idAdjunto;
-    }
-
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
     }
 
     @Basic
@@ -176,6 +166,16 @@ public class ProcesoSeleccion {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorNoAplica", nullable = true)
+    public Boolean getIndicadorNoAplica() {
+        return indicadorNoAplica;
+    }
+
+    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
+        this.indicadorNoAplica = indicadorNoAplica;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -189,7 +189,6 @@ public class ProcesoSeleccion {
             return false;
         if (idEstadoDiligenciado != null ? !idEstadoDiligenciado.equals(that.idEstadoDiligenciado) : that.idEstadoDiligenciado != null)
             return false;
-        if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
@@ -203,6 +202,8 @@ public class ProcesoSeleccion {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorNoAplica != null ? !indicadorNoAplica.equals(that.indicadorNoAplica) : that.indicadorNoAplica != null)
+            return false;
 
         return true;
     }
@@ -212,7 +213,6 @@ public class ProcesoSeleccion {
         int result = idProcesoSeleccion != null ? idProcesoSeleccion.hashCode() : 0;
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
-        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
@@ -221,6 +221,7 @@ public class ProcesoSeleccion {
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorNoAplica != null ? indicadorNoAplica.hashCode() : 0);
         return result;
     }
 }

@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/06/2017.
+ * Created by Danny on 12/06/2017.
  */
 @Entity
 @Table(name = "V_ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -14,8 +14,6 @@ public class VProcesoSeleccion {
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
-    private String adjunto;
-    private Integer idAdjunto;
     private String nombreResponsable;
     private Integer idResponsable;
     private String nombreTercero;
@@ -26,6 +24,7 @@ public class VProcesoSeleccion {
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorNoAplica;
 
     @Id
     @Column(name = "IdProcesoSeleccion", nullable = false)
@@ -65,26 +64,6 @@ public class VProcesoSeleccion {
 
     public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-    }
-
-    @Basic
-    @Column(name = "Adjunto", nullable = true, length = 100)
-    public String getAdjunto() {
-        return adjunto;
-    }
-
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
-    }
-
-    @Basic
-    @Column(name = "IdAdjunto", nullable = true)
-    public Integer getIdAdjunto() {
-        return idAdjunto;
-    }
-
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
     }
 
     @Basic
@@ -187,6 +166,16 @@ public class VProcesoSeleccion {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorNoAplica", nullable = true)
+    public Boolean getIndicadorNoAplica() {
+        return indicadorNoAplica;
+    }
+
+    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
+        this.indicadorNoAplica = indicadorNoAplica;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -202,8 +191,6 @@ public class VProcesoSeleccion {
             return false;
         if (idEstadoDiligenciado != null ? !idEstadoDiligenciado.equals(that.idEstadoDiligenciado) : that.idEstadoDiligenciado != null)
             return false;
-        if (adjunto != null ? !adjunto.equals(that.adjunto) : that.adjunto != null) return false;
-        if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
         if (nombreResponsable != null ? !nombreResponsable.equals(that.nombreResponsable) : that.nombreResponsable != null)
             return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
@@ -221,6 +208,8 @@ public class VProcesoSeleccion {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorNoAplica != null ? !indicadorNoAplica.equals(that.indicadorNoAplica) : that.indicadorNoAplica != null)
+            return false;
 
         return true;
     }
@@ -231,8 +220,6 @@ public class VProcesoSeleccion {
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (estadoDiligenciado != null ? estadoDiligenciado.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
-        result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
-        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (nombreResponsable != null ? nombreResponsable.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
@@ -243,6 +230,7 @@ public class VProcesoSeleccion {
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorNoAplica != null ? indicadorNoAplica.hashCode() : 0);
         return result;
     }
 }
