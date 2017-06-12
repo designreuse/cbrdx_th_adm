@@ -12,9 +12,8 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
-
 import java.util.UUID;
+import java.util.stream.Stream;
 
 /**
  * Created by robertochajin on 5/05/17.
@@ -42,6 +41,26 @@ public class FileSystemStorageService implements StorageService {
             Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(avatarId) + "." + tipo));
 
             return String.valueOf(avatarId) + "." + tipo;
+        } catch (IOException e) {
+            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+        }
+    }
+
+    @Override
+    public String store(MultipartFile file, String route) {
+        try {
+            if (file.isEmpty()) {
+                throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+            }
+            UUID fileID = UUID.randomUUID();
+            String tipo = file.getContentType().substring(6);
+            if (route != null) {
+                Path location = Paths.get(route);
+                Files.copy(file.getInputStream(), location.resolve(String.valueOf(fileID) + "." + tipo));
+            } else {
+                Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(fileID) + "." + tipo));
+            }
+            return String.valueOf(fileID) + "." + tipo;
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }
@@ -88,7 +107,7 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void init() {
         try {
-            if (!Files.isReadable(rootLocation)){
+            if (!Files.isReadable(rootLocation)) {
                 Files.createDirectory(rootLocation);
             }
         } catch (IOException e) {

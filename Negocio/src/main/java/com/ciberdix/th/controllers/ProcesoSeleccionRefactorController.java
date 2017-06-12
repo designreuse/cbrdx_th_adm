@@ -3,17 +3,17 @@ package com.ciberdix.th.controllers;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.ObjetoProcesoSeleccion;
 import com.ciberdix.th.model.ProcesoSeleccion;
-import com.ciberdix.th.model.VProcesoSeleccion;
 import com.ciberdix.th.model.Terceros;
+import com.ciberdix.th.model.VProcesoSeleccion;
+import com.ciberdix.th.storage.StorageService;
 import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import java.io.FileWriter;
-import java.io.IOException;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,8 +28,14 @@ import java.util.List;
 @RequestMapping("/api/procesoSeleccion")
 public class ProcesoSeleccionRefactorController {
 
+    private final StorageService storageService;
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/procesoSeleccion";
+
+    @Autowired
+    public ProcesoSeleccionRefactorController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     List<VProcesoSeleccion> findAll() {
@@ -64,8 +70,10 @@ public class ProcesoSeleccionRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj) {
+    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
         RestTemplate restTemplate = new RestTemplate();
+        String avatarGuardado = storageService.store(file, "procesoSeleccion");
+        obj.setIdAdjunto(avatarGuardado);
         return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
     }
 
