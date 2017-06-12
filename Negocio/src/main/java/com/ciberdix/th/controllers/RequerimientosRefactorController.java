@@ -142,6 +142,14 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/divisionPolitica/{idDivisionPolitica}")
+    List<VRequerimientos> findByDivisionPolitica(@PathVariable Integer idDivisionPolitica) {
+        String serviceUrl = baseUrl + "/api/requerimientos/divisionPolitica/";
+        RestTemplate restTemplate = new RestTemplate();
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + idDivisionPolitica, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         String serviceUrl = baseUrl + "/api/requerimientos/";
