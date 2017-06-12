@@ -13,7 +13,7 @@ public class ProcesoSeleccion {
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
-    private Integer idAdjunto;
+    private String adjunto;
     private Integer idResponsable;
     private Long idTercero;
     private Integer idPublicacion;
@@ -26,10 +26,10 @@ public class ProcesoSeleccion {
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idAdjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.idAdjunto = idAdjunto;
+        this.adjunto = adjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -40,11 +40,11 @@ public class ProcesoSeleccion {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idAdjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, String adjunto, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
-        this.idAdjunto = idAdjunto;
+        this.adjunto = adjunto;
         this.idResponsable = idResponsable;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -87,13 +87,13 @@ public class ProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "IdAdjunto", nullable = true)
-    public Integer getIdAdjunto() {
-        return idAdjunto;
+    @Column(name = "Adjunto", nullable = true)
+    public String getIdAdjunto() {
+        return adjunto;
     }
 
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
+    public void setIdAdjunto(String idAdjunto) {
+        this.adjunto = idAdjunto;
     }
 
     @Basic
@@ -189,7 +189,7 @@ public class ProcesoSeleccion {
             return false;
         if (idEstadoDiligenciado != null ? !idEstadoDiligenciado.equals(that.idEstadoDiligenciado) : that.idEstadoDiligenciado != null)
             return false;
-        if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
+        if (adjunto != null ? !adjunto.equals(that.adjunto) : that.adjunto != null) return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
@@ -212,7 +212,7 @@ public class ProcesoSeleccion {
         int result = idProcesoSeleccion != null ? idProcesoSeleccion.hashCode() : 0;
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
-        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);

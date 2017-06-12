@@ -11,7 +11,7 @@ public class ProcesoSeleccion {
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
-    private Integer idAdjunto;
+    private String adjunto;
     private Integer idResponsable;
     private Long idTercero;
     private Integer idPublicacion;
@@ -45,12 +45,12 @@ public class ProcesoSeleccion {
         this.idEstadoDiligenciado = idEstadoDiligenciado;
     }
 
-    public Integer getIdAdjunto() {
-        return idAdjunto;
+    public String getIdAdjunto() {
+        return adjunto;
     }
 
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
+    public void setIdAdjunto(String idAdjunto) {
+        this.adjunto = idAdjunto;
     }
 
     public Integer getIdResponsable() {
