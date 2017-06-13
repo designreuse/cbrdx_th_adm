@@ -14,6 +14,7 @@ public class CentralesRiesgos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorReporta;
 
     public Integer getIdCentralRiesgo() {
         return idCentralRiesgo;
@@ -69,5 +70,13 @@ public class CentralesRiesgos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorReporta() {
+        return indicadorReporta;
+    }
+
+    public void setIndicadorReporta(Boolean indicadorReporta) {
+        this.indicadorReporta = indicadorReporta;
     }
 }
