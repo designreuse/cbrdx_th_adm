@@ -1,12 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.ObjetoProcesoSeleccion;
-import com.ciberdix.th.model.ProcesoSeleccion;
-import com.ciberdix.th.model.Terceros;
-import com.ciberdix.th.model.VProcesoSeleccion;
+import com.ciberdix.th.model.*;
 import com.ciberdix.th.storage.StorageService;
-import org.json.JSONException;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,22 +49,56 @@ public class ProcesoSeleccionRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroPublicacion/{idPublicacion}")
-    List<ObjetoProcesoSeleccion> findMalla(@PathVariable Integer idPublicacion) throws JSONException {
+    List<ObjetoProcesoSeleccion> findMalla(@PathVariable Integer idPublicacion) {
         RestTemplate restTemplate = new RestTemplate();
-        Long idTercero;
-        VProcesoSeleccion[] param = restTemplate.getForObject(serviceUrl + "/publicacion/" + idPublicacion, VProcesoSeleccion[].class);
+        List<ObjetoProcesoSeleccion> OPSL = new ArrayList<>();
+        ObjetoProcesoSeleccion OPS;
+        UtilitiesController u = new UtilitiesController();
+        VPublicaciones publicaciones = restTemplate.getForObject(globales.getUrl() + "api/publicaciones/" + idPublicacion, VPublicaciones.class);
+        List<VProcesosPasos> procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
+        List<TercerosPublicaciones> tercerosPublicaciones = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/publicacion/" + publicaciones.getIdPublicacion(), TercerosPublicaciones[].class));
 
-        ArrayList<ObjetoProcesoSeleccion> OPS = new ArrayList<>();
+        for(TercerosPublicaciones tp: tercerosPublicaciones){
+            Terceros terceros = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + tp.getIdTercero(), Terceros.class);
+            String nombreCompleto = terceros.getPrimerNombre() + " " + terceros.getSegundoNombre() + " " + terceros.getPrimerApellido() + " " + terceros.getSegundoApellido();
+            List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + idPublicacion + "/" + terceros.getIdTercero(), VProcesoSeleccion[].class));
+            List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
 
-        idTercero = param[0].getIdTercero();
+            for(VProcesosPasos vpp: procesosPasos){
+                ListaProcesoSeleccion LPS = new ListaProcesoSeleccion();
+                if(vProcesoSeleccion.size()>0){
+                    for(VProcesoSeleccion vps: vProcesoSeleccion){
+                        if(vpp.getIdProcesoPaso() == vps.getIdProcesoPaso()){
+                            LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
+                            LPS.setIdProcesoSeleccion(vps.getIdProcesoSeleccion());
+                            String codigo = u.findListItemById("ListasEstadosDiligenciados",vps.getIdEstadoDiligenciado()).getCodigo();
+                            LPS.setCodigoEstadoDiligenciado(codigo);
+                            LPS.setInterfaz(vpp.getInterfaz());
+                            LPS.setInterfazInterna(vpp.getInterfazInterna());
+                            LPS.setOrden(vpp.getOrden());
+                            LPSL.add(LPS);
+                        }else{
+                            LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
+                            LPS.setInterfaz(vpp.getInterfaz());
+                            LPS.setInterfazInterna(vpp.getInterfazInterna());
+                            LPS.setOrden(vpp.getOrden());
+                            LPSL.add(LPS);
+                        }
+                    }
+                }else{
+                    LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
+                    LPS.setInterfaz(vpp.getInterfaz());
+                    LPS.setInterfazInterna(vpp.getInterfazInterna());
+                    LPS.setOrden(vpp.getOrden());
+                    LPSL.add(LPS);
+                }
+            }
 
-        Terceros ter = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + idTercero, Terceros.class);
+            OPS = new ObjetoProcesoSeleccion(terceros.getIdTercero(),nombreCompleto,LPSL);
+            OPSL.add(OPS);
+        }
 
-
-
-        VProcesoSeleccion[] param1 = restTemplate.getForObject(serviceUrl + "/terceroPublicacion/" + idPublicacion + "/" + idTercero, VProcesoSeleccion[].class);
-
-        return OPS;
+        return OPSL;
     }
 
 //    @RequestMapping(method = RequestMethod.POST)
