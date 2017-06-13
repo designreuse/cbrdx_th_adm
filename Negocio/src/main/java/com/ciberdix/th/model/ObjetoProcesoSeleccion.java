@@ -1,13 +1,21 @@
 package com.ciberdix.th.model;
 
+import java.util.List;
+
 /**
  * Created by Danny on 12/06/2017.
  */
 public class ObjetoProcesoSeleccion {
 
     private Long idTercero;
-    private String NombreCompleto;
-    private ListaProcesoSeleccion list;
+    private String nombreCompleto;
+    private List<ListaProcesoSeleccion> pasos;
+
+    public ObjetoProcesoSeleccion(Long idTercero, String nombreCompleto, List<ListaProcesoSeleccion> pasos) {
+        this.idTercero = idTercero;
+        this.nombreCompleto = nombreCompleto;
+        this.pasos = pasos;
+    }
 
     public Long getIdTercero() {
         return idTercero;
@@ -18,18 +26,18 @@ public class ObjetoProcesoSeleccion {
     }
 
     public String getNombreCompleto() {
-        return NombreCompleto;
+        return nombreCompleto;
     }
 
     public void setNombreCompleto(String nombreCompleto) {
-        NombreCompleto = nombreCompleto;
+        this.nombreCompleto = nombreCompleto;
     }
 
-    public ListaProcesoSeleccion getList() {
-        return list;
+    public List<ListaProcesoSeleccion> getPasos() {
+        return pasos;
     }
 
-    public void setList(ListaProcesoSeleccion list) {
-        this.list = list;
+    public void setPasos(List<ListaProcesoSeleccion> pasos) {
+        this.pasos = pasos;
     }
 }
