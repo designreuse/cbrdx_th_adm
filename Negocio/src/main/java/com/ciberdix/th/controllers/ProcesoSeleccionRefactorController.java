@@ -93,7 +93,7 @@ public class ProcesoSeleccionRefactorController {
                 }
             }
 
-            OPS = new ObjetoProcesoSeleccion(terceros.getIdTercero(),nombreCompleto,LPSL);
+            OPS = new ObjetoProcesoSeleccion(tp.getIdTercerosPublicaciones(),terceros.getIdTercero(),nombreCompleto,LPSL);
             OPSL.add(OPS);
         }
 
