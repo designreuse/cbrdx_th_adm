@@ -12,8 +12,7 @@ public class ProcesoSeleccion {
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
     private Integer idResponsable;
-    private Long idTercero;
-    private Integer idPublicacion;
+    private Integer idTerceroPublicacion;
     private Boolean indicadorContProceso;
     private String observacion;
     private Date fechaCita;
@@ -53,20 +52,12 @@ public class ProcesoSeleccion {
         this.idResponsable = idResponsable;
     }
 
-    public Long getIdTercero() {
-        return idTercero;
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
-    }
-
-    public Integer getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(Integer idPublicacion) {
-        this.idPublicacion = idPublicacion;
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     public Boolean getIndicadorContProceso() {

@@ -90,9 +90,10 @@ public class UtilitiesController {
 
     ListasItems findListItemById(String tableName, Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/buscarId/" + id + "/";
+        String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/" + id ;
         return restTemplate.getForObject(serviceURL, ListasItems.class);
     }
+
     Usuarios findUser(Integer idUsuario) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(readParameter("domain.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
