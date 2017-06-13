@@ -90,7 +90,7 @@ public class UtilitiesController {
 
     ListasItems findListItemById(String tableName, Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/buscarId/" + id + "/";
+        String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/" + id ;
         return restTemplate.getForObject(serviceURL, ListasItems.class);
     }
 
