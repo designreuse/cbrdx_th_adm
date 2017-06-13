@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 12/06/2017.
+ * Created by Danny on 13/06/2017.
  */
 @Entity
 @Table(name = "V_ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -17,8 +17,7 @@ public class VProcesoSeleccion {
     private String nombreResponsable;
     private Integer idResponsable;
     private String nombreTercero;
-    private Long idTercero;
-    private Integer idPublicacion;
+    private Integer idTerceroPublicacion;
     private Boolean indicadorContProceso;
     private String observacion;
     private Date fechaCita;
@@ -97,23 +96,13 @@ public class VProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "IdTercero", nullable = true)
-    public Long getIdTercero() {
-        return idTercero;
+    @Column(name = "IdTerceroPublicacion", nullable = true)
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
-    }
-
-    @Basic
-    @Column(name = "IdPublicacion", nullable = true)
-    public Integer getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(Integer idPublicacion) {
-        this.idPublicacion = idPublicacion;
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     @Basic
@@ -197,8 +186,7 @@ public class VProcesoSeleccion {
             return false;
         if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
             return false;
-        if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
-        if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
+        if (idTerceroPublicacion != null ? !idTerceroPublicacion.equals(that.idTerceroPublicacion) : that.idTerceroPublicacion != null)
             return false;
         if (indicadorContProceso != null ? !indicadorContProceso.equals(that.indicadorContProceso) : that.indicadorContProceso != null)
             return false;
@@ -223,8 +211,7 @@ public class VProcesoSeleccion {
         result = 31 * result + (nombreResponsable != null ? nombreResponsable.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
-        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
-        result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
+        result = 31 * result + (idTerceroPublicacion != null ? idTerceroPublicacion.hashCode() : 0);
         result = 31 * result + (indicadorContProceso != null ? indicadorContProceso.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);

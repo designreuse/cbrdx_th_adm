@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 12/06/2017.
+ * Created by Danny on 13/06/2017.
  */
 @Entity
 @Table(name = "ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -14,8 +14,7 @@ public class ProcesoSeleccion {
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
     private Integer idResponsable;
-    private Long idTercero;
-    private Integer idPublicacion;
+    private Integer idTerceroPublicacion;
     private Boolean indicadorContProceso;
     private String observacion;
     private Date fechaCita;
@@ -26,12 +25,11 @@ public class ProcesoSeleccion {
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
-        this.idTercero = idTercero;
-        this.idPublicacion = idPublicacion;
+        this.idTerceroPublicacion = idTerceroPublicacion;
         this.indicadorContProceso = indicadorContProceso;
         this.observacion = observacion;
         this.fechaCita = fechaCita;
@@ -40,13 +38,12 @@ public class ProcesoSeleccion {
         this.indicadorNoAplica = indicadorNoAplica;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
-        this.idTercero = idTercero;
-        this.idPublicacion = idPublicacion;
+        this.idTerceroPublicacion = idTerceroPublicacion;
         this.indicadorContProceso = indicadorContProceso;
         this.observacion = observacion;
         this.fechaCita = fechaCita;
@@ -97,23 +94,13 @@ public class ProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "IdTercero", nullable = true)
-    public Long getIdTercero() {
-        return idTercero;
+    @Column(name = "IdTerceroPublicacion", nullable = true)
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
-    }
-
-    @Basic
-    @Column(name = "IdPublicacion", nullable = true)
-    public Integer getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(Integer idPublicacion) {
-        this.idPublicacion = idPublicacion;
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     @Basic
@@ -191,8 +178,7 @@ public class ProcesoSeleccion {
             return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
             return false;
-        if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
-        if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
+        if (idTerceroPublicacion != null ? !idTerceroPublicacion.equals(that.idTerceroPublicacion) : that.idTerceroPublicacion != null)
             return false;
         if (indicadorContProceso != null ? !indicadorContProceso.equals(that.indicadorContProceso) : that.indicadorContProceso != null)
             return false;
@@ -214,8 +200,7 @@ public class ProcesoSeleccion {
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
-        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
-        result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
+        result = 31 * result + (idTerceroPublicacion != null ? idTerceroPublicacion.hashCode() : 0);
         result = 31 * result + (indicadorContProceso != null ? indicadorContProceso.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);

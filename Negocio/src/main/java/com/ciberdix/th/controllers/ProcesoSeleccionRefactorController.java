@@ -3,7 +3,7 @@ package com.ciberdix.th.controllers;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
 import com.ciberdix.th.storage.StorageService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,7 +60,7 @@ public class ProcesoSeleccionRefactorController {
         for(TercerosPublicaciones tp: tercerosPublicaciones){
             Terceros terceros = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + tp.getIdTercero(), Terceros.class);
             String nombreCompleto = terceros.getPrimerNombre() + " " + terceros.getSegundoNombre() + " " + terceros.getPrimerApellido() + " " + terceros.getSegundoApellido();
-            List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + idPublicacion + "/" + terceros.getIdTercero(), VProcesoSeleccion[].class));
+            List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + tp.getIdTercerosPublicaciones(), VProcesoSeleccion[].class));
             List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
 
             for(VProcesosPasos vpp: procesosPasos){

@@ -36,17 +36,16 @@ public class ProcesoSeleccionRefactorController {
         return vProcesoSeleccionRefactorRepository.findOne(idProcesoSeleccion);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/malla/{idPublicacion}/{idTercero}")
-    List<VProcesoSeleccion> findByIdPublicacionAndIdTercero(@PathVariable Integer idPublicacion, @PathVariable Long idTercero) {
-        return vProcesoSeleccionRefactorRepository.findAllByIdPublicacionAndIdTercero(idPublicacion, idTercero);
+    @RequestMapping(method = RequestMethod.GET, path = "/malla/{idTerceroPublicaicon}")
+    List<VProcesoSeleccion> findByIdPublicacionAndIdTercero(@PathVariable Integer idTerceroPublicaicon) {
+        return vProcesoSeleccionRefactorRepository.findAllByIdTerceroPublicacion(idTerceroPublicaicon);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion o) {
         return procesoSeleccionRefactorRepository.save(new ProcesoSeleccion(
-                o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),
-                o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorContProceso(),
-                o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
+                o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),o.getIdTerceroPublicacion(),
+                o.getIndicadorContProceso(),o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
         ));
     }
 
@@ -55,8 +54,8 @@ public class ProcesoSeleccionRefactorController {
         procesoSeleccionRefactorRepository.save(
                 new ProcesoSeleccion(
                         o.getIdProcesoSeleccion(),o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),
-                        o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorContProceso(),
-                        o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
+                        o.getIdTerceroPublicacion(),o.getIndicadorContProceso(),o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),
+                        o.getIndicadorNoAplica()
                 ));
     }
 

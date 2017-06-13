@@ -9,7 +9,6 @@ import java.util.List;
  * Created by Danny on 13/06/2017.
  */
 public interface ListasEstadosDiligenciadosRefactorRepository extends CrudRepository<ListasEstadosDiligenciados, Integer> {
-
     List<ListasEstadosDiligenciados> findByIndicadorHabilitadoTrue();
 
     ListasEstadosDiligenciados findByIndicadorHabilitadoTrueAndCodigo(String codigo);
@@ -17,5 +16,4 @@ public interface ListasEstadosDiligenciadosRefactorRepository extends CrudReposi
     List<ListasEstadosDiligenciados> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
 
     List<ListasEstadosDiligenciados> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
-
 }
