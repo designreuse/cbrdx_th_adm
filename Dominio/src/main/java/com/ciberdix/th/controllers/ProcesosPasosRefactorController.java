@@ -41,11 +41,6 @@ public class ProcesosPasosRefactorController {
         return vProcesosPasosRefactorRepository.findAllByIdProceso(idProceso);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/{idProceso}")
-    List<VProcesosPasos> findAllByIdProcesoOrden(@PathVariable Integer idProceso) {
-        return vProcesosPasosRefactorRepository.findAllByIdProcesoOrderByOrden(idProceso);
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/codigo/{codigo}")
     List<VProcesosPasos> findAllByCodigo(@PathVariable String codigo) {
         return vProcesosPasosRefactorRepository.findAllByCodigo(codigo);
