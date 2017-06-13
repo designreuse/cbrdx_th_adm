@@ -7,14 +7,24 @@ import java.util.List;
  */
 public class ObjetoProcesoSeleccion {
 
+    private Integer idTerceroPublicacion;
     private Long idTercero;
     private String nombreCompleto;
     private List<ListaProcesoSeleccion> pasos;
 
-    public ObjetoProcesoSeleccion(Long idTercero, String nombreCompleto, List<ListaProcesoSeleccion> pasos) {
+    public ObjetoProcesoSeleccion(Integer idTerceroPublicacion, Long idTercero, String nombreCompleto, List<ListaProcesoSeleccion> pasos) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
         this.idTercero = idTercero;
         this.nombreCompleto = nombreCompleto;
         this.pasos = pasos;
+    }
+
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
+    }
+
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     public Long getIdTercero() {
