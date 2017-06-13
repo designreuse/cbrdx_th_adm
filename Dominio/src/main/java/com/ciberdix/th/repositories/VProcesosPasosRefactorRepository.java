@@ -13,8 +13,6 @@ public interface VProcesosPasosRefactorRepository extends CrudRepository<VProces
 
     List<VProcesosPasos> findAllByIdProceso(Integer idProceso);
 
-    List<VProcesosPasos> findAllByIdProcesoOrderByOrden(Integer idProceso);
-
     List<VProcesosPasos> findAllByCodigo(String codigo);
 
     @Query("SELECT p FROM VProcesosPasos p WHERE (p.idProceso = ?1) AND p.orden = (SELECT MAX(pr.orden) FROM VProcesosPasos pr WHERE (pr.idProceso = ?1))")

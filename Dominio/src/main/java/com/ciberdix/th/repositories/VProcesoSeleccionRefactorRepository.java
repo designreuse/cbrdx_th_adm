@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface VProcesoSeleccionRefactorRepository extends CrudRepository<VProcesoSeleccion, Integer> {
 
+    List<VProcesoSeleccion> findAllByIdPublicacion(Integer idPublicacion);
+
     List<VProcesoSeleccion> findAllByIdPublicacionAndIdTercero(Integer idPublicacion, Long idTercero);
 
 }
