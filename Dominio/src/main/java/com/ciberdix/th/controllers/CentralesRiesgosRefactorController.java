@@ -40,7 +40,7 @@ public class CentralesRiesgosRefactorController {
     CentralesRiesgos create(@RequestBody CentralesRiesgos o) {
         return centralesRiesgosRefactorRepository.save(
                 new CentralesRiesgos(
-                        o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReporta()
                 )
         );
     }
@@ -49,7 +49,7 @@ public class CentralesRiesgosRefactorController {
     void update(@RequestBody CentralesRiesgos o) {
         centralesRiesgosRefactorRepository.save(
                 new CentralesRiesgos(
-                        o.getIdCentralRiesgo(),o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdCentralRiesgo(),o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReporta()
                 )
         );
     }

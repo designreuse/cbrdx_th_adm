@@ -16,20 +16,22 @@ public class CentralesRiesgos {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorReporta;
 
     public CentralesRiesgos() {
     }
 
-    public CentralesRiesgos(String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public CentralesRiesgos(String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReporta) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.url = url;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorReporta = indicadorReporta;
     }
 
-    public CentralesRiesgos(Integer idCentralRiesgo, String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public CentralesRiesgos(Integer idCentralRiesgo, String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReporta) {
         this.idCentralRiesgo = idCentralRiesgo;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -37,6 +39,7 @@ public class CentralesRiesgos {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorReporta = indicadorReporta;
     }
 
     @Id
@@ -51,7 +54,7 @@ public class CentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "Codigo", nullable = false, length = 10)
+    @Column(name = "Codigo", nullable = true, length = 10)
     public String getCodigo() {
         return codigo;
     }
@@ -61,7 +64,7 @@ public class CentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "Nombre", nullable = false, length = 100)
+    @Column(name = "Nombre", nullable = true, length = 100)
     public String getNombre() {
         return nombre;
     }
@@ -71,7 +74,7 @@ public class CentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "URL", nullable = false, length = 100)
+    @Column(name = "URL", nullable = true, length = 100)
     public String getUrl() {
         return url;
     }
@@ -81,7 +84,7 @@ public class CentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "IndicadorHabilitado", nullable = false)
+    @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
     }
@@ -110,6 +113,16 @@ public class CentralesRiesgos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorReporta", nullable = true)
+    public Boolean getIndicadorReporta() {
+        return indicadorReporta;
+    }
+
+    public void setIndicadorReporta(Boolean indicadorReporta) {
+        this.indicadorReporta = indicadorReporta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,6 +141,8 @@ public class CentralesRiesgos {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorReporta != null ? !indicadorReporta.equals(that.indicadorReporta) : that.indicadorReporta != null)
+            return false;
 
         return true;
     }
@@ -141,6 +156,7 @@ public class CentralesRiesgos {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorReporta != null ? indicadorReporta.hashCode() : 0);
         return result;
     }
 }
