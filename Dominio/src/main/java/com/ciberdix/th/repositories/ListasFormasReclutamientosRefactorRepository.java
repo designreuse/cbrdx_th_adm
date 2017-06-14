@@ -10,12 +10,12 @@ import java.util.List;
  */
 public interface ListasFormasReclutamientosRefactorRepository extends CrudRepository <ListasFormasReclutamientos, Integer> {
 
-    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrue();
+    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasFormasReclutamientos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasFormasReclutamientos findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasFormasReclutamientos> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 
 }

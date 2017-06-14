@@ -9,11 +9,11 @@ import java.util.List;
  * Created by robertochajin on 9/04/17.
  */
 public interface ListasExamenesRefactorRepository extends CrudRepository<ListasExamenes, Integer> {
-    List<ListasExamenes> findByIndicadorHabilitadoTrue();
+    List<ListasExamenes> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasExamenes findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasExamenes findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasExamenes> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasExamenes> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasExamenes> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasExamenes> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

@@ -10,12 +10,12 @@ import java.util.List;
  */
 public interface ListasFormasContratacionesRefactorRepository extends CrudRepository<ListasFormasContrataciones, Integer> {
 
-    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrue();
+    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasFormasContrataciones findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasFormasContrataciones findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasFormasContrataciones> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 
 }

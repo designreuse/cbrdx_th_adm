@@ -10,12 +10,12 @@ import java.util.List;
  */
 public interface ListasCuestionariosRefactorRepository extends CrudRepository<ListasCuestionarios, Integer>{
 
-    List<ListasCuestionarios> findByIndicadorHabilitadoTrue();
+    List<ListasCuestionarios> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasCuestionarios findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasCuestionarios findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasCuestionarios> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasCuestionarios> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasCuestionarios> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasCuestionarios> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 
 }

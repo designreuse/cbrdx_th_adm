@@ -6,11 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ListasAtributosCargosRefactorRepository extends CrudRepository<ListasAtributosCargos, Integer> {
-    List<ListasAtributosCargos> findByIndicadorHabilitadoTrue();
+    List<ListasAtributosCargos> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasAtributosCargos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasAtributosCargos findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasAtributosCargos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasAtributosCargos> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasAtributosCargos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasAtributosCargos> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

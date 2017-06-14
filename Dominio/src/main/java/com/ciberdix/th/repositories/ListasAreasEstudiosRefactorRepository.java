@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface ListasAreasEstudiosRefactorRepository extends CrudRepository<ListasAreasEstudios, Integer> {
 
-    List<ListasAreasEstudios> findByIndicadorHabilitadoTrue();
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasAreasEstudios findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasAreasEstudios findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasAreasEstudios> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

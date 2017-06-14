@@ -9,11 +9,11 @@ import java.util.List;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposNomenclaturasRefactorRepository extends CrudRepository<ListasTiposNomenclaturas, Integer> {
-    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrue();
+    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposNomenclaturas findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposNomenclaturas findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposNomenclaturas> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }
