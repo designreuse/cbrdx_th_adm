@@ -26,22 +26,22 @@ public class ListasClasesViviendasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasClasesViviendas> findEnabled() {
-        return repository.findByIndicadorHabilitadoTrue();
+        return repository.findByIndicadorHabilitadoTrueOrderByOrden();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
     ListasClasesViviendas findByCode(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
     List<ListasClasesViviendas> findByCodeStarts(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
     List<ListasClasesViviendas> findByName(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
