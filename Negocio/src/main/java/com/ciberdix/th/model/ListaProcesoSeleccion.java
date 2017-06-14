@@ -7,6 +7,7 @@ public class ListaProcesoSeleccion {
 
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
+    private Integer idResponsable;
     private String codigoEstadoDiligenciado;
     private String interfaz;
     private String interfazInterna;
@@ -29,6 +30,14 @@ public class ListaProcesoSeleccion {
 
     public void setIdProcesoPaso(Integer idProcesoPaso) {
         this.idProcesoPaso = idProcesoPaso;
+    }
+
+    public Integer getIdResponsable() {
+        return idResponsable;
+    }
+
+    public void setIdResponsable(Integer idResponsable) {
+        this.idResponsable = idResponsable;
     }
 
     public String getCodigoEstadoDiligenciado() {
