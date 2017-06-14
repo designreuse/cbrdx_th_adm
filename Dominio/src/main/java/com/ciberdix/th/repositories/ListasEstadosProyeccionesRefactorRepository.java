@@ -9,11 +9,11 @@ import java.util.List;
  * Created by robertochajin on 18/04/17.
  */
 public interface ListasEstadosProyeccionesRefactorRepository extends CrudRepository<ListasEstadosProyecciones, Integer> {
-    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrue();
+    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasEstadosProyecciones findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasEstadosProyecciones findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasEstadosProyecciones> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

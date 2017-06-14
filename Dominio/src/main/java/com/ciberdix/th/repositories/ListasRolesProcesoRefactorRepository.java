@@ -9,11 +9,11 @@ import java.util.List;
  * Created by robertochajin on 9/04/17.
  */
 public interface ListasRolesProcesoRefactorRepository extends CrudRepository<ListasRolesProceso, Integer> {
-    List<ListasRolesProceso> findByIndicadorHabilitadoTrue();
+    List<ListasRolesProceso> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasRolesProceso findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasRolesProceso findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasRolesProceso> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasRolesProceso> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasRolesProceso> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasRolesProceso> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

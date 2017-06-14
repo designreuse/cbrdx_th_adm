@@ -9,11 +9,11 @@ import java.util.List;
  * Created by robertochajin on 5/04/17.
  */
 public interface ListasEstratosRefactorRepository extends CrudRepository<ListasEstratos, Integer>{
-    List<ListasEstratos> findByIndicadorHabilitadoTrue();
+    List<ListasEstratos> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasEstratos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasEstratos findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasEstratos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasEstratos> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasEstratos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasEstratos> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

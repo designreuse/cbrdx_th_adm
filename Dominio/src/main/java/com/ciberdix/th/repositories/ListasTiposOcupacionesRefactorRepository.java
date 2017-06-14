@@ -14,11 +14,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposOcupacionesRefactorRepository extends CrudRepository<ListasTiposOcupaciones, Integer>{
-    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrue();
+    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposOcupaciones findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposOcupaciones findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposOcupaciones> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

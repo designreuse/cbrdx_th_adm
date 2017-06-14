@@ -9,11 +9,11 @@ import java.util.List;
  * Created by Danny on 18/05/2017.
  */
 public interface ListasTicsRefactorRepository extends CrudRepository<ListasTiCs, Integer> {
-    List<ListasTiCs> findByIndicadorHabilitadoTrue();
+    List<ListasTiCs> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiCs findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiCs findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiCs> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiCs> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiCs> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiCs> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

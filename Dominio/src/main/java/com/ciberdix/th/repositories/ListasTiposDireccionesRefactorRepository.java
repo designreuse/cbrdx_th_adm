@@ -9,11 +9,11 @@ import java.util.List;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposDireccionesRefactorRepository extends CrudRepository<ListasTiposDirecciones, Integer> {
-    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrue();
+    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposDirecciones findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposDirecciones findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposDirecciones> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }
