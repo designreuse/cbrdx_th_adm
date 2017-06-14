@@ -36,6 +36,11 @@ public class TercerosCentralesRiesgosRefactorController {
         return tercerosCentralesRiesgosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<TercerosCentralesRiesgos> findByIdTercero(@PathVariable Long idTercero) {
+        return  tercerosCentralesRiesgosRefactorRepository.findAllByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos o) {
         return tercerosCentralesRiesgosRefactorRepository.save(

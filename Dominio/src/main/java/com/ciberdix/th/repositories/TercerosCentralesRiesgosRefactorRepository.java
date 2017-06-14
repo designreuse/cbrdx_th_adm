@@ -12,4 +12,6 @@ public interface TercerosCentralesRiesgosRefactorRepository extends CrudReposito
 
     List<TercerosCentralesRiesgos> findByIndicadorHabilitadoIsTrue();
 
+    List<TercerosCentralesRiesgos> findAllByIdTercero(Long idTercero);
+
 }
