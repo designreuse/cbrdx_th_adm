@@ -15,7 +15,7 @@ public class TercerosCentralesRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorReportado;
-    private Boolean indicadorAprovado;
+    private Boolean indicadorAprobado;
 
     public Integer getIdTerceroCentralRiesgo() {
         return idTerceroCentralRiesgo;
@@ -81,11 +81,11 @@ public class TercerosCentralesRiesgos {
         this.indicadorReportado = indicadorReportado;
     }
 
-    public Boolean getIndicadorAprovado() {
-        return indicadorAprovado;
+    public Boolean getindicadorAprobado() {
+        return indicadorAprobado;
     }
 
-    public void setIndicadorAprovado(Boolean indicadorAprovado) {
-        this.indicadorAprovado = indicadorAprovado;
+    public void setindicadorAprobado(Boolean indicadorAprobado) {
+        this.indicadorAprobado = indicadorAprobado;
     }
 }
