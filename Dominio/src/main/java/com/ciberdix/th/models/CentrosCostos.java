@@ -27,13 +27,12 @@ public class CentrosCostos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public CentrosCostos(Integer idCentroCostos, String centroCostos, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigoCentroCostos) {
+    public CentrosCostos(Integer idCentroCostos, String centroCostos, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idCentroCostos = idCentroCostos;
         this.centroCostos = centroCostos;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.codigoCentroCostos = codigoCentroCostos;
     }
 
     @Id

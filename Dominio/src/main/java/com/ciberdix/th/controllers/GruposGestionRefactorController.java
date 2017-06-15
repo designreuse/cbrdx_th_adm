@@ -40,6 +40,6 @@ public class GruposGestionRefactorController {
     GruposGestion updateList(@RequestBody GruposGestion c) {
         return gruposGestionRepository.save(new GruposGestion(c.getIdGrupoGestion(), c.getGrupoGestion(), c.getFunciones(),
                 c.getResponsabilidades(), c.getIndicadorHabilitado(), c.getAuditoriaUsuario(), c.getFechaInicio(),
-                c.getFechaFin(), c.getCodigoGrupoGestion()));
+                c.getFechaFin()));
     }
 }

@@ -27,10 +27,9 @@ public class EstructuraAreas {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public EstructuraAreas(Integer idEstructuraArea, String estructuraArea, String codigoArea, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public EstructuraAreas(Integer idEstructuraArea, String estructuraArea, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idEstructuraArea = idEstructuraArea;
         this.estructuraArea = estructuraArea;
-        this.codigoArea = codigoArea;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());

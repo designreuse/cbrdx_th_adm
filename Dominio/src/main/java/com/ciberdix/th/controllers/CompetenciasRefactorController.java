@@ -40,7 +40,7 @@ public class CompetenciasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Competencias obj) {
         CompetenciasRefactorRepository.save(
-                new Competencias(obj.getIdCompetencia(),obj.getIdGrupoCompetencia(), obj.getCompetencia(),
+                new Competencias(obj.getIdCompetencia(),obj.getIdGrupoCompetencia(),
                         obj.getDescripcion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
         );
     }

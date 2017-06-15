@@ -30,10 +30,9 @@ public class Widgets {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public Widgets(Integer idWidget, String widget, String codigoWidget, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Widgets(Integer idWidget, String widget, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idWidget = idWidget;
         this.widget = widget;
-        this.codigoWidget = codigoWidget;
         this.descripcion = descripcion;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
