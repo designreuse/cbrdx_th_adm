@@ -9,10 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -104,8 +101,9 @@ public class TercerosCentralesRiesgosRefactorController {
         tercerosCentralesRiesgos.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
         //restTemplate.postForObject(globales.getUrl() + "/api/adjuntos", requestEntity, Adjuntos.class);
         String test = businessURL + "/api/adjuntos";
-        restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
-        //tercerosCentralesRiesgos.setIdTercero();
+        ResponseEntity<Adjuntos> responseEntity = restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
+        Integer idAdjunto = responseEntity.getBody().getIdAdjunto();
+        tercerosCentralesRiesgos.setIdAdjunto();
         return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
     }
 
