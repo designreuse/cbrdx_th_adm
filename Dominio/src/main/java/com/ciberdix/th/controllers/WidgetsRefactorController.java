@@ -50,7 +50,7 @@ public class WidgetsRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     Widgets update(@RequestBody Widgets widgets) {
         return widgetsRefactorRepository.save(
-                new Widgets(widgets.getIdWidget(),widgets.getWidget(), widgets.getCodigoWidget(),
+                new Widgets(widgets.getIdWidget(),widgets.getWidget(),
                         widgets.getDescripcion(), widgets.getIndicadorHabilitado(), widgets.getAuditoriaUsuario())
         );
     }
