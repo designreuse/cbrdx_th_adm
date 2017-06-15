@@ -52,11 +52,16 @@ public class AdjuntosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file/{id}")
-    ResponseEntity<Resource> findFile(@PathVariable Integer id) {
+    public ModelAndView findFile(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource file = storageService.loadAsResource(adjuntos.getAdjunto(), "adjuntos");
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + adjuntos.getNombreArchivo() + "\"")
+        return new ModelAndView("redirect:/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/file_down/{filename}/{id}.{ext}")
+    ResponseEntity<Resource> downFile(@PathVariable String id, @PathVariable String ext, @PathVariable String filename) {
+        Resource file = storageService.loadAsResource(id + "." + ext, "adjuntos");
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
                 .body(file);
     }
 
