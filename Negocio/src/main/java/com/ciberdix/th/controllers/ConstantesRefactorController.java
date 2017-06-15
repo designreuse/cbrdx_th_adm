@@ -62,6 +62,15 @@ public class ConstantesRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Constantes obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        Constantes uObj = restTemplate.getForObject(serviceUrl + "/" + obj.getIdConstante(), Constantes.class);
+
+        uObj.setIdConstante(obj.getIdConstante());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setDescripcion(obj.getDescripcion());
+        uObj.setIdTipoDato(obj.getIdTipoDato());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setValor(obj.getValor());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 }

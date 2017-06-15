@@ -66,19 +66,26 @@ public class TercerosCentralesRiesgosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos obj) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForObject(serviceUrl, obj, TercerosCentralesRiesgos.class);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/file")
     TercerosCentralesRiesgos create(@RequestParam(name = "obj") String obj, @RequestParam(name = "file", required = false) MultipartFile file, HttpServletRequest request) throws JSONException, IOException {
+        String test = businessURL + "/api/adjuntos";
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
-
+        JSONObject jsonObject = new JSONObject(obj);
         String name = file.getOriginalFilename();
         String token = request.getHeader(tokenHeader);
-        JSONObject jsonObject = new JSONObject(obj);
         JSONObject jsonAdjuntos = new JSONObject();
         Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
         jsonAdjuntos.put("auditoriaUsuario", idUsuario);
         jsonAdjuntos.put("nombreArchivo", name);
+        TercerosCentralesRiesgos tercerosCentralesRiesgos = new TercerosCentralesRiesgos();
         httpHeaders.set(tokenHeader, token);
         httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(parts, httpHeaders);
@@ -92,19 +99,23 @@ public class TercerosCentralesRiesgosRefactorController {
         }
         parts.add("file", new FileSystemResource(tempFile));
         parts.add("obj", jsonAdjuntos.toString());
-        TercerosCentralesRiesgos tercerosCentralesRiesgos = new TercerosCentralesRiesgos();
-        tercerosCentralesRiesgos.setIdTercero(jsonObject.getLong("idTercero"));
-        tercerosCentralesRiesgos.setIdCentralRiesgo(jsonObject.getInt("idCentralRiesgo"));
-        tercerosCentralesRiesgos.setIndicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
-        tercerosCentralesRiesgos.setAuditoriaUsuario(idUsuario);
-        tercerosCentralesRiesgos.setIndicadorReportado(jsonObject.getBoolean("indicadorReportado"));
-        tercerosCentralesRiesgos.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
-        //restTemplate.postForObject(globales.getUrl() + "/api/adjuntos", requestEntity, Adjuntos.class);
-        String test = businessURL + "/api/adjuntos";
         ResponseEntity<Adjuntos> responseEntity = restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
         Integer idAdjunto = responseEntity.getBody().getIdAdjunto();
-        tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
-        return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
+        if (jsonObject.isNull("idTerceroCentralRiesgo")) {
+            tercerosCentralesRiesgos.setIdTercero(jsonObject.getLong("idTercero"));
+            tercerosCentralesRiesgos.setIdCentralRiesgo(jsonObject.getInt("idCentralRiesgo"));
+            tercerosCentralesRiesgos.setIndicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
+            tercerosCentralesRiesgos.setAuditoriaUsuario(idUsuario);
+            tercerosCentralesRiesgos.setIndicadorReportado(jsonObject.getBoolean("indicadorReportado"));
+            tercerosCentralesRiesgos.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
+            tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
+            return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
+        } else {
+            tercerosCentralesRiesgos = restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
+            tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
+            restTemplate.put(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
+            return restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)

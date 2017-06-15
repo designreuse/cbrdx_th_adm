@@ -45,7 +45,7 @@ public class EstructuraAreasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody EstructuraAreas obj) {
         estructuraAreasRefactorRepository.save(
-                new EstructuraAreas(obj.getIdEstructuraArea(),obj.getEstructuraArea(),
+                new EstructuraAreas(obj.getIdEstructuraArea(),obj.getEstructuraArea(), obj.getCodigoArea(),
                         obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
         );
     }

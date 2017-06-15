@@ -21,6 +21,11 @@ public class GruposCompetenciasRefactorController {
         return (List<GruposCompetencias>) GruposCompetenciasRefactorRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
+    GruposCompetencias findOne(@PathVariable Integer id) {
+        return GruposCompetenciasRefactorRepository.findOne(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<GruposCompetencias> findEnabled() {
         return (List<GruposCompetencias>) GruposCompetenciasRefactorRepository.findByIndicadorHabilitadoTrue();
@@ -36,7 +41,7 @@ public class GruposCompetenciasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody GruposCompetencias obj) {
         GruposCompetenciasRefactorRepository.save(
-                new GruposCompetencias(obj.getIdGrupoCompetencia(), obj.getDescripcion(),
+                new GruposCompetencias(obj.getIdGrupoCompetencia(),obj.getGrupoCompetencia(), obj.getDescripcion(),
                         obj.getPonderacion(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
         );
     }

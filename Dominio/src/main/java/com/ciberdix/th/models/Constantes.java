@@ -31,8 +31,9 @@ public class Constantes {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public Constantes(Integer idConstante, Integer idTipoDato, String valor, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Constantes(Integer idConstante, String constante, Integer idTipoDato, String valor, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idConstante = idConstante;
+        this.constante = constante;
         this.idTipoDato = idTipoDato;
         this.valor = valor;
         this.descripcion = descripcion;

@@ -42,14 +42,21 @@ public class RiesgosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    Riesgos create(@RequestBody Riesgos obj){
+    Riesgos create(@RequestBody Riesgos obj) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, Riesgos.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Riesgos obj){
+    void update(@RequestBody Riesgos obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        Riesgos uObj = restTemplate.getForObject(serviceUrl + "/" + obj.getIdRiesgo(), Riesgos.class);
+
+        uObj.setIdRiesgo(obj.getIdRiesgo());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setRiesgo(obj.getRiesgo());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 }

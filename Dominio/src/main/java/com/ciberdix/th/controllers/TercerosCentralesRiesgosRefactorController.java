@@ -28,7 +28,7 @@ public class TercerosCentralesRiesgosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<TercerosCentralesRiesgos> findEnabled() {
-        return  tercerosCentralesRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return tercerosCentralesRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -38,23 +38,31 @@ public class TercerosCentralesRiesgosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
     List<TercerosCentralesRiesgos> findByIdTercero(@PathVariable Long idTercero) {
-        return  tercerosCentralesRiesgosRefactorRepository.findAllByIdTercero(idTercero);
+        return tercerosCentralesRiesgosRefactorRepository.findAllByIdTercero(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos o) {
-        return tercerosCentralesRiesgosRefactorRepository.save(
-                new TercerosCentralesRiesgos(
-                        o.getIdTercero(),o.getIdCentralRiesgo(),o.getIdAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getIndicadorAprobado()
-                )
-        );
+        if (o.getIdTerceroCentralRiesgo() == null) {
+            return tercerosCentralesRiesgosRefactorRepository.save(
+                    new TercerosCentralesRiesgos(
+                            o.getIdTercero(), o.getIdCentralRiesgo(), o.getIdAdjunto(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorReportado(), o.getIndicadorAprobado()
+                    )
+            );
+        } else {
+            return tercerosCentralesRiesgosRefactorRepository.save(
+                    new TercerosCentralesRiesgos(
+                            o.getIdTerceroCentralRiesgo(), o.getIdTercero(), o.getIdCentralRiesgo(), o.getIdAdjunto(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorReportado(), o.getIndicadorAprobado()
+                    )
+            );
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosCentralesRiesgos o) {
         tercerosCentralesRiesgosRefactorRepository.save(
                 new TercerosCentralesRiesgos(
-                        o.getIdTerceroCentralRiesgo(),o.getIdTercero(),o.getIdCentralRiesgo(),o.getIdAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getIndicadorAprobado()
+                        o.getIdTerceroCentralRiesgo(), o.getIdTercero(), o.getIdCentralRiesgo(), o.getIdAdjunto(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorReportado(), o.getIndicadorAprobado()
                 )
         );
     }

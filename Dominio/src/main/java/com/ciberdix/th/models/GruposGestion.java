@@ -36,7 +36,7 @@ public class GruposGestion {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public GruposGestion(Integer idGrupoGestion, String grupoGestion, String funciones, String responsabilidades, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin) {
+    public GruposGestion(Integer idGrupoGestion, String grupoGestion, String funciones, String responsabilidades, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaInicio, Date fechaFin, String codigoGrupoGestion) {
         this.idGrupoGestion = idGrupoGestion;
         this.grupoGestion = grupoGestion;
         this.funciones = funciones;
@@ -45,6 +45,7 @@ public class GruposGestion {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
         this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
+        this.codigoGrupoGestion = codigoGrupoGestion;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 

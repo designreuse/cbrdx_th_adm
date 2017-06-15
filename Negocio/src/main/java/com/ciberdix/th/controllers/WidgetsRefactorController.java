@@ -57,10 +57,18 @@ public class WidgetsRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Widgets widgets) {
+    void update(@RequestBody Widgets obj) {
         String serviceUrl = baseUrl + "/api/widgets/";
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, widgets);
+        Widgets uObj = restTemplate.getForObject(serviceUrl + obj.getIdWidget(), Widgets.class);
+
+        uObj.setIdWidget(obj.getIdWidget());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setDescripcion(obj.getDescripcion());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setWidget(obj.getWidget());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 
 }
