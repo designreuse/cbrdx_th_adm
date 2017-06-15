@@ -1,5 +1,6 @@
 package com.ciberdix.th.storage;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -53,9 +54,12 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
             UUID fileID = UUID.randomUUID();
-            String tipo = file.getContentType().substring(6);
+            String tipo = FilenameUtils.getExtension(file.getOriginalFilename());
             if (route != null) {
                 Path location = Paths.get(route);
+                if (!Files.isReadable(location)) {
+                    Files.createDirectory(location);
+                }
                 Files.copy(file.getInputStream(), location.resolve(String.valueOf(fileID) + "." + tipo));
             } else {
                 Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(fileID) + "." + tipo));
