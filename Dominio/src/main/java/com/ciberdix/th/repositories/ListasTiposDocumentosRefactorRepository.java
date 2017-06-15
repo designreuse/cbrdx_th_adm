@@ -9,11 +9,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposDocumentosRefactorRepository extends CrudRepository<ListasTiposDocumentos, Integer>{
-    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrue();
+    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposDocumentos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposDocumentos findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposDocumentos> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

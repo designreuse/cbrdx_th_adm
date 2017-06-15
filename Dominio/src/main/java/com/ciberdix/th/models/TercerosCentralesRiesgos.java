@@ -17,12 +17,12 @@ public class TercerosCentralesRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorReportado;
-    private Boolean indicadorAprovado;
+    private Boolean indicadorAprobado;
 
     public TercerosCentralesRiesgos() {
     }
 
-    public TercerosCentralesRiesgos(Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprovado) {
+    public TercerosCentralesRiesgos(Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
         this.idTercero = idTercero;
         this.idCentralRiesgo = idCentralRiesgo;
         this.adjunto = adjunto;
@@ -30,10 +30,10 @@ public class TercerosCentralesRiesgos {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorReportado = indicadorReportado;
-        this.indicadorAprovado = indicadorAprovado;
+        this.indicadorAprobado = indicadorAprobado;
     }
 
-    public TercerosCentralesRiesgos(Integer idTerceroCentralRiesgo, Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprovado) {
+    public TercerosCentralesRiesgos(Integer idTerceroCentralRiesgo, Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
         this.idTerceroCentralRiesgo = idTerceroCentralRiesgo;
         this.idTercero = idTercero;
         this.idCentralRiesgo = idCentralRiesgo;
@@ -42,7 +42,7 @@ public class TercerosCentralesRiesgos {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorReportado = indicadorReportado;
-        this.indicadorAprovado = indicadorAprovado;
+        this.indicadorAprobado = indicadorAprobado;
     }
 
     @Id
@@ -127,13 +127,13 @@ public class TercerosCentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "IndicadorAprovado", nullable = true)
-    public Boolean getIndicadorAprovado() {
-        return indicadorAprovado;
+    @Column(name = "indicadorAprobado", nullable = true)
+    public Boolean getindicadorAprobado() {
+        return indicadorAprobado;
     }
 
-    public void setIndicadorAprovado(Boolean indicadorAprovado) {
-        this.indicadorAprovado = indicadorAprovado;
+    public void setindicadorAprobado(Boolean indicadorAprobado) {
+        this.indicadorAprobado = indicadorAprobado;
     }
 
     @Override
@@ -157,7 +157,7 @@ public class TercerosCentralesRiesgos {
             return false;
         if (indicadorReportado != null ? !indicadorReportado.equals(that.indicadorReportado) : that.indicadorReportado != null)
             return false;
-        if (indicadorAprovado != null ? !indicadorAprovado.equals(that.indicadorAprovado) : that.indicadorAprovado != null)
+        if (indicadorAprobado != null ? !indicadorAprobado.equals(that.indicadorAprobado) : that.indicadorAprobado != null)
             return false;
 
         return true;
@@ -173,7 +173,7 @@ public class TercerosCentralesRiesgos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorReportado != null ? indicadorReportado.hashCode() : 0);
-        result = 31 * result + (indicadorAprovado != null ? indicadorAprovado.hashCode() : 0);
+        result = 31 * result + (indicadorAprobado != null ? indicadorAprobado.hashCode() : 0);
         return result;
     }
 }

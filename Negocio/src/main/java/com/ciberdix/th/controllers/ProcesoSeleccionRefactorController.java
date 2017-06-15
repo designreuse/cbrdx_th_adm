@@ -57,38 +57,41 @@ public class ProcesoSeleccionRefactorController {
         List<VProcesosPasos> procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
         List<TercerosPublicaciones> tercerosPublicaciones = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/publicacion/" + publicaciones.getIdPublicacion(), TercerosPublicaciones[].class));
 
+
         for(TercerosPublicaciones tp: tercerosPublicaciones){
             Terceros terceros = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + tp.getIdTercero(), Terceros.class);
             String nombreCompleto = terceros.getPrimerNombre() + " " + terceros.getSegundoNombre() + " " + terceros.getPrimerApellido() + " " + terceros.getSegundoApellido();
             List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + tp.getIdTercerosPublicaciones(), VProcesoSeleccion[].class));
             List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
+            ArrayList<Integer> ps = new ArrayList<>();
+
+            for(int i=0; i<vProcesoSeleccion.size(); i++){
+                ps.add(vProcesoSeleccion.get(i).getIdProcesoPaso());
+            }
 
             for(VProcesosPasos vpp: procesosPasos){
+
                 ListaProcesoSeleccion LPS = new ListaProcesoSeleccion();
+                LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
+                LPS.setInterfaz(vpp.getInterfaz());
+                LPS.setInterfazInterna(vpp.getInterfazInterna());
+                LPS.setOrden(vpp.getOrden());
+
                 if(vProcesoSeleccion.size()>0){
-                    for(VProcesoSeleccion vps: vProcesoSeleccion){
-                        if(vpp.getIdProcesoPaso() == vps.getIdProcesoPaso()){
-                            LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
-                            LPS.setIdProcesoSeleccion(vps.getIdProcesoSeleccion());
-                            String codigo = u.findListItemById("ListasEstadosDiligenciados",vps.getIdEstadoDiligenciado()).getCodigo();
-                            LPS.setCodigoEstadoDiligenciado(codigo);
-                            LPS.setInterfaz(vpp.getInterfaz());
-                            LPS.setInterfazInterna(vpp.getInterfazInterna());
-                            LPS.setOrden(vpp.getOrden());
-                            LPSL.add(LPS);
-                        }else{
-                            LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
-                            LPS.setInterfaz(vpp.getInterfaz());
-                            LPS.setInterfazInterna(vpp.getInterfazInterna());
-                            LPS.setOrden(vpp.getOrden());
-                            LPSL.add(LPS);
+                    if(ps.contains(vpp.getIdProcesoPaso())){
+                        for(VProcesoSeleccion vps: vProcesoSeleccion){
+                            if(vpp.getIdProcesoPaso() == vps.getIdProcesoPaso()){
+                                LPS.setIdProcesoSeleccion(vps.getIdProcesoSeleccion());
+                                LPS.setIdResponsable(vps.getIdResponsable());
+                                String codigo = u.findListItemById("ListasEstadosDiligenciados",vps.getIdEstadoDiligenciado()).getCodigo();
+                                LPS.setCodigoEstadoDiligenciado(codigo);
+                                LPSL.add(LPS);
+                            }
                         }
+                    }else{
+                        LPSL.add(LPS);
                     }
                 }else{
-                    LPS.setIdProcesoPaso(vpp.getIdProcesoPaso());
-                    LPS.setInterfaz(vpp.getInterfaz());
-                    LPS.setInterfazInterna(vpp.getInterfazInterna());
-                    LPS.setOrden(vpp.getOrden());
                     LPSL.add(LPS);
                 }
             }

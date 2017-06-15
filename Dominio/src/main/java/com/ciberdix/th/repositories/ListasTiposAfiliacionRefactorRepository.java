@@ -9,11 +9,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasTiposAfiliacionRefactorRepository extends CrudRepository<ListasTiposAfiliacion, Integer>{
-    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrue();
+    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposAfiliacion findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposAfiliacion findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposAfiliacion> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

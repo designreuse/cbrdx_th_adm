@@ -9,11 +9,11 @@ import java.util.List;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasNivelesEstudiosRefactorRepository extends CrudRepository<ListasNivelesEstudios, Integer> {
-    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrue();
+    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasNivelesEstudios findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasNivelesEstudios findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasNivelesEstudios> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

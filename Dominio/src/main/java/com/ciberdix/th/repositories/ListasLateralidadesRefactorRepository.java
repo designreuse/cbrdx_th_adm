@@ -9,11 +9,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasLateralidadesRefactorRepository extends CrudRepository<ListasLateralidades, Integer> {
-    List<ListasLateralidades> findByIndicadorHabilitadoTrue();
+    List<ListasLateralidades> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasLateralidades findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasLateralidades findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasLateralidades> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasLateralidades> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasLateralidades> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasLateralidades> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

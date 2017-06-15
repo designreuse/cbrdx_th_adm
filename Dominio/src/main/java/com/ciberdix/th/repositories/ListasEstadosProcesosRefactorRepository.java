@@ -10,12 +10,12 @@ import java.util.List;
  */
 public interface ListasEstadosProcesosRefactorRepository extends CrudRepository<ListasEstadosProcesos, Integer> {
 
-    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrue();
+    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasEstadosProcesos findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasEstadosProcesos findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasEstadosProcesos> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 
 }

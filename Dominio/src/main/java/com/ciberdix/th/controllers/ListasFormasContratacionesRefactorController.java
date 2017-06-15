@@ -28,22 +28,22 @@ public class ListasFormasContratacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<ListasFormasContrataciones> findEnabled() {
-        return repository.findByIndicadorHabilitadoTrue();
+        return repository.findByIndicadorHabilitadoTrueOrderByOrden();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/code/{queryString}/")
     ListasFormasContrataciones findByCode(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndCodigo(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/codeStarts/{queryString}/")
     List<ListasFormasContrataciones> findByCodeStarts(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWith(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/name/{queryString}/")
     List<ListasFormasContrataciones> findByName(@PathVariable String queryString) {
-        return repository.findByIndicadorHabilitadoTrueAndNombreContains(queryString);
+        return repository.findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(queryString);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
