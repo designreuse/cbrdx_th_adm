@@ -61,7 +61,7 @@ public class AdjuntosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
         Resource file = storageService.loadAsResource(adjuntos.getAdjunto(), "adjuntos");
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + adjuntos.getNombreArchivo() + "\"").body(file);
+        return ResponseEntity.ok().body(file);
     }
 
     @RequestMapping(method = RequestMethod.POST)
