@@ -95,7 +95,7 @@ public class TercerosCentralesRiesgosRefactorController {
         TercerosCentralesRiesgos tercerosCentralesRiesgos = new TercerosCentralesRiesgos();
         tercerosCentralesRiesgos.setIdTercero(jsonObject.getLong("idTercero"));
         tercerosCentralesRiesgos.setIdCentralRiesgo(jsonObject.getInt("idCentralRiesgo"));
-        tercerosCentralesRiesgos.setindicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
+        tercerosCentralesRiesgos.setIndicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
         tercerosCentralesRiesgos.setAuditoriaUsuario(idUsuario);
         tercerosCentralesRiesgos.setIndicadorReportado(jsonObject.getBoolean("indicadorReportado"));
         tercerosCentralesRiesgos.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
@@ -103,7 +103,7 @@ public class TercerosCentralesRiesgosRefactorController {
         String test = businessURL + "/api/adjuntos";
         ResponseEntity<Adjuntos> responseEntity = restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
         Integer idAdjunto = responseEntity.getBody().getIdAdjunto();
-        tercerosCentralesRiesgos.setIdAdjunto();
+        tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
         return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
     }
 

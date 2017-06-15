@@ -45,7 +45,7 @@ public class TercerosCentralesRiesgosRefactorController {
     TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos o) {
         return tercerosCentralesRiesgosRefactorRepository.save(
                 new TercerosCentralesRiesgos(
-                        o.getIdTercero(),o.getIdCentralRiesgo(),o.getAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getindicadorAprobado()
+                        o.getIdTercero(),o.getIdCentralRiesgo(),o.getIdAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getIndicadorAprobado()
                 )
         );
     }
@@ -54,7 +54,7 @@ public class TercerosCentralesRiesgosRefactorController {
     void update(@RequestBody TercerosCentralesRiesgos o) {
         tercerosCentralesRiesgosRefactorRepository.save(
                 new TercerosCentralesRiesgos(
-                        o.getIdTerceroCentralRiesgo(),o.getIdTercero(),o.getIdCentralRiesgo(),o.getAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getindicadorAprobado()
+                        o.getIdTerceroCentralRiesgo(),o.getIdTercero(),o.getIdCentralRiesgo(),o.getIdAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReportado(),o.getIndicadorAprobado()
                 )
         );
     }
