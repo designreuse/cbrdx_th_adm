@@ -30,6 +30,7 @@ public class TercerosCentralesRiesgos {
         this.auditoriaUsuario = auditoriaUsuario;
         this.indicadorReportado = indicadorReportado;
         this.indicadorAprobado = indicadorAprobado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     public TercerosCentralesRiesgos(Integer idTerceroCentralRiesgo, Long idTercero, Integer idCentralRiesgo, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
@@ -41,6 +42,7 @@ public class TercerosCentralesRiesgos {
         this.auditoriaUsuario = auditoriaUsuario;
         this.indicadorReportado = indicadorReportado;
         this.indicadorAprobado = indicadorAprobado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
@@ -155,10 +157,7 @@ public class TercerosCentralesRiesgos {
             return false;
         if (indicadorReportado != null ? !indicadorReportado.equals(that.indicadorReportado) : that.indicadorReportado != null)
             return false;
-        if (indicadorAprobado != null ? !indicadorAprobado.equals(that.indicadorAprobado) : that.indicadorAprobado != null)
-            return false;
-
-        return true;
+        return indicadorAprobado != null ? indicadorAprobado.equals(that.indicadorAprobado) : that.indicadorAprobado == null;
     }
 
     @Override
