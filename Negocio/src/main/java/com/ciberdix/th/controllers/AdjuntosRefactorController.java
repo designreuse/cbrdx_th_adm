@@ -2,7 +2,6 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Adjuntos;
-import com.ciberdix.th.storage.StorageException;
 import com.ciberdix.th.storage.StorageService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,8 +22,8 @@ import java.util.List;
 @RequestMapping("/api/adjuntos")
 public class AdjuntosRefactorController {
 
-    Globales globales = new Globales();
     private final StorageService storageService;
+    Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/adjuntos";
 
     @Autowired
@@ -63,16 +60,6 @@ public class AdjuntosRefactorController {
             return null;
         }
     }
-
-
-//    @RequestMapping(method = RequestMethod.POST)
-//    ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
-//        RestTemplate restTemplate = new RestTemplate();
-//        String avatarGuardado = storageService.store(file, "procesoSeleccion");
-//        obj.setAdjunto(avatarGuardado);
-//        return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
-//    }
-
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Adjuntos obj) {

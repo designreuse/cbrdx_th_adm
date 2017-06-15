@@ -35,12 +35,9 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-
             UUID avatarId = UUID.randomUUID();
             String tipo = file.getContentType().substring(6);
-
             Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(avatarId) + "." + tipo));
-
             return String.valueOf(avatarId) + "." + tipo;
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
