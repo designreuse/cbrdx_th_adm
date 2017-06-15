@@ -29,10 +29,8 @@ public class Riesgos {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public Riesgos(Integer idRiesgo, Integer idSubTipoRiesgo, Integer idTipoRiesgo, String riesgo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Riesgos(Integer idRiesgo, String riesgo, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idRiesgo = idRiesgo;
-        this.idSubTipoRiesgo = idSubTipoRiesgo;
-        this.idTipoRiesgo = idTipoRiesgo;
         this.riesgo = riesgo;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;

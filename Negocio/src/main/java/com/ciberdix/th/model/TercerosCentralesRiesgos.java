@@ -10,7 +10,7 @@ public class TercerosCentralesRiesgos {
     private Integer idTerceroCentralRiesgo;
     private Long idTercero;
     private Integer idCentralRiesgo;
-    private String adjunto;
+    private Integer idAdjunto;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -41,12 +41,12 @@ public class TercerosCentralesRiesgos {
         this.idCentralRiesgo = idCentralRiesgo;
     }
 
-    public String getAdjunto() {
-        return adjunto;
+    public Integer getIdAdjunto() {
+        return idAdjunto;
     }
 
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
     }
 
     public Boolean getIndicadorHabilitado() {
@@ -81,11 +81,11 @@ public class TercerosCentralesRiesgos {
         this.indicadorReportado = indicadorReportado;
     }
 
-    public Boolean getindicadorAprobado() {
+    public Boolean getIndicadorAprobado() {
         return indicadorAprobado;
     }
 
-    public void setindicadorAprobado(Boolean indicadorAprobado) {
+    public void setIndicadorAprobado(Boolean indicadorAprobado) {
         this.indicadorAprobado = indicadorAprobado;
     }
 }

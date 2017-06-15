@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 13/06/2017.
+ * Created by Danny on 15/06/2017.
  */
 @Entity
 @Table(name = "TercerosCentralesRiesgos", schema = "dbo", catalog = "CREZCAMOS")
@@ -12,7 +12,7 @@ public class TercerosCentralesRiesgos {
     private Integer idTerceroCentralRiesgo;
     private Long idTercero;
     private Integer idCentralRiesgo;
-    private String adjunto;
+    private Integer idAdjunto;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -22,27 +22,27 @@ public class TercerosCentralesRiesgos {
     public TercerosCentralesRiesgos() {
     }
 
-    public TercerosCentralesRiesgos(Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
+    public TercerosCentralesRiesgos(Long idTercero, Integer idCentralRiesgo, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
         this.idTercero = idTercero;
         this.idCentralRiesgo = idCentralRiesgo;
-        this.adjunto = adjunto;
+        this.idAdjunto = idAdjunto;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaUsuario = auditoriaUsuario;
         this.indicadorReportado = indicadorReportado;
         this.indicadorAprobado = indicadorAprobado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public TercerosCentralesRiesgos(Integer idTerceroCentralRiesgo, Long idTercero, Integer idCentralRiesgo, String adjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
+    public TercerosCentralesRiesgos(Integer idTerceroCentralRiesgo, Long idTercero, Integer idCentralRiesgo, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReportado, Boolean indicadorAprobado) {
         this.idTerceroCentralRiesgo = idTerceroCentralRiesgo;
         this.idTercero = idTercero;
         this.idCentralRiesgo = idCentralRiesgo;
-        this.adjunto = adjunto;
+        this.idAdjunto = idAdjunto;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.auditoriaUsuario = auditoriaUsuario;
         this.indicadorReportado = indicadorReportado;
         this.indicadorAprobado = indicadorAprobado;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
     @Id
@@ -77,13 +77,13 @@ public class TercerosCentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "Adjunto", nullable = true, length = 100)
-    public String getAdjunto() {
-        return adjunto;
+    @Column(name = "IdAdjunto", nullable = true)
+    public Integer getIdAdjunto() {
+        return idAdjunto;
     }
 
-    public void setAdjunto(String adjunto) {
-        this.adjunto = adjunto;
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
     }
 
     @Basic
@@ -97,7 +97,7 @@ public class TercerosCentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaUsuario", nullable = true)
+    @Column(name = "AuditoriaUsuario", nullable = false)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
     }
@@ -107,7 +107,7 @@ public class TercerosCentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "AuditoriaFecha", nullable = true)
+    @Column(name = "AuditoriaFecha", nullable = false)
     public Timestamp getAuditoriaFecha() {
         return auditoriaFecha;
     }
@@ -127,12 +127,12 @@ public class TercerosCentralesRiesgos {
     }
 
     @Basic
-    @Column(name = "indicadorAprobado", nullable = true)
-    public Boolean getindicadorAprobado() {
+    @Column(name = "IndicadorAprobado", nullable = true)
+    public Boolean getIndicadorAprobado() {
         return indicadorAprobado;
     }
 
-    public void setindicadorAprobado(Boolean indicadorAprobado) {
+    public void setIndicadorAprobado(Boolean indicadorAprobado) {
         this.indicadorAprobado = indicadorAprobado;
     }
 
@@ -148,7 +148,7 @@ public class TercerosCentralesRiesgos {
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (idCentralRiesgo != null ? !idCentralRiesgo.equals(that.idCentralRiesgo) : that.idCentralRiesgo != null)
             return false;
-        if (adjunto != null ? !adjunto.equals(that.adjunto) : that.adjunto != null) return false;
+        if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -157,10 +157,7 @@ public class TercerosCentralesRiesgos {
             return false;
         if (indicadorReportado != null ? !indicadorReportado.equals(that.indicadorReportado) : that.indicadorReportado != null)
             return false;
-        if (indicadorAprobado != null ? !indicadorAprobado.equals(that.indicadorAprobado) : that.indicadorAprobado != null)
-            return false;
-
-        return true;
+        return indicadorAprobado != null ? indicadorAprobado.equals(that.indicadorAprobado) : that.indicadorAprobado == null;
     }
 
     @Override
@@ -168,7 +165,7 @@ public class TercerosCentralesRiesgos {
         int result = idTerceroCentralRiesgo != null ? idTerceroCentralRiesgo.hashCode() : 0;
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idCentralRiesgo != null ? idCentralRiesgo.hashCode() : 0);
-        result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
+        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

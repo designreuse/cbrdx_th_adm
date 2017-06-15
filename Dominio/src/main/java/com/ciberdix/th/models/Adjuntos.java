@@ -1,23 +1,40 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Danny on 14/06/2017.
  */
 @Entity
+@Table(name = "Adjuntos", schema = "dbo", catalog = "CREZCAMOS")
 public class Adjuntos {
     private Integer idAdjunto;
-    private Integer idTipoAdjunto;
     private String adjunto;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String nombreArchivo;
+
+    public Adjuntos() {
+    }
+
+    public Adjuntos(String adjunto, Integer auditoriaUsuario, String nombreArchivo) {
+        this.adjunto = adjunto;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    public Adjuntos(Integer idAdjunto, String adjunto, Integer auditoriaUsuario, String nombreArchivo) {
+        this.idAdjunto = idAdjunto;
+        this.adjunto = adjunto;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.nombreArchivo = nombreArchivo;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdAdjunto", nullable = false)
     public Integer getIdAdjunto() {
         return idAdjunto;
@@ -25,16 +42,6 @@ public class Adjuntos {
 
     public void setIdAdjunto(Integer idAdjunto) {
         this.idAdjunto = idAdjunto;
-    }
-
-    @Basic
-    @Column(name = "IdTipoAdjunto", nullable = true)
-    public Integer getIdTipoAdjunto() {
-        return idTipoAdjunto;
-    }
-
-    public void setIdTipoAdjunto(Integer idTipoAdjunto) {
-        this.idTipoAdjunto = idTipoAdjunto;
     }
 
     @Basic
@@ -67,6 +74,16 @@ public class Adjuntos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "NombreArchivo", nullable = true, length = 100)
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,12 +92,12 @@ public class Adjuntos {
         Adjuntos adjuntos = (Adjuntos) o;
 
         if (idAdjunto != null ? !idAdjunto.equals(adjuntos.idAdjunto) : adjuntos.idAdjunto != null) return false;
-        if (idTipoAdjunto != null ? !idTipoAdjunto.equals(adjuntos.idTipoAdjunto) : adjuntos.idTipoAdjunto != null)
-            return false;
         if (adjunto != null ? !adjunto.equals(adjuntos.adjunto) : adjuntos.adjunto != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(adjuntos.auditoriaUsuario) : adjuntos.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(adjuntos.auditoriaFecha) : adjuntos.auditoriaFecha != null)
+            return false;
+        if (nombreArchivo != null ? !nombreArchivo.equals(adjuntos.nombreArchivo) : adjuntos.nombreArchivo != null)
             return false;
 
         return true;
@@ -89,10 +106,10 @@ public class Adjuntos {
     @Override
     public int hashCode() {
         int result = idAdjunto != null ? idAdjunto.hashCode() : 0;
-        result = 31 * result + (idTipoAdjunto != null ? idTipoAdjunto.hashCode() : 0);
         result = 31 * result + (adjunto != null ? adjunto.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (nombreArchivo != null ? nombreArchivo.hashCode() : 0);
         return result;
     }
 }
