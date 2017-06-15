@@ -1,10 +1,24 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
+import com.ciberdix.th.model.Adjuntos;
 import com.ciberdix.th.model.TercerosCentralesRiesgos;
+import com.ciberdix.th.security.JwtTokenUtil;
+import org.apache.commons.io.FilenameUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +30,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tercerosCentralesRiesgos")
 public class TercerosCentralesRiesgosRefactorController {
+
+    @Value("${business.url}")
+    String businessURL;
+
+    String tokenHeader = "Authorization";
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/tercerosCentralesRiesgos";
 
@@ -47,13 +66,60 @@ public class TercerosCentralesRiesgosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos obj){
+    TercerosCentralesRiesgos create(@RequestBody TercerosCentralesRiesgos obj) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, TercerosCentralesRiesgos.class);
     }
 
+    @RequestMapping(method = RequestMethod.POST, path = "/file")
+    TercerosCentralesRiesgos create(@RequestParam(name = "obj") String obj, @RequestParam(name = "file", required = false) MultipartFile file, HttpServletRequest request) throws JSONException, IOException {
+        String test = businessURL + "/api/adjuntos";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+        JSONObject jsonObject = new JSONObject(obj);
+        String name = file.getOriginalFilename();
+        String token = request.getHeader(tokenHeader);
+        JSONObject jsonAdjuntos = new JSONObject();
+        Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
+        jsonAdjuntos.put("auditoriaUsuario", idUsuario);
+        jsonAdjuntos.put("nombreArchivo", name);
+        TercerosCentralesRiesgos tercerosCentralesRiesgos = new TercerosCentralesRiesgos();
+        httpHeaders.set(tokenHeader, token);
+        httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(parts, httpHeaders);
+        String tipo = "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        File tempFile = null;
+        try {
+            tempFile = File.createTempFile("temp", tipo);
+            file.transferTo(tempFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        parts.add("file", new FileSystemResource(tempFile));
+        parts.add("obj", jsonAdjuntos.toString());
+        ResponseEntity<Adjuntos> responseEntity = restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
+        Integer idAdjunto = responseEntity.getBody().getIdAdjunto();
+        if (jsonObject.isNull("idTerceroCentralRiesgo")) {
+            tercerosCentralesRiesgos.setIdTercero(jsonObject.getLong("idTercero"));
+            tercerosCentralesRiesgos.setIdCentralRiesgo(jsonObject.getInt("idCentralRiesgo"));
+            tercerosCentralesRiesgos.setIndicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
+            tercerosCentralesRiesgos.setAuditoriaUsuario(idUsuario);
+            tercerosCentralesRiesgos.setIndicadorReportado(jsonObject.getBoolean("indicadorReportado"));
+            tercerosCentralesRiesgos.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
+            tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
+            return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
+        } else {
+            tercerosCentralesRiesgos = restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
+            tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
+            restTemplate.put(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
+            return restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody TercerosCentralesRiesgos obj){
+    void update(@RequestBody TercerosCentralesRiesgos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }
