@@ -13,12 +13,12 @@ public class ProcesoSeleccion {
     private Integer idEstadoDiligenciado;
     private Integer idResponsable;
     private Integer idTerceroPublicacion;
-    private Boolean indicadorContProceso;
     private String observacion;
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Boolean indicadorNoAplica;
+    private Integer idDesicionProcesoSeleccion;
+    private String detalleCorreo;
 
     public Integer getIdProcesoSeleccion() {
         return idProcesoSeleccion;
@@ -60,14 +60,6 @@ public class ProcesoSeleccion {
         this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
-    public Boolean getIndicadorContProceso() {
-        return indicadorContProceso;
-    }
-
-    public void setIndicadorContProceso(Boolean indicadorContProceso) {
-        this.indicadorContProceso = indicadorContProceso;
-    }
-
     public String getObservacion() {
         return observacion;
     }
@@ -100,11 +92,19 @@ public class ProcesoSeleccion {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Boolean getIndicadorNoAplica() {
-        return indicadorNoAplica;
+    public Integer getIdDesicionProcesoSeleccion() {
+        return idDesicionProcesoSeleccion;
     }
 
-    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
-        this.indicadorNoAplica = indicadorNoAplica;
+    public void setIdDesicionProcesoSeleccion(Integer idDesicionProcesoSeleccion) {
+        this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
+    }
+
+    public String getDetalleCorreo() {
+        return detalleCorreo;
+    }
+
+    public void setDetalleCorreo(String detalleCorreo) {
+        this.detalleCorreo = detalleCorreo;
     }
 }

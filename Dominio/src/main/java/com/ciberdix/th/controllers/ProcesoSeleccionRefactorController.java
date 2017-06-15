@@ -45,7 +45,8 @@ public class ProcesoSeleccionRefactorController {
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion o) {
         return procesoSeleccionRefactorRepository.save(new ProcesoSeleccion(
                 o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),o.getIdTerceroPublicacion(),
-                o.getIndicadorContProceso(),o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIndicadorNoAplica()
+                o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),o.getIdDesicionProcesoSeleccion(),
+                o.getDetalleCorreo()
         ));
     }
 
@@ -54,8 +55,8 @@ public class ProcesoSeleccionRefactorController {
         procesoSeleccionRefactorRepository.save(
                 new ProcesoSeleccion(
                         o.getIdProcesoSeleccion(),o.getIdProcesoPaso(),o.getIdEstadoDiligenciado(),o.getIdResponsable(),
-                        o.getIdTerceroPublicacion(),o.getIndicadorContProceso(),o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),
-                        o.getIndicadorNoAplica()
+                        o.getIdTerceroPublicacion(),o.getObservacion(),o.getFechaCita(),o.getAuditoriaUsuario(),
+                        o.getIdDesicionProcesoSeleccion(),o.getDetalleCorreo()
                 ));
     }
 
