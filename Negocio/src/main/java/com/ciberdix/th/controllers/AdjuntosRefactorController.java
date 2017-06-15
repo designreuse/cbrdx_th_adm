@@ -28,8 +28,13 @@ import java.util.List;
 public class AdjuntosRefactorController {
 
     private final StorageService storageService;
-    @Value("${business.url}")
-    String businessURL;
+
+    @Value("${front.address}")
+    String frontAddress;
+
+    @Value("${business.port}")
+    String businessPort;
+
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/adjuntos";
 
@@ -55,7 +60,7 @@ public class AdjuntosRefactorController {
     String findFile(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        return businessURL + "/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto();
+        return frontAddress + ":" + businessPort + "/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file_down/{filename}/{id}.{ext}")
