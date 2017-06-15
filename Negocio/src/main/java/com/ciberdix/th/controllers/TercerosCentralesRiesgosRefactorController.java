@@ -101,7 +101,7 @@ public class TercerosCentralesRiesgosRefactorController {
         parts.add("obj", jsonAdjuntos.toString());
         ResponseEntity<Adjuntos> responseEntity = restTemplate.exchange(test, HttpMethod.POST, requestEntity, Adjuntos.class, requestEntity);
         Integer idAdjunto = responseEntity.getBody().getIdAdjunto();
-        if (jsonObject.isNull("idTercerosCentralesRiesgos")) {
+        if (jsonObject.isNull("idTerceroCentralRiesgo")) {
             tercerosCentralesRiesgos.setIdTercero(jsonObject.getLong("idTercero"));
             tercerosCentralesRiesgos.setIdCentralRiesgo(jsonObject.getInt("idCentralRiesgo"));
             tercerosCentralesRiesgos.setIndicadorAprobado(jsonObject.getBoolean("indicadorAprobado"));
@@ -111,10 +111,10 @@ public class TercerosCentralesRiesgosRefactorController {
             tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
             return restTemplate.postForObject(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
         } else {
-            tercerosCentralesRiesgos = restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTercerosCentralesRiesgos"), TercerosCentralesRiesgos.class);
+            tercerosCentralesRiesgos = restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
             tercerosCentralesRiesgos.setIdAdjunto(idAdjunto);
             restTemplate.put(serviceUrl, tercerosCentralesRiesgos, TercerosCentralesRiesgos.class);
-            return restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTercerosCentralesRiesgos"), TercerosCentralesRiesgos.class);
+            return restTemplate.getForObject(serviceUrl + "/" + jsonObject.getInt("idTerceroCentralRiesgo"), TercerosCentralesRiesgos.class);
         }
     }
 
