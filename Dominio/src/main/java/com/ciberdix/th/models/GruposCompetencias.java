@@ -30,8 +30,9 @@ public class GruposCompetencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public GruposCompetencias(Integer idGrupoCompetencia, String descripcion, BigDecimal ponderacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public GruposCompetencias(Integer idGrupoCompetencia, String grupoCompetencia, String descripcion, BigDecimal ponderacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idGrupoCompetencia = idGrupoCompetencia;
+        this.grupoCompetencia = grupoCompetencia;
         this.descripcion = descripcion;
         this.ponderacion = ponderacion;
         this.indicadorHabilitado = indicadorHabilitado;

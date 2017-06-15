@@ -50,7 +50,7 @@ public class RiesgosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Riesgos obj) {
         riesgosRefactorRepository.save(
-                new Riesgos(obj.getIdRiesgo(),
+                new Riesgos(obj.getIdRiesgo(),obj.getIdSubTipoRiesgo(), obj.getIdTipoRiesgo(),
                         obj.getRiesgo(), obj.getIndicadorHabilitado(), obj.getAuditoriaUsuario())
         );
     }

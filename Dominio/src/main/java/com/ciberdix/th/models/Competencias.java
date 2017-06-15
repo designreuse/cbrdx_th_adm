@@ -29,9 +29,10 @@ public class Competencias {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public Competencias(Integer idCompetencia, Integer idGrupoCompetencia, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public Competencias(Integer idCompetencia, Integer idGrupoCompetencia, String competencia, String descripcion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idCompetencia = idCompetencia;
         this.idGrupoCompetencia = idGrupoCompetencia;
+        this.competencia = competencia;
         this.descripcion = descripcion;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;

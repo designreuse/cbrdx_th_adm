@@ -47,6 +47,13 @@ public class EstructuraAreasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody EstructuraAreas obj){
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        EstructuraAreas uObj = restTemplate.getForObject(serviceUrl + "/" + obj.getIdEstructuraArea(), EstructuraAreas.class);
+
+        uObj.setIdEstructuraArea(obj.getIdEstructuraArea());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setEstructuraArea(obj.getEstructuraArea());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 }
