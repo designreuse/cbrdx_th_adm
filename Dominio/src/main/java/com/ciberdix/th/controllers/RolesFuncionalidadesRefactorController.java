@@ -55,7 +55,7 @@ public class RolesFuncionalidadesRefactorController {
                 new RolesFuncionalidades(obj.getIdRol(),obj.getIdFuncionalidad(),
                         obj.getIndicadorHabilitado(),obj.getIndicadorExportar(),
                         obj.getIndicadorImprimir(),obj.getIndicadorInsertar(),
-                        obj.getAuditoriaUsuario()));
+                        obj.getAuditoriaUsuario(),obj.getIndicadorMostrarEnMenu()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -64,7 +64,7 @@ public class RolesFuncionalidadesRefactorController {
                 new RolesFuncionalidades(obj.getIdRolFuncionalidad(),obj.getIdRol(),obj.getIdFuncionalidad(),
                         obj.getIndicadorHabilitado(),obj.getIndicadorExportar(),
                         obj.getIndicadorImprimir(),obj.getIndicadorInsertar(),
-                        obj.getAuditoriaUsuario())
+                        obj.getAuditoriaUsuario(), obj.getIndicadorMostrarEnMenu())
         );
     }
 }
