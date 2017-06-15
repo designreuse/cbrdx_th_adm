@@ -6,12 +6,14 @@ import com.ciberdix.th.storage.StorageService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +28,8 @@ import java.util.List;
 public class AdjuntosRefactorController {
 
     private final StorageService storageService;
+    @Value("${business.url}")
+    String businessURL;
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/adjuntos";
 
@@ -48,20 +52,30 @@ public class AdjuntosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file/{id}")
-    ResponseEntity<Resource> findFile(@PathVariable Integer id) {
+    public ModelAndView findFile(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource file = storageService.loadAsResource(adjuntos.getAdjunto(), "adjuntos");
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + adjuntos.getNombreArchivo() + "\"")
+        return new ModelAndView("redirect:/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/file_down/{filename}/{id}.{ext}")
+    ResponseEntity<Resource> downFile(@PathVariable String id, @PathVariable String ext, @PathVariable String filename) {
+        Resource file = storageService.loadAsResource(id + "." + ext, "adjuntos");
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
                 .body(file);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
-    ResponseEntity<Resource> viewFile(@PathVariable Integer id) {
+    public ModelAndView viewFile(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource file = storageService.loadAsResource(adjuntos.getAdjunto(), "adjuntos");
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + adjuntos.getNombreArchivo() + "\"").body(file);
+        return new ModelAndView("redirect:/api/adjuntos/preview_file/" + adjuntos.getAdjunto());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/preview_file/{id}.{ext}")
+    ResponseEntity<Resource> viewFile(@PathVariable String id, @PathVariable String ext) {
+        Resource file = storageService.loadAsResource(id + "." + ext, "adjuntos");
+        return ResponseEntity.ok().body(file);
     }
 
     @RequestMapping(method = RequestMethod.POST)
