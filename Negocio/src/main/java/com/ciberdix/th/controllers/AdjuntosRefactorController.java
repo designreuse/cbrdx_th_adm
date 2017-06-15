@@ -56,6 +56,14 @@ public class AdjuntosRefactorController {
                 .body(file);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
+    ResponseEntity<Resource> viewFile(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
+        Resource file = storageService.loadAsResource(adjuntos.getAdjunto(), "adjuntos");
+        return ResponseEntity.ok().body(file);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Adjuntos create(@RequestParam("obj") String obj, @RequestParam("file") MultipartFile file) {
         try {
