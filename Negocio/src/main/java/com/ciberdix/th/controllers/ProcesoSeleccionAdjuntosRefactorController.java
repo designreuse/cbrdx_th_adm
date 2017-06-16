@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.ProcesoSeleccionAdjuntos;
+import com.ciberdix.th.model.VProcesoSeleccionAdjuntos;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,16 +22,23 @@ public class ProcesoSeleccionAdjuntosRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/procesoSeleccionAdjuntos";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ProcesoSeleccionAdjuntos> findAll() {
+    List<VProcesoSeleccionAdjuntos> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        ProcesoSeleccionAdjuntos[] parametros = restTemplate.getForObject(serviceUrl, ProcesoSeleccionAdjuntos[].class);
+        VProcesoSeleccionAdjuntos[] parametros = restTemplate.getForObject(serviceUrl, VProcesoSeleccionAdjuntos[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ProcesoSeleccionAdjuntos findOne(@PathVariable Integer id) {
+    VProcesoSeleccionAdjuntos findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, ProcesoSeleccionAdjuntos.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VProcesoSeleccionAdjuntos.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/terPublicPaso/{idTerceroPublicacion}/{idProcesoPaso}")
+    List<VProcesoSeleccionAdjuntos> findByTerPublicPaso(@PathVariable Integer idTerceroPublicacion, @PathVariable Integer idProcesoPaso) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProcesoSeleccionAdjuntos[] parametros = restTemplate.getForObject(serviceUrl + "/terPublicPaso/" + idTerceroPublicacion + "/" + idProcesoPaso, VProcesoSeleccionAdjuntos[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
