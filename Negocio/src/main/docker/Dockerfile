@@ -10,6 +10,7 @@
 FROM java:8
 MAINTAINER Ciberdix
 
+VOLUME /tmp
 ADD @project.build.finalName@.jar app.jar
 ENV TZ=America/Bogota
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
