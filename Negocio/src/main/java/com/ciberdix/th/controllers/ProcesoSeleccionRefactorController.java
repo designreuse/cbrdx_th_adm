@@ -5,6 +5,7 @@ import com.ciberdix.th.model.*;
 import com.ciberdix.th.storage.StorageService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -28,6 +29,9 @@ public class ProcesoSeleccionRefactorController {
     private final StorageService storageService;
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/procesoSeleccion";
+
+    @Value("${front.url}")
+    private String frontUrl;
 
     @Autowired
     public ProcesoSeleccionRefactorController(StorageService storageService) {
@@ -115,11 +119,19 @@ public class ProcesoSeleccionRefactorController {
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj) {
         RestTemplate restTemplate = new RestTemplate();
         UtilitiesController u = new UtilitiesController();
-        String correo;
+        Long idTercero = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + obj.getIdTerceroPublicacion(), TercerosPublicaciones.class).getIdTercero();
+        Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + idTercero, Terceros.class);
+        Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
         String estado = u.findListItemById("ListasEstadosDiligenciados", obj.getIdEstadoDiligenciado()).getCodigo();
+        String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
+        Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
         if(estado.equals("PROG")){
-            correo = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class).getCorreoElectronico();
-            UtilitiesController.sendMail(correo,"Prueba","<a href=\"/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion() + "\">www.hola.com/soyunaPrueba</a>");
+            UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
+            UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+        }
+        VProcesosPasos p = restTemplate.getForObject(globales.getUrl() + "/api/procesosPasos/" + obj.getIdProcesoPaso(), VProcesosPasos.class);
+        if(estado.equals("APROB") && p.getIndicadorCorreo()){
+            UtilitiesController.sendMail(t.getCorreoElectronico(),"Has aprobado!","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Has arpobado el paso: " + p.getNombre() + "</p>");
         }
         return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
     }
@@ -127,6 +139,21 @@ public class ProcesoSeleccionRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ProcesoSeleccion obj) {
         RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController u = new UtilitiesController();
+        Long idTercero = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + obj.getIdTerceroPublicacion(), TercerosPublicaciones.class).getIdTercero();
+        Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + idTercero, Terceros.class);
+        Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
+        String estado = u.findListItemById("ListasEstadosDiligenciados", obj.getIdEstadoDiligenciado()).getCodigo();
+        String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
+        Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
+        if(estado.equals("PROG")){
+            UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
+            UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+        }
+        VProcesosPasos p = restTemplate.getForObject(globales.getUrl() + "/api/procesosPasos/" + obj.getIdProcesoPaso(), VProcesosPasos.class);
+        if(estado.equals("APROB") && p.getIndicadorCorreo()){
+            UtilitiesController.sendMail(t.getCorreoElectronico(),"Has aprobado!","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Has arpobado el paso: " + p.getNombre() + "</p>");
+        }
         restTemplate.put(serviceUrl, obj);
     }
 
