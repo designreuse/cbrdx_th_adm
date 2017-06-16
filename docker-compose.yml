@@ -16,8 +16,8 @@ services:
             RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
         ports:
             - "8449:8449"
-#        volumes:
-#            - $HOME/adjuntos:/adjuntos
+        volumes:
+            - $HOME/adjuntos:/home/administrador/adjuntos
         links:
             - dominio
         restart: always
