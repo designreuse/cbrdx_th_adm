@@ -17,7 +17,7 @@ services:
         ports:
             - "8449:8449"
         volumes:
-            - $HOME/adjuntos:/tmp
+            - $HOME/adjuntos:/adjuntos
         links:
             - dominio
         restart: always
