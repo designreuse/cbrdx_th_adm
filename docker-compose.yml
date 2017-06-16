@@ -7,6 +7,7 @@ services:
             HOST: bd-ciberdix.database.windows.net
         ports:
             - "8446:8446"
+        restart: always
     negocio:
         image: crezcamos/logica
         environment:
@@ -15,5 +16,9 @@ services:
             RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
         ports:
             - "8449:8449"
+        volumes:
+            - /home/administrador/adjuntos:/adjuntos
+            - /home/administrador/upload-dir:/upload-dir
         links:
             - dominio
+        restart: always
