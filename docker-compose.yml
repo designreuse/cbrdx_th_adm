@@ -17,8 +17,8 @@ services:
         ports:
             - "8449:8449"
         volumes:
-            - /home/administrador/adjuntos:/adjuntos
-            - /home/administrador/upload-dir:/upload-dir
+            - /home/gestionamos/adjuntos:/adjuntos
+            - /home/gestionamos/upload-dir:/upload-dir
         links:
             - dominio
         restart: always

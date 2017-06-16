@@ -44,18 +44,26 @@ public class ProcesoSeleccionAdjuntosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccionAdjuntos create(@RequestBody ProcesoSeleccionAdjuntos o) {
-        return procesoSeleccionAdjuntosRefactorRepository.save(
-                new ProcesoSeleccionAdjuntos(
-                        o.getIdProcesoPaso(),o.getIdTerceroPublicacion(),o.getIdAdjunto(),o.getAuditoriaUsuario()
-                )
-        );
+        if (o.getIdProcesoSeleccionAdjunto() == null) {
+            return procesoSeleccionAdjuntosRefactorRepository.save(
+                    new ProcesoSeleccionAdjuntos(
+                            o.getIdProcesoPaso(), o.getIdTerceroPublicacion(), o.getIdAdjunto(), o.getAuditoriaUsuario()
+                    )
+            );
+        } else {
+            return procesoSeleccionAdjuntosRefactorRepository.save(
+                    new ProcesoSeleccionAdjuntos(
+                            o.getIdProcesoSeleccionAdjunto(), o.getIdProcesoPaso(), o.getIdTerceroPublicacion(), o.getIdAdjunto(), o.getAuditoriaUsuario()
+                    )
+            );
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ProcesoSeleccionAdjuntos o) {
         procesoSeleccionAdjuntosRefactorRepository.save(
                 new ProcesoSeleccionAdjuntos(
-                        o.getIdProcesoSeleccionAdjunto(),o.getIdProcesoPaso(),o.getIdTerceroPublicacion(),o.getIdAdjunto(),o.getAuditoriaUsuario()
+                        o.getIdProcesoSeleccionAdjunto(), o.getIdProcesoPaso(), o.getIdTerceroPublicacion(), o.getIdAdjunto(), o.getAuditoriaUsuario()
                 )
         );
     }
