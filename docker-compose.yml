@@ -17,11 +17,7 @@ services:
         ports:
             - "8449:8449"
         volumes:
-            - adjuntos:/tmp
+            - $HOME/adjuntos:/tmp
         links:
             - dominio
         restart: always
-
-volumes:
-    adjuntos:
-        external: true
