@@ -43,7 +43,7 @@ public class ProcesosPasosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/{idProceso}")
     List<VProcesosPasos> findAllByIdProcesoOrden(@PathVariable Integer idProceso) {
-        return vProcesosPasosRefactorRepository.findAllByIdProcesoOrderByOrden(idProceso);
+        return vProcesosPasosRefactorRepository.findAllByIdProcesoAndIndicadorHabilitadoIsTrueOrderByOrden(idProceso);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/externoMixto/{idProceso}")

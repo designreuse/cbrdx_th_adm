@@ -43,6 +43,27 @@ public class ProcesosPasosRefactorController {
         return Arrays.asList(cargosCompetencias);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrden(@PathVariable Integer idProceso) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProcesosPasos[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/procesoOrden/" + idProceso, VProcesosPasos[].class);
+        return Arrays.asList(cargosCompetencias);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/externoMixto/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrdenExternoMixto(@PathVariable Integer idProceso) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProcesosPasos[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/procesoOrden/externoMixto/" + idProceso, VProcesosPasos[].class);
+        return Arrays.asList(cargosCompetencias);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/internoMixto/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrdenInternoMixto(@PathVariable Integer idProceso) {
+        RestTemplate restTemplate = new RestTemplate();
+        VProcesosPasos[] cargosCompetencias = restTemplate.getForObject(serviceUrl + "/procesoOrden/internoMixto/" + idProceso, VProcesosPasos[].class);
+        return Arrays.asList(cargosCompetencias);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/codigo/{codigo}")
     List<VProcesosPasos> findAllByCodigo(@PathVariable String codigo) {
         RestTemplate restTemplate = new RestTemplate();
