@@ -54,9 +54,17 @@ public class ProcesoSeleccionRefactorController {
         ObjetoProcesoSeleccion OPS;
         UtilitiesController u = new UtilitiesController();
         VPublicaciones publicaciones = restTemplate.getForObject(globales.getUrl() + "api/publicaciones/" + idPublicacion, VPublicaciones.class);
-        List<VProcesosPasos> procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
         List<TercerosPublicaciones> tercerosPublicaciones = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/publicacion/" + publicaciones.getIdPublicacion(), TercerosPublicaciones[].class));
+        List<VProcesosPasos> procesosPasos;
+        String forma = u.findListItemById("ListasFormasReclutamientos",publicaciones.getIdFormaReclutamiento()).getCodigo();
 
+        if(forma.equals("EXT")){
+            procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/externoMixto/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
+        }else if(forma.equals("INT")){
+            procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/internoMixto/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
+        }else{
+            procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
+        }
 
         for(TercerosPublicaciones tp: tercerosPublicaciones){
             Terceros terceros = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + tp.getIdTercero(), Terceros.class);
