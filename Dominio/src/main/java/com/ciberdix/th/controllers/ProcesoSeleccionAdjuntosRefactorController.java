@@ -1,7 +1,10 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.ProcesoSeleccionAdjuntos;
+import com.ciberdix.th.models.VProcesoSeleccionAdjuntos;
 import com.ciberdix.th.repositories.ProcesoSeleccionAdjuntosRefactorRepository;
+import com.ciberdix.th.repositories.ProcesoSeleccionRefactorRepository;
+import com.ciberdix.th.repositories.VProcesoSeleccionAdjuntosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +24,22 @@ public class ProcesoSeleccionAdjuntosRefactorController {
     @Autowired
     private ProcesoSeleccionAdjuntosRefactorRepository procesoSeleccionAdjuntosRefactorRepository;
 
+    @Autowired
+    private VProcesoSeleccionAdjuntosRefactorRepository vProcesoSeleccionAdjuntosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<ProcesoSeleccionAdjuntos> findAll() {
-        return (List<ProcesoSeleccionAdjuntos>) procesoSeleccionAdjuntosRefactorRepository.findAll();
+    List<VProcesoSeleccionAdjuntos> findAll() {
+        return (List<VProcesoSeleccionAdjuntos>) vProcesoSeleccionAdjuntosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ProcesoSeleccionAdjuntos findOne(@PathVariable Integer id) {
-        return procesoSeleccionAdjuntosRefactorRepository.findOne(id);
+    VProcesoSeleccionAdjuntos findOne(@PathVariable Integer id) {
+        return vProcesoSeleccionAdjuntosRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/terPublicPaso/{idTerceroPublicacion}/{idProcesoPaso}")
+    List<VProcesoSeleccionAdjuntos> findByTerPublicPaso(@PathVariable Integer idTerceroPublicacion, @PathVariable Integer idProcesoPaso) {
+        return vProcesoSeleccionAdjuntosRefactorRepository.findAllByIdTerceroPublicacionAndIdProcesoPaso(idTerceroPublicacion,idProcesoPaso);
     }
 
     @RequestMapping(method = RequestMethod.POST)
