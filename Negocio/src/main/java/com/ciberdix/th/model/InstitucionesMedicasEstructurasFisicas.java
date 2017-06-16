@@ -1,0 +1,64 @@
+package com.ciberdix.th.model;
+
+import java.sql.Timestamp;
+
+/**
+ * Created by Danny on 16/06/2017.
+ */
+public class InstitucionesMedicasEstructurasFisicas {
+
+    private Integer idInstitucionMedicaEstructuraFisica;
+    private Integer idInstitucionMedica;
+    private Integer idEstructuraFisica;
+    private Boolean indicadorHabilitado;
+    private Integer auditoriaUsuario;
+    private Timestamp auditoriaFecha;
+
+    public Integer getIdInstitucionMedicaEstructuraFisica() {
+        return idInstitucionMedicaEstructuraFisica;
+    }
+
+    public void setIdInstitucionMedicaEstructuraFisica(Integer idInstitucionMedicaEstructuraFisica) {
+        this.idInstitucionMedicaEstructuraFisica = idInstitucionMedicaEstructuraFisica;
+    }
+
+    public Integer getIdInstitucionMedica() {
+        return idInstitucionMedica;
+    }
+
+    public void setIdInstitucionMedica(Integer idInstitucionMedica) {
+        this.idInstitucionMedica = idInstitucionMedica;
+    }
+
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public Integer getAuditoriaUsuario() {
+        return auditoriaUsuario;
+    }
+
+    public void setAuditoriaUsuario(Integer auditoriaUsuario) {
+        this.auditoriaUsuario = auditoriaUsuario;
+    }
+
+    public Timestamp getAuditoriaFecha() {
+        return auditoriaFecha;
+    }
+
+    public void setAuditoriaFecha(Timestamp auditoriaFecha) {
+        this.auditoriaFecha = auditoriaFecha;
+    }
+}
