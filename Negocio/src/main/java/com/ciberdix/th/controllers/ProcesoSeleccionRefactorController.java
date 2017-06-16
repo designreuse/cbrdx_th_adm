@@ -114,6 +114,13 @@ public class ProcesoSeleccionRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj) {
         RestTemplate restTemplate = new RestTemplate();
+        UtilitiesController u = new UtilitiesController();
+        String correo;
+        String estado = u.findListItemById("ListasEstadosDiligenciados", obj.getIdEstadoDiligenciado()).getCodigo();
+        if(estado.equals("PROG")){
+            correo = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class).getCorreoElectronico();
+            UtilitiesController.sendMail(correo,"Prueba","<a href=\"/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion() + "\">www.hola.com/soyunaPrueba</a>");
+        }
         return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
     }
 
