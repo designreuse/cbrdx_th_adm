@@ -1,5 +1,6 @@
 package com.ciberdix.th.storage;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -34,12 +35,9 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-
             UUID avatarId = UUID.randomUUID();
             String tipo = file.getContentType().substring(6);
-
             Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(avatarId) + "." + tipo));
-
             return String.valueOf(avatarId) + "." + tipo;
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
@@ -53,9 +51,12 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
             UUID fileID = UUID.randomUUID();
-            String tipo = file.getContentType().substring(6);
+            String tipo = FilenameUtils.getExtension(file.getOriginalFilename());
             if (route != null) {
                 Path location = Paths.get(route);
+                if (!Files.isReadable(location)) {
+                    Files.createDirectory(location);
+                }
                 Files.copy(file.getInputStream(), location.resolve(String.valueOf(fileID) + "." + tipo));
             } else {
                 Files.copy(file.getInputStream(), this.rootLocation.resolve(String.valueOf(fileID) + "." + tipo));
@@ -87,6 +88,28 @@ public class FileSystemStorageService implements StorageService {
     public Resource loadAsResource(String filename) {
         try {
             Path file = load(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return resource;
+            } else {
+                throw new StorageFileNotFoundException("Could not read file: " + filename);
+
+            }
+        } catch (MalformedURLException e) {
+            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+        }
+    }
+
+    @Override
+    public Path load(String filename, String path) {
+        Path location = Paths.get(path);
+        return location.resolve(filename);
+    }
+
+    @Override
+    public Resource loadAsResource(String filename, String path) {
+        try {
+            Path file = load(filename, path);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;

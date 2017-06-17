@@ -7,7 +7,14 @@ public class ListaProcesoSeleccion {
 
     private Integer idProcesoSeleccion;
     private Integer idProcesoPaso;
-    private Integer idEstadoDiligenciado;
+    private Integer idResponsable;
+    private String codigoEstadoDiligenciado;
+    private String interfaz;
+    private String interfazInterna;
+    private int orden;
+
+    public ListaProcesoSeleccion() {
+    }
 
     public Integer getIdProcesoSeleccion() {
         return idProcesoSeleccion;
@@ -25,11 +32,43 @@ public class ListaProcesoSeleccion {
         this.idProcesoPaso = idProcesoPaso;
     }
 
-    public Integer getIdEstadoDiligenciado() {
-        return idEstadoDiligenciado;
+    public Integer getIdResponsable() {
+        return idResponsable;
     }
 
-    public void setIdEstadoDiligenciado(Integer idEstadoDiligenciado) {
-        this.idEstadoDiligenciado = idEstadoDiligenciado;
+    public void setIdResponsable(Integer idResponsable) {
+        this.idResponsable = idResponsable;
+    }
+
+    public String getCodigoEstadoDiligenciado() {
+        return codigoEstadoDiligenciado;
+    }
+
+    public void setCodigoEstadoDiligenciado(String codigoEstadoDiligenciado) {
+        this.codigoEstadoDiligenciado = codigoEstadoDiligenciado;
+    }
+
+    public String getInterfaz() {
+        return interfaz;
+    }
+
+    public void setInterfaz(String interfaz) {
+        this.interfaz = interfaz;
+    }
+
+    public String getInterfazInterna() {
+        return interfazInterna;
+    }
+
+    public void setInterfazInterna(String interfazInterna) {
+        this.interfazInterna = interfazInterna;
+    }
+
+    public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
     }
 }

@@ -10,12 +10,12 @@ import java.util.List;
  */
 public interface ListasClasesTercerosRefactorRepository extends CrudRepository<ListasClasesTerceros, Integer> {
 
-    List<ListasClasesTerceros> findByIndicadorHabilitadoTrue();
+    List<ListasClasesTerceros> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasClasesTerceros findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasClasesTerceros findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasClasesTerceros> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasClasesTerceros> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasClasesTerceros> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasClasesTerceros> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 
 }

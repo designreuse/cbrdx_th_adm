@@ -21,6 +21,11 @@ public class CompetenciasRefactorController {
         return (List<Competencias>) CompetenciasRefactorRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    Competencias findOne(@PathVariable Integer id) {
+        return CompetenciasRefactorRepository.findOne(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/{id}")
     List<Competencias> findEnabled(@PathVariable Integer id) {
         return CompetenciasRefactorRepository.findByIdGrupoCompetenciaAndIndicadorHabilitadoTrue(id);

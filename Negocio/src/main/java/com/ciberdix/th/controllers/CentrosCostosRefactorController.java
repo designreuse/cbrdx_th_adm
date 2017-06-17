@@ -47,6 +47,13 @@ public class CentrosCostosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody CentrosCostos obj){
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        CentrosCostos uObj = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCentroCostos(), CentrosCostos.class);
+
+        uObj.setIdCentroCostos(obj.getIdCentroCostos());
+        uObj.setCentroCostos(obj.getCentroCostos());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 }

@@ -13,6 +13,14 @@ public interface VProcesosPasosRefactorRepository extends CrudRepository<VProces
 
     List<VProcesosPasos> findAllByIdProceso(Integer idProceso);
 
+    List<VProcesosPasos> findAllByIdProcesoAndIndicadorHabilitadoIsTrueOrderByOrden(Integer idProceso);
+
+    @Query("SELECT V FROM VProcesosPasos V WHERE V.indicadorHabilitado = 1 AND V.idProceso = ?1 AND V.idTipoConvocatoria IN (SELECT L.idLista FROM ListasFormasReclutamientos L WHERE L.codigo = 'MIX' OR L.codigo = 'EXT') ORDER BY V.orden")
+    List<VProcesosPasos> queryAllByIdProcesoExternaMixta(Integer idProceso);
+
+    @Query("SELECT V FROM VProcesosPasos V WHERE V.indicadorHabilitado = 1 AND  V.idProceso = ?1 AND V.idTipoConvocatoria IN (SELECT L.idLista FROM ListasFormasReclutamientos L WHERE L.codigo = 'MIX' OR L.codigo = 'INT') ORDER BY V.orden")
+    List<VProcesosPasos> queryAllByIdProcesoInternaMixta(Integer idProceso);
+
     List<VProcesosPasos> findAllByCodigo(String codigo);
 
     @Query("SELECT p FROM VProcesosPasos p WHERE (p.idProceso = ?1) AND p.orden = (SELECT MAX(pr.orden) FROM VProcesosPasos pr WHERE (pr.idProceso = ?1))")

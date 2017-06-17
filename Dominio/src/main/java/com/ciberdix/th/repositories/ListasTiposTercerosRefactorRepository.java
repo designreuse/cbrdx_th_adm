@@ -9,11 +9,11 @@ import java.util.List;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasTiposTercerosRefactorRepository extends CrudRepository<ListasTiposTerceros, Integer> {
-    List<ListasTiposTerceros> findByIndicadorHabilitadoTrue();
+    List<ListasTiposTerceros> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasTiposTerceros findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasTiposTerceros findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasTiposTerceros> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasTiposTerceros> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasTiposTerceros> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasTiposTerceros> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

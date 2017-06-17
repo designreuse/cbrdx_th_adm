@@ -12,14 +12,13 @@ public class ProcesoSeleccion {
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
     private Integer idResponsable;
-    private Long idTercero;
-    private Integer idPublicacion;
-    private Boolean indicadorContProceso;
+    private Integer idTerceroPublicacion;
     private String observacion;
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Boolean indicadorNoAplica;
+    private Integer idDesicionProcesoSeleccion;
+    private String detalleCorreo;
 
     public Integer getIdProcesoSeleccion() {
         return idProcesoSeleccion;
@@ -53,28 +52,12 @@ public class ProcesoSeleccion {
         this.idResponsable = idResponsable;
     }
 
-    public Long getIdTercero() {
-        return idTercero;
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
-    }
-
-    public Integer getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(Integer idPublicacion) {
-        this.idPublicacion = idPublicacion;
-    }
-
-    public Boolean getIndicadorContProceso() {
-        return indicadorContProceso;
-    }
-
-    public void setIndicadorContProceso(Boolean indicadorContProceso) {
-        this.indicadorContProceso = indicadorContProceso;
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     public String getObservacion() {
@@ -109,11 +92,19 @@ public class ProcesoSeleccion {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Boolean getIndicadorNoAplica() {
-        return indicadorNoAplica;
+    public Integer getIdDesicionProcesoSeleccion() {
+        return idDesicionProcesoSeleccion;
     }
 
-    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
-        this.indicadorNoAplica = indicadorNoAplica;
+    public void setIdDesicionProcesoSeleccion(Integer idDesicionProcesoSeleccion) {
+        this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
+    }
+
+    public String getDetalleCorreo() {
+        return detalleCorreo;
+    }
+
+    public void setDetalleCorreo(String detalleCorreo) {
+        this.detalleCorreo = detalleCorreo;
     }
 }

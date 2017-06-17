@@ -37,9 +37,20 @@ public class GruposGestionRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void updateCentrosCostos(@RequestBody GruposGestion request) {
+    void updateCentrosCostos(@RequestBody GruposGestion obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, request, GruposGestion.class);
+        GruposGestion uObj = restTemplate.getForObject(serviceUrl + obj.getIdGrupoGestion(), GruposGestion.class);
+
+        uObj.setIdGrupoGestion(obj.getIdGrupoGestion());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setFechaFin(obj.getFechaFin());
+        uObj.setFechaInicio(obj.getFechaInicio());
+        uObj.setFunciones(obj.getFunciones());
+        uObj.setGrupoGestion(obj.getGrupoGestion());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setResponsabilidades(obj.getResponsabilidades());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{IdParametro}")

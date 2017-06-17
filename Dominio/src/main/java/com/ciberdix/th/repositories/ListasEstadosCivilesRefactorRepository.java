@@ -9,11 +9,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasEstadosCivilesRefactorRepository extends CrudRepository<ListasEstadosCiviles, Integer>{
-    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrue();
+    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasEstadosCiviles findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasEstadosCiviles findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasEstadosCiviles> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

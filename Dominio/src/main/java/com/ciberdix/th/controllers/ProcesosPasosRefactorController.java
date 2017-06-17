@@ -41,6 +41,21 @@ public class ProcesosPasosRefactorController {
         return vProcesosPasosRefactorRepository.findAllByIdProceso(idProceso);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrden(@PathVariable Integer idProceso) {
+        return vProcesosPasosRefactorRepository.findAllByIdProcesoAndIndicadorHabilitadoIsTrueOrderByOrden(idProceso);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/externoMixto/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrdenExternoMixto(@PathVariable Integer idProceso) {
+        return vProcesosPasosRefactorRepository.queryAllByIdProcesoExternaMixta(idProceso);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoOrden/internoMixto/{idProceso}")
+    List<VProcesosPasos> findAllByIdProcesoOrdenInternoMixto(@PathVariable Integer idProceso) {
+        return vProcesosPasosRefactorRepository.queryAllByIdProcesoInternaMixta(idProceso);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/codigo/{codigo}")
     List<VProcesosPasos> findAllByCodigo(@PathVariable String codigo) {
         return vProcesosPasosRefactorRepository.findAllByCodigo(codigo);

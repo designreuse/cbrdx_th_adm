@@ -41,6 +41,14 @@ public class GruposCompetenciasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody GruposCompetencias obj) {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(serviceUrl, obj);
+        GruposCompetencias uObj = restTemplate.getForObject(serviceUrl + "/buscarId/" + obj.getIdGrupoCompetencia(), GruposCompetencias.class);
+
+        uObj.setIdGrupoCompetencia(obj.getIdGrupoCompetencia());
+        uObj.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+        uObj.setDescripcion(obj.getDescripcion());
+        uObj.setIndicadorHabilitado(obj.getIndicadorHabilitado());
+        uObj.setPonderacion(obj.getPonderacion());
+
+        restTemplate.put(serviceUrl, uObj);
     }
 }

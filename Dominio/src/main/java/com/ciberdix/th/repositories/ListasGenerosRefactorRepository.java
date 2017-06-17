@@ -9,11 +9,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author Roberto Chajin Ortiz
  */
 public interface ListasGenerosRefactorRepository extends CrudRepository<ListasGeneros, Integer>{
-    List<ListasGeneros> findByIndicadorHabilitadoTrue();
+    List<ListasGeneros> findByIndicadorHabilitadoTrueOrderByOrden();
 
-    ListasGeneros findByIndicadorHabilitadoTrueAndCodigo(String codigo);
+    ListasGeneros findByIndicadorHabilitadoTrueAndCodigoOrderByOrden(String codigo);
 
-    List<ListasGeneros> findByIndicadorHabilitadoTrueAndCodigoStartsWith(String codigo);
+    List<ListasGeneros> findByIndicadorHabilitadoTrueAndCodigoStartsWithOrderByOrden(String codigo);
 
-    List<ListasGeneros> findByIndicadorHabilitadoTrueAndNombreContains(String nombre);
+    List<ListasGeneros> findByIndicadorHabilitadoTrueAndNombreContainsOrderByOrden(String nombre);
 }

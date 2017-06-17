@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 12/06/2017.
+ * Created by Danny on 15/06/2017.
  */
 @Entity
 @Table(name = "ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -14,45 +14,42 @@ public class ProcesoSeleccion {
     private Integer idProcesoPaso;
     private Integer idEstadoDiligenciado;
     private Integer idResponsable;
-    private Long idTercero;
-    private Integer idPublicacion;
-    private Boolean indicadorContProceso;
+    private Integer idTerceroPublicacion;
     private String observacion;
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private Boolean indicadorNoAplica;
+    private Integer idDesicionProcesoSeleccion;
+    private String detalleCorreo;
 
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Date fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
-        this.idTercero = idTercero;
-        this.idPublicacion = idPublicacion;
-        this.indicadorContProceso = indicadorContProceso;
+        this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorNoAplica = indicadorNoAplica;
+        this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
+        this.detalleCorreo = detalleCorreo;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Long idTercero, Integer idPublicacion, Boolean indicadorContProceso, String observacion, Date fechaCita, Integer auditoriaUsuario, Boolean indicadorNoAplica) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Date fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
-        this.idTercero = idTercero;
-        this.idPublicacion = idPublicacion;
-        this.indicadorContProceso = indicadorContProceso;
+        this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
         this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorNoAplica = indicadorNoAplica;
+        this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
+        this.detalleCorreo = detalleCorreo;
     }
 
     @Id
@@ -97,33 +94,13 @@ public class ProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "IdTercero", nullable = true)
-    public Long getIdTercero() {
-        return idTercero;
+    @Column(name = "IdTerceroPublicacion", nullable = true)
+    public Integer getIdTerceroPublicacion() {
+        return idTerceroPublicacion;
     }
 
-    public void setIdTercero(Long idTercero) {
-        this.idTercero = idTercero;
-    }
-
-    @Basic
-    @Column(name = "IdPublicacion", nullable = true)
-    public Integer getIdPublicacion() {
-        return idPublicacion;
-    }
-
-    public void setIdPublicacion(Integer idPublicacion) {
-        this.idPublicacion = idPublicacion;
-    }
-
-    @Basic
-    @Column(name = "IndicadorContProceso", nullable = true)
-    public Boolean getIndicadorContProceso() {
-        return indicadorContProceso;
-    }
-
-    public void setIndicadorContProceso(Boolean indicadorContProceso) {
-        this.indicadorContProceso = indicadorContProceso;
+    public void setIdTerceroPublicacion(Integer idTerceroPublicacion) {
+        this.idTerceroPublicacion = idTerceroPublicacion;
     }
 
     @Basic
@@ -167,13 +144,23 @@ public class ProcesoSeleccion {
     }
 
     @Basic
-    @Column(name = "IndicadorNoAplica", nullable = true)
-    public Boolean getIndicadorNoAplica() {
-        return indicadorNoAplica;
+    @Column(name = "IdDesicionProcesoSeleccion", nullable = true)
+    public Integer getIdDesicionProcesoSeleccion() {
+        return idDesicionProcesoSeleccion;
     }
 
-    public void setIndicadorNoAplica(Boolean indicadorNoAplica) {
-        this.indicadorNoAplica = indicadorNoAplica;
+    public void setIdDesicionProcesoSeleccion(Integer idDesicionProcesoSeleccion) {
+        this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
+    }
+
+    @Basic
+    @Column(name = "DetalleCorreo", nullable = true, length = 500)
+    public String getDetalleCorreo() {
+        return detalleCorreo;
+    }
+
+    public void setDetalleCorreo(String detalleCorreo) {
+        this.detalleCorreo = detalleCorreo;
     }
 
     @Override
@@ -191,10 +178,7 @@ public class ProcesoSeleccion {
             return false;
         if (idResponsable != null ? !idResponsable.equals(that.idResponsable) : that.idResponsable != null)
             return false;
-        if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
-        if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
-            return false;
-        if (indicadorContProceso != null ? !indicadorContProceso.equals(that.indicadorContProceso) : that.indicadorContProceso != null)
+        if (idTerceroPublicacion != null ? !idTerceroPublicacion.equals(that.idTerceroPublicacion) : that.idTerceroPublicacion != null)
             return false;
         if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
         if (fechaCita != null ? !fechaCita.equals(that.fechaCita) : that.fechaCita != null) return false;
@@ -202,7 +186,9 @@ public class ProcesoSeleccion {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-        if (indicadorNoAplica != null ? !indicadorNoAplica.equals(that.indicadorNoAplica) : that.indicadorNoAplica != null)
+        if (idDesicionProcesoSeleccion != null ? !idDesicionProcesoSeleccion.equals(that.idDesicionProcesoSeleccion) : that.idDesicionProcesoSeleccion != null)
+            return false;
+        if (detalleCorreo != null ? !detalleCorreo.equals(that.detalleCorreo) : that.detalleCorreo != null)
             return false;
 
         return true;
@@ -214,14 +200,13 @@ public class ProcesoSeleccion {
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);
-        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
-        result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
-        result = 31 * result + (indicadorContProceso != null ? indicadorContProceso.hashCode() : 0);
+        result = 31 * result + (idTerceroPublicacion != null ? idTerceroPublicacion.hashCode() : 0);
         result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
         result = 31 * result + (fechaCita != null ? fechaCita.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (indicadorNoAplica != null ? indicadorNoAplica.hashCode() : 0);
+        result = 31 * result + (idDesicionProcesoSeleccion != null ? idDesicionProcesoSeleccion.hashCode() : 0);
+        result = 31 * result + (detalleCorreo != null ? detalleCorreo.hashCode() : 0);
         return result;
     }
 }
