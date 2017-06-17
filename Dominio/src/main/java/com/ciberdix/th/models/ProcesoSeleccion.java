@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -31,7 +31,7 @@ public class ProcesoSeleccion {
         this.idResponsable = idResponsable;
         this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
-        this.fechaCita = fechaCita;
+        this.fechaCita = fechaCita != null ? new Date(fechaCita.getTime()) : null;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
@@ -45,7 +45,7 @@ public class ProcesoSeleccion {
         this.idResponsable = idResponsable;
         this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
-        this.fechaCita = fechaCita;
+        this.fechaCita = fechaCita != null ? new Date(fechaCita.getTime()) : null;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
