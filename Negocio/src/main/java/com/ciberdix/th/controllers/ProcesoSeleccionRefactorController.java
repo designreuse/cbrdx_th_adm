@@ -121,11 +121,11 @@ public class ProcesoSeleccionRefactorController {
         UtilitiesController u = new UtilitiesController();
         Long idTercero = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + obj.getIdTerceroPublicacion(), TercerosPublicaciones.class).getIdTercero();
         Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + idTercero, Terceros.class);
-        Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
         String estado = u.findListItemById("ListasEstadosDiligenciados", obj.getIdEstadoDiligenciado()).getCodigo();
-        String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
-        Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
         if(estado.equals("PROG")){
+            Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
+            Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
+            String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
             UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
             UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
         }
@@ -142,11 +142,11 @@ public class ProcesoSeleccionRefactorController {
         UtilitiesController u = new UtilitiesController();
         Long idTercero = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + obj.getIdTerceroPublicacion(), TercerosPublicaciones.class).getIdTercero();
         Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + idTercero, Terceros.class);
-        Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
         String estado = u.findListItemById("ListasEstadosDiligenciados", obj.getIdEstadoDiligenciado()).getCodigo();
-        String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
-        Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
         if(estado.equals("PROG")){
+            Usuarios user = restTemplate.getForObject(globales.getUrl() + "/api/usuarios/query/" + obj.getIdResponsable(), Usuarios.class);
+            Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
+            String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
             UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
             UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
         }
