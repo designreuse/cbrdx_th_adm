@@ -127,7 +127,9 @@ public class ProcesoSeleccionRefactorController {
             Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
             String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
             UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
-            UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+            if(obj.getFechaCita() != null){
+                UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+            }
         }
         VProcesosPasos p = restTemplate.getForObject(globales.getUrl() + "/api/procesosPasos/" + obj.getIdProcesoPaso(), VProcesosPasos.class);
         if(estado.equals("APROB") && p.getIndicadorCorreo()){
@@ -148,7 +150,9 @@ public class ProcesoSeleccionRefactorController {
             Terceros te = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + user.getIdTercero(), Terceros.class);
             String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
             UtilitiesController.sendMail(user.getCorreoElectronico(),"Responsable Vacante","<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
-            UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+            if(obj.getFechaCita() != null){
+                UtilitiesController.sendMail(t.getCorreoElectronico(),"Se te ha programado una cita","<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+            }
         }
         VProcesosPasos p = restTemplate.getForObject(globales.getUrl() + "/api/procesosPasos/" + obj.getIdProcesoPaso(), VProcesosPasos.class);
         if(estado.equals("APROB") && p.getIndicadorCorreo()){
