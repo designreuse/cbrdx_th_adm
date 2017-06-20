@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/06/2017.
+ * Created by Danny on 20/06/2017.
  */
 @Entity
 @Table(name = "InstitucionesMedicas", schema = "dbo", catalog = "CREZCAMOS")
@@ -15,6 +15,9 @@ public class InstitucionesMedicas {
     private Integer idLocalizacion;
     private String correoElectronico;
     private String telefonoContacto;
+    private Integer valorExamenOsteosmuscular;
+    private Integer valorExamenVisiometria;
+    private Integer valorExamenOptometria;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -22,28 +25,36 @@ public class InstitucionesMedicas {
     public InstitucionesMedicas() {
     }
 
-    public InstitucionesMedicas(String institucionMedica, String representanteLegal, Integer idLocalizacion, String correoElectronico, String telefonoContacto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public InstitucionesMedicas(String institucionMedica, String representanteLegal, Integer idLocalizacion, String correoElectronico, String telefonoContacto, Integer valorExamenOsteosmuscular, Integer valorExamenVisiometria, Integer valorExamenOptometria, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.institucionMedica = institucionMedica;
         this.representanteLegal = representanteLegal;
         this.idLocalizacion = idLocalizacion;
         this.correoElectronico = correoElectronico;
         this.telefonoContacto = telefonoContacto;
+        this.valorExamenOsteosmuscular = valorExamenOsteosmuscular != null ? valorExamenOsteosmuscular: 0;
+        this.valorExamenVisiometria = valorExamenVisiometria != null ? valorExamenVisiometria: 0;
+        this.valorExamenOptometria = valorExamenOptometria != null ? valorExamenOptometria: 0;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public InstitucionesMedicas(Integer idInstitucionMedica, String institucionMedica, String representanteLegal, Integer idLocalizacion, String correoElectronico, String telefonoContacto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public InstitucionesMedicas(Integer idInstitucionMedica, String institucionMedica, String representanteLegal, Integer idLocalizacion, String correoElectronico, String telefonoContacto, Integer valorExamenOsteosmuscular, Integer valorExamenVisiometria, Integer valorExamenOptometria, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idInstitucionMedica = idInstitucionMedica;
         this.institucionMedica = institucionMedica;
         this.representanteLegal = representanteLegal;
         this.idLocalizacion = idLocalizacion;
         this.correoElectronico = correoElectronico;
         this.telefonoContacto = telefonoContacto;
+        this.valorExamenOsteosmuscular = valorExamenOsteosmuscular != null ? valorExamenOsteosmuscular: 0;
+        this.valorExamenVisiometria = valorExamenVisiometria != null ? valorExamenVisiometria: 0;
+        this.valorExamenOptometria = valorExamenOptometria != null ? valorExamenOptometria: 0;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
+
+
 
     @Id
     @GeneratedValue
@@ -107,6 +118,36 @@ public class InstitucionesMedicas {
     }
 
     @Basic
+    @Column(name = "ValorExamenOsteosmuscular", nullable = true)
+    public Integer getValorExamenOsteosmuscular() {
+        return valorExamenOsteosmuscular;
+    }
+
+    public void setValorExamenOsteosmuscular(Integer valorExamenOsteosmuscular) {
+        this.valorExamenOsteosmuscular = valorExamenOsteosmuscular;
+    }
+
+    @Basic
+    @Column(name = "ValorExamenVisiometria", nullable = true)
+    public Integer getValorExamenVisiometria() {
+        return valorExamenVisiometria;
+    }
+
+    public void setValorExamenVisiometria(Integer valorExamenVisiometria) {
+        this.valorExamenVisiometria = valorExamenVisiometria;
+    }
+
+    @Basic
+    @Column(name = "ValorExamenOptometria", nullable = true)
+    public Integer getValorExamenOptometria() {
+        return valorExamenOptometria;
+    }
+
+    public void setValorExamenOptometria(Integer valorExamenOptometria) {
+        this.valorExamenOptometria = valorExamenOptometria;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -155,6 +196,12 @@ public class InstitucionesMedicas {
             return false;
         if (telefonoContacto != null ? !telefonoContacto.equals(that.telefonoContacto) : that.telefonoContacto != null)
             return false;
+        if (valorExamenOsteosmuscular != null ? !valorExamenOsteosmuscular.equals(that.valorExamenOsteosmuscular) : that.valorExamenOsteosmuscular != null)
+            return false;
+        if (valorExamenVisiometria != null ? !valorExamenVisiometria.equals(that.valorExamenVisiometria) : that.valorExamenVisiometria != null)
+            return false;
+        if (valorExamenOptometria != null ? !valorExamenOptometria.equals(that.valorExamenOptometria) : that.valorExamenOptometria != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -173,6 +220,9 @@ public class InstitucionesMedicas {
         result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
         result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         result = 31 * result + (telefonoContacto != null ? telefonoContacto.hashCode() : 0);
+        result = 31 * result + (valorExamenOsteosmuscular != null ? valorExamenOsteosmuscular.hashCode() : 0);
+        result = 31 * result + (valorExamenVisiometria != null ? valorExamenVisiometria.hashCode() : 0);
+        result = 31 * result + (valorExamenOptometria != null ? valorExamenOptometria.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

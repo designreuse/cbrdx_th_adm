@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/06/2017.
+ * Created by Danny on 20/06/2017.
  */
 @Entity
 @Table(name = "InstitucionesMedicasEstructurasFisicas", schema = "dbo", catalog = "CREZCAMOS")
@@ -23,7 +23,7 @@ public class InstitucionesMedicasEstructurasFisicas {
         this.idInstitucionMedica = idInstitucionMedica;
         this.idEstructuraFisica = idEstructuraFisica;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
@@ -32,7 +32,7 @@ public class InstitucionesMedicasEstructurasFisicas {
         this.idInstitucionMedica = idInstitucionMedica;
         this.idEstructuraFisica = idEstructuraFisica;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 

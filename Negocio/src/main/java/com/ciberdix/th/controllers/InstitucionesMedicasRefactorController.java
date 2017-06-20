@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.InstitucionesMedicas;
+import com.ciberdix.th.model.VInstitucionesMedicas;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,22 +22,22 @@ public class InstitucionesMedicasRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/institucionesMedicas";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<InstitucionesMedicas> findAll() {
+    List<VInstitucionesMedicas> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        InstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl, InstitucionesMedicas[].class);
+        VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl, VInstitucionesMedicas[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    InstitucionesMedicas findOne(@PathVariable Integer id) {
+    VInstitucionesMedicas findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, InstitucionesMedicas.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VInstitucionesMedicas.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<InstitucionesMedicas> findEnabled() {
+    List<VInstitucionesMedicas> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        InstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", InstitucionesMedicas[].class);
+        VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", VInstitucionesMedicas[].class);
         return Arrays.asList(parametros);
     }
 
