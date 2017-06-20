@@ -6,6 +6,7 @@ import java.sql.Timestamp;
  * Created by felip on 21/04/2017.
  */
 public class VCargosRiesgos {
+
     private Integer idCargoRiesgo;
     private Integer idCargo;
     private String cargo;
@@ -13,6 +14,7 @@ public class VCargosRiesgos {
     private String riesgo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
 
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;
@@ -68,5 +70,13 @@ public class VCargosRiesgos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 }

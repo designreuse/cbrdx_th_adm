@@ -40,15 +40,21 @@ public class CargosRiesgosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    CargosRiesgos create(@RequestBody CargosRiesgos obj) {
+    CargosRiesgos create(@RequestBody CargosRiesgos o) {
         return cargosRiesgosRefactorRepository.save(
-                new CargosRiesgos(obj.getIdCargo(), obj.getIdRiesgo(), obj.getAuditoriaUsuario()));
+                new CargosRiesgos(
+                        o.getIdCargo(),o.getIdRiesgo(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado()
+                )
+        );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody CargosRiesgos obj) {
+    void update(@RequestBody CargosRiesgos o) {
         cargosRiesgosRefactorRepository.save(
-                new CargosRiesgos(obj.getIdCargoRiesgo(),obj.getIdCargo(), obj.getIdRiesgo(), obj.getAuditoriaUsuario())
+                new CargosRiesgos(
+                        o.getIdCargoRiesgo(),o.getIdCargo(),o.getIdRiesgo(),o.getAuditoriaUsuario(),
+                        o.getIndicadorHabilitado()
+                )
         );
     }
 }

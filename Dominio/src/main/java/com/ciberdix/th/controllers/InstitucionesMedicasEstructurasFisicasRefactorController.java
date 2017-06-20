@@ -41,7 +41,8 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
         return institucionesMedicasEstructurasFisicasRefactorRepository.save(
                 new InstitucionesMedicasEstructurasFisicas(
                         o.getIdInstitucionMedica(),o.getIdEstructuraFisica(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorViaja(),
+                        o.getValorViaje()
                 )
         );
     }
@@ -51,7 +52,8 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
         institucionesMedicasEstructurasFisicasRefactorRepository.save(
                 new InstitucionesMedicasEstructurasFisicas(
                         o.getIdInstitucionMedicaEstructuraFisica(),o.getIdInstitucionMedica(),
-                        o.getIdEstructuraFisica(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdEstructuraFisica(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
+                        o.getIndicadorViaja(),o.getValorViaje()
                 )
         );
     }
