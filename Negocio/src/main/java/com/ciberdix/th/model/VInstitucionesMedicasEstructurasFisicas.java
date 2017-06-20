@@ -3,12 +3,14 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/06/2017.
+ * Created by Danny on 20/06/2017.
  */
-public class InstitucionesMedicasEstructurasFisicas {
+public class VInstitucionesMedicasEstructurasFisicas {
 
     private Integer idInstitucionMedicaEstructuraFisica;
+    private String institucionMedica;
     private Integer idInstitucionMedica;
+    private String estructuraFisica;
     private Integer idEstructuraFisica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -24,12 +26,28 @@ public class InstitucionesMedicasEstructurasFisicas {
         this.idInstitucionMedicaEstructuraFisica = idInstitucionMedicaEstructuraFisica;
     }
 
+    public String getInstitucionMedica() {
+        return institucionMedica;
+    }
+
+    public void setInstitucionMedica(String institucionMedica) {
+        this.institucionMedica = institucionMedica;
+    }
+
     public Integer getIdInstitucionMedica() {
         return idInstitucionMedica;
     }
 
     public void setIdInstitucionMedica(Integer idInstitucionMedica) {
         this.idInstitucionMedica = idInstitucionMedica;
+    }
+
+    public String getEstructuraFisica() {
+        return estructuraFisica;
+    }
+
+    public void setEstructuraFisica(String estructuraFisica) {
+        this.estructuraFisica = estructuraFisica;
     }
 
     public Integer getIdEstructuraFisica() {

@@ -13,6 +13,9 @@ public class InstitucionesMedicas {
     private Integer idLocalizacion;
     private String correoElectronico;
     private String telefonoContacto;
+    private Integer valorExamenOsteosmuscular;
+    private Integer valorExamenVisiometria;
+    private Integer valorExamenOptometria;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -63,6 +66,30 @@ public class InstitucionesMedicas {
 
     public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
+    }
+
+    public Integer getValorExamenOsteosmuscular() {
+        return valorExamenOsteosmuscular;
+    }
+
+    public void setValorExamenOsteosmuscular(Integer valorExamenOsteosmuscular) {
+        this.valorExamenOsteosmuscular = valorExamenOsteosmuscular;
+    }
+
+    public Integer getValorExamenVisiometria() {
+        return valorExamenVisiometria;
+    }
+
+    public void setValorExamenVisiometria(Integer valorExamenVisiometria) {
+        this.valorExamenVisiometria = valorExamenVisiometria;
+    }
+
+    public Integer getValorExamenOptometria() {
+        return valorExamenOptometria;
+    }
+
+    public void setValorExamenOptometria(Integer valorExamenOptometria) {
+        this.valorExamenOptometria = valorExamenOptometria;
     }
 
     public Boolean getIndicadorHabilitado() {

@@ -7,10 +7,12 @@ import java.sql.Timestamp;
  * Created by Danny on 20/06/2017.
  */
 @Entity
-@Table(name = "InstitucionesMedicasEstructurasFisicas", schema = "dbo", catalog = "CREZCAMOS")
-public class InstitucionesMedicasEstructurasFisicas {
+@Table(name = "V_InstitucionesMedicasEstructurasFisicas", schema = "dbo", catalog = "CREZCAMOS")
+public class VInstitucionesMedicasEstructurasFisicas {
     private Integer idInstitucionMedicaEstructuraFisica;
+    private String institucionMedica;
     private Integer idInstitucionMedica;
+    private String estructuraFisica;
     private Integer idEstructuraFisica;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -18,32 +20,7 @@ public class InstitucionesMedicasEstructurasFisicas {
     private Boolean indicadorViaja;
     private Integer valorViaje;
 
-    public InstitucionesMedicasEstructurasFisicas() {
-    }
-
-    public InstitucionesMedicasEstructurasFisicas(Integer idInstitucionMedica, Integer idEstructuraFisica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorViaja, Integer valorViaje) {
-        this.idInstitucionMedica = idInstitucionMedica;
-        this.idEstructuraFisica = idEstructuraFisica;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorViaja = indicadorViaja;
-        this.valorViaje = valorViaje != null ? valorViaje: 0;
-    }
-
-    public InstitucionesMedicasEstructurasFisicas(Integer idInstitucionMedicaEstructuraFisica, Integer idInstitucionMedica, Integer idEstructuraFisica, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorViaja, Integer valorViaje) {
-        this.idInstitucionMedicaEstructuraFisica = idInstitucionMedicaEstructuraFisica;
-        this.idInstitucionMedica = idInstitucionMedica;
-        this.idEstructuraFisica = idEstructuraFisica;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorViaja = indicadorViaja;
-        this.valorViaje = valorViaje != null ? valorViaje: 0;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdInstitucionMedicaEstructuraFisica", nullable = false)
     public Integer getIdInstitucionMedicaEstructuraFisica() {
         return idInstitucionMedicaEstructuraFisica;
@@ -54,6 +31,16 @@ public class InstitucionesMedicasEstructurasFisicas {
     }
 
     @Basic
+    @Column(name = "InstitucionMedica", nullable = true, length = 50)
+    public String getInstitucionMedica() {
+        return institucionMedica;
+    }
+
+    public void setInstitucionMedica(String institucionMedica) {
+        this.institucionMedica = institucionMedica;
+    }
+
+    @Basic
     @Column(name = "IdInstitucionMedica", nullable = true)
     public Integer getIdInstitucionMedica() {
         return idInstitucionMedica;
@@ -61,6 +48,16 @@ public class InstitucionesMedicasEstructurasFisicas {
 
     public void setIdInstitucionMedica(Integer idInstitucionMedica) {
         this.idInstitucionMedica = idInstitucionMedica;
+    }
+
+    @Basic
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
+    public String getEstructuraFisica() {
+        return estructuraFisica;
+    }
+
+    public void setEstructuraFisica(String estructuraFisica) {
+        this.estructuraFisica = estructuraFisica;
     }
 
     @Basic
@@ -128,11 +125,15 @@ public class InstitucionesMedicasEstructurasFisicas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        InstitucionesMedicasEstructurasFisicas that = (InstitucionesMedicasEstructurasFisicas) o;
+        VInstitucionesMedicasEstructurasFisicas that = (VInstitucionesMedicasEstructurasFisicas) o;
 
         if (idInstitucionMedicaEstructuraFisica != null ? !idInstitucionMedicaEstructuraFisica.equals(that.idInstitucionMedicaEstructuraFisica) : that.idInstitucionMedicaEstructuraFisica != null)
             return false;
+        if (institucionMedica != null ? !institucionMedica.equals(that.institucionMedica) : that.institucionMedica != null)
+            return false;
         if (idInstitucionMedica != null ? !idInstitucionMedica.equals(that.idInstitucionMedica) : that.idInstitucionMedica != null)
+            return false;
+        if (estructuraFisica != null ? !estructuraFisica.equals(that.estructuraFisica) : that.estructuraFisica != null)
             return false;
         if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
             return false;
@@ -152,7 +153,9 @@ public class InstitucionesMedicasEstructurasFisicas {
     @Override
     public int hashCode() {
         int result = idInstitucionMedicaEstructuraFisica != null ? idInstitucionMedicaEstructuraFisica.hashCode() : 0;
+        result = 31 * result + (institucionMedica != null ? institucionMedica.hashCode() : 0);
         result = 31 * result + (idInstitucionMedica != null ? idInstitucionMedica.hashCode() : 0);
+        result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
