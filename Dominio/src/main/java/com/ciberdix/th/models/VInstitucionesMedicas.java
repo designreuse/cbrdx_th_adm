@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 16/06/2017.
+ * Created by Danny on 20/06/2017.
  */
 @Entity
 @Table(name = "V_InstitucionesMedicas", schema = "dbo", catalog = "CREZCAMOS")
@@ -13,9 +13,13 @@ public class VInstitucionesMedicas {
     private String institucionMedica;
     private String representanteLegal;
     private String direccion;
+    private String descripcionDivisonPolitica;
     private Integer idLocalizacion;
     private String correoElectronico;
     private String telefonoContacto;
+    private Integer valorExamenOsteosmuscular;
+    private Integer valorExamenVisiometria;
+    private Integer valorExamenOptometria;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -61,6 +65,16 @@ public class VInstitucionesMedicas {
     }
 
     @Basic
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
+    public String getDescripcionDivisonPolitica() {
+        return descripcionDivisonPolitica;
+    }
+
+    public void setDescripcionDivisonPolitica(String descripcionDivisonPolitica) {
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
+    }
+
+    @Basic
     @Column(name = "IdLocalizacion", nullable = true)
     public Integer getIdLocalizacion() {
         return idLocalizacion;
@@ -88,6 +102,36 @@ public class VInstitucionesMedicas {
 
     public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
+    }
+
+    @Basic
+    @Column(name = "ValorExamenOsteosmuscular", nullable = true)
+    public Integer getValorExamenOsteosmuscular() {
+        return valorExamenOsteosmuscular;
+    }
+
+    public void setValorExamenOsteosmuscular(Integer valorExamenOsteosmuscular) {
+        this.valorExamenOsteosmuscular = valorExamenOsteosmuscular;
+    }
+
+    @Basic
+    @Column(name = "ValorExamenVisiometria", nullable = true)
+    public Integer getValorExamenVisiometria() {
+        return valorExamenVisiometria;
+    }
+
+    public void setValorExamenVisiometria(Integer valorExamenVisiometria) {
+        this.valorExamenVisiometria = valorExamenVisiometria;
+    }
+
+    @Basic
+    @Column(name = "ValorExamenOptometria", nullable = true)
+    public Integer getValorExamenOptometria() {
+        return valorExamenOptometria;
+    }
+
+    public void setValorExamenOptometria(Integer valorExamenOptometria) {
+        this.valorExamenOptometria = valorExamenOptometria;
     }
 
     @Basic
@@ -134,11 +178,19 @@ public class VInstitucionesMedicas {
         if (representanteLegal != null ? !representanteLegal.equals(that.representanteLegal) : that.representanteLegal != null)
             return false;
         if (direccion != null ? !direccion.equals(that.direccion) : that.direccion != null) return false;
+        if (descripcionDivisonPolitica != null ? !descripcionDivisonPolitica.equals(that.descripcionDivisonPolitica) : that.descripcionDivisonPolitica != null)
+            return false;
         if (idLocalizacion != null ? !idLocalizacion.equals(that.idLocalizacion) : that.idLocalizacion != null)
             return false;
         if (correoElectronico != null ? !correoElectronico.equals(that.correoElectronico) : that.correoElectronico != null)
             return false;
         if (telefonoContacto != null ? !telefonoContacto.equals(that.telefonoContacto) : that.telefonoContacto != null)
+            return false;
+        if (valorExamenOsteosmuscular != null ? !valorExamenOsteosmuscular.equals(that.valorExamenOsteosmuscular) : that.valorExamenOsteosmuscular != null)
+            return false;
+        if (valorExamenVisiometria != null ? !valorExamenVisiometria.equals(that.valorExamenVisiometria) : that.valorExamenVisiometria != null)
+            return false;
+        if (valorExamenOptometria != null ? !valorExamenOptometria.equals(that.valorExamenOptometria) : that.valorExamenOptometria != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
@@ -156,9 +208,13 @@ public class VInstitucionesMedicas {
         result = 31 * result + (institucionMedica != null ? institucionMedica.hashCode() : 0);
         result = 31 * result + (representanteLegal != null ? representanteLegal.hashCode() : 0);
         result = 31 * result + (direccion != null ? direccion.hashCode() : 0);
+        result = 31 * result + (descripcionDivisonPolitica != null ? descripcionDivisonPolitica.hashCode() : 0);
         result = 31 * result + (idLocalizacion != null ? idLocalizacion.hashCode() : 0);
         result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
         result = 31 * result + (telefonoContacto != null ? telefonoContacto.hashCode() : 0);
+        result = 31 * result + (valorExamenOsteosmuscular != null ? valorExamenOsteosmuscular.hashCode() : 0);
+        result = 31 * result + (valorExamenVisiometria != null ? valorExamenVisiometria.hashCode() : 0);
+        result = 31 * result + (valorExamenOptometria != null ? valorExamenOptometria.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

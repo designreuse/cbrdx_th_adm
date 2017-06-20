@@ -45,9 +45,9 @@ public class InstitucionesMedicasRefactorController {
     InstitucionesMedicas create(@RequestBody InstitucionesMedicas o) {
         return institucionesMedicasRefactorRepository.save(
                 new InstitucionesMedicas(
-                        o.getInstitucionMedica(),o.getRepresentanteLegal(),
-                        o.getIdLocalizacion(),o.getCorreoElectronico(),o.getTelefonoContacto(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getInstitucionMedica(),o.getRepresentanteLegal(),o.getIdLocalizacion(),o.getCorreoElectronico(),
+                        o.getTelefonoContacto(),o.getValorExamenOsteosmuscular(),o.getValorExamenVisiometria(),
+                        o.getValorExamenOptometria(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }
@@ -56,9 +56,9 @@ public class InstitucionesMedicasRefactorController {
     void update(@RequestBody InstitucionesMedicas o) {
         institucionesMedicasRefactorRepository.save(
                 new InstitucionesMedicas(
-                        o.getIdInstitucionMedica(),o.getInstitucionMedica(),o.getRepresentanteLegal(),
-                        o.getIdLocalizacion(),o.getCorreoElectronico(),o.getTelefonoContacto(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdInstitucionMedica(),o.getInstitucionMedica(),o.getRepresentanteLegal(),o.getIdLocalizacion(),
+                        o.getCorreoElectronico(),o.getTelefonoContacto(),o.getValorExamenOsteosmuscular(),o.getValorExamenVisiometria(),
+                        o.getValorExamenOptometria(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }
