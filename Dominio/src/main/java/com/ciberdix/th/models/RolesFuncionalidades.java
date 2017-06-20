@@ -49,6 +49,7 @@ public class RolesFuncionalidades {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdRolFuncionalidad", nullable = false)
     public int getIdRolFuncionalidad() {
         return idRolFuncionalidad;
