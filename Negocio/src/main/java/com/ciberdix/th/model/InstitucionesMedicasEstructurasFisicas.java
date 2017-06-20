@@ -13,6 +13,8 @@ public class InstitucionesMedicasEstructurasFisicas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorViaja;
+    private Integer valorViaje;
 
     public Integer getIdInstitucionMedicaEstructuraFisica() {
         return idInstitucionMedicaEstructuraFisica;
@@ -60,5 +62,21 @@ public class InstitucionesMedicasEstructurasFisicas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorViaja() {
+        return indicadorViaja;
+    }
+
+    public void setIndicadorViaja(Boolean indicadorViaja) {
+        this.indicadorViaja = indicadorViaja;
+    }
+
+    public Integer getValorViaje() {
+        return valorViaje;
+    }
+
+    public void setValorViaje(Integer valorViaje) {
+        this.valorViaje = valorViaje;
     }
 }
