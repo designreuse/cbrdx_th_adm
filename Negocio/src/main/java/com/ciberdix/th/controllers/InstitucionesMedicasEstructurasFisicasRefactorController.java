@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.InstitucionesMedicasEstructurasFisicas;
+import com.ciberdix.th.model.VInstitucionesMedicasEstructurasFisicas;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,22 +22,36 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/institucionesMedicasEstructurasFisicas";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<InstitucionesMedicasEstructurasFisicas> findAll() {
+    List<VInstitucionesMedicasEstructurasFisicas> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        InstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl, InstitucionesMedicasEstructurasFisicas[].class);
+        VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl, VInstitucionesMedicasEstructurasFisicas[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    InstitucionesMedicasEstructurasFisicas findOne(@PathVariable Integer id) {
+    VInstitucionesMedicasEstructurasFisicas findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, InstitucionesMedicasEstructurasFisicas.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VInstitucionesMedicasEstructurasFisicas.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<InstitucionesMedicasEstructurasFisicas> findEnabled() {
+    List<VInstitucionesMedicasEstructurasFisicas> findEnabled() {
         RestTemplate restTemplate = new RestTemplate();
-        InstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", InstitucionesMedicasEstructurasFisicas[].class);
+        VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", VInstitucionesMedicasEstructurasFisicas[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/institucionMedica/{idInstitucionMedica}")
+    List<VInstitucionesMedicasEstructurasFisicas> findByIdInstitucionMedica(@PathVariable Integer idInstitucionMedica) {
+        RestTemplate restTemplate = new RestTemplate();
+        VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "/institucionMedica/" + idInstitucionMedica, VInstitucionesMedicasEstructurasFisicas[].class);
+        return Arrays.asList(parametros);
+    }
+
+            @RequestMapping(method = RequestMethod.GET, path = "/estructuraFisica/{idEstructuraFisica}")
+    List<VInstitucionesMedicasEstructurasFisicas> findByIdEstructuraFisica(@PathVariable Integer idEstructuraFisica) {
+        RestTemplate restTemplate = new RestTemplate();
+        VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "/estructuraFisica/" + idEstructuraFisica, VInstitucionesMedicasEstructurasFisicas[].class);
         return Arrays.asList(parametros);
     }
 

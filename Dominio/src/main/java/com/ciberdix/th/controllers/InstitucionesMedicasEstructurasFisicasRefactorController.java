@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.InstitucionesMedicasEstructurasFisicas;
+import com.ciberdix.th.models.VInstitucionesMedicasEstructurasFisicas;
 import com.ciberdix.th.repositories.InstitucionesMedicasEstructurasFisicasRefactorRepository;
+import com.ciberdix.th.repositories.VInstitucionesMedicasEstructurasFisicasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,19 +23,32 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
     @Autowired
     private InstitucionesMedicasEstructurasFisicasRefactorRepository institucionesMedicasEstructurasFisicasRefactorRepository;
 
+    @Autowired
+    private VInstitucionesMedicasEstructurasFisicasRefactorRepository vInstitucionesMedicasEstructurasFisicasRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<InstitucionesMedicasEstructurasFisicas> findAll() {
-        return (List<InstitucionesMedicasEstructurasFisicas>) institucionesMedicasEstructurasFisicasRefactorRepository.findAll();
+    List<VInstitucionesMedicasEstructurasFisicas> findAll() {
+        return (List<VInstitucionesMedicasEstructurasFisicas>) vInstitucionesMedicasEstructurasFisicasRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<InstitucionesMedicasEstructurasFisicas> findEnabled() {
-        return institucionesMedicasEstructurasFisicasRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
+    List<VInstitucionesMedicasEstructurasFisicas> findEnabled() {
+        return vInstitucionesMedicasEstructurasFisicasRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    InstitucionesMedicasEstructurasFisicas findOne(@PathVariable Integer id) {
-        return institucionesMedicasEstructurasFisicasRefactorRepository.findOne(id);
+    VInstitucionesMedicasEstructurasFisicas findOne(@PathVariable Integer id) {
+        return vInstitucionesMedicasEstructurasFisicasRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/institucionMedica/{idInstitucionMedica}")
+    List<VInstitucionesMedicasEstructurasFisicas> findByIdInstitucionMedica(@PathVariable Integer idInstitucionMedica) {
+        return vInstitucionesMedicasEstructurasFisicasRefactorRepository.findAllByIdInstitucionMedica(idInstitucionMedica);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/estructuraFisica/{idEstructuraFisica}")
+    List<VInstitucionesMedicasEstructurasFisicas> findByIdEstructuraFisica(@PathVariable Integer idEstructuraFisica) {
+        return vInstitucionesMedicasEstructurasFisicasRefactorRepository.findAllByIdEstructuraFisica(idEstructuraFisica);
     }
 
     @RequestMapping(method = RequestMethod.POST)
