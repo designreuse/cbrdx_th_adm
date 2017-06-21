@@ -5,7 +5,6 @@ import com.ciberdix.th.model.Usuarios;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.mobile.device.Device;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,14 +18,14 @@ public class JwtTokenUtil implements Serializable {
 
     private static final long serialVersionUID = -3301605591108950415L;
 
-    static final String CLAIM_KEY_USERNAME = "sub";
-    static final String CLAIM_KEY_AUDIENCE = "audience";
-    static final String CLAIM_KEY_CREATED = "created";
-    static final String CLAIM_USUARIO = "usuario";
-    static final String CLAIM_NOMBRE_TERCERO = "nombre";
-    static final String CLAIM_NOMBRE_TERCERO_CORTO = "nombreCorto";
-    static final String CLAIM_AVATAR = "avatar";
-    static final String CLAIM_AUTHORITIES = "authorities";
+    private static final String CLAIM_KEY_USERNAME = "sub";
+    private static final String CLAIM_KEY_AUDIENCE = "audience";
+    private static final String CLAIM_KEY_CREATED = "created";
+    private static final String CLAIM_USUARIO = "usuario";
+    private static final String CLAIM_NOMBRE_TERCERO = "nombre";
+    private static final String CLAIM_NOMBRE_TERCERO_CORTO = "nombreCorto";
+    private static final String CLAIM_AVATAR = "avatar";
+    private static final String CLAIM_AUTHORITIES = "authorities";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
@@ -34,8 +33,6 @@ public class JwtTokenUtil implements Serializable {
     private static final String AUDIENCE_TABLET = "tablet";
 
     private String secret = "fdsldfjklfjsld73647364";
-
-    private Long expiration = 604800L;
 
     public String getUsernameFromToken(String token) {
         String username;
@@ -120,6 +117,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private Date generateExpirationDate() {
+        Long expiration = 604800L;
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
 
@@ -132,7 +130,7 @@ public class JwtTokenUtil implements Serializable {
         return (lastPasswordReset != null && created.before(lastPasswordReset));
     }
 
-    private String generateAudience(Device device) {
+    /*private String generateAudience(Device device) {
         String audience = AUDIENCE_UNKNOWN;
         if (device.isNormal()) {
             audience = AUDIENCE_WEB;
@@ -142,7 +140,7 @@ public class JwtTokenUtil implements Serializable {
             audience = AUDIENCE_MOBILE;
         }
         return audience;
-    }
+    }*/
 
     private Boolean ignoreTokenExpiration(String token) {
         String audience = getAudienceFromToken(token);
@@ -171,7 +169,7 @@ public class JwtTokenUtil implements Serializable {
         return generateToken(claims);
     }
 
-    String generateToken(Map<String, Object> claims) {
+    private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())
@@ -197,10 +195,9 @@ public class JwtTokenUtil implements Serializable {
         return refreshedToken;
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
+    Boolean validateToken(String token, UserDetails userDetails) {
         JwtUser user = (JwtUser) userDetails;
         final String username = getUsernameFromToken(token);
-        final Date created = getCreatedDateFromToken(token);
         //final Date expiration = getExpirationDateFromToken(token);
 
         //return (username.equals(user.getUsername()) && !isTokenExpired(token) && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
