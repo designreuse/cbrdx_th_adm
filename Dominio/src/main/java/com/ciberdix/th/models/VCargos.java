@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 24/05/2017.
+ * Created by Danny on 22/06/2017.
  */
 @Entity
 @Table(name = "V_Cargos", schema = "dbo", catalog = "CREZCAMOS")
@@ -50,8 +50,8 @@ public class VCargos {
     private String estado;
     private Integer paso;
     private Boolean indicadorZona;
+    private BigInteger edadMax;
 
-    @Basic
     @Id
     @Column(name = "IdCargo", nullable = false)
     public Integer getIdCargo() {
@@ -452,6 +452,16 @@ public class VCargos {
         this.indicadorZona = indicadorZona;
     }
 
+    @Basic
+    @Column(name = "EdadMax", nullable = true, precision = 0)
+    public BigInteger getEdadMax() {
+        return edadMax;
+    }
+
+    public void setEdadMax(BigInteger edadMax) {
+        this.edadMax = edadMax;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -520,6 +530,7 @@ public class VCargos {
         if (paso != null ? !paso.equals(vCargos.paso) : vCargos.paso != null) return false;
         if (indicadorZona != null ? !indicadorZona.equals(vCargos.indicadorZona) : vCargos.indicadorZona != null)
             return false;
+        if (edadMax != null ? !edadMax.equals(vCargos.edadMax) : vCargos.edadMax != null) return false;
 
         return true;
     }
@@ -566,6 +577,7 @@ public class VCargos {
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
         result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
+        result = 31 * result + (edadMax != null ? edadMax.hashCode() : 0);
         return result;
     }
 }

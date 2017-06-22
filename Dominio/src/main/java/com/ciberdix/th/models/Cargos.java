@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 24/05/2017.
+ * Created by Danny on 22/06/2017.
  */
 @Entity
 @Table(name = "Cargos", schema = "dbo", catalog = "CREZCAMOS")
@@ -43,11 +43,12 @@ public class Cargos {
     private Integer idEstado;
     private Integer paso;
     private Boolean indicadorZona;
+    private BigInteger edadMax;
 
     public Cargos() {
     }
 
-    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona) {
+    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax) {
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -80,9 +81,10 @@ public class Cargos {
         this.idEstado = idEstado;
         this.paso = paso;
         this.indicadorZona = indicadorZona;
+        this.edadMax = edadMax;
     }
 
-    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona) {
+    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax) {
         this.idCargo = idCargo;
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -116,6 +118,7 @@ public class Cargos {
         this.idEstado = idEstado;
         this.paso = paso;
         this.indicadorZona = indicadorZona;
+        this.edadMax = edadMax;
     }
 
     @Id
@@ -449,6 +452,16 @@ public class Cargos {
         this.indicadorZona = indicadorZona;
     }
 
+    @Basic
+    @Column(name = "EdadMax", nullable = true, precision = 0)
+    public BigInteger getEdadMax() {
+        return edadMax;
+    }
+
+    public void setEdadMax(BigInteger edadMax) {
+        this.edadMax = edadMax;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -508,6 +521,7 @@ public class Cargos {
         if (paso != null ? !paso.equals(cargos.paso) : cargos.paso != null) return false;
         if (indicadorZona != null ? !indicadorZona.equals(cargos.indicadorZona) : cargos.indicadorZona != null)
             return false;
+        if (edadMax != null ? !edadMax.equals(cargos.edadMax) : cargos.edadMax != null) return false;
 
         return true;
     }
@@ -547,6 +561,7 @@ public class Cargos {
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
         result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
+        result = 31 * result + (edadMax != null ? edadMax.hashCode() : 0);
         return result;
     }
 }

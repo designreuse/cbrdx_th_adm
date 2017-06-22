@@ -47,6 +47,7 @@ public class VCargos {
     private String estado;
     private Integer paso;
     private Boolean indicadorZona;
+    private BigInteger edadMax;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -366,5 +367,13 @@ public class VCargos {
 
     public void setIndicadorZona(Boolean indicadorZona) {
         this.indicadorZona = indicadorZona;
+    }
+
+    public BigInteger getEdadMax() {
+        return edadMax;
+    }
+
+    public void setEdadMax(BigInteger edadMax) {
+        this.edadMax = edadMax;
     }
 }
