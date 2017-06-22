@@ -80,26 +80,22 @@ public class CargosRefactorController {
         RequerimientosRefactorController requerimientosRefactorController = new RequerimientosRefactorController();
         RequerimientosAccionesRefactorController requerimientosAccionesRefactorController = new RequerimientosAccionesRefactorController();
         RestTemplate restTemplate = new RestTemplate();
-        UtilitiesController utilitiesController = new UtilitiesController();
-        String logica = utilitiesController.readParameter("business.url");
         Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
-        Integer c = utilitiesController.findListItem("ListasEstadosCargos", "CONST").getIdLista();
-        Integer a = utilitiesController.findListItem("ListasEstadosCargos", "APROB").getIdLista();
-        Integer n = utilitiesController.findListItem("ListasEstadosCargos", "NOAPR").getIdLista();
-        if ((estadoActual.getIdEstado().equals(c) || estadoActual.getIdEstado().equals(n)) && obj.getIdEstado().equals(a)) {
-            Integer tipoSol = utilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
-            Requerimientos requerimientos = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
+        Integer c = UtilitiesController.findListItem("ListasEstadosCargos", "CONST").getIdLista();
+        Integer a = UtilitiesController.findListItem("ListasEstadosCargos", "APROB").getIdLista();
+        Integer n = UtilitiesController.findListItem("ListasEstadosCargos", "NOAPR").getIdLista();
+        Integer tipoSol = UtilitiesController.findListItem("ListasTiposSolicitudes", "CRGNVO").getIdLista();
+        Requerimientos requerimientos = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/byIdCargo/" + obj.getIdCargo() + "/" + tipoSol, Requerimientos.class);
+        if ((estadoActual.getIdEstado().equals(c) || estadoActual.getIdEstado().equals(n)) && obj.getIdEstado().equals(a) && (requerimientos != null && requerimientos.getIdRequerimiento() != null)) {
             RequerimientosAcciones requerimientosAcciones = new RequerimientosAcciones();
             requerimientosAcciones.setIdRequerimiento(requerimientos.getIdRequerimiento());
             requerimientosAcciones.setAuditoriaUsuario(obj.getAuditoriaUsuario());
             requerimientosAcciones.setObservacion("Cargo Creado Satisfactoriamente");
-            Integer idAccion = utilitiesController.findListItem("ListasRequerimientosAcciones", "APRPER").getIdLista();
+            Integer idAccion = UtilitiesController.findListItem("ListasRequerimientosAcciones", "APRPER").getIdLista();
             requerimientosAcciones.setIdAccion(idAccion);
             requerimientosAccionesRefactorController.create(requerimientosAcciones);
-            //restTemplate.postForObject(logica + "/api/requerimientosAcciones", requerimientosAcciones, RequerimientosAcciones.class);
-            Integer reqEstado = utilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
+            Integer reqEstado = UtilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
             requerimientos.setIdEstado(reqEstado);
-            //restTemplate.put(logica + "/api/requerimientos", requerimientos, Requerimientos.class);
             requerimientosRefactorController.update(requerimientos);
         }
         restTemplate.put(serviceUrl + "/tab2", obj);
@@ -132,12 +128,11 @@ public class CargosRefactorController {
     @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
     void updateTab7(@RequestBody Cargos obj) {
         RestTemplate restTemplate = new RestTemplate();
-        UtilitiesController utilitiesController = new UtilitiesController();
         Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
         if (estadoActual.getPaso().equals(15) && obj.getPaso().equals(16)) {
-            String recipients = utilitiesController.findConstant("CORAUT").getValor();
+            String recipients = UtilitiesController.findConstant("CORAUT").getValor();
             String token = UtilitiesController.generateURLToken("/positions/update/" + obj.getIdCargo());
-            String body = "Se ha creado un nuevo cargo que requiere su aprobación. haga click en el siguiente boton para acceder a la información: <p style=\"align:center;\"><a href=\"" + utilitiesController.readParameter("front.url") + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
+            String body = "Se ha creado un nuevo cargo que requiere su aprobación. haga click en el siguiente boton para acceder a la información: <p style=\"align:center;\"><a href=\"" + UtilitiesController.readParameter("front.url") + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
             UtilitiesController.sendMail(recipients, "Aprobación Cargo", body);
         }
         restTemplate.put(serviceUrl + "/tab7", obj);

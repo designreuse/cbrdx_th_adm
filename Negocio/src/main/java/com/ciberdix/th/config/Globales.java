@@ -14,7 +14,7 @@ public class Globales {
         try {
             input = getClass().getClassLoader().getResourceAsStream("application.properties");
             prop.load(input);
-            setUrl(prop.getProperty("url")+":"+prop.getProperty("domain.port"));
+            setUrl(prop.getProperty("url") + ":" + prop.getProperty("domain.port"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
