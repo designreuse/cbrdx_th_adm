@@ -6,7 +6,7 @@ import java.sql.Timestamp;
  * Created by robertochajin on 24/04/17.
  */
 public class VRolesFuncionalidades {
-    private Integer idRolFuncionalidad;
+    private int idRolFuncionalidad;
     private Integer idFuncionalidad;
     private Integer idMenu;
     private String menu;
@@ -16,14 +16,15 @@ public class VRolesFuncionalidades {
     private Boolean indicadorImprimir;
     private Boolean indicadorInsertar;
     private Boolean indicadorHabilitado;
+    private Boolean indicadorMostrarEnMenu;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdRolFuncionalidad() {
+    public int getIdRolFuncionalidad() {
         return idRolFuncionalidad;
     }
 
-    public void setIdRolFuncionalidad(Integer idRolFuncionalidad) {
+    public void setIdRolFuncionalidad(int idRolFuncionalidad) {
         this.idRolFuncionalidad = idRolFuncionalidad;
     }
 
@@ -97,6 +98,14 @@ public class VRolesFuncionalidades {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public Boolean getIndicadorMostrarEnMenu() {
+        return indicadorMostrarEnMenu;
+    }
+
+    public void setIndicadorMostrarEnMenu(Boolean indicadorMostrarEnMenu) {
+        this.indicadorMostrarEnMenu = indicadorMostrarEnMenu;
     }
 
     public Integer getAuditoriaUsuario() {
