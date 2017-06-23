@@ -1,8 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.Adjuntos;
-import com.ciberdix.th.model.TercerosCentralesRiesgos;
+import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtTokenUtil;
 import org.apache.commons.io.FilenameUtils;
 import org.json.JSONException;
@@ -121,6 +120,16 @@ public class TercerosCentralesRiesgosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosCentralesRiesgos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        CentralesRiesgos c = restTemplate.getForObject(globales.getUrl() + "/api/centralesRiesgos/" + obj.getIdCentralRiesgo(),CentralesRiesgos.class);
+        TercerosCentralesRiesgos tc = findOne(obj.getIdTerceroCentralRiesgo());
+        if(!tc.getIndicadorReportado()){
+            if(obj.getIndicadorReportado()){
+                Constantes constantes = restTemplate.getForObject(globales.getUrl() + "/api/constantes/codigo/RESLRE",Constantes.class);
+                Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + obj.getIdTercero(),Terceros.class);
+                VDivisionPoliticaRec d = restTemplate.getForObject(globales.getUrl() + "/api/divisionPolitica/buscarId/" + t.getIdCiudadExpDocumento(),VDivisionPoliticaRec.class);
+                UtilitiesController.sendMail(constantes.getValor(), "Notificacion Reportado", "<h2>Buen día!</h2><p>Con el presente correo se verifica que en el proceso de selección la persona " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + " identificada con número de ciudadanía " + t.getNumeroDocumento() + " de " + d.getDescripcionDivisonPolitica() + ", se encuentra reportada en la central de riesgos " + c.getNombre() + ".</p><p>Verificar por favor su ingreso a listas restrictivas del sistema.</p><p>Muchas gracias.</p>");
+            }
+        }
         restTemplate.put(serviceUrl, obj);
     }
 }
