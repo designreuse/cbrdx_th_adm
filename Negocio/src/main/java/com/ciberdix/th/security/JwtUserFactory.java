@@ -52,9 +52,9 @@ public final class JwtUserFactory {
 
         for (VUsuarioRoles r : usuarioRoles) {
             for (RolesFuncionalidades rf : rolesFuncionalidades) {
-                if (r.getIdRol().equals(rf.getIdRol())) {
+                if (r.getIdRol().equals(rf.getIdRol()) && rf.getIndicadorHabilitado()) {
                     for (Funcionalidades f : funcionalidades) {
-                        if (rf.getIdFuncionalidad().equals(f.getIdFuncionalidad())) {
+                        if (rf.getIdFuncionalidad().equals(f.getIdFuncionalidad()) && f.getIndicadorHabilitado()) {
                             for (Menus m : menus) {
                                 if (f.getIdMenu().equals(m.getIdMenu()))
                                     pantallasAprobadas.add(m.getRuta());
