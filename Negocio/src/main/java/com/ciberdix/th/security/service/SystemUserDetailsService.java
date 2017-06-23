@@ -3,7 +3,7 @@ package com.ciberdix.th.security.service;
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Usuarios;
 import com.ciberdix.th.security.JwtUserFactory;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.ciberdix.th.security.UserDetailsCustom;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +15,7 @@ public class SystemUserDetailsService implements CustomUserDetails {
     private String serviceUrl = globales.getUrl();
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetailsCustom loadUserByUsername(String username) throws UsernameNotFoundException {
         RestTemplate restTemplate = new RestTemplate();
         Usuarios user = restTemplate.getForObject(serviceUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
         if (user == null) {
@@ -26,7 +26,7 @@ public class SystemUserDetailsService implements CustomUserDetails {
     }
 
     @Override
-    public UserDetails loadUserByIdUsername(Integer username) throws UsernameNotFoundException {
+    public UserDetailsCustom loadUserByIdUsername(Integer username) throws UsernameNotFoundException {
         RestTemplate restTemplate = new RestTemplate();
         Usuarios user = restTemplate.getForObject(serviceUrl + "/api/usuarios/query/" + username + "/", Usuarios.class);
         if (user == null) {

@@ -5,9 +5,11 @@ import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtAuthenticationRequest;
 import com.ciberdix.th.security.JwtTokenUtil;
 import com.ciberdix.th.security.JwtUser;
+import com.ciberdix.th.security.UserDetailsCustom;
 import com.ciberdix.th.security.configuration.LdapConfiguration;
 import com.ciberdix.th.security.providers.SystemAuthenticationProvider;
 import com.ciberdix.th.security.service.JwtAuthenticationResponse;
+import com.ciberdix.th.security.service.SystemUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +37,7 @@ import java.util.UUID;
 public class AuthenticationRestController {
 
     @Autowired
-    UserDetailsService userDetailsService;
+    SystemUserDetailsService userDetailsService;
     private String tokenHeader = "Authorization";
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -48,7 +50,7 @@ public class AuthenticationRestController {
     @RequestMapping(value = "/auth/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
         SystemAuthenticationProvider systemAuthenticationProvider = new SystemAuthenticationProvider();
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final Authentication authentication = systemAuthenticationProvider.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         authenticationRequest.getUsername(),
@@ -76,7 +78,7 @@ public class AuthenticationRestController {
         RestTemplate restTemplate = new RestTemplate();
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(username);
         Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
         Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
         token = jwtTokenUtil.generateToken(userDetails, user, tercero);
@@ -107,46 +109,46 @@ public class AuthenticationRestController {
             request.setIdUsuario(user.getIdUsuario());
             request.setIdRol(roles.getIdRol());
             restTemplate.postForObject(domainUrl + "/api/usuariosRoles", request, UsuarioRoles.class);
-            UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+            UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
             String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
             return ResponseEntity.ok(new JwtAuthenticationResponse(token));
         } else {
             switch (authenticationRequest.getProvider()) {
                 case "facebook":
                     if (user.getFacebook() != null && user.getFacebook().equals(authenticationRequest.getPassword())) {
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     } else if (user.getLinkedin() != null || user.getGoogle() != null) {
                         user.setFacebook(authenticationRequest.getPassword());
                         restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
                     break;
                 case "google":
                     if (user.getGoogle() != null && user.getGoogle().equals(authenticationRequest.getPassword())) {
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     } else if (user.getLinkedin() != null || user.getFacebook() != null) {
                         user.setGoogle(authenticationRequest.getPassword());
                         restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
                     break;
                 case "linkedIN":
                     if (user.getLinkedin() != null && user.getLinkedin().equals(authenticationRequest.getPassword())) {
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     } else if (user.getFacebook() != null || user.getGoogle() != null) {
                         user.setLinkedin(authenticationRequest.getPassword());
                         restTemplate.put(domainUrl + "/api/usuarios", user, Usuarios.class);
-                        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+                        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
                         String token = jwtTokenUtil.generateToken(userDetails, user, new Terceros());
                         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
                     }
@@ -169,7 +171,7 @@ public class AuthenticationRestController {
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         //JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        final UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(username);
         if (!userDetails.getAuthorities().isEmpty()) {
             RestTemplate restTemplate = new RestTemplate();
             Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);

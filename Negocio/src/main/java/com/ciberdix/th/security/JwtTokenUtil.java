@@ -149,7 +149,7 @@ public class JwtTokenUtil implements Serializable {
         return (AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience));
     }
 
-    public String generateToken(UserDetails userDetails,
+    public String generateToken(UserDetailsCustom userDetails,
                                 //Device device,
                                 Usuarios user, Terceros tercero) {
         Map<String, Object> claims = new HashMap<>();
@@ -158,6 +158,7 @@ public class JwtTokenUtil implements Serializable {
         claims.put(CLAIM_KEY_CREATED, new Date());
         claims.put(CLAIM_USUARIO, user);
         claims.put(CLAIM_AUTHORITIES, userDetails.getAuthorities());
+        claims.put("pantallasAprobadas", userDetails.getPantallasAprobadas());
 
         String primerNombre = tercero.getPrimerNombre() != null ? tercero.getPrimerNombre() : "";
         String segundoNombre = tercero.getSegundoNombre() != null ? tercero.getSegundoNombre() : "";
