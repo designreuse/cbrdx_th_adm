@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by robertochajin on 24/04/17.
+ * Created by robertochajin on 23/06/17.
  */
 @Entity
 @Table(name = "V_RolesFuncionalidades", schema = "dbo", catalog = "CREZCAMOS")
 public class VRolesFuncionalidades {
-    private Integer idRolFuncionalidad;
+    private int idRolFuncionalidad;
     private Integer idFuncionalidad;
     private Integer idMenu;
     private String menu;
@@ -19,17 +19,17 @@ public class VRolesFuncionalidades {
     private Boolean indicadorImprimir;
     private Boolean indicadorInsertar;
     private Boolean indicadorHabilitado;
+    private Boolean indicadorMostrarEnMenu;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    @Basic
     @Id
     @Column(name = "IdRolFuncionalidad", nullable = false)
-    public Integer getIdRolFuncionalidad() {
+    public int getIdRolFuncionalidad() {
         return idRolFuncionalidad;
     }
 
-    public void setIdRolFuncionalidad(Integer idRolFuncionalidad) {
+    public void setIdRolFuncionalidad(int idRolFuncionalidad) {
         this.idRolFuncionalidad = idRolFuncionalidad;
     }
 
@@ -124,6 +124,16 @@ public class VRolesFuncionalidades {
     }
 
     @Basic
+    @Column(name = "IndicadorMostrarEnMenu", nullable = true)
+    public Boolean getIndicadorMostrarEnMenu() {
+        return indicadorMostrarEnMenu;
+    }
+
+    public void setIndicadorMostrarEnMenu(Boolean indicadorMostrarEnMenu) {
+        this.indicadorMostrarEnMenu = indicadorMostrarEnMenu;
+    }
+
+    @Basic
     @Column(name = "AuditoriaUsuario", nullable = true)
     public Integer getAuditoriaUsuario() {
         return auditoriaUsuario;
@@ -150,8 +160,7 @@ public class VRolesFuncionalidades {
 
         VRolesFuncionalidades that = (VRolesFuncionalidades) o;
 
-        if (idRolFuncionalidad != null ? !idRolFuncionalidad.equals(that.idRolFuncionalidad) : that.idRolFuncionalidad != null)
-            return false;
+        if (idRolFuncionalidad != that.idRolFuncionalidad) return false;
         if (idFuncionalidad != null ? !idFuncionalidad.equals(that.idFuncionalidad) : that.idFuncionalidad != null)
             return false;
         if (idMenu != null ? !idMenu.equals(that.idMenu) : that.idMenu != null) return false;
@@ -166,6 +175,8 @@ public class VRolesFuncionalidades {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (indicadorMostrarEnMenu != null ? !indicadorMostrarEnMenu.equals(that.indicadorMostrarEnMenu) : that.indicadorMostrarEnMenu != null)
+            return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -176,7 +187,7 @@ public class VRolesFuncionalidades {
 
     @Override
     public int hashCode() {
-        int result = idRolFuncionalidad != null ? idRolFuncionalidad.hashCode() : 0;
+        int result = idRolFuncionalidad;
         result = 31 * result + (idFuncionalidad != null ? idFuncionalidad.hashCode() : 0);
         result = 31 * result + (idMenu != null ? idMenu.hashCode() : 0);
         result = 31 * result + (menu != null ? menu.hashCode() : 0);
@@ -186,6 +197,7 @@ public class VRolesFuncionalidades {
         result = 31 * result + (indicadorImprimir != null ? indicadorImprimir.hashCode() : 0);
         result = 31 * result + (indicadorInsertar != null ? indicadorInsertar.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (indicadorMostrarEnMenu != null ? indicadorMostrarEnMenu.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
