@@ -1,6 +1,7 @@
 package com.ciberdix.th.security;
 
 import com.ciberdix.th.model.Menus;
+import com.ciberdix.th.model.RolesFuncionalidades;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-public class JwtUser implements UserDetails {
+public class JwtUser implements UserDetailsCustom {
 
     private final Integer id;
     private final String username;
@@ -19,6 +20,7 @@ public class JwtUser implements UserDetails {
     private final boolean enabled;
     private final Date lastPasswordResetDate;
     private List<Menus> menus;
+    private List<String> pantallasAprobadas;
 
     public JwtUser(
             Integer id,
@@ -27,7 +29,8 @@ public class JwtUser implements UserDetails {
             String password, Collection<? extends GrantedAuthority> authorities,
             boolean enabled,
             Date lastPasswordResetDate,
-            List<Menus> menus
+            List<Menus> menus,
+            List<String> pantallasAprobadas
     ) {
         this.id = id;
         this.username = username;
@@ -37,6 +40,7 @@ public class JwtUser implements UserDetails {
         this.enabled = enabled;
         this.lastPasswordResetDate = lastPasswordResetDate;
         this.menus = menus;
+        this.pantallasAprobadas = pantallasAprobadas;
     }
 
     @JsonIgnore
@@ -95,5 +99,10 @@ public class JwtUser implements UserDetails {
     @JsonIgnore
     public List<Menus> getMenus() {
         return menus;
+    }
+
+    @Override
+    public List<String> getPantallasAprobadas() {
+        return pantallasAprobadas;
     }
 }
