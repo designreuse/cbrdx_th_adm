@@ -42,37 +42,6 @@ public class JsonFilePolicyDefinition implements PolicyDefinition {
 
     private List<PolicyRule> rules;
 
-/*    @PostConstruct
-    public void init() throws MalformedURLException, URISyntaxException {
-        ObjectMapper mapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(Expression.class, new SpelDeserializer());
-        mapper.registerModule(module);
-
-        URL jsonUrl = new URL("http://localhost:8444/api/policyRules").toURI().toURL();
-
-        try {
-            PolicyRule[] rulesArray = null;
-            logger.debug("[init] Checking policy file at: {}", policyFilePath);
-            if (policyFilePath != null && !policyFilePath.isEmpty()
-                    && Files.exists(Paths.get(policyFilePath))) {
-                logger.info("[init] Loading policy from custom file: {}", policyFilePath);
-                //rulesArray = mapper.readValue(new File(policyFilePath), PolicyRule[].class);
-                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
-            } else {
-                logger.info("[init] Custom policy file not found. Loading default policy");
-                //rulesArray = mapper.readValue(getClass().getClassLoader().getResourceAsStream(DEFAULT_POLICY_FILE_NAME), PolicyRule[].class);
-                rulesArray = mapper.readValue(jsonUrl, PolicyRule[].class);
-            }
-            this.rules = (rulesArray != null ? Arrays.asList(rulesArray) : null);
-            logger.info("[init] Policy loaded successfully.");
-        } catch (JsonMappingException e) {
-            logger.error("An error occurred while parsing the policy file.", e);
-        } catch (IOException e) {
-            logger.error("An error occurred while reading the policy file.", e);
-        }
-    }*/
-
     @Override
     public List<PolicyRule> getAllPolicyRules() {
         return rules;
