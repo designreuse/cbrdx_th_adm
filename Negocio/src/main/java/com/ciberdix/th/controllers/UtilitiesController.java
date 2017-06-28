@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class UtilitiesController {
@@ -26,9 +27,18 @@ public class UtilitiesController {
     private static String eventBegin = "BEGIN:VEVENT\r\n";
     private static String eventEnd = "END:VEVENT\r\n";
 
-    static File assembleCalendar(Date programmedDate) {
+    static File assembleCalendar(Date programmedDate, String personName) {
         try {
-            String testExample = "UID:uid1@example.com\r\nDTSTAMP:19970714T170000Z\r\nORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\nDTSTART:19970714T170000Z\r\nDTEND:19970715T035959Z\r\nSUMMARY:Cita\r\n";
+            String uid = "UID:info@ciberdix.com\r\n";
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            String curTime = sd1.format(new Date(cal.getTimeInMillis()));
+            String dtstamp = "DTSTAMP:" + curTime + "\r\n";
+            String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
+            String dtstart = "DTSTART:" + sd1.format(programmedDate) + "\r\n";
+            String dtend = "DTEND:" + sd1.format(programmedDate.getTime() + 30 * 1000 * 60) + "\r\n";
+            String summary = "SUMMARY:Cita\r\n";
+            String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
             File file = new File("temp.ics");
             if (!file.exists()) {
                 file.createNewFile();
@@ -39,7 +49,13 @@ public class UtilitiesController {
             bw.write(version);
             bw.write(prodid);
             bw.write(eventBegin);
-            bw.write(testExample);
+            bw.write(uid);
+            bw.write(dtstamp);
+            bw.write(organizer);
+            bw.write(dtstart);
+            bw.write(dtend);
+            bw.write(summary);
+            bw.write(description);
             bw.write(eventEnd);
             bw.write(calEnd);
             bw.close();
@@ -96,7 +112,7 @@ public class UtilitiesController {
         }
     }
 
-    public static void sendCalendarMail(String recipients, String subject, String bodyHtml, Date programmedDate) {
+    public static void sendCalendarMail(String recipients, String subject, String bodyHtml, Date programmedDate, String personName) {
         String systemName = "Gestionamos";
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
@@ -111,7 +127,7 @@ public class UtilitiesController {
         MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
         org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
         try {
-            String encoded = base64.encodeAsString(Files.readAllBytes(assembleCalendar(programmedDate).toPath()));
+            String encoded = base64.encodeAsString(Files.readAllBytes(assembleCalendar(programmedDate, personName).toPath()));
             c.setContent(encoded);
             c.setName("cal.ics");
             c.setType("text/calendar");
