@@ -27,4 +27,10 @@ public class ReglasFormulariosCargosRefactorController {
         List<VPermisosFormulariosCargos> permisos = vPermisosFormulariosCargosRepository.queryByCodigoMenu(codigo);
         return permisos;
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/rol/{rol}/{codigo}")
+    List<VPermisosFormulariosCargos> findByRol(@PathVariable String rol, @PathVariable String codigo) {
+        List<VPermisosFormulariosCargos> permisos = vPermisosFormulariosCargosRepository.findByRolAndCodigoMenu(rol, codigo);
+        return permisos;
+    }
 }

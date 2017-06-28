@@ -3,7 +3,7 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 
 /**
- * Created by robertochajin on 27/06/17.
+ * Created by robertochajin on 28/06/17.
  */
 @Entity
 @Table(name = "V_PermisosFormulariosCargos", schema = "dbo", catalog = "CREZCAMOS")
@@ -14,6 +14,7 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorHabilitadoRfc;
     private Boolean indicadorHabilitadoFc;
     private Boolean indicadorEditar;
+    private String rol;
 
     @Basic
     @Column(name = "CodigoMenu", nullable = true, length = 50)
@@ -75,6 +76,16 @@ public class VPermisosFormulariosCargos {
         this.indicadorEditar = indicadorEditar;
     }
 
+    @Basic
+    @Column(name = "Rol", nullable = true, length = 64)
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,6 +103,7 @@ public class VPermisosFormulariosCargos {
             return false;
         if (indicadorEditar != null ? !indicadorEditar.equals(that.indicadorEditar) : that.indicadorEditar != null)
             return false;
+        if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
 
         return true;
     }
@@ -104,6 +116,7 @@ public class VPermisosFormulariosCargos {
         result = 31 * result + (indicadorHabilitadoRfc != null ? indicadorHabilitadoRfc.hashCode() : 0);
         result = 31 * result + (indicadorHabilitadoFc != null ? indicadorHabilitadoFc.hashCode() : 0);
         result = 31 * result + (indicadorEditar != null ? indicadorEditar.hashCode() : 0);
+        result = 31 * result + (rol != null ? rol.hashCode() : 0);
         return result;
     }
 }

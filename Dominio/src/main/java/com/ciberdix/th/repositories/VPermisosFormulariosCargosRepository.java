@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface VPermisosFormulariosCargosRepository extends CrudRepository<VPermisosFormulariosCargos, Integer> {
     List<VPermisosFormulariosCargos> queryByCodigoMenu(String codigo);
+    List<VPermisosFormulariosCargos> findByRolAndCodigoMenu(String rol, String codigo);
 }
