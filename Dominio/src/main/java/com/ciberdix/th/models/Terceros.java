@@ -90,6 +90,7 @@ public class Terceros {
         this.idProfesion = idProfesion;
         this.idNivelEducacion = idNivelEducacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.telefonoFijo = telefonoFijo;
         this.telefonoCelular = telefonoCelular;
         this.fechaDefuncion = fechaDefuncion != null ? new Date(fechaDefuncion.getTime()) : null;
@@ -139,6 +140,7 @@ public class Terceros {
         this.idProfesion = idProfesion;
         this.idNivelEducacion = idNivelEducacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.telefonoFijo = telefonoFijo;
         this.telefonoCelular = telefonoCelular;
         this.fechaDefuncion = fechaDefuncion != null ? new Date(fechaDefuncion.getTime()) : null;
