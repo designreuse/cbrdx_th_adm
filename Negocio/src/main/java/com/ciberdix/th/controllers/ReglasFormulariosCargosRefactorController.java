@@ -64,6 +64,14 @@ public class ReglasFormulariosCargosRefactorController {
                                 } else {
                                     dataControl.put("editable", Boolean.FALSE);
                                 }
+                            } else {
+                                dataControl.put("visible", Boolean.FALSE);
+
+                                if (d.getIndicadorEditar()) {
+                                    dataControl.put("editable", Boolean.TRUE);
+                                } else {
+                                    dataControl.put("editable", Boolean.FALSE);
+                                }
                             }
 
                             obj.put(d.getCodigo(), dataControl);
@@ -72,6 +80,7 @@ public class ReglasFormulariosCargosRefactorController {
 
                     //hmap.put("data", obj);
                 } else {
+                    obj.put("codigo", p.getCodigo());
                     obj.put("visible", Boolean.FALSE);
 
                     for (VPermisosFormulariosCargos d : allPermisos) {
