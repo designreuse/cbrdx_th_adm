@@ -13,11 +13,42 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 public class UtilitiesController {
+
+    private static String version = "VERSION:2.0\r\n";
+    private static String prodid = "PRODID:-//Ciberdix/Aseguramos//ES\r\n";
+    private static String calBegin = "BEGIN:VCALENDAR\r\n";
+    private static String calEnd = "END:VCALENDAR\r\n";
+    private static String eventBegin = "BEGIN:VEVENT\r\n";
+    private static String eventEnd = "END:VEVENT\r\n";
+
+    static File assembleCalendar(Date programmedDate) {
+        try {
+            String testExample = "UID:uid1@example.com\r\nDTSTAMP:19970714T170000Z\r\nORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\nDTSTART:19970714T170000Z\r\nDTEND:19970715T035959Z\r\nSUMMARY:Cita\r\n";
+            File file = new File("temp.ics");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(calBegin);
+            bw.write(version);
+            bw.write(prodid);
+            bw.write(eventBegin);
+            bw.write(testExample);
+            bw.write(eventEnd);
+            bw.write(calEnd);
+            bw.close();
+            return file;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     private static String AssembleBody(String Body) {
         return "<html>" +
@@ -59,6 +90,33 @@ public class UtilitiesController {
         message.setSubject(systemName + " - " + subject);
         message.setHtml(AssembleBody(bodyHtml));
         try {
+            MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
+        } catch (MandrillApiError | IOException mandrillApiError) {
+            mandrillApiError.printStackTrace();
+        }
+    }
+
+    public static void sendCalendarMail(String recipients, String subject, String bodyHtml, Date programmedDate) {
+        String systemName = "Gestionamos";
+        MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
+        MandrillMessage message = new MandrillMessage();
+        message.setAutoText(true);
+        message.setFromEmail("info@ciberdix.com");
+        message.setFromName(systemName);
+        message.setTo(AssembleRecipients(recipients));
+        message.setPreserveRecipients(true);
+        message.setSubject(systemName + " - " + subject);
+        message.setHtml(AssembleBody(bodyHtml));
+        List<MandrillMessage.MessageContent> content = new ArrayList<>();
+        MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
+        org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
+        try {
+            String encoded = base64.encodeAsString(Files.readAllBytes(assembleCalendar(programmedDate).toPath()));
+            c.setContent(encoded);
+            c.setName("cal.ics");
+            c.setType("text/calendar");
+            content.add(c);
+            message.setAttachments(content);
             MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
         } catch (MandrillApiError | IOException mandrillApiError) {
             mandrillApiError.printStackTrace();
