@@ -17,6 +17,7 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorEditar;
     private String rol;
     private Integer idPadre;
+    private Integer idFuncionalidadControl;
 
     @Id
     @Column(name = "IdPermisosFormulariosCargos", nullable = true)
@@ -36,6 +37,16 @@ public class VPermisosFormulariosCargos {
 
     public void setIdPadre(Integer idPadre) {
         this.idPadre = idPadre;
+    }
+
+    @Basic
+    @Column(name = "IdFuncionalidadControl", nullable = true)
+    public Integer getIdFuncionalidadControl() {
+        return idFuncionalidadControl;
+    }
+
+    public void setIdFuncionalidadControl(Integer idFuncionalidadControl) {
+        this.idFuncionalidadControl = idFuncionalidadControl;
     }
 
     @Basic

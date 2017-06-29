@@ -11,6 +11,15 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorHabilitadoFc;
     private Boolean indicadorEditar;
     private Integer idPadre;
+    private Integer idFuncionalidadControl;
+
+    public Integer getIdFuncionalidadControl() {
+        return idFuncionalidadControl;
+    }
+
+    public void setIdFuncionalidadControl(Integer idFuncionalidadControl) {
+        this.idFuncionalidadControl = idFuncionalidadControl;
+    }
 
     public Integer getIdPadre() {
         return idPadre;
