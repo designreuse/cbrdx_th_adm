@@ -10,6 +10,15 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorHabilitadoRfc;
     private Boolean indicadorHabilitadoFc;
     private Boolean indicadorEditar;
+    private Integer idPadre;
+
+    public Integer getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Integer idPadre) {
+        this.idPadre = idPadre;
+    }
 
     public String getCodigoMenu() {
         return codigoMenu;

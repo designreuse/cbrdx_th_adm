@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "V_PermisosFormulariosCargos", schema = "dbo", catalog = "CREZCAMOS")
 public class VPermisosFormulariosCargos {
+    private Integer idPermisosFormulariosCargos;
     private String codigoMenu;
     private String codigo;
     private Boolean indicadorSeccion;
@@ -15,6 +16,27 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorHabilitadoFc;
     private Boolean indicadorEditar;
     private String rol;
+    private Integer idPadre;
+
+    @Id
+    @Column(name = "IdPermisosFormulariosCargos", nullable = true)
+    public Integer getIdPermisosFormulariosCargos() {
+        return idPermisosFormulariosCargos;
+    }
+
+    public void setIdPermisosFormulariosCargos(Integer idPermisosFormulariosCargos) {
+        this.idPermisosFormulariosCargos = idPermisosFormulariosCargos;
+    }
+
+    @Basic
+    @Column(name = "IdPadre", nullable = true)
+    public Integer getIdPadre() {
+        return idPadre;
+    }
+
+    public void setIdPadre(Integer idPadre) {
+        this.idPadre = idPadre;
+    }
 
     @Basic
     @Column(name = "CodigoMenu", nullable = true, length = 50)
@@ -26,7 +48,7 @@ public class VPermisosFormulariosCargos {
         this.codigoMenu = codigoMenu;
     }
 
-    @Id
+    @Basic
     @Column(name = "Codigo", nullable = true, length = 50)
     public String getCodigo() {
         return codigo;
@@ -103,9 +125,7 @@ public class VPermisosFormulariosCargos {
             return false;
         if (indicadorEditar != null ? !indicadorEditar.equals(that.indicadorEditar) : that.indicadorEditar != null)
             return false;
-        if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
-
-        return true;
+        return rol != null ? rol.equals(that.rol) : that.rol == null;
     }
 
     @Override

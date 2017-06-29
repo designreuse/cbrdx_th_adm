@@ -2,8 +2,9 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.VPermisosFormulariosCargos;
 import com.ciberdix.th.security.JwtTokenUtil;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -19,28 +20,36 @@ import java.util.*;
 @RequestMapping("/api/reglasFormulariosCargos")
 public class ReglasFormulariosCargosRefactorController {
 
-    @Value("${domain.url}")
-    private String baseUrl;
-
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{codigo}")
-    List<Object> findByRol(@PathVariable String codigo) {
-        String serviceUrl = baseUrl + "/api/reglasFormulariosCargos/rol/";
-        RestTemplate restTemplate = new RestTemplate();
-        Collection<?> roles = jwtTokenUtil.getAuthorities();
+    @Autowired
+    private ObjectMapper objectMapper;
 
+    @Value("${domain.url}")
+    private String baseUrl;
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{codigo}")
+    JsonNode findByRol(@PathVariable String codigo) throws JSONException {
+        RestTemplate restTemplate = new RestTemplate();
+        String serviceUrl = baseUrl + "/api/reglasFormulariosCargos/rol/";
+        Collection<?> roles = jwtTokenUtil.getAuthorities();
         List<VPermisosFormulariosCargos> allPermisos = new ArrayList<>();
 
         for (Object rol : roles) {
             List<VPermisosFormulariosCargos> permisos = Arrays.asList(restTemplate.getForObject(serviceUrl + rol + "/" + codigo, VPermisosFormulariosCargos[].class));
-            if (permisos.size() > 0)
+            if (!permisos.isEmpty())
                 allPermisos.addAll(permisos);
         }
 
-        List<Object> permisosForm = new ArrayList<>();
-
+        Map<String, Object> responseJson = new HashMap<>();
+        for (VPermisosFormulariosCargos p : allPermisos) {
+            Map<String, Object> securityData = new HashMap<>();
+            securityData.put("visible", (p.getIndicadorHabilitadoFc() != null && p.getIndicadorHabilitadoFc() && p.getIndicadorHabilitadoRfc() != null && p.getIndicadorHabilitadoRfc()));
+            securityData.put("editable", p.getIndicadorEditar());
+            responseJson.put(p.getCodigo(), securityData);
+        }
+/*
         for (VPermisosFormulariosCargos p : allPermisos) {
             if (p.getIndicadorSeccion()) {
 //                HashMap<String, Object> hmap = new HashMap<>();
@@ -107,14 +116,12 @@ public class ReglasFormulariosCargosRefactorController {
                             obj.put(d.getCodigo(), dataControl);
                         }
                     }
-
                     //hmap.put(p.getCodigo(), obj);
                 }
-
                 permisosForm.add(obj);
             }
         }
-
-        return permisosForm;
+*/
+        return objectMapper.valueToTree(responseJson);
     }
 }
