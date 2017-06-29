@@ -53,7 +53,7 @@ public class ReglasFormulariosCargosRefactorController {
             if (p.getIndicadorSeccion()) {
                 List<VPermisosFormulariosCargos> childs = allChilds.stream().filter(test -> test.getIdPadre().equals(p.getIdFuncionalidadControl())).collect(Collectors.toList());
                 Map<String, Object> internalJson = new LinkedHashMap<>();
-                internalJson.put("visible", (p.getIndicadorHabilitadoFc() != null && p.getIndicadorHabilitadoFc() && p.getIndicadorHabilitadoRfc() != null && p.getIndicadorHabilitadoRfc()));
+                internalJson.put("visible", p.getIndicadorVisible() && (p.getIndicadorHabilitadoFc() != null && p.getIndicadorHabilitadoFc() && p.getIndicadorHabilitadoRfc() != null && p.getIndicadorHabilitadoRfc()));
                 internalJson.put("seccion", true);
                 for (VPermisosFormulariosCargos child : childs) {
                     Map<String, Object> securityData = new HashMap<>();

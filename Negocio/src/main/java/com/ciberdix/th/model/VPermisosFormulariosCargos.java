@@ -12,6 +12,15 @@ public class VPermisosFormulariosCargos {
     private Boolean indicadorEditar;
     private Integer idPadre;
     private Integer idFuncionalidadControl;
+    private Boolean indicadorVisible;
+
+    public Boolean getIndicadorVisible() {
+        return indicadorVisible;
+    }
+
+    public void setIndicadorVisible(Boolean indicadorVisible) {
+        this.indicadorVisible = indicadorVisible;
+    }
 
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;

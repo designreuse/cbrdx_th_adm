@@ -18,6 +18,7 @@ public class VPermisosFormulariosCargos {
     private String rol;
     private Integer idPadre;
     private Integer idFuncionalidadControl;
+    private Boolean indicadorVisible;
 
     @Id
     @Column(name = "IdPermisosFormulariosCargos", nullable = true)
@@ -27,6 +28,16 @@ public class VPermisosFormulariosCargos {
 
     public void setIdPermisosFormulariosCargos(Integer idPermisosFormulariosCargos) {
         this.idPermisosFormulariosCargos = idPermisosFormulariosCargos;
+    }
+
+    @Basic
+    @Column(name = "IndicadorVisible", nullable = true)
+    public Boolean getIndicadorVisible() {
+        return indicadorVisible;
+    }
+
+    public void setIndicadorVisible(Boolean indicadorVisible) {
+        this.indicadorVisible = indicadorVisible;
     }
 
     @Basic
