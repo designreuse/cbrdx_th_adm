@@ -42,17 +42,22 @@ public class FuncionalidadesControlesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/secycam/{idFuncionalidad}/{indicador}")
     List<VFuncionalidadesControles> queryAllByIdSecCam(@PathVariable Integer idFuncionalidad, @PathVariable Boolean indicador) {
-        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, indicador);
+        return vFuncionalidadesControlesRefactorRepository.queryAllByIdSecCam(idFuncionalidad, indicador);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/indicadorsecycam/{indicador}")
     List<VFuncionalidadesControles> queryAllBySecCam(@PathVariable Boolean indicador) {
-        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
+        return vFuncionalidadesControlesRefactorRepository.queryAllBySecCam(indicador);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<VFuncionalidadesControles> findEnabled() {
-        return (List<VFuncionalidadesControles>) vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idFuncionalidad}")
+    List<VFuncionalidadesControles> findEnabledSection(@PathVariable Integer idFuncionalidad) {
+        return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(idFuncionalidad);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -67,7 +72,7 @@ public class FuncionalidadesControlesRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     FuncionalidadesControles updateList(@RequestBody FuncionalidadesControles fc) {
         return funcionalidadesControlesRefactorRepository.save(
-                new FuncionalidadesControles(fc.getIdFuncionalidadControl(),fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
+                new FuncionalidadesControles(fc.getIdFuncionalidadControl(), fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
                         fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
                         fc.getIdPadre(), fc.getIndicadorSeccion())
