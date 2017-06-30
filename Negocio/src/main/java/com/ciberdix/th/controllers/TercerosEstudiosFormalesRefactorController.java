@@ -99,7 +99,7 @@ public class TercerosEstudiosFormalesRefactorController {
             tercerosEstudiosFormales.setIdCiudad(jsonObject.getInt("idCiudad"));
             tercerosEstudiosFormales.setIdEstado(jsonObject.getInt("idEstado"));
             tercerosEstudiosFormales.setFechaIngresa(Date.valueOf(jsonObject.getString("fechaIngresa")));
-            tercerosEstudiosFormales.setFechaTermina(Date.valueOf((jsonObject.getString("fechaTermina")));
+            tercerosEstudiosFormales.setFechaTermina(Date.valueOf((jsonObject.getString("fechaTermina"))));
             tercerosEstudiosFormales.setIndicadorHabilitado(jsonObject.getBoolean("indicadorHabilitado"));
             tercerosEstudiosFormales.setIndicadorVerificado(jsonObject.getBoolean("indicadorVerificado"));
             tercerosEstudiosFormales.setFechaVerificado(Timestamp.valueOf(jsonObject.getString("fechaIngresa")));
