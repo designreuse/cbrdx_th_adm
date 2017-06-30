@@ -44,6 +44,14 @@ public class FuncionalidadesControlesRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idFuncionalidad}")
+    List<VFuncionalidadesControles> findEnabled(@PathVariable Integer idFuncionalidad) {
+        String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
+        RestTemplate restTemplate = new RestTemplate();
+        VFuncionalidadesControles[] parametros = restTemplate.getForObject(serviceUrl + "enabled/" + idFuncionalidad, VFuncionalidadesControles[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{idPadre}")
     List<VFuncionalidadesControles> findByParent(@PathVariable Integer idPadre) {
         String serviceUrl = baseUrl + "/api/funcionalidadesControles/";

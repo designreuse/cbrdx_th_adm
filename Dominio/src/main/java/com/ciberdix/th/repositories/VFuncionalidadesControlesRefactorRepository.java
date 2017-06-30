@@ -1,7 +1,7 @@
 package com.ciberdix.th.repositories;
 
 import com.ciberdix.th.models.VFuncionalidadesControles;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -12,6 +12,8 @@ import java.util.List;
 public interface VFuncionalidadesControlesRefactorRepository extends CrudRepository<VFuncionalidadesControles, Integer> {
 
     List<VFuncionalidadesControles> findByIndicadorHabilitadoIsTrue();
+
+    List<VFuncionalidadesControles> findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(Integer idFuncionalidad);
 
     List<VFuncionalidadesControles> findByIdPadre(Integer idPadre);
 
