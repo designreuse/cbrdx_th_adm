@@ -5,7 +5,7 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 4/07/2017.
  */
 @Entity
 @Table(name = "V_Terceros", schema = "dbo", catalog = "CREZCAMOS")
@@ -77,8 +77,8 @@ public class VTerceros {
     private Integer idTipoTercero;
     private String tipoTercero;
     private String sitioWeb;
+    private Integer idAdjunto;
 
-    @Basic
     @Id
     @Column(name = "IdTercero", nullable = false)
     public Long getIdTercero() {
@@ -749,6 +749,16 @@ public class VTerceros {
         this.sitioWeb = sitioWeb;
     }
 
+    @Basic
+    @Column(name = "idAdjunto", nullable = true)
+    public Integer getIdAdjunto() {
+        return idAdjunto;
+    }
+
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -876,6 +886,7 @@ public class VTerceros {
         if (tipoTercero != null ? !tipoTercero.equals(vTerceros.tipoTercero) : vTerceros.tipoTercero != null)
             return false;
         if (sitioWeb != null ? !sitioWeb.equals(vTerceros.sitioWeb) : vTerceros.sitioWeb != null) return false;
+        if (idAdjunto != null ? !idAdjunto.equals(vTerceros.idAdjunto) : vTerceros.idAdjunto != null) return false;
 
         return true;
     }
@@ -949,6 +960,7 @@ public class VTerceros {
         result = 31 * result + (idTipoTercero != null ? idTipoTercero.hashCode() : 0);
         result = 31 * result + (tipoTercero != null ? tipoTercero.hashCode() : 0);
         result = 31 * result + (sitioWeb != null ? sitioWeb.hashCode() : 0);
+        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         return result;
     }
 }
