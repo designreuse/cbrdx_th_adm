@@ -58,9 +58,11 @@ public class Terceros {
     private Integer idTallaPantalon;
     private Integer idTallaCalzado;
     private String sitioWeb;
+    private Integer idAdjunto;
+
     public Terceros() {
     }
-    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado) {
+    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -107,9 +109,11 @@ public class Terceros {
         this.idTallaCamisa = idTallaCamisa;
         this.idTallaPantalon = idTallaPantalon;
         this.idTallaCalzado = idTallaCalzado;
+        this.sitioWeb = sitioWeb;
+        this.idAdjunto = idAdjunto;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
-    public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb) {
+    public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto) {
         this.idTercero = idTercero;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -158,6 +162,7 @@ public class Terceros {
         this.idTallaPantalon = idTallaPantalon;
         this.idTallaCalzado = idTallaCalzado;
         this.sitioWeb = sitioWeb;
+        this.idAdjunto = idAdjunto;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
@@ -462,114 +467,6 @@ public class Terceros {
         this.telefonoCelular = telefonoCelular;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Terceros terceros = (Terceros) o;
-
-        if (idTercero != null ? !idTercero.equals(terceros.idTercero) : terceros.idTercero != null) return false;
-        if (primerNombre != null ? !primerNombre.equals(terceros.primerNombre) : terceros.primerNombre != null)
-            return false;
-        if (segundoNombre != null ? !segundoNombre.equals(terceros.segundoNombre) : terceros.segundoNombre != null)
-            return false;
-        if (primerApellido != null ? !primerApellido.equals(terceros.primerApellido) : terceros.primerApellido != null)
-            return false;
-        if (segundoApellido != null ? !segundoApellido.equals(terceros.segundoApellido) : terceros.segundoApellido != null)
-            return false;
-        if (imagen != null ? !imagen.equals(terceros.imagen) : terceros.imagen != null) return false;
-        if (idTipoDocumento != null ? !idTipoDocumento.equals(terceros.idTipoDocumento) : terceros.idTipoDocumento != null)
-            return false;
-        if (numeroDocumento != null ? !numeroDocumento.equals(terceros.numeroDocumento) : terceros.numeroDocumento != null)
-            return false;
-        if (fechaDocumento != null ? !fechaDocumento.equals(terceros.fechaDocumento) : terceros.fechaDocumento != null)
-            return false;
-        if (idCiudadExpDocumento != null ? !idCiudadExpDocumento.equals(terceros.idCiudadExpDocumento) : terceros.idCiudadExpDocumento != null)
-            return false;
-        if (fechaNacimiento != null ? !fechaNacimiento.equals(terceros.fechaNacimiento) : terceros.fechaNacimiento != null)
-            return false;
-        if (idCiudadNacimiento != null ? !idCiudadNacimiento.equals(terceros.idCiudadNacimiento) : terceros.idCiudadNacimiento != null)
-            return false;
-        if (idGenero != null ? !idGenero.equals(terceros.idGenero) : terceros.idGenero != null) return false;
-        if (idEstadoCivil != null ? !idEstadoCivil.equals(terceros.idEstadoCivil) : terceros.idEstadoCivil != null)
-            return false;
-        if (idFactorRh != null ? !idFactorRh.equals(terceros.idFactorRh) : terceros.idFactorRh != null) return false;
-
-        if (nroHijos != null ? !nroHijos.equals(terceros.nroHijos) : terceros.nroHijos != null) return false;
-        if (idLateralidad != null ? !idLateralidad.equals(terceros.idLateralidad) : terceros.idLateralidad != null)
-            return false;
-        if (tallaCamisa != null ? !tallaCamisa.equals(terceros.tallaCamisa) : terceros.tallaCamisa != null)
-            return false;
-        if (tallaPantalon != null ? !tallaPantalon.equals(terceros.tallaPantalon) : terceros.tallaPantalon != null)
-            return false;
-        if (tallaCalzado != null ? !tallaCalzado.equals(terceros.tallaCalzado) : terceros.tallaCalzado != null)
-            return false;
-        if (correoElectronico != null ? !correoElectronico.equals(terceros.correoElectronico) : terceros.correoElectronico != null)
-            return false;
-        if (fechaCreacion != null ? !fechaCreacion.equals(terceros.fechaCreacion) : terceros.fechaCreacion != null)
-            return false;
-        if (idTipoPersona != null ? !idTipoPersona.equals(terceros.idTipoPersona) : terceros.idTipoPersona != null)
-            return false;
-        if (razonSocial != null ? !razonSocial.equals(terceros.razonSocial) : terceros.razonSocial != null)
-            return false;
-        if (talla != null ? !talla.equals(terceros.talla) : terceros.talla != null) return false;
-        if (peso != null ? !peso.equals(terceros.peso) : terceros.peso != null) return false;
-        if (imc != null ? !imc.equals(terceros.imc) : terceros.imc != null) return false;
-        if (idProfesion != null ? !idProfesion.equals(terceros.idProfesion) : terceros.idProfesion != null)
-            return false;
-        if (idNivelEducacion != null ? !idNivelEducacion.equals(terceros.idNivelEducacion) : terceros.idNivelEducacion != null)
-            return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(terceros.auditoriaUsuario) : terceros.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(terceros.auditoriaFecha) : terceros.auditoriaFecha != null)
-            return false;
-        if (telefonoFijo != null ? !telefonoFijo.equals(terceros.telefonoFijo) : terceros.telefonoFijo != null)
-            return false;
-        if (telefonoCelular != null ? !telefonoCelular.equals(terceros.telefonoCelular) : terceros.telefonoCelular != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idTercero != null ? idTercero.hashCode() : 0;
-        result = 31 * result + (primerNombre != null ? primerNombre.hashCode() : 0);
-        result = 31 * result + (segundoNombre != null ? segundoNombre.hashCode() : 0);
-        result = 31 * result + (primerApellido != null ? primerApellido.hashCode() : 0);
-        result = 31 * result + (segundoApellido != null ? segundoApellido.hashCode() : 0);
-        result = 31 * result + (imagen != null ? imagen.hashCode() : 0);
-        result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
-        result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
-        result = 31 * result + (fechaDocumento != null ? fechaDocumento.hashCode() : 0);
-        result = 31 * result + (idCiudadExpDocumento != null ? idCiudadExpDocumento.hashCode() : 0);
-        result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
-        result = 31 * result + (idCiudadNacimiento != null ? idCiudadNacimiento.hashCode() : 0);
-        result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
-        result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
-        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
-        result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
-        result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
-        result = 31 * result + (tallaCamisa != null ? tallaCamisa.hashCode() : 0);
-        result = 31 * result + (tallaPantalon != null ? tallaPantalon.hashCode() : 0);
-        result = 31 * result + (tallaCalzado != null ? tallaCalzado.hashCode() : 0);
-        result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
-        result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
-        result = 31 * result + (idTipoPersona != null ? idTipoPersona.hashCode() : 0);
-        result = 31 * result + (razonSocial != null ? razonSocial.hashCode() : 0);
-        result = 31 * result + (talla != null ? talla.hashCode() : 0);
-        result = 31 * result + (peso != null ? peso.hashCode() : 0);
-        result = 31 * result + (imc != null ? imc.hashCode() : 0);
-        result = 31 * result + (idProfesion != null ? idProfesion.hashCode() : 0);
-        result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
-        result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
-        result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
-        return result;
-    }
-
     @Basic
     @Column(name = "FechaDefuncion", nullable = true)
     public Date getFechaDefuncion() {
@@ -718,5 +615,164 @@ public class Terceros {
 
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
+    }
+
+    @Basic
+    @Column(name = "IdAdjunto", nullable = true)
+    public Integer getIdAdjunto() {
+        return idAdjunto;
+    }
+
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Terceros terceros = (Terceros) o;
+
+        if (!idTercero.equals(terceros.idTercero)) return false;
+        if (primerNombre != null ? !primerNombre.equals(terceros.primerNombre) : terceros.primerNombre != null)
+            return false;
+        if (segundoNombre != null ? !segundoNombre.equals(terceros.segundoNombre) : terceros.segundoNombre != null)
+            return false;
+        if (primerApellido != null ? !primerApellido.equals(terceros.primerApellido) : terceros.primerApellido != null)
+            return false;
+        if (segundoApellido != null ? !segundoApellido.equals(terceros.segundoApellido) : terceros.segundoApellido != null)
+            return false;
+        if (imagen != null ? !imagen.equals(terceros.imagen) : terceros.imagen != null) return false;
+        if (idTipoDocumento != null ? !idTipoDocumento.equals(terceros.idTipoDocumento) : terceros.idTipoDocumento != null)
+            return false;
+        if (numeroDocumento != null ? !numeroDocumento.equals(terceros.numeroDocumento) : terceros.numeroDocumento != null)
+            return false;
+        if (fechaDocumento != null ? !fechaDocumento.equals(terceros.fechaDocumento) : terceros.fechaDocumento != null)
+            return false;
+        if (idCiudadExpDocumento != null ? !idCiudadExpDocumento.equals(terceros.idCiudadExpDocumento) : terceros.idCiudadExpDocumento != null)
+            return false;
+        if (fechaNacimiento != null ? !fechaNacimiento.equals(terceros.fechaNacimiento) : terceros.fechaNacimiento != null)
+            return false;
+        if (idCiudadNacimiento != null ? !idCiudadNacimiento.equals(terceros.idCiudadNacimiento) : terceros.idCiudadNacimiento != null)
+            return false;
+        if (idGenero != null ? !idGenero.equals(terceros.idGenero) : terceros.idGenero != null) return false;
+        if (idEstadoCivil != null ? !idEstadoCivil.equals(terceros.idEstadoCivil) : terceros.idEstadoCivil != null)
+            return false;
+        if (idFactorRh != null ? !idFactorRh.equals(terceros.idFactorRh) : terceros.idFactorRh != null) return false;
+        if (nroHijos != null ? !nroHijos.equals(terceros.nroHijos) : terceros.nroHijos != null) return false;
+        if (idLateralidad != null ? !idLateralidad.equals(terceros.idLateralidad) : terceros.idLateralidad != null)
+            return false;
+        if (tallaCamisa != null ? !tallaCamisa.equals(terceros.tallaCamisa) : terceros.tallaCamisa != null)
+            return false;
+        if (tallaPantalon != null ? !tallaPantalon.equals(terceros.tallaPantalon) : terceros.tallaPantalon != null)
+            return false;
+        if (tallaCalzado != null ? !tallaCalzado.equals(terceros.tallaCalzado) : terceros.tallaCalzado != null)
+            return false;
+        if (correoElectronico != null ? !correoElectronico.equals(terceros.correoElectronico) : terceros.correoElectronico != null)
+            return false;
+        if (fechaCreacion != null ? !fechaCreacion.equals(terceros.fechaCreacion) : terceros.fechaCreacion != null)
+            return false;
+        if (idTipoPersona != null ? !idTipoPersona.equals(terceros.idTipoPersona) : terceros.idTipoPersona != null)
+            return false;
+        if (razonSocial != null ? !razonSocial.equals(terceros.razonSocial) : terceros.razonSocial != null)
+            return false;
+        if (talla != null ? !talla.equals(terceros.talla) : terceros.talla != null) return false;
+        if (peso != null ? !peso.equals(terceros.peso) : terceros.peso != null) return false;
+        if (imc != null ? !imc.equals(terceros.imc) : terceros.imc != null) return false;
+        if (idProfesion != null ? !idProfesion.equals(terceros.idProfesion) : terceros.idProfesion != null)
+            return false;
+        if (idNivelEducacion != null ? !idNivelEducacion.equals(terceros.idNivelEducacion) : terceros.idNivelEducacion != null)
+            return false;
+        if (!auditoriaUsuario.equals(terceros.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(terceros.auditoriaFecha)) return false;
+        if (telefonoFijo != null ? !telefonoFijo.equals(terceros.telefonoFijo) : terceros.telefonoFijo != null)
+            return false;
+        if (telefonoCelular != null ? !telefonoCelular.equals(terceros.telefonoCelular) : terceros.telefonoCelular != null)
+            return false;
+        if (fechaDefuncion != null ? !fechaDefuncion.equals(terceros.fechaDefuncion) : terceros.fechaDefuncion != null)
+            return false;
+        if (idTipoOcupacion != null ? !idTipoOcupacion.equals(terceros.idTipoOcupacion) : terceros.idTipoOcupacion != null)
+            return false;
+        if (idSectorEconomico != null ? !idSectorEconomico.equals(terceros.idSectorEconomico) : terceros.idSectorEconomico != null)
+            return false;
+        if (idActividadEconomica != null ? !idActividadEconomica.equals(terceros.idActividadEconomica) : terceros.idActividadEconomica != null)
+            return false;
+        if (idOcupacion != null ? !idOcupacion.equals(terceros.idOcupacion) : terceros.idOcupacion != null)
+            return false;
+        if (idEstadoJuridico != null ? !idEstadoJuridico.equals(terceros.idEstadoJuridico) : terceros.idEstadoJuridico != null)
+            return false;
+        if (idCoberturaSalud != null ? !idCoberturaSalud.equals(terceros.idCoberturaSalud) : terceros.idCoberturaSalud != null)
+            return false;
+        if (indicadorVivo != null ? !indicadorVivo.equals(terceros.indicadorVivo) : terceros.indicadorVivo != null)
+            return false;
+        if (idTipoAfiliacion != null ? !idTipoAfiliacion.equals(terceros.idTipoAfiliacion) : terceros.idTipoAfiliacion != null)
+            return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(terceros.indicadorHabilitado) : terceros.indicadorHabilitado != null)
+            return false;
+        if (idTipoTercero != null ? !idTipoTercero.equals(terceros.idTipoTercero) : terceros.idTipoTercero != null)
+            return false;
+        if (idTallaCamisa != null ? !idTallaCamisa.equals(terceros.idTallaCamisa) : terceros.idTallaCamisa != null)
+            return false;
+        if (idTallaPantalon != null ? !idTallaPantalon.equals(terceros.idTallaPantalon) : terceros.idTallaPantalon != null)
+            return false;
+        if (idTallaCalzado != null ? !idTallaCalzado.equals(terceros.idTallaCalzado) : terceros.idTallaCalzado != null)
+            return false;
+        if (sitioWeb != null ? !sitioWeb.equals(terceros.sitioWeb) : terceros.sitioWeb != null) return false;
+        return idAdjunto != null ? idAdjunto.equals(terceros.idAdjunto) : terceros.idAdjunto == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idTercero.hashCode();
+        result = 31 * result + (primerNombre != null ? primerNombre.hashCode() : 0);
+        result = 31 * result + (segundoNombre != null ? segundoNombre.hashCode() : 0);
+        result = 31 * result + (primerApellido != null ? primerApellido.hashCode() : 0);
+        result = 31 * result + (segundoApellido != null ? segundoApellido.hashCode() : 0);
+        result = 31 * result + (imagen != null ? imagen.hashCode() : 0);
+        result = 31 * result + (idTipoDocumento != null ? idTipoDocumento.hashCode() : 0);
+        result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
+        result = 31 * result + (fechaDocumento != null ? fechaDocumento.hashCode() : 0);
+        result = 31 * result + (idCiudadExpDocumento != null ? idCiudadExpDocumento.hashCode() : 0);
+        result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
+        result = 31 * result + (idCiudadNacimiento != null ? idCiudadNacimiento.hashCode() : 0);
+        result = 31 * result + (idGenero != null ? idGenero.hashCode() : 0);
+        result = 31 * result + (idEstadoCivil != null ? idEstadoCivil.hashCode() : 0);
+        result = 31 * result + (idFactorRh != null ? idFactorRh.hashCode() : 0);
+        result = 31 * result + (nroHijos != null ? nroHijos.hashCode() : 0);
+        result = 31 * result + (idLateralidad != null ? idLateralidad.hashCode() : 0);
+        result = 31 * result + (tallaCamisa != null ? tallaCamisa.hashCode() : 0);
+        result = 31 * result + (tallaPantalon != null ? tallaPantalon.hashCode() : 0);
+        result = 31 * result + (tallaCalzado != null ? tallaCalzado.hashCode() : 0);
+        result = 31 * result + (correoElectronico != null ? correoElectronico.hashCode() : 0);
+        result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
+        result = 31 * result + (idTipoPersona != null ? idTipoPersona.hashCode() : 0);
+        result = 31 * result + (razonSocial != null ? razonSocial.hashCode() : 0);
+        result = 31 * result + (talla != null ? talla.hashCode() : 0);
+        result = 31 * result + (peso != null ? peso.hashCode() : 0);
+        result = 31 * result + (imc != null ? imc.hashCode() : 0);
+        result = 31 * result + (idProfesion != null ? idProfesion.hashCode() : 0);
+        result = 31 * result + (idNivelEducacion != null ? idNivelEducacion.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
+        result = 31 * result + (telefonoCelular != null ? telefonoCelular.hashCode() : 0);
+        result = 31 * result + (fechaDefuncion != null ? fechaDefuncion.hashCode() : 0);
+        result = 31 * result + (idTipoOcupacion != null ? idTipoOcupacion.hashCode() : 0);
+        result = 31 * result + (idSectorEconomico != null ? idSectorEconomico.hashCode() : 0);
+        result = 31 * result + (idActividadEconomica != null ? idActividadEconomica.hashCode() : 0);
+        result = 31 * result + (idOcupacion != null ? idOcupacion.hashCode() : 0);
+        result = 31 * result + (idEstadoJuridico != null ? idEstadoJuridico.hashCode() : 0);
+        result = 31 * result + (idCoberturaSalud != null ? idCoberturaSalud.hashCode() : 0);
+        result = 31 * result + (indicadorVivo != null ? indicadorVivo.hashCode() : 0);
+        result = 31 * result + (idTipoAfiliacion != null ? idTipoAfiliacion.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (idTipoTercero != null ? idTipoTercero.hashCode() : 0);
+        result = 31 * result + (idTallaCamisa != null ? idTallaCamisa.hashCode() : 0);
+        result = 31 * result + (idTallaPantalon != null ? idTallaPantalon.hashCode() : 0);
+        result = 31 * result + (idTallaCalzado != null ? idTallaCalzado.hashCode() : 0);
+        result = 31 * result + (sitioWeb != null ? sitioWeb.hashCode() : 0);
+        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        return result;
     }
 }

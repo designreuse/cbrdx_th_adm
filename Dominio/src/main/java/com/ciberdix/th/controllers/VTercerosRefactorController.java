@@ -1,7 +1,6 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.configuration.OutSpecialChars;
-import com.ciberdix.th.models.VTerceros;
 import com.ciberdix.th.repositories.VTercerosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

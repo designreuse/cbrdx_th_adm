@@ -5,7 +5,6 @@
  */
 package com.ciberdix.th.repositories;
 
-import com.ciberdix.th.models.VTerceros;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
