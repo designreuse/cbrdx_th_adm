@@ -14,7 +14,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/reglasFormulariosCargos")
+@RequestMapping("/api/reglasFormularios")
 public class ReglasFormulariosCargosRefactorController {
 
     @Autowired
