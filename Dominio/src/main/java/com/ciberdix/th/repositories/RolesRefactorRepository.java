@@ -14,5 +14,5 @@ public interface RolesRefactorRepository extends CrudRepository<Roles, Integer> 
     @Query("select u from Roles u where u.idRol not in (select b.idRol from UsuarioRoles b where (b.indicadorHabilitado = true) and (b.idUsuario = ?1))")
     List<Roles> findUserAvaliable(Integer IdUsuario);
 
-    Roles findAllByCodigoRol(String codigoRol);
+    Roles findByCodigoRol(String codigoRol);
 }
