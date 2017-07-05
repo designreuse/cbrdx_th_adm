@@ -55,7 +55,7 @@ public class TercerosCargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
-    List<VTercerosCargos> findByIdTercero(@PathVariable Integer id) {
+    VTercerosCargos findByIdTercero(@PathVariable Long id) {
         return vTercerosCargosRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(id);
     }
 
