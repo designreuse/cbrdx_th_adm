@@ -59,6 +59,12 @@ public class TercerosCargosRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VTercerosCargos[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
+    List<VTercerosCargos> findByIdTercero(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/tercero/" + id, VTercerosCargos[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos obj){
         RestTemplate restTemplate = new RestTemplate();
