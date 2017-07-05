@@ -39,7 +39,7 @@ public class RolesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/rol/{codigoRol}")
     Roles findByCodigoRol(@PathVariable String codigoRol) {
-        return rolesRefactorRepository.findAllByCodigoRol(codigoRol);
+        return rolesRefactorRepository.findByCodigoRol(codigoRol);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/dashboard")
