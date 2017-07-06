@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -67,12 +68,17 @@ public class EstructuraOrganizacionalRefactorController {
             returnList = organizationalFullList;
         } else {
             Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
-            Integer idEstructuraOrganizacionalCargo = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody().getIdEstructuraOrganizacionalCargo();
-            Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
-            VEstructuraOrganizacional out = restTemplate.exchange(businessServiceURL + "estructuraOrganizacional/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VEstructuraOrganizacional.class, requestEntity).getBody();
-            out.setIdPadre(0);
-            returnList = UtilitiesController.organizationalStructureRecursiveCascade(idEstructuraOrganizacional, organizationalFullList);
-            returnList.add(out);
+            TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
+            if (currentJob != null) {
+                Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
+                Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
+                VEstructuraOrganizacional out = restTemplate.exchange(businessServiceURL + "estructuraOrganizacional/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VEstructuraOrganizacional.class, requestEntity).getBody();
+                out.setIdPadre(0);
+                returnList = UtilitiesController.organizationalStructureRecursiveCascade(idEstructuraOrganizacional, organizationalFullList);
+                returnList.add(out);
+            } else {
+                returnList = new ArrayList<>();
+            }
         }
         return returnList;
     }
