@@ -1,15 +1,19 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.Cargos;
-import com.ciberdix.th.model.Requerimientos;
-import com.ciberdix.th.model.RequerimientosAcciones;
-import com.ciberdix.th.model.VCargos;
+import com.ciberdix.th.model.*;
+import com.ciberdix.th.security.JwtTokenUtil;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -20,6 +24,10 @@ import java.util.List;
 @RequestMapping("/api/cargos")
 @Api(value = "cargos", description = "Cargos")
 public class CargosRefactorController {
+
+    @Value("${business.url}")
+    String businessURL;
+
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/cargos";
 
@@ -44,10 +52,36 @@ public class CargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
-    List<VCargos> findByWildCard(@PathVariable String query) {
+    List<VCargos> findByWildCard(@PathVariable String query, HttpServletRequest request) {
         RestTemplate restTemplate = new RestTemplate();
-        VCargos[] parametros = restTemplate.getForObject(serviceUrl + "/wildcard/" + query, VCargos[].class);
-        return Arrays.asList(parametros);
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        String token = UtilitiesController.extractToken(request);
+        String businessServiceURL = businessURL + "/api/";
+        HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
+        Collection<?> userRoles = jwtTokenUtil.getAuthorities();
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
+        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders);
+        String roleCodes = UtilitiesController.findConstant("ROLARB").getValor();
+        String[] rolesCodes = roleCodes.split(",");
+        StringBuilder sb = new StringBuilder();
+        for (String str : rolesCodes) {
+            sb.append(restTemplate.exchange(businessServiceURL + "roles/rol/" + str, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody().getRol());
+            sb.append(",");
+        }
+        String resultRoles = sb.toString();
+        boolean isManager = userRoles.stream().anyMatch(r -> resultRoles.contains(r.toString()));
+        List<VCargos> todosCargos = Arrays.asList(restTemplate.getForObject(serviceUrl + "/wildcard/" + query, VCargos[].class));
+        List<VCargos> returnList;
+        if (isManager) {
+            returnList = todosCargos;
+        } else {
+            Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
+            Integer idEstructuraOrganizacionalCargo = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody().getIdEstructuraOrganizacionalCargo();
+            Integer idCargo = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdCargo();
+            returnList = UtilitiesController.jobRecursiveCascade(idCargo, todosCargos);
+        }
+
+        return returnList;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{query}/{idEstructuraOrganizacional}")
