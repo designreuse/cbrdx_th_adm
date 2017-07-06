@@ -74,7 +74,7 @@ public class EstructuraOrganizacionalRefactorController {
             }
         }
 
-        ResponseEntity<VEstructuraOrganizacional[]> eoresponseEntity = restTemplate.exchange(test + "estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity);
+        ResponseEntity<VEstructuraOrganizacional[]> eoresponseEntity = restTemplate.exchange(globales.getUrl() + "/api/estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity);
         List<VEstructuraOrganizacional> todosEO = Arrays.asList(eoresponseEntity.getBody());
         List<VEstructuraOrganizacional> resultadoEO;
         if (admin) {
