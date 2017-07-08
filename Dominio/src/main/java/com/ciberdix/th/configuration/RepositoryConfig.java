@@ -227,5 +227,8 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VInstitucionesMedicas.class);
         config.exposeIdsFor(VPermisosFormularios.class);
         config.exposeIdsFor(VInstitucionesMedicasEstructurasFisicas.class);
+        config.exposeIdsFor(VProcesoSeleccionPruebasTecnicas.class);
+        config.exposeIdsFor(ProcesoSeleccionPruebasTecnicas.class);
+        config.exposeIdsFor(ListasPruebasTecnicas.class);
     }
 }
