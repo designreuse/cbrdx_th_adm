@@ -8,7 +8,10 @@ import java.sql.Timestamp;
 public class VTercerosReferenciasLlamada {
 
     private Integer idTerceroReferenciaLlamada;
+    private String tipoReferencia;
     private String terceroReferencia;
+    private String telefonoFijo;
+    private String telefonoMovil;
     private Integer idTerceroReferencia;
     private String resultadoLlamada;
     private Integer idResultadoLlamada;
@@ -19,6 +22,7 @@ public class VTercerosReferenciasLlamada {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String descripcionDivisonPolitica;
 
     public Integer getIdTerceroReferenciaLlamada() {
         return idTerceroReferenciaLlamada;
@@ -28,12 +32,36 @@ public class VTercerosReferenciasLlamada {
         this.idTerceroReferenciaLlamada = idTerceroReferenciaLlamada;
     }
 
+    public String getTipoReferencia() {
+        return tipoReferencia;
+    }
+
+    public void setTipoReferencia(String tipoReferencia) {
+        this.tipoReferencia = tipoReferencia;
+    }
+
     public String getTerceroReferencia() {
         return terceroReferencia;
     }
 
     public void setTerceroReferencia(String terceroReferencia) {
         this.terceroReferencia = terceroReferencia;
+    }
+
+    public String getTelefonoFijo() {
+        return telefonoFijo;
+    }
+
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    public String getTelefonoMovil() {
+        return telefonoMovil;
+    }
+
+    public void setTelefonoMovil(String telefonoMovil) {
+        this.telefonoMovil = telefonoMovil;
     }
 
     public Integer getIdTerceroReferencia() {
@@ -114,5 +142,13 @@ public class VTercerosReferenciasLlamada {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getDescripcionDivisonPolitica() {
+        return descripcionDivisonPolitica;
+    }
+
+    public void setDescripcionDivisonPolitica(String descripcionDivisonPolitica) {
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 }

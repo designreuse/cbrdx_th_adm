@@ -10,7 +10,10 @@ import java.sql.Timestamp;
 @Table(name = "V_TercerosReferenciasLlamada", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosReferenciasLlamada {
     private Integer idTerceroReferenciaLlamada;
+    private String tipoReferencia;
     private String terceroReferencia;
+    private String telefonoFijo;
+    private String telefonoMovil;
     private Integer idTerceroReferencia;
     private String resultadoLlamada;
     private Integer idResultadoLlamada;
@@ -21,6 +24,7 @@ public class VTercerosReferenciasLlamada {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String descripcionDivisonPolitica;
 
     @Id
     @Column(name = "IdTerceroReferenciaLlamada", nullable = false)
@@ -33,13 +37,43 @@ public class VTercerosReferenciasLlamada {
     }
 
     @Basic
-    @Column(name = "TerceroReferencia", nullable = false, length = 259)
+    @Column(name = "TipoReferencia", nullable = true, length = 100)
+    public String getTipoReferencia() {
+        return tipoReferencia;
+    }
+
+    public void setTipoReferencia(String tipoReferencia) {
+        this.tipoReferencia = tipoReferencia;
+    }
+
+    @Basic
+    @Column(name = "TerceroReferencia", nullable = false, length = 203)
     public String getTerceroReferencia() {
         return terceroReferencia;
     }
 
     public void setTerceroReferencia(String terceroReferencia) {
         this.terceroReferencia = terceroReferencia;
+    }
+
+    @Basic
+    @Column(name = "TelefonoFijo", nullable = true, length = 50)
+    public String getTelefonoFijo() {
+        return telefonoFijo;
+    }
+
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    @Basic
+    @Column(name = "TelefonoMovil", nullable = true, length = 50)
+    public String getTelefonoMovil() {
+        return telefonoMovil;
+    }
+
+    public void setTelefonoMovil(String telefonoMovil) {
+        this.telefonoMovil = telefonoMovil;
     }
 
     @Basic
@@ -151,7 +185,12 @@ public class VTercerosReferenciasLlamada {
 
         if (idTerceroReferenciaLlamada != null ? !idTerceroReferenciaLlamada.equals(that.idTerceroReferenciaLlamada) : that.idTerceroReferenciaLlamada != null)
             return false;
+        if (tipoReferencia != null ? !tipoReferencia.equals(that.tipoReferencia) : that.tipoReferencia != null)
+            return false;
         if (terceroReferencia != null ? !terceroReferencia.equals(that.terceroReferencia) : that.terceroReferencia != null)
+            return false;
+        if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) return false;
+        if (telefonoMovil != null ? !telefonoMovil.equals(that.telefonoMovil) : that.telefonoMovil != null)
             return false;
         if (idTerceroReferencia != null ? !idTerceroReferencia.equals(that.idTerceroReferencia) : that.idTerceroReferencia != null)
             return false;
@@ -179,7 +218,10 @@ public class VTercerosReferenciasLlamada {
     @Override
     public int hashCode() {
         int result = idTerceroReferenciaLlamada != null ? idTerceroReferenciaLlamada.hashCode() : 0;
+        result = 31 * result + (tipoReferencia != null ? tipoReferencia.hashCode() : 0);
         result = 31 * result + (terceroReferencia != null ? terceroReferencia.hashCode() : 0);
+        result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
+        result = 31 * result + (telefonoMovil != null ? telefonoMovil.hashCode() : 0);
         result = 31 * result + (idTerceroReferencia != null ? idTerceroReferencia.hashCode() : 0);
         result = 31 * result + (resultadoLlamada != null ? resultadoLlamada.hashCode() : 0);
         result = 31 * result + (idResultadoLlamada != null ? idResultadoLlamada.hashCode() : 0);
@@ -191,5 +233,15 @@ public class VTercerosReferenciasLlamada {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
+    public String getDescripcionDivisonPolitica() {
+        return descripcionDivisonPolitica;
+    }
+
+    public void setDescripcionDivisonPolitica(String descripcionDivisonPolitica) {
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 }
