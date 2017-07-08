@@ -1,7 +1,6 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.TercerosReferenciasLlamada;
-import com.ciberdix.th.models.VTercerosReferenciasLlamada;
 import com.ciberdix.th.repositories.TercerosReferenciasLlamadaRefactorRepository;
 import com.ciberdix.th.repositories.VTercerosReferenciasLlamadaRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
