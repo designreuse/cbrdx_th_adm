@@ -1,22 +1,23 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.XProperties;
-import com.ciberdix.th.model.Constantes;
-import com.ciberdix.th.model.ListasItems;
-import com.ciberdix.th.model.Usuarios;
+import com.ciberdix.th.model.*;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UtilitiesController {
 
@@ -26,6 +27,7 @@ public class UtilitiesController {
     private static String calEnd = "END:VCALENDAR\r\n";
     private static String eventBegin = "BEGIN:VEVENT\r\n";
     private static String eventEnd = "END:VEVENT\r\n";
+    private static String tokenHeader = "Authorization";
 
     static File assembleCalendar(Date programmedDate, String personName) {
         try {
@@ -182,5 +184,39 @@ public class UtilitiesController {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    static List<VEstructuraOrganizacional> organizationalStructureRecursiveCascade(Integer parentStructureId, List<VEstructuraOrganizacional> structureList) {
+        List<VEstructuraOrganizacional> responseList = new ArrayList<>();
+        List<VEstructuraOrganizacional> collectedStructures = structureList.stream().filter(u -> u.getIdPadre() != null && u.getIdPadre().equals(parentStructureId)).collect(Collectors.toList());
+        if (!collectedStructures.isEmpty()) {
+            for (VEstructuraOrganizacional c : collectedStructures) {
+                responseList.addAll(organizationalStructureRecursiveCascade(c.getIdEstructuraOrganizacional(), structureList));
+            }
+        }
+        responseList.addAll(collectedStructures);
+        return responseList;
+    }
+
+    static List<VCargos> jobRecursiveCascade(Integer parentId, List<VCargos> jobList) {
+        List<VCargos> resultList = new ArrayList<>();
+        List<VCargos> collectedJobs = jobList.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(parentId)).collect(Collectors.toList());
+        if (!collectedJobs.isEmpty()) {
+            for (VCargos c : collectedJobs) {
+                resultList.addAll(jobRecursiveCascade(c.getIdCargo(), jobList));
+            }
+        }
+        resultList.addAll(collectedJobs);
+        return resultList;
+    }
+
+    static HttpHeaders assembleHttpHeaders(String token) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set(tokenHeader, token);
+        return httpHeaders;
+    }
+
+    static String extractToken(HttpServletRequest request) {
+        return request.getHeader(tokenHeader);
     }
 }

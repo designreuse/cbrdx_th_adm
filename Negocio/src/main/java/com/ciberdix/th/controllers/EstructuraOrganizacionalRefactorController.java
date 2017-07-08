@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by robertochajin on 17/04/17.
@@ -28,8 +26,6 @@ public class EstructuraOrganizacionalRefactorController {
 
     @Value("${business.url}")
     String businessURL;
-
-    String tokenHeader = "Authorization";
 
     Globales globales = new Globales();
     private String serviceUrl = globales.getUrl() + "/api/estructuraOrganizacional";
@@ -49,59 +45,42 @@ public class EstructuraOrganizacionalRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<VEstructuraOrganizacional> findEnabled(HttpServletRequest request) {
-        String test = businessURL + "/api/";
         RestTemplate restTemplate = new RestTemplate();
+        String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
+        String businessServiceURL = businessURL + "/api/"; //Composicion de BaseURL para Servicios de Logica
+        HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token); //Encabezados para Request con Autenticación de Logica
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-        HttpHeaders httpHeaders = new HttpHeaders();
-        String token = request.getHeader(tokenHeader);
-        Collection<?> roles = jwtTokenUtil.getAuthorities();
-        httpHeaders.set(tokenHeader, token);
-        Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders);
+        Collection<?> userRoles = jwtTokenUtil.getAuthorities(); //Extraccion de Nombres de ROLE_ Asignados
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token); //Id de Usuario Conectado
+        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
         String roleCodes = UtilitiesController.findConstant("ROLARB").getValor();
         String[] rolesCodes = roleCodes.split(",");
         StringBuilder sb = new StringBuilder();
         for (String str : rolesCodes) {
-            sb.append(restTemplate.exchange(test + "roles/rol/" + str, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody().getRol());
+            sb.append(restTemplate.exchange(businessServiceURL + "roles/rol/" + str, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody().getRol());
             sb.append(",");
         }
         String resultRoles = sb.toString();
-        boolean admin = false;
-        for (Object rol : roles) {
-            if (resultRoles.contains(rol.toString())) {
-                admin = true;
-                break;
+        boolean isManager = userRoles.stream().anyMatch(r -> resultRoles.contains(r.toString()));
+        List<VEstructuraOrganizacional> organizationalFullList = Arrays.asList(restTemplate.exchange(globales.getUrl() + "/api/estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity).getBody());
+        List<VEstructuraOrganizacional> returnList;
+        if (isManager) {
+            returnList = organizationalFullList;
+        } else {
+            Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
+            TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
+            if (currentJob != null) {
+                Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
+                Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
+                VEstructuraOrganizacional out = restTemplate.exchange(businessServiceURL + "estructuraOrganizacional/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VEstructuraOrganizacional.class, requestEntity).getBody();
+                out.setIdPadre(0);
+                returnList = UtilitiesController.organizationalStructureRecursiveCascade(idEstructuraOrganizacional, organizationalFullList);
+                returnList.add(out);
+            } else {
+                returnList = new ArrayList<>();
             }
         }
-
-        ResponseEntity<VEstructuraOrganizacional[]> eoresponseEntity = restTemplate.exchange(test + "estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity);
-        List<VEstructuraOrganizacional> todosEO = Arrays.asList(eoresponseEntity.getBody());
-        List<VEstructuraOrganizacional> resultadoEO;
-        if (admin) {
-            resultadoEO = todosEO;
-
-        } else {
-            ResponseEntity<Usuarios> responseEntity = restTemplate.exchange(test + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity);
-            Long idTercero = responseEntity.getBody().getIdTercero();
-
-            ResponseEntity<TercerosCargos> tercerosCargosEntity = restTemplate.exchange(test + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity);
-            Integer idEstructuraOrganizacionalCargo = tercerosCargosEntity.getBody().getIdEstructuraOrganizacionalCargo();
-
-            ResponseEntity<EstructuraOrganizacionalCargos> eocresponseEntity = restTemplate.exchange(test + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity);
-            Integer idEstructuraOrganizacional = eocresponseEntity.getBody().getIdEstructuraOrganizacional();
-
-            resultadoEO = recursiveEOSearch(idEstructuraOrganizacional, todosEO);
-            ResponseEntity<VEstructuraOrganizacional> singleRecord = restTemplate.exchange(test + "estructuraOrganizacional/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VEstructuraOrganizacional.class, requestEntity);
-            VEstructuraOrganizacional out = singleRecord.getBody();
-            out.setIdPadre(0);
-            resultadoEO.add(out);
-        }
-        return resultadoEO;
-        /*
-        RestTemplate restTemplate = new RestTemplate();
-        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VEstructuraOrganizacional[].class);
-        return Arrays.asList(parametros);
-        */
+        return returnList;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{id}")
@@ -128,96 +107,5 @@ public class EstructuraOrganizacionalRefactorController {
     void update(@RequestBody EstructuraOrganizacional obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
-    }
-/*
-    @RequestMapping(method = RequestMethod.GET, path = "/security/")
-    void findByIdTipo(HttpServletRequest request) {
-        String test = businessURL + "/api/";
-        RestTemplate restTemplate = new RestTemplate();
-        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-        HttpHeaders httpHeaders = new HttpHeaders();
-        String token = request.getHeader(tokenHeader);
-        Collection<?> roles = jwtTokenUtil.getAuthorities();
-        httpHeaders.set(tokenHeader, token);
-        Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders);
-        String roleCodes = UtilitiesController.findConstant("ROLARB").getValor();
-        String[] rolesCodes = roleCodes.split(",");
-        StringBuilder sb = new StringBuilder();
-        for (String str : rolesCodes) {
-            sb.append(restTemplate.exchange(test + "roles/rol/" + str, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody().getRol());
-            sb.append(",");
-        }
-        String resultRoles = sb.toString();
-        boolean admin = false;
-        for (Object rol : roles) {
-            if (resultRoles.contains(rol.toString())) {
-                admin = true;
-                break;
-            }
-        }
-        ResponseEntity<Cargos[]> cresponseEntity = restTemplate.exchange(test + "cargos/enabled/", HttpMethod.GET, requestEntity, Cargos[].class, requestEntity);
-        List<Cargos> todosCargos = Arrays.asList(cresponseEntity.getBody());
-
-        ResponseEntity<EstructuraOrganizacional[]> eoresponseEntity = restTemplate.exchange(test + "estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, EstructuraOrganizacional[].class, requestEntity);
-        List<EstructuraOrganizacional> todosEO = Arrays.asList(eoresponseEntity.getBody());
-        List<EstructuraOrganizacional> resultadoEO;
-        List<Cargos> resultado;
-        if (admin) {
-            resultado = todosCargos;
-            resultadoEO = todosEO;
-
-        } else {
-            ResponseEntity<Usuarios> responseEntity = restTemplate.exchange(test + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity);
-            Long idTercero = responseEntity.getBody().getIdTercero();
-
-            ResponseEntity<TercerosCargos> tercerosCargosEntity = restTemplate.exchange(test + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity);
-            Integer idEstructuraOrganizacionalCargo = tercerosCargosEntity.getBody().getIdEstructuraOrganizacionalCargo();
-
-            ResponseEntity<EstructuraOrganizacionalCargos> eocresponseEntity = restTemplate.exchange(test + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity);
-            Integer idCargo = eocresponseEntity.getBody().getIdCargo();
-            Integer idEstructuraOrganizacional = eocresponseEntity.getBody().getIdEstructuraOrganizacional();
-
-            resultadoEO = recursiveEOSearch(idEstructuraOrganizacional, todosEO);
-            resultado = recursiveSearch(idCargo, todosCargos);
-        }
-
-    }
-
-    List<Cargos> recursiveSearch(Integer idCargo, List<Cargos> todosCargos) {
-        List<Cargos> dependencyJobs = new ArrayList<>();
-        List<Cargos> collectedSons = todosCargos.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(idCargo)).collect(Collectors.toList());
-        if (!collectedSons.isEmpty()) {
-            for (Cargos c : collectedSons) {
-                dependencyJobs.addAll(recursiveSearch(c.getIdCargo(), todosCargos));
-            }
-        }
-        dependencyJobs.addAll(collectedSons);
-        return dependencyJobs;
-    }
-*/
-    /*
-    List<EstructuraOrganizacional> recursiveEOSearch(Integer idCargo, List<EstructuraOrganizacional> todosEstructuras) {
-        List<EstructuraOrganizacional> dependencyJobs = new ArrayList<>();
-        List<EstructuraOrganizacional> collectedSons = todosEstructuras.stream().filter(u -> u.getIdPadre() != null && u.getIdPadre().equals(idCargo)).collect(Collectors.toList());
-        if (!collectedSons.isEmpty()) {
-            for (EstructuraOrganizacional c : collectedSons) {
-                dependencyJobs.addAll(recursiveEOSearch(c.getIdEstructuraOrganizacional(), todosEstructuras));
-            }
-        }
-        dependencyJobs.addAll(collectedSons);
-        return dependencyJobs;
-    }*/
-
-    List<VEstructuraOrganizacional> recursiveEOSearch(Integer idCargo, List<VEstructuraOrganizacional> todosEstructuras) {
-        List<VEstructuraOrganizacional> dependencyJobs = new ArrayList<>();
-        List<VEstructuraOrganizacional> collectedSons = todosEstructuras.stream().filter(u -> u.getIdPadre() != null && u.getIdPadre().equals(idCargo)).collect(Collectors.toList());
-        if (!collectedSons.isEmpty()) {
-            for (VEstructuraOrganizacional c : collectedSons) {
-                dependencyJobs.addAll(recursiveEOSearch(c.getIdEstructuraOrganizacional(), todosEstructuras));
-            }
-        }
-        dependencyJobs.addAll(collectedSons);
-        return dependencyJobs;
     }
 }
