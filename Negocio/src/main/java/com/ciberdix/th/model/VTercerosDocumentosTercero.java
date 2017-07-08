@@ -10,6 +10,7 @@ public class VTercerosDocumentosTercero {
     private Integer idTerceroDocumentoTercero;
     private Long idTercero;
     private String nombreDocumentoTercero;
+    private String descripcion;
     private Integer idDocumentoTercero;
     private Integer idAdjunto;
     private Boolean indicadorHabilitado;
@@ -38,6 +39,14 @@ public class VTercerosDocumentosTercero {
 
     public void setNombreDocumentoTercero(String nombreDocumentoTercero) {
         this.nombreDocumentoTercero = nombreDocumentoTercero;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Integer getIdDocumentoTercero() {
