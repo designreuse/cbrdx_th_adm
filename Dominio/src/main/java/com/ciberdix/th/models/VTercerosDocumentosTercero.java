@@ -12,6 +12,7 @@ public class VTercerosDocumentosTercero {
     private Integer idTerceroDocumentoTercero;
     private Long idTercero;
     private String nombreDocumentoTercero;
+    private String descripcion;
     private Integer idDocumentoTercero;
     private Integer idAdjunto;
     private Boolean indicadorHabilitado;
@@ -46,6 +47,16 @@ public class VTercerosDocumentosTercero {
 
     public void setNombreDocumentoTercero(String nombreDocumentoTercero) {
         this.nombreDocumentoTercero = nombreDocumentoTercero;
+    }
+
+    @Basic
+    @Column(name = "Descripcion", nullable = true, length = 500)
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Basic
@@ -110,6 +121,7 @@ public class VTercerosDocumentosTercero {
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (nombreDocumentoTercero != null ? !nombreDocumentoTercero.equals(that.nombreDocumentoTercero) : that.nombreDocumentoTercero != null)
             return false;
+        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (idDocumentoTercero != null ? !idDocumentoTercero.equals(that.idDocumentoTercero) : that.idDocumentoTercero != null)
             return false;
         if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
@@ -128,6 +140,7 @@ public class VTercerosDocumentosTercero {
         int result = idTerceroDocumentoTercero != null ? idTerceroDocumentoTercero.hashCode() : 0;
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (nombreDocumentoTercero != null ? nombreDocumentoTercero.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (idDocumentoTercero != null ? idDocumentoTercero.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
