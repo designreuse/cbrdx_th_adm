@@ -1,15 +1,13 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by Danny on 9/07/2017.
  */
 @Entity
+@Table(name = "PreguntasOpciones", schema = "dbo", catalog = "CREZCAMOS")
 public class PreguntasOpciones {
     private Integer idPreguntaOpcion;
     private Integer idCuestionarioPregunta;
@@ -21,7 +19,34 @@ public class PreguntasOpciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
+    public PreguntasOpciones() {
+    }
+
+    public PreguntasOpciones(Integer idCuestionarioPregunta, String codigoOpcion, String opcion, Integer orden, Boolean indicadorCorrecto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
+        this.codigoOpcion = codigoOpcion;
+        this.opcion = opcion;
+        this.orden = orden;
+        this.indicadorCorrecto = indicadorCorrecto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
+    public PreguntasOpciones(Integer idPreguntaOpcion, Integer idCuestionarioPregunta, String codigoOpcion, String opcion, Integer orden, Boolean indicadorCorrecto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idPreguntaOpcion = idPreguntaOpcion;
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
+        this.codigoOpcion = codigoOpcion;
+        this.opcion = opcion;
+        this.orden = orden;
+        this.indicadorCorrecto = indicadorCorrecto;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+    }
+
     @Id
+    @GeneratedValue
     @Column(name = "IdPreguntaOpcion", nullable = false)
     public Integer getIdPreguntaOpcion() {
         return idPreguntaOpcion;
