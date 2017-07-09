@@ -46,10 +46,10 @@ public class CuestionariosRefactorController {
         restTemplate.put(serviceUrl, request, Cuestionarios.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idLista}")
-    Cuestionarios findOne(@PathVariable Integer idLista) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    Cuestionarios findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        Cuestionarios parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLista, Cuestionarios.class);
+        Cuestionarios parametro = restTemplate.getForObject(serviceUrl + "/" + id, Cuestionarios.class);
         return parametro;
     }
 

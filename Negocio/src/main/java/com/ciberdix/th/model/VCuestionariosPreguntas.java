@@ -3,31 +3,45 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 9/07/2017.
  */
-public class Preguntas {
+public class VCuestionariosPreguntas {
 
-    private Integer idPregunta;
+    private Integer idCuestionarioPregunta;
+    private String cuestionario;
     private Integer idCuestionario;
     private String codigoPregunta;
     private String pregunta;
+    private String tipoPregunta;
     private Integer idTipoPregunta;
     private Boolean indicadorDepende;
+    private String codigoDependePregunta;
+    private String dependePregunta;
     private Integer idDependePregunta;
+    private String codigoOpcionRespuesta;
+    private String dependeRespuesta;
     private Integer idDependeRespuesta;
-    private Integer secuencia;
-    private Boolean indicadorHabilitado;
-    private Boolean indicadorObligatorio;
+    private String secuencia;
     private Boolean indicadorFiltrante;
+    private Boolean indicadorObligatorio;
+    private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdPregunta() {
-        return idPregunta;
+    public Integer getIdCuestionarioPregunta() {
+        return idCuestionarioPregunta;
     }
 
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
+    }
+
+    public String getCuestionario() {
+        return cuestionario;
+    }
+
+    public void setCuestionario(String cuestionario) {
+        this.cuestionario = cuestionario;
     }
 
     public Integer getIdCuestionario() {
@@ -54,6 +68,14 @@ public class Preguntas {
         this.pregunta = pregunta;
     }
 
+    public String getTipoPregunta() {
+        return tipoPregunta;
+    }
+
+    public void setTipoPregunta(String tipoPregunta) {
+        this.tipoPregunta = tipoPregunta;
+    }
+
     public Integer getIdTipoPregunta() {
         return idTipoPregunta;
     }
@@ -70,12 +92,44 @@ public class Preguntas {
         this.indicadorDepende = indicadorDepende;
     }
 
+    public String getCodigoDependePregunta() {
+        return codigoDependePregunta;
+    }
+
+    public void setCodigoDependePregunta(String codigoDependePregunta) {
+        this.codigoDependePregunta = codigoDependePregunta;
+    }
+
+    public String getDependePregunta() {
+        return dependePregunta;
+    }
+
+    public void setDependePregunta(String dependePregunta) {
+        this.dependePregunta = dependePregunta;
+    }
+
     public Integer getIdDependePregunta() {
         return idDependePregunta;
     }
 
     public void setIdDependePregunta(Integer idDependePregunta) {
         this.idDependePregunta = idDependePregunta;
+    }
+
+    public String getCodigoOpcionRespuesta() {
+        return codigoOpcionRespuesta;
+    }
+
+    public void setCodigoOpcionRespuesta(String codigoOpcionRespuesta) {
+        this.codigoOpcionRespuesta = codigoOpcionRespuesta;
+    }
+
+    public String getDependeRespuesta() {
+        return dependeRespuesta;
+    }
+
+    public void setDependeRespuesta(String dependeRespuesta) {
+        this.dependeRespuesta = dependeRespuesta;
     }
 
     public Integer getIdDependeRespuesta() {
@@ -86,20 +140,20 @@ public class Preguntas {
         this.idDependeRespuesta = idDependeRespuesta;
     }
 
-    public Integer getSecuencia() {
+    public String getSecuencia() {
         return secuencia;
     }
 
-    public void setSecuencia(Integer secuencia) {
+    public void setSecuencia(String secuencia) {
         this.secuencia = secuencia;
     }
 
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
+    public Boolean getIndicadorFiltrante() {
+        return indicadorFiltrante;
     }
 
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
+    public void setIndicadorFiltrante(Boolean indicadorFiltrante) {
+        this.indicadorFiltrante = indicadorFiltrante;
     }
 
     public Boolean getIndicadorObligatorio() {
@@ -110,12 +164,12 @@ public class Preguntas {
         this.indicadorObligatorio = indicadorObligatorio;
     }
 
-    public Boolean getIndicadorFiltrante() {
-        return indicadorFiltrante;
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
     }
 
-    public void setIndicadorFiltrante(Boolean indicadorFiltrante) {
-        this.indicadorFiltrante = indicadorFiltrante;
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     public Integer getAuditoriaUsuario() {
