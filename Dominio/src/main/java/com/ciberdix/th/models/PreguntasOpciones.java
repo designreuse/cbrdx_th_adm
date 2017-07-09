@@ -1,19 +1,20 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 9/07/2017.
  */
 @Entity
-@Table(name = "V_Respuestas", schema = "dbo", catalog = "CREZCAMOS")
-public class VRespuestas {
-    private Integer idRespuesta;
-    private String pregunta;
-    private Integer idPregunta;
-    private String codigoRespuesta;
-    private String respuesta;
+public class PreguntasOpciones {
+    private Integer idPreguntaOpcion;
+    private Integer idCuestionarioPregunta;
+    private String codigoOpcion;
+    private String opcion;
     private Integer orden;
     private Boolean indicadorCorrecto;
     private Boolean indicadorHabilitado;
@@ -21,53 +22,43 @@ public class VRespuestas {
     private Timestamp auditoriaFecha;
 
     @Id
-    @Column(name = "IdRespuesta", nullable = false)
-    public Integer getIdRespuesta() {
-        return idRespuesta;
+    @Column(name = "IdPreguntaOpcion", nullable = false)
+    public Integer getIdPreguntaOpcion() {
+        return idPreguntaOpcion;
     }
 
-    public void setIdRespuesta(Integer idRespuesta) {
-        this.idRespuesta = idRespuesta;
-    }
-
-    @Basic
-    @Column(name = "Pregunta", nullable = true, length = 200)
-    public String getPregunta() {
-        return pregunta;
-    }
-
-    public void setPregunta(String pregunta) {
-        this.pregunta = pregunta;
+    public void setIdPreguntaOpcion(Integer idPreguntaOpcion) {
+        this.idPreguntaOpcion = idPreguntaOpcion;
     }
 
     @Basic
-    @Column(name = "IdPregunta", nullable = true)
-    public Integer getIdPregunta() {
-        return idPregunta;
+    @Column(name = "IdCuestionarioPregunta", nullable = false)
+    public Integer getIdCuestionarioPregunta() {
+        return idCuestionarioPregunta;
     }
 
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
-    }
-
-    @Basic
-    @Column(name = "CodigoRespuesta", nullable = true, length = 50)
-    public String getCodigoRespuesta() {
-        return codigoRespuesta;
-    }
-
-    public void setCodigoRespuesta(String codigoRespuesta) {
-        this.codigoRespuesta = codigoRespuesta;
+    public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
     }
 
     @Basic
-    @Column(name = "Respuesta", nullable = true, length = 500)
-    public String getRespuesta() {
-        return respuesta;
+    @Column(name = "CodigoOpcion", nullable = true, length = 50)
+    public String getCodigoOpcion() {
+        return codigoOpcion;
     }
 
-    public void setRespuesta(String respuesta) {
-        this.respuesta = respuesta;
+    public void setCodigoOpcion(String codigoOpcion) {
+        this.codigoOpcion = codigoOpcion;
+    }
+
+    @Basic
+    @Column(name = "Opcion", nullable = true, length = 200)
+    public String getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
     }
 
     @Basic
@@ -125,14 +116,14 @@ public class VRespuestas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VRespuestas that = (VRespuestas) o;
+        PreguntasOpciones that = (PreguntasOpciones) o;
 
-        if (idRespuesta != null ? !idRespuesta.equals(that.idRespuesta) : that.idRespuesta != null) return false;
-        if (pregunta != null ? !pregunta.equals(that.pregunta) : that.pregunta != null) return false;
-        if (idPregunta != null ? !idPregunta.equals(that.idPregunta) : that.idPregunta != null) return false;
-        if (codigoRespuesta != null ? !codigoRespuesta.equals(that.codigoRespuesta) : that.codigoRespuesta != null)
+        if (idPreguntaOpcion != null ? !idPreguntaOpcion.equals(that.idPreguntaOpcion) : that.idPreguntaOpcion != null)
             return false;
-        if (respuesta != null ? !respuesta.equals(that.respuesta) : that.respuesta != null) return false;
+        if (idCuestionarioPregunta != null ? !idCuestionarioPregunta.equals(that.idCuestionarioPregunta) : that.idCuestionarioPregunta != null)
+            return false;
+        if (codigoOpcion != null ? !codigoOpcion.equals(that.codigoOpcion) : that.codigoOpcion != null) return false;
+        if (opcion != null ? !opcion.equals(that.opcion) : that.opcion != null) return false;
         if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (indicadorCorrecto != null ? !indicadorCorrecto.equals(that.indicadorCorrecto) : that.indicadorCorrecto != null)
             return false;
@@ -148,11 +139,10 @@ public class VRespuestas {
 
     @Override
     public int hashCode() {
-        int result = idRespuesta != null ? idRespuesta.hashCode() : 0;
-        result = 31 * result + (pregunta != null ? pregunta.hashCode() : 0);
-        result = 31 * result + (idPregunta != null ? idPregunta.hashCode() : 0);
-        result = 31 * result + (codigoRespuesta != null ? codigoRespuesta.hashCode() : 0);
-        result = 31 * result + (respuesta != null ? respuesta.hashCode() : 0);
+        int result = idPreguntaOpcion != null ? idPreguntaOpcion.hashCode() : 0;
+        result = 31 * result + (idCuestionarioPregunta != null ? idCuestionarioPregunta.hashCode() : 0);
+        result = 31 * result + (codigoOpcion != null ? codigoOpcion.hashCode() : 0);
+        result = 31 * result + (opcion != null ? opcion.hashCode() : 0);
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (indicadorCorrecto != null ? indicadorCorrecto.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

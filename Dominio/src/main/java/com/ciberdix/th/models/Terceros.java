@@ -476,7 +476,7 @@ public class Terceros {
     public void setIdAdjunto(Integer idAdjunto) {
         this.idAdjunto = idAdjunto;
     }
-
+  
     @Basic
     @Column(name = "FechaDefuncion", nullable = true)
     public Date getFechaDefuncion() {
@@ -626,7 +626,7 @@ public class Terceros {
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
     }
-
+  
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

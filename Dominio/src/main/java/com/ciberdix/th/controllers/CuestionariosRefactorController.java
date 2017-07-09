@@ -31,7 +31,7 @@ public class CuestionariosRefactorController {
         return cuestionariosRefactorRepository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     Cuestionarios findOne(@PathVariable Integer id) {
         return cuestionariosRefactorRepository.findOne(id);
     }
