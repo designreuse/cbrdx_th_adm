@@ -45,7 +45,7 @@ public class JwtTokenUtil implements Serializable {
         return username;
     }
 
-    public Integer getIdUsernameFromToken(String token) {
+    public Integer getUserIdFromToken(String token) {
         Integer username;
         try {
             final Claims claims = getClaimsFromToken(token);

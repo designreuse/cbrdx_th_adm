@@ -42,19 +42,23 @@ public class FileUploadRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         String authToken = request.getHeader("Authorization");
-
-        int id = jwtTokenUtil.getIdUsernameFromToken(authToken);
+        int id = jwtTokenUtil.getUserIdFromToken(authToken);
         RestTemplate restTemplate = new RestTemplate();
         Usuarios usuario = restTemplate.getForObject(serviceUrl + "/api/usuarios/query/" + id, Usuarios.class);
         Terceros tercero = restTemplate.getForObject(serviceUrl + "/api/terceros/" + usuario.getIdTercero(), Terceros.class);
-        //,RedirectAttributes redirectAttributes
         String avatarGuardado = storageService.store(file);
-//        redirectAttributes.addFlashAttribute("message",
-//                "You successfully uploaded " + avatarGuardado + "!");
-
         tercero.setImagen(avatarGuardado);
         restTemplate.put(serviceUrl + "api/terceros", tercero);
+        return ResponseEntity.ok(avatarGuardado);
+    }
 
+    @RequestMapping(method = RequestMethod.POST, path = "/{idTercero}")
+    public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idTercero) {
+        RestTemplate restTemplate = new RestTemplate();
+        Terceros tercero = restTemplate.getForObject(serviceUrl + "/api/terceros/" + idTercero, Terceros.class);
+        String avatarGuardado = storageService.store(file);
+        tercero.setImagen(avatarGuardado);
+        restTemplate.put(serviceUrl + "api/terceros", tercero);
         return ResponseEntity.ok(avatarGuardado);
     }
 
