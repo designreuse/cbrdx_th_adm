@@ -41,6 +41,11 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicacionesRefactorRepository.findAllByIdPublicacionAndIndicadorHabilitadoIsTrue(idPublicacion);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/tercero/{idTercero}")
+    List<TercerosPublicaciones> findByIdTercero(@PathVariable Long idTercero) {
+        return tercerosPublicacionesRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosPublicaciones crearTercero(@RequestBody TercerosPublicaciones o) {
         return tercerosPublicacionesRefactorRepository.save(

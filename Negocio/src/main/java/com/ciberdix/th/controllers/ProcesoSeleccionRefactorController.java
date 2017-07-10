@@ -58,6 +58,7 @@ public class ProcesoSeleccionRefactorController {
         List<TercerosPublicaciones> tercerosPublicaciones = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/publicacion/" + publicaciones.getIdPublicacion(), TercerosPublicaciones[].class));
         List<VProcesosPasos> procesosPasos;
         String forma = UtilitiesController.findListItemById("ListasFormasReclutamientos", publicaciones.getIdFormaReclutamiento()).getCodigo();
+        Integer cantProcesoSeleccion = 0;
 
         if (forma.equals("EXT")) {
             procesosPasos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/procesosPasos/procesoOrden/externoMixto/" + publicaciones.getIdProceso(), VProcesosPasos[].class));
@@ -71,6 +72,18 @@ public class ProcesoSeleccionRefactorController {
             Terceros terceros = restTemplate.getForObject(globales.getUrl() + "api/terceros/" + tp.getIdTercero(), Terceros.class);
             String nombreCompleto = terceros.getPrimerNombre() + " " + terceros.getSegundoNombre() + " " + terceros.getPrimerApellido() + " " + terceros.getSegundoApellido();
             List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + tp.getIdTercerosPublicaciones(), VProcesoSeleccion[].class));
+
+            List<TercerosPublicaciones> terP = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/tercero/" + tp.getIdTercero(), TercerosPublicaciones[].class));
+            for(TercerosPublicaciones trP : terP){
+                VPublicaciones p = restTemplate.getForObject(globales.getUrl() + "api/publicaciones/" + trP.getIdPublicacion(), VPublicaciones.class);
+                VRequerimientos r = restTemplate.getForObject(globales.getUrl() + "api/requerimientos/" + p.getIdRequerimiento(), VRequerimientos.class);
+                String code = UtilitiesController.findListItemById("ListasEstadosRequerimientos", r.getIdEstado()).getCodigo();
+
+                if(code.equals("PRCSEL")){
+                    cantProcesoSeleccion++;
+                }
+            }
+
             List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
             ArrayList<Integer> ps = new ArrayList<>();
 
@@ -105,7 +118,8 @@ public class ProcesoSeleccionRefactorController {
                 }
             }
 
-            OPS = new ObjetoProcesoSeleccion(tp.getIdTercerosPublicaciones(), terceros.getIdTercero(), nombreCompleto, LPSL);
+            OPS = new ObjetoProcesoSeleccion(tp.getIdTercerosPublicaciones(), terceros.getIdTercero(), nombreCompleto, LPSL, cantProcesoSeleccion);
+            cantProcesoSeleccion = 0;
             OPSL.add(OPS);
         }
 
