@@ -13,6 +13,7 @@ public class VCuestionariosPreguntas {
     private String codigoPregunta;
     private String pregunta;
     private String tipoPregunta;
+    private String codigoTipoPregunta;
     private Integer idTipoPregunta;
     private Boolean indicadorDepende;
     private String codigoDependePregunta;
@@ -74,6 +75,14 @@ public class VCuestionariosPreguntas {
 
     public void setTipoPregunta(String tipoPregunta) {
         this.tipoPregunta = tipoPregunta;
+    }
+
+    public String getCodigoTipoPregunta() {
+        return codigoTipoPregunta;
+    }
+
+    public void setCodigoTipoPregunta(String codigoTipoPregunta) {
+        this.codigoTipoPregunta = codigoTipoPregunta;
     }
 
     public Integer getIdTipoPregunta() {

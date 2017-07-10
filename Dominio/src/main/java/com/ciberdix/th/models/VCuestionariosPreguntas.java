@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 9/07/2017.
+ * Created by Danny on 10/07/2017.
  */
 @Entity
 @Table(name = "V_CuestionariosPreguntas", schema = "dbo", catalog = "CREZCAMOS")
@@ -15,6 +15,7 @@ public class VCuestionariosPreguntas {
     private String codigoPregunta;
     private String pregunta;
     private String tipoPregunta;
+    private String codigoTipoPregunta;
     private Integer idTipoPregunta;
     private Boolean indicadorDepende;
     private String codigoDependePregunta;
@@ -88,6 +89,16 @@ public class VCuestionariosPreguntas {
 
     public void setTipoPregunta(String tipoPregunta) {
         this.tipoPregunta = tipoPregunta;
+    }
+
+    @Basic
+    @Column(name = "CodigoTipoPregunta", nullable = true, length = 10)
+    public String getCodigoTipoPregunta() {
+        return codigoTipoPregunta;
+    }
+
+    public void setCodigoTipoPregunta(String codigoTipoPregunta) {
+        this.codigoTipoPregunta = codigoTipoPregunta;
     }
 
     @Basic
@@ -246,6 +257,8 @@ public class VCuestionariosPreguntas {
             return false;
         if (pregunta != null ? !pregunta.equals(that.pregunta) : that.pregunta != null) return false;
         if (tipoPregunta != null ? !tipoPregunta.equals(that.tipoPregunta) : that.tipoPregunta != null) return false;
+        if (codigoTipoPregunta != null ? !codigoTipoPregunta.equals(that.codigoTipoPregunta) : that.codigoTipoPregunta != null)
+            return false;
         if (idTipoPregunta != null ? !idTipoPregunta.equals(that.idTipoPregunta) : that.idTipoPregunta != null)
             return false;
         if (indicadorDepende != null ? !indicadorDepende.equals(that.indicadorDepende) : that.indicadorDepende != null)
@@ -285,6 +298,7 @@ public class VCuestionariosPreguntas {
         result = 31 * result + (codigoPregunta != null ? codigoPregunta.hashCode() : 0);
         result = 31 * result + (pregunta != null ? pregunta.hashCode() : 0);
         result = 31 * result + (tipoPregunta != null ? tipoPregunta.hashCode() : 0);
+        result = 31 * result + (codigoTipoPregunta != null ? codigoTipoPregunta.hashCode() : 0);
         result = 31 * result + (idTipoPregunta != null ? idTipoPregunta.hashCode() : 0);
         result = 31 * result + (indicadorDepende != null ? indicadorDepende.hashCode() : 0);
         result = 31 * result + (codigoDependePregunta != null ? codigoDependePregunta.hashCode() : 0);
