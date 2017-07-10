@@ -1,7 +1,6 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Respuestas;
-import com.ciberdix.th.models.Respuestas;
 import com.ciberdix.th.repositories.RespuestasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +36,7 @@ public class RespuestasRefactorController {
         return respuestasRefactorRepository.save(
                 new Respuestas(
                         o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
-                        o.getOrden(),o.getAuditoriaUsuario()
+                        o.getOrden(),o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }
@@ -47,7 +46,7 @@ public class RespuestasRefactorController {
         respuestasRefactorRepository.save(
                 new Respuestas(
                         o.getIdRespuesta(),o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
-                        o.getOrden(),o.getAuditoriaUsuario()
+                        o.getOrden(),o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }
