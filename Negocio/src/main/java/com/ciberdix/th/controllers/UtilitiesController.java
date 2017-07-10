@@ -41,7 +41,7 @@ public class UtilitiesController {
             String dtend = "DTEND:" + sd1.format(programmedDate.getTime() + 30 * 1000 * 60) + "\r\n";
             String summary = "SUMMARY:Cita\r\n";
             String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
-            File file = new File("temp.ics");
+            File file = File.createTempFile("temp", ".ics");
             if (!file.exists()) {
                 file.createNewFile();
             }
