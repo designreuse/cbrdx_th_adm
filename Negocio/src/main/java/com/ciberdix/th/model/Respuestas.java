@@ -14,6 +14,7 @@ public class Respuestas {
     private Integer orden;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idMaestroRespuesta;
 
     public Integer getIdRespuesta() {
         return idRespuesta;
@@ -69,5 +70,13 @@ public class Respuestas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
+    }
+
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 }
