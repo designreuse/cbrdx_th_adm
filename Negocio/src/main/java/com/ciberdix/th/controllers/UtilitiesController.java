@@ -29,7 +29,7 @@ public class UtilitiesController {
     private static String eventEnd = "END:VEVENT\r\n";
     private static String tokenHeader = "Authorization";
 
-    static File assembleCalendar(Date programmedDate, String personName) {
+    static byte[] assembleCalendar(Date programmedDate, String personName) {
         try {
             String uid = "UID:info@ciberdix.com\r\n";
             Calendar cal = Calendar.getInstance();
@@ -58,7 +58,7 @@ public class UtilitiesController {
             bw.write(eventEnd);
             bw.write(calEnd);
             bw.close();
-            return file;
+            return Files.readAllBytes(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -126,7 +126,7 @@ public class UtilitiesController {
         MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
         org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
         try {
-            String encoded = base64.encodeAsString(Files.readAllBytes(assembleCalendar(programmedDate, personName).toPath()));
+            String encoded = base64.encodeAsString(assembleCalendar(programmedDate, personName));
             c.setContent(encoded);
             c.setName("cal.ics");
             c.setType("text/calendar");
