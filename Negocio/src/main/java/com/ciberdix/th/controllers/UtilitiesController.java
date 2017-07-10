@@ -15,6 +15,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,7 +43,8 @@ public class UtilitiesController {
             String dtend = "DTEND:" + sd1.format(programmedDate.getTime() + 30 * 1000 * 60) + "\r\n";
             String summary = "SUMMARY:Cita\r\n";
             String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
-            File file = File.createTempFile("temp", ".ics");
+            Path location = Paths.get("adjuntos");
+            File file = File.createTempFile("temp", ".ics", location.toFile());
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(calBegin);
@@ -58,7 +61,9 @@ public class UtilitiesController {
             bw.write(eventEnd);
             bw.write(calEnd);
             bw.close();
-            return Files.readAllBytes(file.toPath());
+            byte[] out = Files.readAllBytes(file.toPath());
+            file.delete();
+            return out;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
