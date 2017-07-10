@@ -42,9 +42,6 @@ public class UtilitiesController {
             String summary = "SUMMARY:Cita\r\n";
             String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
             File file = File.createTempFile("temp", ".ics");
-            if (!file.exists()) {
-                file.createNewFile();
-            }
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(calBegin);
@@ -198,6 +195,13 @@ public class UtilitiesController {
         return responseList;
     }
 
+    static List<VEstructuraOrganizacional> organizationalStructureCascade(Integer parentStructureId, List<VEstructuraOrganizacional> structureList) {
+        List<VEstructuraOrganizacional> responseList = new ArrayList<>();
+        List<VEstructuraOrganizacional> collectedStructures = structureList.stream().filter(u -> (u.getIdPadre() != null && u.getIdPadre().equals(parentStructureId)) || u.getIdEstructuraOrganizacional().equals(parentStructureId)).collect(Collectors.toList());
+        responseList.addAll(collectedStructures);
+        return responseList;
+    }
+
     static List<VCargos> jobRecursiveCascade(Integer parentId, List<VCargos> jobList) {
         List<VCargos> resultList = new ArrayList<>();
         List<VCargos> collectedJobs = jobList.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(parentId)).collect(Collectors.toList());
@@ -206,6 +210,13 @@ public class UtilitiesController {
                 resultList.addAll(jobRecursiveCascade(c.getIdCargo(), jobList));
             }
         }
+        resultList.addAll(collectedJobs);
+        return resultList;
+    }
+
+    static List<VCargos> jobCascade(Integer parentId, List<VCargos> jobList) {
+        List<VCargos> resultList = new ArrayList<>();
+        List<VCargos> collectedJobs = jobList.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(parentId)).collect(Collectors.toList());
         resultList.addAll(collectedJobs);
         return resultList;
     }
