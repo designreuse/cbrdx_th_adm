@@ -81,7 +81,7 @@ public class TercerosCentralesRiesgosRefactorController {
         String name = file.getOriginalFilename();
         String token = request.getHeader(tokenHeader);
         JSONObject jsonAdjuntos = new JSONObject();
-        Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
         jsonAdjuntos.put("auditoriaUsuario", idUsuario);
         jsonAdjuntos.put("nombreArchivo", name);
         TercerosCentralesRiesgos tercerosCentralesRiesgos = new TercerosCentralesRiesgos();

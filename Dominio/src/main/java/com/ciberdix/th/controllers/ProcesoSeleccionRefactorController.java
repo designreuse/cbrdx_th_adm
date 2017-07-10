@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-    @RequestMapping("/api/procesoSeleccion")
+@RequestMapping("/api/procesoSeleccion")
 public class ProcesoSeleccionRefactorController {
 
     @Autowired

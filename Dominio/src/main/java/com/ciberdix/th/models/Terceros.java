@@ -110,8 +110,8 @@ public class Terceros {
         this.idTallaPantalon = idTallaPantalon;
         this.idTallaCalzado = idTallaCalzado;
         this.sitioWeb = sitioWeb;
-        this.idAdjunto = idAdjunto;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idAdjunto = idAdjunto;
     }
     public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto) {
         this.idTercero = idTercero;
@@ -162,8 +162,8 @@ public class Terceros {
         this.idTallaPantalon = idTallaPantalon;
         this.idTallaCalzado = idTallaCalzado;
         this.sitioWeb = sitioWeb;
-        this.idAdjunto = idAdjunto;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idAdjunto = idAdjunto;
     }
 
     @Id
@@ -468,6 +468,16 @@ public class Terceros {
     }
 
     @Basic
+    @Column(name = "IdAdjunto", nullable = true)
+    public Integer getIdAdjunto() {
+        return idAdjunto;
+    }
+
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
+    }
+  
+    @Basic
     @Column(name = "FechaDefuncion", nullable = true)
     public Date getFechaDefuncion() {
         return fechaDefuncion;
@@ -616,17 +626,7 @@ public class Terceros {
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
     }
-
-    @Basic
-    @Column(name = "IdAdjunto", nullable = true)
-    public Integer getIdAdjunto() {
-        return idAdjunto;
-    }
-
-    public void setIdAdjunto(Integer idAdjunto) {
-        this.idAdjunto = idAdjunto;
-    }
-
+  
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

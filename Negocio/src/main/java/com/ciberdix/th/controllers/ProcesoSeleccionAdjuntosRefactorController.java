@@ -70,7 +70,7 @@ public class ProcesoSeleccionAdjuntosRefactorController {
         JSONObject jsonObject = new JSONObject(obj);
         String token = request.getHeader(tokenHeader);
         JSONObject jsonAdjuntos = new JSONObject();
-        Integer idUsuario = jwtTokenUtil.getIdUsernameFromToken(token);
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
         jsonAdjuntos.put("auditoriaUsuario", idUsuario);
         jsonAdjuntos.put("nombreArchivo", jsonObject.getString("nombre"));
         ProcesoSeleccionAdjuntos procesoSeleccionAdjuntos = new ProcesoSeleccionAdjuntos();

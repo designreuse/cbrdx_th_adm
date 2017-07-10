@@ -1,5 +1,6 @@
 package com.ciberdix.th.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -8,12 +9,14 @@ import java.sql.Timestamp;
 public class Cuestionarios {
 
     private Integer idCuestionario;
+    private String codigoCuestionario;
     private String cuestionario;
     private String descripcion;
+    private Boolean indicadorPonderacion;
+    private BigDecimal valor;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private String codigo;
 
     public Integer getIdCuestionario() {
         return idCuestionario;
@@ -21,6 +24,14 @@ public class Cuestionarios {
 
     public void setIdCuestionario(Integer idCuestionario) {
         this.idCuestionario = idCuestionario;
+    }
+
+    public String getCodigoCuestionario() {
+        return codigoCuestionario;
+    }
+
+    public void setCodigoCuestionario(String codigoCuestionario) {
+        this.codigoCuestionario = codigoCuestionario;
     }
 
     public String getCuestionario() {
@@ -37,6 +48,22 @@ public class Cuestionarios {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Boolean getIndicadorPonderacion() {
+        return indicadorPonderacion;
+    }
+
+    public void setIndicadorPonderacion(Boolean indicadorPonderacion) {
+        this.indicadorPonderacion = indicadorPonderacion;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public Boolean getIndicadorHabilitado() {
@@ -61,13 +88,5 @@ public class Cuestionarios {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 }
