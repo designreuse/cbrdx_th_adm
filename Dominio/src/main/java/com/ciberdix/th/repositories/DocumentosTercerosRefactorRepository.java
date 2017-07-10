@@ -15,10 +15,8 @@ public interface DocumentosTercerosRefactorRepository extends CrudRepository<Doc
 
     List<DocumentosTerceros> findAllByIdClasificacionDocumento(Integer id);
 
-    @Query("SELECT D FROM DocumentosTerceros D WHERE (D.idDocumentoTercero IN (SELECT T.idDocumentoTercero FROM TercerosDocumentosTercero T WHERE T.idTercero = ?1)) AND (D.indicadorAdjunto = 1)")
-    List<DocumentosTerceros> queryDocumentosAdjunto(Long id);
+    List<DocumentosTerceros> findAllByIndicadorAdjuntoIsTrue();
 
-    @Query("SELECT D FROM DocumentosTerceros D WHERE (D.idDocumentoTercero IN (SELECT T.idDocumentoTercero FROM TercerosDocumentosTercero T WHERE T.idTercero = ?1)) AND (D.indicadorDescarga = 1)")
-    List<DocumentosTerceros> queryDocumentosDescarga(Long id);
+    List<DocumentosTerceros> findAllByIndicadorDescargaIsTrue();
 
 }
