@@ -39,6 +39,16 @@ public class DocumentosTercerosRefactorController {
         return documentosTercerosRefactorRepository.findAllByIdClasificacionDocumento(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/documentosAdjunto/{id}")
+    List<DocumentosTerceros> queryDocumentosAdjunto(@PathVariable Long id) {
+        return documentosTercerosRefactorRepository.queryDocumentosAdjunto(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/documentosDescarga/{id}")
+    List<DocumentosTerceros> queryDocumentosDescarga(@PathVariable Long id) {
+        return documentosTercerosRefactorRepository.queryDocumentosDescarga(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DocumentosTerceros create(@RequestBody DocumentosTerceros o) {
         return documentosTercerosRefactorRepository.save(new DocumentosTerceros(
