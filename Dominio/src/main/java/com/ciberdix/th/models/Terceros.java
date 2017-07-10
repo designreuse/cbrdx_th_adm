@@ -67,7 +67,10 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        this.imagen = imagen != null ? imagen : "avatar.jpg";
+        if(imagen.equals(null) || imagen.equals("")){
+            imagen = "avatar.jpg";
+        }
+        this.imagen = imagen;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;
@@ -119,7 +122,10 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        this.imagen = imagen != null ? imagen : "avatar.jpg";
+        if(imagen.equals(null) || imagen.equals("")){
+            imagen = "avatar.jpg";
+        }
+        this.imagen = imagen;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;

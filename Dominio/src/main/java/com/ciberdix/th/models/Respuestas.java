@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 9/07/2017.
+ * Created by Danny on 10/07/2017.
  */
 @Entity
 @Table(name = "Respuestas", schema = "dbo", catalog = "CREZCAMOS")
@@ -16,27 +16,30 @@ public class Respuestas {
     private Integer orden;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idMaestroRespuesta;
 
     public Respuestas() {
     }
 
-    public Respuestas(Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario) {
+    public Respuestas(Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
         this.idCuestionarioPregunta = idCuestionarioPregunta;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.respuesta = respuesta;
         this.orden = orden;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
-    public Respuestas(Integer idRespuesta, Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario) {
+    public Respuestas(Integer idRespuesta, Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
         this.idRespuesta = idRespuesta;
         this.idCuestionarioPregunta = idCuestionarioPregunta;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.respuesta = respuesta;
         this.orden = orden;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
     @Id
@@ -110,6 +113,16 @@ public class Respuestas {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdMaestroRespuesta", nullable = true)
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
+    }
+
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,6 +141,8 @@ public class Respuestas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
+            return false;
 
         return true;
     }
@@ -141,6 +156,7 @@ public class Respuestas {
         result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idMaestroRespuesta != null ? idMaestroRespuesta.hashCode() : 0);
         return result;
     }
 }
