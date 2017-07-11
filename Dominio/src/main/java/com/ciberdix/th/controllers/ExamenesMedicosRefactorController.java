@@ -31,7 +31,7 @@ public class ExamenesMedicosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/procesoSeleccion/{id}")
-    List<VExamenesMedicos> getByIdProcesoSeleccion(@PathVariable Integer id) {
+    VExamenesMedicos getByIdProcesoSeleccion(@PathVariable Integer id) {
         return vExamenesMedicosRefactorRepository.findAllByIdProcesoSeleccion(id);
     }
 

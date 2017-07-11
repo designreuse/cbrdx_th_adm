@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface VExamenesMedicosRefactorRepository extends CrudRepository<VExamenesMedicos, Integer> {
 
-    List<VExamenesMedicos> findAllByIdProcesoSeleccion(Integer id);
+    VExamenesMedicos findAllByIdProcesoSeleccion(Integer id);
 
 }
