@@ -18,6 +18,24 @@ public class TercerosPublicaciones {
     private Boolean indicadorFinalizado;
     private String codigo;
     private Integer paso;
+    private Boolean indicadorFinalizadoCuestionarios;
+    private Integer idCuestionarioActual;
+
+    public Boolean getIndicadorFinalizadoCuestionarios() {
+        return indicadorFinalizadoCuestionarios;
+    }
+
+    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+    }
+
+    public Integer getIdCuestionarioActual() {
+        return idCuestionarioActual;
+    }
+
+    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
+        this.idCuestionarioActual = idCuestionarioActual;
+    }
 
     public Integer getIdTercerosPublicaciones() {
         return idTercerosPublicaciones;
