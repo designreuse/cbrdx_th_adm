@@ -4,11 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Danny on 10/07/2017.
+ * Created by Danny on 11/07/2017.
  */
 @Entity
 @Table(name = "V_TercerosPublicaciones_Historicos", schema = "dbo", catalog = "CREZCAMOS")
 public class VTercerosPublicacionesHistoricos {
+    private Long idTerceroPublicacionHistorico;
     private Long idTercero;
     private String cargo;
     private Date fechaInicio;
@@ -17,6 +18,16 @@ public class VTercerosPublicacionesHistoricos {
     private String codigo;
 
     @Id
+    @Column(name = "IdTerceroPublicacionHistorico", nullable = true)
+    public Long getIdTerceroPublicacionHistorico() {
+        return idTerceroPublicacionHistorico;
+    }
+
+    public void setIdTerceroPublicacionHistorico(Long idTerceroPublicacionHistorico) {
+        this.idTerceroPublicacionHistorico = idTerceroPublicacionHistorico;
+    }
+
+    @Basic
     @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
@@ -83,6 +94,8 @@ public class VTercerosPublicacionesHistoricos {
 
         VTercerosPublicacionesHistoricos that = (VTercerosPublicacionesHistoricos) o;
 
+        if (idTerceroPublicacionHistorico != null ? !idTerceroPublicacionHistorico.equals(that.idTerceroPublicacionHistorico) : that.idTerceroPublicacionHistorico != null)
+            return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
@@ -96,7 +109,8 @@ public class VTercerosPublicacionesHistoricos {
 
     @Override
     public int hashCode() {
-        int result = idTercero != null ? idTercero.hashCode() : 0;
+        int result = idTerceroPublicacionHistorico != null ? idTerceroPublicacionHistorico.hashCode() : 0;
+        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
