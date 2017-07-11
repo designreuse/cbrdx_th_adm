@@ -88,7 +88,7 @@ public class Adjuntos {
     }
 
     @Basic
-    @Column(name = "IdAlfresco", nullable = true, length = 4000)
+    @Column(name = "IdAlfresco", nullable = true, length = 2048)
     public String getIdAlfresco() {
         return idAlfresco;
     }

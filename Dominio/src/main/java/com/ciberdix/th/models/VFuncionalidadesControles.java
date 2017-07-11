@@ -22,6 +22,7 @@ public class VFuncionalidadesControles {
     private Timestamp auditoriaFecha;
     private Integer idPadre;
     private Boolean indicadorSeccion;
+    private String rutaAlfresco;
 
     @Basic
     @Id
@@ -154,6 +155,16 @@ public class VFuncionalidadesControles {
         this.indicadorSeccion = indicadorSeccion;
     }
 
+    @Basic
+    @Column(name = "RutaAlfresco", nullable = true, length = 4000)
+    public String getRutaAlfresco() {
+        return rutaAlfresco;
+    }
+
+    public void setRutaAlfresco(String rutaAlfresco) {
+        this.rutaAlfresco = rutaAlfresco;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -182,10 +193,7 @@ public class VFuncionalidadesControles {
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
-        if (indicadorSeccion != null ? !indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion != null)
-            return false;
-
-        return true;
+        return indicadorSeccion != null ? indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion == null;
     }
 
     @Override

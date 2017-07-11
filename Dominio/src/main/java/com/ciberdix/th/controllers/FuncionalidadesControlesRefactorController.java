@@ -66,7 +66,7 @@ public class FuncionalidadesControlesRefactorController {
                 new FuncionalidadesControles(fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
                         fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
-                        fc.getIdPadre(), fc.getIndicadorSeccion()));
+                        fc.getIdPadre(), fc.getIndicadorSeccion(), fc.getRutaAlfresco()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -75,7 +75,7 @@ public class FuncionalidadesControlesRefactorController {
                 new FuncionalidadesControles(fc.getIdFuncionalidadControl(), fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
                         fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
-                        fc.getIdPadre(), fc.getIndicadorSeccion())
+                        fc.getIdPadre(), fc.getIndicadorSeccion(), fc.getRutaAlfresco())
         );
     }
 
