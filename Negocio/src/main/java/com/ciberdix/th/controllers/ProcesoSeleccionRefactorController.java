@@ -57,7 +57,12 @@ public class ProcesoSeleccionRefactorController {
 
         Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + tp.getIdTercero(), Terceros.class);
         VTercerosCargos vtc = restTemplate.getForObject(globales.getUrl() + "/api/tercerosCargos/tercero/" + t.getIdTercero(), VTercerosCargos.class);
-        List<VCargosRiesgos> lvcrT = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vtc.getIdCargo(), VCargosRiesgos[].class));
+        if(vtc==null || vtc.getIdCargo()==null)
+            return false;
+        List<VCargosRiesgos> lvcrT = new ArrayList<>();
+        if(vtc.getIdCargo() != null){
+            lvcrT = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vtc.getIdCargo(), VCargosRiesgos[].class));
+        }
         ArrayList<VRiesgos> lvrT = new ArrayList<>();
         if(lvcrT.size()>0){
             for (VCargosRiesgos vcr : lvcrT){
@@ -67,7 +72,10 @@ public class ProcesoSeleccionRefactorController {
 
         VPublicaciones vp = restTemplate.getForObject(globales.getUrl() + "/api/publicaciones/" + tp.getIdPublicacion(), VPublicaciones.class);
         VRequerimientos vr = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + vp.getIdRequerimiento(), VRequerimientos.class);
-        List<VCargosRiesgos> lvcrP = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vr.getIdCargo(), VCargosRiesgos[].class));
+        List<VCargosRiesgos> lvcrP = new ArrayList<>();
+        if(vr.getIdCargo() != null){
+            lvcrP = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vr.getIdCargo(), VCargosRiesgos[].class));
+        }
         ArrayList<VRiesgos> lvrP = new ArrayList<>();
         if(lvcrP.size()>0){
             for (VCargosRiesgos vcr : lvcrP){
