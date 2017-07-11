@@ -7,12 +7,21 @@ import java.util.Date;
  */
 public class VTercerosPublicacionesHistoricos {
 
+    private Long idTerceroPublicacionHistorico;
     private Long idTercero;
     private String cargo;
     private Date fechaInicio;
     private String estado;
     private String responsableSeleccion;
     private String codigo;
+
+    public Long getIdTerceroPublicacionHistorico() {
+        return idTerceroPublicacionHistorico;
+    }
+
+    public void setIdTerceroPublicacionHistorico(Long idTerceroPublicacionHistorico) {
+        this.idTerceroPublicacionHistorico = idTerceroPublicacionHistorico;
+    }
 
     public Long getIdTercero() {
         return idTercero;
