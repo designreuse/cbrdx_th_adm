@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Respuestas;
+import com.ciberdix.th.model.VRespuestas;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -23,16 +24,23 @@ public class RespuestasRefactorController {
     private String serviceUrl = globales.getUrl() + "/api/respuestas";
 
     @RequestMapping(method = RequestMethod.GET)
-    List<Respuestas> findAll() {
+    List<VRespuestas> findAll() {
         RestTemplate restTemplate = new RestTemplate();
-        Respuestas[] parametros = restTemplate.getForObject(serviceUrl, Respuestas[].class);
+        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl, VRespuestas[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Respuestas findOne(@PathVariable Integer id) {
+    VRespuestas findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, Respuestas.class);
+        return restTemplate.getForObject(serviceUrl + "/" + id, VRespuestas.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/maestroRespuesta/{id}")
+    List<VRespuestas> findByIdMaestroRespuesta(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/maestroRespuesta/" + id, VRespuestas[].class);
+        return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
