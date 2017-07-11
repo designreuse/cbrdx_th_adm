@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.TercerosPublicaciones;
+import com.ciberdix.th.models.VTercerosPublicacionesHistoricos;
 import com.ciberdix.th.repositories.TercerosPublicacionesRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosPublicacionesHistoricosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ public class TercerosPublicacionesRefactorController {
 
     @Autowired
     private TercerosPublicacionesRefactorRepository tercerosPublicacionesRefactorRepository;
+
+    @Autowired
+    private VTercerosPublicacionesHistoricosRefactorRepository vTercerosPublicacionesHistoricosRefactorRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     List<TercerosPublicaciones> listarTerceros() {
@@ -44,6 +49,11 @@ public class TercerosPublicacionesRefactorController {
     @RequestMapping(method = RequestMethod.GET, value = "/tercero/{idTercero}")
     List<TercerosPublicaciones> findByIdTercero(@PathVariable Long idTercero) {
         return tercerosPublicacionesRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/historic/{idTercero}")
+    List<VTercerosPublicacionesHistoricos> findHistoric(@PathVariable Long idTercero) {
+        return vTercerosPublicacionesHistoricosRefactorRepository.findAllByIdTercero(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)

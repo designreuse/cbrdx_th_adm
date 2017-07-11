@@ -43,6 +43,14 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicaciones;
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/historic/{idTercero}")
+    List<VTercerosPublicacionesHistoricos> findHistoric(@PathVariable Long idTercero) {
+        String serviceUrl = baseUrl + "/api/tercerosPublicaciones/historic/";
+        RestTemplate restTemplate = new RestTemplate();
+        List<VTercerosPublicacionesHistoricos> tercerosPublicaciones = Arrays.asList(restTemplate.getForObject(serviceUrl + idTercero, VTercerosPublicacionesHistoricos[].class));
+        return tercerosPublicaciones;
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosPublicaciones create(@RequestBody TercerosPublicaciones o) {
         String serviceUrl = baseUrl + "/api/tercerosPublicaciones/";
