@@ -244,5 +244,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(PreguntasOpciones.class);
         config.exposeIdsFor(VPreguntasOpciones.class);
         config.exposeIdsFor(MaestrosRespuestas.class);
+        config.exposeIdsFor(VTercerosPublicacionesHistoricos.class);
     }
 }
