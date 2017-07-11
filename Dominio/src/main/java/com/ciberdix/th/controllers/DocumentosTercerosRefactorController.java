@@ -41,12 +41,12 @@ public class DocumentosTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/documentosAdjunto")
     List<DocumentosTerceros> queryDocumentosAdjunto() {
-        return documentosTercerosRefactorRepository.findAllByIndicadorAdjuntoIsTrue();
+        return documentosTercerosRefactorRepository.findAllByIndicadorAdjuntoIsTrueAndIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/documentosDescarga")
     List<DocumentosTerceros> queryDocumentosDescarga() {
-        return documentosTercerosRefactorRepository.findAllByIndicadorDescargaIsTrue();
+        return documentosTercerosRefactorRepository.findAllByIndicadorDescargaIsTrueAndIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.POST)
