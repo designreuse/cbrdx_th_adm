@@ -12,6 +12,15 @@ public class Adjuntos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String nombreArchivo;
+    private String idAlfresco;
+
+    public String getIdAlfresco() {
+        return idAlfresco;
+    }
+
+    public void setIdAlfresco(String idAlfresco) {
+        this.idAlfresco = idAlfresco;
+    }
 
     public Integer getIdAdjunto() {
         return idAdjunto;
