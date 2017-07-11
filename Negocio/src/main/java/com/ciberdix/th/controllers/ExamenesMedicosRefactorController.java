@@ -38,6 +38,13 @@ public class ExamenesMedicosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, VExamenesMedicos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoSeleccion/{id}")
+    List<VExamenesMedicos> getByIdProcesoSeleccion(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VExamenesMedicos[] parametros = restTemplate.getForObject(serviceUrl + "/procesoSeleccion/" + id, VExamenesMedicos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ExamenesMedicos create(@RequestBody ExamenesMedicos obj){
         RestTemplate restTemplate = new RestTemplate();
