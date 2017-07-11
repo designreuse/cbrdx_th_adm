@@ -5,12 +5,13 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 15/06/2017.
+ * Created by Danny on 11/07/2017.
  */
 @Entity
 @Table(name = "V_ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
 public class VProcesoSeleccion {
     private Integer idProcesoSeleccion;
+    private String procesoPaso;
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
@@ -34,6 +35,16 @@ public class VProcesoSeleccion {
 
     public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
         this.idProcesoSeleccion = idProcesoSeleccion;
+    }
+
+    @Basic
+    @Column(name = "ProcesoPaso", nullable = true, length = 50)
+    public String getProcesoPaso() {
+        return procesoPaso;
+    }
+
+    public void setProcesoPaso(String procesoPaso) {
+        this.procesoPaso = procesoPaso;
     }
 
     @Basic
@@ -185,6 +196,7 @@ public class VProcesoSeleccion {
 
         if (idProcesoSeleccion != null ? !idProcesoSeleccion.equals(that.idProcesoSeleccion) : that.idProcesoSeleccion != null)
             return false;
+        if (procesoPaso != null ? !procesoPaso.equals(that.procesoPaso) : that.procesoPaso != null) return false;
         if (idProcesoPaso != null ? !idProcesoPaso.equals(that.idProcesoPaso) : that.idProcesoPaso != null)
             return false;
         if (estadoDiligenciado != null ? !estadoDiligenciado.equals(that.estadoDiligenciado) : that.estadoDiligenciado != null)
@@ -218,6 +230,7 @@ public class VProcesoSeleccion {
     @Override
     public int hashCode() {
         int result = idProcesoSeleccion != null ? idProcesoSeleccion.hashCode() : 0;
+        result = 31 * result + (procesoPaso != null ? procesoPaso.hashCode() : 0);
         result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
         result = 31 * result + (estadoDiligenciado != null ? estadoDiligenciado.hashCode() : 0);
         result = 31 * result + (idEstadoDiligenciado != null ? idEstadoDiligenciado.hashCode() : 0);

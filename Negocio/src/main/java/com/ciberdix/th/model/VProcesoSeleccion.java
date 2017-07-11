@@ -9,6 +9,7 @@ import java.util.Date;
 public class VProcesoSeleccion {
 
     private Integer idProcesoSeleccion;
+    private String procesoPaso;
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
@@ -30,6 +31,14 @@ public class VProcesoSeleccion {
 
     public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
         this.idProcesoSeleccion = idProcesoSeleccion;
+    }
+
+    public String getProcesoPaso() {
+        return procesoPaso;
+    }
+
+    public void setProcesoPaso(String procesoPaso) {
+        this.procesoPaso = procesoPaso;
     }
 
     public Integer getIdProcesoPaso() {
