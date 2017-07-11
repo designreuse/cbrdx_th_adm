@@ -60,9 +60,9 @@ public class TercerosPublicacionesRefactorController {
     TercerosPublicaciones crearTercero(@RequestBody TercerosPublicaciones o) {
         return tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
-                        o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),o.getIndicadorCentrales(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorFinalizado(),o.getCodigo(),
-                        o.getPaso()
+                        o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(), o.getIndicadorCentrales(),
+                        o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorFinalizado(), o.getCodigo(),
+                        o.getPaso(), o.isIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual()
                 ));
     }
 
@@ -70,9 +70,9 @@ public class TercerosPublicacionesRefactorController {
     void actualizarTercero(@RequestBody TercerosPublicaciones o) {
         tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
-                        o.getIdTercerosPublicaciones(),o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),
-                        o.getIndicadorCentrales(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
-                        o.getIndicadorFinalizado(),o.getCodigo(),o.getPaso()
+                        o.getIdTercerosPublicaciones(), o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(),
+                        o.getIndicadorCentrales(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(),
+                        o.getIndicadorFinalizado(), o.getCodigo(), o.getPaso(), o.isIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual()
                 ));
     }
 

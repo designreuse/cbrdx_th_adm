@@ -20,35 +20,61 @@ public class TercerosPublicaciones {
     private Boolean indicadorFinalizado;
     private String codigo;
     private Integer paso;
+    private Boolean indicadorFinalizadoCuestionarios;
+    private Integer idCuestionarioActual;
 
     public TercerosPublicaciones() {
     }
 
-    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
+    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual) {
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorFinalizado = indicadorFinalizado;
         this.codigo = codigo;
         this.paso = paso;
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+        this.idCuestionarioActual = idCuestionarioActual;
     }
 
-    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
+    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual) {
         this.idTercerosPublicaciones = idTercerosPublicaciones;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorFinalizado = indicadorFinalizado;
         this.codigo = codigo;
         this.paso = paso;
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+        this.idCuestionarioActual = idCuestionarioActual;
+    }
+
+    @Basic
+    @Column(name = "IndicadorFinalizadoCuestionarios", nullable = true)
+    public Boolean isIndicadorFinalizadoCuestionarios() {
+        return indicadorFinalizadoCuestionarios;
+    }
+
+    public void setIndicadorFinalizadoCuestionarios(boolean indicadorFinalizadoCuestionarios) {
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+    }
+
+    @Basic
+    @Column(name = "IdCuestionarioActual", nullable = true)
+    public Integer getIdCuestionarioActual() {
+        return idCuestionarioActual;
+    }
+
+    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
+        this.idCuestionarioActual = idCuestionarioActual;
     }
 
     @Id
@@ -187,9 +213,7 @@ public class TercerosPublicaciones {
         if (indicadorFinalizado != null ? !indicadorFinalizado.equals(that.indicadorFinalizado) : that.indicadorFinalizado != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
-        if (paso != null ? !paso.equals(that.paso) : that.paso != null) return false;
-
-        return true;
+        return paso != null ? paso.equals(that.paso) : that.paso == null;
     }
 
     @Override
