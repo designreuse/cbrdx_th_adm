@@ -14,6 +14,7 @@ public class VTercerosPublicacionesHistoricos {
     private String estado;
     private String responsableSeleccion;
     private String codigo;
+    private Integer idPublicacion;
 
     public Long getIdTerceroPublicacionHistorico() {
         return idTerceroPublicacionHistorico;
@@ -69,5 +70,13 @@ public class VTercerosPublicacionesHistoricos {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
     }
 }

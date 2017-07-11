@@ -16,6 +16,7 @@ public class VTercerosPublicacionesHistoricos {
     private String estado;
     private String responsableSeleccion;
     private String codigo;
+    private Integer idPublicacion;
 
     @Id
     @Column(name = "IdTerceroPublicacionHistorico", nullable = true)
@@ -87,6 +88,16 @@ public class VTercerosPublicacionesHistoricos {
         this.codigo = codigo;
     }
 
+    @Basic
+    @Column(name = "IdPublicacion", nullable = true)
+    public Integer getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    public void setIdPublicacion(Integer idPublicacion) {
+        this.idPublicacion = idPublicacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,6 +114,8 @@ public class VTercerosPublicacionesHistoricos {
         if (responsableSeleccion != null ? !responsableSeleccion.equals(that.responsableSeleccion) : that.responsableSeleccion != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
+            return false;
 
         return true;
     }
@@ -116,6 +129,7 @@ public class VTercerosPublicacionesHistoricos {
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (responsableSeleccion != null ? responsableSeleccion.hashCode() : 0);
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
         return result;
     }
 }
