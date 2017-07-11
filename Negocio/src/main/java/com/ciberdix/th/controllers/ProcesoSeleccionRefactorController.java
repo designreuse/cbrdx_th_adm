@@ -20,7 +20,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/procesoSeleccion")
+@RequestMapping("/api/c")
 public class ProcesoSeleccionRefactorController {
 
     private final StorageService storageService;
@@ -124,6 +124,12 @@ public class ProcesoSeleccionRefactorController {
         }
 
         return OPSL;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}")
+    List<VProcesoSeleccion> findByIdPublicacion(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/publicacion/" + id, VProcesoSeleccion[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
