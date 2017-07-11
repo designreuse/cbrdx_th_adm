@@ -18,4 +18,6 @@ public interface VTercerosDocumentosTerceroRefactorRepository extends CrudReposi
 
     VTercerosDocumentosTercero findByIdAdjunto(Integer id);
 
+    VTercerosDocumentosTercero findByIdTerceroAndIdDocumentoTerceroAndIndicadorHabilitadoIsTrue(Long id, Integer idDoc);
+
 }
