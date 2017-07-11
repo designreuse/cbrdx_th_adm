@@ -34,13 +34,14 @@ public class UtilitiesController {
     static byte[] assembleCalendar(Date programmedDate, String personName) {
         try {
             String uid = "UID:info@ciberdix.com\r\n";
+            Date temp = new Date(programmedDate.getTime());
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curTime = sd1.format(new Date(cal.getTimeInMillis()));
             String dtstamp = "DTSTAMP:" + curTime + "\r\n";
             String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
-            String dtstart = "DTSTART:" + sd1.format(programmedDate) + "\r\n";
-            String dtend = "DTEND:" + sd1.format(programmedDate.getTime() + 30 * 1000 * 60) + "\r\n";
+            String dtstart = "DTSTART:" + sd1.format(temp) + "\r\n";
+            String dtend = "DTEND:" + sd1.format(temp.getTime() + 30 * 1000 * 60) + "\r\n";
             String summary = "SUMMARY:Cita\r\n";
             String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
             Path location = Paths.get("adjuntos");
