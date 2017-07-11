@@ -58,12 +58,12 @@ public class TercerosPublicaciones {
     }
 
     @Basic
-    @Column(name = "IndicadorFinalizadoCuestionarios", nullable = true)
+    @Column(name = "IndicadorFinalizadoCuestionarios")
     public Boolean isIndicadorFinalizadoCuestionarios() {
         return indicadorFinalizadoCuestionarios;
     }
 
-    public void setIndicadorFinalizadoCuestionarios(boolean indicadorFinalizadoCuestionarios) {
+    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
         this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
     }
 
@@ -195,8 +195,7 @@ public class TercerosPublicaciones {
 
         TercerosPublicaciones that = (TercerosPublicaciones) o;
 
-        if (idTercerosPublicaciones != null ? !idTercerosPublicaciones.equals(that.idTercerosPublicaciones) : that.idTercerosPublicaciones != null)
-            return false;
+        if (!idTercerosPublicaciones.equals(that.idTercerosPublicaciones)) return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
             return false;
@@ -206,29 +205,32 @@ public class TercerosPublicaciones {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
+        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
         if (indicadorFinalizado != null ? !indicadorFinalizado.equals(that.indicadorFinalizado) : that.indicadorFinalizado != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
-        return paso != null ? paso.equals(that.paso) : that.paso == null;
+        if (paso != null ? !paso.equals(that.paso) : that.paso != null) return false;
+        if (indicadorFinalizadoCuestionarios != null ? !indicadorFinalizadoCuestionarios.equals(that.indicadorFinalizadoCuestionarios) : that.indicadorFinalizadoCuestionarios != null)
+            return false;
+        return idCuestionarioActual != null ? idCuestionarioActual.equals(that.idCuestionarioActual) : that.idCuestionarioActual == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idTercerosPublicaciones != null ? idTercerosPublicaciones.hashCode() : 0;
+        int result = idTercerosPublicaciones.hashCode();
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
         result = 31 * result + (indicadorTerminos != null ? indicadorTerminos.hashCode() : 0);
         result = 31 * result + (indicadorCentrales != null ? indicadorCentrales.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
         result = 31 * result + (indicadorFinalizado != null ? indicadorFinalizado.hashCode() : 0);
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
+        result = 31 * result + (indicadorFinalizadoCuestionarios != null ? indicadorFinalizadoCuestionarios.hashCode() : 0);
+        result = 31 * result + (idCuestionarioActual != null ? idCuestionarioActual.hashCode() : 0);
         return result;
     }
 }
