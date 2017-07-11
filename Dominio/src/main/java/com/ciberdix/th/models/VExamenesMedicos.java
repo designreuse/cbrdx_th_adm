@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -11,9 +11,7 @@ import java.sql.Timestamp;
 @Table(name = "V_ExamenesMedicos", schema = "dbo", catalog = "CREZCAMOS")
 public class VExamenesMedicos {
     private Integer idExamenMedico;
-    private String procesoPaso;
-    private String codigoProcesoPaso;
-    private Integer idProcesoPaso;
+    private Integer idProcesoSeleccion;
     private String estadoExamenMedico;
     private Integer idEstadoExamenMedico;
     private String codigoVerificacion;
@@ -30,6 +28,7 @@ public class VExamenesMedicos {
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorOtraInstitucion;
 
     @Id
     @Column(name = "IdExamenMedico", nullable = false)
@@ -42,33 +41,13 @@ public class VExamenesMedicos {
     }
 
     @Basic
-    @Column(name = "ProcesoPaso", nullable = true, length = 50)
-    public String getProcesoPaso() {
-        return procesoPaso;
+    @Column(name = "IdProcesoSeleccion", nullable = true)
+    public Integer getIdProcesoSeleccion() {
+        return idProcesoSeleccion;
     }
 
-    public void setProcesoPaso(String procesoPaso) {
-        this.procesoPaso = procesoPaso;
-    }
-
-    @Basic
-    @Column(name = "CodigoProcesoPaso", nullable = true, length = 20)
-    public String getCodigoProcesoPaso() {
-        return codigoProcesoPaso;
-    }
-
-    public void setCodigoProcesoPaso(String codigoProcesoPaso) {
-        this.codigoProcesoPaso = codigoProcesoPaso;
-    }
-
-    @Basic
-    @Column(name = "IdProcesoPaso", nullable = true)
-    public Integer getIdProcesoPaso() {
-        return idProcesoPaso;
-    }
-
-    public void setIdProcesoPaso(Integer idProcesoPaso) {
-        this.idProcesoPaso = idProcesoPaso;
+    public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
+        this.idProcesoSeleccion = idProcesoSeleccion;
     }
 
     @Basic
@@ -231,6 +210,16 @@ public class VExamenesMedicos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorOtraInstitucion", nullable = true)
+    public Boolean getIndicadorOtraInstitucion() {
+        return indicadorOtraInstitucion;
+    }
+
+    public void setIndicadorOtraInstitucion(Boolean indicadorOtraInstitucion) {
+        this.indicadorOtraInstitucion = indicadorOtraInstitucion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -240,10 +229,7 @@ public class VExamenesMedicos {
 
         if (idExamenMedico != null ? !idExamenMedico.equals(that.idExamenMedico) : that.idExamenMedico != null)
             return false;
-        if (procesoPaso != null ? !procesoPaso.equals(that.procesoPaso) : that.procesoPaso != null) return false;
-        if (codigoProcesoPaso != null ? !codigoProcesoPaso.equals(that.codigoProcesoPaso) : that.codigoProcesoPaso != null)
-            return false;
-        if (idProcesoPaso != null ? !idProcesoPaso.equals(that.idProcesoPaso) : that.idProcesoPaso != null)
+        if (idProcesoSeleccion != null ? !idProcesoSeleccion.equals(that.idProcesoSeleccion) : that.idProcesoSeleccion != null)
             return false;
         if (estadoExamenMedico != null ? !estadoExamenMedico.equals(that.estadoExamenMedico) : that.estadoExamenMedico != null)
             return false;
@@ -275,6 +261,8 @@ public class VExamenesMedicos {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorOtraInstitucion != null ? !indicadorOtraInstitucion.equals(that.indicadorOtraInstitucion) : that.indicadorOtraInstitucion != null)
+            return false;
 
         return true;
     }
@@ -282,9 +270,7 @@ public class VExamenesMedicos {
     @Override
     public int hashCode() {
         int result = idExamenMedico != null ? idExamenMedico.hashCode() : 0;
-        result = 31 * result + (procesoPaso != null ? procesoPaso.hashCode() : 0);
-        result = 31 * result + (codigoProcesoPaso != null ? codigoProcesoPaso.hashCode() : 0);
-        result = 31 * result + (idProcesoPaso != null ? idProcesoPaso.hashCode() : 0);
+        result = 31 * result + (idProcesoSeleccion != null ? idProcesoSeleccion.hashCode() : 0);
         result = 31 * result + (estadoExamenMedico != null ? estadoExamenMedico.hashCode() : 0);
         result = 31 * result + (idEstadoExamenMedico != null ? idEstadoExamenMedico.hashCode() : 0);
         result = 31 * result + (codigoVerificacion != null ? codigoVerificacion.hashCode() : 0);
@@ -301,6 +287,7 @@ public class VExamenesMedicos {
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorOtraInstitucion != null ? indicadorOtraInstitucion.hashCode() : 0);
         return result;
     }
 }

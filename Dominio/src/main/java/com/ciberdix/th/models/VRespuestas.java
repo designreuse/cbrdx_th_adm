@@ -7,40 +7,24 @@ import java.sql.Timestamp;
  * Created by Danny on 11/07/2017.
  */
 @Entity
-@Table(name = "Respuestas", schema = "dbo", catalog = "CREZCAMOS")
-public class Respuestas {
+@Table(name = "V_Respuestas", schema = "dbo", catalog = "CREZCAMOS")
+public class VRespuestas {
     private Integer idRespuesta;
+    private String codigoPregunta;
+    private String pregunta;
+    private String tipoPregunta;
+    private String secuencia;
     private Integer idCuestionarioPregunta;
+    private String codigoOpcion;
+    private String opcion;
+    private Integer orden;
     private Integer idPreguntaOpcion;
     private String respuesta;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idMaestroRespuesta;
 
-    public Respuestas() {
-    }
-
-    public Respuestas(Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
-        this.idCuestionarioPregunta = idCuestionarioPregunta;
-        this.idPreguntaOpcion = idPreguntaOpcion;
-        this.respuesta = respuesta;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idMaestroRespuesta = idMaestroRespuesta;
-    }
-
-    public Respuestas(Integer idRespuesta, Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
-        this.idRespuesta = idRespuesta;
-        this.idCuestionarioPregunta = idCuestionarioPregunta;
-        this.idPreguntaOpcion = idPreguntaOpcion;
-        this.respuesta = respuesta;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idMaestroRespuesta = idMaestroRespuesta;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdRespuesta", nullable = false)
     public Integer getIdRespuesta() {
         return idRespuesta;
@@ -51,6 +35,46 @@ public class Respuestas {
     }
 
     @Basic
+    @Column(name = "CodigoPregunta", nullable = true, length = 50)
+    public String getCodigoPregunta() {
+        return codigoPregunta;
+    }
+
+    public void setCodigoPregunta(String codigoPregunta) {
+        this.codigoPregunta = codigoPregunta;
+    }
+
+    @Basic
+    @Column(name = "Pregunta", nullable = true, length = 100)
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    @Basic
+    @Column(name = "TipoPregunta", nullable = true, length = 100)
+    public String getTipoPregunta() {
+        return tipoPregunta;
+    }
+
+    public void setTipoPregunta(String tipoPregunta) {
+        this.tipoPregunta = tipoPregunta;
+    }
+
+    @Basic
+    @Column(name = "Secuencia", nullable = true, length = 10)
+    public String getSecuencia() {
+        return secuencia;
+    }
+
+    public void setSecuencia(String secuencia) {
+        this.secuencia = secuencia;
+    }
+
+    @Basic
     @Column(name = "IdCuestionarioPregunta", nullable = true)
     public Integer getIdCuestionarioPregunta() {
         return idCuestionarioPregunta;
@@ -58,6 +82,36 @@ public class Respuestas {
 
     public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
         this.idCuestionarioPregunta = idCuestionarioPregunta;
+    }
+
+    @Basic
+    @Column(name = "CodigoOpcion", nullable = true, length = 50)
+    public String getCodigoOpcion() {
+        return codigoOpcion;
+    }
+
+    public void setCodigoOpcion(String codigoOpcion) {
+        this.codigoOpcion = codigoOpcion;
+    }
+
+    @Basic
+    @Column(name = "Opcion", nullable = true, length = 200)
+    public String getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
+    }
+
+    @Basic
+    @Column(name = "Orden", nullable = true)
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 
     @Basic
@@ -115,11 +169,19 @@ public class Respuestas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Respuestas that = (Respuestas) o;
+        VRespuestas that = (VRespuestas) o;
 
         if (idRespuesta != null ? !idRespuesta.equals(that.idRespuesta) : that.idRespuesta != null) return false;
+        if (codigoPregunta != null ? !codigoPregunta.equals(that.codigoPregunta) : that.codigoPregunta != null)
+            return false;
+        if (pregunta != null ? !pregunta.equals(that.pregunta) : that.pregunta != null) return false;
+        if (tipoPregunta != null ? !tipoPregunta.equals(that.tipoPregunta) : that.tipoPregunta != null) return false;
+        if (secuencia != null ? !secuencia.equals(that.secuencia) : that.secuencia != null) return false;
         if (idCuestionarioPregunta != null ? !idCuestionarioPregunta.equals(that.idCuestionarioPregunta) : that.idCuestionarioPregunta != null)
             return false;
+        if (codigoOpcion != null ? !codigoOpcion.equals(that.codigoOpcion) : that.codigoOpcion != null) return false;
+        if (opcion != null ? !opcion.equals(that.opcion) : that.opcion != null) return false;
+        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (idPreguntaOpcion != null ? !idPreguntaOpcion.equals(that.idPreguntaOpcion) : that.idPreguntaOpcion != null)
             return false;
         if (respuesta != null ? !respuesta.equals(that.respuesta) : that.respuesta != null) return false;
@@ -136,7 +198,14 @@ public class Respuestas {
     @Override
     public int hashCode() {
         int result = idRespuesta != null ? idRespuesta.hashCode() : 0;
+        result = 31 * result + (codigoPregunta != null ? codigoPregunta.hashCode() : 0);
+        result = 31 * result + (pregunta != null ? pregunta.hashCode() : 0);
+        result = 31 * result + (tipoPregunta != null ? tipoPregunta.hashCode() : 0);
+        result = 31 * result + (secuencia != null ? secuencia.hashCode() : 0);
         result = 31 * result + (idCuestionarioPregunta != null ? idCuestionarioPregunta.hashCode() : 0);
+        result = 31 * result + (codigoOpcion != null ? codigoOpcion.hashCode() : 0);
+        result = 31 * result + (opcion != null ? opcion.hashCode() : 0);
+        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (idPreguntaOpcion != null ? idPreguntaOpcion.hashCode() : 0);
         result = 31 * result + (respuesta != null ? respuesta.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
