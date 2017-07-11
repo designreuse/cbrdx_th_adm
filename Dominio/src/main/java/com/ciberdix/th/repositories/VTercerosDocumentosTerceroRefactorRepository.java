@@ -16,4 +16,6 @@ public interface VTercerosDocumentosTerceroRefactorRepository extends CrudReposi
 
     List<VTercerosDocumentosTercero> findAllByIdDocumentoTercero(Integer id);
 
+    VTercerosDocumentosTercero findByIdAdjunto(Integer id);
+
 }

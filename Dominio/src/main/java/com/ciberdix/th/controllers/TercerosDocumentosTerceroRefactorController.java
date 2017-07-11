@@ -50,6 +50,11 @@ public class TercerosDocumentosTerceroRefactorController {
         return vTercerosDocumentosTerceroRefactorRepository.findAllByIdDocumentoTercero(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/adjunto/{id}")
+    VTercerosDocumentosTercero findByIdAdjunto(@PathVariable Integer id) {
+        return vTercerosDocumentosTerceroRefactorRepository.findByIdAdjunto(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosDocumentosTercero create(@RequestBody TercerosDocumentosTercero o) {
         return tercerosDocumentosTerceroRefactorRepository.save(

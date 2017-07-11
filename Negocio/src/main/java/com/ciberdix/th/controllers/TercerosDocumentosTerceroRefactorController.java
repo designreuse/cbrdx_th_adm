@@ -54,6 +54,12 @@ public class TercerosDocumentosTerceroRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/adjunto/{id}")
+    VTercerosDocumentosTercero findByIdAdjunto(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/adjunto/" + id, VTercerosDocumentosTercero.class);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosDocumentosTercero create(@RequestBody TercerosDocumentosTercero o) {
         RestTemplate restTemplate = new RestTemplate();
