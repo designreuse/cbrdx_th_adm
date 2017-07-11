@@ -20,7 +20,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/c")
+@RequestMapping("/api/procesoSeleccion")
 public class ProcesoSeleccionRefactorController {
 
     private final StorageService storageService;
