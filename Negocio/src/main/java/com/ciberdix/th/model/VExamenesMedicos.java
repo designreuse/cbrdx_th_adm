@@ -9,9 +9,7 @@ import java.sql.Timestamp;
 public class VExamenesMedicos {
 
     private Integer idExamenMedico;
-    private String procesoPaso;
-    private String codigoProcesoPaso;
-    private Integer idProcesoPaso;
+    private Integer idProcesoSeleccion;
     private String estadoExamenMedico;
     private Integer idEstadoExamenMedico;
     private String codigoVerificacion;
@@ -28,6 +26,7 @@ public class VExamenesMedicos {
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorOtraInstitucion;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -37,28 +36,12 @@ public class VExamenesMedicos {
         this.idExamenMedico = idExamenMedico;
     }
 
-    public String getProcesoPaso() {
-        return procesoPaso;
+    public Integer getIdProcesoSeleccion() {
+        return idProcesoSeleccion;
     }
 
-    public void setProcesoPaso(String procesoPaso) {
-        this.procesoPaso = procesoPaso;
-    }
-
-    public String getCodigoProcesoPaso() {
-        return codigoProcesoPaso;
-    }
-
-    public void setCodigoProcesoPaso(String codigoProcesoPaso) {
-        this.codigoProcesoPaso = codigoProcesoPaso;
-    }
-
-    public Integer getIdProcesoPaso() {
-        return idProcesoPaso;
-    }
-
-    public void setIdProcesoPaso(Integer idProcesoPaso) {
-        this.idProcesoPaso = idProcesoPaso;
+    public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
+        this.idProcesoSeleccion = idProcesoSeleccion;
     }
 
     public String getEstadoExamenMedico() {
@@ -187,5 +170,13 @@ public class VExamenesMedicos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorOtraInstitucion() {
+        return indicadorOtraInstitucion;
+    }
+
+    public void setIndicadorOtraInstitucion(Boolean indicadorOtraInstitucion) {
+        this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
 }

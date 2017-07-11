@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class ExamenesMedicos {
 
     private Integer idExamenMedico;
-    private Integer idProcesoPaso;
+    private Integer idProcesoSeleccion;
     private Integer idEstadoExamenMedico;
     private String codigoVerificacion;
     private Boolean indicadorVerificado;
@@ -21,6 +21,7 @@ public class ExamenesMedicos {
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorOtraInstitucion;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -30,12 +31,12 @@ public class ExamenesMedicos {
         this.idExamenMedico = idExamenMedico;
     }
 
-    public Integer getIdProcesoPaso() {
-        return idProcesoPaso;
+    public Integer getIdProcesoSeleccion() {
+        return idProcesoSeleccion;
     }
 
-    public void setIdProcesoPaso(Integer idProcesoPaso) {
-        this.idProcesoPaso = idProcesoPaso;
+    public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
+        this.idProcesoSeleccion = idProcesoSeleccion;
     }
 
     public Integer getIdEstadoExamenMedico() {
@@ -124,5 +125,13 @@ public class ExamenesMedicos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorOtraInstitucion() {
+        return indicadorOtraInstitucion;
+    }
+
+    public void setIndicadorOtraInstitucion(Boolean indicadorOtraInstitucion) {
+        this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
 }

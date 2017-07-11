@@ -39,10 +39,10 @@ public class ExamenesMedicosRefactorController {
     ExamenesMedicos createList(@RequestBody ExamenesMedicos o) {
         return examenesMedicosRefactorRepository.save(
                 new ExamenesMedicos(
-                        o.getIdProcesoPaso(),o.getIdEstadoExamenMedico(),
+                        o.getIdProcesoSeleccion(),o.getIdEstadoExamenMedico(),
                         o.getCodigoVerificacion(),o.getIndicadorVerificado(),o.getIdMaestroRespuesta(),
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
-                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario()
+                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion()
                 ));
     }
 
@@ -50,10 +50,10 @@ public class ExamenesMedicosRefactorController {
     ExamenesMedicos updateList(@RequestBody ExamenesMedicos o) {
         return examenesMedicosRefactorRepository.save(
                 new ExamenesMedicos(
-                        o.getIdExamenMedico(),o.getIdProcesoPaso(),o.getIdEstadoExamenMedico(),
+                        o.getIdExamenMedico(),o.getIdProcesoSeleccion(),o.getIdEstadoExamenMedico(),
                         o.getCodigoVerificacion(),o.getIndicadorVerificado(),o.getIdMaestroRespuesta(),
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
-                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario()
+                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion()
                 )
         );
     }
