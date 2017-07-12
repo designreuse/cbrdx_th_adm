@@ -5,13 +5,14 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 12/07/2017.
  */
 @Entity
 @Table(name = "V_UsuarioRoles", schema = "dbo", catalog = "CREZCAMOS")
 public class VUsuarioRoles {
     private Integer idUsuarioRol;
     private Integer idUsuario;
+    private String codigoRol;
     private Integer idRol;
     private String rol;
     private Integer auditoriaUsuario;
@@ -20,7 +21,6 @@ public class VUsuarioRoles {
     private Date fechaFin;
     private Boolean indicadorHabilitado;
 
-    @Basic
     @Id
     @Column(name = "IdUsuarioRol", nullable = false)
     public Integer getIdUsuarioRol() {
@@ -39,6 +39,16 @@ public class VUsuarioRoles {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    @Basic
+    @Column(name = "CodigoRol", nullable = true, length = 8)
+    public String getCodigoRol() {
+        return codigoRol;
+    }
+
+    public void setCodigoRol(String codigoRol) {
+        this.codigoRol = codigoRol;
     }
 
     @Basic
@@ -120,10 +130,13 @@ public class VUsuarioRoles {
 
         if (idUsuarioRol != null ? !idUsuarioRol.equals(that.idUsuarioRol) : that.idUsuarioRol != null) return false;
         if (idUsuario != null ? !idUsuario.equals(that.idUsuario) : that.idUsuario != null) return false;
+        if (codigoRol != null ? !codigoRol.equals(that.codigoRol) : that.codigoRol != null) return false;
         if (idRol != null ? !idRol.equals(that.idRol) : that.idRol != null) return false;
         if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null) return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null) return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
@@ -136,6 +149,7 @@ public class VUsuarioRoles {
     public int hashCode() {
         int result = idUsuarioRol != null ? idUsuarioRol.hashCode() : 0;
         result = 31 * result + (idUsuario != null ? idUsuario.hashCode() : 0);
+        result = 31 * result + (codigoRol != null ? codigoRol.hashCode() : 0);
         result = 31 * result + (idRol != null ? idRol.hashCode() : 0);
         result = 31 * result + (rol != null ? rol.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);

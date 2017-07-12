@@ -32,7 +32,7 @@ public class UsuariosRolesController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/secure/{idUsuario}")
     List<VUsuarioRoles> getVUsuRolHabById(@PathVariable Integer idUsuario) {
-        return (List<VUsuarioRoles>) vUsuariosRolesRepository.findByIdUsuarioAndIndicadorHabilitadoTrue(idUsuario);
+        return  vUsuariosRolesRepository.findByIdUsuarioAndIndicadorHabilitadoTrue(idUsuario);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
