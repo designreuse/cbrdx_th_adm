@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 public class VUsuarioRoles {
     private Integer idUsuarioRol;
     private Integer idUsuario;
+    private String codigoRol;
     private Integer idRol;
     private String rol;
     private Integer auditoriaUsuario;
@@ -31,6 +32,14 @@ public class VUsuarioRoles {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getCodigoRol() {
+        return codigoRol;
+    }
+
+    public void setCodigoRol(String codigoRol) {
+        this.codigoRol = codigoRol;
     }
 
     public Integer getIdRol() {
