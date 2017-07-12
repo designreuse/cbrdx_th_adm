@@ -51,6 +51,11 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicacionesRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/terceroAll/{idTercero}")
+    List<TercerosPublicaciones> findByIdTerceroAll(@PathVariable Long idTercero) {
+        return tercerosPublicacionesRefactorRepository.findAllByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/historic/{idTercero}")
     List<VTercerosPublicacionesHistoricos> findHistoric(@PathVariable Long idTercero) {
         return vTercerosPublicacionesHistoricosRefactorRepository.findAllByIdTercero(idTercero);
