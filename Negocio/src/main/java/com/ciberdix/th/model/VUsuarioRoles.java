@@ -16,7 +16,7 @@ public class VUsuarioRoles {
     private String rol;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT-5")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date fechaInicio;
     private Date fechaFin;
     private Boolean indicadorHabilitado;
