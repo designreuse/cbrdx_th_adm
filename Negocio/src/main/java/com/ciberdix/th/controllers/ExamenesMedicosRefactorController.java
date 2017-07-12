@@ -47,12 +47,17 @@ public class ExamenesMedicosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     ExamenesMedicos create(@RequestBody ExamenesMedicos obj){
         RestTemplate restTemplate = new RestTemplate();
+        //Correo 810 y 811 si InstMedic!=null o 814 si null
+        // url 810 es /answer-exams/exam/:idExamen/terceroPublicacion/:idTerceroPublication
+        // url 811 y 814 /informed-consent/exam/:idExamen/terceroPublicacion/:idTerceroPublication
+        // url 814 perfil del cargo....
         return restTemplate.postForObject(serviceUrl, obj, ExamenesMedicos.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ExamenesMedicos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        //Correo 810 y 811 si Estado = ENESPR e InstMedic!=null
         restTemplate.put(serviceUrl, obj);
     }
     
