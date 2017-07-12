@@ -76,6 +76,12 @@ public class RequerimientosRefactorController {
         return vRequerimientosRefactorRepository.findAllByIdResponsableSeleccion(idResponsableSeleccion);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byTercero/{idTercero}")
+    List<VRequerimientos> findAllByIdTercero(@PathVariable Long idTercero) {
+        return vRequerimientosRefactorRepository.queryAllByIdTercero(idTercero);
+    }
+
+
     @RequestMapping(method = RequestMethod.GET, path = "/publicacionFechas/todasActivas")
     List<VRequerimientos> queryAllByFechaActual() {
         return vRequerimientosRefactorRepository.queryAllByFechaActual();
