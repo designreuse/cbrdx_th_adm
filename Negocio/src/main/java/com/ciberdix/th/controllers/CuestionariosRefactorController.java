@@ -34,6 +34,12 @@ public class CuestionariosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
+    Cuestionarios findByCode(@PathVariable String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(serviceUrl + "/code/" + code, Cuestionarios.class);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Cuestionarios create(@RequestBody Cuestionarios request) {
         RestTemplate restTemplate = new RestTemplate();
