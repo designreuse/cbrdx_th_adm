@@ -1,14 +1,12 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Danny on 11/07/2017.
  */
 @Entity
+@Table(name = "TercerosPublicacionesMaestroRespuestas", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosPublicacionesMaestroRespuestas {
     private Integer idTerceroPublicacionMaestroRespuestas;
     private Integer idTercerosPublicaciones;
@@ -29,6 +27,7 @@ public class TercerosPublicacionesMaestroRespuestas {
     }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroPublicacionMaestroRespuestas", nullable = false)
     public Integer getIdTerceroPublicacionMaestroRespuestas() {
         return idTerceroPublicacionMaestroRespuestas;
