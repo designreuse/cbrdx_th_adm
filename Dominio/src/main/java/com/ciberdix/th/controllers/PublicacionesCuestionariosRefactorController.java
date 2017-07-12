@@ -41,19 +41,24 @@ public class PublicacionesCuestionariosRefactorController {
         return vPublicacionesCuestionariosRefactorRepository.findAllByIdPublicacion(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}/enabled")
+    List<VPublicacionesCuestionarios> findByIdPublicacionEnabled(@PathVariable Integer id) {
+        return vPublicacionesCuestionariosRefactorRepository.findAllByIdPublicacionAAndIndicadorHabilitadoTrue(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     PublicacionesCuestionarios crearActividadEconomica(@RequestBody PublicacionesCuestionarios o) {
         return publicacionesCuestionariosRefactorRepository.save(
-                new PublicacionesCuestionarios(o.getIdPublicacion(),o.getIdCuestionario(),
-                        o.getOrden(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario())
+                new PublicacionesCuestionarios(o.getIdPublicacion(), o.getIdCuestionario(),
+                        o.getOrden(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario())
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void actualizarActividadEconomica(@RequestBody PublicacionesCuestionarios o) {
         publicacionesCuestionariosRefactorRepository.save(
-                new PublicacionesCuestionarios(o.getIdPublicacionCustionario(),o.getIdPublicacion(),o.getIdCuestionario(),
-                        o.getOrden(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario())
+                new PublicacionesCuestionarios(o.getIdPublicacionCustionario(), o.getIdPublicacion(), o.getIdCuestionario(),
+                        o.getOrden(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario())
         );
     }
 
