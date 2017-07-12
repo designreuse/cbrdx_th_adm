@@ -67,7 +67,7 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        if(imagen.equals(null) || imagen.equals("")){
+        if(imagen == null || imagen == ""){
             imagen = "avatar.jpg";
         }
         this.imagen = imagen;
@@ -122,7 +122,7 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        if(imagen.equals(null) || imagen.equals("")){
+        if(imagen == null || imagen == ""){
             imagen = "avatar.jpg";
         }
         this.imagen = imagen;
