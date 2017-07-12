@@ -118,9 +118,10 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
-    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion) {
-        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "filtroReq/" + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
-        return Arrays.asList(parametros);
+    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, HttpServletRequest request) {
+        return findAll(request).stream().filter(t -> t.getIdEstado().equals(idEstado) && t.getIdResponsableSeleccion().equals(idResponsableSeleccion)).collect(Collectors.toList());
+        //VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "filtroReq/" + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
+        //return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
