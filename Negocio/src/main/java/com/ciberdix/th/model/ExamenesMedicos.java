@@ -16,7 +16,7 @@ public class ExamenesMedicos {
     private Integer idMaestroRespuesta;
     private Integer idMedicoResponsable;
     private Integer idInstitucionMedica;
-    private Date fechaProgramada;
+    private Timestamp fechaProgramada;
     private Integer idPreguntaOpcion;
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
@@ -87,11 +87,11 @@ public class ExamenesMedicos {
         this.idInstitucionMedica = idInstitucionMedica;
     }
 
-    public Date getFechaProgramada() {
+    public Timestamp getFechaProgramada() {
         return fechaProgramada;
     }
 
-    public void setFechaProgramada(Date fechaProgramada) {
+    public void setFechaProgramada(Timestamp fechaProgramada) {
         this.fechaProgramada = fechaProgramada;
     }
 

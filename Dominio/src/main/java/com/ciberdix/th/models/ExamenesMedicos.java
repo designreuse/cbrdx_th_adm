@@ -1,14 +1,13 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 11/07/2017.
+ * Created by Danny on 12/07/2017.
  */
 @Entity
-@Table(name = "ExamenesMedicos", schema = "dbo", catalog = "CREZCAMOS")
+@Table(name = "EstructuraOrganizacional", schema = "dbo", catalog = "CREZCAMOS")
 public class ExamenesMedicos {
     private Integer idExamenMedico;
     private Integer idProcesoSeleccion;
@@ -18,7 +17,7 @@ public class ExamenesMedicos {
     private Integer idMaestroRespuesta;
     private Integer idMedicoResponsable;
     private Integer idInstitucionMedica;
-    private Date fechaProgramada;
+    private Timestamp fechaProgramada;
     private Integer idPreguntaOpcion;
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
@@ -28,7 +27,7 @@ public class ExamenesMedicos {
     public ExamenesMedicos() {
     }
 
-    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Date fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
+    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
         this.codigoVerificacion = codigoVerificacion;
@@ -39,12 +38,12 @@ public class ExamenesMedicos {
         this.fechaProgramada = fechaProgramada;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.idAdjunto = idAdjunto;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
 
-    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Date fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
+    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
         this.idExamenMedico = idExamenMedico;
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
@@ -56,7 +55,7 @@ public class ExamenesMedicos {
         this.fechaProgramada = fechaProgramada;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.idAdjunto = idAdjunto;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
@@ -144,11 +143,11 @@ public class ExamenesMedicos {
 
     @Basic
     @Column(name = "FechaProgramada", nullable = true)
-    public Date getFechaProgramada() {
+    public Timestamp getFechaProgramada() {
         return fechaProgramada;
     }
 
-    public void setFechaProgramada(Date fechaProgramada) {
+    public void setFechaProgramada(Timestamp fechaProgramada) {
         this.fechaProgramada = fechaProgramada;
     }
 

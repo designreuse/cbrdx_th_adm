@@ -19,7 +19,7 @@ public class VExamenesMedicos {
     private Integer idMedicoResponsable;
     private String institucionMedica;
     private Integer idInstitucionMedica;
-    private Date fechaProgramada;
+    private Timestamp fechaProgramada;
     private String opcion;
     private Integer idPreguntaOpcion;
     private String nombreArchivo;
@@ -116,11 +116,11 @@ public class VExamenesMedicos {
         this.idInstitucionMedica = idInstitucionMedica;
     }
 
-    public Date getFechaProgramada() {
+    public Timestamp getFechaProgramada() {
         return fechaProgramada;
     }
 
-    public void setFechaProgramada(Date fechaProgramada) {
+    public void setFechaProgramada(Timestamp fechaProgramada) {
         this.fechaProgramada = fechaProgramada;
     }
 

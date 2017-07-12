@@ -1,11 +1,10 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 11/07/2017.
+ * Created by Danny on 12/07/2017.
  */
 @Entity
 @Table(name = "V_ExamenesMedicos", schema = "dbo", catalog = "CREZCAMOS")
@@ -21,7 +20,7 @@ public class VExamenesMedicos {
     private Integer idMedicoResponsable;
     private String institucionMedica;
     private Integer idInstitucionMedica;
-    private Date fechaProgramada;
+    private Timestamp fechaProgramada;
     private String opcion;
     private Integer idPreguntaOpcion;
     private String nombreArchivo;
@@ -142,16 +141,16 @@ public class VExamenesMedicos {
 
     @Basic
     @Column(name = "FechaProgramada", nullable = true)
-    public Date getFechaProgramada() {
+    public Timestamp getFechaProgramada() {
         return fechaProgramada;
     }
 
-    public void setFechaProgramada(Date fechaProgramada) {
+    public void setFechaProgramada(Timestamp fechaProgramada) {
         this.fechaProgramada = fechaProgramada;
     }
 
     @Basic
-    @Column(name = "Opcion", nullable = true, length = 200)
+    @Column(name = "Opcion", nullable = true, length = 500)
     public String getOpcion() {
         return opcion;
     }
