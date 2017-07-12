@@ -1,7 +1,9 @@
 package com.ciberdix.th.model;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by felip on 21/04/2017.
@@ -14,6 +16,7 @@ public class VUsuarioRoles {
     private String rol;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
     private Date fechaInicio;
     private Date fechaFin;
     private Boolean indicadorHabilitado;
