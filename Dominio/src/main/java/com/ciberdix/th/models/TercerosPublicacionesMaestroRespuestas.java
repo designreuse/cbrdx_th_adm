@@ -14,6 +14,20 @@ public class TercerosPublicacionesMaestroRespuestas {
     private Integer idTercerosPublicaciones;
     private Integer idMaestroRespuesta;
 
+    public TercerosPublicacionesMaestroRespuestas() {
+    }
+
+    public TercerosPublicacionesMaestroRespuestas(Integer idTercerosPublicaciones, Integer idMaestroRespuesta) {
+        this.idTercerosPublicaciones = idTercerosPublicaciones;
+        this.idMaestroRespuesta = idMaestroRespuesta;
+    }
+
+    public TercerosPublicacionesMaestroRespuestas(Integer idTerceroPublicacionMaestroRespuestas, Integer idTercerosPublicaciones, Integer idMaestroRespuesta) {
+        this.idTerceroPublicacionMaestroRespuestas = idTerceroPublicacionMaestroRespuestas;
+        this.idTercerosPublicaciones = idTercerosPublicaciones;
+        this.idMaestroRespuesta = idMaestroRespuesta;
+    }
+
     @Id
     @Column(name = "IdTerceroPublicacionMaestroRespuestas", nullable = false)
     public Integer getIdTerceroPublicacionMaestroRespuestas() {
@@ -55,10 +69,7 @@ public class TercerosPublicacionesMaestroRespuestas {
             return false;
         if (idTercerosPublicaciones != null ? !idTercerosPublicaciones.equals(that.idTercerosPublicaciones) : that.idTercerosPublicaciones != null)
             return false;
-        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
-            return false;
-
-        return true;
+        return idMaestroRespuesta != null ? idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta == null;
     }
 
     @Override

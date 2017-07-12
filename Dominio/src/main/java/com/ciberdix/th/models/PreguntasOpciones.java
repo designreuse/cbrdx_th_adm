@@ -77,7 +77,7 @@ public class PreguntasOpciones {
     }
 
     @Basic
-    @Column(name = "Opcion", nullable = true, length = 200)
+    @Column(name = "Opcion", nullable = true, length = 500)
     public String getOpcion() {
         return opcion;
     }
@@ -156,10 +156,7 @@ public class PreguntasOpciones {
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        return auditoriaFecha != null ? auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha == null;
     }
 
     @Override
