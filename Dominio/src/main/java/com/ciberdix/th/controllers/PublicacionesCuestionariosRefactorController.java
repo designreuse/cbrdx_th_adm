@@ -43,7 +43,7 @@ public class PublicacionesCuestionariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}/enabled")
     List<VPublicacionesCuestionarios> findByIdPublicacionEnabled(@PathVariable Integer id) {
-        return vPublicacionesCuestionariosRefactorRepository.findAllByIdPublicacionAAndIndicadorHabilitadoTrue(id);
+        return vPublicacionesCuestionariosRefactorRepository.findAllByIdPublicacionAndIndicadorHabilitadoTrue(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

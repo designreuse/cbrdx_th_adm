@@ -12,6 +12,6 @@ public interface VPublicacionesCuestionariosRefactorRepository extends CrudRepos
 
     List<VPublicacionesCuestionarios> findAllByIdPublicacion(Integer id);
 
-    List<VPublicacionesCuestionarios> findAllByIdPublicacionAAndIndicadorHabilitadoTrue(Integer id);
+    List<VPublicacionesCuestionarios> findAllByIdPublicacionAndIndicadorHabilitadoTrue(Integer id);
 
 }
