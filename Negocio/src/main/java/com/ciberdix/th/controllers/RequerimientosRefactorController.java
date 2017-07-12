@@ -175,6 +175,12 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byTercero/{idTercero}")
+    List<VRequerimientos> findAllByIdTercero(@PathVariable Long idTercero) {
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "byTercero/" + idTercero, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         return restTemplate.postForObject(serviceUrl, requerimientos, Requerimientos.class);
