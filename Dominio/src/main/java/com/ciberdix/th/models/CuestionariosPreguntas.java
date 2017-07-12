@@ -92,7 +92,7 @@ public class CuestionariosPreguntas {
     }
 
     @Basic
-    @Column(name = "Pregunta", nullable = true, length = 100)
+    @Column(name = "Pregunta", nullable = true, length = 500)
     public String getPregunta() {
         return pregunta;
     }
@@ -232,10 +232,7 @@ public class CuestionariosPreguntas {
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
-            return false;
-
-        return true;
+        return auditoriaFecha != null ? auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha == null;
     }
 
     @Override

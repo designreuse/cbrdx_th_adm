@@ -71,7 +71,7 @@ public class Respuestas {
     }
 
     @Basic
-    @Column(name = "Respuesta", nullable = true, length = 200)
+    @Column(name = "Respuesta", nullable = true, length = 500)
     public String getRespuesta() {
         return respuesta;
     }
@@ -127,10 +127,7 @@ public class Respuestas {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
-            return false;
-
-        return true;
+        return idMaestroRespuesta != null ? idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta == null;
     }
 
     @Override
