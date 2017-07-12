@@ -63,6 +63,13 @@ public class MaestrosRespuestasRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroPublicacion/{id}")
+    List<MaestrosRespuestas> queryAllByIdTerceroPublicacion(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        MaestrosRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/terceroPublicacion/" + id, MaestrosRespuestas[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     MaestrosRespuestas create(@RequestBody MaestrosRespuestas obj) {
         RestTemplate restTemplate = new RestTemplate();

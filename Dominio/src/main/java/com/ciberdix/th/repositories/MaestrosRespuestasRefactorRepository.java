@@ -1,6 +1,7 @@
 package com.ciberdix.th.repositories;
 
 import com.ciberdix.th.models.MaestrosRespuestas;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface MaestrosRespuestasRefactorRepository extends CrudRepository<Mae
     List<MaestrosRespuestas> findAllByIdUsuario(Integer id);
 
     List<MaestrosRespuestas> findAllByIdPreguntaEnCurso(Integer id);
+
+    @Query("SELECT M FROM MaestrosRespuestas M WHERE M.idMaestroRespuesta IN (SELECT T.idMaestroRespuesta FROM TercerosPublicacionesMaestroRespuestas T WHERE T.idTercerosPublicaciones = ?1)")
+    List<MaestrosRespuestas> queryAllByIdTerceroPublicacion(Integer id);
 
 }

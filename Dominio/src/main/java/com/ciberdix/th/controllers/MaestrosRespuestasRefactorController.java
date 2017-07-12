@@ -45,6 +45,11 @@ public class MaestrosRespuestasRefactorController {
         return maestrosRespuestasRefactorRepository.findAllByIdPreguntaEnCurso(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroPublicacion/{id}")
+    List<MaestrosRespuestas> queryAllByIdTerceroPublicacion(@PathVariable Integer id) {
+        return maestrosRespuestasRefactorRepository.queryAllByIdTerceroPublicacion(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/usuario/{id}")
     List<MaestrosRespuestas> findByIdUsuario(@PathVariable Integer id) {
         return maestrosRespuestasRefactorRepository.findAllByIdUsuario(id);
