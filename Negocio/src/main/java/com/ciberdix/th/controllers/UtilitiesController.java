@@ -247,4 +247,34 @@ public class UtilitiesController {
     static String extractToken(HttpServletRequest request) {
         return request.getHeader(tokenHeader);
     }
+
+    static String fullName(Object tercero, Boolean view) {
+        if (view) {
+            VTerceros terceros = (VTerceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
+        } else {
+            Terceros terceros = (Terceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
+        }
+    }
 }

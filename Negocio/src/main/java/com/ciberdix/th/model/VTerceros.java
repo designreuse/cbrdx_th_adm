@@ -1,7 +1,7 @@
 package com.ciberdix.th.model;
 
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by felip on 21/04/2017.
