@@ -192,7 +192,12 @@ public class ProcesoSeleccionRefactorController {
         if (estado.equals("APROB") && p.getIndicadorCorreo()) {
             UtilitiesController.sendMail(t.getCorreoElectronico(), "Has aprobado!", "<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Has arpobado el paso: " + p.getNombre() + "</p>");
         }
-        return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
+        ProcesoSeleccion procesoSeleccion = restTemplate.getForObject(serviceUrl + "/exist/" + obj.getIdTerceroPublicacion() + "/" + obj.getIdProcesoPaso(), ProcesoSeleccion.class);
+        if(procesoSeleccion != null){
+            return procesoSeleccion;
+        }else{
+            return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)

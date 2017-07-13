@@ -16,4 +16,6 @@ public interface VProcesoSeleccionRefactorRepository extends CrudRepository<VPro
     @Query("SELECT P FROM VProcesoSeleccion P WHERE P.idTerceroPublicacion IN (SELECT T.idTercerosPublicaciones FROM TercerosPublicaciones T WHERE T.idPublicacion = ?1)")
     List<VProcesoSeleccion> queryAllByIdPublicacion(Integer id);
 
+    VProcesoSeleccion findAllByIdTerceroPublicacionAndIdProcesoPaso(Integer idTerceroPublicacion, Integer idProcesoPaso);
+
 }
