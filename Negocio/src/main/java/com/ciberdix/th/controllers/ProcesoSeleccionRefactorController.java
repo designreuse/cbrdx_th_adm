@@ -147,9 +147,9 @@ public class ProcesoSeleccionRefactorController {
                                 LPS.setIdResponsable(vps.getIdResponsable());
                                 String codigo = UtilitiesController.findListItemById("ListasEstadosDiligenciados", vps.getIdEstadoDiligenciado()).getCodigo();
                                 LPS.setCodigoEstadoDiligenciado(codigo);
-                                LPSL.add(LPS);
                             }
                         }
+                        LPSL.add(LPS);
                     } else {
                         LPSL.add(LPS);
                     }

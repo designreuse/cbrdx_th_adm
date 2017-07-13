@@ -145,4 +145,60 @@ public class ExamenesMedicosRefactorController {
         sb.append("Recuerde una vez finalizada la atención del aspirante adjuntar al sistema los formatos de aptitud laboral requeridos por Crezcamos");
         return sb.toString();
     }
+
+    private String assembleInstitutionBody(VInstitucionesMedicas i, String nombreTercero, ProcesoSeleccion p, ExamenesMedicos e) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h2>");
+        sb.append("Proceso de Selección - Examen Médico de Ingreso - ");
+        sb.append(nombreTercero);
+        sb.append("</h2>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Datos del instituto médico");
+        sb.append("<p>");
+        sb.append("Comedidamente le solicito realizar el examen médico laboral de ingreso en el siguiente instituto médico: ");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Nombre del Instituto: ");
+        sb.append(i.getInstitucionMedica());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getDireccion());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getCorreoElectronico());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getTelefonoContacto());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(e.getFechaProgramada());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Debe descarga los siguientes documentos de la plataforma y llevarlos a la institución médica donde va a realizar el examen: ");
+        sb.append("</p>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Solicitud del examen de ingreso ");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Certificado de Aptitud Laboral ");
+        sb.append("</li>");
+        sb.append("</ol>");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("<p>");
+        sb.append("Consentimiento Informado");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Con el fin de continuar proceso de selección debe declarar la veracidad de la información y el consentimiento informado, dando click en el siguiente link realiza dicho proceso, el cual se debe declarar antes de realizar el examen: ");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null));
+        sb.append("</p>");
+        sb.append("</li>");
+        sb.append("</ol>");
+        return sb.toString();
+    }
+
 }
