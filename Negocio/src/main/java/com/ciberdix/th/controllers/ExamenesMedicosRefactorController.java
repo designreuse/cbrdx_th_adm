@@ -81,7 +81,7 @@ public class ExamenesMedicosRefactorController {
         ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
         TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
         String tokenProfile = UtilitiesController.generateTokenButton("/profile", null);
-        if (UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENSPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
+        if (UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
             String token810 = UtilitiesController.generateTokenButton("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
             String token811 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
             UtilitiesController.sendMail("w1andresv@gmail.com", "810", "respondercuest" + token810 + "perfil" + tokenProfile);
