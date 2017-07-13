@@ -64,10 +64,10 @@ public class ExamenesMedicosRefactorController {
         Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
         if (obj.getIdInstitucionMedica() != null) {
             VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
-            UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "810", assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
-            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "811", assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
+            UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "Proceso de Selección - Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
+            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "Crezcamos - Solicitud Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
         } else {
-            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "810", assembleNoInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
+            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "Crezcamos - Solicitud Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assembleNoInstitutionBody(UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
         }
         return obj;
     }
@@ -85,8 +85,8 @@ public class ExamenesMedicosRefactorController {
         Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
         if (obj.getIdInstitucionMedica() != null && UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
             VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
-            UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "810", assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
-            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "811", assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
+            UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "Proceso de Selección - Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
+            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "Crezcamos - Solicitud Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
         }
         restTemplate.put(serviceUrl, obj);
     }
@@ -130,13 +130,13 @@ public class ExamenesMedicosRefactorController {
         sb.append("<h3>");
         sb.append("Perfil de Cargo");
         sb.append("<h3>");
-        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), null));
+        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "consentimiento_informado.png"));
         sb.append("</li>");
         sb.append("<li>");
         sb.append("<h3>");
         sb.append("Resultado");
         sb.append("<h3>");
-        sb.append(UtilitiesController.generateTokenButton("/answer-exams/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null));
+        sb.append(UtilitiesController.generateTokenButton("/answer-exams/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "ingresar_resultado.png"));
         sb.append("</li>");
         sb.append("<li>");
         sb.append("<h3>");
@@ -146,7 +146,7 @@ public class ExamenesMedicosRefactorController {
         return sb.toString();
     }
 
-    private String assembleNoInstitutionBody(VTerceros tercero, String nombreTercero, Cargos cargo, ProcesoSeleccion p, ExamenesMedicos e) {
+    private String assembleNoInstitutionBody(String nombreTercero, Cargos cargo, ProcesoSeleccion p, ExamenesMedicos e) {
         StringBuilder sb = new StringBuilder();
         sb.append("<h2>");
         sb.append("Proceso de Selección - Examen Médico de Ingreso - ");
@@ -181,13 +181,13 @@ public class ExamenesMedicosRefactorController {
         sb.append("Los documentos los debe adjuntar en la sección Documentos Adjuntos Sección Documentos Adjuntar.");
         sb.append("<br/>");
         sb.append("Antes de realizado el examen debe declarar la veracidad de la información y consentimiento informado para ello debe dar click en el siguiente link:");
-        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null));
+        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
         sb.append("Es importante adjuntar los documentos a la plataforma y la declaración para continuar proceso de selección.");
         sb.append("<br/>");
         sb.append("El costo del examen médico no debe ser superior a 30.000.");
         sb.append("<br/>");
         sb.append("A continuación el perfil de cargo. Debe imprimirlo y llevarlo al instituto de su preferencia.");
-        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), null));
+        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
         return sb.toString();
     }
 
@@ -239,7 +239,7 @@ public class ExamenesMedicosRefactorController {
         sb.append("Con el fin de continuar proceso de selección debe declarar la veracidad de la información y el consentimiento informado, dando click en el siguiente link realiza dicho proceso, el cual se debe declarar antes de realizar el examen: ");
         sb.append("</p>");
         sb.append("<p>");
-        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null));
+        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
         sb.append("</p>");
         sb.append("</li>");
         sb.append("</ol>");
