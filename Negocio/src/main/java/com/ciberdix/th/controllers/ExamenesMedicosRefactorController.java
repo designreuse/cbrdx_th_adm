@@ -2,6 +2,7 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.ExamenesMedicos;
+import com.ciberdix.th.model.ProcesoSeleccion;
 import com.ciberdix.th.model.VExamenesMedicos;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -45,8 +46,16 @@ public class ExamenesMedicosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    ExamenesMedicos create(@RequestBody ExamenesMedicos obj){
+    ExamenesMedicos create(@RequestBody ExamenesMedicos obj) {
         RestTemplate restTemplate = new RestTemplate();
+        ProcesoSeleccion p = restTemplate.getForObject(globales.getUrl() + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
+        if (obj.getIdInstitucionMedica() != null) {
+            String token810 = UtilitiesController.generateURLToken("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
+            String token811 = UtilitiesController.generateURLToken("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
+        } else {
+            String token814 = UtilitiesController.generateURLToken("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
+            String tokenProfile = UtilitiesController.generateURLToken("/profile");
+        }
         //Correo 810 y 811 si InstMedic!=null o 814 si null
         // url 810 es /answer-exams/exam/:idExamen/terceroPublicacion/:idTerceroPublication
         // url 811 y 814 /informed-consent/exam/:idExamen/terceroPublicacion/:idTerceroPublication
@@ -60,5 +69,5 @@ public class ExamenesMedicosRefactorController {
         //Correo 810 y 811 si Estado = ENESPR e InstMedic!=null
         restTemplate.put(serviceUrl, obj);
     }
-    
+
 }

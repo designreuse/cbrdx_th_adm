@@ -188,27 +188,13 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Requerimientos requerimientos) {
-        updateTR(requerimientos);
-    }
-
-    public void update(VRequerimientos requerimientos) {
-        updateTR(requerimientos);
-    }
-
-    private void updateTR(Object requ) {
-        Requerimientos requerimientos = (Requerimientos) requ;
-        String dominio = UtilitiesController.readParameter("domain.url");
-        String serviceUrl = dominio + "/api/requerimientos/";
-        Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
-        ListasItems EstadoAnterior = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
-        ListasItems EstadoActual = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
-        if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
-            if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
-                RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
-                restTemplate.postForObject(dominio + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
-            }
+    void update(@RequestBody Requerimientos o) {
+        Requerimientos requerimientos = restTemplate.getForObject(serviceUrl + o.idRequerimiento, Requerimientos.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + o.getIdEstado(), ListasItems.class);
+        if (EstadoActual.getCodigo().equals("SOLICITADO") && (EstadoAnterior.getCodigo().equals("PRCREQ") || EstadoAnterior.getCodigo().equals("DVLT"))) {
+            restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", new RequerimientosHistoricos(requerimientos), RequerimientosHistoricos.class);
         }
-        restTemplate.put(serviceUrl, requerimientos);
+        restTemplate.put(serviceUrl, o);
     }
 }
