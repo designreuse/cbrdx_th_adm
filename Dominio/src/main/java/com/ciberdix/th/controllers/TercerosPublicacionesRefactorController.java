@@ -67,7 +67,8 @@ public class TercerosPublicacionesRefactorController {
                 new TercerosPublicaciones(
                         o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(), o.getIndicadorCentrales(),
                         o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorFinalizado(), o.getCodigo(),
-                        o.getPaso(), o.isIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual()
+                        o.getPaso(), o.getIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual(),o.getFechaContratacion(),
+                        o.getIndicadorContratacion()
                 ));
     }
 
@@ -77,7 +78,8 @@ public class TercerosPublicacionesRefactorController {
                 new TercerosPublicaciones(
                         o.getIdTercerosPublicaciones(), o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(),
                         o.getIndicadorCentrales(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(),
-                        o.getIndicadorFinalizado(), o.getCodigo(), o.getPaso(), o.isIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual()
+                        o.getIndicadorFinalizado(), o.getCodigo(), o.getPaso(), o.getIndicadorFinalizadoCuestionarios(),
+                        o.getIdCuestionarioActual(),o.getFechaContratacion(),o.getIndicadorContratacion()
                 ));
     }
 
