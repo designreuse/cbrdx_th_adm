@@ -49,12 +49,12 @@ public class ExamenesMedicosRefactorController {
     ExamenesMedicos create(@RequestBody ExamenesMedicos obj) {
         RestTemplate restTemplate = new RestTemplate();
         ProcesoSeleccion p = restTemplate.getForObject(globales.getUrl() + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
+        String tokenProfile = UtilitiesController.generateTokenButton("/profile", null);
         if (obj.getIdInstitucionMedica() != null) {
-            String token810 = UtilitiesController.generateURLToken("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
-            String token811 = UtilitiesController.generateURLToken("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
+            String token810 = UtilitiesController.generateTokenButton("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
+            String token811 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
         } else {
-            String token814 = UtilitiesController.generateURLToken("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion());
-            String tokenProfile = UtilitiesController.generateURLToken("/profile");
+            String token814 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
         }
         //Correo 810 y 811 si InstMedic!=null o 814 si null
         // url 810 es /answer-exams/exam/:idExamen/terceroPublicacion/:idTerceroPublication

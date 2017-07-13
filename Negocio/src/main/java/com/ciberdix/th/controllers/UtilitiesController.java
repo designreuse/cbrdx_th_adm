@@ -6,6 +6,7 @@ import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
+import com.sun.istack.internal.Nullable;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.HttpHeaders;
@@ -148,10 +149,22 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
+    static String generateTokenButton(String URL, @Nullable String image) {
+        if (image == null) image = "revisar.png";
+        String frontUrl = readParameter("front.url");
+        String token = generateURLToken(URL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<p style=\"text-align:center\">");
+        stringBuilder.append("<a href=\"").append(frontUrl).append("/login?token=").append(token).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("</a></p>");
+        return stringBuilder.toString();
+    }
+
     static String generateURLToken(String URL) {
         Map<String, Object> map = new HashMap<>();
         map.put("URL", URL);
-        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "c1b3rd1x_crzth").compact();
     }
 
     static Constantes findConstant(String code) {
