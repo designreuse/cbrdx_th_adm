@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 13/07/2017.
  */
 @Entity
 @Table(name = "TercerosReferenciasLlamada", schema = "dbo", catalog = "CREZCAMOS")
@@ -13,8 +13,7 @@ public class TercerosReferenciasLlamada {
     private Integer idTerceroReferencia;
     private Integer idResultadoLlamada;
     private Integer idAdjunto;
-    private Integer idCuestionario;
-    private Integer idRespuestaCuestionario;
+    private Integer idMaestroRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -22,24 +21,22 @@ public class TercerosReferenciasLlamada {
     public TercerosReferenciasLlamada() {
     }
 
-    public TercerosReferenciasLlamada(Integer idTerceroReferencia, Integer idResultadoLlamada, Integer idAdjunto, Integer idCuestionario, Integer idRespuestaCuestionario, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosReferenciasLlamada(Integer idTerceroReferencia, Integer idResultadoLlamada, Integer idAdjunto, Integer idMaestroRespuesta, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTerceroReferencia = idTerceroReferencia;
         this.idResultadoLlamada = idResultadoLlamada;
         this.idAdjunto = idAdjunto;
-        this.idCuestionario = idCuestionario;
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+        this.idMaestroRespuesta = idMaestroRespuesta;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public TercerosReferenciasLlamada(Integer idTerceroReferenciaLlamada, Integer idTerceroReferencia, Integer idResultadoLlamada, Integer idAdjunto, Integer idCuestionario, Integer idRespuestaCuestionario, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosReferenciasLlamada(Integer idTerceroReferenciaLlamada, Integer idTerceroReferencia, Integer idResultadoLlamada, Integer idAdjunto, Integer idMaestroRespuesta, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTerceroReferenciaLlamada = idTerceroReferenciaLlamada;
         this.idTerceroReferencia = idTerceroReferencia;
         this.idResultadoLlamada = idResultadoLlamada;
         this.idAdjunto = idAdjunto;
-        this.idCuestionario = idCuestionario;
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+        this.idMaestroRespuesta = idMaestroRespuesta;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -87,23 +84,13 @@ public class TercerosReferenciasLlamada {
     }
 
     @Basic
-    @Column(name = "IdCuestionario", nullable = true)
-    public Integer getIdCuestionario() {
-        return idCuestionario;
+    @Column(name = "IdMaestroRespuesta", nullable = true)
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
     }
 
-    public void setIdCuestionario(Integer idCuestionario) {
-        this.idCuestionario = idCuestionario;
-    }
-
-    @Basic
-    @Column(name = "IdRespuestaCuestionario", nullable = true)
-    public Integer getIdRespuestaCuestionario() {
-        return idRespuestaCuestionario;
-    }
-
-    public void setIdRespuestaCuestionario(Integer idRespuestaCuestionario) {
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
     @Basic
@@ -150,9 +137,7 @@ public class TercerosReferenciasLlamada {
         if (idResultadoLlamada != null ? !idResultadoLlamada.equals(that.idResultadoLlamada) : that.idResultadoLlamada != null)
             return false;
         if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
-        if (idCuestionario != null ? !idCuestionario.equals(that.idCuestionario) : that.idCuestionario != null)
-            return false;
-        if (idRespuestaCuestionario != null ? !idRespuestaCuestionario.equals(that.idRespuestaCuestionario) : that.idRespuestaCuestionario != null)
+        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
@@ -170,8 +155,7 @@ public class TercerosReferenciasLlamada {
         result = 31 * result + (idTerceroReferencia != null ? idTerceroReferencia.hashCode() : 0);
         result = 31 * result + (idResultadoLlamada != null ? idResultadoLlamada.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
-        result = 31 * result + (idCuestionario != null ? idCuestionario.hashCode() : 0);
-        result = 31 * result + (idRespuestaCuestionario != null ? idRespuestaCuestionario.hashCode() : 0);
+        result = 31 * result + (idMaestroRespuesta != null ? idMaestroRespuesta.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

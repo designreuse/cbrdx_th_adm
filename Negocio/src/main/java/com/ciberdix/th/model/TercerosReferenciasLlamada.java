@@ -11,8 +11,7 @@ public class TercerosReferenciasLlamada {
     private Integer idTerceroReferencia;
     private Integer idResultadoLlamada;
     private Integer idAdjunto;
-    private Integer idCuestionario;
-    private Integer idRespuestaCuestionario;
+    private Integer idMaestroRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -49,20 +48,12 @@ public class TercerosReferenciasLlamada {
         this.idAdjunto = idAdjunto;
     }
 
-    public Integer getIdCuestionario() {
-        return idCuestionario;
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
     }
 
-    public void setIdCuestionario(Integer idCuestionario) {
-        this.idCuestionario = idCuestionario;
-    }
-
-    public Integer getIdRespuestaCuestionario() {
-        return idRespuestaCuestionario;
-    }
-
-    public void setIdRespuestaCuestionario(Integer idRespuestaCuestionario) {
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
     public Boolean getIndicadorHabilitado() {

@@ -54,7 +54,7 @@ public class TercerosReferenciasLlamadaRefactorController {
     TercerosReferenciasLlamada create(@RequestBody TercerosReferenciasLlamada o) {
         return tercerosReferenciasLlamadaRefactorRepository.save(new TercerosReferenciasLlamada(
                 o.getIdTerceroReferencia(),o.getIdResultadoLlamada(),
-                o.getIdAdjunto(),o.getIdCuestionario(),o.getIdRespuestaCuestionario(),
+                o.getIdAdjunto(),o.getIdMaestroRespuesta(),
                 o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
         ));
     }
@@ -63,7 +63,7 @@ public class TercerosReferenciasLlamadaRefactorController {
     void update(@RequestBody TercerosReferenciasLlamada o) {
         tercerosReferenciasLlamadaRefactorRepository.save(new TercerosReferenciasLlamada(
                 o.getIdTerceroReferenciaLlamada(),o.getIdTerceroReferencia(),o.getIdResultadoLlamada(),
-                o.getIdAdjunto(),o.getIdCuestionario(),o.getIdRespuestaCuestionario(),
+                o.getIdAdjunto(),o.getIdMaestroRespuesta(),
                 o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
         ));
     }
