@@ -1,5 +1,6 @@
 package com.ciberdix.th.model;
 
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
@@ -20,22 +21,8 @@ public class TercerosPublicaciones {
     private Integer paso;
     private Boolean indicadorFinalizadoCuestionarios;
     private Integer idCuestionarioActual;
-
-    public Boolean getIndicadorFinalizadoCuestionarios() {
-        return indicadorFinalizadoCuestionarios;
-    }
-
-    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
-        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
-    }
-
-    public Integer getIdCuestionarioActual() {
-        return idCuestionarioActual;
-    }
-
-    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
-        this.idCuestionarioActual = idCuestionarioActual;
-    }
+    private Date fechaContratacion;
+    private Boolean indicadorContratacion;
 
     public Integer getIdTercerosPublicaciones() {
         return idTercerosPublicaciones;
@@ -123,5 +110,37 @@ public class TercerosPublicaciones {
 
     public void setPaso(Integer paso) {
         this.paso = paso;
+    }
+
+    public Boolean getIndicadorFinalizadoCuestionarios() {
+        return indicadorFinalizadoCuestionarios;
+    }
+
+    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+    }
+
+    public Integer getIdCuestionarioActual() {
+        return idCuestionarioActual;
+    }
+
+    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
+        this.idCuestionarioActual = idCuestionarioActual;
+    }
+
+    public Date getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    public Boolean getIndicadorContratacion() {
+        return indicadorContratacion;
+    }
+
+    public void setIndicadorContratacion(Boolean indicadorContratacion) {
+        this.indicadorContratacion = indicadorContratacion;
     }
 }

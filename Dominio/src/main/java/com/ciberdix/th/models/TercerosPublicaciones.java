@@ -1,10 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/06/2017.
+ * Created by Danny on 13/07/2017.
  */
 @Entity
 @Table(name = "TercerosPublicaciones", schema = "dbo", catalog = "CREZCAMOS")
@@ -22,11 +23,13 @@ public class TercerosPublicaciones {
     private Integer paso;
     private Boolean indicadorFinalizadoCuestionarios;
     private Integer idCuestionarioActual;
+    private Date fechaContratacion;
+    private Boolean indicadorContratacion;
 
     public TercerosPublicaciones() {
     }
 
-    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual) {
+    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual, Date fechaContratacion, Boolean indicadorContratacion) {
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
@@ -39,9 +42,11 @@ public class TercerosPublicaciones {
         this.paso = paso;
         this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
         this.idCuestionarioActual = idCuestionarioActual;
+        this.fechaContratacion = fechaContratacion;
+        this.indicadorContratacion = indicadorContratacion;
     }
 
-    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual) {
+    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual, Date fechaContratacion, Boolean indicadorContratacion) {
         this.idTercerosPublicaciones = idTercerosPublicaciones;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
@@ -55,26 +60,8 @@ public class TercerosPublicaciones {
         this.paso = paso;
         this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
         this.idCuestionarioActual = idCuestionarioActual;
-    }
-
-    @Basic
-    @Column(name = "IndicadorFinalizadoCuestionarios")
-    public Boolean isIndicadorFinalizadoCuestionarios() {
-        return indicadorFinalizadoCuestionarios;
-    }
-
-    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
-        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
-    }
-
-    @Basic
-    @Column(name = "IdCuestionarioActual", nullable = true)
-    public Integer getIdCuestionarioActual() {
-        return idCuestionarioActual;
-    }
-
-    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
-        this.idCuestionarioActual = idCuestionarioActual;
+        this.fechaContratacion = fechaContratacion;
+        this.indicadorContratacion = indicadorContratacion;
     }
 
     @Id
@@ -188,6 +175,46 @@ public class TercerosPublicaciones {
         this.paso = paso;
     }
 
+    @Basic
+    @Column(name = "IndicadorFinalizadoCuestionarios", nullable = true)
+    public Boolean getIndicadorFinalizadoCuestionarios() {
+        return indicadorFinalizadoCuestionarios;
+    }
+
+    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+    }
+
+    @Basic
+    @Column(name = "IdCuestionarioActual", nullable = true)
+    public Integer getIdCuestionarioActual() {
+        return idCuestionarioActual;
+    }
+
+    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
+        this.idCuestionarioActual = idCuestionarioActual;
+    }
+
+    @Basic
+    @Column(name = "FechaContratacion", nullable = true)
+    public Date getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    @Basic
+    @Column(name = "IndicadorContratacion", nullable = true)
+    public Boolean getIndicadorContratacion() {
+        return indicadorContratacion;
+    }
+
+    public void setIndicadorContratacion(Boolean indicadorContratacion) {
+        this.indicadorContratacion = indicadorContratacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -195,7 +222,8 @@ public class TercerosPublicaciones {
 
         TercerosPublicaciones that = (TercerosPublicaciones) o;
 
-        if (!idTercerosPublicaciones.equals(that.idTercerosPublicaciones)) return false;
+        if (idTercerosPublicaciones != null ? !idTercerosPublicaciones.equals(that.idTercerosPublicaciones) : that.idTercerosPublicaciones != null)
+            return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (idPublicacion != null ? !idPublicacion.equals(that.idPublicacion) : that.idPublicacion != null)
             return false;
@@ -205,32 +233,43 @@ public class TercerosPublicaciones {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
-        if (!auditoriaUsuario.equals(that.auditoriaUsuario)) return false;
-        if (!auditoriaFecha.equals(that.auditoriaFecha)) return false;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
+            return false;
         if (indicadorFinalizado != null ? !indicadorFinalizado.equals(that.indicadorFinalizado) : that.indicadorFinalizado != null)
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (paso != null ? !paso.equals(that.paso) : that.paso != null) return false;
         if (indicadorFinalizadoCuestionarios != null ? !indicadorFinalizadoCuestionarios.equals(that.indicadorFinalizadoCuestionarios) : that.indicadorFinalizadoCuestionarios != null)
             return false;
-        return idCuestionarioActual != null ? idCuestionarioActual.equals(that.idCuestionarioActual) : that.idCuestionarioActual == null;
+        if (idCuestionarioActual != null ? !idCuestionarioActual.equals(that.idCuestionarioActual) : that.idCuestionarioActual != null)
+            return false;
+        if (fechaContratacion != null ? !fechaContratacion.equals(that.fechaContratacion) : that.fechaContratacion != null)
+            return false;
+        if (indicadorContratacion != null ? !indicadorContratacion.equals(that.indicadorContratacion) : that.indicadorContratacion != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idTercerosPublicaciones.hashCode();
+        int result = idTercerosPublicaciones != null ? idTercerosPublicaciones.hashCode() : 0;
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idPublicacion != null ? idPublicacion.hashCode() : 0);
         result = 31 * result + (indicadorTerminos != null ? indicadorTerminos.hashCode() : 0);
         result = 31 * result + (indicadorCentrales != null ? indicadorCentrales.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
-        result = 31 * result + auditoriaUsuario.hashCode();
-        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
+        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorFinalizado != null ? indicadorFinalizado.hashCode() : 0);
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
         result = 31 * result + (indicadorFinalizadoCuestionarios != null ? indicadorFinalizadoCuestionarios.hashCode() : 0);
         result = 31 * result + (idCuestionarioActual != null ? idCuestionarioActual.hashCode() : 0);
+        result = 31 * result + (fechaContratacion != null ? fechaContratacion.hashCode() : 0);
+        result = 31 * result + (indicadorContratacion != null ? indicadorContratacion.hashCode() : 0);
         return result;
     }
 }
