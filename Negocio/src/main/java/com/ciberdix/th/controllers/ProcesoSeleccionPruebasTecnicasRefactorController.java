@@ -58,7 +58,7 @@ public class ProcesoSeleccionPruebasTecnicasRefactorController {
         Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
         TercerosPublicaciones data = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + idTerceroPublicacion, TercerosPublicaciones.class);
         Publicaciones pubData = restTemplate.getForObject(globales.getUrl() + "/api/publicaciones/" + data.getIdPublicacion(), Publicaciones.class);
-        List<RequerimientosCuestionarios> reqData = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/requerimientosCuestionarios/requerimientos/" + pubData.getIdRequerimiento(), RequerimientosCuestionarios[].class));
+        List<RequerimientosCuestionarios> reqData = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/requerimientosCuestionarios/requerimiento/" + pubData.getIdRequerimiento(), RequerimientosCuestionarios[].class));
         for (RequerimientosCuestionarios reqCue : reqData) {
             ProcesoSeleccionPruebasTecnicas testData = new ProcesoSeleccionPruebasTecnicas();
             testData.setIdProcesoSeleccion(id);
