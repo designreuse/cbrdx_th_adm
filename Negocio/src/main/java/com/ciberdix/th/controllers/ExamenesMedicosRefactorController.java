@@ -55,6 +55,7 @@ public class ExamenesMedicosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ExamenesMedicos create(@RequestBody ExamenesMedicos obj) {
+        obj = restTemplate.postForObject(serviceUrl, obj, ExamenesMedicos.class);
         ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
         TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
         String tokenProfile = UtilitiesController.generateTokenButton("/profile", null);
@@ -71,12 +72,21 @@ public class ExamenesMedicosRefactorController {
         // url 810 es /answer-exams/exam/:idExamen/terceroPublicacion/:idTerceroPublication
         // url 811 y 814 /informed-consent/exam/:idExamen/terceroPublicacion/:idTerceroPublication
         // url 814 perfil del cargo....
-        return restTemplate.postForObject(serviceUrl, obj, ExamenesMedicos.class);
+        return obj;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ExamenesMedicos obj) {
         //Correo 810 y 811 si Estado = ENESPR e InstMedic!=null
+        ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
+        TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
+        String tokenProfile = UtilitiesController.generateTokenButton("/profile", null);
+        if (UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENSPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
+            String token810 = UtilitiesController.generateTokenButton("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
+            String token811 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
+            UtilitiesController.sendMail("w1andresv@gmail.com", "810", "respondercuest" + token810 + "perfil" + tokenProfile);
+            UtilitiesController.sendMail("w1andresv@gmail.com", "811", "consentimiento" + token811);
+        }
         restTemplate.put(serviceUrl, obj);
     }
 
