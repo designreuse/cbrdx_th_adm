@@ -7,6 +7,7 @@ public class VTercerosReferencias {
     private Integer idTerceroReferencia;
     private Long idTercero;
     private String tipoReferencia;
+    private String codigoTipoReferencia;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -37,6 +38,14 @@ public class VTercerosReferencias {
 
     public void setTipoReferencia(String tipoReferencia) {
         this.tipoReferencia = tipoReferencia;
+    }
+
+    public String getCodigoTipoReferencia() {
+        return codigoTipoReferencia;
+    }
+
+    public void setCodigoTipoReferencia(String codigoTipoReferencia) {
+        this.codigoTipoReferencia = codigoTipoReferencia;
     }
 
     public String getPrimerNombre() {
