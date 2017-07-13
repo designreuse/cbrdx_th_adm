@@ -127,8 +127,8 @@ public class ProcesoSeleccionRefactorController {
             List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
             ArrayList<Integer> ps = new ArrayList<>();
 
-            for (int i = 0; i < vProcesoSeleccion.size(); i++) {
-                ps.add(vProcesoSeleccion.get(i).getIdProcesoPaso());
+            for (VProcesoSeleccion vps : vProcesoSeleccion) {
+                ps.add(vps.getIdProcesoPaso());
             }
 
             for (VProcesosPasos vpp : procesosPasos) {
@@ -142,14 +142,14 @@ public class ProcesoSeleccionRefactorController {
                 if (vProcesoSeleccion.size() > 0) {
                     if (ps.contains(vpp.getIdProcesoPaso())) {
                         for (VProcesoSeleccion vps : vProcesoSeleccion) {
-                            if (vpp.getIdProcesoPaso() == vps.getIdProcesoPaso()) {
+                            if (vpp.getIdProcesoPaso().equals(vps.getIdProcesoPaso())) {
                                 LPS.setIdProcesoSeleccion(vps.getIdProcesoSeleccion());
                                 LPS.setIdResponsable(vps.getIdResponsable());
                                 String codigo = UtilitiesController.findListItemById("ListasEstadosDiligenciados", vps.getIdEstadoDiligenciado()).getCodigo();
                                 LPS.setCodigoEstadoDiligenciado(codigo);
+                                LPSL.add(LPS);
                             }
                         }
-                        LPSL.add(LPS);
                     } else {
                         LPSL.add(LPS);
                     }
