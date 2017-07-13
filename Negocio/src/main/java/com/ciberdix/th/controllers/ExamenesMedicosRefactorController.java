@@ -88,7 +88,7 @@ public class ExamenesMedicosRefactorController {
         Requerimientos requerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + publicaciones.getIdRequerimiento(), Requerimientos.class);
         Cargos cargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
         Usuarios[] usuarios = restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class);
-        Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
+        Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
         if (obj.getIdInstitucionMedica() != null && UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
             VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
             UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "810", assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
