@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Danny on 11/07/2017.
@@ -60,11 +61,12 @@ public class ExamenesMedicosRefactorController {
         Publicaciones publicaciones = restTemplate.getForObject(baseUrl + "/api/publicaciones/" + tercerosPublicaciones.getIdPublicacion(), Publicaciones.class);
         Requerimientos requerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + publicaciones.getIdRequerimiento(), Requerimientos.class);
         Cargos cargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
+        Usuarios[] usuarios = restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class);
+        Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
         if (obj.getIdInstitucionMedica() != null) {
-            InstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), InstitucionesMedicas.class);
-            String token811 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
+            VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
             UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "810", assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
-            UtilitiesController.sendMail("w1andresv@gmail.com", "811", "consentimiento" + token811);
+            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "811", assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
         } else {
             String token814 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
             UtilitiesController.sendMail("w1andresv@gmail.com", "810", "consentimiento" + token814 + "perfil" + tokenProfile);
@@ -81,12 +83,16 @@ public class ExamenesMedicosRefactorController {
         //Correo 810 y 811 si Estado = ENESPR e InstMedic!=null
         ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
         TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
-        String tokenProfile = UtilitiesController.generateTokenButton("/profile", null);
-        if (UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
-            String token810 = UtilitiesController.generateTokenButton("/answer-exams/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
-            String token811 = UtilitiesController.generateTokenButton("/informed-consent/exam/" + obj.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), null);
-            UtilitiesController.sendMail("w1andresv@gmail.com", "810", "respondercuest" + token810 + "perfil" + tokenProfile);
-            UtilitiesController.sendMail("w1andresv@gmail.com", "811", "consentimiento" + token811);
+        VTerceros vTerceros = restTemplate.getForObject(baseUrl + "/api/vterceros/" + tercerosPublicaciones.getIdTercero(), VTerceros.class);
+        Publicaciones publicaciones = restTemplate.getForObject(baseUrl + "/api/publicaciones/" + tercerosPublicaciones.getIdPublicacion(), Publicaciones.class);
+        Requerimientos requerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + publicaciones.getIdRequerimiento(), Requerimientos.class);
+        Cargos cargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
+        Usuarios[] usuarios = restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class);
+        Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
+        if (obj.getIdInstitucionMedica() != null && UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
+            VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
+            UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "810", assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
+            UtilitiesController.sendMail(postulante.getCorreoElectronico(), "811", assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
         }
         restTemplate.put(serviceUrl, obj);
     }
@@ -201,7 +207,7 @@ public class ExamenesMedicosRefactorController {
         return sb.toString();
     }
 
-    private String assembleInstitutionBody(VInstitucionesMedicas i, String nombreTercero, ProcesoSeleccion p, ExamenesMedicos e) {
+    private String assemblePostulantBody(VInstitucionesMedicas i, String nombreTercero, ProcesoSeleccion p, ExamenesMedicos e) {
         StringBuilder sb = new StringBuilder();
         sb.append("<h2>");
         sb.append("Proceso de Selección - Examen Médico de Ingreso - ");
