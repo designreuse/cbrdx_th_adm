@@ -6,7 +6,6 @@ import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
-import com.sun.istack.internal.Nullable;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.HttpHeaders;
@@ -149,7 +148,7 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
-    static String generateTokenButton(String URL, @Nullable String image) {
+    static String generateTokenButton(String URL, String image) {
         if (image == null) image = "revisar.png";
         String frontUrl = readParameter("front.url");
         String token = generateURLToken(URL);
