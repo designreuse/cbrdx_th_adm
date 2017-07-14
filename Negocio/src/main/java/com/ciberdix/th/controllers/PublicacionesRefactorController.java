@@ -5,6 +5,7 @@ import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,7 +62,15 @@ public class PublicacionesRefactorController {
         VPublicaciones parametro = restTemplate.getForObject(serviceUrl + "/" + idPublicacion, VPublicaciones.class);
         Requerimientos r = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + parametro.getIdRequerimiento(), Requerimientos.class);
         Integer vacantes = r.getCantidadVacantes();
-        List<TercerosPublicaciones> listado = Arrays.stream(restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/publicacion/" + idPublicacion, TercerosPublicaciones[].class)).filter(t -> t.getIndicadorContratacion()).collect(Collectors.toList());
+        List<TercerosPublicaciones> listado = new ArrayList<>();
+        List<TercerosPublicaciones> tp = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/publicacion/" + idPublicacion, TercerosPublicaciones[].class));
+        for(TercerosPublicaciones tP : tp){
+            if(tP.getIndicadorContratacion() != null){
+                if(tP.getIndicadorContratacion()){
+                    listado.add(tP);
+                }
+            }
+        }
         return vacantes.equals(listado.size());
     }
 
