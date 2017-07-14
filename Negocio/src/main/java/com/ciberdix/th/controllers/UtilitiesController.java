@@ -131,14 +131,44 @@ public class UtilitiesController {
         MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
         org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
         try {
-            String encoded = base64.encodeAsString(assembleCalendar(programmedDate, personName));
+            String uid = "UID:info@ciberdix.com\r\n";
+            Date temp = new Date(programmedDate.getTime());
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            String curTime = sd1.format(new Date(cal.getTimeInMillis()));
+            String dtstamp = "DTSTAMP:" + curTime + "\r\n";
+            String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
+            String dtstart = "DTSTART:" + sd1.format(temp) + "\r\n";
+            String dtend = "DTEND:" + sd1.format(temp.getTime() + 30 * 1000 * 60) + "\r\n";
+            String summary = "SUMMARY:Cita\r\n";
+            String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
+            Path location = Paths.get("adjuntos");
+            File file = File.createTempFile("temp", ".ics", location.toFile());
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(calBegin);
+            bw.write(version);
+            bw.write(prodid);
+            bw.write(eventBegin);
+            bw.write(uid);
+            bw.write(dtstamp);
+            bw.write(organizer);
+            bw.write(dtstart);
+            bw.write(dtend);
+            bw.write(summary);
+            bw.write(description);
+            bw.write(eventEnd);
+            bw.write(calEnd);
+            bw.close();
+            byte[] out = Files.readAllBytes(file.toPath());
+            String encoded = base64.encodeAsString(out);
             c.setContent(encoded);
             c.setName("cal.ics");
             c.setType("text/calendar");
             content.add(c);
             message.setAttachments(content);
             MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
-        } catch (MandrillApiError | IOException mandrillApiError) {
+        } catch (Exception mandrillApiError) {
             mandrillApiError.printStackTrace();
         }
     }
