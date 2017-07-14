@@ -30,30 +30,23 @@ public class RespuestasRefactorController {
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<VRespuestas> findEnabled() {
-        RestTemplate restTemplate = new RestTemplate();
-        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", VRespuestas[].class);
-        return Arrays.asList(parametros);
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VRespuestas findOne(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/" + id, VRespuestas.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarPregunta/{id}")
-    List<VRespuestas> findByIdPregunta(@PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.GET, path = "/maestroRespuesta/{id}")
+    List<VRespuestas> findByIdMaestroRespuesta(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/buscarPregunta/" + id, VRespuestas[].class);
+        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/maestroRespuesta/" + id, VRespuestas[].class);
         return Arrays.asList(parametros);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/buscarPregunta/{id}")
-    List<VRespuestas> findByIdPreguntaAndIndicadorHabTrue(@PathVariable Integer id) {
+        @RequestMapping(method = RequestMethod.GET, path = "/filtro/{idMR}/{idPO}/{idCP}")
+    List<VRespuestas> findByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(@PathVariable Integer idMR, @PathVariable Integer idPO, @PathVariable Integer idCP) {
         RestTemplate restTemplate = new RestTemplate();
-        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/buscarPregunta/" + id, VRespuestas[].class);
+        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/filtro/" + idMR + "/" + idPO + "/" + idCP, VRespuestas[].class);
         return Arrays.asList(parametros);
     }
 

@@ -1,12 +1,13 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.ProcesoSeleccionPruebasTecnicas;
-import com.ciberdix.th.model.VProcesoSeleccionPruebasTecnicas;
+import com.ciberdix.th.model.*;
+import com.ciberdix.th.security.JwtTokenUtil;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,6 +46,27 @@ public class ProcesoSeleccionPruebasTecnicasRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/procesoSeleccion/{id}")
     List<VProcesoSeleccionPruebasTecnicas> findByIdProcesoSeleccion(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
+        VProcesoSeleccionPruebasTecnicas[] parametros = restTemplate.getForObject(serviceUrl + "/procesoSeleccion/" + id, VProcesoSeleccionPruebasTecnicas[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/procesoSeleccion/{id}/inicializar/{idTerceroPublicacion}")
+    List<VProcesoSeleccionPruebasTecnicas> findByIdProcesoSeleccion(@PathVariable Integer id, @PathVariable Integer idTerceroPublicacion, HttpServletRequest request) {
+        RestTemplate restTemplate = new RestTemplate();
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        String token = UtilitiesController.extractToken(request);
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
+        TercerosPublicaciones data = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + idTerceroPublicacion, TercerosPublicaciones.class);
+        Publicaciones pubData = restTemplate.getForObject(globales.getUrl() + "/api/publicaciones/" + data.getIdPublicacion(), Publicaciones.class);
+        List<RequerimientosCuestionarios> reqData = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/requerimientosCuestionarios/requerimiento/" + pubData.getIdRequerimiento(), RequerimientosCuestionarios[].class));
+        for (RequerimientosCuestionarios reqCue : reqData) {
+            ProcesoSeleccionPruebasTecnicas testData = new ProcesoSeleccionPruebasTecnicas();
+            testData.setIdProcesoSeleccion(id);
+            testData.setIndicadorHabilitado(true);
+            testData.setAuditoriaUsuario(idUsuario);
+            testData.setIdPruebaTecnica(reqCue.getIdCuestionario());
+            restTemplate.postForObject(serviceUrl, testData, ProcesoSeleccionPruebasTecnicas.class);
+        }
         VProcesoSeleccionPruebasTecnicas[] parametros = restTemplate.getForObject(serviceUrl + "/procesoSeleccion/" + id, VProcesoSeleccionPruebasTecnicas[].class);
         return Arrays.asList(parametros);
     }

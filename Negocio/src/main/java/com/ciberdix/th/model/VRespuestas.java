@@ -3,20 +3,24 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 11/07/2017.
  */
 public class VRespuestas {
 
     private Integer idRespuesta;
+    private String codigoPregunta;
     private String pregunta;
-    private Integer idPregunta;
-    private String codigoRespuesta;
-    private String respuesta;
+    private String tipoPregunta;
+    private String secuencia;
+    private Integer idCuestionarioPregunta;
+    private String codigoOpcion;
+    private String opcion;
     private Integer orden;
-    private Boolean indicadorCorrecto;
-    private Boolean indicadorHabilitado;
+    private Integer idPreguntaOpcion;
+    private String respuesta;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idMaestroRespuesta;
 
     public Integer getIdRespuesta() {
         return idRespuesta;
@@ -24,6 +28,14 @@ public class VRespuestas {
 
     public void setIdRespuesta(Integer idRespuesta) {
         this.idRespuesta = idRespuesta;
+    }
+
+    public String getCodigoPregunta() {
+        return codigoPregunta;
+    }
+
+    public void setCodigoPregunta(String codigoPregunta) {
+        this.codigoPregunta = codigoPregunta;
     }
 
     public String getPregunta() {
@@ -34,28 +46,44 @@ public class VRespuestas {
         this.pregunta = pregunta;
     }
 
-    public Integer getIdPregunta() {
-        return idPregunta;
+    public String getTipoPregunta() {
+        return tipoPregunta;
     }
 
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setTipoPregunta(String tipoPregunta) {
+        this.tipoPregunta = tipoPregunta;
     }
 
-    public String getCodigoRespuesta() {
-        return codigoRespuesta;
+    public String getSecuencia() {
+        return secuencia;
     }
 
-    public void setCodigoRespuesta(String codigoRespuesta) {
-        this.codigoRespuesta = codigoRespuesta;
+    public void setSecuencia(String secuencia) {
+        this.secuencia = secuencia;
     }
 
-    public String getRespuesta() {
-        return respuesta;
+    public Integer getIdCuestionarioPregunta() {
+        return idCuestionarioPregunta;
     }
 
-    public void setRespuesta(String respuesta) {
-        this.respuesta = respuesta;
+    public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
+    }
+
+    public String getCodigoOpcion() {
+        return codigoOpcion;
+    }
+
+    public void setCodigoOpcion(String codigoOpcion) {
+        this.codigoOpcion = codigoOpcion;
+    }
+
+    public String getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
     }
 
     public Integer getOrden() {
@@ -66,20 +94,20 @@ public class VRespuestas {
         this.orden = orden;
     }
 
-    public Boolean getIndicadorCorrecto() {
-        return indicadorCorrecto;
+    public Integer getIdPreguntaOpcion() {
+        return idPreguntaOpcion;
     }
 
-    public void setIndicadorCorrecto(Boolean indicadorCorrecto) {
-        this.indicadorCorrecto = indicadorCorrecto;
+    public void setIdPreguntaOpcion(Integer idPreguntaOpcion) {
+        this.idPreguntaOpcion = idPreguntaOpcion;
     }
 
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
+    public String getRespuesta() {
+        return respuesta;
     }
 
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
     }
 
     public Integer getAuditoriaUsuario() {
@@ -96,5 +124,13 @@ public class VRespuestas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
+    }
+
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 }

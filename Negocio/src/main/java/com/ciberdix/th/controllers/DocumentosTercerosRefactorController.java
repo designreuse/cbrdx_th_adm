@@ -46,6 +46,20 @@ public class DocumentosTercerosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/documentosAdjunto")
+    List<DocumentosTerceros> queryDocumentosAdjunto() {
+        RestTemplate restTemplate = new RestTemplate();
+        DocumentosTerceros[] parametros = restTemplate.getForObject(serviceUrl + "/documentosAdjunto", DocumentosTerceros[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/documentosDescarga")
+    List<DocumentosTerceros> queryDocumentosDescarga() {
+        RestTemplate restTemplate = new RestTemplate();
+        DocumentosTerceros[] parametros = restTemplate.getForObject(serviceUrl + "/documentosDescarga", DocumentosTerceros[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     DocumentosTerceros create(@RequestBody DocumentosTerceros o) {
         RestTemplate restTemplate = new RestTemplate();

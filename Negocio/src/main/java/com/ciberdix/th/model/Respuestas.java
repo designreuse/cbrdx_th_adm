@@ -8,14 +8,12 @@ import java.sql.Timestamp;
 public class Respuestas {
 
     private Integer idRespuesta;
-    private Integer idPregunta;
-    private String codigoRespuesta;
+    private Integer idCuestionarioPregunta;
+    private Integer idPreguntaOpcion;
     private String respuesta;
-    private Integer orden;
-    private Boolean indicadorCorrecto;
-    private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idMaestroRespuesta;
 
     public Integer getIdRespuesta() {
         return idRespuesta;
@@ -25,20 +23,20 @@ public class Respuestas {
         this.idRespuesta = idRespuesta;
     }
 
-    public Integer getIdPregunta() {
-        return idPregunta;
+    public Integer getIdCuestionarioPregunta() {
+        return idCuestionarioPregunta;
     }
 
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
     }
 
-    public String getCodigoRespuesta() {
-        return codigoRespuesta;
+    public Integer getIdPreguntaOpcion() {
+        return idPreguntaOpcion;
     }
 
-    public void setCodigoRespuesta(String codigoRespuesta) {
-        this.codigoRespuesta = codigoRespuesta;
+    public void setIdPreguntaOpcion(Integer idPreguntaOpcion) {
+        this.idPreguntaOpcion = idPreguntaOpcion;
     }
 
     public String getRespuesta() {
@@ -47,30 +45,6 @@ public class Respuestas {
 
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
-    }
-
-    public Integer getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Integer orden) {
-        this.orden = orden;
-    }
-
-    public Boolean getIndicadorCorrecto() {
-        return indicadorCorrecto;
-    }
-
-    public void setIndicadorCorrecto(Boolean indicadorCorrecto) {
-        this.indicadorCorrecto = indicadorCorrecto;
-    }
-
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
-    }
-
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     public Integer getAuditoriaUsuario() {
@@ -87,5 +61,13 @@ public class Respuestas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
+    }
+
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 }

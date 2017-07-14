@@ -1,10 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/06/2017.
+ * Created by Danny on 13/07/2017.
  */
 @Entity
 @Table(name = "TercerosPublicaciones", schema = "dbo", catalog = "CREZCAMOS")
@@ -20,35 +21,47 @@ public class TercerosPublicaciones {
     private Boolean indicadorFinalizado;
     private String codigo;
     private Integer paso;
+    private Boolean indicadorFinalizadoCuestionarios;
+    private Integer idCuestionarioActual;
+    private Date fechaContratacion;
+    private Boolean indicadorContratacion;
 
     public TercerosPublicaciones() {
     }
 
-    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
+    public TercerosPublicaciones(Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual, Date fechaContratacion, Boolean indicadorContratacion) {
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorFinalizado = indicadorFinalizado;
         this.codigo = codigo;
         this.paso = paso;
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+        this.idCuestionarioActual = idCuestionarioActual;
+        this.fechaContratacion = fechaContratacion;
+        this.indicadorContratacion = indicadorContratacion;
     }
 
-    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso) {
+    public TercerosPublicaciones(Integer idTercerosPublicaciones, Long idTercero, Integer idPublicacion, Boolean indicadorTerminos, Boolean indicadorCentrales, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorFinalizado, String codigo, Integer paso, Boolean indicadorFinalizadoCuestionarios, Integer idCuestionarioActual, Date fechaContratacion, Boolean indicadorContratacion) {
         this.idTercerosPublicaciones = idTercerosPublicaciones;
         this.idTercero = idTercero;
         this.idPublicacion = idPublicacion;
         this.indicadorTerminos = indicadorTerminos;
         this.indicadorCentrales = indicadorCentrales;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorFinalizado = indicadorFinalizado;
         this.codigo = codigo;
         this.paso = paso;
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+        this.idCuestionarioActual = idCuestionarioActual;
+        this.fechaContratacion = fechaContratacion;
+        this.indicadorContratacion = indicadorContratacion;
     }
 
     @Id
@@ -162,6 +175,46 @@ public class TercerosPublicaciones {
         this.paso = paso;
     }
 
+    @Basic
+    @Column(name = "IndicadorFinalizadoCuestionarios", nullable = true)
+    public Boolean getIndicadorFinalizadoCuestionarios() {
+        return indicadorFinalizadoCuestionarios;
+    }
+
+    public void setIndicadorFinalizadoCuestionarios(Boolean indicadorFinalizadoCuestionarios) {
+        this.indicadorFinalizadoCuestionarios = indicadorFinalizadoCuestionarios;
+    }
+
+    @Basic
+    @Column(name = "IdCuestionarioActual", nullable = true)
+    public Integer getIdCuestionarioActual() {
+        return idCuestionarioActual;
+    }
+
+    public void setIdCuestionarioActual(Integer idCuestionarioActual) {
+        this.idCuestionarioActual = idCuestionarioActual;
+    }
+
+    @Basic
+    @Column(name = "FechaContratacion", nullable = true)
+    public Date getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    @Basic
+    @Column(name = "IndicadorContratacion", nullable = true)
+    public Boolean getIndicadorContratacion() {
+        return indicadorContratacion;
+    }
+
+    public void setIndicadorContratacion(Boolean indicadorContratacion) {
+        this.indicadorContratacion = indicadorContratacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -188,6 +241,14 @@ public class TercerosPublicaciones {
             return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
         if (paso != null ? !paso.equals(that.paso) : that.paso != null) return false;
+        if (indicadorFinalizadoCuestionarios != null ? !indicadorFinalizadoCuestionarios.equals(that.indicadorFinalizadoCuestionarios) : that.indicadorFinalizadoCuestionarios != null)
+            return false;
+        if (idCuestionarioActual != null ? !idCuestionarioActual.equals(that.idCuestionarioActual) : that.idCuestionarioActual != null)
+            return false;
+        if (fechaContratacion != null ? !fechaContratacion.equals(that.fechaContratacion) : that.fechaContratacion != null)
+            return false;
+        if (indicadorContratacion != null ? !indicadorContratacion.equals(that.indicadorContratacion) : that.indicadorContratacion != null)
+            return false;
 
         return true;
     }
@@ -205,6 +266,10 @@ public class TercerosPublicaciones {
         result = 31 * result + (indicadorFinalizado != null ? indicadorFinalizado.hashCode() : 0);
         result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
+        result = 31 * result + (indicadorFinalizadoCuestionarios != null ? indicadorFinalizadoCuestionarios.hashCode() : 0);
+        result = 31 * result + (idCuestionarioActual != null ? idCuestionarioActual.hashCode() : 0);
+        result = 31 * result + (fechaContratacion != null ? fechaContratacion.hashCode() : 0);
+        result = 31 * result + (indicadorContratacion != null ? indicadorContratacion.hashCode() : 0);
         return result;
     }
 }

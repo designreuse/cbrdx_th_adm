@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
+import com.ciberdix.th.model.GenericObject;
 import com.ciberdix.th.model.TercerosReferenciasLlamada;
 import com.ciberdix.th.model.VTercerosReferenciasLlamada;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,16 @@ public class TercerosReferenciasLlamadaRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         VTercerosReferenciasLlamada[] parametros = restTemplate.getForObject(serviceUrl + "/terceroReferencia/" + id, VTercerosReferenciasLlamada[].class);
         return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/lastCall/{idTerceroReferencia}")
+    GenericObject findByIdTerceroReferenciaLastCall(@PathVariable Integer idTerceroReferencia) {
+        RestTemplate restTemplate = new RestTemplate();
+        List<VTercerosReferenciasLlamada> vT = Arrays.asList(restTemplate.getForObject(serviceUrl + "/terceroReferencia/" + idTerceroReferencia, VTercerosReferenciasLlamada[].class));
+        Integer idValue = vT.get(vT.size()-1).getIdTerceroReferenciaLlamada();
+        String value = vT.get(vT.size()-1).getResultadoLlamada();
+        GenericObject g = new GenericObject(idValue,value);
+        return g;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/resultadoLlamada/{id}")

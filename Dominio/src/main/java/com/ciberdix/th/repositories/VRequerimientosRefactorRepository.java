@@ -42,4 +42,7 @@ public interface VRequerimientosRefactorRepository extends CrudRepository<VReque
 
     @Query("SELECT P FROM VRequerimientos P WHERE (P.fechaInicioPublicacion <= GETDATE() AND P.fechaFinPublicacion >= GETDATE()) AND P.idFormaReclutamientoPublicacion IN (SELECT l.idLista FROM ListasFormasReclutamientos l WHERE (l.codigo = 'MIX') OR (l.codigo = 'EXT')) AND (P.indicadorHabilitadoPublicaciones = 1) AND P.idRequerimiento IN (SELECT R.idRequerimiento FROM Requerimientos R WHERE R.idEstructuraFisica IN (SELECT E.idEstructuraFisica FROM EstructuraFisica E WHERE E.idLocalizacion IN (SELECT L.idLocalizacion FROM Localizaciones L WHERE L.idDivisionPolitica IN (SELECT D.idDivisionPolitica FROM DivisionPolitica D WHERE D.idDivisionPolitica = ?1 OR D.idDivisionPoliticaPadre = ?1))))")
     List<VRequerimientos> queryAllByDivPolitica(Integer idDivisionPolitica);
+
+    @Query("SELECT V FROM VRequerimientos V WHERE V.idPublicacion IN (SELECT T.idPublicacion FROM TercerosPublicaciones T WHERE T.idTercero = ?1)")
+    List<VRequerimientos> queryAllByIdTercero(Long idTercero);
 }

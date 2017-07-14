@@ -18,8 +18,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -77,9 +75,9 @@ public class AuthenticationRestController {
     public ResponseEntity<?> refreshExternalToken(HttpServletRequest request) {
         RestTemplate restTemplate = new RestTemplate();
         String token = request.getHeader(tokenHeader);
-        String username = jwtTokenUtil.getUsernameFromToken(token);
-        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(username);
-        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+        Integer username = jwtTokenUtil.getUserIdFromToken(token);
+        UserDetailsCustom userDetails = userDetailsService.loadUserByIdUsername(username);
+        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/query/" + username, Usuarios.class);
         Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
         token = jwtTokenUtil.generateToken(userDetails, user, tercero);
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));

@@ -31,33 +31,27 @@ public class RespuestasRefactorController {
         return (List<VRespuestas>) vRespuestasRefactorRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<VRespuestas> findEnabled() {
-        return vRespuestasRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VRespuestas findOne(@PathVariable Integer id) {
         return vRespuestasRefactorRepository.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarPregunta/{id}")
-    List<VRespuestas> findByIdPregunta(@PathVariable Integer id) {
-        return vRespuestasRefactorRepository.findAllByIdPregunta(id);
+    @RequestMapping(method = RequestMethod.GET, path = "/maestroRespuesta/{id}")
+    List<VRespuestas> findByIdMaestroRespuesta(@PathVariable Integer id) {
+        return vRespuestasRefactorRepository.findAllByIdMaestroRespuesta(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled/buscarPregunta/{id}")
-    List<VRespuestas> findByIdPreguntaAndIndicadorHabTrue(@PathVariable Integer id) {
-        return vRespuestasRefactorRepository.findAllByIdPreguntaAndIndicadorHabilitadoIsTrue(id);
+    @RequestMapping(method = RequestMethod.GET, path = "/filtro/{idMR}/{idPO}/{idCP}")
+    List<VRespuestas> findByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(@PathVariable Integer idMR, @PathVariable Integer idPO, @PathVariable Integer idCP) {
+        return vRespuestasRefactorRepository.findAllByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(idMR, idPO, idCP);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     Respuestas create(@RequestBody Respuestas o) {
         return respuestasRefactorRepository.save(
                 new Respuestas(
-                        o.getIdPregunta(),o.getCodigoRespuesta(),o.getRespuesta(),
-                        o.getOrden(),o.getIndicadorCorrecto(),o.getIndicadorHabilitado(),
-                        o.getAuditoriaUsuario()
+                        o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
+                        o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }
@@ -66,9 +60,8 @@ public class RespuestasRefactorController {
     void update(@RequestBody Respuestas o) {
         respuestasRefactorRepository.save(
                 new Respuestas(
-                        o.getIdRespuesta(),o.getIdPregunta(),o.getCodigoRespuesta(),o.getRespuesta(),
-                        o.getOrden(),o.getIndicadorCorrecto(),o.getIndicadorHabilitado(),
-                        o.getAuditoriaUsuario()
+                        o.getIdRespuesta(),o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
+                        o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }

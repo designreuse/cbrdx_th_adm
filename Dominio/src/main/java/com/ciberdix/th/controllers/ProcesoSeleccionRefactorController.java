@@ -41,6 +41,16 @@ public class ProcesoSeleccionRefactorController {
         return vProcesoSeleccionRefactorRepository.findAllByIdTerceroPublicacion(idTerceroPublicaicon);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}")
+    List<VProcesoSeleccion> findByIdPublicacion(@PathVariable Integer id) {
+        return vProcesoSeleccionRefactorRepository.queryAllByIdPublicacion(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/exist/{idTerceroPublicacion}/{idProcesoPaso}")
+    VProcesoSeleccion findOne(@PathVariable Integer idTerceroPublicacion, @PathVariable Integer idProcesoPaso) {
+        return vProcesoSeleccionRefactorRepository.findAllByIdTerceroPublicacionAndIdProcesoPaso(idTerceroPublicacion,idProcesoPaso);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion o) {
         return procesoSeleccionRefactorRepository.save(new ProcesoSeleccion(

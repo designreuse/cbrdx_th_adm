@@ -50,6 +50,16 @@ public class TercerosDocumentosTerceroRefactorController {
         return vTercerosDocumentosTerceroRefactorRepository.findAllByIdDocumentoTercero(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/adjunto/{id}")
+    VTercerosDocumentosTercero findByIdAdjunto(@PathVariable Integer id) {
+        return vTercerosDocumentosTerceroRefactorRepository.findByIdAdjunto(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/adjuntoVer/{id}/{idDoc}")
+    VTercerosDocumentosTercero findByIdAdjuntoVer(@PathVariable Long id, @PathVariable Integer idDoc) {
+        return vTercerosDocumentosTerceroRefactorRepository.findByIdTerceroAndIdDocumentoTerceroAndIndicadorHabilitadoIsTrue(id, idDoc);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosDocumentosTercero create(@RequestBody TercerosDocumentosTercero o) {
         return tercerosDocumentosTerceroRefactorRepository.save(

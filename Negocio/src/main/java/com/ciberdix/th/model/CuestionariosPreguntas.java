@@ -3,11 +3,11 @@ package com.ciberdix.th.model;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 9/07/2017.
  */
-public class Preguntas {
+public class CuestionariosPreguntas {
 
-    private Integer idPregunta;
+    private Integer idCuestionarioPregunta;
     private Integer idCuestionario;
     private String codigoPregunta;
     private String pregunta;
@@ -15,19 +15,19 @@ public class Preguntas {
     private Boolean indicadorDepende;
     private Integer idDependePregunta;
     private Integer idDependeRespuesta;
-    private Integer secuencia;
-    private Boolean indicadorHabilitado;
-    private Boolean indicadorObligatorio;
+    private String secuencia;
     private Boolean indicadorFiltrante;
+    private Boolean indicadorObligatorio;
+    private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public Integer getIdPregunta() {
-        return idPregunta;
+    public Integer getIdCuestionarioPregunta() {
+        return idCuestionarioPregunta;
     }
 
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
     }
 
     public Integer getIdCuestionario() {
@@ -86,20 +86,20 @@ public class Preguntas {
         this.idDependeRespuesta = idDependeRespuesta;
     }
 
-    public Integer getSecuencia() {
+    public String getSecuencia() {
         return secuencia;
     }
 
-    public void setSecuencia(Integer secuencia) {
+    public void setSecuencia(String secuencia) {
         this.secuencia = secuencia;
     }
 
-    public Boolean getIndicadorHabilitado() {
-        return indicadorHabilitado;
+    public Boolean getIndicadorFiltrante() {
+        return indicadorFiltrante;
     }
 
-    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
-        this.indicadorHabilitado = indicadorHabilitado;
+    public void setIndicadorFiltrante(Boolean indicadorFiltrante) {
+        this.indicadorFiltrante = indicadorFiltrante;
     }
 
     public Boolean getIndicadorObligatorio() {
@@ -110,12 +110,12 @@ public class Preguntas {
         this.indicadorObligatorio = indicadorObligatorio;
     }
 
-    public Boolean getIndicadorFiltrante() {
-        return indicadorFiltrante;
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
     }
 
-    public void setIndicadorFiltrante(Boolean indicadorFiltrante) {
-        this.indicadorFiltrante = indicadorFiltrante;
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
     }
 
     public Integer getAuditoriaUsuario() {
