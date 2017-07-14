@@ -83,18 +83,20 @@ public class TercerosPublicacionesRefactorController {
             UtilitiesController.sendMail(t.getCorreoElectronico(), "Bienvenido al proceso de Selección", "<h2>Te haz postulado a la vacante " + r.getCargo() + "</h2><br/><p>Hola " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</p><p>Gracias por aplicar al empleo ofrecido por nuestra compañía. Muy pronto revisaremos tu perfil con mucha atención. Si tu perfil encaja -o no- con el cargo " + r.getCargo() + ", nos pondremos en contacto para comunicarte cuáles fueron tus resultados.</p>" +
                     "<p>Si estás interesado en otra de las vacantes que tenemos, por favor ingresa a nuestra página web <a href=\"www.crezcamos.com/trabajeconnosotros\">www.crezcamos.com/trabajeconnosotros</a> y aplica a la opción que más te interese.</p><p>¡Gracias por preferirnos!</p>");
         }
-        if(o.getIndicadorContratacion()){
-            String listado = "";
-            List<DocumentosTerceros> dt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/documentosTerceros", DocumentosTerceros[].class));
-            List<VTercerosDocumentosTercero> tdt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDocumentosTercero/tercero/" + t.getIdTercero(), VTercerosDocumentosTercero[].class));
-            for(DocumentosTerceros dT : dt){
-                for(VTercerosDocumentosTercero vtdt : tdt){
-                    if(dT.getIdDocumentoTercero().equals(vtdt.getIdDocumentoTercero())){
-                        listado += "<ol><li>" + vtdt.getNombreDocumentoTercero() + "</li></ol>";
+        if (o.getIndicadorContratacion() != null) {
+            if(o.getIndicadorContratacion()){
+                String listado = "";
+                List<DocumentosTerceros> dt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/documentosTerceros", DocumentosTerceros[].class));
+                List<VTercerosDocumentosTercero> tdt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDocumentosTercero/tercero/" + t.getIdTercero(), VTercerosDocumentosTercero[].class));
+                for(DocumentosTerceros dT : dt){
+                    for(VTercerosDocumentosTercero vtdt : tdt){
+                        if(dT.getIdDocumentoTercero().equals(vtdt.getIdDocumentoTercero())){
+                            listado += "<ol><li>" + vtdt.getNombreDocumentoTercero() + "</li></ol>";
+                        }
                     }
                 }
+                UtilitiesController.sendMail(t.getCorreoElectronico(), "Felicidades has sido Contratado", "<h2>Felicitaciones</h2><p>Ha sido contrado en la vacanate " + r.getIdCargo() + ".</p> <p>Debe diligenciar los siguientes documentos: </p>" + listado);
             }
-            UtilitiesController.sendMail(t.getCorreoElectronico(), "Felicidades has sido Contratado", "<h2>Felicitaciones</h2><p>Ha sido contrado en la vacanate " + r.getIdCargo() + ".</p> <p>Debe diligenciar los siguientes documentos: </p>" + listado);
         }
         restTemplate.put(serviceUrl, o);
     }
