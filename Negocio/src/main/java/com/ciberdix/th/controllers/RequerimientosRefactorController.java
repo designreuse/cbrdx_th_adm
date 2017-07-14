@@ -46,7 +46,9 @@ public class RequerimientosRefactorController {
     Requerimientos closeReq(@PathVariable Integer idRequerimiento) {
         Requerimientos req = restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
         req.setIdEstado(UtilitiesController.findListItem("ListasEstadosRequerimientos", "CRRD").getIdLista());
-        return restTemplate.postForObject(serviceUrl, req, Requerimientos.class);
+        restTemplate.put(serviceUrl, req, Requerimientos.class);
+        return restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+
     }
 
     @RequestMapping(method = RequestMethod.GET)
