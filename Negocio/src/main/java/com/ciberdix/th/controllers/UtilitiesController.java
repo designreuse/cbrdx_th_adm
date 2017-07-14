@@ -131,39 +131,14 @@ public class UtilitiesController {
         MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
         org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
         try {
-            String uid = "UID:info@ciberdix.com\r\n";
-            Date temp = new Date(programmedDate.getTime());
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
-            String curTime = sd1.format(new Date(cal.getTimeInMillis()));
-            String dtstamp = "DTSTAMP:" + curTime + "\r\n";
-            String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
-            String dtstart = "DTSTART:" + sd1.format(temp) + "\r\n";
-            String dtend = "DTEND:" + sd1.format(temp.getTime() + 30 * 1000 * 60) + "\r\n";
-            String summary = "SUMMARY:Cita\r\n";
-            String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
-            StringBuilder sb = new StringBuilder();
-            sb.append(calBegin);
-            sb.append(version);
-            sb.append(prodid);
-            sb.append(eventBegin);
-            sb.append(uid);
-            sb.append(dtstamp);
-            sb.append(organizer);
-            sb.append(dtstart);
-            sb.append(dtend);
-            sb.append(summary);
-            sb.append(description);
-            sb.append(eventEnd);
-            sb.append(calEnd);
-            String encoded = base64.encodeAsString(sb.toString().getBytes());
-            c.setContent(sb.toString());
+            String encoded = base64.encodeAsString(assembleCalendar(programmedDate, personName));
+            c.setContent(encoded);
             c.setName("cal.ics");
             c.setType("text/calendar");
             content.add(c);
             message.setAttachments(content);
             MandrillMessageStatus[] messageStatusReports = mandrillApi.messages().send(message, false);
-        } catch (Exception mandrillApiError) {
+        } catch (MandrillApiError | IOException mandrillApiError) {
             mandrillApiError.printStackTrace();
         }
     }
