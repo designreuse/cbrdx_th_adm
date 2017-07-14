@@ -12,4 +12,6 @@ public interface VRespuestasRefactorRepository extends CrudRepository<VRespuesta
 
     List<VRespuestas> findAllByIdMaestroRespuesta(Integer id);
 
+    List<VRespuestas> findAllByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(Integer idMR, Integer idPO, Integer idCP);
+
 }

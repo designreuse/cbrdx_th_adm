@@ -41,6 +41,11 @@ public class RespuestasRefactorController {
         return vRespuestasRefactorRepository.findAllByIdMaestroRespuesta(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/filtro/{idMR}/{idPO}/{idCP}")
+    List<VRespuestas> findByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(@PathVariable Integer idMR, @PathVariable Integer idPO, @PathVariable Integer idCP) {
+        return vRespuestasRefactorRepository.findAllByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(idMR, idPO, idCP);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Respuestas create(@RequestBody Respuestas o) {
         return respuestasRefactorRepository.save(
