@@ -42,6 +42,13 @@ public class RequerimientosRefactorController {
         restTemplate = new RestTemplate();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cerrarRequerimiento/{idRequerimiento}")
+    Requerimientos closeReq(@PathVariable Integer idRequerimiento) {
+        Requerimientos req = restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+        req.setIdEstado(UtilitiesController.findListItem("ListasEstadosRequerimientos", "CRRD").getIdLista());
+        return restTemplate.postForObject(serviceUrl, req, Requerimientos.class);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     List<VRequerimientos> findAll(HttpServletRequest request) {
         String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
