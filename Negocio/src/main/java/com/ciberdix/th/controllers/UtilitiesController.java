@@ -157,7 +157,7 @@ public class UtilitiesController {
             sb.append(eventEnd);
             sb.append(calEnd);
             String encoded = base64.encodeAsString(sb.toString().getBytes());
-            c.setContent(encoded);
+            c.setContent(sb.toString());
             c.setName("cal.ics");
             c.setType("text/calendar");
             content.add(c);
