@@ -1,7 +1,9 @@
 package com.ciberdix.th.model;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Danny on 8/06/2017.
@@ -14,6 +16,7 @@ public class ProcesoSeleccion {
     private Integer idResponsable;
     private Integer idTerceroPublicacion;
     private String observacion;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;

@@ -1,5 +1,7 @@
 package com.ciberdix.th.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class VProcesoSeleccion {
     private String nombreTercero;
     private Integer idTerceroPublicacion;
     private String observacion;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Date fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
