@@ -42,6 +42,15 @@ public class RequerimientosRefactorController {
         restTemplate = new RestTemplate();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cerrarRequerimiento/{idRequerimiento}")
+    Requerimientos closeReq(@PathVariable Integer idRequerimiento) {
+        Requerimientos req = restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+        req.setIdEstado(UtilitiesController.findListItem("ListasEstadosRequerimientos", "CRRD").getIdLista());
+        restTemplate.put(serviceUrl, req, Requerimientos.class);
+        return restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     List<VRequerimientos> findAll(HttpServletRequest request) {
         String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
@@ -119,7 +128,7 @@ public class RequerimientosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
     List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, HttpServletRequest request) {
-        return findAll(request).stream().filter(t -> t.getIdEstado().equals(idEstado) && t.getIdResponsableSeleccion().equals(idResponsableSeleccion)).collect(Collectors.toList());
+        return findAll(request).stream().filter(t -> t.getIdEstado() != null && t.getIdResponsableSeleccion() != null && t.getIdEstado().equals(idEstado) && t.getIdResponsableSeleccion().equals(idResponsableSeleccion)).collect(Collectors.toList());
         //VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "filtroReq/" + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
         //return Arrays.asList(parametros);
     }

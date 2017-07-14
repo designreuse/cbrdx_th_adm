@@ -130,7 +130,7 @@ public class ExamenesMedicosRefactorController {
         sb.append("<h3>");
         sb.append("Perfil de Cargo");
         sb.append("<h3>");
-        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "consentimiento_informado.png"));
+        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
         sb.append("</li>");
         sb.append("<li>");
         sb.append("<h3>");
