@@ -42,7 +42,7 @@ public class TercerosReferenciasLlamadaRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroReferencia/{id}")
     List<VTercerosReferenciasLlamada> findByIdTerceroReferencia(@PathVariable Integer id) {
-        return vTercerosReferenciasLlamadaRefactorRepository.findAllByIdTerceroReferencia(id);
+        return vTercerosReferenciasLlamadaRefactorRepository.findAllByIdTerceroReferenciaOrderByIdTerceroReferenciaLlamada(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/resultadoLlamada/{id}")
