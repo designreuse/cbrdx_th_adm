@@ -17,7 +17,7 @@ public class ProcesoSeleccion {
     private Integer idTerceroPublicacion;
     private String observacion;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-    private Date fechaCita;
+    private Timestamp fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idDesicionProcesoSeleccion;
@@ -71,11 +71,11 @@ public class ProcesoSeleccion {
         this.observacion = observacion;
     }
 
-    public Date getFechaCita() {
+    public Timestamp getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(Timestamp fechaCita) {
         this.fechaCita = fechaCita;
     }
 

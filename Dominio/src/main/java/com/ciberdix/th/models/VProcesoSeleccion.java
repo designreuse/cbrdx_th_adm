@@ -1,11 +1,10 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 11/07/2017.
+ * Created by Danny on 14/07/2017.
  */
 @Entity
 @Table(name = "V_ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -20,7 +19,7 @@ public class VProcesoSeleccion {
     private String nombreTercero;
     private Integer idTerceroPublicacion;
     private String observacion;
-    private Date fechaCita;
+    private Timestamp fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String decisionProcesoSeleccion;
@@ -129,11 +128,11 @@ public class VProcesoSeleccion {
 
     @Basic
     @Column(name = "FechaCita", nullable = true)
-    public Date getFechaCita() {
+    public Timestamp getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(Timestamp fechaCita) {
         this.fechaCita = fechaCita;
     }
 
