@@ -36,7 +36,7 @@ public class UtilitiesController {
             String uid = "UID:info@ciberdix.com\r\n";
             Date temp = new Date(programmedDate.getTime());
             Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
+            SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'Hmss");
             String curTime = sd1.format(new Date(cal.getTimeInMillis()));
             String dtstamp = "DTSTAMP:" + curTime + "\r\n";
             String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
