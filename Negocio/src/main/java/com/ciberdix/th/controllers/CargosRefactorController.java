@@ -57,6 +57,13 @@ public class CargosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/wildcard/{query}")
+    List<VCargos> findByWildCard(@PathVariable String query) {
+        RestTemplate restTemplate = new RestTemplate();
+        VCargos[] parametros = restTemplate.getForObject(serviceUrl + "/wildcard/" + query, VCargos[].class);
+        return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/wildcardFiltered/{query}")
     List<VCargos> findByWildCard(@PathVariable String query, HttpServletRequest request) {
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         String token = UtilitiesController.extractToken(request);
