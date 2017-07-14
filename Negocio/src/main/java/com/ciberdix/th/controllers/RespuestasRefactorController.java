@@ -43,6 +43,13 @@ public class RespuestasRefactorController {
         return Arrays.asList(parametros);
     }
 
+        @RequestMapping(method = RequestMethod.GET, path = "/filtro/{idMR}/{idPO}/{idCP}")
+    List<VRespuestas> findByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(@PathVariable Integer idMR, @PathVariable Integer idPO, @PathVariable Integer idCP) {
+        RestTemplate restTemplate = new RestTemplate();
+        VRespuestas[] parametros = restTemplate.getForObject(serviceUrl + "/filtro/" + idMR + "/" + idPO + "/" + idCP, VRespuestas[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Respuestas create(@RequestBody Respuestas obj) {
         RestTemplate restTemplate = new RestTemplate();
