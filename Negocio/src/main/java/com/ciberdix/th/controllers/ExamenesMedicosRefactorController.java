@@ -75,15 +75,15 @@ public class ExamenesMedicosRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ExamenesMedicos obj) {
         //Correo 810 y 811 si Estado = ENESPR e InstMedic!=null
-        ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
-        TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
-        VTerceros vTerceros = restTemplate.getForObject(baseUrl + "/api/vterceros/" + tercerosPublicaciones.getIdTercero(), VTerceros.class);
-        Publicaciones publicaciones = restTemplate.getForObject(baseUrl + "/api/publicaciones/" + tercerosPublicaciones.getIdPublicacion(), Publicaciones.class);
-        Requerimientos requerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + publicaciones.getIdRequerimiento(), Requerimientos.class);
-        Cargos cargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
-        Usuarios[] usuarios = restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class);
-        Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
         if (obj.getIdInstitucionMedica() != null && UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista().equals(obj.getIdEstadoExamenMedico())) {
+            ProcesoSeleccion p = restTemplate.getForObject(baseUrl + "/api/procesoSeleccion/" + obj.getIdProcesoSeleccion(), ProcesoSeleccion.class);
+            TercerosPublicaciones tercerosPublicaciones = restTemplate.getForObject(baseUrl + "/api/tercerosPublicaciones/" + p.getIdTerceroPublicacion(), TercerosPublicaciones.class);
+            VTerceros vTerceros = restTemplate.getForObject(baseUrl + "/api/vterceros/" + tercerosPublicaciones.getIdTercero(), VTerceros.class);
+            Publicaciones publicaciones = restTemplate.getForObject(baseUrl + "/api/publicaciones/" + tercerosPublicaciones.getIdPublicacion(), Publicaciones.class);
+            Requerimientos requerimientos = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + publicaciones.getIdRequerimiento(), Requerimientos.class);
+            Cargos cargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + requerimientos.getIdCargo(), Cargos.class);
+            Usuarios[] usuarios = restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class);
+            Usuarios postulante = Arrays.stream(usuarios).filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(vTerceros.getIdTercero())).collect(Collectors.toList()).get(0);
             VInstitucionesMedicas institucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
             UtilitiesController.sendMail(institucionesMedicas.getCorreoElectronico(), "Proceso de Selección - Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
             UtilitiesController.sendMail(postulante.getCorreoElectronico(), "Crezcamos - Solicitud Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assemblePostulantBody(institucionesMedicas, UtilitiesController.fullName(vTerceros, true), p, obj));
