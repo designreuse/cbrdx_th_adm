@@ -39,6 +39,11 @@ public class GruposDotacionesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl, GruposDotaciones[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<GruposDotaciones> findEnabled() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", GruposDotaciones[].class));
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     GruposDotaciones findOne(@PathVariable Integer id) {
         return restTemplate.getForObject(serviceUrl + id, GruposDotaciones.class);
