@@ -7,6 +7,10 @@ services:
             DB_HOST: 192.168.1.54:1433;databaseName=CREZCAMOS
             DB_USER: sa
             DB_PASSWORD: Sistemas2016
+            # Configuración para Crezcamos
+            DB_HOST_CREZCAMOS: 192.168.101.50:1433;databaseName=CREZCAMOS_SP
+            DB_USER_CREZCAMOS: sa
+            DB_PASSWORD_CREZCAMOS: Sistemas2016
         ports:
             - "8446:8446"
         restart: always
@@ -17,6 +21,9 @@ services:
             HOST: 192.168.1.53
             RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
             FRONT_ADDRESS: 190.147.208.155
+            # Configuración para Crezcamos
+            HOST_CREZCAMOS: 192.168.101.50
+            FRONT_ADDRESS_CREZCAMOS: 179.50.40.137
         ports:
             - "8449:8449"
         volumes:
