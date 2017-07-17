@@ -12,4 +12,6 @@ public interface VDotacionesRefactorRepository extends CrudRepository<VDotacione
 
     List<VDotaciones> findAllByIndicadorHabilitadoIsTrue();
 
+    List<VDotaciones> findAllByIdGrupoDotacion(Integer id);
+
 }

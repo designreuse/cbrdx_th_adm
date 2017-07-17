@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 17/07/2017.
  */
 @Entity
-@Table(name = "ListasTiposNovedades", schema = "dbo", catalog = "CREZCAMOS")
-public class ListasTiposNovedades {
+@Table(name = "ListasEstadosTerceros", schema = "dbo", catalog = "CREZCAMOS")
+public class ListasEstadosTerceros {
     private Integer idLista;
     private String codigo;
     private String nombre;
@@ -17,10 +17,10 @@ public class ListasTiposNovedades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public ListasTiposNovedades() {
+    public ListasEstadosTerceros() {
     }
 
-    public ListasTiposNovedades(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ListasEstadosTerceros(String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.orden = orden;
@@ -29,7 +29,7 @@ public class ListasTiposNovedades {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ListasTiposNovedades(Integer idLista, String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ListasEstadosTerceros(Integer idLista, String codigo, String nombre, Integer orden, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idLista = idLista;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -115,7 +115,7 @@ public class ListasTiposNovedades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ListasTiposNovedades that = (ListasTiposNovedades) o;
+        ListasEstadosTerceros that = (ListasEstadosTerceros) o;
 
         if (idLista != null ? !idLista.equals(that.idLista) : that.idLista != null) return false;
         if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
