@@ -34,6 +34,7 @@ public class VNovedades {
     private Integer indicadorCancelacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Timestamp fechaCreacion;
 
     public Integer getIdNovedad() {
         return idNovedad;
@@ -249,5 +250,13 @@ public class VNovedades {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }
