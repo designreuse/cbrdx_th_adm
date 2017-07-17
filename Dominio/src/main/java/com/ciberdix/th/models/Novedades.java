@@ -32,6 +32,7 @@ public class Novedades {
     private Integer indicadorCancelacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Timestamp fechaCreacion;
 
     public Novedades() {
     }
@@ -59,6 +60,7 @@ public class Novedades {
         this.indicadorCancelacion = indicadorCancelacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.fechaCreacion = new Timestamp(System.currentTimeMillis());
     }
 
     public Novedades(Integer idNovedad, String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario) {
@@ -318,6 +320,16 @@ public class Novedades {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "FechaCreacion", nullable = true)
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -325,7 +337,7 @@ public class Novedades {
 
         Novedades novedades = (Novedades) o;
 
-        if (idNovedad != null ? !idNovedad.equals(novedades.idNovedad) : novedades.idNovedad != null) return false;
+        if (!idNovedad.equals(novedades.idNovedad)) return false;
         if (codigoNovedad != null ? !codigoNovedad.equals(novedades.codigoNovedad) : novedades.codigoNovedad != null)
             return false;
         if (novedad != null ? !novedad.equals(novedades.novedad) : novedades.novedad != null) return false;
@@ -365,17 +377,14 @@ public class Novedades {
             return false;
         if (indicadorCancelacion != null ? !indicadorCancelacion.equals(novedades.indicadorCancelacion) : novedades.indicadorCancelacion != null)
             return false;
-        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(novedades.auditoriaUsuario) : novedades.auditoriaUsuario != null)
-            return false;
-        if (auditoriaFecha != null ? !auditoriaFecha.equals(novedades.auditoriaFecha) : novedades.auditoriaFecha != null)
-            return false;
-
-        return true;
+        if (!auditoriaUsuario.equals(novedades.auditoriaUsuario)) return false;
+        if (!auditoriaFecha.equals(novedades.auditoriaFecha)) return false;
+        return fechaCreacion != null ? fechaCreacion.equals(novedades.fechaCreacion) : novedades.fechaCreacion == null;
     }
 
     @Override
     public int hashCode() {
-        int result = idNovedad != null ? idNovedad.hashCode() : 0;
+        int result = idNovedad.hashCode();
         result = 31 * result + (codigoNovedad != null ? codigoNovedad.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (idTipoNovedad != null ? idTipoNovedad.hashCode() : 0);
@@ -396,8 +405,9 @@ public class Novedades {
         result = 31 * result + (indicadorAfecta != null ? indicadorAfecta.hashCode() : 0);
         result = 31 * result + (idTipoAfectacion != null ? idTipoAfectacion.hashCode() : 0);
         result = 31 * result + (indicadorCancelacion != null ? indicadorCancelacion.hashCode() : 0);
-        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
-        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + auditoriaUsuario.hashCode();
+        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
         return result;
     }
 }

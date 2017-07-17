@@ -36,6 +36,7 @@ public class VNovedades {
     private Integer indicadorCancelacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Timestamp fechaCreacion;
 
     @Id
     @Column(name = "IdNovedad", nullable = false)
@@ -307,6 +308,16 @@ public class VNovedades {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "FechaCreacion", nullable = true)
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -363,6 +374,8 @@ public class VNovedades {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (fechaCreacion != null ? !fechaCreacion.equals(that.fechaCreacion) : that.fechaCreacion != null)
+            return false;
 
         return true;
     }
@@ -396,6 +409,7 @@ public class VNovedades {
         result = 31 * result + (indicadorCancelacion != null ? indicadorCancelacion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
         return result;
     }
 }
