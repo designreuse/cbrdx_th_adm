@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 4/07/2017.
+ * Created by Danny on 17/07/2017.
  */
 @Entity
 @Table(name = "V_Terceros", schema = "dbo", catalog = "CREZCAMOS")
@@ -78,6 +78,8 @@ public class VTerceros {
     private String tipoTercero;
     private String sitioWeb;
     private Integer idAdjunto;
+    private String estadoTercero;
+    private Integer idEstadoTercero;
 
     @Id
     @Column(name = "IdTercero", nullable = false)
@@ -759,6 +761,26 @@ public class VTerceros {
         this.idAdjunto = idAdjunto;
     }
 
+    @Basic
+    @Column(name = "EstadoTercero", nullable = true, length = 100)
+    public String getEstadoTercero() {
+        return estadoTercero;
+    }
+
+    public void setEstadoTercero(String estadoTercero) {
+        this.estadoTercero = estadoTercero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoTercero", nullable = true)
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -887,6 +909,10 @@ public class VTerceros {
             return false;
         if (sitioWeb != null ? !sitioWeb.equals(vTerceros.sitioWeb) : vTerceros.sitioWeb != null) return false;
         if (idAdjunto != null ? !idAdjunto.equals(vTerceros.idAdjunto) : vTerceros.idAdjunto != null) return false;
+        if (estadoTercero != null ? !estadoTercero.equals(vTerceros.estadoTercero) : vTerceros.estadoTercero != null)
+            return false;
+        if (idEstadoTercero != null ? !idEstadoTercero.equals(vTerceros.idEstadoTercero) : vTerceros.idEstadoTercero != null)
+            return false;
 
         return true;
     }
@@ -961,6 +987,8 @@ public class VTerceros {
         result = 31 * result + (tipoTercero != null ? tipoTercero.hashCode() : 0);
         result = 31 * result + (sitioWeb != null ? sitioWeb.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        result = 31 * result + (estadoTercero != null ? estadoTercero.hashCode() : 0);
+        result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
         return result;
     }
 }
