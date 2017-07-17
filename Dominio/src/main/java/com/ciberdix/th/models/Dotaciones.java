@@ -1,16 +1,14 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
+ * Created by Danny on 17/07/2017.
  */
 @Entity
+@Table(name = "Dotaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Dotaciones {
     private Integer idDotacion;
     private Integer idGrupoDotacion;
@@ -24,8 +22,53 @@ public class Dotaciones {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idAdjunto;
+    private Boolean indicadorAdicional;
+    private String codigo;
+    private Boolean indicadorRequiereTalla;
+
+    public Dotaciones() {
+    }
+
+    public Dotaciones(Integer idGrupoDotacion, String dotacion, String descripcion, BigDecimal costo, String detalleProveedor, Integer idCicloEntrega, Integer idTipoTalla, Integer cantidad, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idAdjunto, Boolean indicadorAdicional, String codigo, Boolean indicadorRequiereTalla) {
+        this.idGrupoDotacion = idGrupoDotacion;
+        this.dotacion = dotacion;
+        this.descripcion = descripcion;
+        this.costo = costo;
+        this.detalleProveedor = detalleProveedor;
+        this.idCicloEntrega = idCicloEntrega;
+        this.idTipoTalla = idTipoTalla;
+        this.cantidad = cantidad;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idAdjunto = idAdjunto;
+        this.indicadorAdicional = indicadorAdicional;
+        this.codigo = codigo;
+        this.indicadorRequiereTalla = indicadorRequiereTalla;
+    }
+
+    public Dotaciones(Integer idDotacion, Integer idGrupoDotacion, String dotacion, String descripcion, BigDecimal costo, String detalleProveedor, Integer idCicloEntrega, Integer idTipoTalla, Integer cantidad, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idAdjunto, Boolean indicadorAdicional, String codigo, Boolean indicadorRequiereTalla) {
+        this.idDotacion = idDotacion;
+        this.idGrupoDotacion = idGrupoDotacion;
+        this.dotacion = dotacion;
+        this.descripcion = descripcion;
+        this.costo = costo;
+        this.detalleProveedor = detalleProveedor;
+        this.idCicloEntrega = idCicloEntrega;
+        this.idTipoTalla = idTipoTalla;
+        this.cantidad = cantidad;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idAdjunto = idAdjunto;
+        this.indicadorAdicional = indicadorAdicional;
+        this.codigo = codigo;
+        this.indicadorRequiereTalla = indicadorRequiereTalla;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdDotacion", nullable = false)
     public Integer getIdDotacion() {
         return idDotacion;
@@ -145,6 +188,46 @@ public class Dotaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdAdjunto", nullable = true)
+    public Integer getIdAdjunto() {
+        return idAdjunto;
+    }
+
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
+    }
+
+    @Basic
+    @Column(name = "IndicadorAdicional", nullable = true)
+    public Boolean getIndicadorAdicional() {
+        return indicadorAdicional;
+    }
+
+    public void setIndicadorAdicional(Boolean indicadorAdicional) {
+        this.indicadorAdicional = indicadorAdicional;
+    }
+
+    @Basic
+    @Column(name = "Codigo", nullable = true, length = 10)
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    @Basic
+    @Column(name = "IndicadorRequiereTalla", nullable = true)
+    public Boolean getIndicadorRequiereTalla() {
+        return indicadorRequiereTalla;
+    }
+
+    public void setIndicadorRequiereTalla(Boolean indicadorRequiereTalla) {
+        this.indicadorRequiereTalla = indicadorRequiereTalla;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,6 +253,12 @@ public class Dotaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
+        if (indicadorAdicional != null ? !indicadorAdicional.equals(that.indicadorAdicional) : that.indicadorAdicional != null)
+            return false;
+        if (codigo != null ? !codigo.equals(that.codigo) : that.codigo != null) return false;
+        if (indicadorRequiereTalla != null ? !indicadorRequiereTalla.equals(that.indicadorRequiereTalla) : that.indicadorRequiereTalla != null)
+            return false;
 
         return true;
     }
@@ -188,6 +277,10 @@ public class Dotaciones {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        result = 31 * result + (indicadorAdicional != null ? indicadorAdicional.hashCode() : 0);
+        result = 31 * result + (codigo != null ? codigo.hashCode() : 0);
+        result = 31 * result + (indicadorRequiereTalla != null ? indicadorRequiereTalla.hashCode() : 0);
         return result;
     }
 }

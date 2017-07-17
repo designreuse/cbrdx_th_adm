@@ -1,5 +1,7 @@
 package com.ciberdix.th.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ import java.util.Date;
 public class VProcesoSeleccion {
 
     private Integer idProcesoSeleccion;
+    private String procesoPaso;
     private Integer idProcesoPaso;
     private String estadoDiligenciado;
     private Integer idEstadoDiligenciado;
@@ -17,7 +20,8 @@ public class VProcesoSeleccion {
     private String nombreTercero;
     private Integer idTerceroPublicacion;
     private String observacion;
-    private Date fechaCita;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    private Timestamp fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String decisionProcesoSeleccion;
@@ -30,6 +34,14 @@ public class VProcesoSeleccion {
 
     public void setIdProcesoSeleccion(Integer idProcesoSeleccion) {
         this.idProcesoSeleccion = idProcesoSeleccion;
+    }
+
+    public String getProcesoPaso() {
+        return procesoPaso;
+    }
+
+    public void setProcesoPaso(String procesoPaso) {
+        this.procesoPaso = procesoPaso;
     }
 
     public Integer getIdProcesoPaso() {
@@ -96,11 +108,11 @@ public class VProcesoSeleccion {
         this.observacion = observacion;
     }
 
-    public Date getFechaCita() {
+    public Timestamp getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(Timestamp fechaCita) {
         this.fechaCita = fechaCita;
     }
 

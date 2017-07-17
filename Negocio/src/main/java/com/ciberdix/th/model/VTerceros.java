@@ -1,7 +1,7 @@
 package com.ciberdix.th.model;
 
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by felip on 21/04/2017.
@@ -74,6 +74,7 @@ public class VTerceros {
     private Integer idTipoTercero;
     private String tipoTercero;
     private String sitioWeb;
+    private Integer idAdjunto;
 
     public Long getIdTercero() {
         return idTercero;
@@ -609,5 +610,13 @@ public class VTerceros {
 
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
+    }
+
+    public Integer getIdAdjunto() {
+        return idAdjunto;
+    }
+
+    public void setIdAdjunto(Integer idAdjunto) {
+        this.idAdjunto = idAdjunto;
     }
 }

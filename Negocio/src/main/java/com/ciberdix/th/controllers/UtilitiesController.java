@@ -1,22 +1,25 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.XProperties;
-import com.ciberdix.th.model.Constantes;
-import com.ciberdix.th.model.ListasItems;
-import com.ciberdix.th.model.Usuarios;
+import com.ciberdix.th.model.*;
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessage;
 import com.microtripit.mandrillapp.lutung.view.MandrillMessageStatus;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UtilitiesController {
 
@@ -26,23 +29,23 @@ public class UtilitiesController {
     private static String calEnd = "END:VCALENDAR\r\n";
     private static String eventBegin = "BEGIN:VEVENT\r\n";
     private static String eventEnd = "END:VEVENT\r\n";
+    private static String tokenHeader = "Authorization";
 
-    static File assembleCalendar(Date programmedDate, String personName) {
+    static byte[] assembleCalendar(Date programmedDate, String personName) {
         try {
             String uid = "UID:info@ciberdix.com\r\n";
+            Date temp = new Date(programmedDate.getTime());
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curTime = sd1.format(new Date(cal.getTimeInMillis()));
             String dtstamp = "DTSTAMP:" + curTime + "\r\n";
             String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
-            String dtstart = "DTSTART:" + sd1.format(programmedDate) + "\r\n";
-            String dtend = "DTEND:" + sd1.format(programmedDate.getTime() + 30 * 1000 * 60) + "\r\n";
+            String dtstart = "DTSTART:" + sd1.format(temp) + "\r\n";
+            String dtend = "DTEND:" + sd1.format(temp.getTime() + 30 * 1000 * 60) + "\r\n";
             String summary = "SUMMARY:Cita\r\n";
             String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
-            File file = new File("temp.ics");
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+            Path location = Paths.get("adjuntos");
+            File file = File.createTempFile("temp", ".ics", location.toFile());
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(calBegin);
@@ -59,7 +62,8 @@ public class UtilitiesController {
             bw.write(eventEnd);
             bw.write(calEnd);
             bw.close();
-            return file;
+            byte[] out = Files.readAllBytes(file.toPath());
+            return Files.readAllBytes(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -127,7 +131,7 @@ public class UtilitiesController {
         MandrillMessage.MessageContent c = new MandrillMessage.MessageContent();
         org.apache.commons.codec.binary.Base64 base64 = new org.apache.commons.codec.binary.Base64();
         try {
-            String encoded = base64.encodeAsString(Files.readAllBytes(assembleCalendar(programmedDate, personName).toPath()));
+            String encoded = base64.encodeAsString(assembleCalendar(programmedDate, personName));
             c.setContent(encoded);
             c.setName("cal.ics");
             c.setType("text/calendar");
@@ -144,10 +148,22 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
+    static String generateTokenButton(String URL, String image) {
+        if (image == null) image = "revisar.png";
+        String frontUrl = readParameter("front.url");
+        String token = generateURLToken(URL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<p style=\"text-align:center\">");
+        stringBuilder.append("<a href=\"").append(frontUrl).append("/login?token=").append(token).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("</a></p>");
+        return stringBuilder.toString();
+    }
+
     static String generateURLToken(String URL) {
         Map<String, Object> map = new HashMap<>();
         map.put("URL", URL);
-        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "c1b3rd1x_crzth").compact();
     }
 
     static Constantes findConstant(String code) {
@@ -181,6 +197,84 @@ public class UtilitiesController {
             return prop.getProperty(parameter);
         } catch (IOException e) {
             return null;
+        }
+    }
+
+    static List<VEstructuraOrganizacional> organizationalStructureRecursiveCascade(Integer parentStructureId, List<VEstructuraOrganizacional> structureList) {
+        List<VEstructuraOrganizacional> responseList = new ArrayList<>();
+        List<VEstructuraOrganizacional> collectedStructures = structureList.stream().filter(u -> u.getIdPadre() != null && u.getIdPadre().equals(parentStructureId)).collect(Collectors.toList());
+        if (!collectedStructures.isEmpty()) {
+            for (VEstructuraOrganizacional c : collectedStructures) {
+                responseList.addAll(organizationalStructureRecursiveCascade(c.getIdEstructuraOrganizacional(), structureList));
+            }
+        }
+        responseList.addAll(collectedStructures);
+        return responseList;
+    }
+
+    static List<VEstructuraOrganizacional> organizationalStructureCascade(Integer parentStructureId, List<VEstructuraOrganizacional> structureList) {
+        List<VEstructuraOrganizacional> responseList = new ArrayList<>();
+        List<VEstructuraOrganizacional> collectedStructures = structureList.stream().filter(u -> (u.getIdPadre() != null && u.getIdPadre().equals(parentStructureId)) || u.getIdEstructuraOrganizacional().equals(parentStructureId)).collect(Collectors.toList());
+        responseList.addAll(collectedStructures);
+        return responseList;
+    }
+
+    static List<VCargos> jobRecursiveCascade(Integer parentId, List<VCargos> jobList) {
+        List<VCargos> resultList = new ArrayList<>();
+        List<VCargos> collectedJobs = jobList.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(parentId)).collect(Collectors.toList());
+        if (!collectedJobs.isEmpty()) {
+            for (VCargos c : collectedJobs) {
+                resultList.addAll(jobRecursiveCascade(c.getIdCargo(), jobList));
+            }
+        }
+        resultList.addAll(collectedJobs);
+        return resultList;
+    }
+
+    static List<VCargos> jobCascade(Integer parentId, List<VCargos> jobList) {
+        List<VCargos> resultList = new ArrayList<>();
+        List<VCargos> collectedJobs = jobList.stream().filter(u -> u.getIdCargoJefe() != null && u.getIdCargoJefe().equals(parentId)).collect(Collectors.toList());
+        resultList.addAll(collectedJobs);
+        return resultList;
+    }
+
+    static HttpHeaders assembleHttpHeaders(String token) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set(tokenHeader, token);
+        return httpHeaders;
+    }
+
+    static String extractToken(HttpServletRequest request) {
+        return request.getHeader(tokenHeader);
+    }
+
+    static String fullName(Object tercero, Boolean view) {
+        if (view) {
+            VTerceros terceros = (VTerceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
+        } else {
+            Terceros terceros = (Terceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
         }
     }
 }

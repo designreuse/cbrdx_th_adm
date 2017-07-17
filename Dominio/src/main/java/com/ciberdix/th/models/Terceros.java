@@ -67,7 +67,10 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        this.imagen = imagen != null ? imagen : "avatar.jpg";
+        if(imagen == null || imagen == ""){
+            imagen = "avatar.jpg";
+        }
+        this.imagen = imagen;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;
@@ -119,7 +122,10 @@ public class Terceros {
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
         this.segundoApellido = segundoApellido;
-        this.imagen = imagen != null ? imagen : "avatar.jpg";
+        if(imagen == null || imagen == ""){
+            imagen = "avatar.jpg";
+        }
+        this.imagen = imagen;
         this.idTipoDocumento = idTipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento != null ? new Date(fechaDocumento.getTime()) : null;
@@ -476,7 +482,7 @@ public class Terceros {
     public void setIdAdjunto(Integer idAdjunto) {
         this.idAdjunto = idAdjunto;
     }
-
+  
     @Basic
     @Column(name = "FechaDefuncion", nullable = true)
     public Date getFechaDefuncion() {
@@ -626,7 +632,7 @@ public class Terceros {
     public void setSitioWeb(String sitioWeb) {
         this.sitioWeb = sitioWeb;
     }
-
+  
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

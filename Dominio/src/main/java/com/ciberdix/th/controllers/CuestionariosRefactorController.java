@@ -31,7 +31,12 @@ public class CuestionariosRefactorController {
         return cuestionariosRefactorRepository.findByIndicadorHabilitadoTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
+    Cuestionarios findByCode(@PathVariable String code) {
+        return cuestionariosRefactorRepository.findByCodigoCuestionario(code);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     Cuestionarios findOne(@PathVariable Integer id) {
         return cuestionariosRefactorRepository.findOne(id);
     }
@@ -39,16 +44,20 @@ public class CuestionariosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Cuestionarios create(@RequestBody Cuestionarios o) {
         return cuestionariosRefactorRepository.save(
-                new Cuestionarios(o.getCuestionario(),o.getDescripcion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
-                        o.getCodigo())
+                new Cuestionarios(
+                        o.getCodigoCuestionario(),o.getCuestionario(),o.getDescripcion(),
+                        o.getIndicadorPonderacion(),o.getValor(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                )
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Cuestionarios o) {
         cuestionariosRefactorRepository.save(
-                new Cuestionarios(o.getIdCuestionario(),o.getCuestionario(),o.getDescripcion(),o.getIndicadorHabilitado(),
-                        o.getAuditoriaUsuario(),o.getCodigo())
+                new Cuestionarios(
+                        o.getIdCuestionario(),o.getCodigoCuestionario(),o.getCuestionario(),o.getDescripcion(),
+                        o.getIndicadorPonderacion(),o.getValor(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                )
         );
     }
 

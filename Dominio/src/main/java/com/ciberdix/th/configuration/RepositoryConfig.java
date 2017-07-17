@@ -227,5 +227,32 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VInstitucionesMedicas.class);
         config.exposeIdsFor(VPermisosFormularios.class);
         config.exposeIdsFor(VInstitucionesMedicasEstructurasFisicas.class);
+        config.exposeIdsFor(VProcesoSeleccionPruebasTecnicas.class);
+        config.exposeIdsFor(ProcesoSeleccionPruebasTecnicas.class);
+        config.exposeIdsFor(ListasPruebasTecnicas.class);
+        config.exposeIdsFor(TercerosReferenciasLlamada.class);
+        config.exposeIdsFor(VTercerosReferenciasLlamada.class);
+        config.exposeIdsFor(ListasResultadosLllamadas.class);
+        config.exposeIdsFor(DocumentosTerceros.class);
+        config.exposeIdsFor(ListasClasificacionesDocumentos.class);
+        config.exposeIdsFor(TercerosDocumentosTercero.class);
+        config.exposeIdsFor(VTercerosDocumentosTercero.class);
+        config.exposeIdsFor(Respuestas.class);
+        config.exposeIdsFor(VRespuestas.class);
+        config.exposeIdsFor(CuestionariosPreguntas.class);
+        config.exposeIdsFor(VCuestionariosPreguntas.class);
+        config.exposeIdsFor(ListasTiposPreguntas.class);
+        config.exposeIdsFor(PreguntasOpciones.class);
+        config.exposeIdsFor(VPreguntasOpciones.class);
+        config.exposeIdsFor(MaestrosRespuestas.class);
+        config.exposeIdsFor(VTercerosPublicacionesHistoricos.class);
+        config.exposeIdsFor(ListasEstadosExamenesMedicos.class);
+        config.exposeIdsFor(ExamenesMedicos.class);
+        config.exposeIdsFor(VExamenesMedicos.class);
+        config.exposeIdsFor(GruposDotaciones.class);
+        config.exposeIdsFor(CargosDotaciones.class);
+        config.exposeIdsFor(VCargosDotaciones.class);
+        config.exposeIdsFor(Dotaciones.class);
+        config.exposeIdsFor(VDotaciones.class);
     }
 }

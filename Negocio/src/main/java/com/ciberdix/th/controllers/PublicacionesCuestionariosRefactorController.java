@@ -42,6 +42,13 @@ public class PublicacionesCuestionariosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}/enabled")
+    List<VPublicacionesCuestionarios> findByIdPublicacionEnabled(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        VPublicacionesCuestionarios[] parametros = restTemplate.getForObject(serviceUrl + "/publicacion/" + id + "/enabled", VPublicacionesCuestionarios[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     PublicacionesCuestionarios create(@RequestBody PublicacionesCuestionarios request) {
         RestTemplate restTemplate = new RestTemplate();

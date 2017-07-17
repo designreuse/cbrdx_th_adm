@@ -14,4 +14,8 @@ public interface TercerosPublicacionesRefactorRepository extends CrudRepository<
 
     List<TercerosPublicaciones> findAllByIdPublicacionAndIndicadorHabilitadoIsTrue(Integer idPublicacion);
 
+    List<TercerosPublicaciones> findAllByIdTerceroAndIndicadorHabilitadoIsTrue(Long idTercero);
+
+    List<TercerosPublicaciones> findAllByIdTercero(Long idTercero);
+
 }

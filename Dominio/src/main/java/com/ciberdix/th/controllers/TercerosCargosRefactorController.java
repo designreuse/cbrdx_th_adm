@@ -54,6 +54,11 @@ public class TercerosCargosRefactorController {
         return vTercerosCargosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
+    VTercerosCargos findByIdTercero(@PathVariable Long id) {
+        return vTercerosCargosRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos o) {
         return tercerosCargosRefactorRepository.save(
