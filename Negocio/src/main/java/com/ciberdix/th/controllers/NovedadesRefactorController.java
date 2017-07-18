@@ -50,6 +50,11 @@ public class NovedadesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", VNovedades[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tipoNovedad/{id}")
+    List<VNovedades> findByIdTipoNovedad(@PathVariable Integer id) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "tipoNovedad/" + id, VNovedades[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Novedades create(@RequestBody Novedades o) {
         return restTemplate.postForObject(serviceUrl, o, Novedades.class);
