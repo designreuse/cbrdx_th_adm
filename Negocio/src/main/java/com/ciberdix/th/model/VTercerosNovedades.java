@@ -13,6 +13,7 @@ public class VTercerosNovedades {
     private String nombreTercero;
     private Long idTercero;
     private String novedad;
+    private String tipoNovedad;
     private Integer idNovedad;
     private Date fechaInicio;
     private Date fechaFin;
@@ -40,6 +41,11 @@ public class VTercerosNovedades {
     private Integer idCcf;
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
+    private String estadoNovedad;
+    private Integer idEstadoNovedad;
+    private Date fechaReporte;
+    private String nombreTerceroReporta;
+    private Long idTerceroReporta;
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -95,6 +101,14 @@ public class VTercerosNovedades {
 
     public void setNovedad(String novedad) {
         this.novedad = novedad;
+    }
+
+    public String getTipoNovedad() {
+        return tipoNovedad;
+    }
+
+    public void setTipoNovedad(String tipoNovedad) {
+        this.tipoNovedad = tipoNovedad;
     }
 
     public Integer getIdNovedad() {
@@ -311,5 +325,45 @@ public class VTercerosNovedades {
 
     public void setCodigoValidacion(String codigoValidacion) {
         this.codigoValidacion = codigoValidacion;
+    }
+
+    public String getEstadoNovedad() {
+        return estadoNovedad;
+    }
+
+    public void setEstadoNovedad(String estadoNovedad) {
+        this.estadoNovedad = estadoNovedad;
+    }
+
+    public Integer getIdEstadoNovedad() {
+        return idEstadoNovedad;
+    }
+
+    public void setIdEstadoNovedad(Integer idEstadoNovedad) {
+        this.idEstadoNovedad = idEstadoNovedad;
+    }
+
+    public Date getFechaReporte() {
+        return fechaReporte;
+    }
+
+    public void setFechaReporte(Date fechaReporte) {
+        this.fechaReporte = fechaReporte;
+    }
+
+    public String getNombreTerceroReporta() {
+        return nombreTerceroReporta;
+    }
+
+    public void setNombreTerceroReporta(String nombreTerceroReporta) {
+        this.nombreTerceroReporta = nombreTerceroReporta;
+    }
+
+    public Long getIdTerceroReporta() {
+        return idTerceroReporta;
+    }
+
+    public void setIdTerceroReporta(Long idTerceroReporta) {
+        this.idTerceroReporta = idTerceroReporta;
     }
 }

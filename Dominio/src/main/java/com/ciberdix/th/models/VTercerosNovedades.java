@@ -15,6 +15,7 @@ public class VTercerosNovedades {
     private String nombreTercero;
     private Long idTercero;
     private String novedad;
+    private String tipoNovedad;
     private Integer idNovedad;
     private Date fechaInicio;
     private Date fechaFin;
@@ -42,6 +43,11 @@ public class VTercerosNovedades {
     private Integer idCcf;
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
+    private String estadoNovedad;
+    private Integer idEstadoNovedad;
+    private Date fechaReporte;
+    private String nombreTerceroReporta;
+    private Long idTerceroReporta;
 
     @Id
     @Column(name = "IdTerceroNovedad", nullable = false)
@@ -111,6 +117,16 @@ public class VTercerosNovedades {
 
     public void setNovedad(String novedad) {
         this.novedad = novedad;
+    }
+
+    @Basic
+    @Column(name = "TipoNovedad", nullable = true, length = 100)
+    public String getTipoNovedad() {
+        return tipoNovedad;
+    }
+
+    public void setTipoNovedad(String tipoNovedad) {
+        this.tipoNovedad = tipoNovedad;
     }
 
     @Basic
@@ -383,6 +399,56 @@ public class VTercerosNovedades {
         this.codigoValidacion = codigoValidacion;
     }
 
+    @Basic
+    @Column(name = "EstadoNovedad", nullable = true, length = 100)
+    public String getEstadoNovedad() {
+        return estadoNovedad;
+    }
+
+    public void setEstadoNovedad(String estadoNovedad) {
+        this.estadoNovedad = estadoNovedad;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoNovedad", nullable = true)
+    public Integer getIdEstadoNovedad() {
+        return idEstadoNovedad;
+    }
+
+    public void setIdEstadoNovedad(Integer idEstadoNovedad) {
+        this.idEstadoNovedad = idEstadoNovedad;
+    }
+
+    @Basic
+    @Column(name = "FechaReporte", nullable = true)
+    public Date getFechaReporte() {
+        return fechaReporte;
+    }
+
+    public void setFechaReporte(Date fechaReporte) {
+        this.fechaReporte = fechaReporte;
+    }
+
+    @Basic
+    @Column(name = "NombreTerceroReporta", nullable = false, length = 259)
+    public String getNombreTerceroReporta() {
+        return nombreTerceroReporta;
+    }
+
+    public void setNombreTerceroReporta(String nombreTerceroReporta) {
+        this.nombreTerceroReporta = nombreTerceroReporta;
+    }
+
+    @Basic
+    @Column(name = "IdTerceroReporta", nullable = true)
+    public Long getIdTerceroReporta() {
+        return idTerceroReporta;
+    }
+
+    public void setIdTerceroReporta(Long idTerceroReporta) {
+        this.idTerceroReporta = idTerceroReporta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -401,6 +467,7 @@ public class VTercerosNovedades {
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (novedad != null ? !novedad.equals(that.novedad) : that.novedad != null) return false;
+        if (tipoNovedad != null ? !tipoNovedad.equals(that.tipoNovedad) : that.tipoNovedad != null) return false;
         if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
@@ -436,6 +503,15 @@ public class VTercerosNovedades {
             return false;
         if (codigoValidacion != null ? !codigoValidacion.equals(that.codigoValidacion) : that.codigoValidacion != null)
             return false;
+        if (estadoNovedad != null ? !estadoNovedad.equals(that.estadoNovedad) : that.estadoNovedad != null)
+            return false;
+        if (idEstadoNovedad != null ? !idEstadoNovedad.equals(that.idEstadoNovedad) : that.idEstadoNovedad != null)
+            return false;
+        if (fechaReporte != null ? !fechaReporte.equals(that.fechaReporte) : that.fechaReporte != null) return false;
+        if (nombreTerceroReporta != null ? !nombreTerceroReporta.equals(that.nombreTerceroReporta) : that.nombreTerceroReporta != null)
+            return false;
+        if (idTerceroReporta != null ? !idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta != null)
+            return false;
 
         return true;
     }
@@ -449,6 +525,7 @@ public class VTercerosNovedades {
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
+        result = 31 * result + (tipoNovedad != null ? tipoNovedad.hashCode() : 0);
         result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);
         result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
@@ -476,6 +553,11 @@ public class VTercerosNovedades {
         result = 31 * result + (idCcf != null ? idCcf.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (codigoValidacion != null ? codigoValidacion.hashCode() : 0);
+        result = 31 * result + (estadoNovedad != null ? estadoNovedad.hashCode() : 0);
+        result = 31 * result + (idEstadoNovedad != null ? idEstadoNovedad.hashCode() : 0);
+        result = 31 * result + (fechaReporte != null ? fechaReporte.hashCode() : 0);
+        result = 31 * result + (nombreTerceroReporta != null ? nombreTerceroReporta.hashCode() : 0);
+        result = 31 * result + (idTerceroReporta != null ? idTerceroReporta.hashCode() : 0);
         return result;
     }
 }
