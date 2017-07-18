@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by robertochajin on 7/04/17.
@@ -30,7 +31,9 @@ public class CargosRefactorController {
 
     @Value("${domain.url}")
     String domainURL;
+
     RestTemplate restTemplate;
+
     private String serviceUrl;
 
     @PostConstruct
@@ -118,6 +121,15 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
     void updateTab2(@RequestBody Cargos obj, HttpServletRequest request) {
+        String token = UtilitiesController.extractToken(request);
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
+        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders);
+        Collection<?> userRoles = jwtTokenUtil.getAuthorities();
+        List<VPermisosFormularios> listadoPermisos = Arrays.asList(restTemplate.getForObject(domainURL + "/api/reglasFormularios/CARGOS", VPermisosFormularios[].class));
+        listadoPermisos = listadoPermisos.stream().filter(t -> t.getCodigo().equals("INDICADORHABILITADO") && userRoles.stream().anyMatch(f -> f.toString().equals(t.getRol()))).collect(Collectors.toList());
+
+
         RequerimientosAccionesRefactorController requerimientosAccionesRefactorController = new RequerimientosAccionesRefactorController();
         Cargos estadoActual = restTemplate.getForObject(serviceUrl + "/" + obj.getIdCargo(), Cargos.class);
         Integer c = UtilitiesController.findListItem("ListasEstadosCargos", "CONST").getIdLista();
@@ -135,10 +147,9 @@ public class CargosRefactorController {
             requerimientosAccionesRefactorController.create(requerimientosAcciones);
             Integer reqEstado = UtilitiesController.findListItem("ListasEstadosRequerimientos", "APRB").getIdLista();
             requerimientos.setIdEstado(reqEstado);
-            
-            String token = UtilitiesController.extractToken(request);
-            HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
-            HttpEntity<Object> requestEntity = new HttpEntity<>(requerimientos, httpHeaders);
+
+
+            requestEntity = new HttpEntity<>(requerimientos, httpHeaders);
             restTemplate.exchange(businessURL + "api/requerimientos", HttpMethod.PUT, requestEntity, Requerimientos.class);
         }
         restTemplate.put(serviceUrl + "/tab2", obj);

@@ -13,6 +13,15 @@ public class VPermisosFormularios {
     private Integer idPadre;
     private Integer idFuncionalidadControl;
     private Boolean indicadorVisible;
+    private String rol;
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
     public Boolean getIndicadorVisible() {
         return indicadorVisible;
