@@ -6,13 +6,15 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosNovedades", schema = "dbo", catalog = "CREZCAMOS")
-public class TercerosNovedades {
+@Table(name = "V_TercerosNovedades", schema = "dbo", catalog = "CREZCAMOS")
+public class VTercerosNovedades {
     private Integer idTerceroNovedad;
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String nombreTercero;
     private Long idTercero;
+    private String novedad;
     private Integer idNovedad;
     private Date fechaInicio;
     private Date fechaFin;
@@ -21,79 +23,25 @@ public class TercerosNovedades {
     private Date fechaReintegro;
     private Timestamp horaReintegro;
     private Integer dias;
+    private String diagnostico;
     private Integer idDiagnostico;
     private String reemplazadoPor;
     private BigDecimal valor;
     private Integer nroCuotas;
     private String nroReferencia;
+    private String entidad;
     private Integer idEntidad;
     private Date periodoInicial;
     private Date periodoFinal;
     private Boolean retiro;
+    private String eps;
     private Integer idEps;
+    private String fp;
     private Integer idFp;
+    private String ccf;
     private Integer idCcf;
 
-    public TercerosNovedades() {
-    }
-
-    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf) {
-        this.descripcion = descripcion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idTercero = idTercero;
-        this.idNovedad = idNovedad;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.fechaReintegro = fechaReintegro;
-        this.horaReintegro = horaReintegro;
-        this.dias = dias;
-        this.idDiagnostico = idDiagnostico;
-        this.reemplazadoPor = reemplazadoPor;
-        this.valor = valor;
-        this.nroCuotas = nroCuotas;
-        this.nroReferencia = nroReferencia;
-        this.idEntidad = idEntidad;
-        this.periodoInicial = periodoInicial;
-        this.periodoFinal = periodoFinal;
-        this.retiro = retiro;
-        this.idEps = idEps;
-        this.idFp = idFp;
-        this.idCcf = idCcf;
-    }
-
-    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf) {
-        this.idTerceroNovedad = idTerceroNovedad;
-        this.descripcion = descripcion;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.idTercero = idTercero;
-        this.idNovedad = idNovedad;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.fechaReintegro = fechaReintegro;
-        this.horaReintegro = horaReintegro;
-        this.dias = dias;
-        this.idDiagnostico = idDiagnostico;
-        this.reemplazadoPor = reemplazadoPor;
-        this.valor = valor;
-        this.nroCuotas = nroCuotas;
-        this.nroReferencia = nroReferencia;
-        this.idEntidad = idEntidad;
-        this.periodoInicial = periodoInicial;
-        this.periodoFinal = periodoFinal;
-        this.retiro = retiro;
-        this.idEps = idEps;
-        this.idFp = idFp;
-        this.idCcf = idCcf;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroNovedad", nullable = false)
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -134,6 +82,16 @@ public class TercerosNovedades {
     }
 
     @Basic
+    @Column(name = "NombreTercero", nullable = false, length = 259)
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
     @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
@@ -141,6 +99,16 @@ public class TercerosNovedades {
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "Novedad", nullable = true, length = 100)
+    public String getNovedad() {
+        return novedad;
+    }
+
+    public void setNovedad(String novedad) {
+        this.novedad = novedad;
     }
 
     @Basic
@@ -224,6 +192,16 @@ public class TercerosNovedades {
     }
 
     @Basic
+    @Column(name = "Diagnostico", nullable = true, length = 100)
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    @Basic
     @Column(name = "IdDiagnostico", nullable = true)
     public Integer getIdDiagnostico() {
         return idDiagnostico;
@@ -274,6 +252,16 @@ public class TercerosNovedades {
     }
 
     @Basic
+    @Column(name = "Entidad", nullable = true, length = 100)
+    public String getEntidad() {
+        return entidad;
+    }
+
+    public void setEntidad(String entidad) {
+        this.entidad = entidad;
+    }
+
+    @Basic
     @Column(name = "IdEntidad", nullable = true)
     public Integer getIdEntidad() {
         return idEntidad;
@@ -314,6 +302,16 @@ public class TercerosNovedades {
     }
 
     @Basic
+    @Column(name = "EPS", nullable = true, length = 100)
+    public String getEps() {
+        return eps;
+    }
+
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    @Basic
     @Column(name = "IdEPS", nullable = true)
     public Integer getIdEps() {
         return idEps;
@@ -324,6 +322,16 @@ public class TercerosNovedades {
     }
 
     @Basic
+    @Column(name = "FP", nullable = true, length = 100)
+    public String getFp() {
+        return fp;
+    }
+
+    public void setFp(String fp) {
+        this.fp = fp;
+    }
+
+    @Basic
     @Column(name = "IdFP", nullable = true)
     public Integer getIdFp() {
         return idFp;
@@ -331,6 +339,16 @@ public class TercerosNovedades {
 
     public void setIdFp(Integer idFp) {
         this.idFp = idFp;
+    }
+
+    @Basic
+    @Column(name = "CCF", nullable = true, length = 100)
+    public String getCcf() {
+        return ccf;
+    }
+
+    public void setCcf(String ccf) {
+        this.ccf = ccf;
     }
 
     @Basic
@@ -348,7 +366,7 @@ public class TercerosNovedades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosNovedades that = (TercerosNovedades) o;
+        VTercerosNovedades that = (VTercerosNovedades) o;
 
         if (idTerceroNovedad != null ? !idTerceroNovedad.equals(that.idTerceroNovedad) : that.idTerceroNovedad != null)
             return false;
@@ -357,7 +375,10 @@ public class TercerosNovedades {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
+            return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (novedad != null ? !novedad.equals(that.novedad) : that.novedad != null) return false;
         if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
         if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
         if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
@@ -368,6 +389,7 @@ public class TercerosNovedades {
         if (horaReintegro != null ? !horaReintegro.equals(that.horaReintegro) : that.horaReintegro != null)
             return false;
         if (dias != null ? !dias.equals(that.dias) : that.dias != null) return false;
+        if (diagnostico != null ? !diagnostico.equals(that.diagnostico) : that.diagnostico != null) return false;
         if (idDiagnostico != null ? !idDiagnostico.equals(that.idDiagnostico) : that.idDiagnostico != null)
             return false;
         if (reemplazadoPor != null ? !reemplazadoPor.equals(that.reemplazadoPor) : that.reemplazadoPor != null)
@@ -376,13 +398,17 @@ public class TercerosNovedades {
         if (nroCuotas != null ? !nroCuotas.equals(that.nroCuotas) : that.nroCuotas != null) return false;
         if (nroReferencia != null ? !nroReferencia.equals(that.nroReferencia) : that.nroReferencia != null)
             return false;
+        if (entidad != null ? !entidad.equals(that.entidad) : that.entidad != null) return false;
         if (idEntidad != null ? !idEntidad.equals(that.idEntidad) : that.idEntidad != null) return false;
         if (periodoInicial != null ? !periodoInicial.equals(that.periodoInicial) : that.periodoInicial != null)
             return false;
         if (periodoFinal != null ? !periodoFinal.equals(that.periodoFinal) : that.periodoFinal != null) return false;
         if (retiro != null ? !retiro.equals(that.retiro) : that.retiro != null) return false;
+        if (eps != null ? !eps.equals(that.eps) : that.eps != null) return false;
         if (idEps != null ? !idEps.equals(that.idEps) : that.idEps != null) return false;
+        if (fp != null ? !fp.equals(that.fp) : that.fp != null) return false;
         if (idFp != null ? !idFp.equals(that.idFp) : that.idFp != null) return false;
+        if (ccf != null ? !ccf.equals(that.ccf) : that.ccf != null) return false;
         if (idCcf != null ? !idCcf.equals(that.idCcf) : that.idCcf != null) return false;
 
         return true;
@@ -394,7 +420,9 @@ public class TercerosNovedades {
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);
         result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
         result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
@@ -403,17 +431,22 @@ public class TercerosNovedades {
         result = 31 * result + (fechaReintegro != null ? fechaReintegro.hashCode() : 0);
         result = 31 * result + (horaReintegro != null ? horaReintegro.hashCode() : 0);
         result = 31 * result + (dias != null ? dias.hashCode() : 0);
+        result = 31 * result + (diagnostico != null ? diagnostico.hashCode() : 0);
         result = 31 * result + (idDiagnostico != null ? idDiagnostico.hashCode() : 0);
         result = 31 * result + (reemplazadoPor != null ? reemplazadoPor.hashCode() : 0);
         result = 31 * result + (valor != null ? valor.hashCode() : 0);
         result = 31 * result + (nroCuotas != null ? nroCuotas.hashCode() : 0);
         result = 31 * result + (nroReferencia != null ? nroReferencia.hashCode() : 0);
+        result = 31 * result + (entidad != null ? entidad.hashCode() : 0);
         result = 31 * result + (idEntidad != null ? idEntidad.hashCode() : 0);
         result = 31 * result + (periodoInicial != null ? periodoInicial.hashCode() : 0);
         result = 31 * result + (periodoFinal != null ? periodoFinal.hashCode() : 0);
         result = 31 * result + (retiro != null ? retiro.hashCode() : 0);
+        result = 31 * result + (eps != null ? eps.hashCode() : 0);
         result = 31 * result + (idEps != null ? idEps.hashCode() : 0);
+        result = 31 * result + (fp != null ? fp.hashCode() : 0);
         result = 31 * result + (idFp != null ? idFp.hashCode() : 0);
+        result = 31 * result + (ccf != null ? ccf.hashCode() : 0);
         result = 31 * result + (idCcf != null ? idCcf.hashCode() : 0);
         return result;
     }

@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 17/07/2017.
- */
 @Entity
 @Table(name = "Dotaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Dotaciones {
