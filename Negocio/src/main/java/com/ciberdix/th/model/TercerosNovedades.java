@@ -33,6 +33,9 @@ public class TercerosNovedades {
     private Integer idCcf;
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
+    private Integer idEstadoNovedad;
+    private Date fechaReporte;
+    private Long idTerceroReporta;
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -248,5 +251,29 @@ public class TercerosNovedades {
 
     public void setCodigoValidacion(String codigoValidacion) {
         this.codigoValidacion = codigoValidacion;
+    }
+
+    public Integer getIdEstadoNovedad() {
+        return idEstadoNovedad;
+    }
+
+    public void setIdEstadoNovedad(Integer idEstadoNovedad) {
+        this.idEstadoNovedad = idEstadoNovedad;
+    }
+
+    public Date getFechaReporte() {
+        return fechaReporte;
+    }
+
+    public void setFechaReporte(Date fechaReporte) {
+        this.fechaReporte = fechaReporte;
+    }
+
+    public Long getIdTerceroReporta() {
+        return idTerceroReporta;
+    }
+
+    public void setIdTerceroReporta(Long idTerceroReporta) {
+        this.idTerceroReporta = idTerceroReporta;
     }
 }

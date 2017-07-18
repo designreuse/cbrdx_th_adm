@@ -56,7 +56,8 @@ public class TercerosNovedadesRefactorController {
                         o.getFechaInicio(),o.getFechaFin(),o.getHoraInicio(),o.getHoraFin(),o.getFechaReintegro(),
                         o.getHoraReintegro(),o.getDias(),o.getIdDiagnostico(),o.getReemplazadoPor(),o.getValor(),
                         o.getNroCuotas(),o.getNroReferencia(),o.getIdEntidad(),o.getPeriodoInicial(),o.getPeriodoFinal(),o.getRetiro(),
-                        o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion()
+                        o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion(),o.getIdEstadoNovedad(),
+                        o.getIdTerceroReporta()
                 )
         );
     }
@@ -69,7 +70,7 @@ public class TercerosNovedadesRefactorController {
                         o.getFechaInicio(),o.getFechaFin(),o.getHoraInicio(),o.getHoraFin(),o.getFechaReintegro(),
                         o.getHoraReintegro(),o.getDias(),o.getIdDiagnostico(),o.getReemplazadoPor(),o.getValor(),
                         o.getNroCuotas(),o.getNroReferencia(),o.getIdEntidad(),o.getPeriodoInicial(),o.getPeriodoFinal(),o.getRetiro(),
-                        o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion()
+                        o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion(),o.getIdEstadoNovedad()
                 )
         );
     }

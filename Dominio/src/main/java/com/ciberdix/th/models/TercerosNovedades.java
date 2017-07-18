@@ -35,11 +35,14 @@ public class TercerosNovedades {
     private Integer idCcf;
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
+    private Integer idEstadoNovedad;
+    private Date fechaReporte;
+    private Long idTerceroReporta;
 
     public TercerosNovedades() {
     }
 
-    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion) {
+    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Long idTerceroReporta) {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -66,9 +69,12 @@ public class TercerosNovedades {
         this.idCcf = idCcf;
         this.indicadorHabilitado = indicadorHabilitado;
         this.codigoValidacion = codigoValidacion;
+        this.idEstadoNovedad = idEstadoNovedad;
+        this.fechaReporte = new Timestamp(System.currentTimeMillis());
+        this.idTerceroReporta = idTerceroReporta;
     }
 
-    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion) {
+    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -96,6 +102,7 @@ public class TercerosNovedades {
         this.idCcf = idCcf;
         this.indicadorHabilitado = indicadorHabilitado;
         this.codigoValidacion = codigoValidacion;
+        this.idEstadoNovedad = idEstadoNovedad;
     }
 
     @Id
@@ -369,6 +376,36 @@ public class TercerosNovedades {
         this.codigoValidacion = codigoValidacion;
     }
 
+    @Basic
+    @Column(name = "IdEstadoNovedad", nullable = true)
+    public Integer getIdEstadoNovedad() {
+        return idEstadoNovedad;
+    }
+
+    public void setIdEstadoNovedad(Integer idEstadoNovedad) {
+        this.idEstadoNovedad = idEstadoNovedad;
+    }
+
+    @Basic
+    @Column(name = "FechaReporte", nullable = true)
+    public Date getFechaReporte() {
+        return fechaReporte;
+    }
+
+    public void setFechaReporte(Date fechaReporte) {
+        this.fechaReporte = fechaReporte;
+    }
+
+    @Basic
+    @Column(name = "IdTerceroReporta", nullable = true)
+    public Long getIdTerceroReporta() {
+        return idTerceroReporta;
+    }
+
+    public void setIdTerceroReporta(Long idTerceroReporta) {
+        this.idTerceroReporta = idTerceroReporta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -414,6 +451,11 @@ public class TercerosNovedades {
             return false;
         if (codigoValidacion != null ? !codigoValidacion.equals(that.codigoValidacion) : that.codigoValidacion != null)
             return false;
+        if (idEstadoNovedad != null ? !idEstadoNovedad.equals(that.idEstadoNovedad) : that.idEstadoNovedad != null)
+            return false;
+        if (fechaReporte != null ? !fechaReporte.equals(that.fechaReporte) : that.fechaReporte != null) return false;
+        if (idTerceroReporta != null ? !idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta != null)
+            return false;
 
         return true;
     }
@@ -447,6 +489,9 @@ public class TercerosNovedades {
         result = 31 * result + (idCcf != null ? idCcf.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (codigoValidacion != null ? codigoValidacion.hashCode() : 0);
+        result = 31 * result + (idEstadoNovedad != null ? idEstadoNovedad.hashCode() : 0);
+        result = 31 * result + (fechaReporte != null ? fechaReporte.hashCode() : 0);
+        result = 31 * result + (idTerceroReporta != null ? idTerceroReporta.hashCode() : 0);
         return result;
     }
 }
