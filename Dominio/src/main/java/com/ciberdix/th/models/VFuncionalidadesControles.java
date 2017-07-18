@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by felip on 23/04/2017.
- */
 @Entity
 @Table(name = "V_FuncionalidadesControles", schema = "dbo", catalog = "CREZCAMOS")
 public class VFuncionalidadesControles {
@@ -22,8 +19,8 @@ public class VFuncionalidadesControles {
     private Timestamp auditoriaFecha;
     private Integer idPadre;
     private Boolean indicadorSeccion;
+    private String rutaAlfresco;
 
-    @Basic
     @Id
     @Column(name = "IdFuncionalidadControl", nullable = false)
     public Integer getIdFuncionalidadControl() {
@@ -154,6 +151,16 @@ public class VFuncionalidadesControles {
         this.indicadorSeccion = indicadorSeccion;
     }
 
+    @Basic
+    @Column(name = "RutaAlfresco", nullable = true, length = 4000)
+    public String getRutaAlfresco() {
+        return rutaAlfresco;
+    }
+
+    public void setRutaAlfresco(String rutaAlfresco) {
+        this.rutaAlfresco = rutaAlfresco;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -184,6 +191,7 @@ public class VFuncionalidadesControles {
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
         if (indicadorSeccion != null ? !indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion != null)
             return false;
+        if (rutaAlfresco != null ? !rutaAlfresco.equals(that.rutaAlfresco) : that.rutaAlfresco != null) return false;
 
         return true;
     }
@@ -203,6 +211,7 @@ public class VFuncionalidadesControles {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
         result = 31 * result + (indicadorSeccion != null ? indicadorSeccion.hashCode() : 0);
+        result = 31 * result + (rutaAlfresco != null ? rutaAlfresco.hashCode() : 0);
         return result;
     }
 }

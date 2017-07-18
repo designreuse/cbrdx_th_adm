@@ -7,6 +7,7 @@ public class VNovedadesCampos {
     private Integer idNovedadCampo;
     private String novedad;
     private Integer idNovedad;
+    private String codigoCampoNovedad;
     private String campoNovedad;
     private Integer idCampoNovedad;
     private Boolean indicadorObligatorio;
@@ -36,6 +37,14 @@ public class VNovedadesCampos {
 
     public void setIdNovedad(Integer idNovedad) {
         this.idNovedad = idNovedad;
+    }
+
+    public String getCodigoCampoNovedad() {
+        return codigoCampoNovedad;
+    }
+
+    public void setCodigoCampoNovedad(String codigoCampoNovedad) {
+        this.codigoCampoNovedad = codigoCampoNovedad;
     }
 
     public String getCampoNovedad() {

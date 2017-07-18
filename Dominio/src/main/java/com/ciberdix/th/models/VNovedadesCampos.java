@@ -9,6 +9,7 @@ public class VNovedadesCampos {
     private Integer idNovedadCampo;
     private String novedad;
     private Integer idNovedad;
+    private String codigoCampoNovedad;
     private String campoNovedad;
     private Integer idCampoNovedad;
     private Boolean indicadorObligatorio;
@@ -44,6 +45,16 @@ public class VNovedadesCampos {
 
     public void setIdNovedad(Integer idNovedad) {
         this.idNovedad = idNovedad;
+    }
+
+    @Basic
+    @Column(name = "CodigoCampoNovedad", nullable = true, length = 10)
+    public String getCodigoCampoNovedad() {
+        return codigoCampoNovedad;
+    }
+
+    public void setCodigoCampoNovedad(String codigoCampoNovedad) {
+        this.codigoCampoNovedad = codigoCampoNovedad;
     }
 
     @Basic
@@ -117,6 +128,8 @@ public class VNovedadesCampos {
             return false;
         if (novedad != null ? !novedad.equals(that.novedad) : that.novedad != null) return false;
         if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
+        if (codigoCampoNovedad != null ? !codigoCampoNovedad.equals(that.codigoCampoNovedad) : that.codigoCampoNovedad != null)
+            return false;
         if (campoNovedad != null ? !campoNovedad.equals(that.campoNovedad) : that.campoNovedad != null) return false;
         if (idCampoNovedad != null ? !idCampoNovedad.equals(that.idCampoNovedad) : that.idCampoNovedad != null)
             return false;
@@ -137,6 +150,7 @@ public class VNovedadesCampos {
         int result = idNovedadCampo != null ? idNovedadCampo.hashCode() : 0;
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);
+        result = 31 * result + (codigoCampoNovedad != null ? codigoCampoNovedad.hashCode() : 0);
         result = 31 * result + (campoNovedad != null ? campoNovedad.hashCode() : 0);
         result = 31 * result + (idCampoNovedad != null ? idCampoNovedad.hashCode() : 0);
         result = 31 * result + (indicadorObligatorio != null ? indicadorObligatorio.hashCode() : 0);

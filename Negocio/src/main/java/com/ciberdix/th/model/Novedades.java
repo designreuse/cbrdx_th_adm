@@ -31,6 +31,7 @@ public class Novedades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
+    private Integer idEstadoTercero;
 
     public Integer getIdNovedad() {
         return idNovedad;
@@ -222,5 +223,13 @@ public class Novedades {
 
     public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
     }
 }
