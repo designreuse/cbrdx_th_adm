@@ -12,4 +12,6 @@ public interface VNovedadesRefactorRepository extends CrudRepository<VNovedades,
 
     List<VNovedades> findAllByIndicadorHabilitadoIsTrue();
 
+    List<VNovedades> findAllByIdTipoNovedad(Integer id);
+
 }

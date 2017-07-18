@@ -41,6 +41,11 @@ public class NovedadesRefactorController {
         return vNovedadesRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tipoNovedad/{id}")
+    List<VNovedades> findByIdTipoNovedad(@PathVariable Integer id) {
+        return vNovedadesRefactorRepository.findAllByIdTipoNovedad(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Novedades create(@RequestBody Novedades o) {
         return novedadesRefactorRepository.save(
