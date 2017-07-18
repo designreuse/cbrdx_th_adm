@@ -2,7 +2,7 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -33,21 +33,23 @@ public class TercerosNovedades {
     private Integer idEps;
     private Integer idFp;
     private Integer idCcf;
+    private Boolean indicadorHabilitado;
+    private String codigoValidacion;
 
     public TercerosNovedades() {
     }
 
-    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf) {
+    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion) {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idTercero = idTercero;
         this.idNovedad = idNovedad;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.fechaReintegro = fechaReintegro;
+        this.fechaReintegro = fechaReintegro != null ? new Date(fechaReintegro.getTime()) : null;
         this.horaReintegro = horaReintegro;
         this.dias = dias;
         this.idDiagnostico = idDiagnostico;
@@ -56,26 +58,28 @@ public class TercerosNovedades {
         this.nroCuotas = nroCuotas;
         this.nroReferencia = nroReferencia;
         this.idEntidad = idEntidad;
-        this.periodoInicial = periodoInicial;
-        this.periodoFinal = periodoFinal;
+        this.periodoInicial = periodoInicial != null ? new Date(periodoInicial.getTime()) : null;
+        this.periodoFinal = periodoFinal != null ? new Date(periodoFinal.getTime()) : null;
         this.retiro = retiro;
         this.idEps = idEps;
         this.idFp = idFp;
         this.idCcf = idCcf;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.codigoValidacion = codigoValidacion;
     }
 
-    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf) {
+    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idTercero = idTercero;
         this.idNovedad = idNovedad;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = fechaInicio != null ? new Date(fechaInicio.getTime()) : null;
+        this.fechaFin = fechaFin != null ? new Date(fechaFin.getTime()) : null;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.fechaReintegro = fechaReintegro;
+        this.fechaReintegro = fechaReintegro != null ? new Date(fechaReintegro.getTime()) : null;
         this.horaReintegro = horaReintegro;
         this.dias = dias;
         this.idDiagnostico = idDiagnostico;
@@ -84,12 +88,14 @@ public class TercerosNovedades {
         this.nroCuotas = nroCuotas;
         this.nroReferencia = nroReferencia;
         this.idEntidad = idEntidad;
-        this.periodoInicial = periodoInicial;
-        this.periodoFinal = periodoFinal;
+        this.periodoInicial = periodoInicial != null ? new Date(periodoInicial.getTime()) : null;
+        this.periodoFinal = periodoFinal != null ? new Date(periodoFinal.getTime()) : null;
         this.retiro = retiro;
         this.idEps = idEps;
         this.idFp = idFp;
         this.idCcf = idCcf;
+        this.indicadorHabilitado = indicadorHabilitado;
+        this.codigoValidacion = codigoValidacion;
     }
 
     @Id
@@ -343,6 +349,26 @@ public class TercerosNovedades {
         this.idCcf = idCcf;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = true)
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "CodigoValidacion", nullable = true, length = 10)
+    public String getCodigoValidacion() {
+        return codigoValidacion;
+    }
+
+    public void setCodigoValidacion(String codigoValidacion) {
+        this.codigoValidacion = codigoValidacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -384,6 +410,10 @@ public class TercerosNovedades {
         if (idEps != null ? !idEps.equals(that.idEps) : that.idEps != null) return false;
         if (idFp != null ? !idFp.equals(that.idFp) : that.idFp != null) return false;
         if (idCcf != null ? !idCcf.equals(that.idCcf) : that.idCcf != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (codigoValidacion != null ? !codigoValidacion.equals(that.codigoValidacion) : that.codigoValidacion != null)
+            return false;
 
         return true;
     }
@@ -415,6 +445,8 @@ public class TercerosNovedades {
         result = 31 * result + (idEps != null ? idEps.hashCode() : 0);
         result = 31 * result + (idFp != null ? idFp.hashCode() : 0);
         result = 31 * result + (idCcf != null ? idCcf.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (codigoValidacion != null ? codigoValidacion.hashCode() : 0);
         return result;
     }
 }

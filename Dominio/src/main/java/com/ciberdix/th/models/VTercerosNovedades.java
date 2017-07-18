@@ -2,7 +2,7 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -40,6 +40,8 @@ public class VTercerosNovedades {
     private Integer idFp;
     private String ccf;
     private Integer idCcf;
+    private Boolean indicadorHabilitado;
+    private String codigoValidacion;
 
     @Id
     @Column(name = "IdTerceroNovedad", nullable = false)
@@ -361,6 +363,26 @@ public class VTercerosNovedades {
         this.idCcf = idCcf;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = true)
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "CodigoValidacion", nullable = true, length = 10)
+    public String getCodigoValidacion() {
+        return codigoValidacion;
+    }
+
+    public void setCodigoValidacion(String codigoValidacion) {
+        this.codigoValidacion = codigoValidacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -410,6 +432,10 @@ public class VTercerosNovedades {
         if (idFp != null ? !idFp.equals(that.idFp) : that.idFp != null) return false;
         if (ccf != null ? !ccf.equals(that.ccf) : that.ccf != null) return false;
         if (idCcf != null ? !idCcf.equals(that.idCcf) : that.idCcf != null) return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (codigoValidacion != null ? !codigoValidacion.equals(that.codigoValidacion) : that.codigoValidacion != null)
+            return false;
 
         return true;
     }
@@ -448,6 +474,8 @@ public class VTercerosNovedades {
         result = 31 * result + (idFp != null ? idFp.hashCode() : 0);
         result = 31 * result + (ccf != null ? ccf.hashCode() : 0);
         result = 31 * result + (idCcf != null ? idCcf.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (codigoValidacion != null ? codigoValidacion.hashCode() : 0);
         return result;
     }
 }
