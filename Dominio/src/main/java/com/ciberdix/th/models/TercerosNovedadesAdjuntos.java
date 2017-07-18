@@ -1,23 +1,40 @@
 package com.ciberdix.th.models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
- */
 @Entity
+@Table(name = "TercerosNovedadesAdjuntos", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosNovedadesAdjuntos {
     private Integer idTerceroNovedadAdjunto;
     private Integer idTerceroNovedad;
     private Integer idAdjunto;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorHabilitado;
+
+    public TercerosNovedadesAdjuntos() {
+    }
+
+    public TercerosNovedadesAdjuntos(Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idTerceroNovedad = idTerceroNovedad;
+        this.idAdjunto = idAdjunto;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public TercerosNovedadesAdjuntos(Integer idTerceroNovedadAdjunto, Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+        this.idTerceroNovedadAdjunto = idTerceroNovedadAdjunto;
+        this.idTerceroNovedad = idTerceroNovedad;
+        this.idAdjunto = idAdjunto;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
 
     @Id
+    @GeneratedValue
     @Column(name = "IdTerceroNovedadAdjunto", nullable = false)
     public Integer getIdTerceroNovedadAdjunto() {
         return idTerceroNovedadAdjunto;
@@ -67,6 +84,16 @@ public class TercerosNovedadesAdjuntos {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IndicadorHabilitado", nullable = true)
+    public Boolean getIndicadorHabilitado() {
+        return indicadorHabilitado;
+    }
+
+    public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
+        this.indicadorHabilitado = indicadorHabilitado;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,6 +110,8 @@ public class TercerosNovedadesAdjuntos {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
 
         return true;
     }
@@ -94,6 +123,7 @@ public class TercerosNovedadesAdjuntos {
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         return result;
     }
 }
