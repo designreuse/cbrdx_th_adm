@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 17/07/2017.
- */
 @Entity
 @Table(name = "Novedades", schema = "dbo", catalog = "CREZCAMOS")
 public class Novedades {
@@ -33,11 +30,12 @@ public class Novedades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
+    private Integer idEstadoTercero;
 
     public Novedades() {
     }
 
-    public Novedades(String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario) {
+    public Novedades(String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario, Integer idEstadoTercero) {
         this.codigoNovedad = codigoNovedad;
         this.novedad = novedad;
         this.idTipoNovedad = idTipoNovedad;
@@ -61,9 +59,10 @@ public class Novedades {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.fechaCreacion = new Timestamp(System.currentTimeMillis());
+        this.idEstadoTercero = idEstadoTercero;
     }
 
-    public Novedades(Integer idNovedad, String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario) {
+    public Novedades(Integer idNovedad, String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario, Integer idEstadoTercero) {
         this.idNovedad = idNovedad;
         this.codigoNovedad = codigoNovedad;
         this.novedad = novedad;
@@ -87,6 +86,7 @@ public class Novedades {
         this.indicadorCancelacion = indicadorCancelacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idEstadoTercero = idEstadoTercero;
     }
 
     @Id
@@ -330,6 +330,16 @@ public class Novedades {
         this.fechaCreacion = fechaCreacion;
     }
 
+    @Basic
+    @Column(name = "IdEstadoTercero", nullable = true)
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -337,7 +347,7 @@ public class Novedades {
 
         Novedades novedades = (Novedades) o;
 
-        if (!idNovedad.equals(novedades.idNovedad)) return false;
+        if (idNovedad != null ? !idNovedad.equals(novedades.idNovedad) : novedades.idNovedad != null) return false;
         if (codigoNovedad != null ? !codigoNovedad.equals(novedades.codigoNovedad) : novedades.codigoNovedad != null)
             return false;
         if (novedad != null ? !novedad.equals(novedades.novedad) : novedades.novedad != null) return false;
@@ -377,14 +387,21 @@ public class Novedades {
             return false;
         if (indicadorCancelacion != null ? !indicadorCancelacion.equals(novedades.indicadorCancelacion) : novedades.indicadorCancelacion != null)
             return false;
-        if (!auditoriaUsuario.equals(novedades.auditoriaUsuario)) return false;
-        if (!auditoriaFecha.equals(novedades.auditoriaFecha)) return false;
-        return fechaCreacion != null ? fechaCreacion.equals(novedades.fechaCreacion) : novedades.fechaCreacion == null;
+        if (auditoriaUsuario != null ? !auditoriaUsuario.equals(novedades.auditoriaUsuario) : novedades.auditoriaUsuario != null)
+            return false;
+        if (auditoriaFecha != null ? !auditoriaFecha.equals(novedades.auditoriaFecha) : novedades.auditoriaFecha != null)
+            return false;
+        if (fechaCreacion != null ? !fechaCreacion.equals(novedades.fechaCreacion) : novedades.fechaCreacion != null)
+            return false;
+        if (idEstadoTercero != null ? !idEstadoTercero.equals(novedades.idEstadoTercero) : novedades.idEstadoTercero != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = idNovedad.hashCode();
+        int result = idNovedad != null ? idNovedad.hashCode() : 0;
         result = 31 * result + (codigoNovedad != null ? codigoNovedad.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (idTipoNovedad != null ? idTipoNovedad.hashCode() : 0);
@@ -405,9 +422,10 @@ public class Novedades {
         result = 31 * result + (indicadorAfecta != null ? indicadorAfecta.hashCode() : 0);
         result = 31 * result + (idTipoAfectacion != null ? idTipoAfectacion.hashCode() : 0);
         result = 31 * result + (indicadorCancelacion != null ? indicadorCancelacion.hashCode() : 0);
-        result = 31 * result + auditoriaUsuario.hashCode();
-        result = 31 * result + auditoriaFecha.hashCode();
+        result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
+        result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
+        result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
         return result;
     }
 }

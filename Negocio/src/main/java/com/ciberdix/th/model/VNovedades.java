@@ -35,6 +35,8 @@ public class VNovedades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
+    private String estadoTercero;
+    private Integer idEstadoTercero;
 
     public Integer getIdNovedad() {
         return idNovedad;
@@ -258,5 +260,21 @@ public class VNovedades {
 
     public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getEstadoTercero() {
+        return estadoTercero;
+    }
+
+    public void setEstadoTercero(String estadoTercero) {
+        this.estadoTercero = estadoTercero;
+    }
+
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
     }
 }
