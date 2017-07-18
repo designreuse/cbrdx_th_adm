@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 17/07/2017.
- */
 @Entity
 @Table(name = "V_Novedades", schema = "dbo", catalog = "CREZCAMOS")
 public class VNovedades {
@@ -37,6 +34,8 @@ public class VNovedades {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
+    private String estadoTercero;
+    private Integer idEstadoTercero;
 
     @Id
     @Column(name = "IdNovedad", nullable = false)
@@ -318,6 +317,26 @@ public class VNovedades {
         this.fechaCreacion = fechaCreacion;
     }
 
+    @Basic
+    @Column(name = "EstadoTercero", nullable = true, length = 100)
+    public String getEstadoTercero() {
+        return estadoTercero;
+    }
+
+    public void setEstadoTercero(String estadoTercero) {
+        this.estadoTercero = estadoTercero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoTercero", nullable = true)
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -376,6 +395,10 @@ public class VNovedades {
             return false;
         if (fechaCreacion != null ? !fechaCreacion.equals(that.fechaCreacion) : that.fechaCreacion != null)
             return false;
+        if (estadoTercero != null ? !estadoTercero.equals(that.estadoTercero) : that.estadoTercero != null)
+            return false;
+        if (idEstadoTercero != null ? !idEstadoTercero.equals(that.idEstadoTercero) : that.idEstadoTercero != null)
+            return false;
 
         return true;
     }
@@ -410,6 +433,8 @@ public class VNovedades {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
+        result = 31 * result + (estadoTercero != null ? estadoTercero.hashCode() : 0);
+        result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
         return result;
     }
 }
