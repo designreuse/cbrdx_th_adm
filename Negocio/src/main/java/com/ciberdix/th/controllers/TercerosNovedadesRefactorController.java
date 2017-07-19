@@ -63,7 +63,10 @@ public class TercerosNovedadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosNovedades o) {
+        VTercerosNovedades TN = findOne(o.getIdTerceroNovedad());
+        o.setFechaReporte(TN.getFechaReporte());
+        o.setIdTerceroReporta(TN.getIdTerceroReporta());
         restTemplate.put(serviceUrl, o);
     }
-    
+
 }

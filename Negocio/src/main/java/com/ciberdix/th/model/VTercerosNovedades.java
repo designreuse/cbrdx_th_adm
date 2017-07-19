@@ -1,5 +1,7 @@
 package com.ciberdix.th.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -17,9 +19,12 @@ public class VTercerosNovedades {
     private Integer idNovedad;
     private Date fechaInicio;
     private Date fechaFin;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Timestamp horaInicio;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Timestamp horaFin;
     private Date fechaReintegro;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Timestamp horaReintegro;
     private Integer dias;
     private String diagnostico;

@@ -1,5 +1,7 @@
 package com.ciberdix.th.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.sql.Timestamp;
 
@@ -19,6 +21,7 @@ public class VExamenesMedicos {
     private Integer idMedicoResponsable;
     private String institucionMedica;
     private Integer idInstitucionMedica;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private Timestamp fechaProgramada;
     private String opcion;
     private Integer idPreguntaOpcion;

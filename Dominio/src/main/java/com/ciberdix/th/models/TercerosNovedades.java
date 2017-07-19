@@ -74,7 +74,7 @@ public class TercerosNovedades {
         this.idTerceroReporta = idTerceroReporta;
     }
 
-    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad) {
+    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Date fechaReporte, Long idTerceroReporta) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -103,6 +103,8 @@ public class TercerosNovedades {
         this.indicadorHabilitado = indicadorHabilitado;
         this.codigoValidacion = codigoValidacion;
         this.idEstadoNovedad = idEstadoNovedad;
+        this.fechaReporte = fechaReporte;
+        this.idTerceroReporta = idTerceroReporta;
     }
 
     @Id
