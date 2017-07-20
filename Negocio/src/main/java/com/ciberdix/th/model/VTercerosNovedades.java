@@ -3,8 +3,8 @@ package com.ciberdix.th.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class VTercerosNovedades {
 
@@ -59,6 +59,22 @@ public class VTercerosNovedades {
     private Date fechaReporte;
     private String nombreTerceroReporta;
     private Long idTerceroReporta;
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Integer getIdRolResponsable() {
+        return idRolResponsable;
+    }
+
+    public void setIdRolResponsable(Integer idRolResponsable) {
+        this.idRolResponsable = idRolResponsable;
+    }
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
