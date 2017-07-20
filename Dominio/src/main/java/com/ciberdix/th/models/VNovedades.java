@@ -30,7 +30,7 @@ public class VNovedades {
     private Boolean indicadorAfecta;
     private String tipoAfectacion;
     private Integer idTipoAfectacion;
-    private Integer indicadorCancelacion;
+    private Boolean indicadorCancelacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
@@ -279,11 +279,11 @@ public class VNovedades {
 
     @Basic
     @Column(name = "IndicadorCancelacion", nullable = true)
-    public Integer getIndicadorCancelacion() {
+    public Boolean getIndicadorCancelacion() {
         return indicadorCancelacion;
     }
 
-    public void setIndicadorCancelacion(Integer indicadorCancelacion) {
+    public void setIndicadorCancelacion(Boolean indicadorCancelacion) {
         this.indicadorCancelacion = indicadorCancelacion;
     }
 

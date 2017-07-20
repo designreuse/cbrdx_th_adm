@@ -26,7 +26,7 @@ public class Novedades {
     private Boolean indicadorNomina;
     private Boolean indicadorAfecta;
     private Integer idTipoAfectacion;
-    private Integer indicadorCancelacion;
+    private Boolean indicadorCancelacion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Timestamp fechaCreacion;
@@ -35,7 +35,7 @@ public class Novedades {
     public Novedades() {
     }
 
-    public Novedades(String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario, Integer idEstadoTercero) {
+    public Novedades(String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Boolean indicadorCancelacion, Integer auditoriaUsuario, Integer idEstadoTercero) {
         this.codigoNovedad = codigoNovedad;
         this.novedad = novedad;
         this.idTipoNovedad = idTipoNovedad;
@@ -62,7 +62,7 @@ public class Novedades {
         this.idEstadoTercero = idEstadoTercero;
     }
 
-    public Novedades(Integer idNovedad, String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Integer indicadorCancelacion, Integer auditoriaUsuario, Integer idEstadoTercero) {
+    public Novedades(Integer idNovedad, String codigoNovedad, String novedad, Integer idTipoNovedad, Integer idRolResponsable, Integer idEstadoInicialNovedad, Boolean indicadorHabilitado, Boolean indicadorAusentismo, Boolean indicadorSeguimiento, Boolean indicadorConfirmacion, Boolean indicadorAdjuntos, Boolean indicadorAutorizaJefe, Boolean indicadorNotificaJefe, Boolean indicadorBandeja, Boolean indicadorPlanta, Boolean indicadorAreasApoyo, String codigoSafix, Boolean indicadorNomina, Boolean indicadorAfecta, Integer idTipoAfectacion, Boolean indicadorCancelacion, Integer auditoriaUsuario, Timestamp fechaCreacion, Integer idEstadoTercero) {
         this.idNovedad = idNovedad;
         this.codigoNovedad = codigoNovedad;
         this.novedad = novedad;
@@ -86,6 +86,7 @@ public class Novedades {
         this.indicadorCancelacion = indicadorCancelacion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.fechaCreacion = fechaCreacion;
         this.idEstadoTercero = idEstadoTercero;
     }
 
@@ -292,11 +293,11 @@ public class Novedades {
 
     @Basic
     @Column(name = "IndicadorCancelacion", nullable = true)
-    public Integer getIndicadorCancelacion() {
+    public Boolean getIndicadorCancelacion() {
         return indicadorCancelacion;
     }
 
-    public void setIndicadorCancelacion(Integer indicadorCancelacion) {
+    public void setIndicadorCancelacion(Boolean indicadorCancelacion) {
         this.indicadorCancelacion = indicadorCancelacion;
     }
 
