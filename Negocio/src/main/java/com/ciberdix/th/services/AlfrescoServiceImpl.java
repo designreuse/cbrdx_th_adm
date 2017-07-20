@@ -23,7 +23,7 @@ public class AlfrescoServiceImpl implements AlfrescoService {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    public Greeting saveFileAlfresco(MultipartFile file){
+    public Greeting saveFileAlfresco(Integer idFuncionalidad, MultipartFile file){
         RestTemplate restTemplate = new RestTemplate();
         URI uri = null;
         try {
