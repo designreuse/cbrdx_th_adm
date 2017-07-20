@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.TercerosNovedadesAdjuntos;
+import com.ciberdix.th.models.VTercerosNovedadesAdjuntos;
 import com.ciberdix.th.repositories.TercerosNovedadesAdjuntosRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosNovedadesAdjuntosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -17,24 +19,27 @@ public class TercerosNovedadesAdjuntosRefactorController {
     @Autowired
     private TercerosNovedadesAdjuntosRefactorRepository tercerosNovedadesAdjuntosRefactorRepository;
 
+    @Autowired
+    private VTercerosNovedadesAdjuntosRefactorRepository vTercerosNovedadesAdjuntosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<TercerosNovedadesAdjuntos> findAll() {
-        return (List<TercerosNovedadesAdjuntos>) tercerosNovedadesAdjuntosRefactorRepository.findAll();
+    List<VTercerosNovedadesAdjuntos> findAll() {
+        return (List<VTercerosNovedadesAdjuntos>) vTercerosNovedadesAdjuntosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<TercerosNovedadesAdjuntos> findEnabled() {
-        return tercerosNovedadesAdjuntosRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
+    List<VTercerosNovedadesAdjuntos> findEnabled() {
+        return vTercerosNovedadesAdjuntosRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedad/{id}")
-    List<TercerosNovedadesAdjuntos> findByIdTerceroNovedad(@PathVariable Integer id) {
-        return tercerosNovedadesAdjuntosRefactorRepository.findAllByIdTerceroNovedad(id);
+    List<VTercerosNovedadesAdjuntos> findByIdTerceroNovedad(@PathVariable Integer id) {
+        return vTercerosNovedadesAdjuntosRefactorRepository.findAllByIdTerceroNovedad(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosNovedadesAdjuntos findOne(@PathVariable Integer id) {
-        return tercerosNovedadesAdjuntosRefactorRepository.findOne(id);
+    VTercerosNovedadesAdjuntos findOne(@PathVariable Integer id) {
+        return vTercerosNovedadesAdjuntosRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

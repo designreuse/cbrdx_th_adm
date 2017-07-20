@@ -12,7 +12,11 @@ public class VTercerosNovedades {
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String numeroDocumento;
     private String nombreTercero;
+    private Integer idEstadoTercero;
+    private String estructuraFisica;
+    private String estructuraArea;
     private Long idTercero;
     private String novedad;
     private String tipoNovedad;
@@ -90,6 +94,16 @@ public class VTercerosNovedades {
     }
 
     @Basic
+    @Column(name = "NumeroDocumento", nullable = true, length = 13)
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    @Basic
     @Column(name = "NombreTercero", nullable = false, length = 259)
     public String getNombreTercero() {
         return nombreTercero;
@@ -97,6 +111,36 @@ public class VTercerosNovedades {
 
     public void setNombreTercero(String nombreTercero) {
         this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
+    @Column(name = "IdEstadoTercero", nullable = true)
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
+    }
+
+    @Basic
+    @Column(name = "EstructuraFisica", nullable = true, length = 50)
+    public String getEstructuraFisica() {
+        return estructuraFisica;
+    }
+
+    public void setEstructuraFisica(String estructuraFisica) {
+        this.estructuraFisica = estructuraFisica;
+    }
+
+    @Basic
+    @Column(name = "EstructuraArea", nullable = true, length = 40)
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
     }
 
     @Basic
@@ -463,7 +507,15 @@ public class VTercerosNovedades {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (numeroDocumento != null ? !numeroDocumento.equals(that.numeroDocumento) : that.numeroDocumento != null)
+            return false;
         if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
+            return false;
+        if (idEstadoTercero != null ? !idEstadoTercero.equals(that.idEstadoTercero) : that.idEstadoTercero != null)
+            return false;
+        if (estructuraFisica != null ? !estructuraFisica.equals(that.estructuraFisica) : that.estructuraFisica != null)
+            return false;
+        if (estructuraArea != null ? !estructuraArea.equals(that.estructuraArea) : that.estructuraArea != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (novedad != null ? !novedad.equals(that.novedad) : that.novedad != null) return false;
@@ -522,7 +574,11 @@ public class VTercerosNovedades {
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
+        result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
+        result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
+        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (tipoNovedad != null ? tipoNovedad.hashCode() : 0);

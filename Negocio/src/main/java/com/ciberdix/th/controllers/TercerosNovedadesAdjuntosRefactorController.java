@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.TercerosNovedadesAdjuntos;
+import com.ciberdix.th.model.VTercerosNovedadesAdjuntos;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -31,23 +32,23 @@ public class TercerosNovedadesAdjuntosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    List<TercerosNovedadesAdjuntos> findAll() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl, TercerosNovedadesAdjuntos[].class));
+    List<VTercerosNovedadesAdjuntos> findAll() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedadesAdjuntos[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosNovedadesAdjuntos findOne(@PathVariable Integer id) {
-        return restTemplate.getForObject(serviceUrl + id, TercerosNovedadesAdjuntos.class);
+    VTercerosNovedadesAdjuntos findOne(@PathVariable Integer id) {
+        return restTemplate.getForObject(serviceUrl + id, VTercerosNovedadesAdjuntos.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<TercerosNovedadesAdjuntos> findEnabled() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", TercerosNovedadesAdjuntos[].class));
+    List<VTercerosNovedadesAdjuntos> findEnabled() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", VTercerosNovedadesAdjuntos[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedad/{id}")
-    List<TercerosNovedadesAdjuntos> findByIdTerceroNovedad(@PathVariable Integer id) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, TercerosNovedadesAdjuntos[].class));
+    List<VTercerosNovedadesAdjuntos> findByIdTerceroNovedad(@PathVariable Integer id) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VTercerosNovedadesAdjuntos[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
