@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -51,7 +52,7 @@ public class DivisionPoliticaRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}/")
     List<VDivisionPoliticaRec> findHoods(@PathVariable String queryString) {
         List<VDivisionPoliticaRec> presort = vDivisionPoliticaRecRefactorRepository.queryLocations(queryString);
-        presort.sort((a, b) -> b.getCamino().compareTo(a.getCamino()));
+        presort.sort(Comparator.comparing(VDivisionPoliticaRec::getCamino));
         return presort;
     }
 
