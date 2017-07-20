@@ -12,7 +12,11 @@ public class VTercerosNovedades {
     private String descripcion;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String numeroDocumento;
     private String nombreTercero;
+    private Integer idEstadoTercero;
+    private String estructuraFisica;
+    private String estructuraArea;
     private Long idTercero;
     private String novedad;
     private String tipoNovedad;
@@ -84,12 +88,44 @@ public class VTercerosNovedades {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
     public String getNombreTercero() {
         return nombreTercero;
     }
 
     public void setNombreTercero(String nombreTercero) {
         this.nombreTercero = nombreTercero;
+    }
+
+    public Integer getIdEstadoTercero() {
+        return idEstadoTercero;
+    }
+
+    public void setIdEstadoTercero(Integer idEstadoTercero) {
+        this.idEstadoTercero = idEstadoTercero;
+    }
+
+    public String getEstructuraFisica() {
+        return estructuraFisica;
+    }
+
+    public void setEstructuraFisica(String estructuraFisica) {
+        this.estructuraFisica = estructuraFisica;
+    }
+
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
     }
 
     public Long getIdTercero() {
