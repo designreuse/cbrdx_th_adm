@@ -20,6 +20,8 @@ public class VTercerosNovedades {
     private Integer idEstructuraArea;
     private String estructuraArea;
     private Long idTercero;
+    private String rol;
+    private Integer idRolResponsable;
     private String novedad;
     private String tipoNovedad;
     private Integer idNovedad;

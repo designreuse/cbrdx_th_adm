@@ -2,7 +2,7 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -20,6 +20,8 @@ public class VTercerosNovedades {
     private Integer idEstructuraArea;
     private String estructuraArea;
     private Long idTercero;
+    private String rol;
+    private Integer idRolResponsable;
     private String novedad;
     private String tipoNovedad;
     private Integer idNovedad;
@@ -173,6 +175,26 @@ public class VTercerosNovedades {
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "Rol", nullable = true, length = 64)
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    @Basic
+    @Column(name = "IdRolResponsable", nullable = true)
+    public Integer getIdRolResponsable() {
+        return idRolResponsable;
+    }
+
+    public void setIdRolResponsable(Integer idRolResponsable) {
+        this.idRolResponsable = idRolResponsable;
     }
 
     @Basic
@@ -544,6 +566,9 @@ public class VTercerosNovedades {
         if (estructuraArea != null ? !estructuraArea.equals(that.estructuraArea) : that.estructuraArea != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
+        if (idRolResponsable != null ? !idRolResponsable.equals(that.idRolResponsable) : that.idRolResponsable != null)
+            return false;
         if (novedad != null ? !novedad.equals(that.novedad) : that.novedad != null) return false;
         if (tipoNovedad != null ? !tipoNovedad.equals(that.tipoNovedad) : that.tipoNovedad != null) return false;
         if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
@@ -608,6 +633,8 @@ public class VTercerosNovedades {
         result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
         result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (rol != null ? rol.hashCode() : 0);
+        result = 31 * result + (idRolResponsable != null ? idRolResponsable.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
         result = 31 * result + (tipoNovedad != null ? tipoNovedad.hashCode() : 0);
         result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);

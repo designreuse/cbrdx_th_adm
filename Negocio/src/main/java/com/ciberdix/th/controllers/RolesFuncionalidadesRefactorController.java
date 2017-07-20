@@ -66,7 +66,9 @@ public class RolesFuncionalidadesRefactorController {
         List<VFuncionalidadesControles> fc = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/funcionalidadesControles/funcionalidad/" + request.getIdFuncionalidad(), VFuncionalidadesControles[].class));
         List<VRolesFuncionalidadesControles> rfc = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/rolesFuncionalidadesControles/buscarFuncionalidad/" + request.getIdRol() + "/" + request.getIdFuncionalidad(), VRolesFuncionalidadesControles[].class));
         List<VFuncionalidadesControles> temp = fc.stream().filter(t->rfc.stream().anyMatch(f->t.getIdFuncionalidadControl().equals(f.getIdFuncionalidadControl()))).collect(Collectors.toList());
-        fc.removeAll(temp);
+        if(temp != null){
+            fc.removeAll(temp);
+        }
         createRFC(fc, request);
         restTemplate.put(serviceUrl, request, RolesFuncionalidades.class);
     }
