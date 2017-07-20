@@ -50,15 +50,15 @@ public class TercerosNovedadesRefactorController {
         TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
         Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
         Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
-        List<VTercerosCargos> myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        List<VTercerosCargos> myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
 
         List<VTercerosNovedades> prefilter = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
-        List<VTercerosNovedades> roleFilter = prefilter.stream().filter(t -> userRoles.stream().anyMatch(f -> t.getRol().equals(f.toString()))).collect(Collectors.toList());
-        List<VTercerosNovedades> myFilter = prefilter.stream().filter(t -> t.getIdTerceroReporta().equals(idTercero)).collect(Collectors.toList());
+        List<VTercerosNovedades> roleFilter = prefilter.stream().filter(t -> userRoles.stream().anyMatch(f -> t.getRol() != null && t.getRol().equals(f.toString()))).collect(Collectors.toList());
+        //List<VTercerosNovedades> myFilter = prefilter.stream().filter(t -> !t.getIdTercero().equals(t.getIdTerceroReporta()) && t.getIdTerceroReporta().equals(idTercero)).collect(Collectors.toList());
         List<VTercerosNovedades> employeesFilter = prefilter.stream().filter(t -> myEmployees.stream().anyMatch(f -> f.getIndicadorHabilitado() && f.getIdTercero().equals(t.getIdTercero()))).collect(Collectors.toList());
         prefilter = prefilter.stream().filter(t -> roleFilter.stream().anyMatch(f -> f.getIdTerceroNovedad().equals(t.getIdTerceroNovedad()))
-                && myFilter.stream().anyMatch(f -> f.getIdTerceroNovedad().equals(t.getIdTerceroNovedad()))
-                && employeesFilter.stream().anyMatch(f -> f.getIdTerceroNovedad().equals(t.getIdTerceroNovedad()))).collect(Collectors.toList());
+                //|| myFilter.stream().anyMatch(f -> f.getIdTerceroNovedad().equals(t.getIdTerceroNovedad()))
+                || employeesFilter.stream().anyMatch(f -> f.getIdTerceroNovedad().equals(t.getIdTerceroNovedad()))).collect(Collectors.toList());
         return prefilter;
     }
 
