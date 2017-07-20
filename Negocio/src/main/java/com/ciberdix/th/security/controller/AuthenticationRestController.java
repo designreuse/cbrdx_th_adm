@@ -209,7 +209,7 @@ public class AuthenticationRestController {
                     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
                     String hashedPassword = bCryptPasswordEncoder.encode(pass);
                     u.setContrasena(hashedPassword);
-                    UtilitiesController.sendMail(u.getCorreoElectronico(), "Gestionamos - Reinicio de Comtraseña", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Cambio de Clave de Acceso</h1><p style=\"margin-bottom: 80px;\">Su nueva clave de acceso al sistema es:</p><h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">" + pass + "</h1>");
+                    UtilitiesController.sendMail(u.getCorreoElectronico(), "Gestionamos - Reinicio de Contraseña", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Cambio de Clave de Acceso</h1><p style=\"margin-bottom: 80px;\">Su nueva clave de acceso al sistema es:</p><h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">" + pass + "</h1>");
                     restTemplate.put(domainUrl + "/api/usuarios/", u, Usuarios.class);
                     return ResponseEntity.ok(true);
                 }

@@ -17,6 +17,8 @@ public interface VFuncionalidadesControlesRefactorRepository extends CrudReposit
 
     List<VFuncionalidadesControles> findByIdPadre(Integer idPadre);
 
+    List<VFuncionalidadesControles> findAllByIdFuncionalidad(Integer id);
+
     @Query("SELECT fc FROM VFuncionalidadesControles fc WHERE (fc.idFuncionalidad = ?1) AND " +
             "fc.indicadorSeccion = ?2")
     List<VFuncionalidadesControles> queryAllByIdSecCam(Integer idFuncionalidadControl, Boolean indicador);
