@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/ListasFp")
+@RequestMapping("/api/ListasFP")
 public class ListasFpRefactorController {
     @Autowired
     private ListasFpRefactorRepository repository;
