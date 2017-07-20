@@ -50,7 +50,9 @@ public class DivisionPoliticaRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}/")
     List<VDivisionPoliticaRec> findHoods(@PathVariable String queryString) {
-        return vDivisionPoliticaRecRefactorRepository.queryLocations(queryString);
+        List<VDivisionPoliticaRec> presort = vDivisionPoliticaRecRefactorRepository.queryLocations(queryString);
+        presort.sort((a, b) -> b.getCamino().compareTo(a.getCamino()));
+        return presort;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizacion/{idLocalizacion}")

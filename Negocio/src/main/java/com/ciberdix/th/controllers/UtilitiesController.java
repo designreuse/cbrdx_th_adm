@@ -160,13 +160,25 @@ public class UtilitiesController {
         return stringBuilder.toString();
     }
 
+    static String generateExternalTokenButton(String URL, String image) {
+        if (image == null) image = "revisar.png";
+        String publicUrl = readParameter("public.url");
+        String token = generateURLToken(URL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<p style=\"text-align:center\">");
+        stringBuilder.append("<a href=\"").append(publicUrl).append("/login?token=").append(token).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("</a></p>");
+        return stringBuilder.toString();
+    }
+
     static String generateURLToken(String URL) {
         Map<String, Object> map = new HashMap<>();
         map.put("URL", URL);
         return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "c1b3rd1x_crzth").compact();
     }
 
-    static Constantes findConstant(String code) {
+    public static Constantes findConstant(String code) {
         RestTemplate restTemplate = new RestTemplate();
         String domainUrl = readParameter("domain.url");
         return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
