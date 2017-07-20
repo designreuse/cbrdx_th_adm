@@ -42,6 +42,9 @@ public class CargosRefactorController {
     void init() {
         serviceUrl = domainURL + "/api/cargos";
         restTemplate = new RestTemplate();
+    }
+
+    void readData(){
         listadoPermisos = Arrays.asList(restTemplate.getForObject(domainURL + "/api/reglasFormularios/CARGOS", VPermisosFormularios[].class));
     }
 
@@ -119,7 +122,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab1")
     void updateTab1(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -186,7 +189,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab2")
     void updateTab2(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -226,7 +229,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab3")
     void updateTab3(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -251,7 +254,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab4")
     void updateTab4(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -270,7 +273,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab5")
     void updateTab5(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -295,7 +298,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab6")
     void updateTab6(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
@@ -350,7 +353,7 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT, path = "/tab7")
     void updateTab7(@RequestBody Cargos obj, HttpServletRequest request) {
-        init();
+        readData();
         String token = UtilitiesController.extractToken(request);
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
