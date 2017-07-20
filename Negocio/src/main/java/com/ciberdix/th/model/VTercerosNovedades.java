@@ -15,7 +15,9 @@ public class VTercerosNovedades {
     private String numeroDocumento;
     private String nombreTercero;
     private Integer idEstadoTercero;
+    private Integer idEstructuraFisica;
     private String estructuraFisica;
+    private Integer idEstructuraArea;
     private String estructuraArea;
     private Long idTercero;
     private String novedad;
@@ -406,5 +408,21 @@ public class VTercerosNovedades {
 
     public void setIdTerceroReporta(Long idTerceroReporta) {
         this.idTerceroReporta = idTerceroReporta;
+    }
+
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
+    }
+
+    public Integer getIdEstructuraArea() {
+        return idEstructuraArea;
+    }
+
+    public void setIdEstructuraArea(Integer idEstructuraArea) {
+        this.idEstructuraArea = idEstructuraArea;
     }
 }
