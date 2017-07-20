@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping("/api/ListasCcf")
+@RequestMapping("/api/ListasCCF")
 public class ListasCcfRefactorController {
     @Autowired
     private ListasCcfRefactorRepository repository;
