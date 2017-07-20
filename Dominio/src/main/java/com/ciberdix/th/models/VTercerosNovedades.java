@@ -2,7 +2,7 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -15,7 +15,9 @@ public class VTercerosNovedades {
     private String numeroDocumento;
     private String nombreTercero;
     private Integer idEstadoTercero;
+    private Integer idEstructuraFisica;
     private String estructuraFisica;
+    private Integer idEstructuraArea;
     private String estructuraArea;
     private Long idTercero;
     private String novedad;
@@ -124,6 +126,16 @@ public class VTercerosNovedades {
     }
 
     @Basic
+    @Column(name = "IdEstructuraFisica", nullable = true)
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
+    }
+
+    @Basic
     @Column(name = "EstructuraFisica", nullable = true, length = 50)
     public String getEstructuraFisica() {
         return estructuraFisica;
@@ -131,6 +143,16 @@ public class VTercerosNovedades {
 
     public void setEstructuraFisica(String estructuraFisica) {
         this.estructuraFisica = estructuraFisica;
+    }
+
+    @Basic
+    @Column(name = "IdEstructuraArea", nullable = true)
+    public Integer getIdEstructuraArea() {
+        return idEstructuraArea;
+    }
+
+    public void setIdEstructuraArea(Integer idEstructuraArea) {
+        this.idEstructuraArea = idEstructuraArea;
     }
 
     @Basic
@@ -513,7 +535,11 @@ public class VTercerosNovedades {
             return false;
         if (idEstadoTercero != null ? !idEstadoTercero.equals(that.idEstadoTercero) : that.idEstadoTercero != null)
             return false;
+        if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
+            return false;
         if (estructuraFisica != null ? !estructuraFisica.equals(that.estructuraFisica) : that.estructuraFisica != null)
+            return false;
+        if (idEstructuraArea != null ? !idEstructuraArea.equals(that.idEstructuraArea) : that.idEstructuraArea != null)
             return false;
         if (estructuraArea != null ? !estructuraArea.equals(that.estructuraArea) : that.estructuraArea != null)
             return false;
@@ -577,7 +603,9 @@ public class VTercerosNovedades {
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
+        result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
+        result = 31 * result + (idEstructuraArea != null ? idEstructuraArea.hashCode() : 0);
         result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (novedad != null ? novedad.hashCode() : 0);
