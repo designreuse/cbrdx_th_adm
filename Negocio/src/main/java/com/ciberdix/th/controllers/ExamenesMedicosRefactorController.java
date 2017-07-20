@@ -181,13 +181,13 @@ public class ExamenesMedicosRefactorController {
         sb.append("Los documentos los debe adjuntar en la sección Documentos Adjuntos Sección Documentos Adjuntar.");
         sb.append("<br/>");
         sb.append("Antes de realizado el examen debe declarar la veracidad de la información y consentimiento informado para ello debe dar click en el siguiente link:");
-        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
+        sb.append(UtilitiesController.generateExternalTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
         sb.append("Es importante adjuntar los documentos a la plataforma y la declaración para continuar proceso de selección.");
         sb.append("<br/>");
         sb.append("El costo del examen médico no debe ser superior a 30.000.");
         sb.append("<br/>");
         sb.append("A continuación el perfil de cargo. Debe imprimirlo y llevarlo al instituto de su preferencia.");
-        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
+        sb.append(UtilitiesController.generateExternalTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
         return sb.toString();
     }
 
@@ -239,7 +239,7 @@ public class ExamenesMedicosRefactorController {
         sb.append("Con el fin de continuar proceso de selección debe declarar la veracidad de la información y el consentimiento informado, dando click en el siguiente link realiza dicho proceso, el cual se debe declarar antes de realizar el examen: ");
         sb.append("</p>");
         sb.append("<p>");
-        sb.append(UtilitiesController.generateTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
+        sb.append(UtilitiesController.generateExternalTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
         sb.append("</p>");
         sb.append("</li>");
         sb.append("</ol>");

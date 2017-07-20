@@ -102,7 +102,7 @@ public class AuthenticationRestController {
                 usuarios.setLinkedin(authenticationRequest.getPassword());
             }
             user = restTemplate.postForObject(domainUrl + "/api/usuarios", usuarios, Usuarios.class);
-            Roles roles = restTemplate.getForObject(domainUrl + "/api/roles/rol/" + "ADM", Roles.class);
+            Roles roles = restTemplate.getForObject(domainUrl + "/api/roles/rol/" + UtilitiesController.findConstant("ROLPOS"), Roles.class);
             UsuarioRoles request = new UsuarioRoles();
             request.setIdUsuario(user.getIdUsuario());
             request.setIdRol(roles.getIdRol());
