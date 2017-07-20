@@ -62,6 +62,8 @@ public class NovedadesRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Novedades o) {
+        VNovedades n = findOne(o.getIdNovedad());
+        o.setFechaCreacion(n.getFechaCreacion());
         restTemplate.put(serviceUrl, o);
     }
     

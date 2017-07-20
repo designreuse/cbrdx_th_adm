@@ -71,7 +71,7 @@ public class NovedadesRefactorController {
                         o.getIndicadorAdjuntos(),o.getIndicadorAutorizaJefe(),o.getIndicadorNotificaJefe(),
                         o.getIndicadorBandeja(),o.getIndicadorPlanta(),o.getIndicadorAreasApoyo(),
                         o.getCodigoSafix(),o.getIndicadorNomina(),o.getIndicadorAfecta(),o.getIdTipoAfectacion(),
-                        o.getIndicadorCancelacion(),o.getAuditoriaUsuario(),o.getIdEstadoTercero()
+                        o.getIndicadorCancelacion(),o.getAuditoriaUsuario(),o.getFechaCreacion(),o.getIdEstadoTercero()
                 )
         );
     }
