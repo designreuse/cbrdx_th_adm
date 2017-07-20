@@ -75,6 +75,7 @@ public class VTerceros {
     private String tipoTercero;
     private String sitioWeb;
     private Integer idAdjunto;
+    private String estadoTercero;
     private Integer idEstadoTercero;
 
     public Long getIdTercero() {
@@ -627,5 +628,13 @@ public class VTerceros {
 
     public void setIdEstadoTercero(Integer idEstadoTercero) {
         this.idEstadoTercero = idEstadoTercero;
+    }
+
+    public String getEstadoTercero() {
+        return estadoTercero;
+    }
+
+    public void setEstadoTercero(String estadoTercero) {
+        this.estadoTercero = estadoTercero;
     }
 }
