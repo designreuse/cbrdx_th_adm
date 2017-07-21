@@ -55,6 +55,11 @@ public class FuncionalidadesControlesRefactorController {
         return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/funcionalidad/{id}")
+    List<VFuncionalidadesControles> findByIdFuncionalidad(@PathVariable Integer id) {
+        return vFuncionalidadesControlesRefactorRepository.findAllByIdFuncionalidad(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idFuncionalidad}")
     List<VFuncionalidadesControles> findEnabledSection(@PathVariable Integer idFuncionalidad) {
         return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(idFuncionalidad);
@@ -66,7 +71,7 @@ public class FuncionalidadesControlesRefactorController {
                 new FuncionalidadesControles(fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
                         fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
-                        fc.getIdPadre(), fc.getIndicadorSeccion()));
+                        fc.getIdPadre(), fc.getIndicadorSeccion(), fc.getRutaAlfresco()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -75,7 +80,7 @@ public class FuncionalidadesControlesRefactorController {
                 new FuncionalidadesControles(fc.getIdFuncionalidadControl(), fc.getCodigo(), fc.getControl(), fc.getIdClasificacion(),
                         fc.getIdFuncionalidad(), fc.getIndicadorVisible(), fc.getIndicadorImprimir(),
                         fc.getIndicadorHabilitado(), fc.getAuditoriaUsuario(),
-                        fc.getIdPadre(), fc.getIndicadorSeccion())
+                        fc.getIdPadre(), fc.getIndicadorSeccion(), fc.getRutaAlfresco())
         );
     }
 

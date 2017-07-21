@@ -20,6 +20,7 @@ public class VFuncionalidadesControles {
     private Timestamp auditoriaFecha;
     private Integer idPadre;
     private Boolean indicadorSeccion;
+    private String rutaAlfresco;
 
     public Integer getIdFuncionalidadControl() {
         return idFuncionalidadControl;
@@ -123,5 +124,13 @@ public class VFuncionalidadesControles {
 
     public void setIndicadorSeccion(Boolean indicadorSeccion) {
         this.indicadorSeccion = indicadorSeccion;
+    }
+
+    public String getRutaAlfresco() {
+        return rutaAlfresco;
+    }
+
+    public void setRutaAlfresco(String rutaAlfresco) {
+        this.rutaAlfresco = rutaAlfresco;
     }
 }
