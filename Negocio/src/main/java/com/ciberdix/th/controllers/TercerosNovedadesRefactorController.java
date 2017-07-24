@@ -84,7 +84,7 @@ public class TercerosNovedadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
-    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable Date FechaInicio, @PathVariable Date FechaFin) {
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin) {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "filtroFechas/" + FechaInicio + "/" + FechaFin, VTercerosNovedades[].class));
     }
 
