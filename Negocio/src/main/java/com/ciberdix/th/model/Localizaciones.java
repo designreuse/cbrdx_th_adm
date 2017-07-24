@@ -1,6 +1,7 @@
 package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
@@ -17,6 +18,7 @@ public class Localizaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idTipoNomenclatura;
+    private ArrayList<LocalizacionesNomenclaturas> listLN;
 
     public Localizaciones() {
     }
@@ -119,5 +121,13 @@ public class Localizaciones {
 
     public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
         this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
+    public ArrayList<LocalizacionesNomenclaturas> getListLN() {
+        return listLN;
+    }
+
+    public void setListLN(ArrayList<LocalizacionesNomenclaturas> listLN) {
+        this.listLN = listLN;
     }
 }
