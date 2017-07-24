@@ -3,6 +3,7 @@ package com.ciberdix.th.repositories;
 import com.ciberdix.th.models.VTercerosNovedades;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
 import java.util.List;
 
 public interface VTercerosNovedadesRefactorRepository extends CrudRepository<VTercerosNovedades, Integer> {
@@ -12,5 +13,7 @@ public interface VTercerosNovedadesRefactorRepository extends CrudRepository<VTe
     List<VTercerosNovedades> findAllByIdNovedad(Integer id);
 
     List<VTercerosNovedades> findAllByIdTercero(Long id);
+
+    List<VTercerosNovedades> findAllByFechaReporteBetween(Date FechaInicio, Date FechaFin);
 
 }

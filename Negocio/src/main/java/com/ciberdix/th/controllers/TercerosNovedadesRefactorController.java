@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,6 +81,11 @@ public class TercerosNovedadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
     List<VTercerosNovedades> findByIdTercero(@PathVariable Long id) {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + id, VTercerosNovedades[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable Date FechaInicio, @PathVariable Date FechaFin) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "filtroFechas/" + FechaInicio + "/" + FechaFin, VTercerosNovedades[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)

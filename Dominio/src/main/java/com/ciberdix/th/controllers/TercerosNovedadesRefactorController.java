@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -41,6 +42,11 @@ public class TercerosNovedadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
     List<VTercerosNovedades> findByIdTercero(@PathVariable Long id) {
         return vTercerosNovedadesRefactorRepository.findAllByIdTercero(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable Date FechaInicio, @PathVariable Date FechaFin) {
+        return vTercerosNovedadesRefactorRepository.findAllByFechaReporteBetween(FechaInicio, FechaFin);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")

@@ -55,26 +55,11 @@ public class VTercerosNovedades {
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
     private String estadoNovedad;
+    private String codigoNovedad;
     private Integer idEstadoNovedad;
     private Date fechaReporte;
     private String nombreTerceroReporta;
     private Long idTerceroReporta;
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public Integer getIdRolResponsable() {
-        return idRolResponsable;
-    }
-
-    public void setIdRolResponsable(Integer idRolResponsable) {
-        this.idRolResponsable = idRolResponsable;
-    }
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -132,12 +117,28 @@ public class VTercerosNovedades {
         this.idEstadoTercero = idEstadoTercero;
     }
 
+    public Integer getIdEstructuraFisica() {
+        return idEstructuraFisica;
+    }
+
+    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
+        this.idEstructuraFisica = idEstructuraFisica;
+    }
+
     public String getEstructuraFisica() {
         return estructuraFisica;
     }
 
     public void setEstructuraFisica(String estructuraFisica) {
         this.estructuraFisica = estructuraFisica;
+    }
+
+    public Integer getIdEstructuraArea() {
+        return idEstructuraArea;
+    }
+
+    public void setIdEstructuraArea(Integer idEstructuraArea) {
+        this.idEstructuraArea = idEstructuraArea;
     }
 
     public String getEstructuraArea() {
@@ -154,6 +155,22 @@ public class VTercerosNovedades {
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Integer getIdRolResponsable() {
+        return idRolResponsable;
+    }
+
+    public void setIdRolResponsable(Integer idRolResponsable) {
+        this.idRolResponsable = idRolResponsable;
     }
 
     public String getNovedad() {
@@ -396,6 +413,14 @@ public class VTercerosNovedades {
         this.estadoNovedad = estadoNovedad;
     }
 
+    public String getCodigoNovedad() {
+        return codigoNovedad;
+    }
+
+    public void setCodigoNovedad(String codigoNovedad) {
+        this.codigoNovedad = codigoNovedad;
+    }
+
     public Integer getIdEstadoNovedad() {
         return idEstadoNovedad;
     }
@@ -426,21 +451,5 @@ public class VTercerosNovedades {
 
     public void setIdTerceroReporta(Long idTerceroReporta) {
         this.idTerceroReporta = idTerceroReporta;
-    }
-
-    public Integer getIdEstructuraFisica() {
-        return idEstructuraFisica;
-    }
-
-    public void setIdEstructuraFisica(Integer idEstructuraFisica) {
-        this.idEstructuraFisica = idEstructuraFisica;
-    }
-
-    public Integer getIdEstructuraArea() {
-        return idEstructuraArea;
-    }
-
-    public void setIdEstructuraArea(Integer idEstructuraArea) {
-        this.idEstructuraArea = idEstructuraArea;
     }
 }
