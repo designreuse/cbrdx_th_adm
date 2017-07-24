@@ -2,9 +2,12 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.Localizaciones;
+import com.ciberdix.th.model.LocalizacionesNomenclaturas;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,39 +20,61 @@ import java.util.List;
 @CrossOrigin
 public class LocalizacionesRefactorController {
 
-    Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/localizaciones";
+    @Value("${domain.url}")
+    private String baseUrl;
+
+    @Value("${business.url}")
+    private String businessUrl;
+
+    private String serviceUrl;
+
+    private RestTemplate restTemplate;
+
+    @PostConstruct
+    void init() {
+        serviceUrl = baseUrl + "/api/localizaciones/";
+        restTemplate = new RestTemplate();
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     List<Localizaciones> findAll() {
-        RestTemplate restTemplate = new RestTemplate();
-        Localizaciones[] parametros = restTemplate.getForObject(serviceUrl, Localizaciones[].class);
-        return Arrays.asList(parametros);
+        return Arrays.asList(restTemplate.getForObject(serviceUrl, Localizaciones[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/localizacionTercero/{idTercero}")
     List<Localizaciones> findByIdTerceroAllLocalizacion(@PathVariable Long idTercero) {
-        RestTemplate restTemplate = new RestTemplate();
-        Localizaciones[] parametro = restTemplate.getForObject(serviceUrl + "/localizacionTercero/" + idTercero, Localizaciones[].class);
-        return Arrays.asList(parametro);
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "localizacionTercero/" + idTercero, Localizaciones[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
     Localizaciones create(@RequestBody Localizaciones request) {
-        RestTemplate restTemplate = new RestTemplate();
+        if(request.getListLN().size()>0){
+            for(LocalizacionesNomenclaturas ln : request.getListLN()){
+                restTemplate.postForObject(baseUrl + "/api/localizacionesNomenclaturas", ln, LocalizacionesNomenclaturas.class);
+            }
+        }
         return restTemplate.postForObject(serviceUrl, request, Localizaciones.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Localizaciones request) {
-        RestTemplate restTemplate = new RestTemplate();
+        String serviceLN = baseUrl + "/api/localizacionesNomenclaturas";
+        if(request.getListLN().size()>0){
+            restTemplate.getForObject(serviceLN + "/disbled/" + request.getIdLocalizacion(), LocalizacionesNomenclaturas.class);
+            for(LocalizacionesNomenclaturas ln : request.getListLN()){
+                if(ln.getIdLocalizacionNomenclatura() != null){
+                    LocalizacionesNomenclaturas LN = restTemplate.getForObject(serviceLN + ln.getIdLocalizacionNomenclatura(), LocalizacionesNomenclaturas.class);
+                    restTemplate.put(serviceLN, LN, LocalizacionesNomenclaturas.class);
+                }else{
+                    restTemplate.postForObject(serviceLN, ln, LocalizacionesNomenclaturas.class);
+                }
+            }
+        }
         restTemplate.put(serviceUrl, request, Localizaciones.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarId/{idLocalizacion}")
     Localizaciones findOne(@PathVariable Integer idLocalizacion) {
-        RestTemplate restTemplate = new RestTemplate();
-        Localizaciones parametro = restTemplate.getForObject(serviceUrl + "/buscarId/" + idLocalizacion, Localizaciones.class);
-        return parametro;
+        return restTemplate.getForObject(serviceUrl + "buscarId/" + idLocalizacion, Localizaciones.class);
     }
 }

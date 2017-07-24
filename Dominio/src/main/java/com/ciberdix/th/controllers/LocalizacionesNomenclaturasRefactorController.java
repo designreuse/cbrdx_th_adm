@@ -37,6 +37,11 @@ public class LocalizacionesNomenclaturasRefactorController {
         return localizacionesNomenclaturasRefactorRepository.findAllByIdTipoNomenclaturaComplementaria(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/disbled/{idLocalizacion}")
+    void disbled(@PathVariable Integer idLocalizacion) {
+        localizacionesNomenclaturasRefactorRepository.disabled(idLocalizacion);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     LocalizacionesNomenclaturas findOne(@PathVariable Integer id) {
         return localizacionesNomenclaturasRefactorRepository.findOne(id);
