@@ -11,9 +11,10 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -84,8 +85,20 @@ public class TercerosNovedadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
-    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "filtroFechas/" + FechaInicio + "/" + FechaFin, VTercerosNovedades[].class));
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin, HttpServletRequest request) {
+        List<VTercerosNovedades> vTercerosNovedades = findAll(request);
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        if (!FechaInicio.isEmpty() && FechaFin.isEmpty()) {
+            return vTercerosNovedades.stream().filter(t -> {
+                try {
+                    return t.getFechaInicio().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaFin().compareTo(dateFormat.parse(FechaFin)) <= 0;
+                } catch (ParseException e) {
+                    return false;
+                }
+            }).collect(Collectors.toList());
+        } else {
+            return vTercerosNovedades;
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST)
