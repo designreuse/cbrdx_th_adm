@@ -60,7 +60,7 @@ public class AdjuntosRefactorController {
     String findFile(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        return frontAddress + ":" + businessPort + "/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto();
+        return UtilitiesController.readParameter("public.url") + "/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file_down/{filename}/{id}.{ext}")
