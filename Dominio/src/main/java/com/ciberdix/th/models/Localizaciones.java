@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
- */
 @Entity
 @Table(name = "Localizaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Localizaciones {
@@ -19,11 +16,12 @@ public class Localizaciones {
     private Integer idDivisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoNomenclatura;
 
     public Localizaciones() {
     }
 
-    public Localizaciones(Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
+    public Localizaciones(Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Integer idTipoNomenclatura) {
         this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
         this.latitud = latitud;
@@ -31,11 +29,12 @@ public class Localizaciones {
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.idDivisionPolitica = idDivisionPolitica;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTipoNomenclatura = idTipoNomenclatura;
     }
 
-    public Localizaciones(Integer idLocalizacion, Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
+    public Localizaciones(Integer idLocalizacion, Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Integer idTipoNomenclatura) {
         this.idLocalizacion = idLocalizacion;
         this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
@@ -44,8 +43,9 @@ public class Localizaciones {
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.idDivisionPolitica = idDivisionPolitica;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTipoNomenclatura = idTipoNomenclatura;
     }
 
     @Id
@@ -149,6 +149,16 @@ public class Localizaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdTipoNomenclatura", nullable = true)
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -172,6 +182,8 @@ public class Localizaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idTipoNomenclatura != null ? !idTipoNomenclatura.equals(that.idTipoNomenclatura) : that.idTipoNomenclatura != null)
+            return false;
 
         return true;
     }
@@ -188,6 +200,7 @@ public class Localizaciones {
         result = 31 * result + (idDivisionPolitica != null ? idDivisionPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idTipoNomenclatura != null ? idTipoNomenclatura.hashCode() : 0);
         return result;
     }
 }

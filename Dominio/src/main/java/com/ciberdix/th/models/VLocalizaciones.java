@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by felip on 21/04/2017.
- */
 @Entity
 @Table(name = "V_Localizaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class VLocalizaciones {
@@ -21,8 +18,9 @@ public class VLocalizaciones {
     private String divisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String tipoNomenclatura;
+    private Integer idTipoNomenclatura;
 
-    @Basic
     @Id
     @Column(name = "IdLocalizacion", nullable = false)
     public Integer getIdLocalizacion() {
@@ -143,6 +141,26 @@ public class VLocalizaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "TipoNomenclatura", nullable = true, length = 100)
+    public String getTipoNomenclatura() {
+        return tipoNomenclatura;
+    }
+
+    public void setTipoNomenclatura(String tipoNomenclatura) {
+        this.tipoNomenclatura = tipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "IdTipoNomenclatura", nullable = true)
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -169,6 +187,10 @@ public class VLocalizaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (tipoNomenclatura != null ? !tipoNomenclatura.equals(that.tipoNomenclatura) : that.tipoNomenclatura != null)
+            return false;
+        if (idTipoNomenclatura != null ? !idTipoNomenclatura.equals(that.idTipoNomenclatura) : that.idTipoNomenclatura != null)
+            return false;
 
         return true;
     }
@@ -187,6 +209,8 @@ public class VLocalizaciones {
         result = 31 * result + (divisionPolitica != null ? divisionPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (tipoNomenclatura != null ? tipoNomenclatura.hashCode() : 0);
+        result = 31 * result + (idTipoNomenclatura != null ? idTipoNomenclatura.hashCode() : 0);
         return result;
     }
 }

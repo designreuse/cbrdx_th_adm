@@ -16,6 +16,7 @@ public class Localizaciones {
     private Integer idDivisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoNomenclatura;
 
     public Localizaciones() {
     }
@@ -110,5 +111,13 @@ public class Localizaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
     }
 }

@@ -18,6 +18,7 @@ public class VLocalizaciones {
     private String divisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoNomenclatura;
 
     public Integer getIdLocalizacion() {
         return idLocalizacion;
@@ -113,5 +114,13 @@ public class VLocalizaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
     }
 }
