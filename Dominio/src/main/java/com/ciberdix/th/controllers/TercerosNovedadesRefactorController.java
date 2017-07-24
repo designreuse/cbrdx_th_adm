@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @CrossOrigin
@@ -45,8 +46,10 @@ public class TercerosNovedadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
-    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable Date FechaInicio, @PathVariable Date FechaFin) {
-        return vTercerosNovedadesRefactorRepository.findAllByFechaReporteBetween(FechaInicio, FechaFin);
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin) throws ParseException {
+        SimpleDateFormat fInicio = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fFin = new SimpleDateFormat("yyyy-MM-dd");
+        return vTercerosNovedadesRefactorRepository.findAllByFechaReporteBetween(fInicio.parse(FechaInicio), fFin.parse(FechaFin));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
