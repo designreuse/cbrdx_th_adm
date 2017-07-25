@@ -5,58 +5,24 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "ProyeccionDotacion", schema = "dbo", catalog = "CREZCAMOS")
-public class ProyeccionDotacion {
+@Table(name = "V_ProyeccionDotacion", schema = "dbo", catalog = "CREZCAMOS")
+public class VProyeccionDotacion {
     private Integer idProyeccionDotacion;
     private String nombreProyeccion;
+    private String grupoDotacion;
     private Integer idGrupoDotacion;
     private Boolean indicadorAdicional;
     private Boolean indicadorNoAreas;
     private Integer cantidadProyeccion;
     private Integer cantidadMeses;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String periodo;
     private Boolean indicadorHabilitado;
+    private String nombreTercero;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Date fechaSolicitud;
 
-    public ProyeccionDotacion() {
-    }
-
-    public ProyeccionDotacion(String nombreProyeccion, Integer idGrupoDotacion, Boolean indicadorAdicional, Boolean indicadorNoAreas, Integer cantidadProyeccion, Integer cantidadMeses, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.nombreProyeccion = nombreProyeccion;
-        this.idGrupoDotacion = idGrupoDotacion;
-        this.indicadorAdicional = indicadorAdicional;
-        this.indicadorNoAreas = indicadorNoAreas;
-        this.cantidadProyeccion = cantidadProyeccion;
-        this.cantidadMeses = cantidadMeses;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.fechaSolicitud = new Date(fechaFin.getTime());
-    }
-
-    public ProyeccionDotacion(Integer idProyeccionDotacion, String nombreProyeccion, Integer idGrupoDotacion, Boolean indicadorAdicional, Boolean indicadorNoAreas, Integer cantidadProyeccion, Integer cantidadMeses, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaSolicitud) {
-        this.idProyeccionDotacion = idProyeccionDotacion;
-        this.nombreProyeccion = nombreProyeccion;
-        this.idGrupoDotacion = idGrupoDotacion;
-        this.indicadorAdicional = indicadorAdicional;
-        this.indicadorNoAreas = indicadorNoAreas;
-        this.cantidadProyeccion = cantidadProyeccion;
-        this.cantidadMeses = cantidadMeses;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.fechaSolicitud = fechaSolicitud;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdProyeccionDotacion", nullable = false)
     public Integer getIdProyeccionDotacion() {
         return idProyeccionDotacion;
@@ -74,6 +40,16 @@ public class ProyeccionDotacion {
 
     public void setNombreProyeccion(String nombreProyeccion) {
         this.nombreProyeccion = nombreProyeccion;
+    }
+
+    @Basic
+    @Column(name = "GrupoDotacion", nullable = true, length = 50)
+    public String getGrupoDotacion() {
+        return grupoDotacion;
+    }
+
+    public void setGrupoDotacion(String grupoDotacion) {
+        this.grupoDotacion = grupoDotacion;
     }
 
     @Basic
@@ -127,23 +103,13 @@ public class ProyeccionDotacion {
     }
 
     @Basic
-    @Column(name = "FechaInicio", nullable = true)
-    public Date getFechaInicio() {
-        return fechaInicio;
+    @Column(name = "Periodo", nullable = false, length = 81)
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    @Basic
-    @Column(name = "FechaFin", nullable = true)
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     @Basic
@@ -154,6 +120,16 @@ public class ProyeccionDotacion {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    @Basic
+    @Column(name = "NombreTercero", nullable = false, length = 259)
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
     }
 
     @Basic
@@ -191,11 +167,13 @@ public class ProyeccionDotacion {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProyeccionDotacion that = (ProyeccionDotacion) o;
+        VProyeccionDotacion that = (VProyeccionDotacion) o;
 
         if (idProyeccionDotacion != null ? !idProyeccionDotacion.equals(that.idProyeccionDotacion) : that.idProyeccionDotacion != null)
             return false;
         if (nombreProyeccion != null ? !nombreProyeccion.equals(that.nombreProyeccion) : that.nombreProyeccion != null)
+            return false;
+        if (grupoDotacion != null ? !grupoDotacion.equals(that.grupoDotacion) : that.grupoDotacion != null)
             return false;
         if (idGrupoDotacion != null ? !idGrupoDotacion.equals(that.idGrupoDotacion) : that.idGrupoDotacion != null)
             return false;
@@ -207,9 +185,10 @@ public class ProyeccionDotacion {
             return false;
         if (cantidadMeses != null ? !cantidadMeses.equals(that.cantidadMeses) : that.cantidadMeses != null)
             return false;
-        if (fechaInicio != null ? !fechaInicio.equals(that.fechaInicio) : that.fechaInicio != null) return false;
-        if (fechaFin != null ? !fechaFin.equals(that.fechaFin) : that.fechaFin != null) return false;
+        if (periodo != null ? !periodo.equals(that.periodo) : that.periodo != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
+            return false;
+        if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
@@ -225,14 +204,15 @@ public class ProyeccionDotacion {
     public int hashCode() {
         int result = idProyeccionDotacion != null ? idProyeccionDotacion.hashCode() : 0;
         result = 31 * result + (nombreProyeccion != null ? nombreProyeccion.hashCode() : 0);
+        result = 31 * result + (grupoDotacion != null ? grupoDotacion.hashCode() : 0);
         result = 31 * result + (idGrupoDotacion != null ? idGrupoDotacion.hashCode() : 0);
         result = 31 * result + (indicadorAdicional != null ? indicadorAdicional.hashCode() : 0);
         result = 31 * result + (indicadorNoAreas != null ? indicadorNoAreas.hashCode() : 0);
         result = 31 * result + (cantidadProyeccion != null ? cantidadProyeccion.hashCode() : 0);
         result = 31 * result + (cantidadMeses != null ? cantidadMeses.hashCode() : 0);
-        result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
-        result = 31 * result + (fechaFin != null ? fechaFin.hashCode() : 0);
+        result = 31 * result + (periodo != null ? periodo.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (fechaSolicitud != null ? fechaSolicitud.hashCode() : 0);

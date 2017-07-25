@@ -1,20 +1,21 @@
 package com.ciberdix.th.model;
 
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
-public class ProyeccionDotacion {
+public class VProyeccionDotacion {
 
     private Integer idProyeccionDotacion;
     private String nombreProyeccion;
+    private String grupoDotacion;
     private Integer idGrupoDotacion;
     private Boolean indicadorAdicional;
     private Boolean indicadorNoAreas;
     private Integer cantidadProyeccion;
     private Integer cantidadMeses;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String periodo;
     private Boolean indicadorHabilitado;
+    private String nombreTercero;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Date fechaSolicitud;
@@ -33,6 +34,14 @@ public class ProyeccionDotacion {
 
     public void setNombreProyeccion(String nombreProyeccion) {
         this.nombreProyeccion = nombreProyeccion;
+    }
+
+    public String getGrupoDotacion() {
+        return grupoDotacion;
+    }
+
+    public void setGrupoDotacion(String grupoDotacion) {
+        this.grupoDotacion = grupoDotacion;
     }
 
     public Integer getIdGrupoDotacion() {
@@ -75,20 +84,12 @@ public class ProyeccionDotacion {
         this.cantidadMeses = cantidadMeses;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Date getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
     public Boolean getIndicadorHabilitado() {
@@ -97,6 +98,14 @@ public class ProyeccionDotacion {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
     }
 
     public Integer getAuditoriaUsuario() {
