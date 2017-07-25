@@ -12,7 +12,7 @@ public interface LocalizacionesNomenclaturasRefactorRepository  extends CrudRepo
 
     List<LocalizacionesNomenclaturas> findAllByIndicadorHabilitadoIsTrue();
 
-    List<LocalizacionesNomenclaturas> findAllByIdLocalizacion(Integer id);
+    List<LocalizacionesNomenclaturas> findAllByIdLocalizacionAndIndicadorHabilitadoIsTrue(Integer id);
 
     List<LocalizacionesNomenclaturas> findAllByIdTipoNomenclaturaComplementaria(Integer id);
 

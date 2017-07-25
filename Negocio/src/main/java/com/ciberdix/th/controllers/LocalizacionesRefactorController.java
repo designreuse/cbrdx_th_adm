@@ -48,9 +48,12 @@ public class LocalizacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Localizaciones create(@RequestBody Localizaciones request) {
-        if(request.getListLN().size()>0){
-            for(LocalizacionesNomenclaturas ln : request.getListLN()){
-                restTemplate.postForObject(baseUrl + "/api/localizacionesNomenclaturas", ln, LocalizacionesNomenclaturas.class);
+        if(request.getListLN()!= null){
+            if(request.getListLN().size()>0){
+                for(LocalizacionesNomenclaturas ln : request.getListLN()){
+                    ln.setIdLocalizacion(request.getIdLocalizacion());
+                    restTemplate.postForObject(baseUrl + "/api/localizacionesNomenclaturas", ln, LocalizacionesNomenclaturas.class);
+                }
             }
         }
         return restTemplate.postForObject(serviceUrl, request, Localizaciones.class);
@@ -66,6 +69,7 @@ public class LocalizacionesRefactorController {
                     LocalizacionesNomenclaturas LN = restTemplate.getForObject(serviceLN + ln.getIdLocalizacionNomenclatura(), LocalizacionesNomenclaturas.class);
                     restTemplate.put(serviceLN, LN, LocalizacionesNomenclaturas.class);
                 }else{
+                    ln.setIdLocalizacion(request.getIdLocalizacion());
                     restTemplate.postForObject(serviceLN, ln, LocalizacionesNomenclaturas.class);
                 }
             }

@@ -29,7 +29,7 @@ public class LocalizacionesNomenclaturasRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/localizacion/{id}")
     List<LocalizacionesNomenclaturas> findByIdLocalizacion(@PathVariable Integer id) {
-        return localizacionesNomenclaturasRefactorRepository.findAllByIdLocalizacion(id);
+        return localizacionesNomenclaturasRefactorRepository.findAllByIdLocalizacionAndIndicadorHabilitadoIsTrue(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/tipoNomenCompl/{id}")
