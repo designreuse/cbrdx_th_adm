@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -50,9 +51,14 @@ public class TercerosNovedadesRefactorController {
         HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
         Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
         TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
-        Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
-        Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
-        List<VTercerosCargos> myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        List<VTercerosCargos> myEmployees;
+        if (currentJob != null) {
+            Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
+            Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
+            myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        } else {
+            myEmployees = new ArrayList<>();
+        }
 
         List<VTercerosNovedades> prefilter = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
         List<VTercerosNovedades> roleFilter = prefilter.stream().filter(t -> userRoles.stream().anyMatch(f -> t.getRol() != null && t.getRol().equals(f.toString()))).collect(Collectors.toList());
@@ -88,7 +94,7 @@ public class TercerosNovedadesRefactorController {
     List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin, HttpServletRequest request) {
         List<VTercerosNovedades> vTercerosNovedades = findAll(request);
         DateFormat dateFormat = DateFormat.getDateInstance();
-        if (!FechaInicio.isEmpty() && FechaFin.isEmpty()) {
+        if (!FechaInicio.isEmpty() && !FechaFin.isEmpty()) {
             return vTercerosNovedades.stream().filter(t -> {
                 try {
                     return t.getFechaInicio().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaFin().compareTo(dateFormat.parse(FechaFin)) <= 0;
