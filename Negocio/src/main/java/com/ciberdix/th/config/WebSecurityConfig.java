@@ -1,10 +1,14 @@
 package com.ciberdix.th.config;
 
+import com.ciberdix.th.controllers.UtilitiesController;
+import com.ciberdix.th.model.Terceros;
 import com.ciberdix.th.security.JwtAuthenticationEntryPoint;
 import com.ciberdix.th.security.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,10 +19,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableScheduling
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -67,5 +77,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.headers().frameOptions().disable();
         httpSecurity.headers().cacheControl();
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
+    void changePersonStatus() {
+        String serviceUrl = UtilitiesController.readParameter("domain.url");
+        RestTemplate restTemplate = new RestTemplate();
+        Terceros[] terceros = restTemplate.getForObject(serviceUrl, Terceros[].class);
+        List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(Terceros::getIndicadorHabilitado).collect(Collectors.toList());
+
     }
 }
