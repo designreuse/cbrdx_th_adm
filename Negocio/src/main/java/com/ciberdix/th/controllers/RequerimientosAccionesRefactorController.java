@@ -58,7 +58,7 @@ public class RequerimientosAccionesRefactorController {
         VRequerimientos vRequerimientos = restTemplate.getForObject(domain + "/api/requerimientos/" + o.getIdRequerimiento(), VRequerimientos.class);
         if (o.getIdAccion().equals(solaut.getIdLista())) {
             String token = UtilitiesController.generateURLToken("/vacancies/approve/" + o.getIdRequerimiento());
-            String body = "Se ha creado un requerimiento de personal que requiere su aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
+            String body = "Se ha creado un requerimiento de personal que requiere su aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"http://" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
             String recipients = utilitiesController.findConstant("CORAUT").getValor();
             UtilitiesController.sendMail(recipients, "Aprobación", body);
         } else if (o.getIdAccion().equals(crrd.getIdLista()) && vRequerimientos.getIdTipoSolicitud().equals(crgelmn.getIdLista())) {
@@ -94,11 +94,11 @@ public class RequerimientosAccionesRefactorController {
 
                     if (o.getIdAccion().equals(aprb)) {
                         String token = UtilitiesController.generateURLToken("/vacancies/update/" + o.getIdRequerimiento());
-                        String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p style=\"align:center;\"><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
+                        String body = "Se ha aprobado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p style=\"align:center;\"><a href=\"http://" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
                         UtilitiesController.sendMail(usuarioSolicitud.getCorreoElectronico(), "Revisión", body);
 
                         token = UtilitiesController.generateURLToken("/personnel-requirement/detail/" + o.getIdRequerimiento());
-                        body = "Se ha aprobado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
+                        body = "Se ha aprobado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"http://" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
                         UtilitiesController.sendMail(usuarioRequerimiento.getCorreoElectronico(), "Revisión", body);
 
                         Calendar now = Calendar.getInstance();
@@ -172,11 +172,11 @@ public class RequerimientosAccionesRefactorController {
                         }
                     } else {
                         String token = UtilitiesController.generateURLToken("/vacancies/detail/" + o.getIdRequerimiento());
-                        String body = "Se ha modificado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
+                        String body = "Se ha modificado un requerimiento de personal del cual usted solicito aprobación: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"http://" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
                         UtilitiesController.sendMail(usuarioSolicitud.getCorreoElectronico(), "Revisión", body);
 
                         token = UtilitiesController.generateURLToken("/personnel-requirement/detail/" + o.getIdRequerimiento());
-                        body = "Se ha modificado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
+                        body = "Se ha modificado un requerimiento de personal solicitado por usted: puede hacer click en el siguiente enlace o copiarlo en su navegador para dar respuesta a la solicitud <p><a href=\"http://" + frontUrl + "/login?token=" + token + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\" alt=\"" + frontUrl + "/login?token=" + token + "\"></a></p>";
                         UtilitiesController.sendMail(usuarioRequerimiento.getCorreoElectronico(), "Revisión", body);
                     }
                 }
