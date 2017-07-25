@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.ProyeccionDotacion;
+import com.ciberdix.th.model.VProyeccionDotacion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -31,13 +32,23 @@ public class ProyeccionDotacionRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionDotacion> findAll() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl, ProyeccionDotacion[].class));
+    List<VProyeccionDotacion> findAll() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionDotacion[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ProyeccionDotacion findOne(@PathVariable Integer id) {
-        return restTemplate.getForObject(serviceUrl + id, ProyeccionDotacion.class);
+    VProyeccionDotacion findOne(@PathVariable Integer id) {
+        return restTemplate.getForObject(serviceUrl + id, VProyeccionDotacion.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<VProyeccionDotacion> findEnabled() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", VProyeccionDotacion[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/entreFechas/{fechaInicio}/{fechaFin}")
+    List<VProyeccionDotacion> findByFechaSolicitudBetween(@PathVariable String fechaInicio, @PathVariable String fechaFin) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "entreFechas/" + fechaInicio + "/" + fechaFin, VProyeccionDotacion[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
