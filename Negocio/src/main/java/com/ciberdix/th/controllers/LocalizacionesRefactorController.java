@@ -51,6 +51,7 @@ public class LocalizacionesRefactorController {
         if(request.getListLN()!= null){
             if(request.getListLN().size()>0){
                 for(LocalizacionesNomenclaturas ln : request.getListLN()){
+                    ln.setIdLocalizacion(request.getIdLocalizacion());
                     restTemplate.postForObject(baseUrl + "/api/localizacionesNomenclaturas", ln, LocalizacionesNomenclaturas.class);
                 }
             }
@@ -68,6 +69,7 @@ public class LocalizacionesRefactorController {
                     LocalizacionesNomenclaturas LN = restTemplate.getForObject(serviceLN + ln.getIdLocalizacionNomenclatura(), LocalizacionesNomenclaturas.class);
                     restTemplate.put(serviceLN, LN, LocalizacionesNomenclaturas.class);
                 }else{
+                    ln.setIdLocalizacion(request.getIdLocalizacion());
                     restTemplate.postForObject(serviceLN, ln, LocalizacionesNomenclaturas.class);
                 }
             }
