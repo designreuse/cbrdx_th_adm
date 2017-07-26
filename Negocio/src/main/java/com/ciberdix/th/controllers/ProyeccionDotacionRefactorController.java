@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.ProyeccionDotacion;
+import com.ciberdix.th.model.ProyeccionDotacionEstructuraOrganizacional;
 import com.ciberdix.th.model.VProyeccionDotacion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,25 @@ public class ProyeccionDotacionRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
-        return restTemplate.postForObject(serviceUrl, o, ProyeccionDotacion.class);
+        List<Integer> ids = o.getIdEstructuraOrganizacional();
+        ProyeccionDotacion PD = restTemplate.postForObject(serviceUrl, o, ProyeccionDotacion.class);
+        if(o.getIndicadorNoAreas() != null){
+            if(o.getIndicadorNoAreas()){
+                if(o.getIdEstructuraOrganizacional() != null){
+                    if(o.getIdEstructuraOrganizacional().size()>0){
+                        for (Integer id : ids){
+                            ProyeccionDotacionEstructuraOrganizacional pe = new ProyeccionDotacionEstructuraOrganizacional();
+                            pe.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
+                            pe.setIdEstructuraOrganizacional(id);
+                            pe.setIndicadorHabilitado(true);
+                            pe.setAuditoriaUsuario(o.getAuditoriaUsuario());
+                            restTemplate.postForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional", pe, ProyeccionDotacionEstructuraOrganizacional.class);
+                        }
+                    }
+                }
+            }
+        }
+        return PD;
     }
 
     @RequestMapping(method = RequestMethod.PUT)

@@ -18,6 +18,9 @@ public class Localizaciones {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idTipoNomenclatura;
+    private String principal;
+    private String adicional;
+    private String adicionalComplementaria;
     private ArrayList<LocalizacionesNomenclaturas> listLN;
 
     public Localizaciones() {
@@ -129,5 +132,29 @@ public class Localizaciones {
 
     public void setListLN(ArrayList<LocalizacionesNomenclaturas> listLN) {
         this.listLN = listLN;
+    }
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getAdicional() {
+        return adicional;
+    }
+
+    public void setAdicional(String adicional) {
+        this.adicional = adicional;
+    }
+
+    public String getAdicionalComplementaria() {
+        return adicionalComplementaria;
+    }
+
+    public void setAdicionalComplementaria(String adicionalComplementaria) {
+        this.adicionalComplementaria = adicionalComplementaria;
     }
 }

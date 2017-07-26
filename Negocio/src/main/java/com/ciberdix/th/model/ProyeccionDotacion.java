@@ -2,6 +2,7 @@ package com.ciberdix.th.model;
 
 import java.util.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class ProyeccionDotacion {
 
@@ -18,6 +19,7 @@ public class ProyeccionDotacion {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Date fechaSolicitud;
+    private List<Integer> idEstructuraOrganizacional;
 
     public Integer getIdProyeccionDotacion() {
         return idProyeccionDotacion;
@@ -121,5 +123,13 @@ public class ProyeccionDotacion {
 
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
+    }
+
+    public List<Integer> getIdEstructuraOrganizacional() {
+        return idEstructuraOrganizacional;
+    }
+
+    public void setIdEstructuraOrganizacional(List<Integer> idEstructuraOrganizacional) {
+        this.idEstructuraOrganizacional = idEstructuraOrganizacional;
     }
 }
