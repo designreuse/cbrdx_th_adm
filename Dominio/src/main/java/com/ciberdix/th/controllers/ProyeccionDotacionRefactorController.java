@@ -60,7 +60,7 @@ public class ProyeccionDotacionRefactorController {
                         o.getNombreProyeccion(),o.getIdGrupoDotacion(),
                         o.getIndicadorAdicional(),o.getIndicadorNoAreas(),o.getCantidadProyeccion(),
                         o.getCantidadMeses(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorHabilitado(),
-                        o.getAuditoriaUsuario()
+                        o.getAuditoriaUsuario(),o.getFechaSolicitud()
                 )
         );
     }
