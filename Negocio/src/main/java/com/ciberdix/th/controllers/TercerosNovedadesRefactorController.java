@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -92,12 +93,14 @@ public class TercerosNovedadesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
     List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin, HttpServletRequest request) {
+        assert FechaInicio != null;
+        assert FechaFin != null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         List<VTercerosNovedades> vTercerosNovedades = findAll(request);
-        DateFormat dateFormat = DateFormat.getDateInstance();
         if (!FechaInicio.isEmpty() && !FechaFin.isEmpty()) {
             return vTercerosNovedades.stream().filter(t -> {
                 try {
-                    return t.getFechaInicio().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaFin().compareTo(dateFormat.parse(FechaFin)) <= 0;
+                    return t.getFechaInicio() != null && t.getFechaInicio().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaFin() != null && t.getFechaFin().compareTo(dateFormat.parse(FechaFin)) <= 0;
                 } catch (ParseException e) {
                     return false;
                 }
