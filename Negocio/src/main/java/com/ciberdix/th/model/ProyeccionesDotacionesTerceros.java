@@ -10,7 +10,9 @@ public class ProyeccionesDotacionesTerceros {
     private Long idTercero;
     private Integer idEstado;
     private Date fechaEntrega;
+    private Date fechaPosibleEntrega;
     private String comentario;
+    private String comentarioAdicional;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -85,5 +87,21 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Date getFechaPosibleEntrega() {
+        return fechaPosibleEntrega;
+    }
+
+    public void setFechaPosibleEntrega(Date fechaPosibleEntrega) {
+        this.fechaPosibleEntrega = fechaPosibleEntrega;
+    }
+
+    public String getComentarioAdicional() {
+        return comentarioAdicional;
+    }
+
+    public void setComentarioAdicional(String comentarioAdicional) {
+        this.comentarioAdicional = comentarioAdicional;
     }
 }

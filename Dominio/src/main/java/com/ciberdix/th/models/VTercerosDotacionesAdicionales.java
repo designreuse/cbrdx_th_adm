@@ -1,46 +1,26 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosDotacionesAdicionales", schema = "dbo", catalog = "CREZCAMOS")
-public class TercerosDotacionesAdicionales {
+@Table(name = "V_TercerosDotacionesAdicionales", schema = "dbo", catalog = "CREZCAMOS")
+public class VTercerosDotacionesAdicionales {
     private Integer idTerceroDotacionAdicional;
+    private String nombreTercero;
     private Long idTercero;
+    private String dotacion;
+    private BigDecimal costo;
     private Integer idDotacion;
     private Integer cantidadDotacion;
+    private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosDotacionesAdicionales() {
-    }
-
-    public TercerosDotacionesAdicionales(Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTercero = idTercero;
-        this.idDotacion = idDotacion;
-        this.cantidadDotacion = cantidadDotacion;
-        this.idProyeccionDotacion = idProyeccionDotacion;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public TercerosDotacionesAdicionales(Integer idTerceroDotacionAdicional, Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroDotacionAdicional = idTerceroDotacionAdicional;
-        this.idTercero = idTercero;
-        this.idDotacion = idDotacion;
-        this.cantidadDotacion = cantidadDotacion;
-        this.idProyeccionDotacion = idProyeccionDotacion;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroDotacionAdicional", nullable = false)
     public Integer getIdTerceroDotacionAdicional() {
         return idTerceroDotacionAdicional;
@@ -51,6 +31,16 @@ public class TercerosDotacionesAdicionales {
     }
 
     @Basic
+    @Column(name = "NombreTercero", nullable = false, length = 259)
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
     @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
@@ -58,6 +48,26 @@ public class TercerosDotacionesAdicionales {
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "Dotacion", nullable = true, length = 64)
+    public String getDotacion() {
+        return dotacion;
+    }
+
+    public void setDotacion(String dotacion) {
+        this.dotacion = dotacion;
+    }
+
+    @Basic
+    @Column(name = "Costo", nullable = true, precision = 1)
+    public BigDecimal getCosto() {
+        return costo;
+    }
+
+    public void setCosto(BigDecimal costo) {
+        this.costo = costo;
     }
 
     @Basic
@@ -78,6 +88,16 @@ public class TercerosDotacionesAdicionales {
 
     public void setCantidadDotacion(Integer cantidadDotacion) {
         this.cantidadDotacion = cantidadDotacion;
+    }
+
+    @Basic
+    @Column(name = "NombreProyeccion", nullable = true, length = 200)
+    public String getNombreProyeccion() {
+        return nombreProyeccion;
+    }
+
+    public void setNombreProyeccion(String nombreProyeccion) {
+        this.nombreProyeccion = nombreProyeccion;
     }
 
     @Basic
@@ -125,13 +145,19 @@ public class TercerosDotacionesAdicionales {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosDotacionesAdicionales that = (TercerosDotacionesAdicionales) o;
+        VTercerosDotacionesAdicionales that = (VTercerosDotacionesAdicionales) o;
 
         if (idTerceroDotacionAdicional != null ? !idTerceroDotacionAdicional.equals(that.idTerceroDotacionAdicional) : that.idTerceroDotacionAdicional != null)
             return false;
+        if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
+            return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (dotacion != null ? !dotacion.equals(that.dotacion) : that.dotacion != null) return false;
+        if (costo != null ? !costo.equals(that.costo) : that.costo != null) return false;
         if (idDotacion != null ? !idDotacion.equals(that.idDotacion) : that.idDotacion != null) return false;
         if (cantidadDotacion != null ? !cantidadDotacion.equals(that.cantidadDotacion) : that.cantidadDotacion != null)
+            return false;
+        if (nombreProyeccion != null ? !nombreProyeccion.equals(that.nombreProyeccion) : that.nombreProyeccion != null)
             return false;
         if (idProyeccionDotacion != null ? !idProyeccionDotacion.equals(that.idProyeccionDotacion) : that.idProyeccionDotacion != null)
             return false;
@@ -148,9 +174,13 @@ public class TercerosDotacionesAdicionales {
     @Override
     public int hashCode() {
         int result = idTerceroDotacionAdicional != null ? idTerceroDotacionAdicional.hashCode() : 0;
+        result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (dotacion != null ? dotacion.hashCode() : 0);
+        result = 31 * result + (costo != null ? costo.hashCode() : 0);
         result = 31 * result + (idDotacion != null ? idDotacion.hashCode() : 0);
         result = 31 * result + (cantidadDotacion != null ? cantidadDotacion.hashCode() : 0);
+        result = 31 * result + (nombreProyeccion != null ? nombreProyeccion.hashCode() : 0);
         result = 31 * result + (idProyeccionDotacion != null ? idProyeccionDotacion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);

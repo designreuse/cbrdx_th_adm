@@ -1,13 +1,18 @@
 package com.ciberdix.th.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class TercerosDotacionesAdicionales {
+public class VTercerosDotacionesAdicionales {
 
     private Integer idTerceroDotacionAdicional;
+    private String nombreTercero;
     private Long idTercero;
+    private String dotacion;
+    private BigDecimal costo;
     private Integer idDotacion;
     private Integer cantidadDotacion;
+    private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -21,12 +26,36 @@ public class TercerosDotacionesAdicionales {
         this.idTerceroDotacionAdicional = idTerceroDotacionAdicional;
     }
 
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
     public Long getIdTercero() {
         return idTercero;
     }
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    public String getDotacion() {
+        return dotacion;
+    }
+
+    public void setDotacion(String dotacion) {
+        this.dotacion = dotacion;
+    }
+
+    public BigDecimal getCosto() {
+        return costo;
+    }
+
+    public void setCosto(BigDecimal costo) {
+        this.costo = costo;
     }
 
     public Integer getIdDotacion() {
@@ -43,6 +72,14 @@ public class TercerosDotacionesAdicionales {
 
     public void setCantidadDotacion(Integer cantidadDotacion) {
         this.cantidadDotacion = cantidadDotacion;
+    }
+
+    public String getNombreProyeccion() {
+        return nombreProyeccion;
+    }
+
+    public void setNombreProyeccion(String nombreProyeccion) {
+        this.nombreProyeccion = nombreProyeccion;
     }
 
     public Integer getIdProyeccionDotacion() {
