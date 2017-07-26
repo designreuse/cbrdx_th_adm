@@ -389,7 +389,7 @@ public class CargosRefactorController {
         if (estadoActual.getPaso().equals(15) && obj.getPaso().equals(16)) {
             String recipients = UtilitiesController.findConstant("CORAUT").getValor();
             String urltoken = UtilitiesController.generateURLToken("/positions/update/" + obj.getIdCargo());
-            String body = "Se ha creado un nuevo cargo que requiere su aprobación. haga click en el siguiente boton para acceder a la información: <p style=\"align:center;\"><a href=\"http://" + UtilitiesController.readParameter("front.url") + "/login?token=" + urltoken + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
+            String body = "Se ha creado un nuevo cargo que requiere su aprobación. haga click en el siguiente boton para acceder a la información: <p style=\"align:center;\"><a href=\"" + UtilitiesController.readParameter("front.url") + "/login?token=" + urltoken + "\"><img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/revisar.png\"></a></p>";
             UtilitiesController.sendMail(recipients, "Aprobación Cargo", body);
         }
         restTemplate.put(serviceUrl + "/tab7", obj);
