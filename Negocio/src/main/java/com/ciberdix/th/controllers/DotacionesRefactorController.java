@@ -55,6 +55,11 @@ public class DotacionesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "grupoDotacion/" + id, VDotaciones[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/idProyeccionDotacion/{id}")
+    List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Dotaciones create(@RequestBody Dotaciones o) {
         return restTemplate.postForObject(serviceUrl, o, Dotaciones.class);
