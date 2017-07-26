@@ -24,7 +24,7 @@ public class ProyeccionDotacion {
     public ProyeccionDotacion() {
     }
 
-    public ProyeccionDotacion(String nombreProyeccion, Integer idGrupoDotacion, Boolean indicadorAdicional, Boolean indicadorNoAreas, Integer cantidadProyeccion, Integer cantidadMeses, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaSolicitud) {
+    public ProyeccionDotacion(String nombreProyeccion, Integer idGrupoDotacion, Boolean indicadorAdicional, Boolean indicadorNoAreas, Integer cantidadProyeccion, Integer cantidadMeses, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.nombreProyeccion = nombreProyeccion;
         this.idGrupoDotacion = idGrupoDotacion;
         this.indicadorAdicional = indicadorAdicional;
@@ -36,7 +36,7 @@ public class ProyeccionDotacion {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.fechaSolicitud = fechaSolicitud != null ? new Date(fechaSolicitud.getTime()) : null;;
+        this.fechaSolicitud = new Date(System.currentTimeMillis());
     }
 
     public ProyeccionDotacion(Integer idProyeccionDotacion, String nombreProyeccion, Integer idGrupoDotacion, Boolean indicadorAdicional, Boolean indicadorNoAreas, Integer cantidadProyeccion, Integer cantidadMeses, Date fechaInicio, Date fechaFin, Boolean indicadorHabilitado, Integer auditoriaUsuario, Date fechaSolicitud) {
