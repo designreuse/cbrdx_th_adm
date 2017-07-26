@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,7 +12,9 @@ public class ProyeccionesDotacionesTerceros {
     private Long idTercero;
     private Integer idEstado;
     private Date fechaEntrega;
+    private Date fechaPosibleEntrega;
     private String comentario;
+    private String comentarioAdicional;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -20,24 +22,28 @@ public class ProyeccionesDotacionesTerceros {
     public ProyeccionesDotacionesTerceros() {
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, String comentario, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
         this.idEstado = idEstado;
-        this.fechaEntrega = fechaEntrega != null ? new Date(fechaEntrega.getTime()) : null;
+        this.fechaEntrega = fechaEntrega;
+        this.fechaPosibleEntrega = fechaPosibleEntrega;
         this.comentario = comentario;
+        this.comentarioAdicional = comentarioAdicional;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, String comentario, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
         this.idEstado = idEstado;
-        this.fechaEntrega = fechaEntrega != null ? new Date(fechaEntrega.getTime()) : null;
+        this.fechaEntrega = fechaEntrega;
+        this.fechaPosibleEntrega = fechaPosibleEntrega;
         this.comentario = comentario;
+        this.comentarioAdicional = comentarioAdicional;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -95,6 +101,16 @@ public class ProyeccionesDotacionesTerceros {
     }
 
     @Basic
+    @Column(name = "FechaPosibleEntrega", nullable = true)
+    public Date getFechaPosibleEntrega() {
+        return fechaPosibleEntrega;
+    }
+
+    public void setFechaPosibleEntrega(Date fechaPosibleEntrega) {
+        this.fechaPosibleEntrega = fechaPosibleEntrega;
+    }
+
+    @Basic
     @Column(name = "Comentario", nullable = true, length = 500)
     public String getComentario() {
         return comentario;
@@ -102,6 +118,16 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    @Basic
+    @Column(name = "ComentarioAdicional", nullable = true, length = 500)
+    public String getComentarioAdicional() {
+        return comentarioAdicional;
+    }
+
+    public void setComentarioAdicional(String comentarioAdicional) {
+        this.comentarioAdicional = comentarioAdicional;
     }
 
     @Basic
@@ -148,7 +174,11 @@ public class ProyeccionesDotacionesTerceros {
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
         if (fechaEntrega != null ? !fechaEntrega.equals(that.fechaEntrega) : that.fechaEntrega != null) return false;
+        if (fechaPosibleEntrega != null ? !fechaPosibleEntrega.equals(that.fechaPosibleEntrega) : that.fechaPosibleEntrega != null)
+            return false;
         if (comentario != null ? !comentario.equals(that.comentario) : that.comentario != null) return false;
+        if (comentarioAdicional != null ? !comentarioAdicional.equals(that.comentarioAdicional) : that.comentarioAdicional != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -166,7 +196,9 @@ public class ProyeccionesDotacionesTerceros {
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (fechaEntrega != null ? fechaEntrega.hashCode() : 0);
+        result = 31 * result + (fechaPosibleEntrega != null ? fechaPosibleEntrega.hashCode() : 0);
         result = 31 * result + (comentario != null ? comentario.hashCode() : 0);
+        result = 31 * result + (comentarioAdicional != null ? comentarioAdicional.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

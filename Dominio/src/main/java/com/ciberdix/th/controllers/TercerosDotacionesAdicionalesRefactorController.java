@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.TercerosDotacionesAdicionales;
+import com.ciberdix.th.models.VTercerosDotacionesAdicionales;
 import com.ciberdix.th.repositories.TercerosDotacionesAdicionalesRefactorRepository;
+import com.ciberdix.th.repositories.VTercerosDotacionesAdicionalesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,27 @@ public class TercerosDotacionesAdicionalesRefactorController {
     @Autowired
     private TercerosDotacionesAdicionalesRefactorRepository tercerosDotacionesAdicionalesRefactorRepository;
 
+    @Autowired
+    private VTercerosDotacionesAdicionalesRefactorRepository vTercerosDotacionesAdicionalesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<TercerosDotacionesAdicionales> findAll() {
-        return (List<TercerosDotacionesAdicionales>) tercerosDotacionesAdicionalesRefactorRepository.findAll();
+    List<VTercerosDotacionesAdicionales> findAll() {
+        return (List<VTercerosDotacionesAdicionales>) vTercerosDotacionesAdicionalesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    TercerosDotacionesAdicionales findOne(@PathVariable Integer id) {
-        return tercerosDotacionesAdicionalesRefactorRepository.findOne(id);
+    VTercerosDotacionesAdicionales findOne(@PathVariable Integer id) {
+        return vTercerosDotacionesAdicionalesRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<VTercerosDotacionesAdicionales> findEnabled() {
+        return vTercerosDotacionesAdicionalesRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<VTercerosDotacionesAdicionales> findEnabled(@PathVariable Long idTercero) {
+        return vTercerosDotacionesAdicionalesRefactorRepository.findAllByIndicadorHabilitadoIsTrueAndIdTercero(idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)
