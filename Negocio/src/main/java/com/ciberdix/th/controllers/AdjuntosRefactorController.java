@@ -45,6 +45,9 @@ public class AdjuntosRefactorController {
     @Value("${front.address}")
     String frontAddress;
 
+    @Value("${mule.url}")
+    String muleUrl;
+
     @Value("${business.port}")
     String businessPort;
 
@@ -73,7 +76,7 @@ public class AdjuntosRefactorController {
     ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource result = restTemplate.getForObject("http://localhost:8081/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
+        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
         Metadata metadata = new Metadata();
         try {
             ContentHandler contenthandler = new BodyContentHandler();
@@ -92,7 +95,7 @@ public class AdjuntosRefactorController {
     ResponseEntity<Resource> descargarArchivo(@PathVariable String id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        ByteArrayResource result = restTemplate.getForObject("http://localhost:8081/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
+        ByteArrayResource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + adjunto.getNombreArchivo() + "\"")
                 .body(result);
     }
@@ -140,7 +143,7 @@ public class AdjuntosRefactorController {
 
             HttpEntity<?> requestEntity = new HttpEntity<Object>(map, headers);
 
-            String temp = restTemplate.postForObject("http://localhost:8081/uploadFile", requestEntity, String.class);
+            String temp = restTemplate.postForObject(muleUrl + "/uploadFile", requestEntity, String.class);
             JSONObject tempFile = new JSONObject(temp);
             adjuntos.setIdAlfresco(tempFile.getString("id"));
             return restTemplate.postForObject(serviceUrl, adjuntos, Adjuntos.class);
