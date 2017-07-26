@@ -14,8 +14,6 @@ public class VTercerosDotacionesAdicionales {
     private BigDecimal costo;
     private Integer idDotacion;
     private Integer cantidadDotacion;
-    private String talla;
-    private Integer idTalla;
     private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
@@ -93,26 +91,6 @@ public class VTercerosDotacionesAdicionales {
     }
 
     @Basic
-    @Column(name = "Talla", nullable = true, length = 100)
-    public String getTalla() {
-        return talla;
-    }
-
-    public void setTalla(String talla) {
-        this.talla = talla;
-    }
-
-    @Basic
-    @Column(name = "IdTalla", nullable = true)
-    public Integer getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(Integer idTalla) {
-        this.idTalla = idTalla;
-    }
-
-    @Basic
     @Column(name = "NombreProyeccion", nullable = true, length = 200)
     public String getNombreProyeccion() {
         return nombreProyeccion;
@@ -179,8 +157,6 @@ public class VTercerosDotacionesAdicionales {
         if (idDotacion != null ? !idDotacion.equals(that.idDotacion) : that.idDotacion != null) return false;
         if (cantidadDotacion != null ? !cantidadDotacion.equals(that.cantidadDotacion) : that.cantidadDotacion != null)
             return false;
-        if (talla != null ? !talla.equals(that.talla) : that.talla != null) return false;
-        if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
         if (nombreProyeccion != null ? !nombreProyeccion.equals(that.nombreProyeccion) : that.nombreProyeccion != null)
             return false;
         if (idProyeccionDotacion != null ? !idProyeccionDotacion.equals(that.idProyeccionDotacion) : that.idProyeccionDotacion != null)
@@ -204,8 +180,6 @@ public class VTercerosDotacionesAdicionales {
         result = 31 * result + (costo != null ? costo.hashCode() : 0);
         result = 31 * result + (idDotacion != null ? idDotacion.hashCode() : 0);
         result = 31 * result + (cantidadDotacion != null ? cantidadDotacion.hashCode() : 0);
-        result = 31 * result + (talla != null ? talla.hashCode() : 0);
-        result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
         result = 31 * result + (nombreProyeccion != null ? nombreProyeccion.hashCode() : 0);
         result = 31 * result + (idProyeccionDotacion != null ? idProyeccionDotacion.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

@@ -12,8 +12,6 @@ public class VTercerosDotacionesAdicionales {
     private BigDecimal costo;
     private Integer idDotacion;
     private Integer cantidadDotacion;
-    private String talla;
-    private Integer idTalla;
     private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
@@ -74,22 +72,6 @@ public class VTercerosDotacionesAdicionales {
 
     public void setCantidadDotacion(Integer cantidadDotacion) {
         this.cantidadDotacion = cantidadDotacion;
-    }
-
-    public String getTalla() {
-        return talla;
-    }
-
-    public void setTalla(String talla) {
-        this.talla = talla;
-    }
-
-    public Integer getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(Integer idTalla) {
-        this.idTalla = idTalla;
     }
 
     public String getNombreProyeccion() {

@@ -8,7 +8,6 @@ public class TercerosDotacionesAdicionales {
     private Long idTercero;
     private Integer idDotacion;
     private Integer cantidadDotacion;
-    private Integer idTalla;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -44,14 +43,6 @@ public class TercerosDotacionesAdicionales {
 
     public void setCantidadDotacion(Integer cantidadDotacion) {
         this.cantidadDotacion = cantidadDotacion;
-    }
-
-    public Integer getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(Integer idTalla) {
-        this.idTalla = idTalla;
     }
 
     public Integer getIdProyeccionDotacion() {
