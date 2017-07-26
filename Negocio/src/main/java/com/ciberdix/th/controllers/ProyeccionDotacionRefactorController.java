@@ -62,7 +62,7 @@ public class ProyeccionDotacionRefactorController {
         List<Integer> ids = o.getIdEstructuraOrganizacional();
         ProyeccionDotacion PD = restTemplate.postForObject(serviceUrl, o, ProyeccionDotacion.class);
         if(o.getIndicadorNoAreas() != null){
-            if(o.getIndicadorNoAreas()){
+            if(!o.getIndicadorNoAreas()){
                 if(o.getIdEstructuraOrganizacional() != null){
                     if(o.getIdEstructuraOrganizacional().size()>0){
                         for (Integer id : ids){

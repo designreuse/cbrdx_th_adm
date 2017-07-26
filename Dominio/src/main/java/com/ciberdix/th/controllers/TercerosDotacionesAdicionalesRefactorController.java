@@ -47,7 +47,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         return tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
                         o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),
-                        o.getIdTalla(),o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }
@@ -57,7 +57,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
                         o.getIdTerceroDotacionAdicional(),o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),
-                        o.getIdTalla(),o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }
