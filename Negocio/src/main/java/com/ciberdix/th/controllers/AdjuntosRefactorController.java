@@ -69,33 +69,6 @@ public class AdjuntosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
     }
 
-//    @RequestMapping(method = RequestMethod.GET, path = "/file/{id}")
-//    String findFile(@PathVariable Integer id) {
-//        RestTemplate restTemplate = new RestTemplate();
-//        Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-//        return frontAddress + ":" + businessPort + "/api/adjuntos/file_down/" + adjuntos.getNombreArchivo() + "/" + adjuntos.getAdjunto();
-//    }
-//
-//    @RequestMapping(method = RequestMethod.GET, path = "/file_down/{filename}/{id}.{ext}")
-//    ResponseEntity<Resource> downFile(@PathVariable String id, @PathVariable String ext, @PathVariable String filename) {
-//        Resource file = storageService.loadAsResource(id + "." + ext, "adjuntos");
-//        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
-//                .body(file);
-//    }
-
-//    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
-//    public ModelAndView viewFile(@PathVariable Integer id) {
-//        RestTemplate restTemplate = new RestTemplate();
-//        Adjuntos adjuntos = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-//        return new ModelAndView("redirect:/api/adjuntos/preview_file/" + adjuntos.getIdAdjunto());
-//    }
-
-//    @RequestMapping(method = RequestMethod.GET, path = "/preview_file/{id}.{ext}")
-//    ResponseEntity<Resource> viewFile(@PathVariable String id, @PathVariable String ext) {
-//        Resource file = storageService.loadAsResource(id + "." + ext, "adjuntos");
-//        return ResponseEntity.ok().body(file);
-//    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
     ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
