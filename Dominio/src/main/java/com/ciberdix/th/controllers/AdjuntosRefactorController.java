@@ -34,14 +34,14 @@ public class AdjuntosRefactorController {
     @RequestMapping(method = RequestMethod.POST)
     Adjuntos create(@RequestBody Adjuntos o) {
         return adjuntosRefactorRepository.save(
-                new Adjuntos(o.getAdjunto(),o.getAuditoriaUsuario(),o.getNombreArchivo())
+                new Adjuntos(o.getAdjunto(), o.getAuditoriaUsuario(), o.getNombreArchivo(), o.getIdAlfresco())
         );
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody Adjuntos o) {
         adjuntosRefactorRepository.save(
-                new Adjuntos(o.getIdAdjunto(),o.getAdjunto(),o.getAuditoriaUsuario(),o.getNombreArchivo())
+                new Adjuntos(o.getIdAdjunto(), o.getAdjunto(), o.getAuditoriaUsuario(), o.getNombreArchivo(), o.getIdAlfresco())
         );
     }
 

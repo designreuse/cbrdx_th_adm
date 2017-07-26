@@ -14,23 +14,26 @@ public class Adjuntos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private String nombreArchivo;
+    private String idAlfresco;
 
     public Adjuntos() {
     }
 
-    public Adjuntos(String adjunto, Integer auditoriaUsuario, String nombreArchivo) {
+    public Adjuntos(String adjunto, Integer auditoriaUsuario, String nombreArchivo, String idAlfresco) {
         this.adjunto = adjunto;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.nombreArchivo = nombreArchivo;
+        this.idAlfresco = idAlfresco;
     }
 
-    public Adjuntos(Integer idAdjunto, String adjunto, Integer auditoriaUsuario, String nombreArchivo) {
+    public Adjuntos(Integer idAdjunto, String adjunto, Integer auditoriaUsuario, String nombreArchivo, String idAlfresco) {
         this.idAdjunto = idAdjunto;
         this.adjunto = adjunto;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.nombreArchivo = nombreArchivo;
+        this.idAlfresco = idAlfresco;
     }
 
     @Id
@@ -84,6 +87,16 @@ public class Adjuntos {
         this.nombreArchivo = nombreArchivo;
     }
 
+    @Basic
+    @Column(name = "IdAlfresco", nullable = true, length = 2048)
+    public String getIdAlfresco() {
+        return idAlfresco;
+    }
+
+    public void setIdAlfresco(String idAlfresco) {
+        this.idAlfresco = idAlfresco;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,8 +112,7 @@ public class Adjuntos {
             return false;
         if (nombreArchivo != null ? !nombreArchivo.equals(adjuntos.nombreArchivo) : adjuntos.nombreArchivo != null)
             return false;
-
-        return true;
+        return idAlfresco != null ? idAlfresco.equals(adjuntos.idAlfresco) : adjuntos.idAlfresco == null;
     }
 
     @Override
@@ -110,6 +122,7 @@ public class Adjuntos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (nombreArchivo != null ? nombreArchivo.hashCode() : 0);
+        result = 31 * result + (idAlfresco != null ? idAlfresco.hashCode() : 0);
         return result;
     }
 }

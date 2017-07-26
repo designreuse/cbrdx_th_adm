@@ -1,16 +1,19 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.Terceros;
-import com.ciberdix.th.model.VPermisosFormularios;
-import com.ciberdix.th.model.VTercerosCargosAreasFisicas;
+import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -54,6 +57,31 @@ public class TercerosRefactorController {
         Terceros[] terceros = restTemplate.getForObject(serviceUrl, Terceros[].class);
 
         return Arrays.asList(terceros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/area")
+    @ApiOperation(value = "Obtener terceros", notes = "Retorna el listado de terceros a mi cargo")
+    List<Terceros> listarTercerosArea(HttpServletRequest request) {
+        String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
+        String businessServiceURL = businessURL + "/api/"; //Composicion de BaseURL para Servicios de Logica
+        HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token); //Encabezados para Request con Autenticación de Logica
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        Collection<?> userRoles = jwtTokenUtil.getAuthorities(); //Extraccion de Nombres de ROLE_ Asignados
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token); //Id de Usuario Conectado
+        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
+        Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
+        TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
+        RestTemplate restTemplate = new RestTemplate();
+        Terceros[] terceros = restTemplate.getForObject(serviceUrl, Terceros[].class);
+        List<VTercerosCargos> myEmployees;
+        if (currentJob != null) {
+            Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
+            Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
+            myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        } else {
+            myEmployees = new ArrayList<>();
+        }
+        return Arrays.stream(terceros).filter(t -> myEmployees.stream().anyMatch(f -> t.getIdTercero().equals(f.getIdTercero()))).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")

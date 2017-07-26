@@ -63,7 +63,8 @@ public class UtilitiesController {
             bw.write(calEnd);
             bw.close();
             byte[] out = Files.readAllBytes(file.toPath());
-            return Files.readAllBytes(file.toPath());
+            file.delete();
+            return out;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
