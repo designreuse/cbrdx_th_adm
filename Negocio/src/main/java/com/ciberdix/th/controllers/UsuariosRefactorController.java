@@ -13,8 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import sun.nio.ch.Util;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -77,6 +79,23 @@ public class UsuariosRefactorController {
     List<VUsuarios> queryAllByIdRol(@PathVariable String rol) {
         VUsuarios[] usuarios =  restTemplate.getForObject(serviceUrl + "usuarioRol/" + rol, VUsuarios[].class);
         return Arrays.asList(usuarios);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/DOTROL")
+    List<VUsuarios> findByDOTROL() {
+        List<VUsuarios> u = new ArrayList<>();
+        List<String> c = Arrays.asList(UtilitiesController.findConstant("DOTROL").getValor().split(","));
+        if(c != null){
+            if(c.size()>0){
+                for(String con : c){
+                    List<VUsuarios> usu = Arrays.asList(restTemplate.getForObject(serviceUrl + "usuarioRol/" + con, VUsuarios[].class));
+                    for(VUsuarios vu : usu){
+                        u.add(vu);
+                    }
+                }
+            }
+        }
+        return u;
     }
 
     @RequestMapping(method = RequestMethod.POST)
