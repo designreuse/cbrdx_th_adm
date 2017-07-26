@@ -32,23 +32,13 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    List<VProyeccionesDotacionesTerceros> findAll() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionesDotacionesTerceros[].class));
+    List<ProyeccionesDotacionesTercerosDotaciones> findAll() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl, ProyeccionesDotacionesTercerosDotaciones[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    VProyeccionesDotacionesTerceros findOne(@PathVariable Integer id) {
-        return restTemplate.getForObject(serviceUrl + id, VProyeccionesDotacionesTerceros.class);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<VProyeccionesDotacionesTerceros> findEnabled() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", VProyeccionesDotacionesTerceros[].class));
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
-    List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
+    ProyeccionesDotacionesTercerosDotaciones findOne(@PathVariable Integer id) {
+        return restTemplate.getForObject(serviceUrl + id, ProyeccionesDotacionesTercerosDotaciones.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
