@@ -52,6 +52,11 @@ public class ProyeccionDotacionRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "entreFechas/" + fechaInicio + "/" + fechaFin, VProyeccionDotacion[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/entreFechas/{fechaInicio}/{fechaFin}/{idUsuario}")
+    List<VProyeccionDotacion> findByFechaSolicitudBetweenAndIdUsuario(@PathVariable String fechaInicio, @PathVariable String fechaFin, @PathVariable Integer idUsuario) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "entreFechas/" + fechaInicio + "/" + fechaFin + "/" + idUsuario, VProyeccionDotacion[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         List<Integer> ids = o.getIdEstructuraOrganizacional();
