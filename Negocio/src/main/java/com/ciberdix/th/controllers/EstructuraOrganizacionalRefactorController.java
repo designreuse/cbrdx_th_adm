@@ -10,6 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,30 +25,37 @@ import java.util.List;
 @RequestMapping("/api/estructuraOrganizacional")
 public class EstructuraOrganizacionalRefactorController {
 
-    @Value("${business.url}")
-    String businessURL;
+    @Value("${domain.url}")
+    private String baseUrl;
 
-    Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/estructuraOrganizacional";
+    @Value("${business.url}")
+    private String businessUrl;
+
+    private String serviceUrl;
+
+    private RestTemplate restTemplate;
+
+    @PostConstruct
+    void init() {
+        serviceUrl = baseUrl + "/api/estructuraOrganizacional/";
+        restTemplate = new RestTemplate();
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     List<VEstructuraOrganizacional> findAll() {
-        RestTemplate restTemplate = new RestTemplate();
         VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl, VEstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VEstructuraOrganizacional findOne(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, VEstructuraOrganizacional.class);
+        return restTemplate.getForObject(serviceUrl + id, VEstructuraOrganizacional.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<VEstructuraOrganizacional> findEnabled(HttpServletRequest request) {
-        RestTemplate restTemplate = new RestTemplate();
         String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
-        String businessServiceURL = businessURL + "/api/"; //Composicion de BaseURL para Servicios de Logica
+        String businessServiceURL = businessUrl + "/api/"; //Composicion de BaseURL para Servicios de Logica
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token); //Encabezados para Request con Autenticación de Logica
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         Collection<?> userRoles = jwtTokenUtil.getAuthorities(); //Extraccion de Nombres de ROLE_ Asignados
@@ -62,7 +70,7 @@ public class EstructuraOrganizacionalRefactorController {
         }
         String resultRoles = sb.toString();
         boolean isManager = userRoles.stream().anyMatch(r -> resultRoles.contains(r.toString()));
-        List<VEstructuraOrganizacional> organizationalFullList = Arrays.asList(restTemplate.exchange(globales.getUrl() + "/api/estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity).getBody());
+        List<VEstructuraOrganizacional> organizationalFullList = Arrays.asList(restTemplate.exchange(baseUrl + "/api/estructuraOrganizacional/enabled/", HttpMethod.GET, requestEntity, VEstructuraOrganizacional[].class, requestEntity).getBody());
         List<VEstructuraOrganizacional> returnList;
         if (isManager) {
             returnList = organizationalFullList;
@@ -85,16 +93,20 @@ public class EstructuraOrganizacionalRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarPadre/{id}")
     List<VEstructuraOrganizacional> findByIdPadre(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
-        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/buscarPadre/" + id, VEstructuraOrganizacional[].class);
+        VEstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "buscarPadre/" + id, VEstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTipo/{id}")
     List<EstructuraOrganizacional> findByIdTipo(@PathVariable Integer id) {
         RestTemplate restTemplate = new RestTemplate();
-        EstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "/buscarTipo/" + id, EstructuraOrganizacional[].class);
+        EstructuraOrganizacional[] parametros = restTemplate.getForObject(serviceUrl + "buscarTipo/" + id, EstructuraOrganizacional[].class);
         return Arrays.asList(parametros);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/grupoDotacion/{idGrupoDotacion}")
+    List<VEstructuraOrganizacional> queryByIdGrupoDotacion(@PathVariable Integer idGrupoDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "grupoDotacion/" + idGrupoDotacion, VEstructuraOrganizacional[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
