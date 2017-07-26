@@ -12,4 +12,6 @@ public interface VProyeccionDotacionRefactorRepository extends CrudRepository<VP
 
     List<VProyeccionDotacion> findAllByFechaSolicitudBetween(Date FechaInicio, Date FechaFin);
 
+    List<VProyeccionDotacion> findAllByFechaSolicitudBetweenAndAuditoriaUsuario(Date FechaInicio, Date FechaFin, Integer idUsuario);
+
 }

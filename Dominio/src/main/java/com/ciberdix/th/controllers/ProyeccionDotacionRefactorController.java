@@ -46,6 +46,13 @@ public class ProyeccionDotacionRefactorController {
         return vProyeccionDotacionRefactorRepository.findAllByFechaSolicitudBetween(fInicio.parse(fechaInicio), fFin.parse(fechaFin));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/entreFechas/{fechaInicio}/{fechaFin}/{idUsuario}")
+    List<VProyeccionDotacion> findByFechaSolicitudBetweenAndIdUsuario(@PathVariable String fechaInicio, @PathVariable String fechaFin, @PathVariable Integer idUsuario) throws ParseException {
+        SimpleDateFormat fInicio = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fFin = new SimpleDateFormat("yyyy-MM-dd");
+        return vProyeccionDotacionRefactorRepository.findAllByFechaSolicitudBetweenAndAuditoriaUsuario(fInicio.parse(fechaInicio), fFin.parse(fechaFin), idUsuario);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         return proyeccionDotacionRefactorRepository.save(
