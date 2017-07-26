@@ -51,6 +51,11 @@ public class TercerosPublicacionesRefactorController {
         return tercerosPublicacionesRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(idTercero);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/terceroAll/{idTercero}")
+    List<TercerosPublicaciones> findByIdTerceroAll(@PathVariable Long idTercero) {
+        return tercerosPublicacionesRefactorRepository.findAllByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/historic/{idTercero}")
     List<VTercerosPublicacionesHistoricos> findHistoric(@PathVariable Long idTercero) {
         return vTercerosPublicacionesHistoricosRefactorRepository.findAllByIdTercero(idTercero);
@@ -60,9 +65,10 @@ public class TercerosPublicacionesRefactorController {
     TercerosPublicaciones crearTercero(@RequestBody TercerosPublicaciones o) {
         return tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
-                        o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),o.getIndicadorCentrales(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorFinalizado(),o.getCodigo(),
-                        o.getPaso()
+                        o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(), o.getIndicadorCentrales(),
+                        o.getIndicadorHabilitado(), o.getAuditoriaUsuario(), o.getIndicadorFinalizado(), o.getCodigo(),
+                        o.getPaso(), o.getIndicadorFinalizadoCuestionarios(), o.getIdCuestionarioActual(),o.getFechaContratacion(),
+                        o.getIndicadorContratacion()
                 ));
     }
 
@@ -70,9 +76,10 @@ public class TercerosPublicacionesRefactorController {
     void actualizarTercero(@RequestBody TercerosPublicaciones o) {
         tercerosPublicacionesRefactorRepository.save(
                 new TercerosPublicaciones(
-                        o.getIdTercerosPublicaciones(),o.getIdTercero(),o.getIdPublicacion(),o.getIndicadorTerminos(),
-                        o.getIndicadorCentrales(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
-                        o.getIndicadorFinalizado(),o.getCodigo(),o.getPaso()
+                        o.getIdTercerosPublicaciones(), o.getIdTercero(), o.getIdPublicacion(), o.getIndicadorTerminos(),
+                        o.getIndicadorCentrales(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario(),
+                        o.getIndicadorFinalizado(), o.getCodigo(), o.getPaso(), o.getIndicadorFinalizadoCuestionarios(),
+                        o.getIdCuestionarioActual(),o.getFechaContratacion(),o.getIndicadorContratacion()
                 ));
     }
 

@@ -42,6 +42,15 @@ public class RequerimientosRefactorController {
         restTemplate = new RestTemplate();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cerrarRequerimiento/{idRequerimiento}")
+    Requerimientos closeReq(@PathVariable Integer idRequerimiento) {
+        Requerimientos req = restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+        req.setIdEstado(UtilitiesController.findListItem("ListasEstadosRequerimientos", "CRRD").getIdLista());
+        restTemplate.put(serviceUrl, req, Requerimientos.class);
+        return restTemplate.getForObject(serviceUrl + idRequerimiento, Requerimientos.class);
+
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     List<VRequerimientos> findAll(HttpServletRequest request) {
         String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
@@ -118,9 +127,10 @@ public class RequerimientosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroReq/{idEstado}/{idResponsableSeleccion}")
-    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion) {
-        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "filtroReq/" + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
-        return Arrays.asList(parametros);
+    List<VRequerimientos> findIdEstadoAndIdRespSelec(@PathVariable Integer idEstado, @PathVariable Integer idResponsableSeleccion, HttpServletRequest request) {
+        return findAll(request).stream().filter(t -> t.getIdEstado() != null && t.getIdResponsableSeleccion() != null && t.getIdEstado().equals(idEstado) && t.getIdResponsableSeleccion().equals(idResponsableSeleccion)).collect(Collectors.toList());
+        //VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "filtroReq/" + idEstado + "/" + idResponsableSeleccion, VRequerimientos[].class);
+        //return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroReq2/{idEstado}/{idTipoSolicitud}")
@@ -175,33 +185,25 @@ public class RequerimientosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/byTercero/{idTercero}")
+    List<VRequerimientos> findAllByIdTercero(@PathVariable Long idTercero) {
+        VRequerimientos[] parametros = restTemplate.getForObject(serviceUrl + "byTercero/" + idTercero, VRequerimientos[].class);
+        return Arrays.asList(parametros);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     Requerimientos create(@RequestBody Requerimientos requerimientos) {
         return restTemplate.postForObject(serviceUrl, requerimientos, Requerimientos.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody Requerimientos requerimientos) {
-        updateTR(requerimientos);
-    }
-
-    public void update(VRequerimientos requerimientos) {
-        updateTR(requerimientos);
-    }
-
-    private void updateTR(Object requ) {
-        Requerimientos requerimientos = (Requerimientos) requ;
-        String dominio = UtilitiesController.readParameter("domain.url");
-        String serviceUrl = dominio + "/api/requerimientos/";
-        Requerimientos req = restTemplate.getForObject(serviceUrl + requerimientos.getIdRequerimiento(), Requerimientos.class);
-        ListasItems EstadoAnterior = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + req.getIdEstado(), ListasItems.class);
-        ListasItems EstadoActual = restTemplate.getForObject(dominio + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
-        if (EstadoActual.getCodigo().compareTo("SOLICITADO") == 0) {
-            if (EstadoAnterior.getCodigo().compareTo("PRCREQ") == 0 || EstadoAnterior.getCodigo().compareTo("DVLT") == 0) {
-                RequerimientosHistoricos requerimientosHistoricos = new RequerimientosHistoricos(req);
-                restTemplate.postForObject(dominio + "/api/requerimientosHistoricos", requerimientosHistoricos, RequerimientosHistoricos.class);
-            }
+    void update(@RequestBody Requerimientos o) {
+        Requerimientos requerimientos = restTemplate.getForObject(serviceUrl + o.idRequerimiento, Requerimientos.class);
+        ListasItems EstadoAnterior = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + requerimientos.getIdEstado(), ListasItems.class);
+        ListasItems EstadoActual = restTemplate.getForObject(baseUrl + "/api/ListasEstadosRequerimientos/" + o.getIdEstado(), ListasItems.class);
+        if (EstadoActual.getCodigo().equals("SOLICITADO") && (EstadoAnterior.getCodigo().equals("PRCREQ") || EstadoAnterior.getCodigo().equals("DVLT"))) {
+            restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", new RequerimientosHistoricos(requerimientos), RequerimientosHistoricos.class);
         }
-        restTemplate.put(serviceUrl, requerimientos);
+        restTemplate.put(serviceUrl, o);
     }
 }

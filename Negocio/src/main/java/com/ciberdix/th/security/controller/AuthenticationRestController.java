@@ -18,8 +18,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -77,9 +75,9 @@ public class AuthenticationRestController {
     public ResponseEntity<?> refreshExternalToken(HttpServletRequest request) {
         RestTemplate restTemplate = new RestTemplate();
         String token = request.getHeader(tokenHeader);
-        String username = jwtTokenUtil.getUsernameFromToken(token);
-        UserDetailsCustom userDetails = userDetailsService.loadUserByUsername(username);
-        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/queryUsername/" + username + "/", Usuarios.class);
+        Integer username = jwtTokenUtil.getUserIdFromToken(token);
+        UserDetailsCustom userDetails = userDetailsService.loadUserByIdUsername(username);
+        Usuarios user = restTemplate.getForObject(domainUrl + "/api/usuarios/query/" + username, Usuarios.class);
         Terceros tercero = restTemplate.getForObject(domainUrl + "/api/terceros/" + user.getIdTercero() + "/", Terceros.class);
         token = jwtTokenUtil.generateToken(userDetails, user, tercero);
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
@@ -104,7 +102,7 @@ public class AuthenticationRestController {
                 usuarios.setLinkedin(authenticationRequest.getPassword());
             }
             user = restTemplate.postForObject(domainUrl + "/api/usuarios", usuarios, Usuarios.class);
-            Roles roles = restTemplate.getForObject(domainUrl + "/api/roles/rol/" + "ADM", Roles.class);
+            Roles roles = restTemplate.getForObject(domainUrl + "/api/roles/rol/" + UtilitiesController.findConstant("ROLPOS"), Roles.class);
             UsuarioRoles request = new UsuarioRoles();
             request.setIdUsuario(user.getIdUsuario());
             request.setIdRol(roles.getIdRol());
@@ -211,7 +209,7 @@ public class AuthenticationRestController {
                     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
                     String hashedPassword = bCryptPasswordEncoder.encode(pass);
                     u.setContrasena(hashedPassword);
-                    UtilitiesController.sendMail(u.getCorreoElectronico(), "Gestionamos - Reinicio de Comtraseña", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Cambio de Clave de Acceso</h1><p style=\"margin-bottom: 80px;\">Su nueva clave de acceso al sistema es:</p><h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">" + pass + "</h1>");
+                    UtilitiesController.sendMail(u.getCorreoElectronico(), "Gestionamos - Reinicio de Contraseña", "<h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">Cambio de Clave de Acceso</h1><p style=\"margin-bottom: 80px;\">Su nueva clave de acceso al sistema es:</p><h1 style=\"font-size: 175%; line-height: 125%; margin-top: 0; margin-bottom: 20px;\">" + pass + "</h1>");
                     restTemplate.put(domainUrl + "/api/usuarios/", u, Usuarios.class);
                     return ResponseEntity.ok(true);
                 }

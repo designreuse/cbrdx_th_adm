@@ -5,8 +5,10 @@ import com.ciberdix.th.model.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Danny on 31/05/2017.
@@ -46,12 +48,30 @@ public class PublicacionesRefactorController {
         Integer idProceso = 0;
         RestTemplate restTemplate = new RestTemplate();
         UtilitiesController utilitiesController = new UtilitiesController();
-        ListasItems publico = utilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
+        ListasItems publico = UtilitiesController.findListItem("ListasEstadosProcesos", "PUBLIC");
         List<Procesos> procesosPublicos = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/procesos/enabled/" + publico.getIdLista(), Procesos[].class));
-        if (procesosPublicos.size()>0) {
+        if (procesosPublicos.size() > 0) {
             idProceso = procesosPublicos.get(0).getIdProceso();
             restTemplate.getForObject(serviceUrl + "/agregarIdProceso/" + idPublicacion + "/" + idProceso, Publicaciones.class);
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/plazasLlenadas/{idPublicacion}")
+    Boolean processFilled(@PathVariable Integer idPublicacion) {
+        RestTemplate restTemplate = new RestTemplate();
+        VPublicaciones parametro = restTemplate.getForObject(serviceUrl + "/" + idPublicacion, VPublicaciones.class);
+        Requerimientos r = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + parametro.getIdRequerimiento(), Requerimientos.class);
+        Integer vacantes = r.getCantidadVacantes();
+        List<TercerosPublicaciones> listado = new ArrayList<>();
+        List<TercerosPublicaciones> tp = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/publicacion/" + idPublicacion, TercerosPublicaciones[].class));
+        for(TercerosPublicaciones tP : tp){
+            if(tP.getIndicadorContratacion() != null){
+                if(tP.getIndicadorContratacion()){
+                    listado.add(tP);
+                }
+            }
+        }
+        return vacantes.equals(listado.size());
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -15,8 +15,8 @@ public interface DocumentosTercerosRefactorRepository extends CrudRepository<Doc
 
     List<DocumentosTerceros> findAllByIdClasificacionDocumento(Integer id);
 
-    List<DocumentosTerceros> findAllByIndicadorAdjuntoIsTrue();
+    List<DocumentosTerceros> findAllByIndicadorAdjuntoIsTrueAndIndicadorHabilitadoIsTrue();
 
-    List<DocumentosTerceros> findAllByIndicadorDescargaIsTrue();
+    List<DocumentosTerceros> findAllByIndicadorDescargaIsTrueAndIndicadorHabilitadoIsTrue();
 
 }

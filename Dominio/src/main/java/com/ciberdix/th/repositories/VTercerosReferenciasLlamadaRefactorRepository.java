@@ -12,7 +12,7 @@ public interface VTercerosReferenciasLlamadaRefactorRepository extends CrudRepos
 
     List<VTercerosReferenciasLlamada> findAllByIndicadorHabilitadoIsTrue();
 
-    List<VTercerosReferenciasLlamada> findAllByIdTerceroReferencia(Integer id);
+    List<VTercerosReferenciasLlamada> findAllByIdTerceroReferenciaOrderByIdTerceroReferenciaLlamada(Integer id);
 
     List<VTercerosReferenciasLlamada> findAllByIdResultadoLlamada(Integer id);
 

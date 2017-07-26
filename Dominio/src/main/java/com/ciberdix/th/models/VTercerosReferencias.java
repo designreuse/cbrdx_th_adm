@@ -3,7 +3,7 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 
 /**
- * Created by felip on 21/04/2017.
+ * Created by Danny on 13/07/2017.
  */
 @Entity
 @Table(name = "V_TercerosReferencias", schema = "dbo", catalog = "CREZCAMOS")
@@ -11,6 +11,7 @@ public class VTercerosReferencias {
     private Integer idTerceroReferencia;
     private Long idTercero;
     private String tipoReferencia;
+    private String codigoTipoReferencia;
     private String primerNombre;
     private String segundoNombre;
     private String primerApellido;
@@ -19,7 +20,6 @@ public class VTercerosReferencias {
     private String telefonoMovil;
     private String descripcionDivisonPolitica;
 
-    @Basic
     @Id
     @Column(name = "IdTerceroReferencia", nullable = false)
     public Integer getIdTerceroReferencia() {
@@ -48,6 +48,16 @@ public class VTercerosReferencias {
 
     public void setTipoReferencia(String tipoReferencia) {
         this.tipoReferencia = tipoReferencia;
+    }
+
+    @Basic
+    @Column(name = "CodigoTipoReferencia", nullable = false, length = 10)
+    public String getCodigoTipoReferencia() {
+        return codigoTipoReferencia;
+    }
+
+    public void setCodigoTipoReferencia(String codigoTipoReferencia) {
+        this.codigoTipoReferencia = codigoTipoReferencia;
     }
 
     @Basic
@@ -132,6 +142,8 @@ public class VTercerosReferencias {
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
         if (tipoReferencia != null ? !tipoReferencia.equals(that.tipoReferencia) : that.tipoReferencia != null)
             return false;
+        if (codigoTipoReferencia != null ? !codigoTipoReferencia.equals(that.codigoTipoReferencia) : that.codigoTipoReferencia != null)
+            return false;
         if (primerNombre != null ? !primerNombre.equals(that.primerNombre) : that.primerNombre != null) return false;
         if (segundoNombre != null ? !segundoNombre.equals(that.segundoNombre) : that.segundoNombre != null)
             return false;
@@ -153,6 +165,7 @@ public class VTercerosReferencias {
         int result = idTerceroReferencia != null ? idTerceroReferencia.hashCode() : 0;
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
         result = 31 * result + (tipoReferencia != null ? tipoReferencia.hashCode() : 0);
+        result = 31 * result + (codigoTipoReferencia != null ? codigoTipoReferencia.hashCode() : 0);
         result = 31 * result + (primerNombre != null ? primerNombre.hashCode() : 0);
         result = 31 * result + (segundoNombre != null ? segundoNombre.hashCode() : 0);
         result = 31 * result + (primerApellido != null ? primerApellido.hashCode() : 0);

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 10/07/2017.
+ * Created by Danny on 11/07/2017.
  */
 @Entity
 @Table(name = "Respuestas", schema = "dbo", catalog = "CREZCAMOS")
@@ -13,7 +13,6 @@ public class Respuestas {
     private Integer idCuestionarioPregunta;
     private Integer idPreguntaOpcion;
     private String respuesta;
-    private Integer orden;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idMaestroRespuesta;
@@ -21,22 +20,20 @@ public class Respuestas {
     public Respuestas() {
     }
 
-    public Respuestas(Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
+    public Respuestas(Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
         this.idCuestionarioPregunta = idCuestionarioPregunta;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.respuesta = respuesta;
-        this.orden = orden;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
-    public Respuestas(Integer idRespuesta, Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer orden, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
+    public Respuestas(Integer idRespuesta, Integer idCuestionarioPregunta, Integer idPreguntaOpcion, String respuesta, Integer auditoriaUsuario, Integer idMaestroRespuesta) {
         this.idRespuesta = idRespuesta;
         this.idCuestionarioPregunta = idCuestionarioPregunta;
         this.idPreguntaOpcion = idPreguntaOpcion;
         this.respuesta = respuesta;
-        this.orden = orden;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idMaestroRespuesta = idMaestroRespuesta;
@@ -74,23 +71,13 @@ public class Respuestas {
     }
 
     @Basic
-    @Column(name = "Respuesta", nullable = true, length = 200)
+    @Column(name = "Respuesta", nullable = true, length = 500)
     public String getRespuesta() {
         return respuesta;
     }
 
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
-    }
-
-    @Basic
-    @Column(name = "Orden", nullable = true)
-    public Integer getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Integer orden) {
-        this.orden = orden;
     }
 
     @Basic
@@ -136,15 +123,11 @@ public class Respuestas {
         if (idPreguntaOpcion != null ? !idPreguntaOpcion.equals(that.idPreguntaOpcion) : that.idPreguntaOpcion != null)
             return false;
         if (respuesta != null ? !respuesta.equals(that.respuesta) : that.respuesta != null) return false;
-        if (orden != null ? !orden.equals(that.orden) : that.orden != null) return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
-        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
-            return false;
-
-        return true;
+        return idMaestroRespuesta != null ? idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta == null;
     }
 
     @Override
@@ -153,7 +136,6 @@ public class Respuestas {
         result = 31 * result + (idCuestionarioPregunta != null ? idCuestionarioPregunta.hashCode() : 0);
         result = 31 * result + (idPreguntaOpcion != null ? idPreguntaOpcion.hashCode() : 0);
         result = 31 * result + (respuesta != null ? respuesta.hashCode() : 0);
-        result = 31 * result + (orden != null ? orden.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idMaestroRespuesta != null ? idMaestroRespuesta.hashCode() : 0);

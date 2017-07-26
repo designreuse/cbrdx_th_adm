@@ -1,11 +1,10 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 15/06/2017.
+ * Created by Danny on 14/07/2017.
  */
 @Entity
 @Table(name = "ProcesoSeleccion", schema = "dbo", catalog = "CREZCAMOS")
@@ -16,7 +15,7 @@ public class ProcesoSeleccion {
     private Integer idResponsable;
     private Integer idTerceroPublicacion;
     private String observacion;
-    private Date fechaCita;
+    private Timestamp fechaCita;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idDesicionProcesoSeleccion;
@@ -25,27 +24,27 @@ public class ProcesoSeleccion {
     public ProcesoSeleccion() {
     }
 
-    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Date fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
+    public ProcesoSeleccion(Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Timestamp fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
         this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
-        this.fechaCita = fechaCita != null ? new Date(fechaCita.getTime()) : null;
+        this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
         this.detalleCorreo = detalleCorreo;
     }
 
-    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Date fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
+    public ProcesoSeleccion(Integer idProcesoSeleccion, Integer idProcesoPaso, Integer idEstadoDiligenciado, Integer idResponsable, Integer idTerceroPublicacion, String observacion, Timestamp fechaCita, Integer auditoriaUsuario, Integer idDesicionProcesoSeleccion, String detalleCorreo) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idProcesoPaso = idProcesoPaso;
         this.idEstadoDiligenciado = idEstadoDiligenciado;
         this.idResponsable = idResponsable;
         this.idTerceroPublicacion = idTerceroPublicacion;
         this.observacion = observacion;
-        this.fechaCita = fechaCita != null ? new Date(fechaCita.getTime()) : null;
+        this.fechaCita = fechaCita;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idDesicionProcesoSeleccion = idDesicionProcesoSeleccion;
@@ -115,11 +114,11 @@ public class ProcesoSeleccion {
 
     @Basic
     @Column(name = "FechaCita", nullable = true)
-    public Date getFechaCita() {
+    public Timestamp getFechaCita() {
         return fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(Timestamp fechaCita) {
         this.fechaCita = fechaCita;
     }
 

@@ -11,7 +11,6 @@ public class Respuestas {
     private Integer idCuestionarioPregunta;
     private Integer idPreguntaOpcion;
     private String respuesta;
-    private Integer orden;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Integer idMaestroRespuesta;
@@ -46,14 +45,6 @@ public class Respuestas {
 
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
-    }
-
-    public Integer getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Integer orden) {
-        this.orden = orden;
     }
 
     public Integer getAuditoriaUsuario() {

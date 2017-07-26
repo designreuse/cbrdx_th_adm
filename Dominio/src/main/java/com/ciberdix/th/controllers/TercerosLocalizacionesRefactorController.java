@@ -37,7 +37,7 @@ public class TercerosLocalizacionesRefactorController {
     }
     
     @RequestMapping(method = RequestMethod.GET, path = "/buscarTercero/{idTercero}")
-    List<VLocalizaciones> findViewOne(@PathVariable Long idTercero) {        
+    List<VLocalizaciones> findViewOne(@PathVariable Long idTercero) {
         return vlocalizacionesRepository.queryAllLocalizaciones(idTercero);
     }
 

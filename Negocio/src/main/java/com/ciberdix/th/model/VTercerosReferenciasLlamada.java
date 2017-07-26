@@ -12,17 +12,16 @@ public class VTercerosReferenciasLlamada {
     private String terceroReferencia;
     private String telefonoFijo;
     private String telefonoMovil;
+    private String descripcionDivisonPolitica;
     private Integer idTerceroReferencia;
     private String resultadoLlamada;
     private Integer idResultadoLlamada;
     private String nombreArchivo;
     private Integer idAdjunto;
-    private Integer idCuestionario;
-    private Integer idRespuestaCuestionario;
+    private Integer idMaestroRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private String descripcionDivisonPolitica;
 
     public Integer getIdTerceroReferenciaLlamada() {
         return idTerceroReferenciaLlamada;
@@ -104,20 +103,12 @@ public class VTercerosReferenciasLlamada {
         this.idAdjunto = idAdjunto;
     }
 
-    public Integer getIdCuestionario() {
-        return idCuestionario;
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
     }
 
-    public void setIdCuestionario(Integer idCuestionario) {
-        this.idCuestionario = idCuestionario;
-    }
-
-    public Integer getIdRespuestaCuestionario() {
-        return idRespuestaCuestionario;
-    }
-
-    public void setIdRespuestaCuestionario(Integer idRespuestaCuestionario) {
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
     public Boolean getIndicadorHabilitado() {

@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
- */
 @Entity
 @Table(name = "Localizaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class Localizaciones {
@@ -19,11 +16,15 @@ public class Localizaciones {
     private Integer idDivisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoNomenclatura;
+    private String principal;
+    private String adicional;
+    private String adicionalComplementaria;
 
     public Localizaciones() {
     }
 
-    public Localizaciones(Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
+    public Localizaciones(Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Integer idTipoNomenclatura, String principal, String adicional, String adicionalComplementaria) {
         this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
         this.latitud = latitud;
@@ -31,11 +32,15 @@ public class Localizaciones {
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.idDivisionPolitica = idDivisionPolitica;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTipoNomenclatura = idTipoNomenclatura;
+        this.principal = principal;
+        this.adicional = adicional;
+        this.adicionalComplementaria = adicionalComplementaria;
     }
 
-    public Localizaciones(Integer idLocalizacion, Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario) {
+    public Localizaciones(Integer idLocalizacion, Integer idTipoDireccion, String direccion, String latitud, String longitud, String comoLlegar, Boolean indicadorHabilitado, Integer idDivisionPolitica, Integer auditoriaUsuario, Integer idTipoNomenclatura, String principal, String adicional, String adicionalComplementaria) {
         this.idLocalizacion = idLocalizacion;
         this.idTipoDireccion = idTipoDireccion;
         this.direccion = direccion;
@@ -44,8 +49,12 @@ public class Localizaciones {
         this.comoLlegar = comoLlegar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.idDivisionPolitica = idDivisionPolitica;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTipoNomenclatura = idTipoNomenclatura;
+        this.principal = principal;
+        this.adicional = adicional;
+        this.adicionalComplementaria = adicionalComplementaria;
     }
 
     @Id
@@ -149,6 +158,46 @@ public class Localizaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdTipoNomenclatura", nullable = true)
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "Principal", nullable = true, length = 40)
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    @Basic
+    @Column(name = "Adicional", nullable = true, length = 40)
+    public String getAdicional() {
+        return adicional;
+    }
+
+    public void setAdicional(String adicional) {
+        this.adicional = adicional;
+    }
+
+    @Basic
+    @Column(name = "AdicionalComplementaria", nullable = true, length = 40)
+    public String getAdicionalComplementaria() {
+        return adicionalComplementaria;
+    }
+
+    public void setAdicionalComplementaria(String adicionalComplementaria) {
+        this.adicionalComplementaria = adicionalComplementaria;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -172,6 +221,12 @@ public class Localizaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idTipoNomenclatura != null ? !idTipoNomenclatura.equals(that.idTipoNomenclatura) : that.idTipoNomenclatura != null)
+            return false;
+        if (principal != null ? !principal.equals(that.principal) : that.principal != null) return false;
+        if (adicional != null ? !adicional.equals(that.adicional) : that.adicional != null) return false;
+        if (adicionalComplementaria != null ? !adicionalComplementaria.equals(that.adicionalComplementaria) : that.adicionalComplementaria != null)
+            return false;
 
         return true;
     }
@@ -188,6 +243,10 @@ public class Localizaciones {
         result = 31 * result + (idDivisionPolitica != null ? idDivisionPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idTipoNomenclatura != null ? idTipoNomenclatura.hashCode() : 0);
+        result = 31 * result + (principal != null ? principal.hashCode() : 0);
+        result = 31 * result + (adicional != null ? adicional.hashCode() : 0);
+        result = 31 * result + (adicionalComplementaria != null ? adicionalComplementaria.hashCode() : 0);
         return result;
     }
 }

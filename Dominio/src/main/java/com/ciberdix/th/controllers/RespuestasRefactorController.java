@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.Respuestas;
+import com.ciberdix.th.models.VRespuestas;
 import com.ciberdix.th.repositories.RespuestasRefactorRepository;
+import com.ciberdix.th.repositories.VRespuestasRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +23,27 @@ public class RespuestasRefactorController {
     @Autowired
     private RespuestasRefactorRepository respuestasRefactorRepository;
 
+    @Autowired
+    private VRespuestasRefactorRepository vRespuestasRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<Respuestas> findAll() {
-        return (List<Respuestas>) respuestasRefactorRepository.findAll();
+    List<VRespuestas> findAll() {
+        return (List<VRespuestas>) vRespuestasRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    Respuestas findOne(@PathVariable Integer id) {
-        return respuestasRefactorRepository.findOne(id);
+    VRespuestas findOne(@PathVariable Integer id) {
+        return vRespuestasRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/maestroRespuesta/{id}")
+    List<VRespuestas> findByIdMaestroRespuesta(@PathVariable Integer id) {
+        return vRespuestasRefactorRepository.findAllByIdMaestroRespuesta(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/filtro/{idMR}/{idPO}/{idCP}")
+    List<VRespuestas> findByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(@PathVariable Integer idMR, @PathVariable Integer idPO, @PathVariable Integer idCP) {
+        return vRespuestasRefactorRepository.findAllByIdMaestroRespuestaAndIdPreguntaOpcionAndIdCuestionarioPregunta(idMR, idPO, idCP);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -36,7 +51,7 @@ public class RespuestasRefactorController {
         return respuestasRefactorRepository.save(
                 new Respuestas(
                         o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
-                        o.getOrden(),o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
+                        o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }
@@ -46,7 +61,7 @@ public class RespuestasRefactorController {
         respuestasRefactorRepository.save(
                 new Respuestas(
                         o.getIdRespuesta(),o.getIdCuestionarioPregunta(),o.getIdPreguntaOpcion(),o.getRespuesta(),
-                        o.getOrden(),o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
+                        o.getAuditoriaUsuario(),o.getIdMaestroRespuesta()
                 )
         );
     }

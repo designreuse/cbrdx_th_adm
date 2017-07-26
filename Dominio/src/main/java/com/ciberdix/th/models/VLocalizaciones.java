@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by felip on 21/04/2017.
- */
 @Entity
 @Table(name = "V_Localizaciones", schema = "dbo", catalog = "CREZCAMOS")
 public class VLocalizaciones {
@@ -21,8 +18,12 @@ public class VLocalizaciones {
     private String divisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String tipoNomenclatura;
+    private Integer idTipoNomenclatura;
+    private String principal;
+    private String adicional;
+    private String adicionalComplementaria;
 
-    @Basic
     @Id
     @Column(name = "IdLocalizacion", nullable = false)
     public Integer getIdLocalizacion() {
@@ -143,6 +144,56 @@ public class VLocalizaciones {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "TipoNomenclatura", nullable = true, length = 100)
+    public String getTipoNomenclatura() {
+        return tipoNomenclatura;
+    }
+
+    public void setTipoNomenclatura(String tipoNomenclatura) {
+        this.tipoNomenclatura = tipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "IdTipoNomenclatura", nullable = true)
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
+    @Basic
+    @Column(name = "Principal", nullable = true, length = 40)
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    @Basic
+    @Column(name = "Adicional", nullable = true, length = 40)
+    public String getAdicional() {
+        return adicional;
+    }
+
+    public void setAdicional(String adicional) {
+        this.adicional = adicional;
+    }
+
+    @Basic
+    @Column(name = "AdicionalComplementaria", nullable = true, length = 40)
+    public String getAdicionalComplementaria() {
+        return adicionalComplementaria;
+    }
+
+    public void setAdicionalComplementaria(String adicionalComplementaria) {
+        this.adicionalComplementaria = adicionalComplementaria;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -169,6 +220,14 @@ public class VLocalizaciones {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (tipoNomenclatura != null ? !tipoNomenclatura.equals(that.tipoNomenclatura) : that.tipoNomenclatura != null)
+            return false;
+        if (idTipoNomenclatura != null ? !idTipoNomenclatura.equals(that.idTipoNomenclatura) : that.idTipoNomenclatura != null)
+            return false;
+        if (principal != null ? !principal.equals(that.principal) : that.principal != null) return false;
+        if (adicional != null ? !adicional.equals(that.adicional) : that.adicional != null) return false;
+        if (adicionalComplementaria != null ? !adicionalComplementaria.equals(that.adicionalComplementaria) : that.adicionalComplementaria != null)
+            return false;
 
         return true;
     }
@@ -187,6 +246,11 @@ public class VLocalizaciones {
         result = 31 * result + (divisionPolitica != null ? divisionPolitica.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (tipoNomenclatura != null ? tipoNomenclatura.hashCode() : 0);
+        result = 31 * result + (idTipoNomenclatura != null ? idTipoNomenclatura.hashCode() : 0);
+        result = 31 * result + (principal != null ? principal.hashCode() : 0);
+        result = 31 * result + (adicional != null ? adicional.hashCode() : 0);
+        result = 31 * result + (adicionalComplementaria != null ? adicionalComplementaria.hashCode() : 0);
         return result;
     }
 }

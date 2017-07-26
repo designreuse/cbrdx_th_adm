@@ -149,13 +149,37 @@ public class UtilitiesController {
         return bCryptPasswordEncoder.encode(pass);
     }
 
+    static String generateTokenButton(String URL, String image) {
+        if (image == null) image = "revisar.png";
+        String frontUrl = readParameter("front.url");
+        String token = generateURLToken(URL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<p style=\"text-align:center\">");
+        stringBuilder.append("<a href=\"").append(frontUrl).append("/login?token=").append(token).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("</a></p>");
+        return stringBuilder.toString();
+    }
+
+    static String generateExternalTokenButton(String URL, String image) {
+        if (image == null) image = "revisar.png";
+        String publicUrl = readParameter("public.url");
+        String token = generateURLToken(URL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<p style=\"text-align:center\">");
+        stringBuilder.append("<a href=\"").append(publicUrl).append("/login?token=").append(token).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("</a></p>");
+        return stringBuilder.toString();
+    }
+
     static String generateURLToken(String URL) {
         Map<String, Object> map = new HashMap<>();
         map.put("URL", URL);
-        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "fdsldfjklfjsld73647364").compact();
+        return Jwts.builder().setClaims(map).signWith(SignatureAlgorithm.HS512, "c1b3rd1x_crzth").compact();
     }
 
-    static Constantes findConstant(String code) {
+    public static Constantes findConstant(String code) {
         RestTemplate restTemplate = new RestTemplate();
         String domainUrl = readParameter("domain.url");
         return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
@@ -178,7 +202,7 @@ public class UtilitiesController {
         return restTemplate.getForObject(readParameter("domain.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
     }
 
-    static String readParameter(String parameter) {
+    public static String readParameter(String parameter) {
         Properties prop = new XProperties();
         try {
             InputStream inputStream = UtilitiesController.class.getClassLoader().getResourceAsStream("application.properties");
@@ -235,5 +259,35 @@ public class UtilitiesController {
 
     static String extractToken(HttpServletRequest request) {
         return request.getHeader(tokenHeader);
+    }
+
+    static String fullName(Object tercero, Boolean view) {
+        if (view) {
+            VTerceros terceros = (VTerceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
+        } else {
+            Terceros terceros = (Terceros) tercero;
+            String nombreCompleto = terceros.getPrimerNombre();
+            if (terceros.getSegundoNombre() != null && terceros.getSegundoNombre().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoNombre();
+            }
+            if (terceros.getPrimerApellido() != null && terceros.getPrimerApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getPrimerApellido();
+            }
+            if (terceros.getSegundoApellido() != null && terceros.getSegundoApellido().length() > 0) {
+                nombreCompleto = nombreCompleto + " " + terceros.getSegundoApellido();
+            }
+            return nombreCompleto;
+        }
     }
 }

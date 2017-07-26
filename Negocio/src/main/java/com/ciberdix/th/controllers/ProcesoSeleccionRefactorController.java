@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Danny on 8/06/2017.
@@ -48,6 +49,44 @@ public class ProcesoSeleccionRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + idProcesoSeleccion, VProcesoSeleccion.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/compareCargo/{idTerceroPublicacion}")
+    Boolean compareCargos(@PathVariable Integer idTerceroPublicacion) {
+        RestTemplate restTemplate = new RestTemplate();
+        TercerosPublicaciones tp = restTemplate.getForObject(globales.getUrl() + "/api/tercerosPublicaciones/" + idTerceroPublicacion, TercerosPublicaciones.class);
+
+        Terceros t = restTemplate.getForObject(globales.getUrl() + "/api/terceros/" + tp.getIdTercero(), Terceros.class);
+        VTercerosCargos vtc = restTemplate.getForObject(globales.getUrl() + "/api/tercerosCargos/tercero/" + t.getIdTercero(), VTercerosCargos.class);
+        if (vtc == null || vtc.getIdCargo() == null)
+            return false;
+        List<VCargosRiesgos> lvcrT = new ArrayList<>();
+        if (vtc.getIdCargo() != null) {
+            lvcrT = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vtc.getIdCargo(), VCargosRiesgos[].class));
+        }
+        ArrayList<VRiesgos> lvrT = new ArrayList<>();
+        if (lvcrT.size() > 0) {
+            for (VCargosRiesgos vcr : lvcrT) {
+                lvrT.add(restTemplate.getForObject(globales.getUrl() + "/api/riesgos/" + vcr.getIdRiesgo(), VRiesgos.class));
+            }
+        }
+
+        VPublicaciones vp = restTemplate.getForObject(globales.getUrl() + "/api/publicaciones/" + tp.getIdPublicacion(), VPublicaciones.class);
+        VRequerimientos vr = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + vp.getIdRequerimiento(), VRequerimientos.class);
+        List<VCargosRiesgos> lvcrP = new ArrayList<>();
+        if (vr.getIdCargo() != null) {
+            lvcrP = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "/api/cargosRiesgos/buscarCargo/" + vr.getIdCargo(), VCargosRiesgos[].class));
+        }
+        ArrayList<VRiesgos> lvrP = new ArrayList<>();
+        if (lvcrP.size() > 0) {
+            for (VCargosRiesgos vcr : lvcrP) {
+                lvrP.add(restTemplate.getForObject(globales.getUrl() + "/api/riesgos/" + vcr.getIdRiesgo(), VRiesgos.class));
+            }
+        }
+
+        List<VRiesgos> lrC = lvrT.stream().filter(lt -> lvrP.stream().anyMatch(f -> f.getIdRiesgo().equals(lt.getIdRiesgo()))).collect(Collectors.toList());
+
+        return (lrC.size() == lvrP.size()) && (lrC.size() == lvrT.size()) && (lvrP.size() == lvrT.size());
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/terceroPublicacion/{idPublicacion}")
     List<ObjetoProcesoSeleccion> findMalla(@PathVariable Integer idPublicacion) {
         RestTemplate restTemplate = new RestTemplate();
@@ -74,12 +113,12 @@ public class ProcesoSeleccionRefactorController {
             List<VProcesoSeleccion> vProcesoSeleccion = Arrays.asList(restTemplate.getForObject(serviceUrl + "/malla/" + tp.getIdTercerosPublicaciones(), VProcesoSeleccion[].class));
 
             List<TercerosPublicaciones> terP = Arrays.asList(restTemplate.getForObject(globales.getUrl() + "api/tercerosPublicaciones/tercero/" + tp.getIdTercero(), TercerosPublicaciones[].class));
-            for(TercerosPublicaciones trP : terP){
+            for (TercerosPublicaciones trP : terP) {
                 VPublicaciones p = restTemplate.getForObject(globales.getUrl() + "api/publicaciones/" + trP.getIdPublicacion(), VPublicaciones.class);
                 VRequerimientos r = restTemplate.getForObject(globales.getUrl() + "api/requerimientos/" + p.getIdRequerimiento(), VRequerimientos.class);
                 String code = UtilitiesController.findListItemById("ListasEstadosRequerimientos", r.getIdEstado()).getCodigo();
 
-                if(code.equals("PRCSEL")){
+                if (code.equals("PRCSEL")) {
                     cantProcesoSeleccion++;
                 }
             }
@@ -87,8 +126,8 @@ public class ProcesoSeleccionRefactorController {
             List<ListaProcesoSeleccion> LPSL = new ArrayList<>();
             ArrayList<Integer> ps = new ArrayList<>();
 
-            for (int i = 0; i < vProcesoSeleccion.size(); i++) {
-                ps.add(vProcesoSeleccion.get(i).getIdProcesoPaso());
+            for (VProcesoSeleccion vps : vProcesoSeleccion) {
+                ps.add(vps.getIdProcesoPaso());
             }
 
             for (VProcesosPasos vpp : procesosPasos) {
@@ -102,7 +141,7 @@ public class ProcesoSeleccionRefactorController {
                 if (vProcesoSeleccion.size() > 0) {
                     if (ps.contains(vpp.getIdProcesoPaso())) {
                         for (VProcesoSeleccion vps : vProcesoSeleccion) {
-                            if (vpp.getIdProcesoPaso() == vps.getIdProcesoPaso()) {
+                            if (vpp.getIdProcesoPaso().equals(vps.getIdProcesoPaso())) {
                                 LPS.setIdProcesoSeleccion(vps.getIdProcesoSeleccion());
                                 LPS.setIdResponsable(vps.getIdResponsable());
                                 String codigo = UtilitiesController.findListItemById("ListasEstadosDiligenciados", vps.getIdEstadoDiligenciado()).getCodigo();
@@ -126,6 +165,12 @@ public class ProcesoSeleccionRefactorController {
         return OPSL;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{id}")
+    List<VProcesoSeleccion> findByIdPublicacion(@PathVariable Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/publicacion/" + id, VProcesoSeleccion[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProcesoSeleccion create(@RequestBody ProcesoSeleccion obj) {
         RestTemplate restTemplate = new RestTemplate();
@@ -139,14 +184,19 @@ public class ProcesoSeleccionRefactorController {
             String token = UtilitiesController.generateURLToken("/process-step/" + obj.getIdProcesoPaso() + "/terceroPublication/" + obj.getIdTerceroPublicacion() + "/process/" + obj.getIdProcesoSeleccion());
             UtilitiesController.sendMail(user.getCorreoElectronico(), "Responsable Vacante", "<h3>Buen día</h3><h2> " + te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido() + "</h2><p><a href=\"" + frontUrl + "/login?token=" + token + "\">Paso a diligenciar</a></p>");
             if (obj.getFechaCita() != null) {
-                UtilitiesController.sendMail(t.getCorreoElectronico(), "Se te ha programado una cita", "<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>");
+                UtilitiesController.sendCalendarMail(t.getCorreoElectronico(), "Se te ha programado una cita", "<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Se te ha asignado una cita programada para: " + obj.getFechaCita() + "</p><p>" + obj.getDetalleCorreo() + "</p>", obj.getFechaCita(), te.getPrimerNombre() + " " + te.getSegundoNombre() + " " + te.getPrimerApellido() + " " + te.getSegundoApellido());
             }
         }
         VProcesosPasos p = restTemplate.getForObject(globales.getUrl() + "/api/procesosPasos/" + obj.getIdProcesoPaso(), VProcesosPasos.class);
         if (estado.equals("APROB") && p.getIndicadorCorreo()) {
             UtilitiesController.sendMail(t.getCorreoElectronico(), "Has aprobado!", "<h3>Buen día!</h3><h2> " + t.getPrimerNombre() + " " + t.getSegundoNombre() + " " + t.getPrimerApellido() + " " + t.getSegundoApellido() + "</h2><p>Has arpobado el paso: " + p.getNombre() + "</p>");
         }
-        return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
+        ProcesoSeleccion procesoSeleccion = restTemplate.getForObject(serviceUrl + "/exist/" + obj.getIdTerceroPublicacion() + "/" + obj.getIdProcesoPaso(), ProcesoSeleccion.class);
+        if (procesoSeleccion != null) {
+            return procesoSeleccion;
+        } else {
+            return restTemplate.postForObject(serviceUrl, obj, ProcesoSeleccion.class);
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)

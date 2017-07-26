@@ -38,13 +38,13 @@ public class LocalizacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     Localizaciones create(@RequestBody Localizaciones localizaciones) {
-        return localizacionesRefactorRepository.save(new Localizaciones(localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario()));
+        return localizacionesRefactorRepository.save(new Localizaciones(localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario(),localizaciones.getIdTipoNomenclatura(),localizaciones.getPrincipal(),localizaciones.getAdicional(),localizaciones.getAdicionalComplementaria()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     Localizaciones update(@RequestBody Localizaciones localizaciones) {
         return localizacionesRefactorRepository.save(
-                new Localizaciones(localizaciones.getIdLocalizacion(),localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario())
+                new Localizaciones(localizaciones.getIdLocalizacion(),localizaciones.getIdTipoDireccion(), localizaciones.getDireccion(), localizaciones.getLatitud(), localizaciones.getLongitud(), localizaciones.getComoLlegar(), localizaciones.getIndicadorHabilitado(), localizaciones.getIdDivisionPolitica(), localizaciones.getAuditoriaUsuario(),localizaciones.getIdTipoNomenclatura(),localizaciones.getPrincipal(),localizaciones.getAdicional(),localizaciones.getAdicionalComplementaria())
         );
     }
 }

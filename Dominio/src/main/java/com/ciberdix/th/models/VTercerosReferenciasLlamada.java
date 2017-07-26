@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Danny on 8/07/2017.
+ * Created by Danny on 13/07/2017.
  */
 @Entity
 @Table(name = "V_TercerosReferenciasLlamada", schema = "dbo", catalog = "CREZCAMOS")
@@ -14,17 +14,16 @@ public class VTercerosReferenciasLlamada {
     private String terceroReferencia;
     private String telefonoFijo;
     private String telefonoMovil;
+    private String descripcionDivisonPolitica;
     private Integer idTerceroReferencia;
     private String resultadoLlamada;
     private Integer idResultadoLlamada;
     private String nombreArchivo;
     private Integer idAdjunto;
-    private Integer idCuestionario;
-    private Integer idRespuestaCuestionario;
+    private Integer idMaestroRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-    private String descripcionDivisonPolitica;
 
     @Id
     @Column(name = "IdTerceroReferenciaLlamada", nullable = false)
@@ -74,6 +73,16 @@ public class VTercerosReferenciasLlamada {
 
     public void setTelefonoMovil(String telefonoMovil) {
         this.telefonoMovil = telefonoMovil;
+    }
+
+    @Basic
+    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
+    public String getDescripcionDivisonPolitica() {
+        return descripcionDivisonPolitica;
+    }
+
+    public void setDescripcionDivisonPolitica(String descripcionDivisonPolitica) {
+        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 
     @Basic
@@ -127,23 +136,13 @@ public class VTercerosReferenciasLlamada {
     }
 
     @Basic
-    @Column(name = "IdCuestionario", nullable = true)
-    public Integer getIdCuestionario() {
-        return idCuestionario;
+    @Column(name = "IdMaestroRespuesta", nullable = true)
+    public Integer getIdMaestroRespuesta() {
+        return idMaestroRespuesta;
     }
 
-    public void setIdCuestionario(Integer idCuestionario) {
-        this.idCuestionario = idCuestionario;
-    }
-
-    @Basic
-    @Column(name = "IdRespuestaCuestionario", nullable = true)
-    public Integer getIdRespuestaCuestionario() {
-        return idRespuestaCuestionario;
-    }
-
-    public void setIdRespuestaCuestionario(Integer idRespuestaCuestionario) {
-        this.idRespuestaCuestionario = idRespuestaCuestionario;
+    public void setIdMaestroRespuesta(Integer idMaestroRespuesta) {
+        this.idMaestroRespuesta = idMaestroRespuesta;
     }
 
     @Basic
@@ -192,6 +191,8 @@ public class VTercerosReferenciasLlamada {
         if (telefonoFijo != null ? !telefonoFijo.equals(that.telefonoFijo) : that.telefonoFijo != null) return false;
         if (telefonoMovil != null ? !telefonoMovil.equals(that.telefonoMovil) : that.telefonoMovil != null)
             return false;
+        if (descripcionDivisonPolitica != null ? !descripcionDivisonPolitica.equals(that.descripcionDivisonPolitica) : that.descripcionDivisonPolitica != null)
+            return false;
         if (idTerceroReferencia != null ? !idTerceroReferencia.equals(that.idTerceroReferencia) : that.idTerceroReferencia != null)
             return false;
         if (resultadoLlamada != null ? !resultadoLlamada.equals(that.resultadoLlamada) : that.resultadoLlamada != null)
@@ -201,9 +202,7 @@ public class VTercerosReferenciasLlamada {
         if (nombreArchivo != null ? !nombreArchivo.equals(that.nombreArchivo) : that.nombreArchivo != null)
             return false;
         if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
-        if (idCuestionario != null ? !idCuestionario.equals(that.idCuestionario) : that.idCuestionario != null)
-            return false;
-        if (idRespuestaCuestionario != null ? !idRespuestaCuestionario.equals(that.idRespuestaCuestionario) : that.idRespuestaCuestionario != null)
+        if (idMaestroRespuesta != null ? !idMaestroRespuesta.equals(that.idMaestroRespuesta) : that.idMaestroRespuesta != null)
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
@@ -222,26 +221,16 @@ public class VTercerosReferenciasLlamada {
         result = 31 * result + (terceroReferencia != null ? terceroReferencia.hashCode() : 0);
         result = 31 * result + (telefonoFijo != null ? telefonoFijo.hashCode() : 0);
         result = 31 * result + (telefonoMovil != null ? telefonoMovil.hashCode() : 0);
+        result = 31 * result + (descripcionDivisonPolitica != null ? descripcionDivisonPolitica.hashCode() : 0);
         result = 31 * result + (idTerceroReferencia != null ? idTerceroReferencia.hashCode() : 0);
         result = 31 * result + (resultadoLlamada != null ? resultadoLlamada.hashCode() : 0);
         result = 31 * result + (idResultadoLlamada != null ? idResultadoLlamada.hashCode() : 0);
         result = 31 * result + (nombreArchivo != null ? nombreArchivo.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
-        result = 31 * result + (idCuestionario != null ? idCuestionario.hashCode() : 0);
-        result = 31 * result + (idRespuestaCuestionario != null ? idRespuestaCuestionario.hashCode() : 0);
+        result = 31 * result + (idMaestroRespuesta != null ? idMaestroRespuesta.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "DescripcionDivisonPolitica", nullable = true, length = 200)
-    public String getDescripcionDivisonPolitica() {
-        return descripcionDivisonPolitica;
-    }
-
-    public void setDescripcionDivisonPolitica(String descripcionDivisonPolitica) {
-        this.descripcionDivisonPolitica = descripcionDivisonPolitica;
     }
 }

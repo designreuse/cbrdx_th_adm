@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by felip on 18/04/2017.
- */
 @Entity
 @Table(name = "FuncionalidadesControles", schema = "dbo", catalog = "CREZCAMOS")
 public class FuncionalidadesControles {
@@ -23,13 +20,10 @@ public class FuncionalidadesControles {
     private Boolean indicadorSeccion;
     private String rutaAlfresco;
 
-    public FuncionalidadesControles(){
+    public FuncionalidadesControles() {
     }
 
-    public FuncionalidadesControles(String codigo, String control, Integer idClasificacion,
-                                    Integer idFuncionalidad, Boolean indicadorVisible, Boolean indicadorImprimir,
-                                    Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre,
-                                    Boolean indicadorSeccion, String rutaAlfresco) {
+    public FuncionalidadesControles(String codigo, String control, Integer idClasificacion, Integer idFuncionalidad, Boolean indicadorVisible, Boolean indicadorImprimir, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idPadre, Boolean indicadorSeccion, String rutaAlfresco) {
         this.codigo = codigo;
         this.control = control;
         this.idClasificacion = idClasificacion;
@@ -190,6 +184,7 @@ public class FuncionalidadesControles {
     public void setRutaAlfresco(String rutaAlfresco) {
         this.rutaAlfresco = rutaAlfresco;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -216,7 +211,11 @@ public class FuncionalidadesControles {
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
-        return indicadorSeccion != null ? indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion == null;
+        if (indicadorSeccion != null ? !indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion != null)
+            return false;
+        if (rutaAlfresco != null ? !rutaAlfresco.equals(that.rutaAlfresco) : that.rutaAlfresco != null) return false;
+
+        return true;
     }
 
     @Override
@@ -233,6 +232,7 @@ public class FuncionalidadesControles {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
         result = 31 * result + (indicadorSeccion != null ? indicadorSeccion.hashCode() : 0);
+        result = 31 * result + (rutaAlfresco != null ? rutaAlfresco.hashCode() : 0);
         return result;
     }
 }

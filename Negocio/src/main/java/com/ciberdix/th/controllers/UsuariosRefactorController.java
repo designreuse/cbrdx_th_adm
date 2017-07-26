@@ -13,7 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import sun.nio.ch.Util;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -33,72 +36,86 @@ public class UsuariosRefactorController {
     @Value("${domain.url}")
     private String baseUrl;
 
+    @Value("${business.url}")
+    private String businessUrl;
+
+    private String serviceUrl;
+
+    private RestTemplate restTemplate;
+
+    @PostConstruct
+    void init() {
+        serviceUrl = baseUrl + "/api/usuarios/";
+        restTemplate = new RestTemplate();
+    }
+
     @Autowired
     UserDetailsService userDetailsService;
 
     @RequestMapping(method = RequestMethod.GET)
     List<Usuarios> findAll() {
-        String serviceUrl = baseUrl + "/api/usuarios/";
-        RestTemplate restTemplate = new RestTemplate();
         Usuarios[] usuarios = restTemplate.getForObject(serviceUrl, Usuarios[].class);
         return Arrays.asList(usuarios);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/vista/")
     List<VUsuarios> queryCentrosCostos() {
-        String serviceUrl = baseUrl + "/api/usuarios/vista/";
-        RestTemplate restTemplate = new RestTemplate();
-        VUsuarios[] parametros = restTemplate.getForObject(serviceUrl, VUsuarios[].class);
+        VUsuarios[] parametros = restTemplate.getForObject(serviceUrl + "vista/", VUsuarios[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/auditoria/{objeto}/{idObjeto}")
     List<VHistoricoUsuarios> queryCentrosCostos(@PathVariable String objeto, @PathVariable Long idObjeto) {
-        String serviceUrl = baseUrl + "/api/usuarios/auditoria/";
-        RestTemplate restTemplate = new RestTemplate();
-        VHistoricoUsuarios[] parametros = restTemplate.getForObject(serviceUrl + objeto + "/" + idObjeto, VHistoricoUsuarios[].class);
+        VHistoricoUsuarios[] parametros = restTemplate.getForObject(serviceUrl + "auditoria/" + objeto + "/" + idObjeto, VHistoricoUsuarios[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/query/{IdParametro}")
     Usuarios findOne(@PathVariable Integer IdParametro) {
-        String serviceUrl = baseUrl + "/api/usuarios/query/";
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + IdParametro, Usuarios.class);
+        return restTemplate.getForObject(serviceUrl + "query/" + IdParametro, Usuarios.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/usuarioRol/{rol}")
     List<VUsuarios> queryAllByIdRol(@PathVariable String rol) {
-        String serviceUrl = baseUrl + "/api/usuarios/usuarioRol/";
-        RestTemplate restTemplate = new RestTemplate();
-        VUsuarios[] usuarios =  restTemplate.getForObject(serviceUrl + rol, VUsuarios[].class);
+        VUsuarios[] usuarios =  restTemplate.getForObject(serviceUrl + "usuarioRol/" + rol, VUsuarios[].class);
         return Arrays.asList(usuarios);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/DOTROL")
+    List<VUsuarios> findByDOTROL() {
+        List<VUsuarios> u = new ArrayList<>();
+        List<String> c = Arrays.asList(UtilitiesController.findConstant("DOTROL").getValor().split(","));
+        if(c != null){
+            if(c.size()>0){
+                for(String con : c){
+                    List<VUsuarios> usu = Arrays.asList(restTemplate.getForObject(serviceUrl + "usuarioRol/" + con, VUsuarios[].class));
+                    for(VUsuarios vu : usu){
+                        u.add(vu);
+                    }
+                }
+            }
+        }
+        return u;
     }
 
     @RequestMapping(method = RequestMethod.POST)
     Usuarios create(@RequestBody Usuarios usuario) {
-        String serviceUrl = baseUrl + "/api/usuarios/";
         if (!usuario.getUsuarioLdap()) {
             usuario = sendMailUser(usuario, NEW_USER);
         }
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, usuario, Usuarios.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void updateUsuario(@RequestBody Usuarios request) {
-        String serviceUrl = baseUrl + "/api/usuarios/";
         if (!request.getUsuarioLdap() && request.getContrasena() == null) {
             request = sendMailUser(request, CHANGE_PASSWORD);
         }
-        RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, request, Usuarios.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/cambiarPass/{oldPass}/")
     Boolean updatePass(@RequestBody Usuarios obj, @PathVariable String oldPass) {
-        String serviceUrl = baseUrl + "/api/usuarios";
-        RestTemplate restTemplate = new RestTemplate();
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         obj.setContrasena(bCryptPasswordEncoder.encode(obj.getContrasena()));
@@ -112,7 +129,7 @@ public class UsuariosRefactorController {
                 )
         );
         if (authentication != null) {
-            restTemplate.put(serviceUrl + "/cambiarPass", obj);
+            restTemplate.put(serviceUrl + "cambiarPass", obj);
             return true;
         } else {
             return false;

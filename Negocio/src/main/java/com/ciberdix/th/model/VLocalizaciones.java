@@ -18,6 +18,10 @@ public class VLocalizaciones {
     private String divisionPolitica;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTipoNomenclatura;
+    private String principal;
+    private String adicional;
+    private String adicionalComplementaria;
 
     public Integer getIdLocalizacion() {
         return idLocalizacion;
@@ -113,5 +117,37 @@ public class VLocalizaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTipoNomenclatura() {
+        return idTipoNomenclatura;
+    }
+
+    public void setIdTipoNomenclatura(Integer idTipoNomenclatura) {
+        this.idTipoNomenclatura = idTipoNomenclatura;
+    }
+
+    public String getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(String principal) {
+        this.principal = principal;
+    }
+
+    public String getAdicional() {
+        return adicional;
+    }
+
+    public void setAdicional(String adicional) {
+        this.adicional = adicional;
+    }
+
+    public String getAdicionalComplementaria() {
+        return adicionalComplementaria;
+    }
+
+    public void setAdicionalComplementaria(String adicionalComplementaria) {
+        this.adicionalComplementaria = adicionalComplementaria;
     }
 }

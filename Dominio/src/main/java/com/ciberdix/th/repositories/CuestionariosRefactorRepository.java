@@ -12,4 +12,6 @@ public interface CuestionariosRefactorRepository extends CrudRepository<Cuestion
 
     List<Cuestionarios> findByIndicadorHabilitadoTrue();
 
+    Cuestionarios findByCodigoCuestionario(String code);
+
 }

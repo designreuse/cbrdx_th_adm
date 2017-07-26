@@ -55,6 +55,11 @@ public class FuncionalidadesControlesRefactorController {
         return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/funcionalidad/{id}")
+    List<VFuncionalidadesControles> findByIdFuncionalidad(@PathVariable Integer id) {
+        return vFuncionalidadesControlesRefactorRepository.findAllByIdFuncionalidad(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/{idFuncionalidad}")
     List<VFuncionalidadesControles> findEnabledSection(@PathVariable Integer idFuncionalidad) {
         return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(idFuncionalidad);
