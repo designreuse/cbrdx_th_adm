@@ -100,7 +100,7 @@ public class TercerosNovedadesRefactorController {
         if (!FechaInicio.isEmpty() && !FechaFin.isEmpty()) {
             return vTercerosNovedades.stream().filter(t -> {
                 try {
-                    return t.getFechaInicio() != null && t.getFechaInicio().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaFin() != null && t.getFechaFin().compareTo(dateFormat.parse(FechaFin)) <= 0;
+                    return t.getFechaReporte() != null && t.getFechaReporte().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaReporte().compareTo(dateFormat.parse(FechaFin)) <= 0;
                 } catch (ParseException e) {
                     return false;
                 }
