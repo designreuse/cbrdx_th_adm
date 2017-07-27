@@ -72,17 +72,17 @@ public class AdjuntosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
-    ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
-        RestTemplate restTemplate = new RestTemplate();
-        Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + adjunto.getNombreArchivo() + "\"")
-                .header(HttpHeaders.CONTENT_TYPE, getMimeType(adjunto, result).get(Metadata.CONTENT_TYPE))
-                .body(result);
-    }
+//    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
+//    ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
+//        RestTemplate restTemplate = new RestTemplate();
+//        Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
+//        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
+//
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + adjunto.getNombreArchivo() + "\"")
+//                .header(HttpHeaders.CONTENT_TYPE, getMimeType(adjunto, result).get(Metadata.CONTENT_TYPE))
+//                .body(result);
+//    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file/{id}")
     ResponseEntity<Resource> descargarArchivo(@PathVariable String id) {
