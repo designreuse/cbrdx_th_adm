@@ -1,7 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.Dotaciones;
-import com.ciberdix.th.model.VDotaciones;
+import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -55,9 +54,24 @@ public class DotacionesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "grupoDotacion/" + id, VDotaciones[].class));
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/idProyeccionDotacion/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/ProyeccionDotacion/{id}")
     List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
+        List<VDotaciones> d = Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
+        Integer count = 0, cant = 0;
+        VProyeccionDotacion pd = restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + id, VProyeccionDotacion.class);
+        List<VProyeccionDotacionEstructuraOrganizacional> pe = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + id, VProyeccionDotacionEstructuraOrganizacional[].class));
+        for(VDotaciones vd : d){
+            if(pd.getIndicadorNoAreas()){
+                cant = pd.getCantidadProyeccion();
+            }else{
+                for(VProyeccionDotacionEstructuraOrganizacional vpe : pe){
+                    List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpe.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
+                    cant += (t.size() * vd.getCantidad());
+                }
+            }
+            vd.setCantidadTotal(cant);
+        }
+        return d;
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -109,6 +109,11 @@ public class EstructuraOrganizacionalRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "grupoDotacion/" + idGrupoDotacion, VEstructuraOrganizacional[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
+    List<VEstructuraOrganizacional> queryByIdProyeccionDotacion(@PathVariable Integer idProyeccionDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VEstructuraOrganizacional[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     EstructuraOrganizacional create(@RequestBody EstructuraOrganizacional obj) {
         RestTemplate restTemplate = new RestTemplate();
