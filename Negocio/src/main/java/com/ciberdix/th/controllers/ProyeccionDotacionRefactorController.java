@@ -57,6 +57,11 @@ public class ProyeccionDotacionRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "entreFechas/" + fechaInicio + "/" + fechaFin + "/" + idUsuario, VProyeccionDotacion[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<VProyeccionDotacion> findByIdTercero(@PathVariable Long idTercero) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VProyeccionDotacion[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         List<Integer> ids = o.getIdEstructuraOrganizacional();

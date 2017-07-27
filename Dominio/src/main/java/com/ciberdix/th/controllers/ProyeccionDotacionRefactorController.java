@@ -53,6 +53,11 @@ public class ProyeccionDotacionRefactorController {
         return vProyeccionDotacionRefactorRepository.findAllByFechaSolicitudBetweenAndAuditoriaUsuario(fInicio.parse(fechaInicio), fFin.parse(fechaFin), idUsuario);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<VProyeccionDotacion> findByIdTercero(@PathVariable Long idTercero) {
+        return vProyeccionDotacionRefactorRepository.queryAllByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         return proyeccionDotacionRefactorRepository.save(
@@ -60,7 +65,7 @@ public class ProyeccionDotacionRefactorController {
                         o.getNombreProyeccion(),o.getIdGrupoDotacion(),
                         o.getIndicadorAdicional(),o.getIndicadorNoAreas(),o.getCantidadProyeccion(),
                         o.getCantidadMeses(),o.getFechaInicio(),o.getFechaFin(),o.getIndicadorHabilitado(),
-                        o.getAuditoriaUsuario(),o.getFechaSolicitud()
+                        o.getAuditoriaUsuario()
                 )
         );
     }

@@ -19,6 +19,9 @@ public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, L
     @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idLista FROM ListasTiposTerceros WHERE codigo = ?1)")
     List<VTerceros> findByTypes(String type);
 
+    @Query("SELECT T FROM VTerceros T WHERE T.idTercero IN (SELECT TC.idTercero FROM TercerosCargos TC WHERE TC.indicadorHabilitado = 1 AND TC.idEstructuraOrganizacionalCargo IN (SELECT E.idEstructuraOrganizacionalCargo FROM EstructuraOrganizacionalCargos E WHERE E.idEstructuraOrganizacional = ?1))")
+    List<VTerceros> queryAllByIdEstructuraOrganizacional(Integer id);
+
     @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idLista FROM ListasTiposTerceros WHERE codigo = 'TERCOL') AND idTercero not in (SELECT idTercero FROM TercerosCargos WHERE indicadorHabilitado = 1) AND (" +
             "lower(" +
             "REPLACE(" +

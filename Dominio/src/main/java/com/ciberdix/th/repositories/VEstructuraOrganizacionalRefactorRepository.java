@@ -16,4 +16,7 @@ public interface VEstructuraOrganizacionalRefactorRepository extends CrudReposit
     @Query("SELECT V FROM VEstructuraOrganizacional V WHERE V.idEstructuraOrganizacional IN (SELECT E.idEstructuraOrganizacional FROM EstructuraOrganizacionalCargos E WHERE E.idCargo IN (SELECT C.idCargo FROM CargosGruposDotaciones C WHERE C.idGrupoDotacion = ?1))")
     List<VEstructuraOrganizacional> queryAllByIdGrupoDotacion(Integer idGrupoDotacion);
 
+    @Query("SELECT V FROM VEstructuraOrganizacional V WHERE V.idEstructuraOrganizacional IN (SELECT P.idEstructuraOrganizacional FROM ProyeccionDotacionEstructuraOrganizacional P WHERE P.idProyeccionDotacion = ?1)")
+    List<VEstructuraOrganizacional> queryAllByIdProyeccionDotacion(Integer idProyeccionDotacion);
+
 }

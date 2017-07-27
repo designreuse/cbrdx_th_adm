@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.ProyeccionesDotacionesTercerosDotaciones;
+import com.ciberdix.th.models.VProyeccionesDotacionesTercerosDotaciones;
 import com.ciberdix.th.repositories.ProyeccionesDotacionesTercerosDotacionesRefactorRepository;
+import com.ciberdix.th.repositories.VProyeccionesDotacionesTercerosDotacionesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,32 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
     @Autowired
     private ProyeccionesDotacionesTercerosDotacionesRefactorRepository ProyeccionesDotacionesTercerosDotacionesRefactorRepository;
 
+    @Autowired
+    private VProyeccionesDotacionesTercerosDotacionesRefactorRepository vProyeccionesDotacionesTercerosDotacionesRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionesDotacionesTercerosDotaciones> findAll() {
-        return (List<ProyeccionesDotacionesTercerosDotaciones>) ProyeccionesDotacionesTercerosDotacionesRefactorRepository.findAll();
+    List<VProyeccionesDotacionesTercerosDotaciones> findAll() {
+        return (List<VProyeccionesDotacionesTercerosDotaciones>) vProyeccionesDotacionesTercerosDotacionesRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ProyeccionesDotacionesTercerosDotaciones findOne(@PathVariable Integer id) {
-        return ProyeccionesDotacionesTercerosDotacionesRefactorRepository.findOne(id);
+    VProyeccionesDotacionesTercerosDotaciones findOne(@PathVariable Integer id) {
+        return vProyeccionesDotacionesTercerosDotacionesRefactorRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<VProyeccionesDotacionesTercerosDotaciones> findEnabled() {
+        return  vProyeccionesDotacionesTercerosDotacionesRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/dotacion/{id}")
+    List<VProyeccionesDotacionesTercerosDotaciones> findByIdDotacion(@PathVariable Integer id) {
+        return  vProyeccionesDotacionesTercerosDotacionesRefactorRepository.findAllByIdDotacion(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacionTercero/{id}")
+    List<VProyeccionesDotacionesTercerosDotaciones> findByIdProyeccionDotacionTercero(@PathVariable Integer id) {
+        return  vProyeccionesDotacionesTercerosDotacionesRefactorRepository.findAllByIdProyeccionDotacionTercero(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
