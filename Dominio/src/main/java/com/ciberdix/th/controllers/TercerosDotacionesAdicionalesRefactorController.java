@@ -42,11 +42,16 @@ public class TercerosDotacionesAdicionalesRefactorController {
         return vTercerosDotacionesAdicionalesRefactorRepository.findAllByIndicadorHabilitadoIsTrueAndIdTercero(idTercero);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroProyeccionDotacion/{idTercero}/{idProyeccionDotacion}")
+    List<VTercerosDotacionesAdicionales> findEnabled(@PathVariable Long idTercero, @PathVariable Integer idProyeccionDotacion) {
+        return vTercerosDotacionesAdicionalesRefactorRepository.findAllByIndicadorHabilitadoIsTrueAndIdTerceroAndIdProyeccionDotacion(idTercero, idProyeccionDotacion);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosDotacionesAdicionales create(@RequestBody TercerosDotacionesAdicionales o) {
         return tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
-                        o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),
+                        o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),o.getIdTalla(),
                         o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
@@ -56,7 +61,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
     void update(@RequestBody TercerosDotacionesAdicionales o) {
         tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
-                        o.getIdTerceroDotacionAdicional(),o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),
+                        o.getIdTerceroDotacionAdicional(),o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),o.getIdTalla(),
                         o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );

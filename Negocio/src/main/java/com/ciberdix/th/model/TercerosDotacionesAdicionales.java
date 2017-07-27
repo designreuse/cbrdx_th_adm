@@ -8,10 +8,12 @@ public class TercerosDotacionesAdicionales {
     private Long idTercero;
     private Integer idDotacion;
     private Integer cantidadDotacion;
+    private Integer idTalla;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+
 
     public Integer getIdTerceroDotacionAdicional() {
         return idTerceroDotacionAdicional;
@@ -75,5 +77,13 @@ public class TercerosDotacionesAdicionales {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 }

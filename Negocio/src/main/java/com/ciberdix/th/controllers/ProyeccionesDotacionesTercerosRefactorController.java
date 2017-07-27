@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +49,23 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
     List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}/enabled")
+    List<VProyeccionesDotacionesTerceros> findIdProyeccionDotacionEnabled(@PathVariable Integer idProyeccionDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion + "/enabled", VProyeccionesDotacionesTerceros[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabledEstado")
+    List<VProyeccionesDotacionesTerceros> findEnabledAndIdEstadoNotNull() {
+        List<VProyeccionesDotacionesTerceros> p = Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionesDotacionesTerceros[].class));
+        List<VProyeccionesDotacionesTerceros> pd = new ArrayList<>();
+        for(VProyeccionesDotacionesTerceros vp : p){
+            if(vp.getIdEstado()!=null && vp.getIndicadorHabilitado()!=null && vp.getIndicadorHabilitado()){
+                pd.add(vp);
+            }
+        }
+        return pd;
     }
 
     @RequestMapping(method = RequestMethod.POST)

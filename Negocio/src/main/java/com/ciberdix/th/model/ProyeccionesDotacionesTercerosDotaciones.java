@@ -7,6 +7,7 @@ public class ProyeccionesDotacionesTercerosDotaciones {
     private Integer idProyeccionDotacionTerceroDotacion;
     private Integer idProyeccionDotacionTercero;
     private Integer idDotacion;
+    private Integer idTalla;
     private Integer cantidadAsignada;
     private Integer cantidadEntregada;
     private Boolean indicadorHabilitado;
@@ -75,5 +76,13 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 }

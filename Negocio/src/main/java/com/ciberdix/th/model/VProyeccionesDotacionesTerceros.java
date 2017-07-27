@@ -11,7 +11,7 @@ public class VProyeccionesDotacionesTerceros {
     private String documento;
     private String nombreCompleto;
     private String cargo;
-    private Integer area;
+    private String area;
     private String tipoArea;
     private Long idTercero;
     private String estado;
@@ -72,11 +72,11 @@ public class VProyeccionesDotacionesTerceros {
         this.cargo = cargo;
     }
 
-    public Integer getArea() {
+    public String getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(String area) {
         this.area = area;
     }
 
