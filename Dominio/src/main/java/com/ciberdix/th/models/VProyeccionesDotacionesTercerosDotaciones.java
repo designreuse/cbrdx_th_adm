@@ -12,6 +12,8 @@ public class VProyeccionesDotacionesTercerosDotaciones {
     private Integer idDotacion;
     private Integer cantidadAsignada;
     private Integer cantidadEntregada;
+    private String talla;
+    private Integer idTalla;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -77,6 +79,26 @@ public class VProyeccionesDotacionesTercerosDotaciones {
     }
 
     @Basic
+    @Column(name = "Talla", nullable = true, length = 100)
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    @Basic
+    @Column(name = "IdTalla", nullable = true)
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -123,6 +145,8 @@ public class VProyeccionesDotacionesTercerosDotaciones {
             return false;
         if (cantidadEntregada != null ? !cantidadEntregada.equals(that.cantidadEntregada) : that.cantidadEntregada != null)
             return false;
+        if (talla != null ? !talla.equals(that.talla) : that.talla != null) return false;
+        if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -141,6 +165,8 @@ public class VProyeccionesDotacionesTercerosDotaciones {
         result = 31 * result + (idDotacion != null ? idDotacion.hashCode() : 0);
         result = 31 * result + (cantidadAsignada != null ? cantidadAsignada.hashCode() : 0);
         result = 31 * result + (cantidadEntregada != null ? cantidadEntregada.hashCode() : 0);
+        result = 31 * result + (talla != null ? talla.hashCode() : 0);
+        result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

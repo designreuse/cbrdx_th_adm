@@ -11,4 +11,6 @@ public interface VTercerosDotacionesAdicionalesRefactorRepository extends CrudRe
 
     List<VTercerosDotacionesAdicionales> findAllByIndicadorHabilitadoIsTrueAndIdTercero(Long id);
 
+    List<VTercerosDotacionesAdicionales> findAllByIndicadorHabilitadoIsTrueAndIdTerceroAndIdProyeccionDotacion(Long idTercero, Integer idProyeccionDotacion);
+
 }

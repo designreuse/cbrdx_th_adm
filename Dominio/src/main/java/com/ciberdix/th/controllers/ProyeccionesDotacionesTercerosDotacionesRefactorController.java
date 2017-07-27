@@ -52,7 +52,7 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
         return ProyeccionesDotacionesTercerosDotacionesRefactorRepository.save(
                 new ProyeccionesDotacionesTercerosDotaciones(
                         o.getIdProyeccionDotacionTercero(),
-                        o.getIdDotacion(),o.getCantidadAsignada(),o.getCantidadEntregada(),
+                        o.getIdDotacion(),o.getIdTalla(),o.getCantidadAsignada(),o.getCantidadEntregada(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
@@ -63,7 +63,7 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
         ProyeccionesDotacionesTercerosDotacionesRefactorRepository.save(
                 new ProyeccionesDotacionesTercerosDotaciones(
                         o.getIdProyeccionDotacionTerceroDotacion(),o.getIdProyeccionDotacionTercero(),
-                        o.getIdDotacion(),o.getCantidadAsignada(),o.getCantidadEntregada(),
+                        o.getIdDotacion(),o.getIdTalla(),o.getCantidadAsignada(),o.getCantidadEntregada(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );

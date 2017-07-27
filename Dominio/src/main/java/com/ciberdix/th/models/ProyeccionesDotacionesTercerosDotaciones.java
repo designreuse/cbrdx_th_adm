@@ -9,6 +9,7 @@ public class ProyeccionesDotacionesTercerosDotaciones {
     private Integer idProyeccionDotacionTerceroDotacion;
     private Integer idProyeccionDotacionTercero;
     private Integer idDotacion;
+    private Integer idTalla;
     private Integer cantidadAsignada;
     private Integer cantidadEntregada;
     private Boolean indicadorHabilitado;
@@ -18,9 +19,10 @@ public class ProyeccionesDotacionesTercerosDotaciones {
     public ProyeccionesDotacionesTercerosDotaciones() {
     }
 
-    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTercero, Integer idDotacion, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTercero, Integer idDotacion, Integer idTalla, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacionTercero = idProyeccionDotacionTercero;
         this.idDotacion = idDotacion;
+        this.idTalla = idTalla;
         this.cantidadAsignada = cantidadAsignada;
         this.cantidadEntregada = cantidadEntregada;
         this.indicadorHabilitado = indicadorHabilitado;
@@ -28,10 +30,11 @@ public class ProyeccionesDotacionesTercerosDotaciones {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTerceroDotacion, Integer idProyeccionDotacionTercero, Integer idDotacion, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTerceroDotacion, Integer idProyeccionDotacionTercero, Integer idDotacion, Integer idTalla, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacionTerceroDotacion = idProyeccionDotacionTerceroDotacion;
         this.idProyeccionDotacionTercero = idProyeccionDotacionTercero;
         this.idDotacion = idDotacion;
+        this.idTalla = idTalla;
         this.cantidadAsignada = cantidadAsignada;
         this.cantidadEntregada = cantidadEntregada;
         this.indicadorHabilitado = indicadorHabilitado;
@@ -68,6 +71,16 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setIdDotacion(Integer idDotacion) {
         this.idDotacion = idDotacion;
+    }
+
+    @Basic
+    @Column(name = "IdTalla", nullable = true)
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 
     @Basic
@@ -132,6 +145,7 @@ public class ProyeccionesDotacionesTercerosDotaciones {
         if (idProyeccionDotacionTercero != null ? !idProyeccionDotacionTercero.equals(that.idProyeccionDotacionTercero) : that.idProyeccionDotacionTercero != null)
             return false;
         if (idDotacion != null ? !idDotacion.equals(that.idDotacion) : that.idDotacion != null) return false;
+        if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
         if (cantidadAsignada != null ? !cantidadAsignada.equals(that.cantidadAsignada) : that.cantidadAsignada != null)
             return false;
         if (cantidadEntregada != null ? !cantidadEntregada.equals(that.cantidadEntregada) : that.cantidadEntregada != null)
@@ -151,6 +165,7 @@ public class ProyeccionesDotacionesTercerosDotaciones {
         int result = idProyeccionDotacionTerceroDotacion != null ? idProyeccionDotacionTerceroDotacion.hashCode() : 0;
         result = 31 * result + (idProyeccionDotacionTercero != null ? idProyeccionDotacionTercero.hashCode() : 0);
         result = 31 * result + (idDotacion != null ? idDotacion.hashCode() : 0);
+        result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
         result = 31 * result + (cantidadAsignada != null ? cantidadAsignada.hashCode() : 0);
         result = 31 * result + (cantidadEntregada != null ? cantidadEntregada.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

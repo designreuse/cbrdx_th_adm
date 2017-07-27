@@ -50,6 +50,11 @@ public class TercerosDotacionesAdicionalesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VTercerosDotacionesAdicionales[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroProyeccionDotacion/{idTercero}/{idProyeccionDotacion}")
+    List<VTercerosDotacionesAdicionales> findEnabled(@PathVariable Long idTercero, @PathVariable Integer idProyeccionDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroProyeccionDotacion/" + idTercero + "/" + idProyeccionDotacion, VTercerosDotacionesAdicionales[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosDotacionesAdicionales create(@RequestBody TercerosDotacionesAdicionales o) {
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);

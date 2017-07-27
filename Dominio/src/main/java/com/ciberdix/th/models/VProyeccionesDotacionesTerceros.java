@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -13,7 +13,7 @@ public class VProyeccionesDotacionesTerceros {
     private String documento;
     private String nombreCompleto;
     private String cargo;
-    private Integer area;
+    private String area;
     private String tipoArea;
     private Long idTercero;
     private String estado;
@@ -87,12 +87,12 @@ public class VProyeccionesDotacionesTerceros {
     }
 
     @Basic
-    @Column(name = "Area", nullable = true)
-    public Integer getArea() {
+    @Column(name = "Area", nullable = true, length = 50)
+    public String getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(String area) {
         this.area = area;
     }
 
