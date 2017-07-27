@@ -11,4 +11,6 @@ public interface VProyeccionesDotacionesTercerosRefactorRepository extends CrudR
 
     List<VProyeccionesDotacionesTerceros> findAllByIdProyeccionDotacion(Integer id);
 
+    VProyeccionesDotacionesTerceros findAllByIdProyeccionDotacionAndIdTercero(Integer idProyeccionDotacion, Long idTercero);
+
 }

@@ -53,6 +53,11 @@ public class ProyeccionDotacionRefactorController {
         return vProyeccionDotacionRefactorRepository.findAllByFechaSolicitudBetweenAndAuditoriaUsuario(fInicio.parse(fechaInicio), fFin.parse(fechaFin), idUsuario);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<VProyeccionDotacion> findByIdTercero(@PathVariable Long idTercero) {
+        return vProyeccionDotacionRefactorRepository.queryAllByIdTercero(idTercero);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         return proyeccionDotacionRefactorRepository.save(

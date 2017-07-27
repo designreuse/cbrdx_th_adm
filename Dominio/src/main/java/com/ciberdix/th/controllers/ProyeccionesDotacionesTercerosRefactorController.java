@@ -38,8 +38,13 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
-    List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
+    List<VProyeccionesDotacionesTerceros> findIdProyeccionDotacion(@PathVariable Integer idProyeccionDotacion) {
         return vProyeccionesDotacionesTercerosRefactorRepository.findAllByIdProyeccionDotacion(idProyeccionDotacion);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacionTercero/{idProyeccionDotacion}/{idTercero}")
+    VProyeccionesDotacionesTerceros findIdProyeccionDotacionAndIdTercero(@PathVariable Integer idProyeccionDotacion, @PathVariable Long idTercero) {
+        return vProyeccionesDotacionesTercerosRefactorRepository.findAllByIdProyeccionDotacionAndIdTercero(idProyeccionDotacion,idTercero);
     }
 
     @RequestMapping(method = RequestMethod.POST)
