@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -22,6 +22,7 @@ public class VProyeccionesDotacionesTerceros {
     private Date fechaPosibleEntrega;
     private String comentario;
     private String comentarioAdicional;
+    private String comentarioEntrega;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -177,6 +178,16 @@ public class VProyeccionesDotacionesTerceros {
     }
 
     @Basic
+    @Column(name = "ComentarioEntrega", nullable = true, length = 500)
+    public String getComentarioEntrega() {
+        return comentarioEntrega;
+    }
+
+    public void setComentarioEntrega(String comentarioEntrega) {
+        this.comentarioEntrega = comentarioEntrega;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -234,6 +245,8 @@ public class VProyeccionesDotacionesTerceros {
         if (comentario != null ? !comentario.equals(that.comentario) : that.comentario != null) return false;
         if (comentarioAdicional != null ? !comentarioAdicional.equals(that.comentarioAdicional) : that.comentarioAdicional != null)
             return false;
+        if (comentarioEntrega != null ? !comentarioEntrega.equals(that.comentarioEntrega) : that.comentarioEntrega != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -261,6 +274,7 @@ public class VProyeccionesDotacionesTerceros {
         result = 31 * result + (fechaPosibleEntrega != null ? fechaPosibleEntrega.hashCode() : 0);
         result = 31 * result + (comentario != null ? comentario.hashCode() : 0);
         result = 31 * result + (comentarioAdicional != null ? comentarioAdicional.hashCode() : 0);
+        result = 31 * result + (comentarioEntrega != null ? comentarioEntrega.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

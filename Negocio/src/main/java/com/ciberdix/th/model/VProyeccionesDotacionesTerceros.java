@@ -20,6 +20,7 @@ public class VProyeccionesDotacionesTerceros {
     private Date fechaPosibleEntrega;
     private String comentario;
     private String comentarioAdicional;
+    private String comentarioEntrega;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -166,5 +167,13 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getComentarioEntrega() {
+        return comentarioEntrega;
+    }
+
+    public void setComentarioEntrega(String comentarioEntrega) {
+        this.comentarioEntrega = comentarioEntrega;
     }
 }
