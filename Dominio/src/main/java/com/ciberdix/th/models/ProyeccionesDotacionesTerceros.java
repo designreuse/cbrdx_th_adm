@@ -15,6 +15,7 @@ public class ProyeccionesDotacionesTerceros {
     private Date fechaPosibleEntrega;
     private String comentario;
     private String comentarioAdicional;
+    private String comentarioEntrega;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -22,7 +23,7 @@ public class ProyeccionesDotacionesTerceros {
     public ProyeccionesDotacionesTerceros() {
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
         this.idEstado = idEstado;
@@ -30,12 +31,13 @@ public class ProyeccionesDotacionesTerceros {
         this.fechaPosibleEntrega = fechaPosibleEntrega;
         this.comentario = comentario;
         this.comentarioAdicional = comentarioAdicional;
+        this.comentarioEntrega = comentarioEntrega;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
@@ -44,6 +46,7 @@ public class ProyeccionesDotacionesTerceros {
         this.fechaPosibleEntrega = fechaPosibleEntrega;
         this.comentario = comentario;
         this.comentarioAdicional = comentarioAdicional;
+        this.comentarioEntrega = comentarioEntrega;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -131,6 +134,16 @@ public class ProyeccionesDotacionesTerceros {
     }
 
     @Basic
+    @Column(name = "ComentarioEntrega", nullable = true, length = 500)
+    public String getComentarioEntrega() {
+        return comentarioEntrega;
+    }
+
+    public void setComentarioEntrega(String comentarioEntrega) {
+        this.comentarioEntrega = comentarioEntrega;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -179,6 +192,8 @@ public class ProyeccionesDotacionesTerceros {
         if (comentario != null ? !comentario.equals(that.comentario) : that.comentario != null) return false;
         if (comentarioAdicional != null ? !comentarioAdicional.equals(that.comentarioAdicional) : that.comentarioAdicional != null)
             return false;
+        if (comentarioEntrega != null ? !comentarioEntrega.equals(that.comentarioEntrega) : that.comentarioEntrega != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -199,6 +214,7 @@ public class ProyeccionesDotacionesTerceros {
         result = 31 * result + (fechaPosibleEntrega != null ? fechaPosibleEntrega.hashCode() : 0);
         result = 31 * result + (comentario != null ? comentario.hashCode() : 0);
         result = 31 * result + (comentarioAdicional != null ? comentarioAdicional.hashCode() : 0);
+        result = 31 * result + (comentarioEntrega != null ? comentarioEntrega.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

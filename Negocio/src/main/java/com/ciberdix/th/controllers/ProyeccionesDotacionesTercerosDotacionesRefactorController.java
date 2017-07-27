@@ -70,8 +70,10 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody ProyeccionesDotacionesTercerosDotaciones o) {
-        restTemplate.put(serviceUrl, o);
+    void update(@RequestBody List<ProyeccionesDotacionesTercerosDotaciones> o) {
+        for(ProyeccionesDotacionesTercerosDotaciones p : o){
+            restTemplate.put(serviceUrl, p);
+        }
     }
     
 }

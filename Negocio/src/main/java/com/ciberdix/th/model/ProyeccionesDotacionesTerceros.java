@@ -13,6 +13,7 @@ public class ProyeccionesDotacionesTerceros {
     private Date fechaPosibleEntrega;
     private String comentario;
     private String comentarioAdicional;
+    private String comentarioEntrega;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -103,5 +104,13 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setComentarioAdicional(String comentarioAdicional) {
         this.comentarioAdicional = comentarioAdicional;
+    }
+
+    public String getComentarioEntrega() {
+        return comentarioEntrega;
+    }
+
+    public void setComentarioEntrega(String comentarioEntrega) {
+        this.comentarioEntrega = comentarioEntrega;
     }
 }
