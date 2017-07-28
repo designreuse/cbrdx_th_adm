@@ -68,7 +68,7 @@ public class InstitucionesMedicas {
     }
 
     @Basic
-    @Column(name = "InstitucionMedica", nullable = true, length = 50)
+    @Column(name = "InstitucionMedica", nullable = true, length = 300)
     public String getInstitucionMedica() {
         return institucionMedica;
     }

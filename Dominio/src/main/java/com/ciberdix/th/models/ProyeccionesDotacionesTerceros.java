@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -16,6 +16,9 @@ public class ProyeccionesDotacionesTerceros {
     private String comentario;
     private String comentarioAdicional;
     private String comentarioEntrega;
+    private String observacion;
+    private Integer idMotivoSatisfecho;
+    private Boolean indicadorSatisfecho;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -23,7 +26,7 @@ public class ProyeccionesDotacionesTerceros {
     public ProyeccionesDotacionesTerceros() {
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
         this.idEstado = idEstado;
@@ -32,12 +35,15 @@ public class ProyeccionesDotacionesTerceros {
         this.comentario = comentario;
         this.comentarioAdicional = comentarioAdicional;
         this.comentarioEntrega = comentarioEntrega;
+        this.observacion = observacion;
+        this.idMotivoSatisfecho = idMotivoSatisfecho;
+        this.indicadorSatisfecho = indicadorSatisfecho;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
@@ -47,6 +53,9 @@ public class ProyeccionesDotacionesTerceros {
         this.comentario = comentario;
         this.comentarioAdicional = comentarioAdicional;
         this.comentarioEntrega = comentarioEntrega;
+        this.observacion = observacion;
+        this.idMotivoSatisfecho = idMotivoSatisfecho;
+        this.indicadorSatisfecho = indicadorSatisfecho;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -144,6 +153,36 @@ public class ProyeccionesDotacionesTerceros {
     }
 
     @Basic
+    @Column(name = "Observacion", nullable = true, length = 500)
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    @Basic
+    @Column(name = "IdMotivoSatisfecho", nullable = true)
+    public Integer getIdMotivoSatisfecho() {
+        return idMotivoSatisfecho;
+    }
+
+    public void setIdMotivoSatisfecho(Integer idMotivoSatisfecho) {
+        this.idMotivoSatisfecho = idMotivoSatisfecho;
+    }
+
+    @Basic
+    @Column(name = "IndicadorSatisfecho", nullable = true)
+    public Boolean getIndicadorSatisfecho() {
+        return indicadorSatisfecho;
+    }
+
+    public void setIndicadorSatisfecho(Boolean indicadorSatisfecho) {
+        this.indicadorSatisfecho = indicadorSatisfecho;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -194,6 +233,11 @@ public class ProyeccionesDotacionesTerceros {
             return false;
         if (comentarioEntrega != null ? !comentarioEntrega.equals(that.comentarioEntrega) : that.comentarioEntrega != null)
             return false;
+        if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
+        if (idMotivoSatisfecho != null ? !idMotivoSatisfecho.equals(that.idMotivoSatisfecho) : that.idMotivoSatisfecho != null)
+            return false;
+        if (indicadorSatisfecho != null ? !indicadorSatisfecho.equals(that.indicadorSatisfecho) : that.indicadorSatisfecho != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -215,6 +259,9 @@ public class ProyeccionesDotacionesTerceros {
         result = 31 * result + (comentario != null ? comentario.hashCode() : 0);
         result = 31 * result + (comentarioAdicional != null ? comentarioAdicional.hashCode() : 0);
         result = 31 * result + (comentarioEntrega != null ? comentarioEntrega.hashCode() : 0);
+        result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
+        result = 31 * result + (idMotivoSatisfecho != null ? idMotivoSatisfecho.hashCode() : 0);
+        result = 31 * result + (indicadorSatisfecho != null ? indicadorSatisfecho.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
