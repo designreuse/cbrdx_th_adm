@@ -93,6 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         Terceros[] terceros = restTemplate.getForObject(serviceUrl + "/api/terceros", Terceros[].class);
         List<Novedades> novedadesSistema = Arrays.stream(restTemplate.getForObject(serviceUrl + "/api/novedades", Novedades[].class)).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null).collect(Collectors.toList());
         List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
+        List<Terceros> tercerosInhabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() && !t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
         TercerosNovedades[] novedades = restTemplate.getForObject(serviceUrl + "/api/tercerosNovedades", TercerosNovedades[].class);
         Date currentDate = new Date(System.currentTimeMillis());
         List<TercerosNovedades> novedadesList = Arrays.stream(novedades).filter(t ->
@@ -109,6 +110,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 restTemplate.put(serviceUrl + "/api/terceros", ter);
             }
         }
-
+        List<TercerosNovedades> novedadesListing = Arrays.stream(novedades).filter(t -> t.getFechaFin() != null && t.getFechaFin().compareTo(currentDate) == 0 && t.getIdEstadoNovedad().equals(IdTramitado)).collect(Collectors.toList());
+        List<Terceros> tercerosListing = tercerosInhabilitados.stream().filter(t -> novedadesListing.stream().anyMatch(f -> f.getIdTercero().equals(t.getIdTercero()))).collect(Collectors.toList());
+        for (Terceros ter : tercerosListing) {
+            List<TercerosNovedades> novedadesAfecta = novedadesListing.stream().filter(t -> t.getIdTercero().equals(ter.getIdTercero()) && novedadesSistema.stream().anyMatch(f -> t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+            if (!novedadesAfecta.isEmpty()) {
+                ter.setIdEstadoTercero(IdActivo);
+                restTemplate.put(serviceUrl + "/api/terceros", ter);
+            }
+        }
     }
 }
