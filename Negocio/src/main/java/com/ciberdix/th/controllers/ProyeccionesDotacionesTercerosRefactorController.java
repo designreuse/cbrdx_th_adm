@@ -3,6 +3,7 @@ package com.ciberdix.th.controllers;
 import com.ciberdix.th.model.ProyeccionesDotacionesTerceros;
 import com.ciberdix.th.model.Terceros;
 import com.ciberdix.th.model.VProyeccionesDotacionesTerceros;
+import com.ciberdix.th.model.VProyeccionesDotacionesTercerosDotaciones;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -81,7 +82,13 @@ public class ProyeccionesDotacionesTercerosRefactorController {
         if (!estadoActual.getIdEstado().equals(IdEntregado) && o.getIdEstado().equals(IdEntregado)) {
             Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros/" + o.getIdTercero(), Terceros.class);
             String token = UtilitiesController.generateTokenButton("/employees/supplies-confirmation/" + o.getIdProyeccionDotacionTerceros(), null);
-            UtilitiesController.sendMail(terceros.getCorreoElectronico(), "Encuesta de Satisfacción", "Por favor ingrese al siguiente enlace para realizar la confirmación la dotación entregada" + token);
+            List<VProyeccionesDotacionesTercerosDotaciones> dotacionesTercero = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + o.getIdProyeccionDotacion() + "/" + o.getIdTercero(), VProyeccionesDotacionesTercerosDotaciones[].class));
+            String ListadoDotaciones = "<ol>";
+            for (VProyeccionesDotacionesTercerosDotaciones p : dotacionesTercero) {
+                ListadoDotaciones = ListadoDotaciones + "<li>" + p.getDotacion() + "</li>";
+            }
+            ListadoDotaciones = ListadoDotaciones + "</ol>";
+            UtilitiesController.sendMail(terceros.getCorreoElectronico(), "Encuesta de Satisfacción", "<p>Por favor ingrese al siguiente enlace para realizar la confirmación la dotación relacionada</p>" + ListadoDotaciones + token);
         }
         restTemplate.put(serviceUrl, o);
     }
