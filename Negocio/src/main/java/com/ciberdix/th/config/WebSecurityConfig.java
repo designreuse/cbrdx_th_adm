@@ -83,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.headers().cacheControl();
     }
 
-    @Scheduled(cron = "0 0 23 50 * ?")
+    @Scheduled(cron = "0 50 23 * * ?")
     void changePersonStatus() {
         String serviceUrl = UtilitiesController.readParameter("domain.url");
         RestTemplate restTemplate = new RestTemplate();
