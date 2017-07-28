@@ -288,5 +288,6 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VProyeccionesDotacionesTercerosDotaciones.class);
         config.exposeIdsFor(TercerosDotacionesAdicionales.class);
         config.exposeIdsFor(VTercerosDotacionesAdicionales.class);
+        config.exposeIdsFor(ListasMotivosInsatisfecho.class);
     }
 }
