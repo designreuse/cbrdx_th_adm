@@ -91,7 +91,7 @@ public class ProyeccionDotacionRefactorController {
         pdtd.setAuditoriaUsuario(PD.getAuditoriaUsuario());
         for(VProyeccionDotacionEstructuraOrganizacional vpdeo : pdeo){
             if(vpdeo.getIdEstructuraOrganizacional()!=null){
-                List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpdeo.getIdEstructuraOrganizacional(), VTerceros[].class));
+                List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpdeo.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
                 for(VTerceros vt : t){
                     pdt.setIdTercero(vt.getIdTercero());
                     ProyeccionesDotacionesTerceros pdtO = restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTerceros", pdt, ProyeccionesDotacionesTerceros.class);
