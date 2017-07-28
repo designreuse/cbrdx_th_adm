@@ -75,5 +75,14 @@ public class ProyeccionesDotacionesTercerosDotacionesRefactorController {
             restTemplate.put(serviceUrl, p);
         }
     }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/satisfecho")
+    void updateSatisfecho(@RequestBody List<Integer> ids) {
+        for(Integer id : ids){
+            VProyeccionesDotacionesTercerosDotaciones p = restTemplate.getForObject(serviceUrl + id, VProyeccionesDotacionesTercerosDotaciones.class);
+            p.setIndicadorSatisfecho(true);
+            restTemplate.put(serviceUrl, p);
+        }
+    }
     
 }
