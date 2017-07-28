@@ -72,31 +72,27 @@ public class AdjuntosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
-    ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
-        RestTemplate restTemplate = new RestTemplate();
-        Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
-        Metadata metadata = new Metadata();
-        try {
-            ContentHandler contenthandler = new BodyContentHandler();
-            metadata.set(Metadata.RESOURCE_NAME_KEY, adjunto.getNombreArchivo());
-            Parser parser = new AutoDetectParser();
-            ParseContext pc = new ParseContext();
-            parser.parse(result.getInputStream(), contenthandler, metadata, pc);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, metadata.get(Metadata.CONTENT_TYPE)).body(result);
-    }
+//    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
+//    ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
+//        RestTemplate restTemplate = new RestTemplate();
+//        Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
+//        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
+//
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + adjunto.getNombreArchivo() + "\"")
+//                .header(HttpHeaders.CONTENT_TYPE, getMimeType(adjunto, result).get(Metadata.CONTENT_TYPE))
+//                .body(result);
+//    }
 
     @RequestMapping(method = RequestMethod.GET, path = "/file/{id}")
     ResponseEntity<Resource> descargarArchivo(@PathVariable String id) {
         RestTemplate restTemplate = new RestTemplate();
         Adjuntos adjunto = restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
-        ByteArrayResource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + adjunto.getNombreArchivo() + "\"")
+        Resource result = restTemplate.getForObject(muleUrl + "/getFile?nodeRef=" + adjunto.getIdAlfresco(), ByteArrayResource.class);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + adjunto.getNombreArchivo() + "\"")
+                .header(HttpHeaders.CONTENT_TYPE, getMimeType(adjunto, result).get(Metadata.CONTENT_TYPE))
                 .body(result);
     }
 
@@ -156,6 +152,22 @@ public class AdjuntosRefactorController {
     void update(@RequestBody Adjuntos obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
+    }
+
+    private Metadata getMimeType(Adjuntos adj, Resource result){
+        Metadata metadata = new Metadata();
+
+        try {
+            ContentHandler contenthandler = new BodyContentHandler();
+            metadata.set(Metadata.RESOURCE_NAME_KEY, adj.getNombreArchivo());
+            Parser parser = new AutoDetectParser();
+            ParseContext pc = new ParseContext();
+            parser.parse(result.getInputStream(), contenthandler, metadata, pc);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return metadata;
     }
 
 }

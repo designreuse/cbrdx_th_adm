@@ -4,46 +4,21 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "ProyeccionesDotacionesTercerosDotaciones", schema = "dbo", catalog = "CREZCAMOS")
-public class ProyeccionesDotacionesTercerosDotaciones {
+@Table(name = "V_ProyeccionesDotacionesTercerosDotaciones", schema = "dbo", catalog = "CREZCAMOS")
+public class VProyeccionesDotacionesTercerosDotaciones {
     private Integer idProyeccionDotacionTerceroDotacion;
     private Integer idProyeccionDotacionTercero;
+    private String dotacion;
     private Integer idDotacion;
-    private Integer idTalla;
     private Integer cantidadAsignada;
     private Integer cantidadEntregada;
+    private String talla;
+    private Integer idTalla;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public ProyeccionesDotacionesTercerosDotaciones() {
-    }
-
-    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTercero, Integer idDotacion, Integer idTalla, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idProyeccionDotacionTercero = idProyeccionDotacionTercero;
-        this.idDotacion = idDotacion;
-        this.idTalla = idTalla;
-        this.cantidadAsignada = cantidadAsignada;
-        this.cantidadEntregada = cantidadEntregada;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public ProyeccionesDotacionesTercerosDotaciones(Integer idProyeccionDotacionTerceroDotacion, Integer idProyeccionDotacionTercero, Integer idDotacion, Integer idTalla, Integer cantidadAsignada, Integer cantidadEntregada, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idProyeccionDotacionTerceroDotacion = idProyeccionDotacionTerceroDotacion;
-        this.idProyeccionDotacionTercero = idProyeccionDotacionTercero;
-        this.idDotacion = idDotacion;
-        this.idTalla = idTalla;
-        this.cantidadAsignada = cantidadAsignada;
-        this.cantidadEntregada = cantidadEntregada;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdProyeccionDotacionTerceroDotacion", nullable = false)
     public Integer getIdProyeccionDotacionTerceroDotacion() {
         return idProyeccionDotacionTerceroDotacion;
@@ -64,6 +39,16 @@ public class ProyeccionesDotacionesTercerosDotaciones {
     }
 
     @Basic
+    @Column(name = "Dotacion", nullable = true, length = 64)
+    public String getDotacion() {
+        return dotacion;
+    }
+
+    public void setDotacion(String dotacion) {
+        this.dotacion = dotacion;
+    }
+
+    @Basic
     @Column(name = "IdDotacion", nullable = true)
     public Integer getIdDotacion() {
         return idDotacion;
@@ -71,16 +56,6 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setIdDotacion(Integer idDotacion) {
         this.idDotacion = idDotacion;
-    }
-
-    @Basic
-    @Column(name = "IdTalla", nullable = true)
-    public Integer getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(Integer idTalla) {
-        this.idTalla = idTalla;
     }
 
     @Basic
@@ -101,6 +76,26 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setCantidadEntregada(Integer cantidadEntregada) {
         this.cantidadEntregada = cantidadEntregada;
+    }
+
+    @Basic
+    @Column(name = "Talla", nullable = true, length = 100)
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    @Basic
+    @Column(name = "IdTalla", nullable = true)
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 
     @Basic
@@ -138,18 +133,20 @@ public class ProyeccionesDotacionesTercerosDotaciones {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProyeccionesDotacionesTercerosDotaciones that = (ProyeccionesDotacionesTercerosDotaciones) o;
+        VProyeccionesDotacionesTercerosDotaciones that = (VProyeccionesDotacionesTercerosDotaciones) o;
 
         if (idProyeccionDotacionTerceroDotacion != null ? !idProyeccionDotacionTerceroDotacion.equals(that.idProyeccionDotacionTerceroDotacion) : that.idProyeccionDotacionTerceroDotacion != null)
             return false;
         if (idProyeccionDotacionTercero != null ? !idProyeccionDotacionTercero.equals(that.idProyeccionDotacionTercero) : that.idProyeccionDotacionTercero != null)
             return false;
+        if (dotacion != null ? !dotacion.equals(that.dotacion) : that.dotacion != null) return false;
         if (idDotacion != null ? !idDotacion.equals(that.idDotacion) : that.idDotacion != null) return false;
-        if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
         if (cantidadAsignada != null ? !cantidadAsignada.equals(that.cantidadAsignada) : that.cantidadAsignada != null)
             return false;
         if (cantidadEntregada != null ? !cantidadEntregada.equals(that.cantidadEntregada) : that.cantidadEntregada != null)
             return false;
+        if (talla != null ? !talla.equals(that.talla) : that.talla != null) return false;
+        if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -164,10 +161,12 @@ public class ProyeccionesDotacionesTercerosDotaciones {
     public int hashCode() {
         int result = idProyeccionDotacionTerceroDotacion != null ? idProyeccionDotacionTerceroDotacion.hashCode() : 0;
         result = 31 * result + (idProyeccionDotacionTercero != null ? idProyeccionDotacionTercero.hashCode() : 0);
+        result = 31 * result + (dotacion != null ? dotacion.hashCode() : 0);
         result = 31 * result + (idDotacion != null ? idDotacion.hashCode() : 0);
-        result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
         result = 31 * result + (cantidadAsignada != null ? cantidadAsignada.hashCode() : 0);
         result = 31 * result + (cantidadEntregada != null ? cantidadEntregada.hashCode() : 0);
+        result = 31 * result + (talla != null ? talla.hashCode() : 0);
+        result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

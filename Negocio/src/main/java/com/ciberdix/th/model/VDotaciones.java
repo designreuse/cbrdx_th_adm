@@ -28,6 +28,7 @@ public class VDotaciones {
     private Boolean indicadorAdicional;
     private String codigo;
     private Boolean indicadorRequiereTalla;
+    private Integer CantidadTotal;
 
     public Integer getIdDotacion() {
         return idDotacion;
@@ -187,5 +188,13 @@ public class VDotaciones {
 
     public void setIndicadorRequiereTalla(Boolean indicadorRequiereTalla) {
         this.indicadorRequiereTalla = indicadorRequiereTalla;
+    }
+
+    public Integer getCantidadTotal() {
+        return CantidadTotal;
+    }
+
+    public void setCantidadTotal(Integer cantidadTotal) {
+        CantidadTotal = cantidadTotal;
     }
 }

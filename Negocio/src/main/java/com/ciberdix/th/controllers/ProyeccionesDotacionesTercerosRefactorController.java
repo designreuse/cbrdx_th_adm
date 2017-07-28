@@ -1,11 +1,13 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.ProyeccionesDotacionesTerceros;
+import com.ciberdix.th.model.VProyeccionesDotacionesTerceros;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,13 +32,40 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    List<ProyeccionesDotacionesTerceros> findAll() {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl, ProyeccionesDotacionesTerceros[].class));
+    List<VProyeccionesDotacionesTerceros> findAll() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionesDotacionesTerceros[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    ProyeccionesDotacionesTerceros findOne(@PathVariable Integer id) {
-        return restTemplate.getForObject(serviceUrl + id, ProyeccionesDotacionesTerceros.class);
+    VProyeccionesDotacionesTerceros findOne(@PathVariable Integer id) {
+        return restTemplate.getForObject(serviceUrl + id, VProyeccionesDotacionesTerceros.class);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabled")
+    List<VProyeccionesDotacionesTerceros> findEnabled() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "enabled", VProyeccionesDotacionesTerceros[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
+    List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}/enabled")
+    List<VProyeccionesDotacionesTerceros> findIdProyeccionDotacionEnabled(@PathVariable Integer idProyeccionDotacion) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion + "/enabled", VProyeccionesDotacionesTerceros[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/enabledEstado")
+    List<VProyeccionesDotacionesTerceros> findEnabledAndIdEstadoNotNull() {
+        List<VProyeccionesDotacionesTerceros> p = Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionesDotacionesTerceros[].class));
+        List<VProyeccionesDotacionesTerceros> pd = new ArrayList<>();
+        for(VProyeccionesDotacionesTerceros vp : p){
+            if(vp.getIdEstado()!=null && vp.getIndicadorHabilitado()!=null && vp.getIndicadorHabilitado()){
+                pd.add(vp);
+            }
+        }
+        return pd;
     }
 
     @RequestMapping(method = RequestMethod.POST)

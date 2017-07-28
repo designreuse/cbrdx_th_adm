@@ -13,6 +13,8 @@ public class VTercerosDotacionesAdicionales {
     private Integer idDotacion;
     private Integer cantidadDotacion;
     private String nombreProyeccion;
+    private String talla;
+    private Integer idTalla;
     private Integer idProyeccionDotacion;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
@@ -112,5 +114,21 @@ public class VTercerosDotacionesAdicionales {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 }

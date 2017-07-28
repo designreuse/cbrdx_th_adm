@@ -1,8 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.ProyeccionDotacion;
-import com.ciberdix.th.model.ProyeccionDotacionEstructuraOrganizacional;
-import com.ciberdix.th.model.VProyeccionDotacion;
+import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -57,6 +55,11 @@ public class ProyeccionDotacionRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "entreFechas/" + fechaInicio + "/" + fechaFin + "/" + idUsuario, VProyeccionDotacion[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
+    List<VProyeccionDotacion> findByIdTercero(@PathVariable Long idTercero) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VProyeccionDotacion[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionDotacion create(@RequestBody ProyeccionDotacion o) {
         List<Integer> ids = o.getIdEstructuraOrganizacional();
@@ -77,6 +80,46 @@ public class ProyeccionDotacionRefactorController {
                 }
             }
         }
+
+        List<VProyeccionDotacionEstructuraOrganizacional> pdeo = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + PD.getIdProyeccionDotacion(), VProyeccionDotacionEstructuraOrganizacional[].class));
+        ProyeccionesDotacionesTerceros pdt = new ProyeccionesDotacionesTerceros();
+        ProyeccionesDotacionesTercerosDotaciones pdtd = new ProyeccionesDotacionesTercerosDotaciones();
+        pdt.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
+        pdt.setIndicadorHabilitado(true);
+        pdt.setAuditoriaUsuario(PD.getAuditoriaUsuario());
+        pdtd.setIndicadorHabilitado(true);
+        pdtd.setAuditoriaUsuario(PD.getAuditoriaUsuario());
+        for(VProyeccionDotacionEstructuraOrganizacional vpdeo : pdeo){
+            if(vpdeo.getIdEstructuraOrganizacional()!=null){
+                List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpdeo.getIdEstructuraOrganizacional(), VTerceros[].class));
+                for(VTerceros vt : t){
+                    pdt.setIdTercero(vt.getIdTercero());
+                    ProyeccionesDotacionesTerceros pdtO = restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTerceros", pdt, ProyeccionesDotacionesTerceros.class);
+                    pdtd.setIdProyeccionDotacionTercero(pdtO.getIdProyeccionDotacionTerceros());
+                    List<VDotaciones> d = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/dotaciones/idProyeccionDotacion/" + PD.getIdProyeccionDotacion(), VDotaciones[].class));
+                    for(VDotaciones vd :d){
+                        pdtd.setIdDotacion(vd.getIdDotacion());
+                        if(vd.getIdTipoTalla()!=null){
+                            pdtd.setIdTalla(getTalla(vd.getIdTipoTalla(),vt));
+                        }
+                        restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
+                    }
+                    List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
+                    if(tda!=null){
+                        if(tda.size()>0){
+                            for(VTercerosDotacionesAdicionales vtda : tda){
+                                vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
+                                VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
+                                if(dot.getIdTipoTalla()!=null){
+                                    vtda.setIdTalla(getTalla(dot.getIdTipoTalla(),vt));
+                                }
+                                restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return PD;
     }
 
@@ -84,5 +127,16 @@ public class ProyeccionDotacionRefactorController {
     void update(@RequestBody ProyeccionDotacion o) {
         restTemplate.put(serviceUrl, o);
     }
-    
+
+    Integer getTalla(Integer tipoTalla, VTerceros vt){
+        String code = UtilitiesController.findListItemById("ListasTiposTallas",tipoTalla).getCodigo();
+        if(code.equals("CAM")){
+            return vt.getIdTallaCamisa();
+        }else if(code.equals("PAN")){
+            return vt.getIdTallaPantalon();
+        }else{
+            return vt.getIdTallaCalzado();
+        }
+    }
+
 }

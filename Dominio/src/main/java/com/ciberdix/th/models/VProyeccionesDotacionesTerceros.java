@@ -5,11 +5,18 @@ import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "ProyeccionesDotacionesTerceros", schema = "dbo", catalog = "CREZCAMOS")
-public class ProyeccionesDotacionesTerceros {
+@Table(name = "V_ProyeccionesDotacionesTerceros", schema = "dbo", catalog = "CREZCAMOS")
+public class VProyeccionesDotacionesTerceros {
     private Integer idProyeccionDotacionTerceros;
+    private String nombreProyeccion;
     private Integer idProyeccionDotacion;
+    private String documento;
+    private String nombreCompleto;
+    private String cargo;
+    private String area;
+    private String tipoArea;
     private Long idTercero;
+    private String estado;
     private Integer idEstado;
     private Date fechaEntrega;
     private Date fechaPosibleEntrega;
@@ -20,40 +27,7 @@ public class ProyeccionesDotacionesTerceros {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public ProyeccionesDotacionesTerceros() {
-    }
-
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idProyeccionDotacion = idProyeccionDotacion;
-        this.idTercero = idTercero;
-        this.idEstado = idEstado;
-        this.fechaEntrega = fechaEntrega;
-        this.fechaPosibleEntrega = fechaPosibleEntrega;
-        this.comentario = comentario;
-        this.comentarioAdicional = comentarioAdicional;
-        this.comentarioEntrega = comentarioEntrega;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
-        this.idProyeccionDotacion = idProyeccionDotacion;
-        this.idTercero = idTercero;
-        this.idEstado = idEstado;
-        this.fechaEntrega = fechaEntrega;
-        this.fechaPosibleEntrega = fechaPosibleEntrega;
-        this.comentario = comentario;
-        this.comentarioAdicional = comentarioAdicional;
-        this.comentarioEntrega = comentarioEntrega;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdProyeccionDotacionTerceros", nullable = false)
     public Integer getIdProyeccionDotacionTerceros() {
         return idProyeccionDotacionTerceros;
@@ -61,6 +35,16 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setIdProyeccionDotacionTerceros(Integer idProyeccionDotacionTerceros) {
         this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
+    }
+
+    @Basic
+    @Column(name = "NombreProyeccion", nullable = true, length = 200)
+    public String getNombreProyeccion() {
+        return nombreProyeccion;
+    }
+
+    public void setNombreProyeccion(String nombreProyeccion) {
+        this.nombreProyeccion = nombreProyeccion;
     }
 
     @Basic
@@ -74,6 +58,56 @@ public class ProyeccionesDotacionesTerceros {
     }
 
     @Basic
+    @Column(name = "Documento", nullable = true, length = 13)
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    @Basic
+    @Column(name = "NombreCompleto", nullable = false, length = 259)
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    @Basic
+    @Column(name = "Cargo", nullable = true, length = 100)
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
+    @Column(name = "Area", nullable = true, length = 50)
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    @Basic
+    @Column(name = "TipoArea", nullable = true, length = 40)
+    public String getTipoArea() {
+        return tipoArea;
+    }
+
+    public void setTipoArea(String tipoArea) {
+        this.tipoArea = tipoArea;
+    }
+
+    @Basic
     @Column(name = "IdTercero", nullable = true)
     public Long getIdTercero() {
         return idTercero;
@@ -81,6 +115,16 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setIdTercero(Long idTercero) {
         this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "Estado", nullable = true, length = 100)
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Basic
@@ -178,13 +222,22 @@ public class ProyeccionesDotacionesTerceros {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProyeccionesDotacionesTerceros that = (ProyeccionesDotacionesTerceros) o;
+        VProyeccionesDotacionesTerceros that = (VProyeccionesDotacionesTerceros) o;
 
         if (idProyeccionDotacionTerceros != null ? !idProyeccionDotacionTerceros.equals(that.idProyeccionDotacionTerceros) : that.idProyeccionDotacionTerceros != null)
             return false;
+        if (nombreProyeccion != null ? !nombreProyeccion.equals(that.nombreProyeccion) : that.nombreProyeccion != null)
+            return false;
         if (idProyeccionDotacion != null ? !idProyeccionDotacion.equals(that.idProyeccionDotacion) : that.idProyeccionDotacion != null)
             return false;
+        if (documento != null ? !documento.equals(that.documento) : that.documento != null) return false;
+        if (nombreCompleto != null ? !nombreCompleto.equals(that.nombreCompleto) : that.nombreCompleto != null)
+            return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
+        if (area != null ? !area.equals(that.area) : that.area != null) return false;
+        if (tipoArea != null ? !tipoArea.equals(that.tipoArea) : that.tipoArea != null) return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (estado != null ? !estado.equals(that.estado) : that.estado != null) return false;
         if (idEstado != null ? !idEstado.equals(that.idEstado) : that.idEstado != null) return false;
         if (fechaEntrega != null ? !fechaEntrega.equals(that.fechaEntrega) : that.fechaEntrega != null) return false;
         if (fechaPosibleEntrega != null ? !fechaPosibleEntrega.equals(that.fechaPosibleEntrega) : that.fechaPosibleEntrega != null)
@@ -207,8 +260,15 @@ public class ProyeccionesDotacionesTerceros {
     @Override
     public int hashCode() {
         int result = idProyeccionDotacionTerceros != null ? idProyeccionDotacionTerceros.hashCode() : 0;
+        result = 31 * result + (nombreProyeccion != null ? nombreProyeccion.hashCode() : 0);
         result = 31 * result + (idProyeccionDotacion != null ? idProyeccionDotacion.hashCode() : 0);
+        result = 31 * result + (documento != null ? documento.hashCode() : 0);
+        result = 31 * result + (nombreCompleto != null ? nombreCompleto.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (area != null ? area.hashCode() : 0);
+        result = 31 * result + (tipoArea != null ? tipoArea.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (idEstado != null ? idEstado.hashCode() : 0);
         result = 31 * result + (fechaEntrega != null ? fechaEntrega.hashCode() : 0);
         result = 31 * result + (fechaPosibleEntrega != null ? fechaPosibleEntrega.hashCode() : 0);

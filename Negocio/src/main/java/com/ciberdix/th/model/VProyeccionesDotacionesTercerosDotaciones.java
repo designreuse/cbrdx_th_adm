@@ -2,14 +2,15 @@ package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
 
-public class ProyeccionesDotacionesTercerosDotaciones {
-
+public class VProyeccionesDotacionesTercerosDotaciones {
     private Integer idProyeccionDotacionTerceroDotacion;
     private Integer idProyeccionDotacionTercero;
+    private String dotacion;
     private Integer idDotacion;
-    private Integer idTalla;
     private Integer cantidadAsignada;
     private Integer cantidadEntregada;
+    private String talla;
+    private Integer idTalla;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -28,6 +29,14 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setIdProyeccionDotacionTercero(Integer idProyeccionDotacionTercero) {
         this.idProyeccionDotacionTercero = idProyeccionDotacionTercero;
+    }
+
+    public String getDotacion() {
+        return dotacion;
+    }
+
+    public void setDotacion(String dotacion) {
+        this.dotacion = dotacion;
     }
 
     public Integer getIdDotacion() {
@@ -76,6 +85,14 @@ public class ProyeccionesDotacionesTercerosDotaciones {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
     }
 
     public Integer getIdTalla() {

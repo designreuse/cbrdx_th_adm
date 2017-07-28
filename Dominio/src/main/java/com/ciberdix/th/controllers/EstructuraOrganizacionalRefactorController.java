@@ -44,6 +44,11 @@ public class EstructuraOrganizacionalRefactorController {
         return estructuraOrganizacionalRefactorRepository.findByIndicadorHabilitadoTrueAndIdTipoArea(idTipoArea);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
+    List<VEstructuraOrganizacional> queryByIdProyeccionDotacion(@PathVariable Integer idProyeccionDotacion) {
+        return vEstructuraOrganizacionalRefactorRepository.queryAllByIdProyeccionDotacion(idProyeccionDotacion);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/grupoDotacion/{idGrupoDotacion}")
     List<VEstructuraOrganizacional> queryByIdGrupoDotacion(@PathVariable Integer idGrupoDotacion) {
         return vEstructuraOrganizacionalRefactorRepository.queryAllByIdGrupoDotacion(idGrupoDotacion);
