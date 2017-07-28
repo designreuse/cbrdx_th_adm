@@ -14,6 +14,7 @@ public class VProyeccionesDotacionesTercerosDotaciones {
     private Integer cantidadEntregada;
     private String talla;
     private Integer idTalla;
+    private Boolean indicadorSatisfecho;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -99,6 +100,16 @@ public class VProyeccionesDotacionesTercerosDotaciones {
     }
 
     @Basic
+    @Column(name = "IndicadorSatisfecho", nullable = true)
+    public Boolean getIndicadorSatisfecho() {
+        return indicadorSatisfecho;
+    }
+
+    public void setIndicadorSatisfecho(Boolean indicadorSatisfecho) {
+        this.indicadorSatisfecho = indicadorSatisfecho;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -147,6 +158,8 @@ public class VProyeccionesDotacionesTercerosDotaciones {
             return false;
         if (talla != null ? !talla.equals(that.talla) : that.talla != null) return false;
         if (idTalla != null ? !idTalla.equals(that.idTalla) : that.idTalla != null) return false;
+        if (indicadorSatisfecho != null ? !indicadorSatisfecho.equals(that.indicadorSatisfecho) : that.indicadorSatisfecho != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -167,6 +180,7 @@ public class VProyeccionesDotacionesTercerosDotaciones {
         result = 31 * result + (cantidadEntregada != null ? cantidadEntregada.hashCode() : 0);
         result = 31 * result + (talla != null ? talla.hashCode() : 0);
         result = 31 * result + (idTalla != null ? idTalla.hashCode() : 0);
+        result = 31 * result + (indicadorSatisfecho != null ? indicadorSatisfecho.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

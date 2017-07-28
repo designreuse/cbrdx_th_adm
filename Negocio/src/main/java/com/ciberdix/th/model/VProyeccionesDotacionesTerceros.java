@@ -21,6 +21,10 @@ public class VProyeccionesDotacionesTerceros {
     private String comentario;
     private String comentarioAdicional;
     private String comentarioEntrega;
+    private String observacion;
+    private String motivoInsatisfecho;
+    private Integer idMotivoSatisfecho;
+    private Boolean indicadorSatisfecho;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -175,5 +179,37 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setComentarioEntrega(String comentarioEntrega) {
         this.comentarioEntrega = comentarioEntrega;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public String getMotivoInsatisfecho() {
+        return motivoInsatisfecho;
+    }
+
+    public void setMotivoInsatisfecho(String motivoInsatisfecho) {
+        this.motivoInsatisfecho = motivoInsatisfecho;
+    }
+
+    public Integer getIdMotivoSatisfecho() {
+        return idMotivoSatisfecho;
+    }
+
+    public void setIdMotivoSatisfecho(Integer idMotivoSatisfecho) {
+        this.idMotivoSatisfecho = idMotivoSatisfecho;
+    }
+
+    public Boolean getIndicadorSatisfecho() {
+        return indicadorSatisfecho;
+    }
+
+    public void setIndicadorSatisfecho(Boolean indicadorSatisfecho) {
+        this.indicadorSatisfecho = indicadorSatisfecho;
     }
 }
