@@ -55,7 +55,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/queryUsername/{idLista}/")
     Usuarios findUsername(@PathVariable String idLista) {
-        return usuariosRepository.findByUsuarioSistema(idLista);
+        return usuariosRepository.queryByUsuarioSistema(idLista);
     }
 
     @RequestMapping(method = RequestMethod.POST)
