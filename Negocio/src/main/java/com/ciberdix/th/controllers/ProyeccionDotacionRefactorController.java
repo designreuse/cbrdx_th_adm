@@ -57,7 +57,12 @@ public class ProyeccionDotacionRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{idTercero}")
     List<VProyeccionDotacion> findByIdTercero(@PathVariable Long idTercero) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VProyeccionDotacion[].class));
+        List<VProyeccionDotacion> p = Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VProyeccionDotacion[].class));
+        for(VProyeccionDotacion vp : p){
+            VProyeccionesDotacionesTerceros pdt = restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTerceros/proyeccionDotacionTercero/" + vp.getIdProyeccionDotacion() + "/" + idTercero, VProyeccionesDotacionesTerceros.class);
+            vp.setIdEstado(pdt.getIdEstado());
+        }
+        return p;
     }
 
     @RequestMapping(method = RequestMethod.POST)
