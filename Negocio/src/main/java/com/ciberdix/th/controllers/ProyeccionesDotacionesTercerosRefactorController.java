@@ -1,6 +1,7 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.ProyeccionesDotacionesTerceros;
+import com.ciberdix.th.model.Terceros;
 import com.ciberdix.th.model.VProyeccionesDotacionesTerceros;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -60,8 +61,8 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     List<VProyeccionesDotacionesTerceros> findEnabledAndIdEstadoNotNull() {
         List<VProyeccionesDotacionesTerceros> p = Arrays.asList(restTemplate.getForObject(serviceUrl, VProyeccionesDotacionesTerceros[].class));
         List<VProyeccionesDotacionesTerceros> pd = new ArrayList<>();
-        for(VProyeccionesDotacionesTerceros vp : p){
-            if(vp.getIdEstado()!=null && vp.getIndicadorHabilitado()!=null && vp.getIndicadorHabilitado()){
+        for (VProyeccionesDotacionesTerceros vp : p) {
+            if (vp.getIdEstado() != null && vp.getIndicadorHabilitado() != null && vp.getIndicadorHabilitado()) {
                 pd.add(vp);
             }
         }
@@ -75,6 +76,13 @@ public class ProyeccionesDotacionesTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody ProyeccionesDotacionesTerceros o) {
+        ProyeccionesDotacionesTerceros estadoActual = restTemplate.getForObject(serviceUrl + o.getIdProyeccionDotacionTerceros(), ProyeccionesDotacionesTerceros.class);
+        Integer IdEntregado = UtilitiesController.findListItem("ListasEstadosProyeccionesTerceros", "ENTRE").getIdLista();
+        if (!estadoActual.getIdEstado().equals(IdEntregado) && o.getIdEstado().equals(IdEntregado)) {
+            Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros/" + o.getIdTercero(), Terceros.class);
+            String token = UtilitiesController.generateTokenButton("/employees/supplies-confirmation/" + o.getIdProyeccionDotacionTerceros(), null);
+            UtilitiesController.sendMail(terceros.getCorreoElectronico(), "Encuesta de Satisfacción", "Por favor ingrese al siguiente enlace para realizar la confirmación la dotación entregada" + token);
+        }
         restTemplate.put(serviceUrl, o);
     }
 }
