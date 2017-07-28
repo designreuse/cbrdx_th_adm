@@ -185,7 +185,7 @@ public class UtilitiesController {
         return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
     }
 
-    static ListasItems findListItem(String tableName, String code) {
+    public static ListasItems findListItem(String tableName, String code) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/code/" + code.toUpperCase() + "/";
         return restTemplate.getForObject(serviceURL, ListasItems.class);
