@@ -52,7 +52,7 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
     List<VOcupaciones> getOcupaciones(@PathVariable String label) {
-        return vOcupacionesRefactorRepository.findByLabelContains(label);
+        return vOcupacionesRefactorRepository.queryByLabelContains(label);
     }
 
     @RequestMapping(method = RequestMethod.POST)
