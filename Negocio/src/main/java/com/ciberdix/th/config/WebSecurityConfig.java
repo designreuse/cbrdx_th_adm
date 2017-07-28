@@ -1,7 +1,9 @@
 package com.ciberdix.th.config;
 
 import com.ciberdix.th.controllers.UtilitiesController;
+import com.ciberdix.th.model.Novedades;
 import com.ciberdix.th.model.Terceros;
+import com.ciberdix.th.model.TercerosNovedades;
 import com.ciberdix.th.security.JwtAuthenticationEntryPoint;
 import com.ciberdix.th.security.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,12 +83,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.headers().cacheControl();
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 0 23 50 * ?")
     void changePersonStatus() {
         String serviceUrl = UtilitiesController.readParameter("domain.url");
         RestTemplate restTemplate = new RestTemplate();
-        Terceros[] terceros = restTemplate.getForObject(serviceUrl, Terceros[].class);
-        List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(Terceros::getIndicadorHabilitado).collect(Collectors.toList());
+        Integer IdSolicitado = UtilitiesController.findListItem("ListasEstadosNovedades", "SOLICI").getIdLista();
+        Integer IdTramitado = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
+        Integer IdActivo = UtilitiesController.findListItem("ListasEstadosTerceros", "ACTIVO").getIdLista();
+        Terceros[] terceros = restTemplate.getForObject(serviceUrl + "/api/terceros", Terceros[].class);
+        List<Novedades> novedadesSistema = Arrays.stream(restTemplate.getForObject(serviceUrl + "/api/novedades", Novedades[].class)).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null).collect(Collectors.toList());
+        List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
+        TercerosNovedades[] novedades = restTemplate.getForObject(serviceUrl + "/api/tercerosNovedades", TercerosNovedades[].class);
+        Date currentDate = new Date(System.currentTimeMillis());
+        List<TercerosNovedades> novedadesList = Arrays.stream(novedades).filter(t ->
+                (t.getFechaInicio() != null && t.getFechaInicio().compareTo(currentDate) == 0 && t.getIdEstadoNovedad().equals(IdTramitado))
+                        || (t.getIdEstadoNovedad().equals(IdSolicitado) && t.getFechaReporte().compareTo(currentDate) == 0 && t.getFechaInicio().compareTo(t.getFechaReporte()) < 0)).collect(Collectors.toList());
+        List<Terceros> tercerosList = tercerosHabilitados.stream().filter(t -> novedadesList.stream().anyMatch(f -> f.getIdTercero().equals(t.getIdTercero()))).collect(Collectors.toList());
+        for (Terceros ter : tercerosList) {
+            List<TercerosNovedades> novedadesAfecta = novedadesList.stream().filter(t -> t.getIdTercero().equals(ter.getIdTercero()) && novedadesSistema.stream().anyMatch(f -> t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+            if (!novedadesAfecta.isEmpty()) {
+                novedadesAfecta.sort(Comparator.comparing(TercerosNovedades::getFechaReporte));
+                TercerosNovedades apply = novedadesAfecta.get(novedadesAfecta.size() - 1);
+                Novedades novedad = restTemplate.getForObject(serviceUrl + "/api/novedades/" + apply.getIdNovedad(), Novedades.class);
+                ter.setIdEstadoTercero(novedad.getIdEstadoTercero());
+                restTemplate.put(serviceUrl + "/api/terceros", ter);
+            }
+        }
 
     }
 }
