@@ -1,13 +1,16 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Danny on 17/07/2017.
@@ -52,6 +55,75 @@ public class DotacionesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/grupoDotacion/{id}")
     List<VDotaciones> findByIdGrupoDotacion(@PathVariable Integer id) {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "grupoDotacion/" + id, VDotaciones[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/tallasGenero/{idProyeccionDotacion}/{idDotacion}")
+    List<TallaGeneroDotacion> findAllTallasByGen(@PathVariable Integer idProyeccionDotacion, @PathVariable Integer idDotacion) {
+        List<VProyeccionDotacionEstructuraOrganizacional> pdeo = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + idProyeccionDotacion, VProyeccionDotacionEstructuraOrganizacional[].class));
+        VDotaciones d = findOne(idDotacion);
+        List<TallaGeneroDotacion> ltgd = new ArrayList<>();
+        TallaGeneroDotacion tgd = new TallaGeneroDotacion();
+        String code = UtilitiesController.findListItemById("ListasTiposTallas", d.getIdTipoTalla()).getCodigo();
+        for(VProyeccionDotacionEstructuraOrganizacional vpdeo : pdeo){
+            if(vpdeo.getIdEstructuraOrganizacional()!=null){
+                List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpdeo.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
+                if(t.size()>0){
+                    List<VTerceros> tempT;
+                    List<ListasItems> li = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/ListasTallas/enabled/", ListasItems[].class));
+                    for(ListasItems list : li){
+                        tgd.setIndicadorHombre(false);
+                        tgd.setIndicadorMujer(false);
+                        if(code.equals("CAM")){
+                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null && ter.getIdTallaCamisa().equals(list.getIdLista()))).collect(Collectors.toList());
+                        }else if(code.equals("PAN")){
+                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaPantalon().equals(list.getIdLista()))).collect(Collectors.toList());
+                        }else{
+                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaCalzado().equals(list.getIdLista()))).collect(Collectors.toList());
+                        }
+                        if(tempT.size()>0){
+                            Boolean exist = false;
+                            if(ltgd.size()>0){
+                                for(TallaGeneroDotacion ltgdot : ltgd){
+                                    if(ltgdot.getTalla().equals(list.getNombre())){
+                                        tgd = ltgdot;
+                                        exist = true;
+                                    }
+                                }
+                            }
+                            if(exist){
+                                ltgd.get(ltgd.indexOf(tgd)).setTotal(ltgd.get(ltgd.indexOf(tgd)).getTotal()+(tempT.size()*d.getCantidad()));
+                                for(VTerceros vt : tempT){
+                                    if(vt.getIdGenero()!=null){
+                                        String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
+                                        if(genero.equals("M")){
+                                            ltgd.get(ltgd.indexOf(tgd)).setIndicadorHombre(true);
+                                        }else if(genero.equals("F")){
+                                            ltgd.get(ltgd.indexOf(tgd)).setIndicadorMujer(true);
+                                        }
+                                    }
+                                }
+                            }else{
+                                tgd.setTalla(list.getNombre());
+                                tgd.setTotal(tempT.size()*d.getCantidad());
+                                for(VTerceros vt : tempT){
+                                    if(vt.getIdGenero()!=null){
+                                        String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
+                                        if(genero.equals("M")){
+                                            tgd.setIndicadorHombre(true);
+                                        }else if(genero.equals("F")){
+                                            tgd.setIndicadorMujer(true);
+                                        }
+                                    }
+                                }
+                                ltgd.add(tgd);
+                            }
+                            tgd = new TallaGeneroDotacion();
+                        }
+                    }
+                }
+            }
+        }
+        return ltgd;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/ProyeccionDotacion/{id}")
