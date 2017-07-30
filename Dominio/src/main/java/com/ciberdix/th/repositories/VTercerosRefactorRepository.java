@@ -826,6 +826,6 @@ public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, L
             ",'ÿ','y')" +
             ") "+
             " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') )")
-    List<VTerceros> queryVTercerosByNameAndTipoTercero(String wildcard, Integer idTipoTercero);
+    List<VTerceros> queryVTercerosByNameAndTipoTercero(String wildcard, String codeTipoTercero);
 
 }
