@@ -56,6 +56,12 @@ public class DivisionPoliticaRefactorController {
         return presort;
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizacionesAll/{queryString}/")
+    List<VDivisionPoliticaRec> findLocaliAll(@PathVariable String queryString) {
+        String queryStringO = OutSpecialChars.getStr(queryString);
+        return vDivisionPoliticaRecRefactorRepository.queryLocationsAll(queryStringO);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizacion/{idLocalizacion}")
     VDivisionPoliticaRec findInView(@PathVariable Integer idLocalizacion) {
         return vDivisionPoliticaRecRefactorRepository.findOne(idLocalizacion);
