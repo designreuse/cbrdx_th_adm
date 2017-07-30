@@ -9,6 +9,7 @@ public class VProyeccionesDotacionesTerceros {
     private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private String documento;
+    private String imagen;
     private String nombreCompleto;
     private String cargo;
     private String area;
@@ -220,5 +221,13 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setIndicadorAdicional(Boolean indicadorAdicional) {
         this.indicadorAdicional = indicadorAdicional;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
