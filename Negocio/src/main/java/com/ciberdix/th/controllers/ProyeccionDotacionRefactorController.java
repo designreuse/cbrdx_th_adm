@@ -104,6 +104,7 @@ public class ProyeccionDotacionRefactorController {
                     pdtd.setIdProyeccionDotacionTercero(pdtO.getIdProyeccionDotacionTerceros());
                     for(VDotaciones vd :d){
                         pdtd.setIdDotacion(vd.getIdDotacion());
+                        pdtd.setCantidadAsignada(vd.getCantidad());
                         if(vd.getIdTipoTalla()!=null){
                             pdtd.setIdTalla(getTalla(vd.getIdTipoTalla(),vt));
                         }
