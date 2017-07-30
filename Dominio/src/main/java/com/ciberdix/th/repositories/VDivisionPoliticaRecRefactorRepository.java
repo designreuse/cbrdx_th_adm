@@ -110,7 +110,7 @@ public interface VDivisionPoliticaRecRefactorRepository extends CrudRepository<V
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ "like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3','4'))")
+            ") "+ "like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3','4')) ORDER BY u.camino")
     List<VDivisionPoliticaRec> queryLocations(String queryString);
 
     @Query("SELECT u from VDivisionPoliticaRec u where " +
@@ -212,7 +212,7 @@ public interface VDivisionPoliticaRecRefactorRepository extends CrudRepository<V
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ "like concat('%',?1,'%')")
+            ") "+ "like concat('%',?1,'%') ORDER BY u.camino")
     List<VDivisionPoliticaRec> queryLocationsAll(String queryString);
 
     @Query("SELECT u from VDivisionPoliticaRec u where " +
@@ -314,7 +314,7 @@ public interface VDivisionPoliticaRecRefactorRepository extends CrudRepository<V
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ " like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3'))")
+            ") "+ " like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3'))  ORDER BY u.camino")
     List<VDivisionPoliticaRec> queryAllCities(String queryString);
 
 }
