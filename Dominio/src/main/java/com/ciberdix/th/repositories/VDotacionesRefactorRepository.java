@@ -15,7 +15,7 @@ public interface VDotacionesRefactorRepository extends CrudRepository<VDotacione
 
     List<VDotaciones> findAllByIdGrupoDotacion(Integer id);
 
-    @Query("SELECT D FROM VDotaciones D WHERE D.idGrupoDotacion IN (SELECT P.idGrupoDotacion FROM ProyeccionDotacion P WHERE P.idProyeccionDotacion = ?1)")
+    @Query("SELECT D FROM VDotaciones D WHERE D.indicadorHabilitado AND D.idGrupoDotacion IN (SELECT P.idGrupoDotacion FROM ProyeccionDotacion P WHERE P.idProyeccionDotacion = ?1)")
     List<VDotaciones> queryAllByIdProyeccionDotacion(Integer id);
 
 }

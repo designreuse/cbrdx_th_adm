@@ -28,6 +28,7 @@ public class VProyeccionesDotacionesTerceros {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Boolean indicadorAdicional;
 
     public Integer getIdProyeccionDotacionTerceros() {
         return idProyeccionDotacionTerceros;
@@ -211,5 +212,13 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setIndicadorSatisfecho(Boolean indicadorSatisfecho) {
         this.indicadorSatisfecho = indicadorSatisfecho;
+    }
+
+    public Boolean getIndicadorAdicional() {
+        return indicadorAdicional;
+    }
+
+    public void setIndicadorAdicional(Boolean indicadorAdicional) {
+        this.indicadorAdicional = indicadorAdicional;
     }
 }
