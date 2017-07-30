@@ -78,7 +78,7 @@ public class DotacionesRefactorController {
                         }else if(code.equals("PAN")){
                             tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaPantalon().equals(list.getIdLista()))).collect(Collectors.toList());
                         }else{
-                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaCalzado().equals(list.getIdLista()))).collect(Collectors.toList());
+                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null && ter.getIdTallaCalzado().equals(list.getIdLista()))).collect(Collectors.toList());
                         }
                         if(tempT.size()>0){
                             Boolean exist = false;
@@ -136,9 +136,18 @@ public class DotacionesRefactorController {
             if(pd.getIndicadorNoAreas()){
                 cant = pd.getCantidadProyeccion();
             }else{
+                List<VTerceros> tempT;
+                String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
                 for(VProyeccionDotacionEstructuraOrganizacional vpe : pe){
                     List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpe.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
-                    cant += (t.size() * vd.getCantidad());
+                    if(code.equals("CAM")){
+                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null)).collect(Collectors.toList());
+                    }else if(code.equals("PAN")){
+                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null)).collect(Collectors.toList());
+                    }else{
+                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null)).collect(Collectors.toList());
+                    }
+                    cant += (tempT.size() * vd.getCantidad());
                 }
             }
             vd.setCantidadTotal(cant);

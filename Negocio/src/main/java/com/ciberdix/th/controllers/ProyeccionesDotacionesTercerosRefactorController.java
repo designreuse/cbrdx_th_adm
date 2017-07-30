@@ -1,9 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.ProyeccionesDotacionesTerceros;
-import com.ciberdix.th.model.Terceros;
-import com.ciberdix.th.model.VProyeccionesDotacionesTerceros;
-import com.ciberdix.th.model.VProyeccionesDotacionesTercerosDotaciones;
+import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -12,6 +9,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/proyeccionesDotacionesTerceros")
@@ -50,7 +48,15 @@ public class ProyeccionesDotacionesTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
     List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
+        List<VProyeccionesDotacionesTerceros> pdt = Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
+        for(VProyeccionesDotacionesTerceros vpdt : pdt){
+            vpdt.setIndicadorAdicional(false);
+            List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vpdt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
+            if(tda.size()>0){
+                vpdt.setIndicadorAdicional(true);
+            }
+        }
+        return pdt;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}/enabled")
@@ -72,7 +78,56 @@ public class ProyeccionesDotacionesTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionesDotacionesTerceros create(@RequestBody ProyeccionesDotacionesTerceros o) {
-        return restTemplate.postForObject(serviceUrl, o, ProyeccionesDotacionesTerceros.class);
+        ProyeccionesDotacionesTerceros  pdt = restTemplate.postForObject(serviceUrl, o, ProyeccionesDotacionesTerceros.class);
+        VTerceros t =  restTemplate.postForObject(baseUrl + "/api/vterceros/" + pdt.getIdTercero(), o, VTerceros.class);
+        List<VDotaciones> d = Arrays.asList(restTemplate.postForObject(baseUrl + "/api/dotaciones/idProyeccionDotacion/" + pdt.getIdProyeccionDotacion(), o, VDotaciones[].class));
+        List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.postForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + pdt.getIdTercero(), o, VTercerosDotacionesAdicionales[].class));
+        ProyeccionesDotacionesTercerosDotaciones pdtd = new ProyeccionesDotacionesTercerosDotaciones();
+        pdtd.setIdProyeccionDotacionTercero(pdt.getIdProyeccionDotacionTerceros());
+        pdtd.setIndicadorHabilitado(true);
+        pdtd.setAuditoriaUsuario(pdt.getAuditoriaUsuario());
+        pdtd.setAuditoriaFecha(pdt.getAuditoriaFecha());
+        for(VDotaciones vd : d){
+            List<VTercerosDotacionesAdicionales> tempTDA = tda.stream().filter(TDA->tda.stream().anyMatch(f->TDA.getIdDotacion()!=null && TDA.getIdDotacion().equals(vd.getIdDotacion()))).collect(Collectors.toList());
+            for(VTercerosDotacionesAdicionales vtda : tempTDA){
+                vtda.setIdProyeccionDotacion(pdt.getIdProyeccionDotacion());
+                if(vd.getIdTipoTalla()!=null){
+                    if(getTalla(vd, t)!=null){
+                        vtda.setIdTalla(getTalla(vd, t));
+                    }
+                }
+                restTemplate.put(baseUrl + "/api/tercerosDotacionesAdicionales", vtda, VTercerosDotacionesAdicionales.class);
+            }
+            pdtd.setIdDotacion(vd.getIdDotacion());
+            if(vd.getIdTipoTalla()!=null){
+                if(getTalla(vd, t)!=null){
+                    pdtd.setIdTalla(getTalla(vd, t));
+                }
+            }
+            restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
+        }
+        return pdt;
+    }
+
+    Integer getTalla(VDotaciones vd, VTerceros t){
+        String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
+        Integer idTalla = null;
+        if(vd.getIdTipoTalla()!=null){
+            if(code.equals("CAM")){
+                if(t.getIdTallaCamisa()!=null){
+                    idTalla = t.getIdTallaCamisa();
+                }
+            }else if(code.equals("PAN")){
+                if(t.getIdTallaPantalon()!=null){
+                    idTalla = t.getIdTallaPantalon();
+                }
+            }else{
+                if(t.getIdTallaCalzado()!=null){
+                    idTalla = t.getIdTallaCalzado();
+                }
+            }
+        }
+        return idTalla;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
