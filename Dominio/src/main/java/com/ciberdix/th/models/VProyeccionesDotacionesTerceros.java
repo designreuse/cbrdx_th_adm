@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -11,6 +11,7 @@ public class VProyeccionesDotacionesTerceros {
     private String nombreProyeccion;
     private Integer idProyeccionDotacion;
     private String documento;
+    private String imagen;
     private String nombreCompleto;
     private String cargo;
     private String area;
@@ -69,6 +70,16 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setDocumento(String documento) {
         this.documento = documento;
+    }
+
+    @Basic
+    @Column(name = "Imagen", nullable = true, length = 64)
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     @Basic
@@ -275,6 +286,7 @@ public class VProyeccionesDotacionesTerceros {
         if (idProyeccionDotacion != null ? !idProyeccionDotacion.equals(that.idProyeccionDotacion) : that.idProyeccionDotacion != null)
             return false;
         if (documento != null ? !documento.equals(that.documento) : that.documento != null) return false;
+        if (imagen != null ? !imagen.equals(that.imagen) : that.imagen != null) return false;
         if (nombreCompleto != null ? !nombreCompleto.equals(that.nombreCompleto) : that.nombreCompleto != null)
             return false;
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
@@ -314,6 +326,7 @@ public class VProyeccionesDotacionesTerceros {
         result = 31 * result + (nombreProyeccion != null ? nombreProyeccion.hashCode() : 0);
         result = 31 * result + (idProyeccionDotacion != null ? idProyeccionDotacion.hashCode() : 0);
         result = 31 * result + (documento != null ? documento.hashCode() : 0);
+        result = 31 * result + (imagen != null ? imagen.hashCode() : 0);
         result = 31 * result + (nombreCompleto != null ? nombreCompleto.hashCode() : 0);
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (area != null ? area.hashCode() : 0);
