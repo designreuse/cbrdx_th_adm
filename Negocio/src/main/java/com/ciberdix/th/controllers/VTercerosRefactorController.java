@@ -64,9 +64,9 @@ public class VTercerosRefactorController {
         return Arrays.asList(tercero);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/buscarTercerosTipo/{wildcard}/{idTipoTercero}")
-    List<VTerceros> listarTercerosTipo(@PathVariable String wildcard, Integer idTipoTercero) {
-        VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "buscarTercerosTipo/"+wildcard+"/"+idTipoTercero, VTerceros[].class);
+    @RequestMapping(method = RequestMethod.GET, value = "/buscarTercerosTipo/{wildcard}/{codeTipoTercero}")
+    List<VTerceros> listarTercerosTipo(@PathVariable String wildcard, String codeTipoTercero) {
+        VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "buscarTercerosTipo/"+wildcard+"/"+codeTipoTercero, VTerceros[].class);
         return Arrays.asList(tercero);
     }
 
