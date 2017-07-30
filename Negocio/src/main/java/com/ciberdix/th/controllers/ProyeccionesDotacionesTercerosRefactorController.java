@@ -137,7 +137,7 @@ public class ProyeccionesDotacionesTercerosRefactorController {
         if (estadoActual.getIdEstado()!=null && o.getIdEstado()!=null && !estadoActual.getIdEstado().equals(IdEntregado) && o.getIdEstado().equals(IdEntregado)) {
             Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros/" + o.getIdTercero(), Terceros.class);
             String token = UtilitiesController.generateTokenButton("/employees/supplies-confirmation/" + o.getIdProyeccionDotacionTerceros(), null);
-            List<VProyeccionesDotacionesTercerosDotaciones> dotacionesTercero = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + o.getIdProyeccionDotacion() + "/" + o.getIdTercero(), VProyeccionesDotacionesTercerosDotaciones[].class));
+            List<VProyeccionesDotacionesTercerosDotaciones> dotacionesTercero = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + o.getIdProyeccionDotacion(), VProyeccionesDotacionesTercerosDotaciones[].class));
             String ListadoDotaciones = "<ol>";
             for (VProyeccionesDotacionesTercerosDotaciones p : dotacionesTercero) {
                 ListadoDotaciones = ListadoDotaciones + "<li>" + p.getDotacion() + "</li>";
