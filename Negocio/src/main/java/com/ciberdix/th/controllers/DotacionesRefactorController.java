@@ -60,6 +60,7 @@ public class DotacionesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/tallasGenero/{idProyeccionDotacion}/{idDotacion}")
     List<TallaGeneroDotacion> findAllTallasByGen(@PathVariable Integer idProyeccionDotacion, @PathVariable Integer idDotacion) {
         List<VProyeccionDotacionEstructuraOrganizacional> pdeo = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + idProyeccionDotacion, VProyeccionDotacionEstructuraOrganizacional[].class));
+        VProyeccionDotacion PD =  restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + idProyeccionDotacion, VProyeccionDotacion.class);
         VDotaciones d = findOne(idDotacion);
         List<TallaGeneroDotacion> ltgd = new ArrayList<>();
         TallaGeneroDotacion tgd = new TallaGeneroDotacion();
@@ -104,7 +105,8 @@ public class DotacionesRefactorController {
                                 }
                             }else{
                                 tgd.setTalla(list.getNombre());
-                                tgd.setTotal(tempT.size()*d.getCantidad());
+                                Double valor = Math.ceil(PD.getCantidadMeses()/valueCiclo(d));
+                                tgd.setTotal(tempT.size()* valor.intValue());
                                 for(VTerceros vt : tempT){
                                     if(vt.getIdGenero()!=null){
                                         String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
@@ -126,6 +128,21 @@ public class DotacionesRefactorController {
         return ltgd;
     }
 
+    Integer valueCiclo(VDotaciones d){
+        String codeCiclo = UtilitiesController.findListItemById("ListasCiclosEntregas",d.getIdCicloEntrega()).getCodigo();
+        if(codeCiclo.equals("ANUAL")){
+            return 12;
+        }else if(codeCiclo.equals("SEMES")){
+            return 6;
+        }else if(codeCiclo.equals("TRIMES")){
+            return 3;
+        }else if(codeCiclo.equals("CUATRIMES")){
+            return 4;
+        }else{
+            return 2;
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/ProyeccionDotacion/{id}")
     List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
         List<VDotaciones> d = Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
@@ -137,18 +154,23 @@ public class DotacionesRefactorController {
             if(pd.getIndicadorNoAreas()){
                 cant = pd.getCantidadProyeccion();
             }else{
-                List<VTerceros> tempT;
-                String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
-                for(VProyeccionDotacionEstructuraOrganizacional vpe : pe){
-                    List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpe.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
-                    if(code.equals("CAM")){
-                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null)).collect(Collectors.toList());
-                    }else if(code.equals("PAN")){
-                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null)).collect(Collectors.toList());
-                    }else{
-                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null)).collect(Collectors.toList());
-                    }
-                    cant += (tempT.size() * vd.getCantidad());
+//                List<VTerceros> tempT;
+//                String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
+//                for(VProyeccionDotacionEstructuraOrganizacional vpe : pe){
+//                    List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpe.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
+//                    if(code.equals("CAM")){
+//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null)).collect(Collectors.toList());
+//                    }else if(code.equals("PAN")){
+//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null)).collect(Collectors.toList());
+//                    }else{
+//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null)).collect(Collectors.toList());
+//                    }
+//                    Double valor = Math.ceil(pd.getCantidadMeses()/valueCiclo(vd));
+//                    cant += (tempT.size() * valor.intValue());
+//                }
+                List<TallaGeneroDotacion> ltgd = findAllTallasByGen(pd.getIdProyeccionDotacion(),vd.getIdDotacion());
+                for(TallaGeneroDotacion tgd : ltgd){
+                    cant += tgd.getTotal();
                 }
             }
             vd.setCantidadTotal(cant);
