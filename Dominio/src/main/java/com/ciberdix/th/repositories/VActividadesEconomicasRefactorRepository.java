@@ -110,7 +110,7 @@ public interface VActividadesEconomicasRefactorRepository extends CrudRepository
             ",'ÿ','y')" +
             ") "+
             "LIKE ?1 || '%'" +
-            "ORDER BY c.label ORDER BY c.label")
+            "ORDER BY c.label")
     List<VActividadesEconomicas> queryVActiviByLabel(String str);
 
     @Query("SELECT c FROM VActividadesEconomicas c WHERE "+
