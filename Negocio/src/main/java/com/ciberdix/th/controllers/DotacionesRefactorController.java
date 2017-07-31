@@ -145,7 +145,20 @@ public class DotacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/ProyeccionDotacion/{id}")
     List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
-        List<VDotaciones> d = Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
+        List<VProyeccionesDotacionesTerceros> pdt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTerceros/proyeccionDotacion/" + id + "/enabled", VProyeccionesDotacionesTerceros[].class));
+        List<VDotaciones> d = new ArrayList<>();
+        for(VProyeccionesDotacionesTerceros vpdt : pdt){
+            List<VProyeccionesDotacionesTercerosDotaciones> pdtd = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + vpdt.getIdProyeccionDotacionTerceros(), VProyeccionesDotacionesTercerosDotaciones[].class));
+            List<VDotaciones> dotaciones = findAll();
+            d = dotaciones.stream().filter(ter->pdtd.stream().anyMatch(f->ter.getIdDotacion().equals(f.getIdDotacion()))).collect(Collectors.toList());
+            for(VDotaciones vDotaciones : d){
+                for(VDotaciones vDotaciones1 : d){
+                    if(vDotaciones.getIdDotacion().equals(vDotaciones1.getIdDotacion())){
+                        d.remove(vDotaciones1);
+                    }
+                }
+            }
+        }
         Integer count = 0;
         VProyeccionDotacion pd = restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + id, VProyeccionDotacion.class);
         List<VProyeccionDotacionEstructuraOrganizacional> pe = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + id, VProyeccionDotacionEstructuraOrganizacional[].class));
@@ -154,20 +167,6 @@ public class DotacionesRefactorController {
             if(pd.getIndicadorNoAreas()){
                 cant = pd.getCantidadProyeccion();
             }else{
-//                List<VTerceros> tempT;
-//                String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
-//                for(VProyeccionDotacionEstructuraOrganizacional vpe : pe){
-//                    List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpe.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
-//                    if(code.equals("CAM")){
-//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null)).collect(Collectors.toList());
-//                    }else if(code.equals("PAN")){
-//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null)).collect(Collectors.toList());
-//                    }else{
-//                        tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null)).collect(Collectors.toList());
-//                    }
-//                    Double valor = Math.ceil(pd.getCantidadMeses()/valueCiclo(vd));
-//                    cant += (tempT.size() * valor.intValue());
-//                }
                 List<TallaGeneroDotacion> ltgd = findAllTallasByGen(pd.getIdProyeccionDotacion(),vd.getIdDotacion());
                 for(TallaGeneroDotacion tgd : ltgd){
                     cant += tgd.getTotal();
