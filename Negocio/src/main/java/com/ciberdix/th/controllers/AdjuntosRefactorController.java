@@ -71,7 +71,7 @@ public class AdjuntosRefactorController {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/" + id, Adjuntos.class);
     }
-
+  
 //    @RequestMapping(method = RequestMethod.GET, path = "/preview/{id}")
 //    ResponseEntity<Resource> previsualizar(@PathVariable String id) throws IOException {
 //        RestTemplate restTemplate = new RestTemplate();
