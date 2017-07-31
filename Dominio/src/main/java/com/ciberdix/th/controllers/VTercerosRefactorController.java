@@ -59,4 +59,9 @@ public class VTercerosRefactorController {
         return vtercerosRepository.queryAllByIdEstructuraOrganizacional(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/estructuraOrganizacionalGrupoDotacion/{id}/{idGrupoDotacion}")
+    List<VTerceros> queryAllByIdEstructuraOrganizacionalAndGrupoDotacion(@PathVariable Integer id, @PathVariable Integer idGrupoDotacion) {
+        return vtercerosRepository.queryAllByIdEstructuraOrganizacionalAndGrupoDotacion(id, idGrupoDotacion);
+    }
+
 }
