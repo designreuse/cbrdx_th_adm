@@ -204,6 +204,7 @@ public class RequerimientosRefactorController {
         if (EstadoActual.getCodigo().equals("SOLICITADO") && (EstadoAnterior.getCodigo().equals("PRCREQ") || EstadoAnterior.getCodigo().equals("DVLT"))) {
             restTemplate.postForObject(baseUrl + "/api/requerimientosHistoricos", new RequerimientosHistoricos(requerimientos), RequerimientosHistoricos.class);
         }
+        o.setFechaSolicitud(requerimientos.getFechaSolicitud());
         restTemplate.put(serviceUrl, o);
     }
 }
