@@ -51,8 +51,7 @@ public class DivisionPoliticaRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarLocalizaciones/{queryString}/")
     List<VDivisionPoliticaRec> findHoods(@PathVariable String queryString) {
-        String queryStringO = OutSpecialChars.getStr(queryString);
-        List<VDivisionPoliticaRec> presort = vDivisionPoliticaRecRefactorRepository.queryLocations(queryStringO);
+        List<VDivisionPoliticaRec> presort = vDivisionPoliticaRecRefactorRepository.queryLocations(OutSpecialChars.getStr(queryString));
         presort.sort(Comparator.comparing(VDivisionPoliticaRec::getCamino));
         return presort;
     }
@@ -70,8 +69,7 @@ public class DivisionPoliticaRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCiudad/{queryString}/")
     List<VDivisionPoliticaRec> findCities(@PathVariable String queryString) {
-        String queryStringO = OutSpecialChars.getStr(queryString);
-        return vDivisionPoliticaRecRefactorRepository.queryAllCities(queryStringO);
+        return vDivisionPoliticaRecRefactorRepository.queryAllCities(OutSpecialChars.getStr(queryString));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
