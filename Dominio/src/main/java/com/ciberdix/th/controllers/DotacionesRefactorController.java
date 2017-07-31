@@ -41,6 +41,11 @@ public class DotacionesRefactorController {
         return vDotacionesRefactorRepository.findAllByIdGrupoDotacion(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/idProyeccionDotacion/{id}")
+    List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
+        return vDotacionesRefactorRepository.queryAllByIdProyeccionDotacion(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VDotaciones findOne(@PathVariable Integer id) {
         return vDotacionesRefactorRepository.findOne(id);

@@ -11,6 +11,10 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -48,9 +52,14 @@ public class TercerosNovedadesRefactorController {
         HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
         Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
         TercerosCargos currentJob = restTemplate.exchange(businessServiceURL + "tercerosCargos/tercero/" + idTercero, HttpMethod.GET, requestEntity, TercerosCargos.class, requestEntity).getBody();
-        Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
-        Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
-        List<VTercerosCargos> myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        List<VTercerosCargos> myEmployees;
+        if (currentJob != null) {
+            Integer idEstructuraOrganizacionalCargo = currentJob.getIdEstructuraOrganizacionalCargo();
+            Integer idEstructuraOrganizacional = restTemplate.exchange(businessServiceURL + "estructuraOrganizacionalCargos/" + idEstructuraOrganizacionalCargo, HttpMethod.GET, requestEntity, EstructuraOrganizacionalCargos.class, requestEntity).getBody().getIdEstructuraOrganizacional();
+            myEmployees = Arrays.asList(restTemplate.exchange(businessServiceURL + "tercerosCargos/buscarEstructura/" + idEstructuraOrganizacional, HttpMethod.GET, requestEntity, VTercerosCargos[].class, requestEntity).getBody());
+        } else {
+            myEmployees = new ArrayList<>();
+        }
 
         List<VTercerosNovedades> prefilter = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
         List<VTercerosNovedades> roleFilter = prefilter.stream().filter(t -> userRoles.stream().anyMatch(f -> t.getRol() != null && t.getRol().equals(f.toString()))).collect(Collectors.toList());
@@ -82,8 +91,82 @@ public class TercerosNovedadesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + id, VTercerosNovedades[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
+    List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin, HttpServletRequest request) {
+        assert FechaInicio != null;
+        assert FechaFin != null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        List<VTercerosNovedades> vTercerosNovedades = findAll(request);
+        if (!FechaInicio.isEmpty() && !FechaFin.isEmpty()) {
+            return vTercerosNovedades.stream().filter(t -> {
+                try {
+                    return t.getFechaReporte() != null && t.getFechaReporte().compareTo(dateFormat.parse(FechaInicio)) >= 0 && t.getFechaReporte().compareTo(dateFormat.parse(FechaFin)) <= 0;
+                } catch (ParseException e) {
+                    return false;
+                }
+            }).collect(Collectors.toList());
+        } else {
+            return vTercerosNovedades;
+        }
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     TercerosNovedades create(@RequestBody TercerosNovedades o) {
+        VTercerosCargos vTercerosCargos = restTemplate.getForObject(baseUrl + "/api/tercerosCargos/tercero/" + o.getIdTercero(), VTercerosCargos.class);
+
+        VCargos vCargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + vTercerosCargos.getIdCargo(), VCargos.class);
+        List<VTercerosCargos> jefes = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tecerosCargos/buscarCargo/" + vCargos.getIdCargoJefe(), VTercerosCargos[].class));
+        VNovedades novedad = restTemplate.getForObject(baseUrl + "/api/novedades/" + o.getIdNovedad(), VNovedades.class);
+        if (!jefes.isEmpty()) {
+            List<VTercerosCargos> tempAnalisis;
+            Integer IdEstructuraOrganizacional = vTercerosCargos.getIdEstructuraOrganizacional();
+            do {
+                VEstructuraOrganizacional vEstructuraOrganizacional = restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacional/" + IdEstructuraOrganizacional, VEstructuraOrganizacional.class);
+                tempAnalisis = jefes.stream().filter(t -> t.getIdEstructuraOrganizacional().equals(vEstructuraOrganizacional.getIdEstructuraOrganizacional())).collect(Collectors.toList());
+                IdEstructuraOrganizacional = vEstructuraOrganizacional.getIdPadre();
+                if (IdEstructuraOrganizacional == null || IdEstructuraOrganizacional.equals(0)) {
+                    break;
+                }
+            } while (!tempAnalisis.isEmpty());
+            if (!tempAnalisis.isEmpty()) {
+                List<VTercerosCargos> analisis = tempAnalisis;
+                List<Terceros> todosTerceros = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/terceros", Terceros[].class));
+                List<Terceros> tercerosJefes = todosTerceros.stream().filter(t -> analisis.stream().anyMatch(f -> t.getIdTercero().equals(f.getIdTercero()))).collect(Collectors.toList());
+                String correos = "";
+                for (Terceros t : tercerosJefes) {
+                    correos = correos + t.getCorreoElectronico() + ";";
+                }
+                Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros" + vTercerosCargos.getIdTercero(), Terceros.class);
+                String body = "<p>El colaborador " + terceros.getPrimerNombre() + " " + terceros.getPrimerApellido() + " ha reportado  la siguiente novedad:" +
+                        "<ol>" +
+                        "<li>Tipo de novedad:" + novedad.getTipoNovedad() + "</li>" +
+                        "<li>Novedad:" + novedad.getNovedad() + "</li>" +
+                        "<li>Fecha Inicio:" + o.getFechaInicio() + "</li>" +
+                        "<li>Fecha fin:" + o.getFechaFin() + "</li>" +
+                        "<li>Descripción:" + o.getDescripcion() + "</li>" +
+                        "</ol>" +
+                        "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
+                if (novedad.getIndicadorAutorizaJefe()) {
+                    UtilitiesController.sendMail(correos, "Aprobación Novedad", body + "<p>Dicha Novedad debe ser autorizada por usted mediante el sistema</p>");
+                }
+                if (novedad.getIndicadorNotificaJefe()) {
+                    UtilitiesController.sendMail(correos, "Gestion Novedad", body);
+                }
+            }
+        }
+        Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros" + vTercerosCargos.getIdTercero(), Terceros.class);
+        String body = "<p>El colaborador " + terceros.getPrimerNombre() + " " + terceros.getPrimerApellido() + " ha reportado  la siguiente novedad:" +
+                "<ol>" +
+                "<li>Tipo de novedad:" + novedad.getTipoNovedad() + "</li>" +
+                "<li>Novedad:" + novedad.getNovedad() + "</li>" +
+                "<li>Fecha Inicio:" + o.getFechaInicio() + "</li>" +
+                "<li>Fecha fin:" + o.getFechaFin() + "</li>" +
+                "<li>Descripción:" + o.getDescripcion() + "</li>" +
+                "</ol>" +
+                "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
+        if (novedad.getIndicadorAreasApoyo()) {
+            UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getConstante(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
+        }
         return restTemplate.postForObject(serviceUrl, o, TercerosNovedades.class);
     }
 

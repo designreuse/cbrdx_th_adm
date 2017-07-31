@@ -52,6 +52,7 @@ public class VTercerosNovedades {
     private Boolean indicadorHabilitado;
     private String codigoValidacion;
     private String estadoNovedad;
+    private String codigoNovedad;
     private Integer idEstadoNovedad;
     private Date fechaReporte;
     private String nombreTerceroReporta;
@@ -498,6 +499,16 @@ public class VTercerosNovedades {
     }
 
     @Basic
+    @Column(name = "CodigoNovedad", nullable = true, length = 10)
+    public String getCodigoNovedad() {
+        return codigoNovedad;
+    }
+
+    public void setCodigoNovedad(String codigoNovedad) {
+        this.codigoNovedad = codigoNovedad;
+    }
+
+    @Basic
     @Column(name = "IdEstadoNovedad", nullable = true)
     public Integer getIdEstadoNovedad() {
         return idEstadoNovedad;
@@ -608,6 +619,8 @@ public class VTercerosNovedades {
             return false;
         if (estadoNovedad != null ? !estadoNovedad.equals(that.estadoNovedad) : that.estadoNovedad != null)
             return false;
+        if (codigoNovedad != null ? !codigoNovedad.equals(that.codigoNovedad) : that.codigoNovedad != null)
+            return false;
         if (idEstadoNovedad != null ? !idEstadoNovedad.equals(that.idEstadoNovedad) : that.idEstadoNovedad != null)
             return false;
         if (fechaReporte != null ? !fechaReporte.equals(that.fechaReporte) : that.fechaReporte != null) return false;
@@ -665,6 +678,7 @@ public class VTercerosNovedades {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (codigoValidacion != null ? codigoValidacion.hashCode() : 0);
         result = 31 * result + (estadoNovedad != null ? estadoNovedad.hashCode() : 0);
+        result = 31 * result + (codigoNovedad != null ? codigoNovedad.hashCode() : 0);
         result = 31 * result + (idEstadoNovedad != null ? idEstadoNovedad.hashCode() : 0);
         result = 31 * result + (fechaReporte != null ? fechaReporte.hashCode() : 0);
         result = 31 * result + (nombreTerceroReporta != null ? nombreTerceroReporta.hashCode() : 0);

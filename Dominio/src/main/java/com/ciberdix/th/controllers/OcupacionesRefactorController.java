@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.Ocupaciones;
 import com.ciberdix.th.models.VOcupaciones;
 import com.ciberdix.th.repositories.OcupacionesRefactorRepository;
@@ -52,7 +53,7 @@ public class OcupacionesRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/search/{label}")
     List<VOcupaciones> getOcupaciones(@PathVariable String label) {
-        return vOcupacionesRefactorRepository.findByLabelContains(label);
+        return vOcupacionesRefactorRepository.queryByLabelContains(OutSpecialChars.getStr(label));
     }
 
     @RequestMapping(method = RequestMethod.POST)

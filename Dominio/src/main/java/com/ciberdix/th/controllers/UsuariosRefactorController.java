@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.Usuarios;
 import com.ciberdix.th.models.VHistoricoUsuarios;
 import com.ciberdix.th.models.VUsuarios;
@@ -55,7 +56,7 @@ public class UsuariosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/queryUsername/{idLista}/")
     Usuarios findUsername(@PathVariable String idLista) {
-        return usuariosRepository.findByUsuarioSistema(idLista);
+        return usuariosRepository.queryByUsuarioSistema(OutSpecialChars.getStr(idLista));
     }
 
     @RequestMapping(method = RequestMethod.POST)

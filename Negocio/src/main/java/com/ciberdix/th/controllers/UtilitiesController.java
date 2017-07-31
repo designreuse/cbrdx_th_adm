@@ -63,7 +63,8 @@ public class UtilitiesController {
             bw.write(calEnd);
             bw.close();
             byte[] out = Files.readAllBytes(file.toPath());
-            return Files.readAllBytes(file.toPath());
+            file.delete();
+            return out;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -184,7 +185,7 @@ public class UtilitiesController {
         return restTemplate.getForObject(domainUrl + "/api/constantes/codigo/" + code, Constantes.class);
     }
 
-    static ListasItems findListItem(String tableName, String code) {
+    public static ListasItems findListItem(String tableName, String code) {
         RestTemplate restTemplate = new RestTemplate();
         String serviceURL = readParameter("domain.url") + "/api/" + tableName + "/code/" + code.toUpperCase() + "/";
         return restTemplate.getForObject(serviceURL, ListasItems.class);
@@ -201,7 +202,7 @@ public class UtilitiesController {
         return restTemplate.getForObject(readParameter("domain.url") + "/api/usuarios/query/" + idUsuario, Usuarios.class);
     }
 
-    static String readParameter(String parameter) {
+    public static String readParameter(String parameter) {
         Properties prop = new XProperties();
         try {
             InputStream inputStream = UtilitiesController.class.getClassLoader().getResourceAsStream("application.properties");

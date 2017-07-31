@@ -274,5 +274,20 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VTercerosNovedades.class);
         config.exposeIdsFor(TercerosNovedadesAdjuntos.class);
         config.exposeIdsFor(ListasCiclosEntregas.class);
+        config.exposeIdsFor(LocalizacionesNomenclaturas.class);
+        config.exposeIdsFor(TercerosNovedadesActividades.class);
+        config.exposeIdsFor(VTercerosNovedadesActividades.class);
+        config.exposeIdsFor(ListasEstadosProyeccionesTerceros.class);
+        config.exposeIdsFor(ProyeccionDotacion.class);
+        config.exposeIdsFor(VProyeccionDotacion.class);
+        config.exposeIdsFor(ProyeccionDotacionEstructuraOrganizacional.class);
+        config.exposeIdsFor(VProyeccionDotacionEstructuraOrganizacional.class);
+        config.exposeIdsFor(ProyeccionesDotacionesTerceros.class);
+        config.exposeIdsFor(VProyeccionesDotacionesTerceros.class);
+        config.exposeIdsFor(ProyeccionesDotacionesTercerosDotaciones.class);
+        config.exposeIdsFor(VProyeccionesDotacionesTercerosDotaciones.class);
+        config.exposeIdsFor(TercerosDotacionesAdicionales.class);
+        config.exposeIdsFor(VTercerosDotacionesAdicionales.class);
+        config.exposeIdsFor(ListasMotivosInsatisfecho.class);
     }
 }
