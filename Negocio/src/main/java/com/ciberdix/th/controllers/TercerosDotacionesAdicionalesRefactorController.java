@@ -1,12 +1,12 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.TercerosDotacionesAdicionales;
-import com.ciberdix.th.model.VTercerosDotacionesAdicionales;
+import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,6 +57,22 @@ public class TercerosDotacionesAdicionalesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosDotacionesAdicionales create(@RequestBody TercerosDotacionesAdicionales o) {
+        List<Novedades> novedades = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades", Novedades[].class));
+        Novedades aplicar = null;
+        for (Novedades n : novedades) {
+            if (n.getNovedad().equals(UtilitiesController.findConstant("NOVDOT").getValor())) {
+                aplicar = n;
+                break;
+            }
+        }
+        if (aplicar != null) {
+            Dotaciones dotaciones = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + o.getIdDotacion(), Dotaciones.class);
+            TercerosNovedades tercerosNovedades = new TercerosNovedades();
+            tercerosNovedades.setIdTercero(o.getIdTercero());
+            tercerosNovedades.setIdNovedad(aplicar.getIdNovedad());
+            tercerosNovedades.setDescripcion("Novedad Automatica por Dotación Adicional");
+            tercerosNovedades.setValor(dotaciones.getCosto().multiply(BigDecimal.valueOf(o.getCantidadDotacion())));
+        }
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);
     }
 
