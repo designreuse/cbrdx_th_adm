@@ -112,7 +112,7 @@ public interface VTercerosCargosAreasFisicasRefactorRepository extends CrudRepos
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ " LIKE CONCAT('%',?2,'%')")
+            ") "+ " LIKE CONCAT('%',?2,'%') ORDER BY vt.nombreCompleto")
     List<VTercerosCargosAreasFisicas> queryAllByIdEstructuraFisica(Integer idArea, String query);
 
     @Query("SELECT vt FROM VTercerosCargosAreasFisicas vt WHERE vt.idArea = ?1 AND vt.idCargo = ?3 AND " +
@@ -214,7 +214,7 @@ public interface VTercerosCargosAreasFisicasRefactorRepository extends CrudRepos
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ " LIKE CONCAT('%',?2,'%')")
+            ") "+ " LIKE CONCAT('%',?2,'%') ORDER BY vt.nombreCompleto")
     List<VTercerosCargosAreasFisicas> queryAllByIdEstructuraFisicaAndIdCargo(Integer idArea, String query, Integer idCargo);
 
 }

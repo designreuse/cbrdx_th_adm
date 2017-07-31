@@ -107,7 +107,7 @@ public interface UsuariosRefactorRepository extends CrudRepository<Usuarios, Int
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") " + " LIKE CONCAT('%',?1,'%')")
+            ") " + " LIKE CONCAT('%',?1,'%') ORDER BY U.usuarioSistema")
     Usuarios queryByUsuarioSistema(String usuarioSistema);
 
 

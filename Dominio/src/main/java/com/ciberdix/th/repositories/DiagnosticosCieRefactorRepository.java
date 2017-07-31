@@ -111,6 +111,6 @@ public interface DiagnosticosCieRefactorRepository extends CrudRepository<Diagno
             ",'Ñ','n')" +
             ",'ÿ','y')" +
             ") " +
-            "like concat('%', ?1, '%') ")
+            "like concat('%', ?1, '%') ORDER BY d.descripcion")
     List<DiagnosticosCie> queryAllDiagnosticosCie(String query);
 }
