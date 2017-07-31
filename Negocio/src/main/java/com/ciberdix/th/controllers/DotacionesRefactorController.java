@@ -129,10 +129,11 @@ public class DotacionesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/ProyeccionDotacion/{id}")
     List<VDotaciones> findByIdProyeccionDotacion(@PathVariable Integer id) {
         List<VDotaciones> d = Arrays.asList(restTemplate.getForObject(serviceUrl + "idProyeccionDotacion/" + id, VDotaciones[].class));
-        Integer count = 0, cant = 0;
+        Integer count = 0;
         VProyeccionDotacion pd = restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + id, VProyeccionDotacion.class);
         List<VProyeccionDotacionEstructuraOrganizacional> pe = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + id, VProyeccionDotacionEstructuraOrganizacional[].class));
         for(VDotaciones vd : d){
+            Integer cant = 0;
             if(pd.getIndicadorNoAreas()){
                 cant = pd.getCantidadProyeccion();
             }else{

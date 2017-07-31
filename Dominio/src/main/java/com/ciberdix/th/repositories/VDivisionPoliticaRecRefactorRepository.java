@@ -314,7 +314,7 @@ public interface VDivisionPoliticaRecRefactorRepository extends CrudRepository<V
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ " like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3'))  ORDER BY u.camino")
+            ") "+ " like concat('%',?1,'%') and u.idDivisionPoliticaTipo in (select idDivisionPoliticaTipo from DivisionPoliticaTipos where substring(codigoDivisionPoliticaTipo,1,1) IN  ('3')) ORDER BY u.camino")
     List<VDivisionPoliticaRec> queryAllCities(String queryString);
 
 }

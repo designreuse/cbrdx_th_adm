@@ -2,21 +2,11 @@ version: "2"
 services:
     dominio:
         image: crezcamos/dominio
-        environment:
-            PUERTO_SERVICIO: 8446
-            DB_HOST: 192.168.101.50:1433;databaseName=CREZCAMOS
-            DB_USER: sa
-            DB_PASSWORD: Sistemas2016
         ports:
             - "8446:8446"
         restart: always
     negocio:
         image: crezcamos/logica
-        environment:
-            PUERTO_SERVICIO: 8449
-            HOST: 192.168.101.50
-            RECAPTCHA_URL: https://www.google.com/recaptcha/api/siteverify
-            FRONT_ADDRESS: 179.50.40.137
         ports:
             - "8449:8449"
         volumes:
