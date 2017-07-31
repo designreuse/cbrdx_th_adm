@@ -154,8 +154,18 @@ public class TercerosNovedadesRefactorController {
                 }
             }
         }
+        Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros" + vTercerosCargos.getIdTercero(), Terceros.class);
+        String body = "<p>El colaborador " + terceros.getPrimerNombre() + " " + terceros.getPrimerApellido() + " ha reportado  la siguiente novedad:" +
+                "<ol>" +
+                "<li>Tipo de novedad:" + novedad.getTipoNovedad() + "</li>" +
+                "<li>Novedad:" + novedad.getNovedad() + "</li>" +
+                "<li>Fecha Inicio:" + o.getFechaInicio() + "</li>" +
+                "<li>Fecha fin:" + o.getFechaFin() + "</li>" +
+                "<li>Descripción:" + o.getDescripcion() + "</li>" +
+                "</ol>" +
+                "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
         if (novedad.getIndicadorAreasApoyo()) {
-            UtilitiesController.sendMail("", "Gestion Novedad", "Una novedad requiere su proceso");
+            UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getConstante(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosNovedades.class);
     }
