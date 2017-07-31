@@ -110,7 +110,7 @@ public interface VOcupacionesRefactorRepository extends CrudRepository<VOcupacio
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") "+ " LIKE CONCAT('%',?1,'%')")
+            ") "+ " LIKE CONCAT('%',?1,'%') ORDER BY O.label")
     List<VOcupaciones> queryByLabelContains(String value);
 
 }

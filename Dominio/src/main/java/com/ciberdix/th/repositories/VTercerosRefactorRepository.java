@@ -425,7 +425,7 @@ public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, L
             ",'Ñ','n')" +
             ",'ÿ','y')" +
             ") "+
-    " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') )")
+    " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') ) ORDER BY v.primerNombre")
     List<VTerceros> queryVTercerosByName(String queryString);
 
     @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idLista FROM ListasTiposTerceros WHERE codigo = ?2) AND (" +
@@ -828,7 +828,7 @@ public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, L
             ",'Ñ','n')" +
             ",'ÿ','y')" +
             ") "+
-            " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') )")
+            " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') ) ORDER BY v.primerNombre")
     List<VTerceros> queryVTercerosByNameAndTipoTercero(String wildcard, String codeTipoTercero);
 
 }

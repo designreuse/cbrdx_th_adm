@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.configuration.OutSpecialChars;
 import com.ciberdix.th.models.Terceros;
 import com.ciberdix.th.models.VTercerosCargosAreasFisicas;
 import com.ciberdix.th.repositories.TercerosRefactorRepository;
@@ -47,12 +48,12 @@ public class TercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idArea}/{query}")
     List<VTercerosCargosAreasFisicas> findByIdEstructuraFisica(@PathVariable Integer idArea, @PathVariable String query) {
-        return vTercerosCargosAreasFisicasRefactorRepository.queryAllByIdEstructuraFisica(idArea, query);
+        return vTercerosCargosAreasFisicasRefactorRepository.queryAllByIdEstructuraFisica(idArea, OutSpecialChars.getStr(query));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarJefes/{idArea}/{query}/{idCargo}")
     List<VTercerosCargosAreasFisicas> queryAllByIdEstructuraFisicaAndIdCargo(@PathVariable Integer idArea, @PathVariable String query, @PathVariable Integer idCargo) {
-        return vTercerosCargosAreasFisicasRefactorRepository.queryAllByIdEstructuraFisicaAndIdCargo(idArea, query, idCargo);
+        return vTercerosCargosAreasFisicasRefactorRepository.queryAllByIdEstructuraFisicaAndIdCargo(idArea, OutSpecialChars.getStr(query), idCargo);
     }
 
     @RequestMapping(method = RequestMethod.POST)

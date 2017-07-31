@@ -112,7 +112,7 @@ public interface CargosRefactorRepository extends CrudRepository<Cargos, Integer
             ",'ñ','n')" +
             ",'Ñ','n')" +
             ",'ÿ','y')" +
-            ") " + " LIKE CONCAT('%',?1,'%')) AND c.idCargo IN (SELECT eoc.idCargo FROM EstructuraOrganizacionalCargos eoc WHERE eoc.idEstructuraOrganizacional = ?2 AND eoc.indicadorHabilitado = 1)")
+            ") " + " LIKE CONCAT('%',?1,'%')) AND c.idCargo IN (SELECT eoc.idCargo FROM EstructuraOrganizacionalCargos eoc WHERE eoc.idEstructuraOrganizacional = ?2 AND eoc.indicadorHabilitado = 1) ORDER BY c.cargo")
     List<Cargos> queryByIdEstructuraOrganizacional(String query, Integer idEstructuraOrganicacional);
 
     @Transactional

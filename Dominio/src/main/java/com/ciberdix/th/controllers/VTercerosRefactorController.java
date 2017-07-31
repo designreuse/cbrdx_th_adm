@@ -51,7 +51,7 @@ public class VTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/buscarTercerosTipo/{wildcard}/{codeTipoTercero}")
     List<VTerceros> listarTercerosTipo(@PathVariable String wildcard, String codeTipoTercero) {
-        return vtercerosRepository.queryVTercerosByNameAndTipoTercero(wildcard, codeTipoTercero);
+        return vtercerosRepository.queryVTercerosByNameAndTipoTercero(OutSpecialChars.getStr(wildcard), codeTipoTercero);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/estructuraOrganizacional/{id}/")
