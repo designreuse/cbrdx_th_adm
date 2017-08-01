@@ -9,6 +9,6 @@ public interface VPlanesAccionesNovedadesAccidentesRefactorRepository extends Cr
 
     List<VPlanesAccionesNovedadesAccidentes> findAllByIndicadorHabilitadoIsTrue();
 
-    List<VPlanesAccionesNovedadesAccidentes> findAllByIdNovedadAccidente(Integer id);
+    List<VPlanesAccionesNovedadesAccidentes> findAllByIdNovedad(Integer id);
 
 }

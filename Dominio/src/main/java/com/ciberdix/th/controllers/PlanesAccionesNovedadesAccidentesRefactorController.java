@@ -32,9 +32,9 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
         return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/novedadAccidente/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/novedad/{id}")
     List<VPlanesAccionesNovedadesAccidentes> findByIdGrupoDotacion(@PathVariable Integer id) {
-        return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIdNovedadAccidente(id);
+        return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIdNovedad(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
