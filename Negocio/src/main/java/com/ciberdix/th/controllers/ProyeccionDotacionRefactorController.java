@@ -131,18 +131,21 @@ public class ProyeccionDotacionRefactorController {
                         restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
                     }
                     List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
-
+                    Integer idLista = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
                     if (tda != null) {
                         if (tda.size() > 0) {
                             for (VTercerosDotacionesAdicionales vtda : tda) {
-                                vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
-                                VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
-                                if (dot.getIdTipoTalla() != null) {
-                                    vtda.setIdTalla(getTalla(dot.getIdTipoTalla(), vt));
-                                } else {
-                                    vtda.setIdTalla(null);
+                                VTercerosNovedades tn = restTemplate.getForObject(baseUrl + "/api/tercerosNovedades/" + vtda.getIdTerceroNovedad(), VTercerosNovedades.class);
+                                if(vtda.getIdTerceroNovedad()!=null && tn.getIdEstadoNovedad().equals(idLista)){
+                                    vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
+                                    VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
+                                    if (dot.getIdTipoTalla() != null) {
+                                        vtda.setIdTalla(getTalla(dot.getIdTipoTalla(), vt));
+                                    } else {
+                                        vtda.setIdTalla(null);
+                                    }
+                                    restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
                                 }
-                                restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
                             }
                         }
                     }
