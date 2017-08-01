@@ -1,5 +1,7 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.models.TercerosDotacionesAdicionales;
+import com.ciberdix.th.models.VTercerosDotacionesAdicionales;
 import com.ciberdix.th.repositories.TercerosDotacionesAdicionalesRefactorRepository;
 import com.ciberdix.th.repositories.VTercerosDotacionesAdicionalesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,8 @@ public class TercerosDotacionesAdicionalesRefactorController {
         return tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
                         o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),o.getIdTalla(),
-                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
+                        o.getIdTerceroNovedad()
                 )
         );
     }
@@ -60,7 +63,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         tercerosDotacionesAdicionalesRefactorRepository.save(
                 new TercerosDotacionesAdicionales(
                         o.getIdTerceroDotacionAdicional(),o.getIdTercero(),o.getIdDotacion(),o.getCantidadDotacion(),o.getIdTalla(),
-                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIdProyeccionDotacion(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIdTerceroNovedad()
                 )
         );
     }
