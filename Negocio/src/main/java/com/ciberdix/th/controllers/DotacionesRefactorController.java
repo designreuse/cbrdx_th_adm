@@ -151,13 +151,6 @@ public class DotacionesRefactorController {
             List<VProyeccionesDotacionesTercerosDotaciones> pdtd = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + vpdt.getIdProyeccionDotacionTerceros(), VProyeccionesDotacionesTercerosDotaciones[].class));
             List<VDotaciones> dotaciones = findAll();
             d = dotaciones.stream().filter(ter->pdtd.stream().anyMatch(f->ter.getIdDotacion().equals(f.getIdDotacion()))).collect(Collectors.toList());
-            for(VDotaciones vDotaciones : d){
-                for(VDotaciones vDotaciones1 : d){
-                    if(vDotaciones.getIdDotacion().equals(vDotaciones1.getIdDotacion())){
-                        d.remove(vDotaciones1);
-                    }
-                }
-            }
         }
         Integer count = 0;
         VProyeccionDotacion pd = restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + id, VProyeccionDotacion.class);
