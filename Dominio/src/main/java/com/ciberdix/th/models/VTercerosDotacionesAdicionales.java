@@ -21,6 +21,7 @@ public class VTercerosDotacionesAdicionales {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTerceroNovedad;
 
     @Id
     @Column(name = "IdTerceroDotacionAdicional", nullable = false)
@@ -162,6 +163,16 @@ public class VTercerosDotacionesAdicionales {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdTerceroNovedad", nullable = true)
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
+    }
+
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -191,6 +202,8 @@ public class VTercerosDotacionesAdicionales {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idTerceroNovedad != null ? !idTerceroNovedad.equals(that.idTerceroNovedad) : that.idTerceroNovedad != null)
+            return false;
 
         return true;
     }
@@ -211,6 +224,7 @@ public class VTercerosDotacionesAdicionales {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idTerceroNovedad != null ? idTerceroNovedad.hashCode() : 0);
         return result;
     }
 }

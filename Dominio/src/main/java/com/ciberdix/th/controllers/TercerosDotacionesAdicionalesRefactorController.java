@@ -1,7 +1,5 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.models.TercerosDotacionesAdicionales;
-import com.ciberdix.th.models.VTercerosDotacionesAdicionales;
 import com.ciberdix.th.repositories.TercerosDotacionesAdicionalesRefactorRepository;
 import com.ciberdix.th.repositories.VTercerosDotacionesAdicionalesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

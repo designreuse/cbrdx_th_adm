@@ -15,22 +15,24 @@ public class TercerosDotacionesAdicionales {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTerceroNovedad;
 
     public TercerosDotacionesAdicionales() {
     }
 
-    public TercerosDotacionesAdicionales(Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idTalla, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosDotacionesAdicionales(Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idTalla, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idTerceroNovedad) {
         this.idTercero = idTercero;
         this.idDotacion = idDotacion;
         this.cantidadDotacion = cantidadDotacion;
         this.idTalla = idTalla;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 
-    public TercerosDotacionesAdicionales(Integer idTerceroDotacionAdicional, Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idTalla, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosDotacionesAdicionales(Integer idTerceroDotacionAdicional, Long idTercero, Integer idDotacion, Integer cantidadDotacion, Integer idTalla, Integer idProyeccionDotacion, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idTerceroNovedad) {
         this.idTerceroDotacionAdicional = idTerceroDotacionAdicional;
         this.idTercero = idTercero;
         this.idDotacion = idDotacion;
@@ -38,8 +40,9 @@ public class TercerosDotacionesAdicionales {
         this.idTalla = idTalla;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 
     @Id
@@ -133,6 +136,16 @@ public class TercerosDotacionesAdicionales {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdTerceroNovedad", nullable = true)
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
+    }
+
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -155,6 +168,8 @@ public class TercerosDotacionesAdicionales {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idTerceroNovedad != null ? !idTerceroNovedad.equals(that.idTerceroNovedad) : that.idTerceroNovedad != null)
+            return false;
 
         return true;
     }
@@ -170,6 +185,7 @@ public class TercerosDotacionesAdicionales {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idTerceroNovedad != null ? idTerceroNovedad.hashCode() : 0);
         return result;
     }
 }

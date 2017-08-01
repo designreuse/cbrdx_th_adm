@@ -19,6 +19,7 @@ public class VTercerosDotacionesAdicionales {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idTerceroNovedad;
 
     public Integer getIdTerceroDotacionAdicional() {
         return idTerceroDotacionAdicional;
@@ -130,5 +131,13 @@ public class VTercerosDotacionesAdicionales {
 
     public void setIdTalla(Integer idTalla) {
         this.idTalla = idTalla;
+    }
+
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
+    }
+
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 }

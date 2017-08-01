@@ -13,7 +13,7 @@ public class TercerosDotacionesAdicionales {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
-
+    private Integer idTerceroNovedad;
 
     public Integer getIdTerceroDotacionAdicional() {
         return idTerceroDotacionAdicional;
@@ -45,6 +45,14 @@ public class TercerosDotacionesAdicionales {
 
     public void setCantidadDotacion(Integer cantidadDotacion) {
         this.cantidadDotacion = cantidadDotacion;
+    }
+
+    public Integer getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Integer idTalla) {
+        this.idTalla = idTalla;
     }
 
     public Integer getIdProyeccionDotacion() {
@@ -79,11 +87,11 @@ public class TercerosDotacionesAdicionales {
         this.auditoriaFecha = auditoriaFecha;
     }
 
-    public Integer getIdTalla() {
-        return idTalla;
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
     }
 
-    public void setIdTalla(Integer idTalla) {
-        this.idTalla = idTalla;
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 }

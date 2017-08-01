@@ -1,7 +1,5 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.models.PlanesAccionesNovedadesAccidentes;
-import com.ciberdix.th.models.VPlanesAccionesNovedadesAccidentes;
 import com.ciberdix.th.repositories.PlanesAccionesNovedadesAccidentesRefactorRepository;
 import com.ciberdix.th.repositories.VPlanesAccionesNovedadesAccidentesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
