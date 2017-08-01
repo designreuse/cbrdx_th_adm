@@ -136,7 +136,7 @@ public class TercerosNovedadesRefactorController {
                     for (Terceros t : tercerosJefes) {
                         correos = correos + t.getCorreoElectronico() + ";";
                     }
-                    Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros" + vTercerosCargos.getIdTercero(), Terceros.class);
+                    Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros/" + vTercerosCargos.getIdTercero(), Terceros.class);
                     String body = "<p>El colaborador " + terceros.getPrimerNombre() + " " + terceros.getPrimerApellido() + " ha reportado  la siguiente novedad:" +
                             "<ol>" +
                             "<li>Tipo de novedad:" + novedad.getTipoNovedad() + "</li>" +
