@@ -165,7 +165,7 @@ public class TercerosNovedadesRefactorController {
                 "</ol>" +
                 "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
         if (novedad.getIndicadorAreasApoyo()) {
-            UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getConstante(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
+            UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getValor(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosNovedades.class);
     }
