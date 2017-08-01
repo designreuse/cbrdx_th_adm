@@ -49,10 +49,10 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/proyeccionDotacion/{idProyeccionDotacion}")
     List<VProyeccionesDotacionesTerceros> findEnabled(@PathVariable Integer idProyeccionDotacion) {
         List<VProyeccionesDotacionesTerceros> pdt = Arrays.asList(restTemplate.getForObject(serviceUrl + "proyeccionDotacion/" + idProyeccionDotacion, VProyeccionesDotacionesTerceros[].class));
-        for(VProyeccionesDotacionesTerceros vpdt : pdt){
+        for (VProyeccionesDotacionesTerceros vpdt : pdt) {
             vpdt.setIndicadorAdicional(false);
             List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vpdt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
-            if(tda.size()>0){
+            if (tda.size() > 0) {
                 vpdt.setIndicadorAdicional(true);
             }
         }
@@ -78,8 +78,8 @@ public class ProyeccionesDotacionesTercerosRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     ProyeccionesDotacionesTerceros create(@RequestBody ProyeccionesDotacionesTerceros o) {
-        ProyeccionesDotacionesTerceros  pdt = restTemplate.postForObject(serviceUrl, o, ProyeccionesDotacionesTerceros.class);
-        VTerceros t =  restTemplate.postForObject(baseUrl + "/api/vterceros/" + pdt.getIdTercero(), o, VTerceros.class);
+        ProyeccionesDotacionesTerceros pdt = restTemplate.postForObject(serviceUrl, o, ProyeccionesDotacionesTerceros.class);
+        VTerceros t = restTemplate.postForObject(baseUrl + "/api/vterceros/" + pdt.getIdTercero(), o, VTerceros.class);
         List<VDotaciones> d = Arrays.asList(restTemplate.postForObject(baseUrl + "/api/dotaciones/idProyeccionDotacion/" + pdt.getIdProyeccionDotacion(), o, VDotaciones[].class));
         List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.postForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + pdt.getIdTercero(), o, VTercerosDotacionesAdicionales[].class));
         ProyeccionesDotacionesTercerosDotaciones pdtd = new ProyeccionesDotacionesTercerosDotaciones();
@@ -87,20 +87,20 @@ public class ProyeccionesDotacionesTercerosRefactorController {
         pdtd.setIndicadorHabilitado(true);
         pdtd.setAuditoriaUsuario(pdt.getAuditoriaUsuario());
         pdtd.setAuditoriaFecha(pdt.getAuditoriaFecha());
-        for(VDotaciones vd : d){
-            List<VTercerosDotacionesAdicionales> tempTDA = tda.stream().filter(TDA->tda.stream().anyMatch(f->TDA.getIdDotacion()!=null && TDA.getIdDotacion().equals(vd.getIdDotacion()))).collect(Collectors.toList());
-            for(VTercerosDotacionesAdicionales vtda : tempTDA){
+        for (VDotaciones vd : d) {
+            List<VTercerosDotacionesAdicionales> tempTDA = tda.stream().filter(TDA -> tda.stream().anyMatch(f -> TDA.getIdDotacion() != null && TDA.getIdDotacion().equals(vd.getIdDotacion()))).collect(Collectors.toList());
+            for (VTercerosDotacionesAdicionales vtda : tempTDA) {
                 vtda.setIdProyeccionDotacion(pdt.getIdProyeccionDotacion());
-                if(vd.getIdTipoTalla()!=null){
-                    if(getTalla(vd, t)!=null){
+                if (vd.getIdTipoTalla() != null) {
+                    if (getTalla(vd, t) != null) {
                         vtda.setIdTalla(getTalla(vd, t));
                     }
                 }
                 restTemplate.put(baseUrl + "/api/tercerosDotacionesAdicionales", vtda, VTercerosDotacionesAdicionales.class);
             }
             pdtd.setIdDotacion(vd.getIdDotacion());
-            if(vd.getIdTipoTalla()!=null){
-                if(getTalla(vd, t)!=null){
+            if (vd.getIdTipoTalla() != null) {
+                if (getTalla(vd, t) != null) {
                     pdtd.setIdTalla(getTalla(vd, t));
                 }
             }
@@ -109,20 +109,20 @@ public class ProyeccionesDotacionesTercerosRefactorController {
         return pdt;
     }
 
-    Integer getTalla(VDotaciones vd, VTerceros t){
+    Integer getTalla(VDotaciones vd, VTerceros t) {
         String code = UtilitiesController.findListItemById("ListasTiposTallas", vd.getIdTipoTalla()).getCodigo();
         Integer idTalla = null;
-        if(vd.getIdTipoTalla()!=null){
-            if(code.equals("CAM")){
-                if(t.getIdTallaCamisa()!=null){
+        if (vd.getIdTipoTalla() != null) {
+            if (code.equals("CAM")) {
+                if (t.getIdTallaCamisa() != null) {
                     idTalla = t.getIdTallaCamisa();
                 }
-            }else if(code.equals("PAN")){
-                if(t.getIdTallaPantalon()!=null){
+            } else if (code.equals("PAN")) {
+                if (t.getIdTallaPantalon() != null) {
                     idTalla = t.getIdTallaPantalon();
                 }
-            }else{
-                if(t.getIdTallaCalzado()!=null){
+            } else {
+                if (t.getIdTallaCalzado() != null) {
                     idTalla = t.getIdTallaCalzado();
                 }
             }
@@ -134,10 +134,10 @@ public class ProyeccionesDotacionesTercerosRefactorController {
     void update(@RequestBody ProyeccionesDotacionesTerceros o) {
         ProyeccionesDotacionesTerceros estadoActual = restTemplate.getForObject(serviceUrl + o.getIdProyeccionDotacionTerceros(), ProyeccionesDotacionesTerceros.class);
         Integer IdEntregado = UtilitiesController.findListItem("ListasEstadosProyeccionesTerceros", "ENTRE").getIdLista();
-        if (estadoActual.getIdEstado()!=null && o.getIdEstado()!=null && !estadoActual.getIdEstado().equals(IdEntregado) && o.getIdEstado().equals(IdEntregado)) {
+        if (estadoActual.getIdEstado() != null && o.getIdEstado() != null && !estadoActual.getIdEstado().equals(IdEntregado) && o.getIdEstado().equals(IdEntregado)) {
             Terceros terceros = restTemplate.getForObject(baseUrl + "/api/terceros/" + o.getIdTercero(), Terceros.class);
             String token = UtilitiesController.generateTokenButton("/employees/supplies-confirmation/" + o.getIdProyeccionDotacionTerceros(), null);
-            List<VProyeccionesDotacionesTercerosDotaciones> dotacionesTercero = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + o.getIdProyeccionDotacion(), VProyeccionesDotacionesTercerosDotaciones[].class));
+            List<VProyeccionesDotacionesTercerosDotaciones> dotacionesTercero = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones/proyeccionDotacionTercero/" + o.getIdProyeccionDotacionTerceros(), VProyeccionesDotacionesTercerosDotaciones[].class));
             String ListadoDotaciones = "<ol>";
             for (VProyeccionesDotacionesTercerosDotaciones p : dotacionesTercero) {
                 ListadoDotaciones = ListadoDotaciones + "<li>" + p.getDotacion() + "</li>";
