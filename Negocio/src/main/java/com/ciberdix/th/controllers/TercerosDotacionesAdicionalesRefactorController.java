@@ -60,7 +60,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         List<Novedades> novedades = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades", Novedades[].class));
         Novedades aplicar = null;
         for (Novedades n : novedades) {
-            if (n.getNovedad().equals(UtilitiesController.findConstant("NOVDOT").getValor())) {
+            if (n.getCodigoNovedad().equals(UtilitiesController.findConstant("NOVDOT").getValor())) {
                 aplicar = n;
                 break;
             }
