@@ -60,7 +60,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         List<Novedades> novedades = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades", Novedades[].class));
         Novedades aplicar = null;
         for (Novedades n : novedades) {
-            if (n.getNovedad().equals(UtilitiesController.findConstant("NOVDOT").getValor())) {
+            if (n.getCodigoNovedad().equals(UtilitiesController.findConstant("NOVDOT").getValor())) {
                 aplicar = n;
                 break;
             }
@@ -72,6 +72,9 @@ public class TercerosDotacionesAdicionalesRefactorController {
             tercerosNovedades.setIdNovedad(aplicar.getIdNovedad());
             tercerosNovedades.setDescripcion("Novedad Automatica por Dotación Adicional");
             tercerosNovedades.setValor(dotaciones.getCosto().multiply(BigDecimal.valueOf(o.getCantidadDotacion())));
+            tercerosNovedades.setIdEstadoNovedad(UtilitiesController.findListItem("ListasEstadosNovedades", "SOLICI").getIdLista());
+            tercerosNovedades.setAuditoriaUsuario(o.getAuditoriaUsuario());
+            tercerosNovedades.setAuditoriaFecha(o.getAuditoriaFecha());
             restTemplate.postForObject(baseUrl + "/api/tercerosNovedades", tercerosNovedades, TercerosNovedades.class);
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);
