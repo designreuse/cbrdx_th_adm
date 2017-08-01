@@ -61,7 +61,7 @@ public class ProyeccionDotacionRefactorController {
         List<VProyeccionDotacion> p = Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + idTercero, VProyeccionDotacion[].class));
         for (VProyeccionDotacion vp : p) {
             VProyeccionesDotacionesTerceros pdt = restTemplate.getForObject(baseUrl + "/api/proyeccionesDotacionesTerceros/proyeccionDotacionTercero/" + vp.getIdProyeccionDotacion() + "/" + idTercero, VProyeccionesDotacionesTerceros.class);
-            vp.setIdEstado(pdt.getIdEstado());
+            vp.setEstado(pdt.getEstado());
         }
         return p;
     }
