@@ -115,7 +115,7 @@ public class TercerosNovedadesRefactorController {
         VTercerosCargos vTercerosCargos = restTemplate.getForObject(baseUrl + "/api/tercerosCargos/tercero/" + o.getIdTercero(), VTercerosCargos.class);
 
         VCargos vCargos = restTemplate.getForObject(baseUrl + "/api/cargos/" + vTercerosCargos.getIdCargo(), VCargos.class);
-        List<VTercerosCargos> jefes = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tecerosCargos/buscarCargo/" + vCargos.getIdCargoJefe(), VTercerosCargos[].class));
+        List<VTercerosCargos> jefes = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosCargos/buscarCargo/" + vCargos.getIdCargoJefe(), VTercerosCargos[].class));
         VNovedades novedad = restTemplate.getForObject(baseUrl + "/api/novedades/" + o.getIdNovedad(), VNovedades.class);
         if (!jefes.isEmpty()) {
             List<VTercerosCargos> tempAnalisis;

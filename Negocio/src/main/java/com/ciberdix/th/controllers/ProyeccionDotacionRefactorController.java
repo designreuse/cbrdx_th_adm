@@ -105,7 +105,11 @@ public class ProyeccionDotacionRefactorController {
                     for(VDotaciones vd :d){
                         pdtd.setIdDotacion(vd.getIdDotacion());
                         pdtd.setCantidadAsignada(vd.getCantidad());
-                        pdtd.setIdTalla(getTalla(vd.getIdTipoTalla(),vt));
+                        if(vd.getIdTipoTalla()!=null){
+                            pdtd.setIdTalla(getTalla(vd.getIdTipoTalla(),vt));
+                        }else{
+                            pdtd.setIdTalla(null);
+                        }
                         restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
                     }
                     List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
@@ -114,7 +118,11 @@ public class ProyeccionDotacionRefactorController {
                             for(VTercerosDotacionesAdicionales vtda : tda){
                                 vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
                                 VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
-                                vtda.setIdTalla(getTalla(dot.getIdTipoTalla(),vt));
+                                if(dot.getIdTipoTalla()!=null){
+                                    vtda.setIdTalla(getTalla(dot.getIdTipoTalla(),vt));
+                                }else{
+                                    vtda.setIdTalla(null);
+                                }
                                 restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
                             }
                         }
