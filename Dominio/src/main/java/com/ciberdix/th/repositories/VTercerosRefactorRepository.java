@@ -428,7 +428,7 @@ public interface VTercerosRefactorRepository extends CrudRepository<VTerceros, L
     " like concat('%',?1,'%') OR v.numeroDocumento like concat('%',?1,'%') ) ORDER BY v.primerNombre")
     List<VTerceros> queryVTercerosByName(String queryString);
 
-    @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idLista FROM ListasTiposTerceros WHERE codigo = ?2) AND (" +
+    @Query("SELECT v FROM VTerceros v WHERE idTipoTercero in (SELECT idLista FROM ListasTiposTerceros WHERE codigo = ?2) AND " +
             "lower(" +
             "REPLACE(" +
             "REPLACE(" +
