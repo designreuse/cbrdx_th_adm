@@ -70,7 +70,7 @@ public class ProyeccionDotacionRefactorController {
     List<Terceros> validateSizes(@RequestBody ProyeccionDotacion o) {
         List<Integer> ids = o.getIdEstructuraOrganizacional();
         List<Terceros> tercerosList = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/terceros", Terceros[].class));
-        if (ids != null) {
+        if (ids != null && o.getIndicadorNoAreas() != null && !o.getIndicadorNoAreas()) {
             List<VCargosDotaciones> d = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/cargosDotaciones/grupoDotacion/" + o.getIdGrupoDotacion(), VCargosDotaciones[].class));
             List<VEstructuraOrganizacionalCargos> vEstructuraOrganizacionalCargos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacionalCargos", VEstructuraOrganizacionalCargos[].class));
             vEstructuraOrganizacionalCargos = vEstructuraOrganizacionalCargos.stream().filter(t -> ids.stream().anyMatch(f -> f.equals(t.getIdEstructuraOrganizacional()))).collect(Collectors.toList());
