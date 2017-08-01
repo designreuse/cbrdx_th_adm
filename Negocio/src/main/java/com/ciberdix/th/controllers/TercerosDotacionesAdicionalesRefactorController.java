@@ -72,6 +72,9 @@ public class TercerosDotacionesAdicionalesRefactorController {
             tercerosNovedades.setIdNovedad(aplicar.getIdNovedad());
             tercerosNovedades.setDescripcion("Novedad Automatica por Dotación Adicional");
             tercerosNovedades.setValor(dotaciones.getCosto().multiply(BigDecimal.valueOf(o.getCantidadDotacion())));
+            tercerosNovedades.setIdEstadoNovedad(UtilitiesController.findListItem("ListasEstadosNovedades", "SOLICI").getIdLista());
+            tercerosNovedades.setAuditoriaUsuario(o.getAuditoriaUsuario());
+            tercerosNovedades.setAuditoriaFecha(o.getAuditoriaFecha());
             restTemplate.postForObject(baseUrl + "/api/tercerosNovedades", tercerosNovedades, TercerosNovedades.class);
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);
