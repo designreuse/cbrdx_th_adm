@@ -19,7 +19,7 @@ public class VProyeccionDotacion {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Date fechaSolicitud;
-    private Integer idEstado;
+    private String estado;
 
     public Integer getIdProyeccionDotacion() {
         return idProyeccionDotacion;
@@ -133,11 +133,11 @@ public class VProyeccionDotacion {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public Integer getIdEstado() {
-        return idEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
