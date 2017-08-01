@@ -81,7 +81,7 @@ public class TercerosRefactorController {
         } else {
             myEmployees = new ArrayList<>();
         }
-        return Arrays.stream(terceros).filter(t -> myEmployees.stream().anyMatch(f -> t.getIdTercero().equals(f.getIdTercero()))).collect(Collectors.toList());
+        return Arrays.stream(terceros).filter(t -> !t.getIdTercero().equals(idTercero) && myEmployees.stream().anyMatch(f -> t.getIdTercero().equals(f.getIdTercero()))).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
