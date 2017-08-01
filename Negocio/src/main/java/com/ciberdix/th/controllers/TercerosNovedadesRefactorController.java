@@ -127,7 +127,7 @@ public class TercerosNovedadesRefactorController {
                     if (IdEstructuraOrganizacional == null || IdEstructuraOrganizacional.equals(0)) {
                         break;
                     }
-                } while (!tempAnalisis.isEmpty());
+                } while (tempAnalisis.isEmpty());
                 if (!tempAnalisis.isEmpty()) {
                     List<VTercerosCargos> analisis = tempAnalisis;
                     List<Terceros> todosTerceros = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/terceros", Terceros[].class));
