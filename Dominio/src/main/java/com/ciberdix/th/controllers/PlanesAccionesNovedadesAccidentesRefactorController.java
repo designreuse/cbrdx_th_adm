@@ -1,5 +1,7 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.models.PlanesAccionesNovedadesAccidentes;
+import com.ciberdix.th.models.VPlanesAccionesNovedadesAccidentes;
 import com.ciberdix.th.repositories.PlanesAccionesNovedadesAccidentesRefactorRepository;
 import com.ciberdix.th.repositories.VPlanesAccionesNovedadesAccidentesRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
     PlanesAccionesNovedadesAccidentes create(@RequestBody PlanesAccionesNovedadesAccidentes o) {
         return planesAccionesNovedadesAccidentesRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentes(
-                        o.getIdNovedadAccidente(),o.getIdEstadoPlanAccion(),
+                        o.getIdNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
@@ -55,7 +57,7 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
     void update(@RequestBody PlanesAccionesNovedadesAccidentes o) {
         planesAccionesNovedadesAccidentesRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentes(
-                        o.getIdPlanAccionNovedadAccidente(),o.getIdNovedadAccidente(),o.getIdEstadoPlanAccion(),
+                        o.getIdPlanAccionNovedadAccidente(),o.getIdNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
