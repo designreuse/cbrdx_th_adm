@@ -2,8 +2,8 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "TercerosNovedades", schema = "dbo", catalog = "CREZCAMOS")
@@ -119,7 +119,7 @@ public class TercerosNovedades {
     }
 
     @Basic
-    @Column(name = "Descripcion", nullable = true, length = 100)
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -456,10 +456,7 @@ public class TercerosNovedades {
         if (idEstadoNovedad != null ? !idEstadoNovedad.equals(that.idEstadoNovedad) : that.idEstadoNovedad != null)
             return false;
         if (fechaReporte != null ? !fechaReporte.equals(that.fechaReporte) : that.fechaReporte != null) return false;
-        if (idTerceroReporta != null ? !idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta != null)
-            return false;
-
-        return true;
+        return idTerceroReporta != null ? idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta == null;
     }
 
     @Override
