@@ -135,16 +135,18 @@ public class ProyeccionDotacionRefactorController {
                     if (tda != null) {
                         if (tda.size() > 0) {
                             for (VTercerosDotacionesAdicionales vtda : tda) {
-                                VTercerosNovedades tn = restTemplate.getForObject(baseUrl + "/api/tercerosNovedades/" + vtda.getIdTerceroNovedad(), VTercerosNovedades.class);
-                                if(vtda.getIdTerceroNovedad()!=null && tn.getIdEstadoNovedad().equals(idLista)){
-                                    vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
-                                    VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
-                                    if (dot.getIdTipoTalla() != null) {
-                                        vtda.setIdTalla(getTalla(dot.getIdTipoTalla(), vt));
-                                    } else {
-                                        vtda.setIdTalla(null);
+                                if(vtda.getIdTerceroNovedad()!=null){
+                                    VTercerosNovedades tn = restTemplate.getForObject(baseUrl + "/api/tercerosNovedades/" + vtda.getIdTerceroNovedad(), VTercerosNovedades.class);
+                                    if(tn.getIdEstadoNovedad().equals(idLista)){
+                                        vtda.setIdProyeccionDotacion(PD.getIdProyeccionDotacion());
+                                        VDotaciones dot = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + vtda.getIdDotacion(), VDotaciones.class);
+                                        if (dot.getIdTipoTalla() != null) {
+                                            vtda.setIdTalla(getTalla(dot.getIdTipoTalla(), vt));
+                                        } else {
+                                            vtda.setIdTalla(null);
+                                        }
+                                        restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
                                     }
-                                    restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", vtda, TercerosDotacionesAdicionales.class);
                                 }
                             }
                         }

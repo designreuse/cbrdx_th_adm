@@ -164,7 +164,7 @@ public class TercerosNovedadesRefactorController {
                     "<li>Descripción:" + o.getDescripcion() + "</li>" +
                     "</ol>" +
                     "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
-            if (novedad.getIndicadorAreasApoyo()) {
+            if (novedad.getIndicadorAreasApoyo()!=null && novedad.getIndicadorAreasApoyo()) {
                 UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getValor(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
             }
         }
