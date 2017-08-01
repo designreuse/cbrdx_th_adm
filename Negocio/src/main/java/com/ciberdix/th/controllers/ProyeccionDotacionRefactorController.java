@@ -131,6 +131,7 @@ public class ProyeccionDotacionRefactorController {
                         restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
                     }
                     List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
+
                     if (tda != null) {
                         if (tda.size() > 0) {
                             for (VTercerosDotacionesAdicionales vtda : tda) {

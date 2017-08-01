@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -68,6 +69,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
         if (aplicar != null) {
             Dotaciones dotaciones = restTemplate.getForObject(baseUrl + "/api/dotaciones/" + o.getIdDotacion(), Dotaciones.class);
             TercerosNovedades tercerosNovedades = new TercerosNovedades();
+            tercerosNovedades.setFechaReporte(new Date(System.currentTimeMillis()));
             tercerosNovedades.setIdTercero(o.getIdTercero());
             tercerosNovedades.setIdNovedad(aplicar.getIdNovedad());
             tercerosNovedades.setDescripcion("Novedad Automatica por Dotación Adicional");
@@ -75,7 +77,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
             tercerosNovedades.setIdEstadoNovedad(UtilitiesController.findListItem("ListasEstadosNovedades", "SOLICI").getIdLista());
             tercerosNovedades.setAuditoriaUsuario(o.getAuditoriaUsuario());
             tercerosNovedades.setAuditoriaFecha(o.getAuditoriaFecha());
-            restTemplate.postForObject(baseUrl + "/api/tercerosNovedades", tercerosNovedades, TercerosNovedades.class);
+            TercerosNovedades resultado = restTemplate.postForObject(baseUrl + "/api/tercerosNovedades", tercerosNovedades, TercerosNovedades.class);
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);
     }
