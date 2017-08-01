@@ -146,10 +146,10 @@ public class TercerosNovedadesRefactorController {
                             "<li>Descripción:" + o.getDescripcion() + "</li>" +
                             "</ol>" +
                             "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
-                    if (novedad.getIndicadorAutorizaJefe() && novedad.getIndicadorAutorizaJefe()!=null) {
+                    if (novedad.getIndicadorAutorizaJefe() != null && novedad.getIndicadorAutorizaJefe()) {
                         UtilitiesController.sendMail(correos, "Aprobación Novedad", body + "<p>Dicha Novedad debe ser autorizada por usted mediante el sistema</p>");
                     }
-                    if (novedad.getIndicadorNotificaJefe() && novedad.getIndicadorNotificaJefe()!=null) {
+                    if (novedad.getIndicadorNotificaJefe() != null && novedad.getIndicadorNotificaJefe()) {
                         UtilitiesController.sendMail(correos, "Gestion Novedad", body);
                     }
                 }
