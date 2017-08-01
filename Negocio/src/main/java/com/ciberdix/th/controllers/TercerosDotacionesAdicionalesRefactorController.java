@@ -78,6 +78,7 @@ public class TercerosDotacionesAdicionalesRefactorController {
             tercerosNovedades.setAuditoriaUsuario(o.getAuditoriaUsuario());
             tercerosNovedades.setAuditoriaFecha(o.getAuditoriaFecha());
             TercerosNovedades resultado = restTemplate.postForObject(baseUrl + "/api/tercerosNovedades", tercerosNovedades, TercerosNovedades.class);
+            o.setIdTerceroNovedad(resultado.getIdTerceroNovedad());
         }
         return restTemplate.postForObject(serviceUrl, o, TercerosDotacionesAdicionales.class);
     }
