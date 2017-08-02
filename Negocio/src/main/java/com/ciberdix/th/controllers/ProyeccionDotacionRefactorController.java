@@ -131,6 +131,7 @@ public class ProyeccionDotacionRefactorController {
                         restTemplate.postForObject(baseUrl + "/api/proyeccionesDotacionesTercerosDotaciones", pdtd, ProyeccionesDotacionesTercerosDotaciones.class);
                     }
                     List<VTercerosDotacionesAdicionales> tda = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosDotacionesAdicionales/tercero/" + vt.getIdTercero(), VTercerosDotacionesAdicionales[].class));
+                    tda = tda.stream().filter(f -> f.getIdProyeccionDotacion() == null).collect(Collectors.toList());
                     Integer idLista = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
                     if (tda != null) {
                         if (tda.size() > 0) {
