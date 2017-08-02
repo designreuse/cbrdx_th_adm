@@ -51,7 +51,8 @@ public class InstitucionesMedicasTiposExamenesRefactorController {
     InstitucionesMedicasTiposExamenes create(@RequestBody InstitucionesMedicasTiposExamenes o) {
         return institucionesMedicasTiposExamenesRefactorRepository.save(
                 new InstitucionesMedicasTiposExamenes(
-
+                        o.getIdInstitucionMedicaTipoExamen(),o.getIdTipoExamen(),
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }
@@ -60,7 +61,8 @@ public class InstitucionesMedicasTiposExamenesRefactorController {
     void update(@RequestBody InstitucionesMedicasTiposExamenes o) {
         institucionesMedicasTiposExamenesRefactorRepository.save(
                 new InstitucionesMedicasTiposExamenes(
-
+                        o.getIdInstitucionMedicaTipoExamen(),o.getIdInstitucionMedicaTipoExamen(),o.getIdTipoExamen(),
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }

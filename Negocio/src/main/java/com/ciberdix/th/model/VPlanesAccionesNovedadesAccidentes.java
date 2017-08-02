@@ -6,7 +6,7 @@ import java.util.Date;
 public class VPlanesAccionesNovedadesAccidentes {
 
     private Integer idPlanAccionNovedadAccidente;
-    private Integer idNovedad;
+    private Integer idTerceroNovedad;
     private String estadoPlanAccion;
     private Integer idEstadoPlanAccion;
     private String actividad;
@@ -28,12 +28,12 @@ public class VPlanesAccionesNovedadesAccidentes {
         this.idPlanAccionNovedadAccidente = idPlanAccionNovedadAccidente;
     }
 
-    public Integer getIdNovedad() {
-        return idNovedad;
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
     }
 
-    public void setIdNovedad(Integer idNovedad) {
-        this.idNovedad = idNovedad;
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 
     public String getEstadoPlanAccion() {

@@ -32,9 +32,9 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
         return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIndicadorHabilitadoIsTrue();
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/novedad/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedad/{id}")
     List<VPlanesAccionesNovedadesAccidentes> findByIdGrupoDotacion(@PathVariable Integer id) {
-        return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIdNovedad(id);
+        return vPlanesAccionesNovedadesAccidentesRefactorRepository.findAllByIdTerceroNovedad(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -46,7 +46,7 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
     PlanesAccionesNovedadesAccidentes create(@RequestBody PlanesAccionesNovedadesAccidentes o) {
         return planesAccionesNovedadesAccidentesRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentes(
-                        o.getIdNovedad(),o.getIdEstadoPlanAccion(),
+                        o.getIdTerceroNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
@@ -57,7 +57,7 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
     void update(@RequestBody PlanesAccionesNovedadesAccidentes o) {
         planesAccionesNovedadesAccidentesRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentes(
-                        o.getIdPlanAccionNovedadAccidente(),o.getIdNovedad(),o.getIdEstadoPlanAccion(),
+                        o.getIdPlanAccionNovedadAccidente(),o.getIdTerceroNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )

@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "V_PlanesAccionesNovedadesAccidentes", schema = "dbo", catalog = "CREZCAMOS")
 public class VPlanesAccionesNovedadesAccidentes {
     private Integer idPlanAccionNovedadAccidente;
-    private Integer idNovedad;
+    private Integer idTerceroNovedad;
     private String estadoPlanAccion;
     private Integer idEstadoPlanAccion;
     private String actividad;
@@ -33,13 +33,13 @@ public class VPlanesAccionesNovedadesAccidentes {
     }
 
     @Basic
-    @Column(name = "IdNovedad", nullable = true)
-    public Integer getIdNovedad() {
-        return idNovedad;
+    @Column(name = "IdTerceroNovedad", nullable = true)
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
     }
 
-    public void setIdNovedad(Integer idNovedad) {
-        this.idNovedad = idNovedad;
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 
     @Basic
@@ -171,7 +171,8 @@ public class VPlanesAccionesNovedadesAccidentes {
 
         if (idPlanAccionNovedadAccidente != null ? !idPlanAccionNovedadAccidente.equals(that.idPlanAccionNovedadAccidente) : that.idPlanAccionNovedadAccidente != null)
             return false;
-        if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
+        if (idTerceroNovedad != null ? !idTerceroNovedad.equals(that.idTerceroNovedad) : that.idTerceroNovedad != null)
+            return false;
         if (estadoPlanAccion != null ? !estadoPlanAccion.equals(that.estadoPlanAccion) : that.estadoPlanAccion != null)
             return false;
         if (idEstadoPlanAccion != null ? !idEstadoPlanAccion.equals(that.idEstadoPlanAccion) : that.idEstadoPlanAccion != null)
@@ -200,7 +201,7 @@ public class VPlanesAccionesNovedadesAccidentes {
     @Override
     public int hashCode() {
         int result = idPlanAccionNovedadAccidente != null ? idPlanAccionNovedadAccidente.hashCode() : 0;
-        result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);
+        result = 31 * result + (idTerceroNovedad != null ? idTerceroNovedad.hashCode() : 0);
         result = 31 * result + (estadoPlanAccion != null ? estadoPlanAccion.hashCode() : 0);
         result = 31 * result + (idEstadoPlanAccion != null ? idEstadoPlanAccion.hashCode() : 0);
         result = 31 * result + (actividad != null ? actividad.hashCode() : 0);
