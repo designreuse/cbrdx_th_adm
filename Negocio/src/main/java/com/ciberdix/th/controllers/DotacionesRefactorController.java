@@ -61,67 +61,76 @@ public class DotacionesRefactorController {
     List<TallaGeneroDotacion> findAllTallasByGen(@PathVariable Integer idProyeccionDotacion, @PathVariable Integer idDotacion) {
         List<VProyeccionDotacionEstructuraOrganizacional> pdeo = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/proyeccionDotacionEstructuraOrganizacional/proyeccionDotacion/" + idProyeccionDotacion, VProyeccionDotacionEstructuraOrganizacional[].class));
         VProyeccionDotacion PD =  restTemplate.getForObject(baseUrl + "/api/proyeccionDotacion/" + idProyeccionDotacion, VProyeccionDotacion.class);
+
+        List<Terceros> tercerosList = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/terceros", Terceros[].class));
+        if (PD.getIndicadorNoAreas() != null && !PD.getIndicadorNoAreas()) {
+            List<VCargosDotaciones> d = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/cargosDotaciones/grupoDotacion/" + PD.getIdGrupoDotacion(), VCargosDotaciones[].class));
+            List<VEstructuraOrganizacionalCargos> vEstructuraOrganizacionalCargos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacionalCargos", VEstructuraOrganizacionalCargos[].class));
+            vEstructuraOrganizacionalCargos = vEstructuraOrganizacionalCargos.stream().filter(t -> pdeo.stream().anyMatch(f -> f.getIdEstructuraOrganizacional().equals(t.getIdEstructuraOrganizacional()))).collect(Collectors.toList());
+            vEstructuraOrganizacionalCargos = vEstructuraOrganizacionalCargos.stream().filter(t -> d.stream().anyMatch(f -> t.getIdCargo().equals(f.getIdCargo()))).collect(Collectors.toList());
+            List<VEstructuraOrganizacionalCargos> vEstructuraOrganizacionalCargosfiltered = vEstructuraOrganizacionalCargos.stream().filter(VEstructuraOrganizacionalCargos::getIndicadorHabilitado).collect(Collectors.toList());
+            List<VTercerosCargos> vTercerosCargos = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/tercerosCargos", VTercerosCargos[].class));
+            List<VTercerosCargos> vTercerosCargosFiltered = vTercerosCargos.stream().filter(t -> t.getIndicadorHabilitado() && vEstructuraOrganizacionalCargosfiltered.stream().anyMatch(f -> t.getIdEstructuraOrganizacionalCargo().equals(f.getIdEstructuraOrganizacionalCargo()))).collect(Collectors.toList());
+            tercerosList = tercerosList.stream().filter(f -> vTercerosCargosFiltered.stream().anyMatch(t -> f.getIdTercero().equals(t.getIdTercero()))).collect(Collectors.toList());
+        }
+
         VDotaciones d = findOne(idDotacion);
         List<TallaGeneroDotacion> ltgd = new ArrayList<>();
         TallaGeneroDotacion tgd = new TallaGeneroDotacion();
         String code = UtilitiesController.findListItemById("ListasTiposTallas", d.getIdTipoTalla()).getCodigo();
-        for(VProyeccionDotacionEstructuraOrganizacional vpdeo : pdeo){
-            if(vpdeo.getIdEstructuraOrganizacional()!=null){
-                List<VTerceros> t = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/vterceros/estructuraOrganizacional/" + vpdeo.getIdEstructuraOrganizacional() + "/", VTerceros[].class));
-                if(t.size()>0){
-                    List<VTerceros> tempT;
-                    List<ListasItems> li = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/ListasTallas/enabled/", ListasItems[].class));
-                    for(ListasItems list : li){
-                        tgd.setIndicadorHombre(false);
-                        tgd.setIndicadorMujer(false);
-                        if(code.equals("CAM")){
-                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null && ter.getIdTallaCamisa().equals(list.getIdLista()))).collect(Collectors.toList());
-                        }else if(code.equals("PAN")){
-                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaPantalon().equals(list.getIdLista()))).collect(Collectors.toList());
-                        }else{
-                            tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null && ter.getIdTallaCalzado().equals(list.getIdLista()))).collect(Collectors.toList());
-                        }
-                        if(tempT.size()>0){
-                            Boolean exist = false;
-                            if(ltgd.size()>0){
-                                for(TallaGeneroDotacion ltgdot : ltgd){
-                                    if(ltgdot.getTalla().equals(list.getNombre())){
-                                        tgd = ltgdot;
-                                        exist = true;
-                                    }
-                                }
+        List<Terceros> t = tercerosList;
+        if(t.size()>0){
+            List<Terceros> tempT;
+            List<ListasItems> li = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/ListasTallas/enabled/", ListasItems[].class));
+            for(ListasItems list : li){
+                tgd.setIndicadorHombre(false);
+                tgd.setIndicadorMujer(false);
+                if(code.equals("CAM")){
+                    tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCamisa()!=null && ter.getIdTallaCamisa().equals(list.getIdLista()))).collect(Collectors.toList());
+                }else if(code.equals("PAN")){
+                    tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaPantalon()!=null && ter.getIdTallaPantalon().equals(list.getIdLista()))).collect(Collectors.toList());
+                }else{
+                    tempT = t.stream().filter(ter->t.stream().anyMatch(f->ter.getIdTallaCalzado()!=null && ter.getIdTallaCalzado().equals(list.getIdLista()))).collect(Collectors.toList());
+                }
+                if(tempT.size()>0){
+                    Boolean exist = false;
+                    if(ltgd.size()>0){
+                        for(TallaGeneroDotacion ltgdot : ltgd){
+                            if(ltgdot.getTalla().equals(list.getNombre())){
+                                tgd = ltgdot;
+                                exist = true;
                             }
-                            if(exist){
-                                ltgd.get(ltgd.indexOf(tgd)).setTotal(ltgd.get(ltgd.indexOf(tgd)).getTotal()+(tempT.size()*d.getCantidad()));
-                                for(VTerceros vt : tempT){
-                                    if(vt.getIdGenero()!=null){
-                                        String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
-                                        if(genero.equals("M")){
-                                            ltgd.get(ltgd.indexOf(tgd)).setIndicadorHombre(true);
-                                        }else if(genero.equals("F")){
-                                            ltgd.get(ltgd.indexOf(tgd)).setIndicadorMujer(true);
-                                        }
-                                    }
-                                }
-                            }else{
-                                tgd.setTalla(list.getNombre());
-                                Double valor = Math.ceil(PD.getCantidadMeses()/valueCiclo(d));
-                                tgd.setTotal(tempT.size()* valor.intValue());
-                                for(VTerceros vt : tempT){
-                                    if(vt.getIdGenero()!=null){
-                                        String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
-                                        if(genero.equals("M")){
-                                            tgd.setIndicadorHombre(true);
-                                        }else if(genero.equals("F")){
-                                            tgd.setIndicadorMujer(true);
-                                        }
-                                    }
-                                }
-                                ltgd.add(tgd);
-                            }
-                            tgd = new TallaGeneroDotacion();
                         }
                     }
+                    if(exist){
+                        ltgd.get(ltgd.indexOf(tgd)).setTotal(ltgd.get(ltgd.indexOf(tgd)).getTotal()+(tempT.size()*d.getCantidad()));
+                        for(Terceros vt : tempT){
+                            if(vt.getIdGenero()!=null){
+                                String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
+                                if(genero.equals("M")){
+                                    ltgd.get(ltgd.indexOf(tgd)).setIndicadorHombre(true);
+                                }else if(genero.equals("F")){
+                                    ltgd.get(ltgd.indexOf(tgd)).setIndicadorMujer(true);
+                                }
+                            }
+                        }
+                    }else{
+                        tgd.setTalla(list.getNombre());
+                        Double valor = Math.ceil(PD.getCantidadMeses()/valueCiclo(d));
+                        tgd.setTotal(tempT.size()* valor.intValue());
+                        for(Terceros vt : tempT){
+                            if(vt.getIdGenero()!=null){
+                                String genero = UtilitiesController.findListItemById("ListasGeneros", vt.getIdGenero()).getCodigo();
+                                if(genero.equals("M")){
+                                    tgd.setIndicadorHombre(true);
+                                }else if(genero.equals("F")){
+                                    tgd.setIndicadorMujer(true);
+                                }
+                            }
+                        }
+                        ltgd.add(tgd);
+                    }
+                    tgd = new TallaGeneroDotacion();
                 }
             }
         }
