@@ -95,7 +95,27 @@ public class TercerosNovedadesRefactorController {
     List<VTercerosNovedades> findIncidentesAccidentes() {
         List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
         List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
-        return tn.stream().filter(t->n.stream().anyMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+        tn = tn.stream().filter(t->n.stream().anyMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+        Integer idEstadoNovedad = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
+        for(VTercerosNovedades vtn : tn){
+            if(vtn.getIdEstadoNovedad().equals(idEstadoNovedad)){
+                vtn.setActividades(2);
+            }else{
+                List<VPlanesAccionesNovedadesAccidentes> pana = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/planesAccionesNovedadesAccidentes/terceroNovedad/" + vtn.getIdTerceroNovedad(), VPlanesAccionesNovedadesAccidentes[].class));
+                if(pana.size()>0){
+                    Integer idEstadoAccion = UtilitiesController.findListItem("ListasEstadosPlanesAccion", "VERF").getIdLista();
+                    List<VPlanesAccionesNovedadesAccidentes> panaF = pana.stream().filter(t->pana.stream().anyMatch(f->t.getIdEstadoPlanAccion().equals(idEstadoAccion))).collect(Collectors.toList());
+                    if(pana.size()==panaF.size()){
+                        vtn.setActividades(3);
+                    }else{
+                        vtn.setActividades(4);
+                    }
+                }else{
+                    vtn.setActividades(1);
+                }
+            }
+        }
+        return tn;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroAccidentes/{idTercero}")
