@@ -47,11 +47,21 @@ public class InstitucionesMedicasTiposExamenesRefactorController {
         return vInstitucionesMedicasTiposExamenesRefactorRepository.findAllByIdTipoExamen(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/institucionMedicaTipoExamen/{idInstitucionMedica}/{idTipoExamen}")
+    VInstitucionesMedicasTiposExamenes findByInstitucionMedicaAndTipoExamen(@PathVariable Integer idInstitucionMedica, @PathVariable Integer idTipoExamen) {
+        return vInstitucionesMedicasTiposExamenesRefactorRepository.findByIdInstitucionMedicaAndIdTipoExamen(idInstitucionMedica, idTipoExamen);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/disabled/{idInstitucionMedica}")
+    void updateTiposExamenes(@PathVariable Integer idInstitucionMedica) {
+        institucionesMedicasTiposExamenesRefactorRepository.queryUpdateTiposExamenes(idInstitucionMedica);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     InstitucionesMedicasTiposExamenes create(@RequestBody InstitucionesMedicasTiposExamenes o) {
         return institucionesMedicasTiposExamenesRefactorRepository.save(
                 new InstitucionesMedicasTiposExamenes(
-                        o.getIdInstitucionMedicaTipoExamen(),o.getIdTipoExamen(),
+                        o.getIdInstitucionMedica(),o.getIdTipoExamen(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
@@ -61,7 +71,7 @@ public class InstitucionesMedicasTiposExamenesRefactorController {
     void update(@RequestBody InstitucionesMedicasTiposExamenes o) {
         institucionesMedicasTiposExamenesRefactorRepository.save(
                 new InstitucionesMedicasTiposExamenes(
-                        o.getIdInstitucionMedicaTipoExamen(),o.getIdInstitucionMedicaTipoExamen(),o.getIdTipoExamen(),
+                        o.getIdInstitucionMedicaTipoExamen(),o.getIdInstitucionMedica(),o.getIdTipoExamen(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
