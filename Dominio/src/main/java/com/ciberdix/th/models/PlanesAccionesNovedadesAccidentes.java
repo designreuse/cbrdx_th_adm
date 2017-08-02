@@ -1,14 +1,14 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "PlanesAccionesNovedadesAccidentes", schema = "dbo", catalog = "CREZCAMOS")
+@Table(name = "PlanesAccionesNovedadesAccidentesAdjuntos", schema = "dbo", catalog = "CREZCAMOS")
 public class PlanesAccionesNovedadesAccidentes {
     private Integer idPlanAccionNovedadAccidente;
-    private Integer idNovedad;
+    private Integer idTerceroNovedad;
     private Integer idEstadoPlanAccion;
     private String actividad;
     private Long idResponsable;
@@ -22,8 +22,8 @@ public class PlanesAccionesNovedadesAccidentes {
     public PlanesAccionesNovedadesAccidentes() {
     }
 
-    public PlanesAccionesNovedadesAccidentes(Integer idNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idNovedad = idNovedad;
+    public PlanesAccionesNovedadesAccidentes(Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+        this.idTerceroNovedad = idTerceroNovedad;
         this.idEstadoPlanAccion = idEstadoPlanAccion;
         this.actividad = actividad;
         this.idResponsable = idResponsable;
@@ -35,9 +35,9 @@ public class PlanesAccionesNovedadesAccidentes {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public PlanesAccionesNovedadesAccidentes(Integer idPlanAccionNovedadAccidente, Integer idNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public PlanesAccionesNovedadesAccidentes(Integer idPlanAccionNovedadAccidente, Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idPlanAccionNovedadAccidente = idPlanAccionNovedadAccidente;
-        this.idNovedad = idNovedad;
+        this.idTerceroNovedad = idTerceroNovedad;
         this.idEstadoPlanAccion = idEstadoPlanAccion;
         this.actividad = actividad;
         this.idResponsable = idResponsable;
@@ -61,13 +61,13 @@ public class PlanesAccionesNovedadesAccidentes {
     }
 
     @Basic
-    @Column(name = "IdNovedad", nullable = true)
-    public Integer getIdNovedad() {
-        return idNovedad;
+    @Column(name = "IdTerceroNovedad", nullable = true)
+    public Integer getIdTerceroNovedad() {
+        return idTerceroNovedad;
     }
 
-    public void setIdNovedad(Integer idNovedad) {
-        this.idNovedad = idNovedad;
+    public void setIdTerceroNovedad(Integer idTerceroNovedad) {
+        this.idTerceroNovedad = idTerceroNovedad;
     }
 
     @Basic
@@ -169,7 +169,8 @@ public class PlanesAccionesNovedadesAccidentes {
 
         if (idPlanAccionNovedadAccidente != null ? !idPlanAccionNovedadAccidente.equals(that.idPlanAccionNovedadAccidente) : that.idPlanAccionNovedadAccidente != null)
             return false;
-        if (idNovedad != null ? !idNovedad.equals(that.idNovedad) : that.idNovedad != null) return false;
+        if (idTerceroNovedad != null ? !idTerceroNovedad.equals(that.idTerceroNovedad) : that.idTerceroNovedad != null)
+            return false;
         if (idEstadoPlanAccion != null ? !idEstadoPlanAccion.equals(that.idEstadoPlanAccion) : that.idEstadoPlanAccion != null)
             return false;
         if (actividad != null ? !actividad.equals(that.actividad) : that.actividad != null) return false;
@@ -192,7 +193,7 @@ public class PlanesAccionesNovedadesAccidentes {
     @Override
     public int hashCode() {
         int result = idPlanAccionNovedadAccidente != null ? idPlanAccionNovedadAccidente.hashCode() : 0;
-        result = 31 * result + (idNovedad != null ? idNovedad.hashCode() : 0);
+        result = 31 * result + (idTerceroNovedad != null ? idTerceroNovedad.hashCode() : 0);
         result = 31 * result + (idEstadoPlanAccion != null ? idEstadoPlanAccion.hashCode() : 0);
         result = 31 * result + (actividad != null ? actividad.hashCode() : 0);
         result = 31 * result + (idResponsable != null ? idResponsable.hashCode() : 0);

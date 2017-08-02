@@ -46,9 +46,9 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
         return restTemplate.getForObject(serviceUrl + id, VPlanesAccionesNovedadesAccidentes.class);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/novedad/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedad/{id}")
     List<VPlanesAccionesNovedadesAccidentes> findByIdGrupoDotacion(@PathVariable Integer id) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "novedad/" + id, VPlanesAccionesNovedadesAccidentes[].class));
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VPlanesAccionesNovedadesAccidentes[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
