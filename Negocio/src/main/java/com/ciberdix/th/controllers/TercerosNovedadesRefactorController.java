@@ -91,6 +91,20 @@ public class TercerosNovedadesRefactorController {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "tercero/" + id, VTercerosNovedades[].class));
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/incidentesAccidentes")
+    List<VTercerosNovedades> findIncidentesAccidentes() {
+        List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
+        List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
+        return tn.stream().filter(t->n.stream().anyMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/novedades")
+    List<VTercerosNovedades> findNovedades() {
+        List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
+        List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
+        return tn.stream().filter(t->n.stream().noneMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
     List<VTercerosNovedades> findByFechaReporteBetween(@PathVariable String FechaInicio, @PathVariable String FechaFin, HttpServletRequest request) {
         assert FechaInicio != null;

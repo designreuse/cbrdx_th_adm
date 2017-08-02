@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Danny on 17/07/2017.
@@ -53,6 +54,16 @@ public class NovedadesRefactorController {
     @RequestMapping(method = RequestMethod.GET, path = "/tipoNovedad/{id}")
     List<VNovedades> findByIdTipoNovedad(@PathVariable Integer id) {
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "tipoNovedad/" + id, VNovedades[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/incidentesAccidentes")
+    List<VNovedades> findIncidenteAccidente() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "incidentesAccidentes", VNovedades[].class));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/novedades")
+    List<VNovedades> findAllNovedades() {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "novedades", VNovedades[].class));
     }
 
     @RequestMapping(method = RequestMethod.POST)
