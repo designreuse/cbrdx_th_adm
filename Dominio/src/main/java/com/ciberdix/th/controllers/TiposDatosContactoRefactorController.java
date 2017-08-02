@@ -11,7 +11,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/TiposDatosContacto")
+@RequestMapping("/api/tiposDatosContacto")
 public class TiposDatosContactoRefactorController {
 
     @Autowired

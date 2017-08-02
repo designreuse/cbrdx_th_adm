@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/TiposDatosContacto")
+@RequestMapping("/api/tiposDatosContacto")
 public class TiposDatosContactoRefactorController {
 
     @Value("${domain.url}")
@@ -26,7 +26,7 @@ public class TiposDatosContactoRefactorController {
 
     @PostConstruct
     void init() {
-        serviceUrl = baseUrl + "/api/gruposDotaciones/";
+        serviceUrl = baseUrl + "/api/tiposDatosContacto/";
         restTemplate = new RestTemplate();
     }
 
