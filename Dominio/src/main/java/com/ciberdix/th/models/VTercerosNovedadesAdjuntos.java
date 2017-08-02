@@ -13,6 +13,7 @@ public class VTercerosNovedadesAdjuntos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private Boolean indicadorAccidente;
 
     @Id
     @Column(name = "IdTerceroNovedadAdjunto", nullable = false)
@@ -84,6 +85,16 @@ public class VTercerosNovedadesAdjuntos {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    @Basic
+    @Column(name = "IndicadorAccidente", nullable = true)
+    public Boolean getIndicadorAccidente() {
+        return indicadorAccidente;
+    }
+
+    public void setIndicadorAccidente(Boolean indicadorAccidente) {
+        this.indicadorAccidente = indicadorAccidente;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,6 +115,8 @@ public class VTercerosNovedadesAdjuntos {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (indicadorAccidente != null ? !indicadorAccidente.equals(that.indicadorAccidente) : that.indicadorAccidente != null)
+            return false;
 
         return true;
     }
@@ -117,6 +130,7 @@ public class VTercerosNovedadesAdjuntos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (indicadorAccidente != null ? indicadorAccidente.hashCode() : 0);
         return result;
     }
 }

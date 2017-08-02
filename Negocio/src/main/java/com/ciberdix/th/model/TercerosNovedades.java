@@ -41,6 +41,8 @@ public class TercerosNovedades {
     private Integer idEstadoNovedad;
     private Date fechaReporte;
     private Long idTerceroReporta;
+    private Integer idResultado;
+    private String descripción;
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -280,5 +282,21 @@ public class TercerosNovedades {
 
     public void setIdTerceroReporta(Long idTerceroReporta) {
         this.idTerceroReporta = idTerceroReporta;
+    }
+
+    public Integer getIdResultado() {
+        return idResultado;
+    }
+
+    public void setIdResultado(Integer idResultado) {
+        this.idResultado = idResultado;
+    }
+
+    public String getDescripción() {
+        return descripción;
+    }
+
+    public void setDescripción(String descripción) {
+        this.descripción = descripción;
     }
 }
