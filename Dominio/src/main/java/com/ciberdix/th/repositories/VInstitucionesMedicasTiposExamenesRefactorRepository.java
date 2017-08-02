@@ -13,4 +13,6 @@ public interface VInstitucionesMedicasTiposExamenesRefactorRepository extends Cr
 
     List<VInstitucionesMedicasTiposExamenes> findAllByIdTipoExamen(Integer id);
 
+    VInstitucionesMedicasTiposExamenes findByIdInstitucionMedicaAndIdTipoExamen(Integer idInstitucionMedica, Integer idTipoExamen);
+
 }
