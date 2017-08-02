@@ -60,6 +60,7 @@ public class VTercerosNovedades {
     private Date fechaReporte;
     private String nombreTerceroReporta;
     private Long idTerceroReporta;
+    private Integer actividades;
 
     public Integer getIdTerceroNovedad() {
         return idTerceroNovedad;
@@ -451,5 +452,13 @@ public class VTercerosNovedades {
 
     public void setIdTerceroReporta(Long idTerceroReporta) {
         this.idTerceroReporta = idTerceroReporta;
+    }
+
+    public Integer getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(Integer actividades) {
+        this.actividades = actividades;
     }
 }
