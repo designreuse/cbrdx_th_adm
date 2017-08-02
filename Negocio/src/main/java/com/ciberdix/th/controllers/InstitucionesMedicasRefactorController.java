@@ -89,8 +89,7 @@ public class InstitucionesMedicasRefactorController {
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody InstitucionesMedicas obj) {
-        VInstitucionesMedicas im = restTemplate.getForObject(serviceUrl + obj.getIdInstitucionMedica(), VInstitucionesMedicas.class);
-        restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/disabled/" + im.getIdInstitucionMedica(), InstitucionesMedicasTiposExamenes.class);
+        restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/disabled/" + obj.getIdInstitucionMedica(), InstitucionesMedicasTiposExamenes.class);
         if(obj.getListTipos()!=null && obj.getListTipos().size()>0){
             VInstitucionesMedicasTiposExamenes imte = new VInstitucionesMedicasTiposExamenes();
             for(Integer id : obj.getListTipos()){
@@ -99,10 +98,10 @@ public class InstitucionesMedicasRefactorController {
                     imte.setIndicadorHabilitado(true);
                     restTemplate.put(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
                 }else{
-                    imte.setIdInstitucionMedica(im.getIdInstitucionMedica());
+                    imte.setIdInstitucionMedica(obj.getIdInstitucionMedica());
                     imte.setIndicadorHabilitado(true);
-                    imte.setAuditoriaUsuario(im.getAuditoriaUsuario());
-                    imte.setAuditoriaFecha(im.getAuditoriaFecha());
+                    imte.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+                    imte.setAuditoriaFecha(obj.getAuditoriaFecha());
                     imte.setIdTipoExamen(id);
                     restTemplate.postForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
                 }

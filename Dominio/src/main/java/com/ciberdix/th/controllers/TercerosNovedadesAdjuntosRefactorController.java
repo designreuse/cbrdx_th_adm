@@ -47,7 +47,7 @@ public class TercerosNovedadesAdjuntosRefactorController {
         return tercerosNovedadesAdjuntosRefactorRepository.save(
                 new TercerosNovedadesAdjuntos(
                         o.getIdTerceroNovedad(),o.getIdAdjunto(),o.getAuditoriaUsuario(),
-                        o.getIndicadorHabilitado()
+                        o.getIndicadorHabilitado(),o.getIndicadorAccidente()
                 )
         );
     }
@@ -57,7 +57,7 @@ public class TercerosNovedadesAdjuntosRefactorController {
         tercerosNovedadesAdjuntosRefactorRepository.save(
                 new TercerosNovedadesAdjuntos(
                         o.getIdTerceroNovedadAdjunto(),o.getIdTerceroNovedad(),o.getIdAdjunto(),o.getAuditoriaUsuario(),
-                        o.getIndicadorHabilitado()
+                        o.getIndicadorHabilitado(),o.getIndicadorAccidente()
                 )
         );
     }

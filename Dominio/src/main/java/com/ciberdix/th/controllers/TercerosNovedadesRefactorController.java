@@ -66,7 +66,7 @@ public class TercerosNovedadesRefactorController {
                         o.getHoraReintegro(),o.getDias(),o.getIdDiagnostico(),o.getReemplazadoPor(),o.getValor(),
                         o.getNroCuotas(),o.getNroReferencia(),o.getIdEntidad(),o.getPeriodoInicial(),o.getPeriodoFinal(),o.getRetiro(),
                         o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion(),o.getIdEstadoNovedad(),
-                        o.getIdTerceroReporta()
+                        o.getIdTerceroReporta(),o.getIdResultado(),o.getDescripcion()
                 )
         );
     }
@@ -80,7 +80,7 @@ public class TercerosNovedadesRefactorController {
                         o.getHoraReintegro(),o.getDias(),o.getIdDiagnostico(),o.getReemplazadoPor(),o.getValor(),
                         o.getNroCuotas(),o.getNroReferencia(),o.getIdEntidad(),o.getPeriodoInicial(),o.getPeriodoFinal(),o.getRetiro(),
                         o.getIdEps(),o.getIdFp(),o.getIdCcf(),o.getIndicadorHabilitado(),o.getCodigoValidacion(),o.getIdEstadoNovedad(),
-                        o.getFechaReporte(),o.getIdTerceroReporta()
+                        o.getFechaReporte(),o.getIdTerceroReporta(),o.getIdResultado(),o.getDescripcion()
                 )
         );
     }

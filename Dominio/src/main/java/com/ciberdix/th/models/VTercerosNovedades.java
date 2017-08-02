@@ -14,6 +14,7 @@ public class VTercerosNovedades {
     private Timestamp auditoriaFecha;
     private String numeroDocumento;
     private String nombreTercero;
+    private String cargo;
     private Integer idEstadoTercero;
     private Integer idEstructuraFisica;
     private String estructuraFisica;
@@ -57,6 +58,9 @@ public class VTercerosNovedades {
     private Date fechaReporte;
     private String nombreTerceroReporta;
     private Long idTerceroReporta;
+    private String resultadoAccidente;
+    private Integer idResultado;
+    private String descripción;
 
     @Id
     @Column(name = "IdTerceroNovedad", nullable = false)
@@ -69,7 +73,7 @@ public class VTercerosNovedades {
     }
 
     @Basic
-    @Column(name = "Descripcion", nullable = true, length = 100)
+    @Column(name = "Descripcion", nullable = true, length = 500)
     public String getDescripcion() {
         return descripcion;
     }
@@ -116,6 +120,16 @@ public class VTercerosNovedades {
 
     public void setNombreTercero(String nombreTercero) {
         this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
+    @Column(name = "Cargo", nullable = true, length = 100)
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Basic
@@ -548,6 +562,36 @@ public class VTercerosNovedades {
         this.idTerceroReporta = idTerceroReporta;
     }
 
+    @Basic
+    @Column(name = "ResultadoAccidente", nullable = true, length = 100)
+    public String getResultadoAccidente() {
+        return resultadoAccidente;
+    }
+
+    public void setResultadoAccidente(String resultadoAccidente) {
+        this.resultadoAccidente = resultadoAccidente;
+    }
+
+    @Basic
+    @Column(name = "IdResultado", nullable = true)
+    public Integer getIdResultado() {
+        return idResultado;
+    }
+
+    public void setIdResultado(Integer idResultado) {
+        this.idResultado = idResultado;
+    }
+
+    @Basic
+    @Column(name = "Descripción", nullable = true, length = 500)
+    public String getDescripción() {
+        return descripción;
+    }
+
+    public void setDescripción(String descripción) {
+        this.descripción = descripción;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -566,6 +610,7 @@ public class VTercerosNovedades {
             return false;
         if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
             return false;
+        if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idEstadoTercero != null ? !idEstadoTercero.equals(that.idEstadoTercero) : that.idEstadoTercero != null)
             return false;
         if (idEstructuraFisica != null ? !idEstructuraFisica.equals(that.idEstructuraFisica) : that.idEstructuraFisica != null)
@@ -628,6 +673,10 @@ public class VTercerosNovedades {
             return false;
         if (idTerceroReporta != null ? !idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta != null)
             return false;
+        if (resultadoAccidente != null ? !resultadoAccidente.equals(that.resultadoAccidente) : that.resultadoAccidente != null)
+            return false;
+        if (idResultado != null ? !idResultado.equals(that.idResultado) : that.idResultado != null) return false;
+        if (descripción != null ? !descripción.equals(that.descripción) : that.descripción != null) return false;
 
         return true;
     }
@@ -640,6 +689,7 @@ public class VTercerosNovedades {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (numeroDocumento != null ? numeroDocumento.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
         result = 31 * result + (idEstructuraFisica != null ? idEstructuraFisica.hashCode() : 0);
         result = 31 * result + (estructuraFisica != null ? estructuraFisica.hashCode() : 0);
@@ -683,6 +733,9 @@ public class VTercerosNovedades {
         result = 31 * result + (fechaReporte != null ? fechaReporte.hashCode() : 0);
         result = 31 * result + (nombreTerceroReporta != null ? nombreTerceroReporta.hashCode() : 0);
         result = 31 * result + (idTerceroReporta != null ? idTerceroReporta.hashCode() : 0);
+        result = 31 * result + (resultadoAccidente != null ? resultadoAccidente.hashCode() : 0);
+        result = 31 * result + (idResultado != null ? idResultado.hashCode() : 0);
+        result = 31 * result + (descripción != null ? descripción.hashCode() : 0);
         return result;
     }
 }

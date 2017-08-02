@@ -2,8 +2,8 @@ package com.ciberdix.th.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "TercerosNovedades", schema = "dbo", catalog = "CREZCAMOS")
@@ -38,11 +38,13 @@ public class TercerosNovedades {
     private Integer idEstadoNovedad;
     private Date fechaReporte;
     private Long idTerceroReporta;
+    private Integer idResultado;
+    private String descripción;
 
     public TercerosNovedades() {
     }
 
-    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Long idTerceroReporta) {
+    public TercerosNovedades(String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Long idTerceroReporta, Integer idResultado, String descripción) {
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -72,9 +74,11 @@ public class TercerosNovedades {
         this.idEstadoNovedad = idEstadoNovedad;
         this.fechaReporte = new Timestamp(System.currentTimeMillis());
         this.idTerceroReporta = idTerceroReporta;
+        this.idResultado = idResultado;
+        this.descripción = descripción;
     }
 
-    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Date fechaReporte, Long idTerceroReporta) {
+    public TercerosNovedades(Integer idTerceroNovedad, String descripcion, Integer auditoriaUsuario, Long idTercero, Integer idNovedad, Date fechaInicio, Date fechaFin, Timestamp horaInicio, Timestamp horaFin, Date fechaReintegro, Timestamp horaReintegro, Integer dias, Integer idDiagnostico, String reemplazadoPor, BigDecimal valor, Integer nroCuotas, String nroReferencia, Integer idEntidad, Date periodoInicial, Date periodoFinal, Boolean retiro, Integer idEps, Integer idFp, Integer idCcf, Boolean indicadorHabilitado, String codigoValidacion, Integer idEstadoNovedad, Date fechaReporte, Long idTerceroReporta, Integer idResultado, String descripción) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.descripcion = descripcion;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -105,6 +109,8 @@ public class TercerosNovedades {
         this.idEstadoNovedad = idEstadoNovedad;
         this.fechaReporte = fechaReporte;
         this.idTerceroReporta = idTerceroReporta;
+        this.idResultado = idResultado;
+        this.descripción = descripción;
     }
 
     @Id
@@ -408,6 +414,26 @@ public class TercerosNovedades {
         this.idTerceroReporta = idTerceroReporta;
     }
 
+    @Basic
+    @Column(name = "IdResultado", nullable = true)
+    public Integer getIdResultado() {
+        return idResultado;
+    }
+
+    public void setIdResultado(Integer idResultado) {
+        this.idResultado = idResultado;
+    }
+
+    @Basic
+    @Column(name = "Descripción", nullable = true, length = 500)
+    public String getDescripción() {
+        return descripción;
+    }
+
+    public void setDescripción(String descripción) {
+        this.descripción = descripción;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -456,7 +482,12 @@ public class TercerosNovedades {
         if (idEstadoNovedad != null ? !idEstadoNovedad.equals(that.idEstadoNovedad) : that.idEstadoNovedad != null)
             return false;
         if (fechaReporte != null ? !fechaReporte.equals(that.fechaReporte) : that.fechaReporte != null) return false;
-        return idTerceroReporta != null ? idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta == null;
+        if (idTerceroReporta != null ? !idTerceroReporta.equals(that.idTerceroReporta) : that.idTerceroReporta != null)
+            return false;
+        if (idResultado != null ? !idResultado.equals(that.idResultado) : that.idResultado != null) return false;
+        if (descripción != null ? !descripción.equals(that.descripción) : that.descripción != null) return false;
+
+        return true;
     }
 
     @Override
@@ -491,6 +522,8 @@ public class TercerosNovedades {
         result = 31 * result + (idEstadoNovedad != null ? idEstadoNovedad.hashCode() : 0);
         result = 31 * result + (fechaReporte != null ? fechaReporte.hashCode() : 0);
         result = 31 * result + (idTerceroReporta != null ? idTerceroReporta.hashCode() : 0);
+        result = 31 * result + (idResultado != null ? idResultado.hashCode() : 0);
+        result = 31 * result + (descripción != null ? descripción.hashCode() : 0);
         return result;
     }
 }

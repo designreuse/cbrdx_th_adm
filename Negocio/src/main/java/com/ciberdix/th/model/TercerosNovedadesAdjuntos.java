@@ -10,6 +10,7 @@ public class TercerosNovedadesAdjuntos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private Boolean indicadorAccidente;
 
     public Integer getIdTerceroNovedadAdjunto() {
         return idTerceroNovedadAdjunto;
@@ -57,5 +58,13 @@ public class TercerosNovedadesAdjuntos {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public Boolean getIndicadorAccidente() {
+        return indicadorAccidente;
+    }
+
+    public void setIndicadorAccidente(Boolean indicadorAccidente) {
+        this.indicadorAccidente = indicadorAccidente;
     }
 }

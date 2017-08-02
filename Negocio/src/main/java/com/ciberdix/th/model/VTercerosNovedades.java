@@ -14,6 +14,7 @@ public class VTercerosNovedades {
     private Timestamp auditoriaFecha;
     private String numeroDocumento;
     private String nombreTercero;
+    private String cargo;
     private Integer idEstadoTercero;
     private Integer idEstructuraFisica;
     private String estructuraFisica;
@@ -60,6 +61,9 @@ public class VTercerosNovedades {
     private Date fechaReporte;
     private String nombreTerceroReporta;
     private Long idTerceroReporta;
+    private String resultadoAccidente;
+    private Integer idResultado;
+    private String descripción;
     private Integer actividades;
 
     public Integer getIdTerceroNovedad() {
@@ -108,6 +112,14 @@ public class VTercerosNovedades {
 
     public void setNombreTercero(String nombreTercero) {
         this.nombreTercero = nombreTercero;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public Integer getIdEstadoTercero() {
@@ -452,6 +464,30 @@ public class VTercerosNovedades {
 
     public void setIdTerceroReporta(Long idTerceroReporta) {
         this.idTerceroReporta = idTerceroReporta;
+    }
+
+    public String getResultadoAccidente() {
+        return resultadoAccidente;
+    }
+
+    public void setResultadoAccidente(String resultadoAccidente) {
+        this.resultadoAccidente = resultadoAccidente;
+    }
+
+    public Integer getIdResultado() {
+        return idResultado;
+    }
+
+    public void setIdResultado(Integer idResultado) {
+        this.idResultado = idResultado;
+    }
+
+    public String getDescripción() {
+        return descripción;
+    }
+
+    public void setDescripción(String descripción) {
+        this.descripción = descripción;
     }
 
     public Integer getActividades() {
