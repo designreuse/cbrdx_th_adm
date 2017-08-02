@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "ActividadesEconomicasTipos", schema = "dbo", catalog = "CREZCAMOS")
-public class CentralesRiesgos {
+@Table(name = "V_CentralesRiesgos", schema = "dbo", catalog = "CREZCAMOS")
+public class VCentralesRiesgos {
     private Integer idCentralRiesgo;
     private String codigo;
     private String nombre;
@@ -15,7 +15,9 @@ public class CentralesRiesgos {
     private Timestamp auditoriaFecha;
     private Boolean indicadorReporta;
     private String descripcion;
+    private String tipoCentralInformacion;
     private Integer idTipoCentralInformacion;
+    private String vigencia;
     private Integer idVigencia;
     private Boolean indicadorWebServices;
     private String causal;
@@ -24,50 +26,7 @@ public class CentralesRiesgos {
     private String nombreDescarga;
     private String numeroDocumento;
 
-    public CentralesRiesgos() {
-    }
-
-    public CentralesRiesgos(String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReporta, String descripcion, Integer idTipoCentralInformacion, Integer idVigencia, Boolean indicadorWebServices, String causal, String usuario, String clave, String nombreDescarga, String numeroDocumento) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.url = url;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorReporta = indicadorReporta;
-        this.descripcion = descripcion;
-        this.idTipoCentralInformacion = idTipoCentralInformacion;
-        this.idVigencia = idVigencia;
-        this.indicadorWebServices = indicadorWebServices;
-        this.causal = causal;
-        this.usuario = usuario;
-        this.clave = clave;
-        this.nombreDescarga = nombreDescarga;
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public CentralesRiesgos(Integer idCentralRiesgo, String codigo, String nombre, String url, Boolean indicadorHabilitado, Integer auditoriaUsuario, Boolean indicadorReporta, String descripcion, Integer idTipoCentralInformacion, Integer idVigencia, Boolean indicadorWebServices, String causal, String usuario, String clave, String nombreDescarga, String numeroDocumento) {
-        this.idCentralRiesgo = idCentralRiesgo;
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.url = url;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-        this.indicadorReporta = indicadorReporta;
-        this.descripcion = descripcion;
-        this.idTipoCentralInformacion = idTipoCentralInformacion;
-        this.idVigencia = idVigencia;
-        this.indicadorWebServices = indicadorWebServices;
-        this.causal = causal;
-        this.usuario = usuario;
-        this.clave = clave;
-        this.nombreDescarga = nombreDescarga;
-        this.numeroDocumento = numeroDocumento;
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdCentralRiesgo", nullable = false)
     public Integer getIdCentralRiesgo() {
         return idCentralRiesgo;
@@ -158,6 +117,16 @@ public class CentralesRiesgos {
     }
 
     @Basic
+    @Column(name = "TipoCentralInformacion", nullable = true, length = 100)
+    public String getTipoCentralInformacion() {
+        return tipoCentralInformacion;
+    }
+
+    public void setTipoCentralInformacion(String tipoCentralInformacion) {
+        this.tipoCentralInformacion = tipoCentralInformacion;
+    }
+
+    @Basic
     @Column(name = "IdTipoCentralInformacion", nullable = true)
     public Integer getIdTipoCentralInformacion() {
         return idTipoCentralInformacion;
@@ -165,6 +134,16 @@ public class CentralesRiesgos {
 
     public void setIdTipoCentralInformacion(Integer idTipoCentralInformacion) {
         this.idTipoCentralInformacion = idTipoCentralInformacion;
+    }
+
+    @Basic
+    @Column(name = "Vigencia", nullable = true, length = 100)
+    public String getVigencia() {
+        return vigencia;
+    }
+
+    public void setVigencia(String vigencia) {
+        this.vigencia = vigencia;
     }
 
     @Basic
@@ -242,7 +221,7 @@ public class CentralesRiesgos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CentralesRiesgos that = (CentralesRiesgos) o;
+        VCentralesRiesgos that = (VCentralesRiesgos) o;
 
         if (idCentralRiesgo != null ? !idCentralRiesgo.equals(that.idCentralRiesgo) : that.idCentralRiesgo != null)
             return false;
@@ -258,8 +237,11 @@ public class CentralesRiesgos {
         if (indicadorReporta != null ? !indicadorReporta.equals(that.indicadorReporta) : that.indicadorReporta != null)
             return false;
         if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
+        if (tipoCentralInformacion != null ? !tipoCentralInformacion.equals(that.tipoCentralInformacion) : that.tipoCentralInformacion != null)
+            return false;
         if (idTipoCentralInformacion != null ? !idTipoCentralInformacion.equals(that.idTipoCentralInformacion) : that.idTipoCentralInformacion != null)
             return false;
+        if (vigencia != null ? !vigencia.equals(that.vigencia) : that.vigencia != null) return false;
         if (idVigencia != null ? !idVigencia.equals(that.idVigencia) : that.idVigencia != null) return false;
         if (indicadorWebServices != null ? !indicadorWebServices.equals(that.indicadorWebServices) : that.indicadorWebServices != null)
             return false;
@@ -285,7 +267,9 @@ public class CentralesRiesgos {
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorReporta != null ? indicadorReporta.hashCode() : 0);
         result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
+        result = 31 * result + (tipoCentralInformacion != null ? tipoCentralInformacion.hashCode() : 0);
         result = 31 * result + (idTipoCentralInformacion != null ? idTipoCentralInformacion.hashCode() : 0);
+        result = 31 * result + (vigencia != null ? vigencia.hashCode() : 0);
         result = 31 * result + (idVigencia != null ? idVigencia.hashCode() : 0);
         result = 31 * result + (indicadorWebServices != null ? indicadorWebServices.hashCode() : 0);
         result = 31 * result + (causal != null ? causal.hashCode() : 0);

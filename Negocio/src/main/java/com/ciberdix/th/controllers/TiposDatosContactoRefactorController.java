@@ -1,8 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.config.Globales;
-import com.ciberdix.th.model.CentralesRiesgos;
-import com.ciberdix.th.model.VCentralesRiesgos;
+import com.ciberdix.th.model.TiposDatosContacto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,14 +9,11 @@ import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Danny on 13/06/2017.
- */
-
 @CrossOrigin
 @RestController
-@RequestMapping("/api/centralesRiesgos")
-public class CentralesRiesgosRefactorController {
+@RequestMapping("/api/TiposDatosContacto")
+public class TiposDatosContactoRefactorController {
+
     @Value("${domain.url}")
     private String baseUrl;
 
@@ -31,34 +26,35 @@ public class CentralesRiesgosRefactorController {
 
     @PostConstruct
     void init() {
-        serviceUrl = baseUrl + "/api/centralesRiesgos/";
+        serviceUrl = baseUrl + "/api/gruposDotaciones/";
         restTemplate = new RestTemplate();
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    List<VCentralesRiesgos> findAll() {
-        VCentralesRiesgos[] parametros = restTemplate.getForObject(serviceUrl, VCentralesRiesgos[].class);
+    List<TiposDatosContacto> findAll() {
+        TiposDatosContacto[] parametros = restTemplate.getForObject(serviceUrl, TiposDatosContacto[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    VCentralesRiesgos findOne(@PathVariable Integer id) {
-        return restTemplate.getForObject(serviceUrl + "/" + id, VCentralesRiesgos.class);
+    TiposDatosContacto findOne(@PathVariable Integer id) {
+        return restTemplate.getForObject(serviceUrl + "/" + id, TiposDatosContacto.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
-    List<VCentralesRiesgos> findEnabled() {
-        VCentralesRiesgos[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VCentralesRiesgos[].class);
+    List<TiposDatosContacto> findEnabled() {
+        TiposDatosContacto[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", TiposDatosContacto[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    CentralesRiesgos create(@RequestBody CentralesRiesgos obj){
-        return restTemplate.postForObject(serviceUrl, obj, CentralesRiesgos.class);
+    TiposDatosContacto create(@RequestBody TiposDatosContacto obj){
+        return restTemplate.postForObject(serviceUrl, obj, TiposDatosContacto.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody CentralesRiesgos obj){
+    void update(@RequestBody TiposDatosContacto obj){
         restTemplate.put(serviceUrl, obj);
     }
+    
 }

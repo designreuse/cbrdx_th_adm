@@ -1,7 +1,9 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.models.CentralesRiesgos;
+import com.ciberdix.th.models.VCentralesRiesgos;
 import com.ciberdix.th.repositories.CentralesRiesgosRefactorRepository;
+import com.ciberdix.th.repositories.VCentralesRiesgosRefactorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -21,26 +23,32 @@ public class CentralesRiesgosRefactorController {
     @Autowired
     private CentralesRiesgosRefactorRepository centralesRiesgosRefactorRepository;
 
+    @Autowired
+    private VCentralesRiesgosRefactorRepository vCentralesRiesgosRefactorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
-    List<CentralesRiesgos> findAll() {
-        return (List<CentralesRiesgos>) centralesRiesgosRefactorRepository.findAll();
+    List<VCentralesRiesgos> findAll() {
+        return (List<VCentralesRiesgos>) vCentralesRiesgosRefactorRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
-    List<CentralesRiesgos> findEnabled() {
-        return  centralesRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+    List<VCentralesRiesgos> findEnabled() {
+        return  vCentralesRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    CentralesRiesgos findOne(@PathVariable Integer id) {
-        return centralesRiesgosRefactorRepository.findOne(id);
+    VCentralesRiesgos findOne(@PathVariable Integer id) {
+        return vCentralesRiesgosRefactorRepository.findOne(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     CentralesRiesgos create(@RequestBody CentralesRiesgos o) {
         return centralesRiesgosRefactorRepository.save(
                 new CentralesRiesgos(
-                        o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReporta()
+                        o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),
+                        o.getIndicadorReporta(),o.getDescripcion(),o.getIdTipoCentralInformacion(),o.getIdVigencia(),
+                        o.getIndicadorWebServices(),o.getCausal(),o.getUsuario(),o.getClave(),o.getNombreDescarga(),
+                        o.getNumeroDocumento()
                 )
         );
     }
@@ -49,7 +57,10 @@ public class CentralesRiesgosRefactorController {
     void update(@RequestBody CentralesRiesgos o) {
         centralesRiesgosRefactorRepository.save(
                 new CentralesRiesgos(
-                        o.getIdCentralRiesgo(),o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIndicadorReporta()
+                        o.getIdCentralRiesgo(),o.getCodigo(),o.getNombre(),o.getUrl(),o.getIndicadorHabilitado(),
+                        o.getAuditoriaUsuario(),o.getIndicadorReporta(),o.getDescripcion(),o.getIdTipoCentralInformacion(),
+                        o.getIdVigencia(),o.getIndicadorWebServices(),o.getCausal(),o.getUsuario(),o.getClave(),
+                        o.getNombreDescarga(),o.getNumeroDocumento()
                 )
         );
     }

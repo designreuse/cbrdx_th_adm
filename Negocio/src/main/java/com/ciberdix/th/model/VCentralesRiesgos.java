@@ -2,10 +2,7 @@ package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 13/06/2017.
- */
-public class CentralesRiesgos {
+public class VCentralesRiesgos {
 
     private Integer idCentralRiesgo;
     private String codigo;
@@ -16,7 +13,9 @@ public class CentralesRiesgos {
     private Timestamp auditoriaFecha;
     private Boolean indicadorReporta;
     private String descripcion;
+    private String tipoCentralInformacion;
     private Integer idTipoCentralInformacion;
+    private String vigencia;
     private Integer idVigencia;
     private Boolean indicadorWebServices;
     private String causal;
@@ -97,12 +96,28 @@ public class CentralesRiesgos {
         this.descripcion = descripcion;
     }
 
+    public String getTipoCentralInformacion() {
+        return tipoCentralInformacion;
+    }
+
+    public void setTipoCentralInformacion(String tipoCentralInformacion) {
+        this.tipoCentralInformacion = tipoCentralInformacion;
+    }
+
     public Integer getIdTipoCentralInformacion() {
         return idTipoCentralInformacion;
     }
 
     public void setIdTipoCentralInformacion(Integer idTipoCentralInformacion) {
         this.idTipoCentralInformacion = idTipoCentralInformacion;
+    }
+
+    public String getVigencia() {
+        return vigencia;
+    }
+
+    public void setVigencia(String vigencia) {
+        this.vigencia = vigencia;
     }
 
     public Integer getIdVigencia() {
@@ -160,4 +175,5 @@ public class CentralesRiesgos {
     public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
+
 }

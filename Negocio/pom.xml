@@ -78,6 +78,11 @@
             <artifactId>tika-core</artifactId>
             <version>1.16</version>
         </dependency>
+        <dependency>
+            <groupId>com.ciberdix</groupId>
+            <artifactId>dominio</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
