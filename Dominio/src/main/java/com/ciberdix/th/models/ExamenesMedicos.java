@@ -26,11 +26,12 @@ public class ExamenesMedicos {
     private Boolean verificado;
     private Boolean indicadorNovedad;
     private Integer idDiagnosticoCie;
+    private Integer idTipoExamenMedico;
 
     public ExamenesMedicos() {
     }
 
-    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie) {
+    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie, Integer idTipoExamenMedico) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
         this.codigoVerificacion = codigoVerificacion;
@@ -50,9 +51,10 @@ public class ExamenesMedicos {
         this.verificado = verificado;
         this.indicadorNovedad = indicadorNovedad;
         this.idDiagnosticoCie = idDiagnosticoCie;
+        this.idTipoExamenMedico = idTipoExamenMedico;
     }
 
-    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie) {
+    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie, Integer idTipoExamenMedico) {
         this.idExamenMedico = idExamenMedico;
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
@@ -73,6 +75,7 @@ public class ExamenesMedicos {
         this.verificado = verificado;
         this.indicadorNovedad = indicadorNovedad;
         this.idDiagnosticoCie = idDiagnosticoCie;
+        this.idTipoExamenMedico = idTipoExamenMedico;
     }
 
     @Id
@@ -276,6 +279,16 @@ public class ExamenesMedicos {
         this.idDiagnosticoCie = idDiagnosticoCie;
     }
 
+    @Basic
+    @Column(name = "IdTipoExamenMedico", nullable = true)
+    public Integer getIdTipoExamenMedico() {
+        return idTipoExamenMedico;
+    }
+
+    public void setIdTipoExamenMedico(Integer idTipoExamenMedico) {
+        this.idTipoExamenMedico = idTipoExamenMedico;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -319,6 +332,8 @@ public class ExamenesMedicos {
             return false;
         if (idDiagnosticoCie != null ? !idDiagnosticoCie.equals(that.idDiagnosticoCie) : that.idDiagnosticoCie != null)
             return false;
+        if (idTipoExamenMedico != null ? !idTipoExamenMedico.equals(that.idTipoExamenMedico) : that.idTipoExamenMedico != null)
+            return false;
 
         return true;
     }
@@ -345,6 +360,7 @@ public class ExamenesMedicos {
         result = 31 * result + (verificado != null ? verificado.hashCode() : 0);
         result = 31 * result + (indicadorNovedad != null ? indicadorNovedad.hashCode() : 0);
         result = 31 * result + (idDiagnosticoCie != null ? idDiagnosticoCie.hashCode() : 0);
+        result = 31 * result + (idTipoExamenMedico != null ? idTipoExamenMedico.hashCode() : 0);
         return result;
     }
 }

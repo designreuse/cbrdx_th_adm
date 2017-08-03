@@ -39,6 +39,11 @@ public class CargosRiesgosRefactorController {
         return vCargosRiesgosRefactorRepository.findByIdCargo(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cargoTipoRiesgo/{idCargo}/{idTipoRiesgo}")
+    List<VCargosRiesgos> findByIdCargo(@PathVariable Integer idCargo, @PathVariable Integer idTipoRiesgo) {
+        return vCargosRiesgosRefactorRepository.queryByIdCargoAndIdTipoRiesgoAndIndicadorHabilitadoIsTrue(idCargo, idTipoRiesgo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CargosRiesgos create(@RequestBody CargosRiesgos o) {
         return cargosRiesgosRefactorRepository.save(

@@ -54,7 +54,7 @@ public class ExamenesMedicosRefactorController {
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
                         o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion(),
                         o.getIdTercero(),o.getIdConceptoBienestar(),o.getDetalle(),o.getVerificado(),o.getIndicadorNovedad(),
-                        o.getIdDiagnosticoCie()
+                        o.getIdDiagnosticoCie(),o.getIdTipoExamenMedico()
                 ));
     }
 
@@ -67,7 +67,7 @@ public class ExamenesMedicosRefactorController {
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
                         o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion(),
                         o.getIdTercero(),o.getIdConceptoBienestar(),o.getDetalle(),o.getVerificado(),o.getIndicadorNovedad(),
-                        o.getIdDiagnosticoCie()
+                        o.getIdDiagnosticoCie(),o.getIdTipoExamenMedico()
                 )
         );
     }

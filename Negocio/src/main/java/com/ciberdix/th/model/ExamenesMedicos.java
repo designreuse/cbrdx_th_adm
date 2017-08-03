@@ -31,6 +31,7 @@ public class ExamenesMedicos {
     private Boolean verificado;
     private Boolean indicadorNovedad;
     private Integer idDiagnosticoCie;
+    private Integer idTipoExamenMedico;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -190,5 +191,13 @@ public class ExamenesMedicos {
 
     public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
         this.idDiagnosticoCie = idDiagnosticoCie;
+    }
+
+    public Integer getIdTipoExamenMedico() {
+        return idTipoExamenMedico;
+    }
+
+    public void setIdTipoExamenMedico(Integer idTipoExamenMedico) {
+        this.idTipoExamenMedico = idTipoExamenMedico;
     }
 }
