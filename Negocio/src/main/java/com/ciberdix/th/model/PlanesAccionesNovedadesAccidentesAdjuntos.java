@@ -7,6 +7,7 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
     private Integer idPlanAccionNovedadAccidenteAdjunto;
     private Integer idPlanAccionNovedadAccidente;
     private Integer idAdjunto;
+    private Boolean indicadorRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -57,5 +58,13 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorRespuesta() {
+        return indicadorRespuesta;
+    }
+
+    public void setIndicadorRespuesta(Boolean indicadorRespuesta) {
+        this.indicadorRespuesta = indicadorRespuesta;
     }
 }

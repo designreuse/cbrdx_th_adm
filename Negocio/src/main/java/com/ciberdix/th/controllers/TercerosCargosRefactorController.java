@@ -11,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,37 +27,43 @@ import java.util.stream.Collectors;
 @Api(value = "tercerosCargos", description = "Cargos del Tercero")
 public class TercerosCargosRefactorController {
 
-    @Value("${business.url}")
-    String businessURL;
+    @Value("${domain.url}")
+    private String baseUrl;
 
-    Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/tercerosCargos";
+    @Value("${business.url}")
+    private String businessUrl;
+
+    private String serviceUrl;
+
+    private RestTemplate restTemplate;
+
+    @PostConstruct
+    void init() {
+        serviceUrl = baseUrl + "/api/gruposDotaciones/";
+        restTemplate = new RestTemplate();
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     List<VTercerosCargos> findAll() {
-        RestTemplate restTemplate = new RestTemplate();
         VTercerosCargos[] parametros = restTemplate.getForObject(serviceUrl, VTercerosCargos[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VTercerosCargos findOne(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/" + id, VTercerosCargos.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
     List<VTercerosCargos> findByEstructuraCargo(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarEstructuraCargo/" + id, VTercerosCargos[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructura/{id}")
     List<VTercerosCargos> findByEstructura(@PathVariable Integer id, HttpServletRequest request) {
-        RestTemplate restTemplate = new RestTemplate();
         JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
         String token = UtilitiesController.extractToken(request);
-        String businessServiceURL = businessURL + "/api/";
+        String businessServiceURL = businessUrl + "/api/";
         HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token);
         Collection<?> userRoles = jwtTokenUtil.getAuthorities();
         Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
@@ -87,26 +94,22 @@ public class TercerosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<VTercerosCargos> findEnabled() {
-        RestTemplate restTemplate = new RestTemplate();
         VTercerosCargos[] parametros = restTemplate.getForObject(serviceUrl + "/enabled/", VTercerosCargos[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarCargo/{id}")
     List<VTercerosCargos> findByIdCargo(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(restTemplate.getForObject(serviceUrl + "/buscarCargo/" + id, VTercerosCargos[].class));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
     VTercerosCargos findByIdTercero(@PathVariable Long id) {
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(serviceUrl + "/tercero/" + id, VTercerosCargos.class);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos obj) {
-        RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, TercerosCargos.class);
     }
 

@@ -10,6 +10,7 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
     private Integer idPlanAccionNovedadAccidente;
     private String nombreArchivo;
     private Integer idAdjunto;
+    private Boolean indicadorRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -52,6 +53,16 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
 
     public void setIdAdjunto(Integer idAdjunto) {
         this.idAdjunto = idAdjunto;
+    }
+
+    @Basic
+    @Column(name = "IndicadorRespuesta", nullable = true)
+    public Boolean getIndicadorRespuesta() {
+        return indicadorRespuesta;
+    }
+
+    public void setIndicadorRespuesta(Boolean indicadorRespuesta) {
+        this.indicadorRespuesta = indicadorRespuesta;
     }
 
     @Basic
@@ -98,6 +109,8 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
         if (nombreArchivo != null ? !nombreArchivo.equals(that.nombreArchivo) : that.nombreArchivo != null)
             return false;
         if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
+        if (indicadorRespuesta != null ? !indicadorRespuesta.equals(that.indicadorRespuesta) : that.indicadorRespuesta != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -114,6 +127,7 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
         result = 31 * result + (idPlanAccionNovedadAccidente != null ? idPlanAccionNovedadAccidente.hashCode() : 0);
         result = 31 * result + (nombreArchivo != null ? nombreArchivo.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        result = 31 * result + (indicadorRespuesta != null ? indicadorRespuesta.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

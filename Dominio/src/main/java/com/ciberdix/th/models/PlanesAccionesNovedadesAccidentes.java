@@ -1,11 +1,11 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "PlanesAccionesNovedadesAccidentesAdjuntos", schema = "dbo", catalog = "CREZCAMOS")
+@Table(name = "PlanesAccionesNovedadesAccidentes", schema = "dbo", catalog = "CREZCAMOS")
 public class PlanesAccionesNovedadesAccidentes {
     private Integer idPlanAccionNovedadAccidente;
     private Integer idTerceroNovedad;
@@ -15,6 +15,9 @@ public class PlanesAccionesNovedadesAccidentes {
     private Date fechaLimite;
     private Long idEncargado;
     private Date fechaVerificacion;
+    private String observacion;
+    private String respuesta;
+    private Boolean indicadorVerficar;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -22,7 +25,7 @@ public class PlanesAccionesNovedadesAccidentes {
     public PlanesAccionesNovedadesAccidentes() {
     }
 
-    public PlanesAccionesNovedadesAccidentes(Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public PlanesAccionesNovedadesAccidentes(Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, String observacion, String respuesta, Boolean indicadorVerficar, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.idEstadoPlanAccion = idEstadoPlanAccion;
         this.actividad = actividad;
@@ -30,12 +33,15 @@ public class PlanesAccionesNovedadesAccidentes {
         this.fechaLimite = fechaLimite;
         this.idEncargado = idEncargado;
         this.fechaVerificacion = fechaVerificacion;
+        this.observacion = observacion;
+        this.respuesta = respuesta;
+        this.indicadorVerficar = indicadorVerficar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public PlanesAccionesNovedadesAccidentes(Integer idPlanAccionNovedadAccidente, Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public PlanesAccionesNovedadesAccidentes(Integer idPlanAccionNovedadAccidente, Integer idTerceroNovedad, Integer idEstadoPlanAccion, String actividad, Long idResponsable, Date fechaLimite, Long idEncargado, Date fechaVerificacion, String observacion, String respuesta, Boolean indicadorVerficar, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idPlanAccionNovedadAccidente = idPlanAccionNovedadAccidente;
         this.idTerceroNovedad = idTerceroNovedad;
         this.idEstadoPlanAccion = idEstadoPlanAccion;
@@ -44,6 +50,9 @@ public class PlanesAccionesNovedadesAccidentes {
         this.fechaLimite = fechaLimite;
         this.idEncargado = idEncargado;
         this.fechaVerificacion = fechaVerificacion;
+        this.observacion = observacion;
+        this.respuesta = respuesta;
+        this.indicadorVerficar = indicadorVerficar;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -131,6 +140,36 @@ public class PlanesAccionesNovedadesAccidentes {
     }
 
     @Basic
+    @Column(name = "Observacion", nullable = true, length = 500)
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    @Basic
+    @Column(name = "Respuesta", nullable = true, length = 500)
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
+    @Basic
+    @Column(name = "IndicadorVerficar", nullable = true)
+    public Boolean getIndicadorVerficar() {
+        return indicadorVerficar;
+    }
+
+    public void setIndicadorVerficar(Boolean indicadorVerficar) {
+        this.indicadorVerficar = indicadorVerficar;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -180,6 +219,10 @@ public class PlanesAccionesNovedadesAccidentes {
         if (idEncargado != null ? !idEncargado.equals(that.idEncargado) : that.idEncargado != null) return false;
         if (fechaVerificacion != null ? !fechaVerificacion.equals(that.fechaVerificacion) : that.fechaVerificacion != null)
             return false;
+        if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
+        if (respuesta != null ? !respuesta.equals(that.respuesta) : that.respuesta != null) return false;
+        if (indicadorVerficar != null ? !indicadorVerficar.equals(that.indicadorVerficar) : that.indicadorVerficar != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -200,6 +243,9 @@ public class PlanesAccionesNovedadesAccidentes {
         result = 31 * result + (fechaLimite != null ? fechaLimite.hashCode() : 0);
         result = 31 * result + (idEncargado != null ? idEncargado.hashCode() : 0);
         result = 31 * result + (fechaVerificacion != null ? fechaVerificacion.hashCode() : 0);
+        result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
+        result = 31 * result + (respuesta != null ? respuesta.hashCode() : 0);
+        result = 31 * result + (indicadorVerficar != null ? indicadorVerficar.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
