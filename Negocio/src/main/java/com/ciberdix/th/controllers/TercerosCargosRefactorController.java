@@ -1,6 +1,5 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtTokenUtil;
 import io.swagger.annotations.Api;
@@ -39,7 +38,7 @@ public class TercerosCargosRefactorController {
 
     @PostConstruct
     void init() {
-        serviceUrl = baseUrl + "/api/gruposDotaciones/";
+        serviceUrl = baseUrl + "/api/tercerosCargos";
         restTemplate = new RestTemplate();
     }
 
