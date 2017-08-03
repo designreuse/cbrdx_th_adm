@@ -9,6 +9,7 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
     private Integer idPlanAccionNovedadAccidenteAdjunto;
     private Integer idPlanAccionNovedadAccidente;
     private Integer idAdjunto;
+    private Boolean indicadorRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -16,18 +17,20 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
     public PlanesAccionesNovedadesAccidentesAdjuntos() {
     }
 
-    public PlanesAccionesNovedadesAccidentesAdjuntos(Integer idPlanAccionNovedadAccidente, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public PlanesAccionesNovedadesAccidentesAdjuntos(Integer idPlanAccionNovedadAccidente, Integer idAdjunto, Boolean indicadorRespuesta, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idPlanAccionNovedadAccidente = idPlanAccionNovedadAccidente;
         this.idAdjunto = idAdjunto;
+        this.indicadorRespuesta = indicadorRespuesta;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
     }
 
-    public PlanesAccionesNovedadesAccidentesAdjuntos(Integer idPlanAccionNovedadAccidenteAdjunto, Integer idPlanAccionNovedadAccidente, Integer idAdjunto, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public PlanesAccionesNovedadesAccidentesAdjuntos(Integer idPlanAccionNovedadAccidenteAdjunto, Integer idPlanAccionNovedadAccidente, Integer idAdjunto, Boolean indicadorRespuesta, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
         this.idPlanAccionNovedadAccidenteAdjunto = idPlanAccionNovedadAccidenteAdjunto;
         this.idPlanAccionNovedadAccidente = idPlanAccionNovedadAccidente;
         this.idAdjunto = idAdjunto;
+        this.indicadorRespuesta = indicadorRespuesta;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -62,6 +65,16 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
 
     public void setIdAdjunto(Integer idAdjunto) {
         this.idAdjunto = idAdjunto;
+    }
+
+    @Basic
+    @Column(name = "IndicadorRespuesta", nullable = true)
+    public Boolean getIndicadorRespuesta() {
+        return indicadorRespuesta;
+    }
+
+    public void setIndicadorRespuesta(Boolean indicadorRespuesta) {
+        this.indicadorRespuesta = indicadorRespuesta;
     }
 
     @Basic
@@ -106,6 +119,8 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
         if (idPlanAccionNovedadAccidente != null ? !idPlanAccionNovedadAccidente.equals(that.idPlanAccionNovedadAccidente) : that.idPlanAccionNovedadAccidente != null)
             return false;
         if (idAdjunto != null ? !idAdjunto.equals(that.idAdjunto) : that.idAdjunto != null) return false;
+        if (indicadorRespuesta != null ? !indicadorRespuesta.equals(that.indicadorRespuesta) : that.indicadorRespuesta != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -121,6 +136,7 @@ public class PlanesAccionesNovedadesAccidentesAdjuntos {
         int result = idPlanAccionNovedadAccidenteAdjunto != null ? idPlanAccionNovedadAccidenteAdjunto.hashCode() : 0;
         result = 31 * result + (idPlanAccionNovedadAccidente != null ? idPlanAccionNovedadAccidente.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
+        result = 31 * result + (indicadorRespuesta != null ? indicadorRespuesta.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);

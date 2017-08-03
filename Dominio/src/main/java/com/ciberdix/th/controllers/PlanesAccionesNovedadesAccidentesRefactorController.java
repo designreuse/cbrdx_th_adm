@@ -48,7 +48,8 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
                 new PlanesAccionesNovedadesAccidentes(
                         o.getIdTerceroNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getObservacion(),o.getRespuesta(),o.getIndicadorVerficar(),o.getIndicadorHabilitado(),
+                        o.getAuditoriaUsuario()
                 )
         );
     }
@@ -59,7 +60,7 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
                 new PlanesAccionesNovedadesAccidentes(
                         o.getIdPlanAccionNovedadAccidente(),o.getIdTerceroNovedad(),o.getIdEstadoPlanAccion(),
                         o.getActividad(),o.getIdResponsable(),o.getFechaLimite(),o.getIdEncargado(),o.getFechaVerificacion(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getObservacion(),o.getRespuesta(),o.getIndicadorVerficar(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }

@@ -8,6 +8,7 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
     private Integer idPlanAccionNovedadAccidente;
     private String nombreArchivo;
     private Integer idAdjunto;
+    private Boolean indicadorRespuesta;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -66,5 +67,13 @@ public class VPlanesAccionesNovedadesAccidentesAdjuntos {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Boolean getIndicadorRespuesta() {
+        return indicadorRespuesta;
+    }
+
+    public void setIndicadorRespuesta(Boolean indicadorRespuesta) {
+        this.indicadorRespuesta = indicadorRespuesta;
     }
 }

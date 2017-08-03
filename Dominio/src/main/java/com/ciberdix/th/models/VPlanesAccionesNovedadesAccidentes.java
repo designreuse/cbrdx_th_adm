@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -18,6 +18,9 @@ public class VPlanesAccionesNovedadesAccidentes {
     private String nombreEncargado;
     private Long idEncargado;
     private Date fechaVerificacion;
+    private String observacion;
+    private String respuesta;
+    private Boolean indicadorVerficar;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
@@ -133,6 +136,36 @@ public class VPlanesAccionesNovedadesAccidentes {
     }
 
     @Basic
+    @Column(name = "Observacion", nullable = true, length = 500)
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    @Basic
+    @Column(name = "Respuesta", nullable = true, length = 500)
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+
+    @Basic
+    @Column(name = "IndicadorVerficar", nullable = true)
+    public Boolean getIndicadorVerficar() {
+        return indicadorVerficar;
+    }
+
+    public void setIndicadorVerficar(Boolean indicadorVerficar) {
+        this.indicadorVerficar = indicadorVerficar;
+    }
+
+    @Basic
     @Column(name = "IndicadorHabilitado", nullable = true)
     public Boolean getIndicadorHabilitado() {
         return indicadorHabilitado;
@@ -188,6 +221,10 @@ public class VPlanesAccionesNovedadesAccidentes {
         if (idEncargado != null ? !idEncargado.equals(that.idEncargado) : that.idEncargado != null) return false;
         if (fechaVerificacion != null ? !fechaVerificacion.equals(that.fechaVerificacion) : that.fechaVerificacion != null)
             return false;
+        if (observacion != null ? !observacion.equals(that.observacion) : that.observacion != null) return false;
+        if (respuesta != null ? !respuesta.equals(that.respuesta) : that.respuesta != null) return false;
+        if (indicadorVerficar != null ? !indicadorVerficar.equals(that.indicadorVerficar) : that.indicadorVerficar != null)
+            return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
@@ -211,6 +248,9 @@ public class VPlanesAccionesNovedadesAccidentes {
         result = 31 * result + (nombreEncargado != null ? nombreEncargado.hashCode() : 0);
         result = 31 * result + (idEncargado != null ? idEncargado.hashCode() : 0);
         result = 31 * result + (fechaVerificacion != null ? fechaVerificacion.hashCode() : 0);
+        result = 31 * result + (observacion != null ? observacion.hashCode() : 0);
+        result = 31 * result + (respuesta != null ? respuesta.hashCode() : 0);
+        result = 31 * result + (indicadorVerficar != null ? indicadorVerficar.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
