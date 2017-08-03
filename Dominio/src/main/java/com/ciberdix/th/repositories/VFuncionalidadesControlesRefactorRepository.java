@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface VFuncionalidadesControlesRefactorRepository extends CrudRepository<VFuncionalidadesControles, Integer> {
 
+    VFuncionalidadesControles findByCodigo(String codigo);
+
     List<VFuncionalidadesControles> findByIndicadorHabilitadoIsTrue();
 
     List<VFuncionalidadesControles> findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(Integer idFuncionalidad);
