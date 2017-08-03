@@ -65,6 +65,11 @@ public class FuncionalidadesControlesRefactorController {
         return vFuncionalidadesControlesRefactorRepository.findByIndicadorHabilitadoIsTrueAndIdFuncionalidad(idFuncionalidad);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/codigo/{codigo}")
+    VFuncionalidadesControles queryAllByIdSecCam(@PathVariable String codigo) {
+        return vFuncionalidadesControlesRefactorRepository.findByCodigo(codigo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     FuncionalidadesControles createList(@RequestBody FuncionalidadesControles fc) {
         return funcionalidadesControlesRefactorRepository.save(
