@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  * Created by Felipe Alejandro Aguirre Santos on 24/03/2017.
  */
 public interface ListasRefactorRepository extends CrudRepository<Listas, Integer> {
+
+    Listas findByNombreTabla(String nombreTabla);
 }

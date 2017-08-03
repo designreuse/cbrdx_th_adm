@@ -31,6 +31,11 @@ public class ListasRefactorController {
         return listasRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/buscarTabla/{tableName}")
+    Listas findOne(@PathVariable String tableName) {
+        return listasRefactorRepository.findByNombreTabla(tableName);
+    }
+
     @RequestMapping(method = RequestMethod.PUT)
     Listas update(@RequestBody Listas o) {
         return listasRefactorRepository.save(
