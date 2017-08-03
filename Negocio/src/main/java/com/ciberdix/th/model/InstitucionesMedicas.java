@@ -1,6 +1,7 @@
 package com.ciberdix.th.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Danny on 16/06/2017.
@@ -19,6 +20,7 @@ public class InstitucionesMedicas {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private List<Integer> listTipos;
 
     public Integer getIdInstitucionMedica() {
         return idInstitucionMedica;
@@ -114,5 +116,13 @@ public class InstitucionesMedicas {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public List<Integer> getListTipos() {
+        return listTipos;
+    }
+
+    public void setListTipos(List<Integer> listTipos) {
+        this.listTipos = listTipos;
     }
 }

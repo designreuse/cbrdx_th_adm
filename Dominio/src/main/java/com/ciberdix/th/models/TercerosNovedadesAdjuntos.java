@@ -12,25 +12,28 @@ public class TercerosNovedadesAdjuntos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private Boolean indicadorAccidente;
 
     public TercerosNovedadesAdjuntos() {
     }
 
-    public TercerosNovedadesAdjuntos(Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+    public TercerosNovedadesAdjuntos(Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorAccidente) {
         this.idTerceroNovedad = idTerceroNovedad;
         this.idAdjunto = idAdjunto;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
+        this.indicadorAccidente = indicadorAccidente;
     }
 
-    public TercerosNovedadesAdjuntos(Integer idTerceroNovedadAdjunto, Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+    public TercerosNovedadesAdjuntos(Integer idTerceroNovedadAdjunto, Integer idTerceroNovedad, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorHabilitado, Boolean indicadorAccidente) {
         this.idTerceroNovedadAdjunto = idTerceroNovedadAdjunto;
         this.idTerceroNovedad = idTerceroNovedad;
         this.idAdjunto = idAdjunto;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
+        this.indicadorAccidente = indicadorAccidente;
     }
 
     @Id
@@ -94,6 +97,16 @@ public class TercerosNovedadesAdjuntos {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    @Basic
+    @Column(name = "IndicadorAccidente", nullable = true)
+    public Boolean getIndicadorAccidente() {
+        return indicadorAccidente;
+    }
+
+    public void setIndicadorAccidente(Boolean indicadorAccidente) {
+        this.indicadorAccidente = indicadorAccidente;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,6 +125,8 @@ public class TercerosNovedadesAdjuntos {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (indicadorAccidente != null ? !indicadorAccidente.equals(that.indicadorAccidente) : that.indicadorAccidente != null)
+            return false;
 
         return true;
     }
@@ -124,6 +139,7 @@ public class TercerosNovedadesAdjuntos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (indicadorAccidente != null ? indicadorAccidente.hashCode() : 0);
         return result;
     }
 }

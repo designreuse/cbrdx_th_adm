@@ -273,7 +273,7 @@ public class Cargos {
     }
 
     @Basic
-    @Column(name = "ResponsabilidadesAd", nullable = true, length = 500)
+    @Column(name = "ResponsabilidadesAd", nullable = true, length = 2147483647)
     public String getResponsabilidadesAd() {
         return responsabilidadesAd;
     }

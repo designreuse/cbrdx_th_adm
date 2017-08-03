@@ -2,9 +2,11 @@ package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,42 +20,51 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/institucionesMedicas")
 public class InstitucionesMedicasRefactorController {
 
-    Globales globales = new Globales();
-    private String serviceUrl = globales.getUrl() + "/api/institucionesMedicas";
+    @Value("${domain.url}")
+    private String baseUrl;
+
+    @Value("${business.url}")
+    private String businessUrl;
+
+    private String serviceUrl;
+
+    private RestTemplate restTemplate;
+
+    @PostConstruct
+    void init() {
+        serviceUrl = baseUrl + "/api/institucionesMedicas/";
+        restTemplate = new RestTemplate();
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     List<VInstitucionesMedicas> findAll() {
-        RestTemplate restTemplate = new RestTemplate();
         VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl, VInstitucionesMedicas[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VInstitucionesMedicas findOne(@PathVariable Integer id) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(serviceUrl + "/" + id, VInstitucionesMedicas.class);
+        return restTemplate.getForObject(serviceUrl + id, VInstitucionesMedicas.class);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled")
     List<VInstitucionesMedicas> findEnabled() {
-        RestTemplate restTemplate = new RestTemplate();
-        VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", VInstitucionesMedicas[].class);
+        VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "enabled", VInstitucionesMedicas[].class);
         return Arrays.asList(parametros);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/publicacion/{idPublicacion}")
     List<VInstitucionesMedicas> findProcess(@PathVariable Integer idPublicacion) {
-        RestTemplate restTemplate = new RestTemplate();
-        Publicaciones pubData = restTemplate.getForObject(globales.getUrl() + "/api/publicaciones/" + idPublicacion, Publicaciones.class);
-        Requerimientos reqData = restTemplate.getForObject(globales.getUrl() + "/api/requerimientos/" + pubData.getIdRequerimiento(), Requerimientos.class);
+        Publicaciones pubData = restTemplate.getForObject(baseUrl + "/api/publicaciones/" + idPublicacion, Publicaciones.class);
+        Requerimientos reqData = restTemplate.getForObject(baseUrl + "/api/requerimientos/" + pubData.getIdRequerimiento(), Requerimientos.class);
         if (reqData.getIdEstructuraFisica() != null) {
-            VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(globales.getUrl() + "/api/institucionesMedicasEstructurasFisicas/estructuraFisica/" + reqData.getIdEstructuraFisica(), VInstitucionesMedicasEstructurasFisicas[].class);
+            VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(baseUrl + "/api/institucionesMedicasEstructurasFisicas/estructuraFisica/" + reqData.getIdEstructuraFisica(), VInstitucionesMedicasEstructurasFisicas[].class);
             VInstitucionesMedicas[] fullData = restTemplate.getForObject(serviceUrl, VInstitucionesMedicas[].class);
             List<VInstitucionesMedicas> returnData = Arrays.asList(fullData);
             returnData = returnData.stream().filter(t -> Arrays.stream(parametros).anyMatch(f -> f.getIdInstitucionMedica().equals(t.getIdInstitucionMedica()))).collect(Collectors.toList());
             return returnData;
         } else {
-            VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "/enabled", VInstitucionesMedicas[].class);
+            VInstitucionesMedicas[] parametros = restTemplate.getForObject(serviceUrl + "enabled", VInstitucionesMedicas[].class);
             return Arrays.asList(parametros);
         }
 
@@ -61,13 +72,41 @@ public class InstitucionesMedicasRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     InstitucionesMedicas create(@RequestBody InstitucionesMedicas obj) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForObject(serviceUrl, obj, InstitucionesMedicas.class);
+        InstitucionesMedicas im = restTemplate.postForObject(serviceUrl, obj, InstitucionesMedicas.class);
+        InstitucionesMedicasTiposExamenes imte = new InstitucionesMedicasTiposExamenes();
+        if(obj.getListTipos()!=null && obj.getListTipos().size()>0){
+            imte.setIdInstitucionMedica(im.getIdInstitucionMedica());
+            imte.setIndicadorHabilitado(true);
+            imte.setAuditoriaUsuario(im.getAuditoriaUsuario());
+            imte.setAuditoriaFecha(im.getAuditoriaFecha());
+            for(Integer id : obj.getListTipos()){
+                imte.setIdTipoExamen(id);
+                restTemplate.postForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
+            }
+        }
+        return im;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody InstitucionesMedicas obj) {
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/disabled/" + obj.getIdInstitucionMedica(), InstitucionesMedicasTiposExamenes.class);
+        if(obj.getListTipos()!=null && obj.getListTipos().size()>0){
+            VInstitucionesMedicasTiposExamenes imte = new VInstitucionesMedicasTiposExamenes();
+            for(Integer id : obj.getListTipos()){
+                imte = restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/institucionMedicaTipoExamen/" + obj.getIdInstitucionMedica() + "/" + id, VInstitucionesMedicasTiposExamenes.class);
+                if(imte!=null){
+                    imte.setIndicadorHabilitado(true);
+                    restTemplate.put(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
+                }else{
+                    imte.setIdInstitucionMedica(obj.getIdInstitucionMedica());
+                    imte.setIndicadorHabilitado(true);
+                    imte.setAuditoriaUsuario(obj.getAuditoriaUsuario());
+                    imte.setAuditoriaFecha(obj.getAuditoriaFecha());
+                    imte.setIdTipoExamen(id);
+                    restTemplate.postForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
+                }
+            }
+        }
         restTemplate.put(serviceUrl, obj);
     }
 
