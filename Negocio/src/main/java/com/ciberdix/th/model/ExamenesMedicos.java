@@ -25,6 +25,12 @@ public class ExamenesMedicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorOtraInstitucion;
+    private Long idTercero;
+    private Integer idConceptoBienestar;
+    private String detalle;
+    private Boolean verificado;
+    private Boolean indicadorNovedad;
+    private Integer idDiagnosticoCie;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -136,5 +142,53 @@ public class ExamenesMedicos {
 
     public void setIndicadorOtraInstitucion(Boolean indicadorOtraInstitucion) {
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
+    }
+
+    public Long getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
+    }
+
+    public Integer getIdConceptoBienestar() {
+        return idConceptoBienestar;
+    }
+
+    public void setIdConceptoBienestar(Integer idConceptoBienestar) {
+        this.idConceptoBienestar = idConceptoBienestar;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    public Boolean getVerificado() {
+        return verificado;
+    }
+
+    public void setVerificado(Boolean verificado) {
+        this.verificado = verificado;
+    }
+
+    public Boolean getIndicadorNovedad() {
+        return indicadorNovedad;
+    }
+
+    public void setIndicadorNovedad(Boolean indicadorNovedad) {
+        this.indicadorNovedad = indicadorNovedad;
+    }
+
+    public Integer getIdDiagnosticoCie() {
+        return idDiagnosticoCie;
+    }
+
+    public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
+        this.idDiagnosticoCie = idDiagnosticoCie;
     }
 }

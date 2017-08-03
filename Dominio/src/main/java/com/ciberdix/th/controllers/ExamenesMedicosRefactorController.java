@@ -40,6 +40,11 @@ public class ExamenesMedicosRefactorController {
         return vExamenesMedicosRefactorRepository.findOne(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
+    List<VExamenesMedicos> findByIdTercero(@PathVariable Long id) {
+        return vExamenesMedicosRefactorRepository.findAllByIdTercero(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ExamenesMedicos createList(@RequestBody ExamenesMedicos o) {
         return examenesMedicosRefactorRepository.save(
@@ -47,7 +52,9 @@ public class ExamenesMedicosRefactorController {
                         o.getIdProcesoSeleccion(),o.getIdEstadoExamenMedico(),
                         o.getCodigoVerificacion(),o.getIndicadorVerificado(),o.getIdMaestroRespuesta(),
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
-                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion()
+                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion(),
+                        o.getIdTercero(),o.getIdConceptoBienestar(),o.getDetalle(),o.getVerificado(),o.getIndicadorNovedad(),
+                        o.getIdDiagnosticoCie()
                 ));
     }
 
@@ -58,7 +65,9 @@ public class ExamenesMedicosRefactorController {
                         o.getIdExamenMedico(),o.getIdProcesoSeleccion(),o.getIdEstadoExamenMedico(),
                         o.getCodigoVerificacion(),o.getIndicadorVerificado(),o.getIdMaestroRespuesta(),
                         o.getIdMedicoResponsable(),o.getIdInstitucionMedica(),o.getFechaProgramada(),
-                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion()
+                        o.getIdPreguntaOpcion(),o.getIdAdjunto(),o.getAuditoriaUsuario(),o.getIndicadorOtraInstitucion(),
+                        o.getIdTercero(),o.getIdConceptoBienestar(),o.getDetalle(),o.getVerificado(),o.getIndicadorNovedad(),
+                        o.getIdDiagnosticoCie()
                 )
         );
     }
