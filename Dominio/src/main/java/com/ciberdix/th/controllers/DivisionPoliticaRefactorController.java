@@ -53,7 +53,6 @@ public class DivisionPoliticaRefactorController {
     List<VDivisionPoliticaRec> findHoods(@PathVariable String queryString) {
         String queryStringO = OutSpecialChars.getStr(queryString);
         List<VDivisionPoliticaRec> presort = vDivisionPoliticaRecRefactorRepository.queryLocations(queryStringO);
-        presort.sort(Comparator.comparing(VDivisionPoliticaRec::getCamino));
         return presort;
     }
 

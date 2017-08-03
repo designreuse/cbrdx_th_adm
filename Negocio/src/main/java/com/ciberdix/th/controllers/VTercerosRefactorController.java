@@ -1,5 +1,6 @@
 package com.ciberdix.th.controllers;
 
+import com.ciberdix.th.model.EstructuraOrganizacionalCargos;
 import com.ciberdix.th.model.Usuarios;
 import com.ciberdix.th.model.VTerceros;
 import io.swagger.annotations.Api;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -85,10 +87,17 @@ public class VTercerosRefactorController {
         return Arrays.asList(tercero);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/estructuraOrganizacionalCargos/{id}")
-    List<VTerceros> listarTercerosTipo(@PathVariable Integer id) {
-        VTerceros[] tercero = restTemplate.getForObject(serviceUrl + "estructuraOrganizacionalCargos/"+id, VTerceros[].class);
-        return Arrays.asList(tercero);
+    @RequestMapping(method = RequestMethod.PUT, value = "/estructuraOrganizacionalCargos")
+    List<VTerceros> listarTercerosTipo(@RequestBody List<EstructuraOrganizacionalCargos> list) {
+        List<VTerceros> listT = new ArrayList<>();
+        List<VTerceros> listTer = Arrays.asList(restTemplate.getForObject(serviceUrl, VTerceros[].class));
+        for(EstructuraOrganizacionalCargos o : list){
+            List<VTerceros> t = Arrays.asList(restTemplate.getForObject(serviceUrl + "estructuraOrganizacionalCargos/"+o.getIdEstructuraOrganizacionalCargo(), VTerceros[].class));
+            for(VTerceros vt : t){
+                listT.add(vt);
+            }
+        }
+        return listTer.stream().filter(ter->listT.stream().anyMatch(f->ter.getIdTercero().equals(f.getIdTercero()))).collect(Collectors.toList());
     }
 
 }
