@@ -92,44 +92,70 @@ public class TercerosNovedadesRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/incidentesAccidentes")
-    List<VTercerosNovedades> findIncidentesAccidentes() {
+    List<VTercerosNovedades> findIncidentesAccidentes(HttpServletRequest request) {
+        String token = UtilitiesController.extractToken(request); //Extraccion del Token desde el Request
+        String businessServiceURL = businessUrl + "/api/"; //Composicion de BaseURL para Servicios de Logica
+        HttpHeaders httpHeaders = UtilitiesController.assembleHttpHeaders(token); //Encabezados para Request con Autenticación de Logica
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        Collection<?> userRoles = jwtTokenUtil.getAuthorities(); //Extraccion de Nombres de ROLE_ Asignados
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token); //Id de Usuario Conectado
+        HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
+        String ADMACC = UtilitiesController.findConstant("ADMACC").getValor();
+        Roles roles = restTemplate.exchange(businessServiceURL + "roles/rol/" + ADMACC, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody();
+        boolean isManager = userRoles.stream().anyMatch(r -> roles.getRol().equals(r.toString()));
         List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
         List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
-        tn = tn.stream().filter(t->n.stream().anyMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+        tn = tn.stream().filter(t -> n.stream().anyMatch(f -> t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
         Integer idEstadoNovedad = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
-        for(VTercerosNovedades vtn : tn){
-            if(vtn.getIdEstadoNovedad().equals(idEstadoNovedad)){
+        Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
+        for (VTercerosNovedades vtn : tn) {
+            if (vtn.getIdEstadoNovedad().equals(idEstadoNovedad)) {
                 vtn.setActividades(2);
-            }else{
+            } else {
                 List<VPlanesAccionesNovedadesAccidentes> pana = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/planesAccionesNovedadesAccidentes/terceroNovedad/" + vtn.getIdTerceroNovedad(), VPlanesAccionesNovedadesAccidentes[].class));
-                if(pana.size()>0){
+                if (pana.size() > 0) {
                     Integer idEstadoAccion = UtilitiesController.findListItem("ListasEstadosPlanesAccion", "VERF").getIdLista();
-                    List<VPlanesAccionesNovedadesAccidentes> panaF = pana.stream().filter(t->pana.stream().anyMatch(f->t.getIdEstadoPlanAccion().equals(idEstadoAccion))).collect(Collectors.toList());
-                    if(pana.size()==panaF.size()){
+                    List<VPlanesAccionesNovedadesAccidentes> panaF = pana.stream().filter(t -> pana.stream().anyMatch(f -> t.getIdEstadoPlanAccion().equals(idEstadoAccion))).collect(Collectors.toList());
+                    if (pana.size() == panaF.size()) {
                         vtn.setActividades(3);
-                    }else{
+                    } else {
                         vtn.setActividades(4);
                     }
-                }else{
+                } else {
                     vtn.setActividades(1);
                 }
             }
         }
-        return tn;
+        if (isManager) {
+            return tn;
+        } else {
+            List<VTercerosNovedades> tempReporta = tn.stream().filter(t -> t.getIdTerceroReporta().equals(idTercero)).collect(Collectors.toList());
+            List<VTercerosNovedades> tempAcciones = new ArrayList<>();
+            for (VTercerosNovedades vtn : tn) {
+                if (!tempReporta.contains(vtn)) {
+                    List<VPlanesAccionesNovedadesAccidentes> pana = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/planesAccionesNovedadesAccidentes/terceroNovedad/" + vtn.getIdTerceroNovedad(), VPlanesAccionesNovedadesAccidentes[].class));
+                    if (pana.stream().anyMatch(t -> (t.getIdResponsable() != null && t.getIdResponsable().equals(idTercero)) || (t.getIdEncargado() != null && t.getIdEncargado().equals(idTercero)))) {
+                        tempAcciones.add(vtn);
+                    }
+                }
+            }
+            return tn.stream().filter(t -> tempReporta.stream().anyMatch(f -> t.getIdTerceroNovedad().equals(f.getIdTerceroNovedad()))
+                    || tempAcciones.stream().anyMatch(f -> t.getIdTerceroNovedad().equals(f.getIdTerceroNovedad()))).collect(Collectors.toList());
+        }
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroAccidentes/{idTercero}")
     List<VTercerosNovedades> findIncidentesAccidentesByIdTercero(@PathVariable Integer idTercero) {
         List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
         List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
-        return tn.stream().filter(t->n.stream().anyMatch(f->t.getIdNovedad().equals(f.getIdNovedad()) && t.getIdTercero().equals(idTercero))).collect(Collectors.toList());
+        return tn.stream().filter(t -> n.stream().anyMatch(f -> t.getIdNovedad().equals(f.getIdNovedad()) && t.getIdTercero().equals(idTercero))).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/novedades")
     List<VTercerosNovedades> findNovedades() {
         List<VNovedades> n = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/novedades/incidentesAccidentes", VNovedades[].class));
         List<VTercerosNovedades> tn = Arrays.asList(restTemplate.getForObject(serviceUrl, VTercerosNovedades[].class));
-        return tn.stream().filter(t->n.stream().noneMatch(f->t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
+        return tn.stream().filter(t -> n.stream().noneMatch(f -> t.getIdNovedad().equals(f.getIdNovedad()))).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/filtroFechas/{FechaInicio}/{FechaFin}")
@@ -205,7 +231,7 @@ public class TercerosNovedadesRefactorController {
                     "<li>Descripción:" + o.getDescripcion() + "</li>" +
                     "</ol>" +
                     "Tenga en cuenta esta información de su colaborador para los procesos que desarrolla actualmente en su área.</p>";
-            if (novedad.getIndicadorAreasApoyo()!=null && novedad.getIndicadorAreasApoyo()) {
+            if (novedad.getIndicadorAreasApoyo() != null && novedad.getIndicadorAreasApoyo()) {
                 UtilitiesController.sendMail(UtilitiesController.findConstant("NONOAA").getValor(), "Gestion Novedad", "<p>Buen día Areas de apoyo</p>" + body);
             }
         }

@@ -301,5 +301,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(RelacionesListasCampos.class);
         config.exposeIdsFor(VRelacionesListas.class);
         config.exposeIdsFor(VRelacionesListasCampos.class);
+        config.exposeIdsFor(ListasProcesos.class);
+        config.exposeIdsFor(ListasSubProcesos.class);
     }
 }
