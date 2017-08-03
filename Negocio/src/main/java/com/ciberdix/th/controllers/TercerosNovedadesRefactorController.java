@@ -115,7 +115,7 @@ public class TercerosNovedadesRefactorController {
                 List<VPlanesAccionesNovedadesAccidentes> pana = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/planesAccionesNovedadesAccidentes/terceroNovedad/" + vtn.getIdTerceroNovedad(), VPlanesAccionesNovedadesAccidentes[].class));
                 if (pana.size() > 0) {
                     Integer idEstadoAccion = UtilitiesController.findListItem("ListasEstadosPlanesAccion", "VERF").getIdLista();
-                    List<VPlanesAccionesNovedadesAccidentes> panaF = pana.stream().filter(t -> pana.stream().anyMatch(f -> t.getIdEstadoPlanAccion().equals(idEstadoAccion))).collect(Collectors.toList());
+                    List<VPlanesAccionesNovedadesAccidentes> panaF = pana.stream().filter(t -> pana.stream().anyMatch(f -> t.getIdEstadoPlanAccion() != null && t.getIdEstadoPlanAccion().equals(idEstadoAccion))).collect(Collectors.toList());
                     if (pana.size() == panaF.size()) {
                         vtn.setActividades(3);
                     } else {
