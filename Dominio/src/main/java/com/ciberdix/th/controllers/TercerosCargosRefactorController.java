@@ -31,7 +31,7 @@ public class TercerosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/enabled/")
     List<VTercerosCargos> findEnabled() {
-        return (List<VTercerosCargos>) vTercerosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
+        return vTercerosCargosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/buscarEstructuraCargo/{id}")
@@ -56,21 +56,21 @@ public class TercerosCargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
     VTercerosCargos findByIdTercero(@PathVariable Long id) {
-        return vTercerosCargosRefactorRepository.findAllByIdTerceroAndIndicadorHabilitadoIsTrue(id);
+        return vTercerosCargosRefactorRepository.findByIdTerceroAndIndicadorHabilitadoIsTrue(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosCargos create(@RequestBody TercerosCargos o) {
         return tercerosCargosRefactorRepository.save(
-                new TercerosCargos(o.getIdTercero(),o.getIdEstructuraOrganizacionalCargo(),o.getAsignadoDesde(),
-                        o.getIdTipoContrato(),o.getIdZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()));
+                new TercerosCargos(o.getIdTercero(), o.getIdEstructuraOrganizacionalCargo(), o.getAsignadoDesde(),
+                        o.getIdTipoContrato(), o.getIdZona(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario()));
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody TercerosCargos o) {
         tercerosCargosRefactorRepository.save(
-                new TercerosCargos(o.getIdTerceroCargo(),o.getIdTercero(),o.getIdEstructuraOrganizacionalCargo(),o.getAsignadoDesde(),
-                        o.getIdTipoContrato(),o.getIdZona(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario())
+                new TercerosCargos(o.getIdTerceroCargo(), o.getIdTercero(), o.getIdEstructuraOrganizacionalCargo(), o.getAsignadoDesde(),
+                        o.getIdTipoContrato(), o.getIdZona(), o.getIndicadorHabilitado(), o.getAuditoriaUsuario())
         );
     }
 }
