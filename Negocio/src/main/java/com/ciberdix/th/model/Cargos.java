@@ -41,6 +41,8 @@ public class Cargos {
     private Integer paso;
     private Boolean indicadorZona;
     private BigInteger edadMax;
+    private Integer idProceso;
+    private Integer idSubProceso;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -312,5 +314,21 @@ public class Cargos {
 
     public void setEdadMax(BigInteger edadMax) {
         this.edadMax = edadMax;
+    }
+
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
+    public Integer getIdSubProceso() {
+        return idSubProceso;
+    }
+
+    public void setIdSubProceso(Integer idSubProceso) {
+        this.idSubProceso = idSubProceso;
     }
 }

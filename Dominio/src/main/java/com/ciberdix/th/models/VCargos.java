@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 22/06/2017.
- */
 @Entity
 @Table(name = "V_Cargos", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargos {
@@ -51,6 +48,10 @@ public class VCargos {
     private Integer paso;
     private Boolean indicadorZona;
     private BigInteger edadMax;
+    private String proceso;
+    private Integer idProceso;
+    private String subProceso;
+    private Integer idSubProceso;
 
     @Id
     @Column(name = "IdCargo", nullable = false)
@@ -462,6 +463,46 @@ public class VCargos {
         this.edadMax = edadMax;
     }
 
+    @Basic
+    @Column(name = "Proceso", nullable = true, length = 100)
+    public String getProceso() {
+        return proceso;
+    }
+
+    public void setProceso(String proceso) {
+        this.proceso = proceso;
+    }
+
+    @Basic
+    @Column(name = "IdProceso", nullable = true)
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
+    @Basic
+    @Column(name = "SubProceso", nullable = true, length = 100)
+    public String getSubProceso() {
+        return subProceso;
+    }
+
+    public void setSubProceso(String subProceso) {
+        this.subProceso = subProceso;
+    }
+
+    @Basic
+    @Column(name = "IdSubProceso", nullable = true)
+    public Integer getIdSubProceso() {
+        return idSubProceso;
+    }
+
+    public void setIdSubProceso(Integer idSubProceso) {
+        this.idSubProceso = idSubProceso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -531,6 +572,11 @@ public class VCargos {
         if (indicadorZona != null ? !indicadorZona.equals(vCargos.indicadorZona) : vCargos.indicadorZona != null)
             return false;
         if (edadMax != null ? !edadMax.equals(vCargos.edadMax) : vCargos.edadMax != null) return false;
+        if (proceso != null ? !proceso.equals(vCargos.proceso) : vCargos.proceso != null) return false;
+        if (idProceso != null ? !idProceso.equals(vCargos.idProceso) : vCargos.idProceso != null) return false;
+        if (subProceso != null ? !subProceso.equals(vCargos.subProceso) : vCargos.subProceso != null) return false;
+        if (idSubProceso != null ? !idSubProceso.equals(vCargos.idSubProceso) : vCargos.idSubProceso != null)
+            return false;
 
         return true;
     }
@@ -578,6 +624,10 @@ public class VCargos {
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
         result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         result = 31 * result + (edadMax != null ? edadMax.hashCode() : 0);
+        result = 31 * result + (proceso != null ? proceso.hashCode() : 0);
+        result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
+        result = 31 * result + (subProceso != null ? subProceso.hashCode() : 0);
+        result = 31 * result + (idSubProceso != null ? idSubProceso.hashCode() : 0);
         return result;
     }
 }

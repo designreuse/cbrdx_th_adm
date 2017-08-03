@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 20/06/2017.
- */
 @Entity
 @Table(name = "V_CargosRiesgos", schema = "dbo", catalog = "CREZCAMOS")
 public class VCargosRiesgos {
@@ -17,6 +14,10 @@ public class VCargosRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private String probabilidadRiesgo;
+    private Integer idProbabilidad;
+    private String consecuenciasRiesgos;
+    private Integer idConsecuencia;
 
     @Id
     @Column(name = "IdCargoRiesgo", nullable = false)
@@ -98,6 +99,46 @@ public class VCargosRiesgos {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    @Basic
+    @Column(name = "ProbabilidadRiesgo", nullable = true, length = 100)
+    public String getProbabilidadRiesgo() {
+        return probabilidadRiesgo;
+    }
+
+    public void setProbabilidadRiesgo(String probabilidadRiesgo) {
+        this.probabilidadRiesgo = probabilidadRiesgo;
+    }
+
+    @Basic
+    @Column(name = "IdProbabilidad", nullable = true)
+    public Integer getIdProbabilidad() {
+        return idProbabilidad;
+    }
+
+    public void setIdProbabilidad(Integer idProbabilidad) {
+        this.idProbabilidad = idProbabilidad;
+    }
+
+    @Basic
+    @Column(name = "ConsecuenciasRiesgos", nullable = true, length = 100)
+    public String getConsecuenciasRiesgos() {
+        return consecuenciasRiesgos;
+    }
+
+    public void setConsecuenciasRiesgos(String consecuenciasRiesgos) {
+        this.consecuenciasRiesgos = consecuenciasRiesgos;
+    }
+
+    @Basic
+    @Column(name = "IdConsecuencia", nullable = true)
+    public Integer getIdConsecuencia() {
+        return idConsecuencia;
+    }
+
+    public void setIdConsecuencia(Integer idConsecuencia) {
+        this.idConsecuencia = idConsecuencia;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,6 +158,14 @@ public class VCargosRiesgos {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (probabilidadRiesgo != null ? !probabilidadRiesgo.equals(that.probabilidadRiesgo) : that.probabilidadRiesgo != null)
+            return false;
+        if (idProbabilidad != null ? !idProbabilidad.equals(that.idProbabilidad) : that.idProbabilidad != null)
+            return false;
+        if (consecuenciasRiesgos != null ? !consecuenciasRiesgos.equals(that.consecuenciasRiesgos) : that.consecuenciasRiesgos != null)
+            return false;
+        if (idConsecuencia != null ? !idConsecuencia.equals(that.idConsecuencia) : that.idConsecuencia != null)
+            return false;
 
         return true;
     }
@@ -131,6 +180,10 @@ public class VCargosRiesgos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (probabilidadRiesgo != null ? probabilidadRiesgo.hashCode() : 0);
+        result = 31 * result + (idProbabilidad != null ? idProbabilidad.hashCode() : 0);
+        result = 31 * result + (consecuenciasRiesgos != null ? consecuenciasRiesgos.hashCode() : 0);
+        result = 31 * result + (idConsecuencia != null ? idConsecuencia.hashCode() : 0);
         return result;
     }
 }
