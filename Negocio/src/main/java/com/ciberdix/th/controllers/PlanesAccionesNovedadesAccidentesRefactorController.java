@@ -1,8 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.PlanesAccionesNovedadesAccidentes;
-import com.ciberdix.th.model.Usuarios;
-import com.ciberdix.th.model.VPlanesAccionesNovedadesAccidentes;
+import com.ciberdix.th.model.*;
 import com.ciberdix.th.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -65,7 +63,15 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
         HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders); //Entidad de Solicitud Autentica (HeaderOnly)
         Long idTercero = restTemplate.exchange(businessServiceURL + "usuarios/query/" + idUsuario, HttpMethod.GET, requestEntity, Usuarios.class, requestEntity).getBody().getIdTercero();
         List<VPlanesAccionesNovedadesAccidentes> prefilter = Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VPlanesAccionesNovedadesAccidentes[].class));
-        return prefilter.stream().filter(t -> t.getIdEncargado().equals(idTercero) || t.getIdResponsable().equals(idTercero)).collect(Collectors.toList());
+        String ADMACC = UtilitiesController.findConstant("ADMACC").getValor();
+        Roles roles = restTemplate.exchange(businessServiceURL + "roles/rol/" + ADMACC, HttpMethod.GET, requestEntity, Roles.class, requestEntity).getBody();
+        VTercerosNovedades vTercerosNovedades = restTemplate.getForObject(businessServiceURL + "tercerosNovedades/" + id, VTercerosNovedades.class);
+        boolean isManager = userRoles.stream().anyMatch(r -> roles.getRol().equals(r.toString())) || vTercerosNovedades.getIdTerceroReporta().equals(idTercero);
+        if (!isManager) {
+            return prefilter.stream().filter(t -> t.getIdEncargado().equals(idTercero) || t.getIdResponsable().equals(idTercero)).collect(Collectors.toList());
+        } else {
+            return prefilter;
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST)
