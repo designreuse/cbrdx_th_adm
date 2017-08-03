@@ -34,6 +34,11 @@ public class RiesgosTiposRefactorController {
         return riesgosTiposRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cargo/{id}")
+    List<RiesgosTipos> findByIdCargo (@PathVariable Integer id){
+        return riesgosTiposRefactorRepository.queryByIdCargo(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     RiesgosTipos create(@RequestBody RiesgosTipos obj) {
         return riesgosTiposRefactorRepository.save(
