@@ -88,4 +88,12 @@ public class FuncionalidadesControlesRefactorController {
         restTemplate.put(serviceUrl, fc);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/funcionalidad/{id}")
+    List<VFuncionalidadesControles> findByIdFuncionalidad(@PathVariable Integer id) {
+        String serviceUrl = baseUrl + "/api/funcionalidadesControles/";
+        RestTemplate restTemplate = new RestTemplate();
+        VFuncionalidadesControles[] vFuncionalidadesControles = restTemplate.getForObject(serviceUrl + "funcionalidad/" + id, VFuncionalidadesControles[].class);
+        return Arrays.asList(vFuncionalidadesControles);
+    }
+
 }
