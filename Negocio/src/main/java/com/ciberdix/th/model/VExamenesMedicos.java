@@ -189,4 +189,60 @@ public class VExamenesMedicos {
     public void setIndicadorOtraInstitucion(Boolean indicadorOtraInstitucion) {
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
+
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    public Long getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
+    }
+
+    public Integer getIdConceptoBienestar() {
+        return idConceptoBienestar;
+    }
+
+    public void setIdConceptoBienestar(Integer idConceptoBienestar) {
+        this.idConceptoBienestar = idConceptoBienestar;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    public Boolean getVerificado() {
+        return verificado;
+    }
+
+    public void setVerificado(Boolean verificado) {
+        this.verificado = verificado;
+    }
+
+    public Boolean getIndicadorNovedad() {
+        return indicadorNovedad;
+    }
+
+    public void setIndicadorNovedad(Boolean indicadorNovedad) {
+        this.indicadorNovedad = indicadorNovedad;
+    }
+
+    public Integer getIdDiagnosticoCie() {
+        return idDiagnosticoCie;
+    }
+
+    public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
+        this.idDiagnosticoCie = idDiagnosticoCie;
+    }
 }

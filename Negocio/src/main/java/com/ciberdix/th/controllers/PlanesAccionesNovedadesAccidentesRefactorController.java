@@ -76,11 +76,17 @@ public class PlanesAccionesNovedadesAccidentesRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     PlanesAccionesNovedadesAccidentes create(@RequestBody PlanesAccionesNovedadesAccidentes o) {
+        o.setIdEstadoPlanAccion(UtilitiesController.findListItem("ListasEstadosPlanesAccion", "PEND").getIdLista());
         return restTemplate.postForObject(serviceUrl, o, PlanesAccionesNovedadesAccidentes.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody PlanesAccionesNovedadesAccidentes o) {
+        if(o.getIndicadorVerficar()!=null && o.getIndicadorVerficar()){
+            o.setIdEstadoPlanAccion(UtilitiesController.findListItem("ListasEstadosPlanesAccion", "VERF").getIdLista());
+        }else{
+            o.setIdEstadoPlanAccion(UtilitiesController.findListItem("ListasEstadosPlanesAccion", "REAL").getIdLista());
+        }
         restTemplate.put(serviceUrl, o);
     }
 
