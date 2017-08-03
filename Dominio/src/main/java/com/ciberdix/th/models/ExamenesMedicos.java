@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 12/07/2017.
- */
 @Entity
 @Table(name = "ExamenesMedicos", schema = "dbo", catalog = "CREZCAMOS")
 public class ExamenesMedicos {
@@ -23,11 +20,17 @@ public class ExamenesMedicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorOtraInstitucion;
+    private Long idTercero;
+    private Integer idConceptoBienestar;
+    private String detalle;
+    private Boolean verificado;
+    private Boolean indicadorNovedad;
+    private Integer idDiagnosticoCie;
 
     public ExamenesMedicos() {
     }
 
-    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
+    public ExamenesMedicos(Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie) {
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
         this.codigoVerificacion = codigoVerificacion;
@@ -41,9 +44,15 @@ public class ExamenesMedicos {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
+        this.idTercero = idTercero;
+        this.idConceptoBienestar = idConceptoBienestar;
+        this.detalle = detalle;
+        this.verificado = verificado;
+        this.indicadorNovedad = indicadorNovedad;
+        this.idDiagnosticoCie = idDiagnosticoCie;
     }
 
-    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion) {
+    public ExamenesMedicos(Integer idExamenMedico, Integer idProcesoSeleccion, Integer idEstadoExamenMedico, String codigoVerificacion, Boolean indicadorVerificado, Integer idMaestroRespuesta, Integer idMedicoResponsable, Integer idInstitucionMedica, Timestamp fechaProgramada, Integer idPreguntaOpcion, Integer idAdjunto, Integer auditoriaUsuario, Boolean indicadorOtraInstitucion, Long idTercero, Integer idConceptoBienestar, String detalle, Boolean verificado, Boolean indicadorNovedad, Integer idDiagnosticoCie) {
         this.idExamenMedico = idExamenMedico;
         this.idProcesoSeleccion = idProcesoSeleccion;
         this.idEstadoExamenMedico = idEstadoExamenMedico;
@@ -58,6 +67,12 @@ public class ExamenesMedicos {
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
+        this.idTercero = idTercero;
+        this.idConceptoBienestar = idConceptoBienestar;
+        this.detalle = detalle;
+        this.verificado = verificado;
+        this.indicadorNovedad = indicadorNovedad;
+        this.idDiagnosticoCie = idDiagnosticoCie;
     }
 
     @Id
@@ -201,6 +216,66 @@ public class ExamenesMedicos {
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
 
+    @Basic
+    @Column(name = "IdTercero", nullable = true)
+    public Long getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "IdConceptoBienestar", nullable = true)
+    public Integer getIdConceptoBienestar() {
+        return idConceptoBienestar;
+    }
+
+    public void setIdConceptoBienestar(Integer idConceptoBienestar) {
+        this.idConceptoBienestar = idConceptoBienestar;
+    }
+
+    @Basic
+    @Column(name = "Detalle", nullable = true, length = 500)
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    @Basic
+    @Column(name = "Verificado", nullable = true)
+    public Boolean getVerificado() {
+        return verificado;
+    }
+
+    public void setVerificado(Boolean verificado) {
+        this.verificado = verificado;
+    }
+
+    @Basic
+    @Column(name = "IndicadorNovedad", nullable = true)
+    public Boolean getIndicadorNovedad() {
+        return indicadorNovedad;
+    }
+
+    public void setIndicadorNovedad(Boolean indicadorNovedad) {
+        this.indicadorNovedad = indicadorNovedad;
+    }
+
+    @Basic
+    @Column(name = "IdDiagnosticoCIE", nullable = true)
+    public Integer getIdDiagnosticoCie() {
+        return idDiagnosticoCie;
+    }
+
+    public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
+        this.idDiagnosticoCie = idDiagnosticoCie;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -235,6 +310,15 @@ public class ExamenesMedicos {
             return false;
         if (indicadorOtraInstitucion != null ? !indicadorOtraInstitucion.equals(that.indicadorOtraInstitucion) : that.indicadorOtraInstitucion != null)
             return false;
+        if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (idConceptoBienestar != null ? !idConceptoBienestar.equals(that.idConceptoBienestar) : that.idConceptoBienestar != null)
+            return false;
+        if (detalle != null ? !detalle.equals(that.detalle) : that.detalle != null) return false;
+        if (verificado != null ? !verificado.equals(that.verificado) : that.verificado != null) return false;
+        if (indicadorNovedad != null ? !indicadorNovedad.equals(that.indicadorNovedad) : that.indicadorNovedad != null)
+            return false;
+        if (idDiagnosticoCie != null ? !idDiagnosticoCie.equals(that.idDiagnosticoCie) : that.idDiagnosticoCie != null)
+            return false;
 
         return true;
     }
@@ -255,6 +339,12 @@ public class ExamenesMedicos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorOtraInstitucion != null ? indicadorOtraInstitucion.hashCode() : 0);
+        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (idConceptoBienestar != null ? idConceptoBienestar.hashCode() : 0);
+        result = 31 * result + (detalle != null ? detalle.hashCode() : 0);
+        result = 31 * result + (verificado != null ? verificado.hashCode() : 0);
+        result = 31 * result + (indicadorNovedad != null ? indicadorNovedad.hashCode() : 0);
+        result = 31 * result + (idDiagnosticoCie != null ? idDiagnosticoCie.hashCode() : 0);
         return result;
     }
 }

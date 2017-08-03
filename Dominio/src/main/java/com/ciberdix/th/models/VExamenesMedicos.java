@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 12/07/2017.
- */
 @Entity
 @Table(name = "V_ExamenesMedicos", schema = "dbo", catalog = "CREZCAMOS")
 public class VExamenesMedicos {
@@ -28,6 +25,13 @@ public class VExamenesMedicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorOtraInstitucion;
+    private String nombreTercero;
+    private Long idTercero;
+    private Integer idConceptoBienestar;
+    private String detalle;
+    private Boolean verificado;
+    private Boolean indicadorNovedad;
+    private Integer idDiagnosticoCie;
 
     @Id
     @Column(name = "IdExamenMedico", nullable = false)
@@ -120,7 +124,7 @@ public class VExamenesMedicos {
     }
 
     @Basic
-    @Column(name = "InstitucionMedica", nullable = true, length = 50)
+    @Column(name = "InstitucionMedica", nullable = true, length = 300)
     public String getInstitucionMedica() {
         return institucionMedica;
     }
@@ -219,6 +223,76 @@ public class VExamenesMedicos {
         this.indicadorOtraInstitucion = indicadorOtraInstitucion;
     }
 
+    @Basic
+    @Column(name = "NombreTercero", nullable = false, length = 259)
+    public String getNombreTercero() {
+        return nombreTercero;
+    }
+
+    public void setNombreTercero(String nombreTercero) {
+        this.nombreTercero = nombreTercero;
+    }
+
+    @Basic
+    @Column(name = "IdTercero", nullable = true)
+    public Long getIdTercero() {
+        return idTercero;
+    }
+
+    public void setIdTercero(Long idTercero) {
+        this.idTercero = idTercero;
+    }
+
+    @Basic
+    @Column(name = "IdConceptoBienestar", nullable = true)
+    public Integer getIdConceptoBienestar() {
+        return idConceptoBienestar;
+    }
+
+    public void setIdConceptoBienestar(Integer idConceptoBienestar) {
+        this.idConceptoBienestar = idConceptoBienestar;
+    }
+
+    @Basic
+    @Column(name = "Detalle", nullable = true, length = 500)
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    @Basic
+    @Column(name = "Verificado", nullable = true)
+    public Boolean getVerificado() {
+        return verificado;
+    }
+
+    public void setVerificado(Boolean verificado) {
+        this.verificado = verificado;
+    }
+
+    @Basic
+    @Column(name = "IndicadorNovedad", nullable = true)
+    public Boolean getIndicadorNovedad() {
+        return indicadorNovedad;
+    }
+
+    public void setIndicadorNovedad(Boolean indicadorNovedad) {
+        this.indicadorNovedad = indicadorNovedad;
+    }
+
+    @Basic
+    @Column(name = "IdDiagnosticoCIE", nullable = true)
+    public Integer getIdDiagnosticoCie() {
+        return idDiagnosticoCie;
+    }
+
+    public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
+        this.idDiagnosticoCie = idDiagnosticoCie;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -262,6 +336,17 @@ public class VExamenesMedicos {
             return false;
         if (indicadorOtraInstitucion != null ? !indicadorOtraInstitucion.equals(that.indicadorOtraInstitucion) : that.indicadorOtraInstitucion != null)
             return false;
+        if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
+            return false;
+        if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (idConceptoBienestar != null ? !idConceptoBienestar.equals(that.idConceptoBienestar) : that.idConceptoBienestar != null)
+            return false;
+        if (detalle != null ? !detalle.equals(that.detalle) : that.detalle != null) return false;
+        if (verificado != null ? !verificado.equals(that.verificado) : that.verificado != null) return false;
+        if (indicadorNovedad != null ? !indicadorNovedad.equals(that.indicadorNovedad) : that.indicadorNovedad != null)
+            return false;
+        if (idDiagnosticoCie != null ? !idDiagnosticoCie.equals(that.idDiagnosticoCie) : that.idDiagnosticoCie != null)
+            return false;
 
         return true;
     }
@@ -287,6 +372,13 @@ public class VExamenesMedicos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorOtraInstitucion != null ? indicadorOtraInstitucion.hashCode() : 0);
+        result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
+        result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (idConceptoBienestar != null ? idConceptoBienestar.hashCode() : 0);
+        result = 31 * result + (detalle != null ? detalle.hashCode() : 0);
+        result = 31 * result + (verificado != null ? verificado.hashCode() : 0);
+        result = 31 * result + (indicadorNovedad != null ? indicadorNovedad.hashCode() : 0);
+        result = 31 * result + (idDiagnosticoCie != null ? idDiagnosticoCie.hashCode() : 0);
         return result;
     }
 }

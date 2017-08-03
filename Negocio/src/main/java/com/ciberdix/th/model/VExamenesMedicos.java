@@ -30,6 +30,13 @@ public class VExamenesMedicos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorOtraInstitucion;
+    private String nombreTercero;
+    private Long idTercero;
+    private Integer idConceptoBienestar;
+    private String detalle;
+    private Boolean verificado;
+    private Boolean indicadorNovedad;
+    private Integer idDiagnosticoCie;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;

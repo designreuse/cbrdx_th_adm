@@ -51,6 +51,11 @@ public class ExamenesMedicosRefactorController {
         return restTemplate.getForObject(serviceUrl + "/procesoSeleccion/" + id, VExamenesMedicos.class);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/tercero/{id}")
+    List<VExamenesMedicos> findByIdTercero(@PathVariable Long id) {
+        return Arrays.asList(restTemplate.getForObject(serviceUrl + "/tercero/" + id, VExamenesMedicos[].class));
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     ExamenesMedicos create(@RequestBody ExamenesMedicos obj) {
         obj = restTemplate.postForObject(serviceUrl, obj, ExamenesMedicos.class);
