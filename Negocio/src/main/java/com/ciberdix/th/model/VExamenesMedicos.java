@@ -32,11 +32,15 @@ public class VExamenesMedicos {
     private Boolean indicadorOtraInstitucion;
     private String nombreTercero;
     private Long idTercero;
+    private String conceptoBienestar;
     private Integer idConceptoBienestar;
     private String detalle;
     private Boolean verificado;
     private Boolean indicadorNovedad;
+    private String descripcion;
     private Integer idDiagnosticoCie;
+    private String tipoExamenMedico;
+    private Integer idTipoExamenMedico;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -244,5 +248,37 @@ public class VExamenesMedicos {
 
     public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
         this.idDiagnosticoCie = idDiagnosticoCie;
+    }
+
+    public String getConceptoBienestar() {
+        return conceptoBienestar;
+    }
+
+    public void setConceptoBienestar(String conceptoBienestar) {
+        this.conceptoBienestar = conceptoBienestar;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getTipoExamenMedico() {
+        return tipoExamenMedico;
+    }
+
+    public void setTipoExamenMedico(String tipoExamenMedico) {
+        this.tipoExamenMedico = tipoExamenMedico;
+    }
+
+    public Integer getIdTipoExamenMedico() {
+        return idTipoExamenMedico;
+    }
+
+    public void setIdTipoExamenMedico(Integer idTipoExamenMedico) {
+        this.idTipoExamenMedico = idTipoExamenMedico;
     }
 }

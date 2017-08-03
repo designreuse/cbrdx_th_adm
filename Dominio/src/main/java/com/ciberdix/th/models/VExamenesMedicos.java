@@ -27,11 +27,15 @@ public class VExamenesMedicos {
     private Boolean indicadorOtraInstitucion;
     private String nombreTercero;
     private Long idTercero;
+    private String conceptoBienestar;
     private Integer idConceptoBienestar;
     private String detalle;
     private Boolean verificado;
     private Boolean indicadorNovedad;
+    private String descripcion;
     private Integer idDiagnosticoCie;
+    private String tipoExamenMedico;
+    private Integer idTipoExamenMedico;
 
     @Id
     @Column(name = "IdExamenMedico", nullable = false)
@@ -244,6 +248,16 @@ public class VExamenesMedicos {
     }
 
     @Basic
+    @Column(name = "ConceptoBienestar", nullable = true, length = 100)
+    public String getConceptoBienestar() {
+        return conceptoBienestar;
+    }
+
+    public void setConceptoBienestar(String conceptoBienestar) {
+        this.conceptoBienestar = conceptoBienestar;
+    }
+
+    @Basic
     @Column(name = "IdConceptoBienestar", nullable = true)
     public Integer getIdConceptoBienestar() {
         return idConceptoBienestar;
@@ -284,6 +298,16 @@ public class VExamenesMedicos {
     }
 
     @Basic
+    @Column(name = "Descripcion", nullable = true, length = 100)
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Basic
     @Column(name = "IdDiagnosticoCIE", nullable = true)
     public Integer getIdDiagnosticoCie() {
         return idDiagnosticoCie;
@@ -291,6 +315,26 @@ public class VExamenesMedicos {
 
     public void setIdDiagnosticoCie(Integer idDiagnosticoCie) {
         this.idDiagnosticoCie = idDiagnosticoCie;
+    }
+
+    @Basic
+    @Column(name = "TipoExamenMedico", nullable = true, length = 100)
+    public String getTipoExamenMedico() {
+        return tipoExamenMedico;
+    }
+
+    public void setTipoExamenMedico(String tipoExamenMedico) {
+        this.tipoExamenMedico = tipoExamenMedico;
+    }
+
+    @Basic
+    @Column(name = "IdTipoExamenMedico", nullable = true)
+    public Integer getIdTipoExamenMedico() {
+        return idTipoExamenMedico;
+    }
+
+    public void setIdTipoExamenMedico(Integer idTipoExamenMedico) {
+        this.idTipoExamenMedico = idTipoExamenMedico;
     }
 
     @Override
@@ -339,13 +383,20 @@ public class VExamenesMedicos {
         if (nombreTercero != null ? !nombreTercero.equals(that.nombreTercero) : that.nombreTercero != null)
             return false;
         if (idTercero != null ? !idTercero.equals(that.idTercero) : that.idTercero != null) return false;
+        if (conceptoBienestar != null ? !conceptoBienestar.equals(that.conceptoBienestar) : that.conceptoBienestar != null)
+            return false;
         if (idConceptoBienestar != null ? !idConceptoBienestar.equals(that.idConceptoBienestar) : that.idConceptoBienestar != null)
             return false;
         if (detalle != null ? !detalle.equals(that.detalle) : that.detalle != null) return false;
         if (verificado != null ? !verificado.equals(that.verificado) : that.verificado != null) return false;
         if (indicadorNovedad != null ? !indicadorNovedad.equals(that.indicadorNovedad) : that.indicadorNovedad != null)
             return false;
+        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (idDiagnosticoCie != null ? !idDiagnosticoCie.equals(that.idDiagnosticoCie) : that.idDiagnosticoCie != null)
+            return false;
+        if (tipoExamenMedico != null ? !tipoExamenMedico.equals(that.tipoExamenMedico) : that.tipoExamenMedico != null)
+            return false;
+        if (idTipoExamenMedico != null ? !idTipoExamenMedico.equals(that.idTipoExamenMedico) : that.idTipoExamenMedico != null)
             return false;
 
         return true;
@@ -374,11 +425,15 @@ public class VExamenesMedicos {
         result = 31 * result + (indicadorOtraInstitucion != null ? indicadorOtraInstitucion.hashCode() : 0);
         result = 31 * result + (nombreTercero != null ? nombreTercero.hashCode() : 0);
         result = 31 * result + (idTercero != null ? idTercero.hashCode() : 0);
+        result = 31 * result + (conceptoBienestar != null ? conceptoBienestar.hashCode() : 0);
         result = 31 * result + (idConceptoBienestar != null ? idConceptoBienestar.hashCode() : 0);
         result = 31 * result + (detalle != null ? detalle.hashCode() : 0);
         result = 31 * result + (verificado != null ? verificado.hashCode() : 0);
         result = 31 * result + (indicadorNovedad != null ? indicadorNovedad.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (idDiagnosticoCie != null ? idDiagnosticoCie.hashCode() : 0);
+        result = 31 * result + (tipoExamenMedico != null ? tipoExamenMedico.hashCode() : 0);
+        result = 31 * result + (idTipoExamenMedico != null ? idTipoExamenMedico.hashCode() : 0);
         return result;
     }
 }
