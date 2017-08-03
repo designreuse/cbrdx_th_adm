@@ -48,7 +48,8 @@ public class CargosRiesgosRefactorController {
     CargosRiesgos create(@RequestBody CargosRiesgos o) {
         return cargosRiesgosRefactorRepository.save(
                 new CargosRiesgos(
-                        o.getIdCargo(),o.getIdRiesgo(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado()
+                        o.getIdCargo(),o.getIdRiesgo(),o.getAuditoriaUsuario(),o.getIndicadorHabilitado(),o.getIdProbabilidad(),
+                        o.getIdConsecuencia()
                 )
         );
     }
@@ -58,7 +59,7 @@ public class CargosRiesgosRefactorController {
         cargosRiesgosRefactorRepository.save(
                 new CargosRiesgos(
                         o.getIdCargoRiesgo(),o.getIdCargo(),o.getIdRiesgo(),o.getAuditoriaUsuario(),
-                        o.getIndicadorHabilitado()
+                        o.getIndicadorHabilitado(),o.getIdProbabilidad(),o.getIdConsecuencia()
                 )
         );
     }

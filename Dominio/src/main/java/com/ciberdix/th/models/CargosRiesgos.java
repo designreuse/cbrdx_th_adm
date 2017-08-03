@@ -3,9 +3,6 @@ package com.ciberdix.th.models;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 20/06/2017.
- */
 @Entity
 @Table(name = "CargosRiesgos", schema = "dbo", catalog = "CREZCAMOS")
 public class CargosRiesgos {
@@ -15,25 +12,31 @@ public class CargosRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private Integer idProbabilidad;
+    private Integer idConsecuencia;
 
     public CargosRiesgos() {
     }
 
-    public CargosRiesgos(Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+    public CargosRiesgos(Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario, Boolean indicadorHabilitado, Integer idProbabilidad, Integer idConsecuencia) {
         this.idCargo = idCargo;
         this.idRiesgo = idRiesgo;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
+        this.idProbabilidad = idProbabilidad;
+        this.idConsecuencia = idConsecuencia;
     }
 
-    public CargosRiesgos(Integer idCargoRiesgo, Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario, Boolean indicadorHabilitado) {
+    public CargosRiesgos(Integer idCargoRiesgo, Integer idCargo, Integer idRiesgo, Integer auditoriaUsuario, Boolean indicadorHabilitado, Integer idProbabilidad, Integer idConsecuencia) {
         this.idCargoRiesgo = idCargoRiesgo;
         this.idCargo = idCargo;
         this.idRiesgo = idRiesgo;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
+        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.indicadorHabilitado = indicadorHabilitado;
+        this.idProbabilidad = idProbabilidad;
+        this.idConsecuencia = idConsecuencia;
     }
 
     @Id
@@ -97,6 +100,26 @@ public class CargosRiesgos {
         this.indicadorHabilitado = indicadorHabilitado;
     }
 
+    @Basic
+    @Column(name = "IdProbabilidad", nullable = true)
+    public Integer getIdProbabilidad() {
+        return idProbabilidad;
+    }
+
+    public void setIdProbabilidad(Integer idProbabilidad) {
+        this.idProbabilidad = idProbabilidad;
+    }
+
+    @Basic
+    @Column(name = "IdConsecuencia", nullable = true)
+    public Integer getIdConsecuencia() {
+        return idConsecuencia;
+    }
+
+    public void setIdConsecuencia(Integer idConsecuencia) {
+        this.idConsecuencia = idConsecuencia;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,6 +137,10 @@ public class CargosRiesgos {
             return false;
         if (indicadorHabilitado != null ? !indicadorHabilitado.equals(that.indicadorHabilitado) : that.indicadorHabilitado != null)
             return false;
+        if (idProbabilidad != null ? !idProbabilidad.equals(that.idProbabilidad) : that.idProbabilidad != null)
+            return false;
+        if (idConsecuencia != null ? !idConsecuencia.equals(that.idConsecuencia) : that.idConsecuencia != null)
+            return false;
 
         return true;
     }
@@ -126,6 +153,8 @@ public class CargosRiesgos {
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
+        result = 31 * result + (idProbabilidad != null ? idProbabilidad.hashCode() : 0);
+        result = 31 * result + (idConsecuencia != null ? idConsecuencia.hashCode() : 0);
         return result;
     }
 }

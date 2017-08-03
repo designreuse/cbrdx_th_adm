@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 22/06/2017.
- */
 @Entity
 @Table(name = "Cargos", schema = "dbo", catalog = "CREZCAMOS")
 public class Cargos {
@@ -44,11 +41,13 @@ public class Cargos {
     private Integer paso;
     private Boolean indicadorZona;
     private BigInteger edadMax;
+    private Integer idProceso;
+    private Integer idSubProceso;
 
     public Cargos() {
     }
 
-    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax) {
+    public Cargos(String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax, Integer idProceso, Integer idSubProceso) {
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
@@ -82,9 +81,11 @@ public class Cargos {
         this.paso = paso;
         this.indicadorZona = indicadorZona;
         this.edadMax = edadMax;
+        this.idProceso = idProceso;
+        this.idSubProceso = idSubProceso;
     }
 
-    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax) {
+    public Cargos(Integer idCargo, String cargo, Integer auditoriaUsuario, Integer personaACargoDir, Integer personaACargoInd, Integer idCargoJefe, String mision, Integer puntos, Integer idCategoria, Integer salario, Boolean indicadorRequiereFormacion, Boolean indicadorHabilitado, String interrelacionesInternas, String interrelacionesExternas, String responsabilidadesAd, String tomaDecisiones, String actividadesSupervisa, Integer idNivelEducacion, String conocimientosBasicos, String tiempoExperiencia, String otrosRequisitos, BigInteger edad, String cargaFisica, String cargaMental, String nivelPsicoSocial, String codigoCargo, Integer idEstructuraArea, Integer idGenero, Integer idEstadoCivil, Integer idEstado, Integer paso, Boolean indicadorZona, BigInteger edadMax, Integer idProceso, Integer idSubProceso) {
         this.idCargo = idCargo;
         this.cargo = cargo;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
@@ -119,6 +120,8 @@ public class Cargos {
         this.paso = paso;
         this.indicadorZona = indicadorZona;
         this.edadMax = edadMax;
+        this.idProceso = idProceso;
+        this.idSubProceso = idSubProceso;
     }
 
     @Id
@@ -462,6 +465,26 @@ public class Cargos {
         this.edadMax = edadMax;
     }
 
+    @Basic
+    @Column(name = "IdProceso", nullable = true)
+    public Integer getIdProceso() {
+        return idProceso;
+    }
+
+    public void setIdProceso(Integer idProceso) {
+        this.idProceso = idProceso;
+    }
+
+    @Basic
+    @Column(name = "IdSubProceso", nullable = true)
+    public Integer getIdSubProceso() {
+        return idSubProceso;
+    }
+
+    public void setIdSubProceso(Integer idSubProceso) {
+        this.idSubProceso = idSubProceso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -522,6 +545,9 @@ public class Cargos {
         if (indicadorZona != null ? !indicadorZona.equals(cargos.indicadorZona) : cargos.indicadorZona != null)
             return false;
         if (edadMax != null ? !edadMax.equals(cargos.edadMax) : cargos.edadMax != null) return false;
+        if (idProceso != null ? !idProceso.equals(cargos.idProceso) : cargos.idProceso != null) return false;
+        if (idSubProceso != null ? !idSubProceso.equals(cargos.idSubProceso) : cargos.idSubProceso != null)
+            return false;
 
         return true;
     }
@@ -562,6 +588,8 @@ public class Cargos {
         result = 31 * result + (paso != null ? paso.hashCode() : 0);
         result = 31 * result + (indicadorZona != null ? indicadorZona.hashCode() : 0);
         result = 31 * result + (edadMax != null ? edadMax.hashCode() : 0);
+        result = 31 * result + (idProceso != null ? idProceso.hashCode() : 0);
+        result = 31 * result + (idSubProceso != null ? idSubProceso.hashCode() : 0);
         return result;
     }
 }

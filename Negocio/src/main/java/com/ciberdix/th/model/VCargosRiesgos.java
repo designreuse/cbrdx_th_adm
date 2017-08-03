@@ -15,6 +15,10 @@ public class VCargosRiesgos {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
+    private String probabilidadRiesgo;
+    private Integer idProbabilidad;
+    private String consecuenciasRiesgos;
+    private Integer idConsecuencia;
 
     public Integer getIdCargoRiesgo() {
         return idCargoRiesgo;
@@ -78,5 +82,37 @@ public class VCargosRiesgos {
 
     public void setIndicadorHabilitado(Boolean indicadorHabilitado) {
         this.indicadorHabilitado = indicadorHabilitado;
+    }
+
+    public String getProbabilidadRiesgo() {
+        return probabilidadRiesgo;
+    }
+
+    public void setProbabilidadRiesgo(String probabilidadRiesgo) {
+        this.probabilidadRiesgo = probabilidadRiesgo;
+    }
+
+    public Integer getIdProbabilidad() {
+        return idProbabilidad;
+    }
+
+    public void setIdProbabilidad(Integer idProbabilidad) {
+        this.idProbabilidad = idProbabilidad;
+    }
+
+    public String getConsecuenciasRiesgos() {
+        return consecuenciasRiesgos;
+    }
+
+    public void setConsecuenciasRiesgos(String consecuenciasRiesgos) {
+        this.consecuenciasRiesgos = consecuenciasRiesgos;
+    }
+
+    public Integer getIdConsecuencia() {
+        return idConsecuencia;
+    }
+
+    public void setIdConsecuencia(Integer idConsecuencia) {
+        this.idConsecuencia = idConsecuencia;
     }
 }

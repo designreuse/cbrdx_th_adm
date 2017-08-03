@@ -75,7 +75,8 @@ public class CargosRefactorController {
                         obj.getIdNivelEducacion(), obj.getConocimientosBasicos(), obj.getTiempoExperiencia(),
                         obj.getOtrosRequisitos(), obj.getEdad(), obj.getCargaFisica(), obj.getCargaMental(),
                         obj.getNivelPsicoSocial(), obj.getCodigoCargo(), obj.getIdEstructuraArea(), obj.getIdGenero(),
-                        obj.getIdEstadoCivil(), obj.getIdEstado(), obj.getPaso(), obj.getIndicadorZona(),obj.getEdadMax())
+                        obj.getIdEstadoCivil(), obj.getIdEstado(), obj.getPaso(), obj.getIndicadorZona(),obj.getEdadMax(),
+                        obj.getIdProceso(),obj.getIdSubProceso())
         );
     }
 
@@ -92,6 +93,8 @@ public class CargosRefactorController {
         cargo.setIdEstructuraArea(obj.getIdEstructuraArea());
         cargo.setIndicadorZona(obj.getIndicadorZona());
         cargo.setPaso(obj.getPaso());
+        cargo.setIdProceso(obj.getIdProceso());
+        cargo.setIdSubProceso(obj.getIdSubProceso());
         return cargosRefactorRepository.save(cargo);
     }
 
@@ -164,7 +167,8 @@ public class CargosRefactorController {
                         o.getIndicadorHabilitado(), o.getInterrelacionesInternas(), o.getInterrelacionesExternas(), o.getResponsabilidadesAd(),
                         o.getTomaDecisiones(), o.getActividadesSupervisa(), o.getIdNivelEducacion(), o.getConocimientosBasicos(), o.getTiempoExperiencia(),
                         o.getOtrosRequisitos(), o.getEdad(), o.getCargaFisica(), o.getCargaMental(), o.getNivelPsicoSocial(), o.getCodigoCargo(),
-                        o.getIdEstructuraArea(), o.getIdGenero(), o.getIdEstadoCivil(), o.getIdEstado(), o.getPaso(), o.getIndicadorZona(),o.getEdadMax())
+                        o.getIdEstructuraArea(), o.getIdGenero(), o.getIdEstadoCivil(), o.getIdEstado(), o.getPaso(), o.getIndicadorZona(),o.getEdadMax(),
+                        o.getIdProceso(),o.getIdSubProceso())
         );
     }
 
