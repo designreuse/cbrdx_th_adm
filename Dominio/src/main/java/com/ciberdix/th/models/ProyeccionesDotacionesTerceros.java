@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -22,11 +22,12 @@ public class ProyeccionesDotacionesTerceros {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigoVerificacion;
 
     public ProyeccionesDotacionesTerceros() {
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigoVerificacion) {
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
         this.idEstado = idEstado;
@@ -41,9 +42,10 @@ public class ProyeccionesDotacionesTerceros {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigoVerificacion = codigoVerificacion;
     }
 
-    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public ProyeccionesDotacionesTerceros(Integer idProyeccionDotacionTerceros, Integer idProyeccionDotacion, Long idTercero, Integer idEstado, Date fechaEntrega, Date fechaPosibleEntrega, String comentario, String comentarioAdicional, String comentarioEntrega, String observacion, Integer idMotivoSatisfecho, Boolean indicadorSatisfecho, Boolean indicadorHabilitado, Integer auditoriaUsuario, String codigoVerificacion) {
         this.idProyeccionDotacionTerceros = idProyeccionDotacionTerceros;
         this.idProyeccionDotacion = idProyeccionDotacion;
         this.idTercero = idTercero;
@@ -59,6 +61,7 @@ public class ProyeccionesDotacionesTerceros {
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.codigoVerificacion = codigoVerificacion;
     }
 
     @Id
@@ -212,6 +215,16 @@ public class ProyeccionesDotacionesTerceros {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "CodigoVerificacion", nullable = true, length = 20)
+    public String getCodigoVerificacion() {
+        return codigoVerificacion;
+    }
+
+    public void setCodigoVerificacion(String codigoVerificacion) {
+        this.codigoVerificacion = codigoVerificacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -244,6 +257,8 @@ public class ProyeccionesDotacionesTerceros {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (codigoVerificacion != null ? !codigoVerificacion.equals(that.codigoVerificacion) : that.codigoVerificacion != null)
+            return false;
 
         return true;
     }
@@ -265,6 +280,7 @@ public class ProyeccionesDotacionesTerceros {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (codigoVerificacion != null ? codigoVerificacion.hashCode() : 0);
         return result;
     }
 }

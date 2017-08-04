@@ -30,6 +30,7 @@ public class VProyeccionesDotacionesTerceros {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorAdicional;
+    private String codigoVerificacion;
 
     public Integer getIdProyeccionDotacionTerceros() {
         return idProyeccionDotacionTerceros;
@@ -229,5 +230,13 @@ public class VProyeccionesDotacionesTerceros {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getCodigoVerificacion() {
+        return codigoVerificacion;
+    }
+
+    public void setCodigoVerificacion(String codigoVerificacion) {
+        this.codigoVerificacion = codigoVerificacion;
     }
 }

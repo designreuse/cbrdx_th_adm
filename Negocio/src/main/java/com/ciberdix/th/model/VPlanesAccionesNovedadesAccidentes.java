@@ -8,6 +8,7 @@ public class VPlanesAccionesNovedadesAccidentes {
     private Integer idPlanAccionNovedadAccidente;
     private Integer idTerceroNovedad;
     private String estadoPlanAccion;
+    private String codigoEstadoPlanAccion;
     private Integer idEstadoPlanAccion;
     private String actividad;
     private String nombreResponsable;
@@ -157,5 +158,13 @@ public class VPlanesAccionesNovedadesAccidentes {
 
     public void setIndicadorVerficar(Boolean indicadorVerficar) {
         this.indicadorVerficar = indicadorVerficar;
+    }
+
+    public String getCodigoEstadoPlanAccion() {
+        return codigoEstadoPlanAccion;
+    }
+
+    public void setCodigoEstadoPlanAccion(String codigoEstadoPlanAccion) {
+        this.codigoEstadoPlanAccion = codigoEstadoPlanAccion;
     }
 }
