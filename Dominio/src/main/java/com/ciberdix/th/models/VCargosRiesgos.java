@@ -11,6 +11,7 @@ public class VCargosRiesgos {
     private String cargo;
     private Integer idRiesgo;
     private String riesgo;
+    private String riesgoSubTipo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
@@ -67,6 +68,16 @@ public class VCargosRiesgos {
 
     public void setRiesgo(String riesgo) {
         this.riesgo = riesgo;
+    }
+
+    @Basic
+    @Column(name = "RiesgoSubTipo", nullable = true, length = 100)
+    public String getRiesgoSubTipo() {
+        return riesgoSubTipo;
+    }
+
+    public void setRiesgoSubTipo(String riesgoSubTipo) {
+        this.riesgoSubTipo = riesgoSubTipo;
     }
 
     @Basic
@@ -152,6 +163,8 @@ public class VCargosRiesgos {
         if (cargo != null ? !cargo.equals(that.cargo) : that.cargo != null) return false;
         if (idRiesgo != null ? !idRiesgo.equals(that.idRiesgo) : that.idRiesgo != null) return false;
         if (riesgo != null ? !riesgo.equals(that.riesgo) : that.riesgo != null) return false;
+        if (riesgoSubTipo != null ? !riesgoSubTipo.equals(that.riesgoSubTipo) : that.riesgoSubTipo != null)
+            return false;
         if (auditoriaUsuario != null ? !auditoriaUsuario.equals(that.auditoriaUsuario) : that.auditoriaUsuario != null)
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
@@ -177,6 +190,7 @@ public class VCargosRiesgos {
         result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
         result = 31 * result + (idRiesgo != null ? idRiesgo.hashCode() : 0);
         result = 31 * result + (riesgo != null ? riesgo.hashCode() : 0);
+        result = 31 * result + (riesgoSubTipo != null ? riesgoSubTipo.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
