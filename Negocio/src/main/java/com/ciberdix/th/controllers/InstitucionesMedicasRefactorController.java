@@ -1,6 +1,5 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -74,12 +73,12 @@ public class InstitucionesMedicasRefactorController {
     InstitucionesMedicas create(@RequestBody InstitucionesMedicas obj) {
         InstitucionesMedicas im = restTemplate.postForObject(serviceUrl, obj, InstitucionesMedicas.class);
         InstitucionesMedicasTiposExamenes imte = new InstitucionesMedicasTiposExamenes();
-        if(obj.getListTipos()!=null && obj.getListTipos().size()>0){
+        if (obj.getListTipos() != null && obj.getListTipos().size() > 0) {
             imte.setIdInstitucionMedica(im.getIdInstitucionMedica());
             imte.setIndicadorHabilitado(true);
             imte.setAuditoriaUsuario(im.getAuditoriaUsuario());
             imte.setAuditoriaFecha(im.getAuditoriaFecha());
-            for(Integer id : obj.getListTipos()){
+            for (Integer id : obj.getListTipos()) {
                 imte.setIdTipoExamen(id);
                 restTemplate.postForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
             }
@@ -90,14 +89,14 @@ public class InstitucionesMedicasRefactorController {
     @RequestMapping(method = RequestMethod.PUT)
     void update(@RequestBody InstitucionesMedicas obj) {
         restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/disabled/" + obj.getIdInstitucionMedica(), InstitucionesMedicasTiposExamenes.class);
-        if(obj.getListTipos()!=null && obj.getListTipos().size()>0){
+        if (obj.getListTipos() != null && obj.getListTipos().size() > 0) {
             VInstitucionesMedicasTiposExamenes imte = new VInstitucionesMedicasTiposExamenes();
-            for(Integer id : obj.getListTipos()){
+            for (Integer id : obj.getListTipos()) {
                 imte = restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes/institucionMedicaTipoExamen/" + obj.getIdInstitucionMedica() + "/" + id, VInstitucionesMedicasTiposExamenes.class);
-                if(imte!=null){
+                if (imte != null) {
                     imte.setIndicadorHabilitado(true);
                     restTemplate.put(baseUrl + "/api/institucionesMedicasTiposExamenes", imte, InstitucionesMedicasTiposExamenes.class);
-                }else{
+                } else {
                     imte.setIdInstitucionMedica(obj.getIdInstitucionMedica());
                     imte.setIndicadorHabilitado(true);
                     imte.setAuditoriaUsuario(obj.getAuditoriaUsuario());
