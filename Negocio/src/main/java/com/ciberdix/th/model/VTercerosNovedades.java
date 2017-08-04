@@ -63,7 +63,7 @@ public class VTercerosNovedades {
     private Long idTerceroReporta;
     private String resultadoAccidente;
     private Integer idResultado;
-    private String descripción;
+    private String descripcionResultado;
     private Integer actividades;
 
     public Integer getIdTerceroNovedad() {
@@ -482,12 +482,12 @@ public class VTercerosNovedades {
         this.idResultado = idResultado;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcionResultado() {
+        return descripcionResultado;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcionResultado(String descripcionResultado) {
+        this.descripcionResultado = descripcionResultado;
     }
 
     public Integer getActividades() {
