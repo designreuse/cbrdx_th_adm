@@ -1,6 +1,8 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.Adjuntos;
+import com.ciberdix.th.model.Terceros;
+import com.ciberdix.th.model.ValoracionesRiesgos;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -38,14 +40,15 @@ public class MapaRiesgosRefactorController {
     @Value("${domain.url}")
     private String serviceUrl;
 
-    @RequestMapping(method = RequestMethod.GET, path = "/alfresco")
-    ResponseEntity<byte[]> descargarMapaAlfresco(@RequestHeader MultiValueMap<String, String> rawHeaders) throws IOException, JSONException {
+    @RequestMapping(method = RequestMethod.GET, path = "/alfresco/{idUsuario}")
+    ResponseEntity<byte[]> descargarMapaAlfresco(@PathVariable Integer idUsuario, @RequestHeader MultiValueMap<String, String> rawHeaders) throws IOException, JSONException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.putAll(rawHeaders);
         UUID fileName = UUID.randomUUID();
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         Adjuntos adjunto = new Adjuntos();
+        ValoracionesRiesgos valoracionesRiesgos = new ValoracionesRiesgos();
 
         map.add("name", fileName + ".xlsx");
         map.add("filename", fileName + ".xlsx");
@@ -68,7 +71,7 @@ public class MapaRiesgosRefactorController {
 
         HttpEntity<?> requestEntity = new HttpEntity<Object>(map, headers);
 
-        String temp = restTemplate.postForObject(muleUrl  + "/uploadFile", requestEntity, String.class);
+        String temp = restTemplate.postForObject(muleUrl + "/uploadFile", requestEntity, String.class);
 
         JSONObject tempFile = new JSONObject(temp);
 
@@ -77,7 +80,14 @@ public class MapaRiesgosRefactorController {
         adjunto.setAuditoriaUsuario(1);
         adjunto.setNombreArchivo("Matriz_de_priorizacion_de_riesgos.xlsx");
 
-        restTemplate.postForObject(serviceUrl + "/api/adjuntos", adjunto, Adjuntos.class);
+        Adjuntos adj = restTemplate.postForObject(serviceUrl + "/api/adjuntos", adjunto, Adjuntos.class);
+
+        valoracionesRiesgos.setIdAdjunto(adj.getIdAdjunto());
+        valoracionesRiesgos.setIdUsuario(idUsuario);
+        valoracionesRiesgos.setAuditoriaUsuario(idUsuario);
+        valoracionesRiesgos.setIndicadorHabilitado(true);
+
+        restTemplate.postForObject(serviceUrl + "/api/valoracionesRiesgos", valoracionesRiesgos, ValoracionesRiesgos.class);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"Matriz_de_priorizacion_de_riesgos.xlsx\"")
