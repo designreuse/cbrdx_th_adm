@@ -46,7 +46,7 @@ public class PlanesAccionesNovedadesAccidentesAdjuntosRefactorController {
     PlanesAccionesNovedadesAccidentesAdjuntos create(@RequestBody PlanesAccionesNovedadesAccidentesAdjuntos o) {
         return planesAccionesNovedadesAccidentesAdjuntosRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentesAdjuntos(
-                        o.getIdPlanAccionNovedadAccidente(),o.getIdAdjunto(),o.getIndicadorRespuesta(),
+                        o.getIdPlanAccionNovedadAccidente(),o.getIdAdjunto(),o.getCodigoAdjunto(),
                         o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
@@ -57,7 +57,7 @@ public class PlanesAccionesNovedadesAccidentesAdjuntosRefactorController {
         planesAccionesNovedadesAccidentesAdjuntosRefactorRepository.save(
                 new PlanesAccionesNovedadesAccidentesAdjuntos(
                         o.getIdPlanAccionNovedadAccidenteAdjunto(),o.getIdPlanAccionNovedadAccidente(),o.getIdAdjunto(),
-                        o.getIndicadorRespuesta(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getCodigoAdjunto(),o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
                 )
         );
     }

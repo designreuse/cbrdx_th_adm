@@ -54,6 +54,22 @@ public class CargosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/getAllWithPerc")
+    List<VCargos> findAllWithPer() {
+        List<VCargos> parametros = Arrays.asList(restTemplate.getForObject(serviceUrl + "/enabled/", VCargos[].class));
+        for(VCargos vc : parametros){
+            List<VCargosRiesgos> cr = Arrays.asList(restTemplate.getForObject(domainURL + "/api/cargosRiesgos/buscarCargo/" + vc.getIdCargo(), VCargosRiesgos[].class));
+            List<VCargosRiesgos> filtroHab = cr.stream().filter(t->cr.stream().anyMatch(f->t.getIndicadorHabilitado()!=null && t.getIndicadorHabilitado())).collect(Collectors.toList());
+            double p = 0;
+            if(filtroHab.size()>0){
+                List<VCargosRiesgos> filtroDifNull = filtroHab.stream().filter(t->filtroHab.stream().anyMatch(f->t.getIdConsecuencia()!=null && t.getIdProbabilidad()!=null)).collect(Collectors.toList());
+                p = (filtroDifNull.size()/filtroHab.size())*100;
+            }
+            vc.setAvanceValoracion(p);
+        }
+        return parametros;
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCargos findOne(@PathVariable Integer id) {
         return restTemplate.getForObject(serviceUrl + "/" + id, VCargos.class);

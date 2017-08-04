@@ -60,7 +60,7 @@ public class VTercerosNovedades {
     private Long idTerceroReporta;
     private String resultadoAccidente;
     private Integer idResultado;
-    private String descripción;
+    private String descripcionResultado;
 
     @Id
     @Column(name = "IdTerceroNovedad", nullable = false)
@@ -583,13 +583,13 @@ public class VTercerosNovedades {
     }
 
     @Basic
-    @Column(name = "Descripción", nullable = true, length = 500)
-    public String getDescripción() {
-        return descripción;
+    @Column(name = "DescripcionResultado", nullable = true, length = 500)
+    public String getDescripcionResultado() {
+        return descripcionResultado;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcionResultado(String descripcionResultado) {
+        this.descripcionResultado = descripcionResultado;
     }
 
     @Override
@@ -676,7 +676,7 @@ public class VTercerosNovedades {
         if (resultadoAccidente != null ? !resultadoAccidente.equals(that.resultadoAccidente) : that.resultadoAccidente != null)
             return false;
         if (idResultado != null ? !idResultado.equals(that.idResultado) : that.idResultado != null) return false;
-        if (descripción != null ? !descripción.equals(that.descripción) : that.descripción != null) return false;
+        if (descripcionResultado != null ? !descripcionResultado.equals(that.descripcionResultado) : that.descripcionResultado != null) return false;
 
         return true;
     }
@@ -735,7 +735,7 @@ public class VTercerosNovedades {
         result = 31 * result + (idTerceroReporta != null ? idTerceroReporta.hashCode() : 0);
         result = 31 * result + (resultadoAccidente != null ? resultadoAccidente.hashCode() : 0);
         result = 31 * result + (idResultado != null ? idResultado.hashCode() : 0);
-        result = 31 * result + (descripción != null ? descripción.hashCode() : 0);
+        result = 31 * result + (descripcionResultado != null ? descripcionResultado.hashCode() : 0);
         return result;
     }
 }
