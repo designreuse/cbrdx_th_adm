@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.sql.Timestamp;
 
-/**
- * Created by Danny on 17/07/2017.
- */
 @Entity
 @Table(name = "V_Terceros", schema = "dbo", catalog = "CREZCAMOS")
 public class VTerceros {
@@ -80,6 +77,11 @@ public class VTerceros {
     private Integer idAdjunto;
     private String estadoTercero;
     private Integer idEstadoTercero;
+    private String nombreArchivo;
+    private Integer idAdjuntoExamenMedico;
+    private String cargo;
+    private String estructuraOrganizacional;
+    private String estructuraArea;
 
     @Id
     @Column(name = "IdTercero", nullable = false)
@@ -781,6 +783,56 @@ public class VTerceros {
         this.idEstadoTercero = idEstadoTercero;
     }
 
+    @Basic
+    @Column(name = "NombreArchivo", nullable = true, length = 100)
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    @Basic
+    @Column(name = "IdAdjuntoExamenMedico", nullable = true)
+    public Integer getIdAdjuntoExamenMedico() {
+        return idAdjuntoExamenMedico;
+    }
+
+    public void setIdAdjuntoExamenMedico(Integer idAdjuntoExamenMedico) {
+        this.idAdjuntoExamenMedico = idAdjuntoExamenMedico;
+    }
+
+    @Basic
+    @Column(name = "Cargo", nullable = true, length = 100)
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
+    @Column(name = "EstructuraOrganizacional", nullable = true, length = 50)
+    public String getEstructuraOrganizacional() {
+        return estructuraOrganizacional;
+    }
+
+    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
+        this.estructuraOrganizacional = estructuraOrganizacional;
+    }
+
+    @Basic
+    @Column(name = "EstructuraArea", nullable = true, length = 40)
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -913,6 +965,15 @@ public class VTerceros {
             return false;
         if (idEstadoTercero != null ? !idEstadoTercero.equals(vTerceros.idEstadoTercero) : vTerceros.idEstadoTercero != null)
             return false;
+        if (nombreArchivo != null ? !nombreArchivo.equals(vTerceros.nombreArchivo) : vTerceros.nombreArchivo != null)
+            return false;
+        if (idAdjuntoExamenMedico != null ? !idAdjuntoExamenMedico.equals(vTerceros.idAdjuntoExamenMedico) : vTerceros.idAdjuntoExamenMedico != null)
+            return false;
+        if (cargo != null ? !cargo.equals(vTerceros.cargo) : vTerceros.cargo != null) return false;
+        if (estructuraOrganizacional != null ? !estructuraOrganizacional.equals(vTerceros.estructuraOrganizacional) : vTerceros.estructuraOrganizacional != null)
+            return false;
+        if (estructuraArea != null ? !estructuraArea.equals(vTerceros.estructuraArea) : vTerceros.estructuraArea != null)
+            return false;
 
         return true;
     }
@@ -989,6 +1050,11 @@ public class VTerceros {
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (estadoTercero != null ? estadoTercero.hashCode() : 0);
         result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
+        result = 31 * result + (nombreArchivo != null ? nombreArchivo.hashCode() : 0);
+        result = 31 * result + (idAdjuntoExamenMedico != null ? idAdjuntoExamenMedico.hashCode() : 0);
+        result = 31 * result + (cargo != null ? cargo.hashCode() : 0);
+        result = 31 * result + (estructuraOrganizacional != null ? estructuraOrganizacional.hashCode() : 0);
+        result = 31 * result + (estructuraArea != null ? estructuraArea.hashCode() : 0);
         return result;
     }
 }

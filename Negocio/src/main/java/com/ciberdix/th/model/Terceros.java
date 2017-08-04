@@ -57,6 +57,7 @@ public class Terceros {
     private String sitioWeb;
     private Integer idAdjunto;
     private Integer idEstadoTercero;
+    private Integer idAdjuntoExamenMedico;
 
     public Long getIdTercero() {
         return idTercero;
@@ -456,5 +457,13 @@ public class Terceros {
 
     public void setIdEstadoTercero(Integer idEstadoTercero) {
         this.idEstadoTercero = idEstadoTercero;
+    }
+
+    public Integer getIdAdjuntoExamenMedico() {
+        return idAdjuntoExamenMedico;
+    }
+
+    public void setIdAdjuntoExamenMedico(Integer idAdjuntoExamenMedico) {
+        this.idAdjuntoExamenMedico = idAdjuntoExamenMedico;
     }
 }
