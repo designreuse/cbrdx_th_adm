@@ -77,6 +77,12 @@ public class VTerceros {
     private Integer idAdjunto;
     private String estadoTercero;
     private Integer idEstadoTercero;
+    private String nombreArchivo;
+    private Integer idAdjuntoExamenMedico;
+    private String cargo;
+    private String estructuraOrganizacional;
+    private String estructuraArea;
+    private Date fechaUltimoExamen;
 
     public Long getIdTercero() {
         return idTercero;
@@ -636,5 +642,37 @@ public class VTerceros {
 
     public void setEstadoTercero(String estadoTercero) {
         this.estadoTercero = estadoTercero;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getEstructuraOrganizacional() {
+        return estructuraOrganizacional;
+    }
+
+    public void setEstructuraOrganizacional(String estructuraOrganizacional) {
+        this.estructuraOrganizacional = estructuraOrganizacional;
+    }
+
+    public String getEstructuraArea() {
+        return estructuraArea;
+    }
+
+    public void setEstructuraArea(String estructuraArea) {
+        this.estructuraArea = estructuraArea;
+    }
+
+    public Date getFechaUltimoExamen() {
+        return fechaUltimoExamen;
+    }
+
+    public void setFechaUltimoExamen(Date fechaUltimoExamen) {
+        this.fechaUltimoExamen = fechaUltimoExamen;
     }
 }

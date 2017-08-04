@@ -1,7 +1,5 @@
 package com.ciberdix.th.models;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -62,10 +60,11 @@ public class Terceros {
     private String sitioWeb;
     private Integer idAdjunto;
     private Integer idEstadoTercero;
+    private Integer idAdjuntoExamenMedico;
 
     public Terceros() {
     }
-    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto, Integer idEstadoTercero) {
+    public Terceros(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto, Integer idEstadoTercero, Integer idAdjuntoExamenMedico) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.primerApellido = primerApellido;
@@ -119,8 +118,9 @@ public class Terceros {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idAdjunto = idAdjunto;
         this.idEstadoTercero = idEstadoTercero;
+        this.idAdjuntoExamenMedico = idAdjuntoExamenMedico;
     }
-    public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto, Integer idEstadoTercero) {
+    public Terceros(Long idTercero, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String imagen, Integer idTipoDocumento, String numeroDocumento, Date fechaDocumento, Integer idCiudadExpDocumento, Date fechaNacimiento, Integer idCiudadNacimiento, Integer idGenero, Integer idEstadoCivil, Integer idFactorRh, Integer nroHijos, Integer idLateralidad, String tallaCamisa, String tallaPantalon, String tallaCalzado, String correoElectronico, Date fechaCreacion, Integer idTipoPersona, String razonSocial, Double talla, Double peso, Double imc, Integer idProfesion, Integer idNivelEducacion, Integer auditoriaUsuario, String telefonoFijo, String telefonoCelular, Date fechaDefuncion, Integer idTipoOcupacion, Integer idSectorEconomico, Integer idActividadEconomica, Integer idOcupacion, Integer idEstadoJuridico, Integer idCoberturaSalud, Boolean indicadorVivo, Integer idTipoAfiliacion, Boolean indicadorHabilitado, Integer idTipoTercero, Integer idTallaCamisa, Integer idTallaPantalon, Integer idTallaCalzado, String sitioWeb, Integer idAdjunto, Integer idEstadoTercero, Integer idAdjuntoExamenMedico) {
         this.idTercero = idTercero;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -175,6 +175,7 @@ public class Terceros {
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
         this.idAdjunto = idAdjunto;
         this.idEstadoTercero = idEstadoTercero;
+        this.idAdjuntoExamenMedico = idAdjuntoExamenMedico;
     }
 
     @Id
@@ -648,6 +649,16 @@ public class Terceros {
         this.idEstadoTercero = idEstadoTercero;
     }
 
+    @Basic
+    @Column(name = "IdAdjuntoExamenMedico", nullable = true)
+    public Integer getIdAdjuntoExamenMedico() {
+        return idAdjuntoExamenMedico;
+    }
+
+    public void setIdAdjuntoExamenMedico(Integer idAdjuntoExamenMedico) {
+        this.idAdjuntoExamenMedico = idAdjuntoExamenMedico;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -741,7 +752,9 @@ public class Terceros {
             return false;
         if (sitioWeb != null ? !sitioWeb.equals(terceros.sitioWeb) : terceros.sitioWeb != null) return false;
         if (idAdjunto != null ? !idAdjunto.equals(terceros.idAdjunto) : terceros.idAdjunto != null) return false;
-        return idEstadoTercero != null ? idEstadoTercero.equals(terceros.idEstadoTercero) : terceros.idEstadoTercero == null;
+        if (idEstadoTercero != null ? !idEstadoTercero.equals(terceros.idEstadoTercero) : terceros.idEstadoTercero != null)
+            return false;
+        return idAdjuntoExamenMedico != null ? idAdjuntoExamenMedico.equals(terceros.idAdjuntoExamenMedico) : terceros.idAdjuntoExamenMedico == null;
     }
 
     @Override
@@ -796,6 +809,7 @@ public class Terceros {
         result = 31 * result + (sitioWeb != null ? sitioWeb.hashCode() : 0);
         result = 31 * result + (idAdjunto != null ? idAdjunto.hashCode() : 0);
         result = 31 * result + (idEstadoTercero != null ? idEstadoTercero.hashCode() : 0);
+        result = 31 * result + (idAdjuntoExamenMedico != null ? idAdjuntoExamenMedico.hashCode() : 0);
         return result;
     }
 }
