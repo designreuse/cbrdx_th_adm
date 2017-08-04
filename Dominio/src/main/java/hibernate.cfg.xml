@@ -251,6 +251,8 @@
         <mapping class="com.ciberdix.th.model.Cargos"/>
         <mapping class="com.ciberdix.th.models.ListasProcesos"/>
         <mapping class="com.ciberdix.th.models.ListasSubProcesos"/>
+        <mapping class="com.ciberdix.th.models.ValoracionesRiesgos"/>
+        <mapping class="com.ciberdix.th.models.VValoracionesRiesgos"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
