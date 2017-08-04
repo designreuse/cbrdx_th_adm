@@ -56,13 +56,13 @@ public class CargosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/getAllWithPerc")
     List<VCargos> findAllWithPer() {
-        List<VCargos> parametros = Arrays.asList(restTemplate.getForObject(serviceUrl, VCargos[].class));
+        List<VCargos> parametros = Arrays.asList(restTemplate.getForObject(serviceUrl + "/enabled/", VCargos[].class));
         for(VCargos vc : parametros){
             List<VCargosRiesgos> cr = Arrays.asList(restTemplate.getForObject(domainURL + "/api/cargosRiesgos", VCargosRiesgos[].class));
-            List<VCargosRiesgos> filtroDifNull = cr.stream().filter(t->cr.stream().anyMatch(f->t.getIdConsecuencia()!=null && t.getIdProbabilidad()!=null)).collect(Collectors.toList());
             List<VCargosRiesgos> filtroHab = cr.stream().filter(t->cr.stream().anyMatch(f->t.getIndicadorHabilitado())).collect(Collectors.toList());
             double p = 0;
             if(filtroHab.size()>0){
+                List<VCargosRiesgos> filtroDifNull = filtroHab.stream().filter(t->filtroHab.stream().anyMatch(f->t.getIdConsecuencia()!=null && t.getIdProbabilidad()!=null)).collect(Collectors.toList());
                 p = (filtroDifNull.size()/filtroHab.size())*100;
             }
             vc.setAvanceValoracion(p);
