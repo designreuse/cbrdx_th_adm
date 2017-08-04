@@ -48,7 +48,7 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
         return Arrays.asList(parametros);
     }
 
-            @RequestMapping(method = RequestMethod.GET, path = "/estructuraFisica/{idEstructuraFisica}")
+    @RequestMapping(method = RequestMethod.GET, path = "/estructuraFisica/{idEstructuraFisica}")
     List<VInstitucionesMedicasEstructurasFisicas> findByIdEstructuraFisica(@PathVariable Integer idEstructuraFisica) {
         RestTemplate restTemplate = new RestTemplate();
         VInstitucionesMedicasEstructurasFisicas[] parametros = restTemplate.getForObject(serviceUrl + "/estructuraFisica/" + idEstructuraFisica, VInstitucionesMedicasEstructurasFisicas[].class);
@@ -56,13 +56,13 @@ public class InstitucionesMedicasEstructurasFisicasRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    InstitucionesMedicasEstructurasFisicas create(@RequestBody InstitucionesMedicasEstructurasFisicas obj){
+    InstitucionesMedicasEstructurasFisicas create(@RequestBody InstitucionesMedicasEstructurasFisicas obj) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForObject(serviceUrl, obj, InstitucionesMedicasEstructurasFisicas.class);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    void update(@RequestBody InstitucionesMedicasEstructurasFisicas obj){
+    void update(@RequestBody InstitucionesMedicasEstructurasFisicas obj) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.put(serviceUrl, obj);
     }

@@ -1,11 +1,13 @@
 package com.ciberdix.th.controllers;
 
 import com.ciberdix.th.model.*;
+import com.ciberdix.th.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,6 +77,51 @@ public class ExamenesMedicosRefactorController {
             UtilitiesController.sendMail(postulante.getCorreoElectronico(), "Crezcamos - Solicitud Examen Médico de Ingreso - " + UtilitiesController.fullName(vTerceros, true), assembleNoInstitutionBody(UtilitiesController.fullName(vTerceros, true), cargos, p, obj));
         }
         return obj;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/correosAutomaticos")
+    void generatePersonsExams(@RequestBody List<Long> idsTerceros, HttpServletRequest request) {
+        JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
+        String token = UtilitiesController.extractToken(request);
+        Integer idUsuario = jwtTokenUtil.getUserIdFromToken(token);
+        List<Usuarios> usuarios = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class));
+        for (Long idTercero : idsTerceros) {
+            VTercerosCargos vTercerosCargos = restTemplate.getForObject(baseUrl + "/api/tercerosCargos/tercero/" + idTercero, VTercerosCargos.class);
+            if (vTercerosCargos != null) {
+                VEstructuraOrganizacional vEstructuraOrganizacional = restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacional/" + vTercerosCargos.getIdEstructuraOrganizacional(), VEstructuraOrganizacional.class);
+                Integer PERIO = UtilitiesController.findListItem("ListasTiposExamenesMedicos", "PERIO").getIdLista();
+                List<VInstitucionesMedicasTiposExamenes> vInstitucionesMedicasTiposExamenes = Arrays.stream(restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", VInstitucionesMedicasTiposExamenes[].class)).filter(t -> t.getIdTipoExamen().equals(PERIO)).collect(Collectors.toList());
+                List<VInstitucionesMedicasEstructurasFisicas> vInstitucionesMedicasEstructurasFisicas = Arrays.stream(restTemplate.getForObject(baseUrl + "/api/institucionesMedicasEstructurasFisicas/estructuraFisica/" + vEstructuraOrganizacional.getIdEstructuraFisica(), VInstitucionesMedicasEstructurasFisicas[].class)).filter(t -> vInstitucionesMedicasTiposExamenes.stream().anyMatch(f -> t.getIdInstitucionMedica().equals(f.getIdInstitucionMedica()))).collect(Collectors.toList());
+                VTerceros vTerceros = restTemplate.getForObject(baseUrl + "/api/vterceros/" + idTercero, VTerceros.class);
+                if (vInstitucionesMedicasEstructurasFisicas != null && !vInstitucionesMedicasEstructurasFisicas.isEmpty()) {
+                    VInstitucionesMedicas vInstitucionesMedicas = restTemplate.getForObject(baseUrl + "/api/institucionesMedicas/" + vInstitucionesMedicasEstructurasFisicas.get(0).getIdInstitucionMedica(), VInstitucionesMedicas.class);
+                    Cargos cargos = new Cargos();
+                    cargos.setIdCargo(vTercerosCargos.getIdCargo());
+                    cargos.setCargo(vTercerosCargos.getCargo());
+                    ExamenesMedicos examenesMedicos = new ExamenesMedicos();
+                    examenesMedicos.setIdEstadoExamenMedico(UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista());
+                    examenesMedicos.setIdInstitucionMedica(vInstitucionesMedicas.getIdInstitucionMedica());
+                    examenesMedicos.setAuditoriaUsuario(idUsuario);
+                    examenesMedicos.setIdTercero(idTercero);
+                    examenesMedicos.setIdTipoExamenMedico(PERIO);
+                    examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
+                    UtilitiesController.sendMail(vInstitucionesMedicas.getCorreoElectronico(), "Examen Médico Periodico - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionPeriodicBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
+                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assemblePostulantPeriodicBody(vInstitucionesMedicas, UtilitiesController.fullName(vTerceros, true), examenesMedicos));
+                } else {
+                    Cargos cargos = new Cargos();
+                    cargos.setIdCargo(vTercerosCargos.getIdCargo());
+                    cargos.setCargo(vTercerosCargos.getCargo());
+                    ExamenesMedicos examenesMedicos = new ExamenesMedicos();
+                    examenesMedicos.setIdEstadoExamenMedico(UtilitiesController.findListItem("ListasEstadosExamenesMedicos", "ENESPR").getIdLista());
+                    examenesMedicos.setIndicadorOtraInstitucion(true);
+                    examenesMedicos.setAuditoriaUsuario(idUsuario);
+                    examenesMedicos.setIdTercero(idTercero);
+                    examenesMedicos.setIdTipoExamenMedico(PERIO);
+                    examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
+                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
+                }
+            }
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -151,6 +198,61 @@ public class ExamenesMedicosRefactorController {
         return sb.toString();
     }
 
+    private String assembleInstitutionPeriodicBody(VTerceros tercero, String nombreTercero, Cargos cargo, ExamenesMedicos e) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h2>");
+        sb.append("Examen Médico Periodico - ");
+        sb.append(nombreTercero);
+        sb.append("</h2>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Solicitud del examen periodico");
+        sb.append("<p>");
+        sb.append("Comedidamente le solicito realizar el examen médico laboral relacionado en el asunto para el(la) señor(a) ");
+        sb.append(nombreTercero);
+        sb.append(", Identificado(a) con ");
+        sb.append(tercero.getTipoDocumento());
+        sb.append(" número ");
+        sb.append(tercero.getNumeroDocumento());
+        sb.append(" de ");
+        sb.append(tercero.getCiudadExpDocumento());
+        sb.append(" para el desarrollo en el cargo de ");
+        sb.append(cargo.getCargo());
+        sb.append(". El examen solicitado contiene las siguientes especificaciones de Valoración:");
+        sb.append("</p>");
+        sb.append("<h3>");
+        sb.append("Evaluación médica laboral con énfasis en:");
+        sb.append("</h3>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Sistema osteomuscular de miembros superiores e inferiores: Validar signos de enfermedades secundarias a desordenes musculo esqueléticos como: STC, Epicondilitis, Tenosinovitis De Quervain.");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Columna vertebral: Especificar escoliosis, cifosis, hiperlordosis; detallando el grado de la deformidad y las alteraciones funcionales secundarias a esto. Antecedentes quirúrgicos de columna");
+        sb.append("</li>");
+        sb.append("</ol>");
+        sb.append("</p>");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("<h3>");
+        sb.append("Perfil de Cargo");
+        sb.append("<h3>");
+        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("<h3>");
+        sb.append("Resultado");
+        sb.append("<h3>");
+        sb.append(UtilitiesController.generateTokenButton("/answer-exams-exam-period/" + e.getIdExamenMedico(), "ingresar_resultado.png"));
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("<h3>");
+        sb.append("Solicitud de adjuntar documentos una vez finalizada la atención del colaborador");
+        sb.append("<h3>");
+        sb.append("Recuerde una vez finalizada la atención del colaborador adjuntar al sistema los formatos de aptitud laboral requeridos por Crezcamos");
+        return sb.toString();
+    }
+
     private String assembleNoInstitutionBody(String nombreTercero, Cargos cargo, ProcesoSeleccion p, ExamenesMedicos e) {
         StringBuilder sb = new StringBuilder();
         sb.append("<h2>");
@@ -193,6 +295,51 @@ public class ExamenesMedicosRefactorController {
         sb.append("<br/>");
         sb.append("A continuación el perfil de cargo. Debe imprimirlo y llevarlo al instituto de su preferencia.");
         sb.append(UtilitiesController.generateExternalTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
+        return sb.toString();
+    }
+
+    private String assembleNoInstitutionPeriodicBody(String nombreTercero, Cargos cargo, ExamenesMedicos e) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h2>");
+        sb.append("Examen Médico Periodico - ");
+        sb.append(nombreTercero);
+        sb.append("</h2>");
+        sb.append("Buen día,");
+        sb.append("<br/>");
+        sb.append("A continuación los documentos para el examen de ingreso. Adjuntamos el perfil del cargo en el contenido del correo el cual debe imprimir y llevarlo al instituto de su preferencia. Igualmente un link para que declare la veracidad de la información y consentimiento informado.");
+        sb.append("Debe descarga los siguientes documentos de la plataforma y llevarlos a la institución médica donde va a realizar el examen:");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Solicitud del examen de ingreso");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Certificado de Aptitud Laboral");
+        sb.append("</li>");
+        sb.append("</ol>");
+        sb.append("Los documentos los encuentra en la sección Documentos Adjuntos Sección Documentos a Descargar");
+        sb.append("<br/>");
+        sb.append("Realizado el examen y diligenciado en los documentos adjuntos el concepto médico, debe escanear y adjuntar a la plataforma los siguientes documentos:");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Cerficado de Aptitud Laboral");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Factura o cuenta de cobro del examen médico nombre de Crezcamos S.A. NIT: 900 211.263-0 a la dirección Carrera 23 N 28- 27 Barrio Alarcón en Bucaramanga.");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Rut del instituto médico o médico especialista.");
+        sb.append("</li>");
+        sb.append("</ol>");
+        sb.append("Los documentos los debe adjuntar en la sección Documentos Adjuntos Sección Documentos Adjuntar.");
+        sb.append("<br/>");
+        sb.append("Antes de realizado el examen debe declarar la veracidad de la información y consentimiento informado para ello debe dar click en el siguiente link:");
+        sb.append(UtilitiesController.generateTokenButton("/informed-consent-exam-period/" + e.getIdExamenMedico(), "consentimiento_informado.png"));
+        sb.append("Es importante adjuntar los documentos a la plataforma y la declaración para continuar proceso de selección.");
+        sb.append("<br/>");
+        sb.append("El costo del examen médico no debe ser superior a 30.000.");
+        sb.append("<br/>");
+        sb.append("A continuación el perfil de cargo. Debe imprimirlo y llevarlo al instituto de su preferencia.");
+        sb.append(UtilitiesController.generateTokenButton("/positions/detail-pdf/" + cargo.getIdCargo(), "ver_perfil_cargo.png"));
         return sb.toString();
     }
 
@@ -245,6 +392,58 @@ public class ExamenesMedicosRefactorController {
         sb.append("</p>");
         sb.append("<p>");
         sb.append(UtilitiesController.generateExternalTokenButton("/informed-consent/exam/" + e.getIdExamenMedico() + "/terceroPublicacion/" + p.getIdTerceroPublicacion(), "consentimiento_informado.png"));
+        sb.append("</p>");
+        sb.append("</li>");
+        sb.append("</ol>");
+        return sb.toString();
+    }
+
+    private String assemblePostulantPeriodicBody(VInstitucionesMedicas i, String nombreTercero, ExamenesMedicos e) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h2>");
+        sb.append("Examen Médico Periodico - ");
+        sb.append(nombreTercero);
+        sb.append("</h2>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Datos del instituto médico");
+        sb.append("<p>");
+        sb.append("Comedidamente le solicito realizar el examen médico laboral periodico en el siguiente instituto médico: ");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Nombre del Instituto: ");
+        sb.append(i.getInstitucionMedica());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getDireccion());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getCorreoElectronico());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(i.getTelefonoContacto());
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Debe descarga los siguientes documentos de la plataforma y llevarlos a la institución médica donde va a realizar el examen: ");
+        sb.append("</p>");
+        sb.append("<ol>");
+        sb.append("<li>");
+        sb.append("Solicitud del examen Periodico ");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("Certificado de Aptitud Laboral ");
+        sb.append("</li>");
+        sb.append("</ol>");
+        sb.append("</li>");
+        sb.append("<li>");
+        sb.append("<p>");
+        sb.append("Consentimiento Informado");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append("Con el fin de continuar proceso de selección debe declarar la veracidad de la información y el consentimiento informado, dando click en el siguiente link realiza dicho proceso, el cual se debe declarar antes de realizar el examen: ");
+        sb.append("</p>");
+        sb.append("<p>");
+        sb.append(UtilitiesController.generateTokenButton("/informed-consent-exam-period/" + e.getIdExamenMedico(), "consentimiento_informado.png"));
         sb.append("</p>");
         sb.append("</li>");
         sb.append("</ol>");
