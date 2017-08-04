@@ -1,7 +1,7 @@
 package com.ciberdix.th.models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -31,6 +31,7 @@ public class VProyeccionesDotacionesTerceros {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigoVerificacion;
 
     @Id
     @Column(name = "IdProyeccionDotacionTerceros", nullable = false)
@@ -272,6 +273,16 @@ public class VProyeccionesDotacionesTerceros {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "CodigoVerificacion", nullable = true, length = 20)
+    public String getCodigoVerificacion() {
+        return codigoVerificacion;
+    }
+
+    public void setCodigoVerificacion(String codigoVerificacion) {
+        this.codigoVerificacion = codigoVerificacion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -316,6 +327,8 @@ public class VProyeccionesDotacionesTerceros {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (codigoVerificacion != null ? !codigoVerificacion.equals(that.codigoVerificacion) : that.codigoVerificacion != null)
+            return false;
 
         return true;
     }
@@ -346,6 +359,7 @@ public class VProyeccionesDotacionesTerceros {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (codigoVerificacion != null ? codigoVerificacion.hashCode() : 0);
         return result;
     }
 }

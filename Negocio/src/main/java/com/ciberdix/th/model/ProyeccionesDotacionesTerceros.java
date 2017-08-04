@@ -17,6 +17,7 @@ public class ProyeccionesDotacionesTerceros {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String codigoVerificacion;
 
     public Integer getIdProyeccionDotacionTerceros() {
         return idProyeccionDotacionTerceros;
@@ -112,5 +113,13 @@ public class ProyeccionesDotacionesTerceros {
 
     public void setComentarioEntrega(String comentarioEntrega) {
         this.comentarioEntrega = comentarioEntrega;
+    }
+
+    public String getCodigoVerificacion() {
+        return codigoVerificacion;
+    }
+
+    public void setCodigoVerificacion(String codigoVerificacion) {
+        this.codigoVerificacion = codigoVerificacion;
     }
 }

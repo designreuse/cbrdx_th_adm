@@ -10,6 +10,7 @@ public class VPlanesAccionesNovedadesAccidentes {
     private Integer idPlanAccionNovedadAccidente;
     private Integer idTerceroNovedad;
     private String estadoPlanAccion;
+    private String codigoEstadoPlanAccion;
     private Integer idEstadoPlanAccion;
     private String actividad;
     private String nombreResponsable;
@@ -53,6 +54,16 @@ public class VPlanesAccionesNovedadesAccidentes {
 
     public void setEstadoPlanAccion(String estadoPlanAccion) {
         this.estadoPlanAccion = estadoPlanAccion;
+    }
+
+    @Basic
+    @Column(name = "CodigoEstadoPlanAccion", nullable = true, length = 10)
+    public String getCodigoEstadoPlanAccion() {
+        return codigoEstadoPlanAccion;
+    }
+
+    public void setCodigoEstadoPlanAccion(String codigoEstadoPlanAccion) {
+        this.codigoEstadoPlanAccion = codigoEstadoPlanAccion;
     }
 
     @Basic
@@ -208,6 +219,8 @@ public class VPlanesAccionesNovedadesAccidentes {
             return false;
         if (estadoPlanAccion != null ? !estadoPlanAccion.equals(that.estadoPlanAccion) : that.estadoPlanAccion != null)
             return false;
+        if (codigoEstadoPlanAccion != null ? !codigoEstadoPlanAccion.equals(that.codigoEstadoPlanAccion) : that.codigoEstadoPlanAccion != null)
+            return false;
         if (idEstadoPlanAccion != null ? !idEstadoPlanAccion.equals(that.idEstadoPlanAccion) : that.idEstadoPlanAccion != null)
             return false;
         if (actividad != null ? !actividad.equals(that.actividad) : that.actividad != null) return false;
@@ -240,6 +253,7 @@ public class VPlanesAccionesNovedadesAccidentes {
         int result = idPlanAccionNovedadAccidente != null ? idPlanAccionNovedadAccidente.hashCode() : 0;
         result = 31 * result + (idTerceroNovedad != null ? idTerceroNovedad.hashCode() : 0);
         result = 31 * result + (estadoPlanAccion != null ? estadoPlanAccion.hashCode() : 0);
+        result = 31 * result + (codigoEstadoPlanAccion != null ? codigoEstadoPlanAccion.hashCode() : 0);
         result = 31 * result + (idEstadoPlanAccion != null ? idEstadoPlanAccion.hashCode() : 0);
         result = 31 * result + (actividad != null ? actividad.hashCode() : 0);
         result = 31 * result + (nombreResponsable != null ? nombreResponsable.hashCode() : 0);
