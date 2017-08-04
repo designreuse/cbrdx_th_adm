@@ -1,6 +1,6 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.model.TercerosTipos;
+import com.ciberdix.th.model.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -47,7 +47,31 @@ public class TercerosTiposRefactorController {
 
     @RequestMapping(method = RequestMethod.POST)
     TercerosTipos create(@RequestBody TercerosTipos o) {
-        return restTemplate.postForObject(serviceUrl, o, TercerosTipos.class);
+        TercerosTipos tt = restTemplate.postForObject(serviceUrl, o, TercerosTipos.class);
+        TercerosTiposDocumentosTerceros ttdt = new TercerosTiposDocumentosTerceros();
+        ttdt.setIdTerceroTipo(tt.getIdTerceroTipo());
+        ttdt.setIndicadorHabilitado(true);
+        ttdt.setIndicadorObligatorio(false);
+        ttdt.setIndicadorRequiere(false);
+        ttdt.setAuditoriaFecha(tt.getAuditoriaFecha());
+        ttdt.setAuditoriaUsuario(tt.getAuditoriaUsuario());
+        TercerosTiposCentralesRiesgos ttcr = new TercerosTiposCentralesRiesgos();
+        ttcr.setIdTerceroTipo(tt.getIdTerceroTipo());
+        ttcr.setIndicadorHabilitado(true);
+        ttcr.setIndicadorRequiere(false);
+        ttcr.setAuditoriaFecha(tt.getAuditoriaFecha());
+        ttcr.setAuditoriaUsuario(tt.getAuditoriaUsuario());
+        List<DocumentosTerceros> dt = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/documentosTerceros/enabled", DocumentosTerceros[].class));
+        for(DocumentosTerceros fdt: dt){
+            ttdt.setIdDocumentoTercero(fdt.getIdDocumentoTercero());
+            restTemplate.postForObject(baseUrl + "/api/tercerosTiposDocumentosTerceros",ttdt, TercerosTiposDocumentosTerceros.class);
+        }
+        List<CentralesRiesgos> cr = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/centralesRiesgos/enabled/", CentralesRiesgos[].class));
+        for(CentralesRiesgos fcr : cr){
+            ttcr.setIdCentralRiesgo(fcr.getIdCentralRiesgo());
+            restTemplate.postForObject(baseUrl + "/api/tercerosTiposCentralesRiesgos",ttcr, TercerosTiposCentralesRiesgos.class);
+        }
+        return tt;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
