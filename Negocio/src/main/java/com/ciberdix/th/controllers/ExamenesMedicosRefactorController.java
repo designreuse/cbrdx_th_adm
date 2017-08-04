@@ -106,7 +106,7 @@ public class ExamenesMedicosRefactorController {
                     examenesMedicos.setIdTipoExamenMedico(PERIO);
                     examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
                     UtilitiesController.sendMail(vInstitucionesMedicas.getCorreoElectronico(), "Examen Médico Periodico - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionPeriodicBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
-                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assemblePostulantPeriodicBody(vInstitucionesMedicas, UtilitiesController.fullName(vTerceros, true), examenesMedicos));
+                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assemblePostulantPeriodicBody(vInstitucionesMedicas, UtilitiesController.fullName(vTerceros, true), examenesMedicos));
                 } else {
                     Cargos cargos = new Cargos();
                     cargos.setIdCargo(vTercerosCargos.getIdCargo());
