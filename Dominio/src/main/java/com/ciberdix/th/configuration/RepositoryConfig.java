@@ -303,5 +303,7 @@ public class RepositoryConfig extends RepositoryRestConfigurerAdapter {
         config.exposeIdsFor(VTercerosTiposFuncionalidades.class);
         config.exposeIdsFor(TercerosTiposCentralesRiesgos.class);
         config.exposeIdsFor(TercerosTiposDocumentosTerceros.class);
+        config.exposeIdsFor(VTercerosTiposDocumentosTerceros.class);
+        config.exposeIdsFor(VTercerosTiposCentralesRiesgos.class);
     }
 }

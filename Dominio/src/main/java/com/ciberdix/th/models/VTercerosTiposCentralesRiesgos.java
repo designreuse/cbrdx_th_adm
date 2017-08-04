@@ -4,40 +4,19 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosTiposCentralesRiesgos", schema = "dbo", catalog = "CREZCAMOS")
-public class TercerosTiposCentralesRiesgos {
+@Table(name = "V_TercerosTiposCentralesRiesgos", schema = "dbo", catalog = "CREZCAMOS")
+public class VTercerosTiposCentralesRiesgos {
     private Integer idTerceroTipoCentralRiesgos;
+    private String terceroTipo;
     private Integer idTerceroTipo;
+    private String centralRiesgo;
     private Integer idCentralRiesgo;
     private Boolean indicadorRequiere;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosTiposCentralesRiesgos() {
-    }
-
-    public TercerosTiposCentralesRiesgos(Integer idTerceroTipo, Integer idCentralRiesgo, Boolean indicadorRequiere, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipo = idTerceroTipo;
-        this.idCentralRiesgo = idCentralRiesgo;
-        this.indicadorRequiere = indicadorRequiere;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public TercerosTiposCentralesRiesgos(Integer idTerceroTipoCentralRiesgos, Integer idTerceroTipo, Integer idCentralRiesgo, Boolean indicadorRequiere, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipoCentralRiesgos = idTerceroTipoCentralRiesgos;
-        this.idTerceroTipo = idTerceroTipo;
-        this.idCentralRiesgo = idCentralRiesgo;
-        this.indicadorRequiere = indicadorRequiere;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario: 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroTipoCentralRiesgos", nullable = false)
     public Integer getIdTerceroTipoCentralRiesgos() {
         return idTerceroTipoCentralRiesgos;
@@ -48,6 +27,16 @@ public class TercerosTiposCentralesRiesgos {
     }
 
     @Basic
+    @Column(name = "TerceroTipo", nullable = true, length = 200)
+    public String getTerceroTipo() {
+        return terceroTipo;
+    }
+
+    public void setTerceroTipo(String terceroTipo) {
+        this.terceroTipo = terceroTipo;
+    }
+
+    @Basic
     @Column(name = "IdTerceroTipo", nullable = true)
     public Integer getIdTerceroTipo() {
         return idTerceroTipo;
@@ -55,6 +44,16 @@ public class TercerosTiposCentralesRiesgos {
 
     public void setIdTerceroTipo(Integer idTerceroTipo) {
         this.idTerceroTipo = idTerceroTipo;
+    }
+
+    @Basic
+    @Column(name = "CentralRiesgo", nullable = true, length = 100)
+    public String getCentralRiesgo() {
+        return centralRiesgo;
+    }
+
+    public void setCentralRiesgo(String centralRiesgo) {
+        this.centralRiesgo = centralRiesgo;
     }
 
     @Basic
@@ -112,11 +111,14 @@ public class TercerosTiposCentralesRiesgos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosTiposCentralesRiesgos that = (TercerosTiposCentralesRiesgos) o;
+        VTercerosTiposCentralesRiesgos that = (VTercerosTiposCentralesRiesgos) o;
 
         if (idTerceroTipoCentralRiesgos != null ? !idTerceroTipoCentralRiesgos.equals(that.idTerceroTipoCentralRiesgos) : that.idTerceroTipoCentralRiesgos != null)
             return false;
+        if (terceroTipo != null ? !terceroTipo.equals(that.terceroTipo) : that.terceroTipo != null) return false;
         if (idTerceroTipo != null ? !idTerceroTipo.equals(that.idTerceroTipo) : that.idTerceroTipo != null)
+            return false;
+        if (centralRiesgo != null ? !centralRiesgo.equals(that.centralRiesgo) : that.centralRiesgo != null)
             return false;
         if (idCentralRiesgo != null ? !idCentralRiesgo.equals(that.idCentralRiesgo) : that.idCentralRiesgo != null)
             return false;
@@ -135,7 +137,9 @@ public class TercerosTiposCentralesRiesgos {
     @Override
     public int hashCode() {
         int result = idTerceroTipoCentralRiesgos != null ? idTerceroTipoCentralRiesgos.hashCode() : 0;
+        result = 31 * result + (terceroTipo != null ? terceroTipo.hashCode() : 0);
         result = 31 * result + (idTerceroTipo != null ? idTerceroTipo.hashCode() : 0);
+        result = 31 * result + (centralRiesgo != null ? centralRiesgo.hashCode() : 0);
         result = 31 * result + (idCentralRiesgo != null ? idCentralRiesgo.hashCode() : 0);
         result = 31 * result + (indicadorRequiere != null ? indicadorRequiere.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
