@@ -104,7 +104,7 @@ public class ExamenesMedicosRefactorController {
                     examenesMedicos.setAuditoriaUsuario(idUsuario);
                     examenesMedicos.setIdTercero(idTercero);
                     examenesMedicos.setIdTipoExamenMedico(PERIO);
-                    examenesMedicos = create(examenesMedicos);
+                    examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
                     UtilitiesController.sendMail(vInstitucionesMedicas.getCorreoElectronico(), "Examen Médico Periodico - " + UtilitiesController.fullName(vTerceros, true), assembleInstitutionPeriodicBody(vTerceros, UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
                     UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assemblePostulantPeriodicBody(vInstitucionesMedicas, UtilitiesController.fullName(vTerceros, true), examenesMedicos));
                 } else {
@@ -117,7 +117,7 @@ public class ExamenesMedicosRefactorController {
                     examenesMedicos.setAuditoriaUsuario(idUsuario);
                     examenesMedicos.setIdTercero(idTercero);
                     examenesMedicos.setIdTipoExamenMedico(PERIO);
-                    examenesMedicos = create(examenesMedicos);
+                    examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
                     UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
                 }
             }
