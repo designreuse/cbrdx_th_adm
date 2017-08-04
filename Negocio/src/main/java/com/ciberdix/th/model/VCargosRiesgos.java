@@ -12,6 +12,7 @@ public class VCargosRiesgos {
     private String cargo;
     private Integer idRiesgo;
     private String riesgo;
+    private String riesgoSubTipo;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
     private Boolean indicadorHabilitado;
@@ -114,5 +115,13 @@ public class VCargosRiesgos {
 
     public void setIdConsecuencia(Integer idConsecuencia) {
         this.idConsecuencia = idConsecuencia;
+    }
+
+    public String getRiesgoSubTipo() {
+        return riesgoSubTipo;
+    }
+
+    public void setRiesgoSubTipo(String riesgoSubTipo) {
+        this.riesgoSubTipo = riesgoSubTipo;
     }
 }
