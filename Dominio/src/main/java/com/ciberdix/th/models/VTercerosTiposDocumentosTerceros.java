@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosTiposDocumentosTerceros", schema = "dbo", catalog = "CREZCAMOS")
-public class TercerosTiposDocumentosTerceros {
+@Table(name = "V_TercerosTiposDocumentosTerceros", schema = "dbo", catalog = "CREZCAMOS")
+public class VTercerosTiposDocumentosTerceros {
     private Integer idTerceroTipoDocumentoTercero;
     private Integer idTerceroTipo;
+    private String documentoTercero;
     private Integer idDocumentoTercero;
     private Boolean indicadorRequiere;
     private Boolean indicadorObligatorio;
@@ -15,32 +16,7 @@ public class TercerosTiposDocumentosTerceros {
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosTiposDocumentosTerceros() {
-    }
-
-    public TercerosTiposDocumentosTerceros(Integer idTerceroTipo, Integer idDocumentoTercero, Boolean indicadorRequiere, Boolean indicadorObligatorio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipo = idTerceroTipo;
-        this.idDocumentoTercero = idDocumentoTercero;
-        this.indicadorRequiere = indicadorRequiere;
-        this.indicadorObligatorio = indicadorObligatorio;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public TercerosTiposDocumentosTerceros(Integer idTerceroTipoDocumentoTercero, Integer idTerceroTipo, Integer idDocumentoTercero, Boolean indicadorRequiere, Boolean indicadorObligatorio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipoDocumentoTercero = idTerceroTipoDocumentoTercero;
-        this.idTerceroTipo = idTerceroTipo;
-        this.idDocumentoTercero = idDocumentoTercero;
-        this.indicadorRequiere = indicadorRequiere;
-        this.indicadorObligatorio = indicadorObligatorio;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroTipoDocumentoTercero", nullable = false)
     public Integer getIdTerceroTipoDocumentoTercero() {
         return idTerceroTipoDocumentoTercero;
@@ -58,6 +34,16 @@ public class TercerosTiposDocumentosTerceros {
 
     public void setIdTerceroTipo(Integer idTerceroTipo) {
         this.idTerceroTipo = idTerceroTipo;
+    }
+
+    @Basic
+    @Column(name = "DocumentoTercero", nullable = true, length = 200)
+    public String getDocumentoTercero() {
+        return documentoTercero;
+    }
+
+    public void setDocumentoTercero(String documentoTercero) {
+        this.documentoTercero = documentoTercero;
     }
 
     @Basic
@@ -125,11 +111,13 @@ public class TercerosTiposDocumentosTerceros {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosTiposDocumentosTerceros that = (TercerosTiposDocumentosTerceros) o;
+        VTercerosTiposDocumentosTerceros that = (VTercerosTiposDocumentosTerceros) o;
 
         if (idTerceroTipoDocumentoTercero != null ? !idTerceroTipoDocumentoTercero.equals(that.idTerceroTipoDocumentoTercero) : that.idTerceroTipoDocumentoTercero != null)
             return false;
         if (idTerceroTipo != null ? !idTerceroTipo.equals(that.idTerceroTipo) : that.idTerceroTipo != null)
+            return false;
+        if (documentoTercero != null ? !documentoTercero.equals(that.documentoTercero) : that.documentoTercero != null)
             return false;
         if (idDocumentoTercero != null ? !idDocumentoTercero.equals(that.idDocumentoTercero) : that.idDocumentoTercero != null)
             return false;
@@ -151,6 +139,7 @@ public class TercerosTiposDocumentosTerceros {
     public int hashCode() {
         int result = idTerceroTipoDocumentoTercero != null ? idTerceroTipoDocumentoTercero.hashCode() : 0;
         result = 31 * result + (idTerceroTipo != null ? idTerceroTipo.hashCode() : 0);
+        result = 31 * result + (documentoTercero != null ? documentoTercero.hashCode() : 0);
         result = 31 * result + (idDocumentoTercero != null ? idDocumentoTercero.hashCode() : 0);
         result = 31 * result + (indicadorRequiere != null ? indicadorRequiere.hashCode() : 0);
         result = 31 * result + (indicadorObligatorio != null ? indicadorObligatorio.hashCode() : 0);

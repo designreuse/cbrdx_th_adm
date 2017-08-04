@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin
 @Transactional
 @RestController
-@RequestMapping("/api/TercerosTiposFuncionalidades")
+@RequestMapping("/api/tercerosTiposFuncionalidades")
 public class TercerosTiposFuncionalidadesRefactorController {
 
     @Autowired
