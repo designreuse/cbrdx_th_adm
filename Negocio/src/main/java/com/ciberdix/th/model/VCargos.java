@@ -52,6 +52,7 @@ public class VCargos {
     private Integer idProceso;
     private String subProceso;
     private Integer idSubProceso;
+    private Integer avanceValoracion;
 
     public Integer getIdCargo() {
         return idCargo;
@@ -411,5 +412,13 @@ public class VCargos {
 
     public void setIdSubProceso(Integer idSubProceso) {
         this.idSubProceso = idSubProceso;
+    }
+
+    public Integer getAvanceValoracion() {
+        return avanceValoracion;
+    }
+
+    public void setAvanceValoracion(Integer avanceValoracion) {
+        this.avanceValoracion = avanceValoracion;
     }
 }
