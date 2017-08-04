@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/tercerosNovedadesAdjuntos")
@@ -48,7 +49,14 @@ public class TercerosNovedadesAdjuntosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedad/{id}")
     List<VTercerosNovedadesAdjuntos> findByIdTerceroNovedad(@PathVariable Integer id) {
-        return Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VTercerosNovedadesAdjuntos[].class));
+        List<VTercerosNovedadesAdjuntos> tna = Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VTercerosNovedadesAdjuntos[].class));
+        return tna.stream().filter(t->tna.stream().anyMatch(f->t.getIndicadorAccidente()==null || !t.getIndicadorAccidente())).collect(Collectors.toList());
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/terceroNovedadAccidente/{id}")
+    List<VTercerosNovedadesAdjuntos> findByIdTerceroNovedadAccidente(@PathVariable Integer id) {
+        List<VTercerosNovedadesAdjuntos> tna = Arrays.asList(restTemplate.getForObject(serviceUrl + "terceroNovedad/" + id, VTercerosNovedadesAdjuntos[].class));
+        return tna.stream().filter(t->tna.stream().anyMatch(f->t.getIndicadorAccidente())).collect(Collectors.toList());
     }
 
     @RequestMapping(method = RequestMethod.POST)
