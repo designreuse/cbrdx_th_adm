@@ -1,6 +1,5 @@
 package com.ciberdix.th.controllers;
 
-import com.ciberdix.th.config.Globales;
 import com.ciberdix.th.model.CargosRiesgos;
 import com.ciberdix.th.model.VCargosRiesgos;
 import io.swagger.annotations.Api;
