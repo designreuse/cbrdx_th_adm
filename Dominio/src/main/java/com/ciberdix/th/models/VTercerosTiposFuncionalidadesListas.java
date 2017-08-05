@@ -4,43 +4,21 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosTiposFuncionalidadesListas", schema = "dbo", catalog = "CREZCAMOS")
-public class TercerosTiposFuncionalidadesListas {
+@Table(name = "V_TercerosTiposFuncionalidadesListas", schema = "dbo", catalog = "CREZCAMOS")
+public class VTercerosTiposFuncionalidadesListas {
     private Integer idTerceroTipoFuncionalidadListas;
+    private String funcionalidad;
     private Integer idTerceroTipoFuncionalidad;
+    private String seccion;
     private Integer idSeccion;
+    private String control;
     private Integer idControl;
     private Boolean indicadorObligatorio;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
 
-    public TercerosTiposFuncionalidadesListas() {
-    }
-
-    public TercerosTiposFuncionalidadesListas(Integer idTerceroTipoFuncionalidad, Integer idSeccion, Integer idControl, Boolean indicadorObligatorio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipoFuncionalidad = idTerceroTipoFuncionalidad;
-        this.idSeccion = idSeccion;
-        this.idControl = idControl;
-        this.indicadorObligatorio = indicadorObligatorio;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
-    public TercerosTiposFuncionalidadesListas(Integer idTerceroTipoFuncionalidadListas, Integer idTerceroTipoFuncionalidad, Integer idSeccion, Integer idControl, Boolean indicadorObligatorio, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
-        this.idTerceroTipoFuncionalidadListas = idTerceroTipoFuncionalidadListas;
-        this.idTerceroTipoFuncionalidad = idTerceroTipoFuncionalidad;
-        this.idSeccion = idSeccion;
-        this.idControl = idControl;
-        this.indicadorObligatorio = indicadorObligatorio;
-        this.indicadorHabilitado = indicadorHabilitado;
-        this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
-        this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
-    }
-
     @Id
-    @GeneratedValue
     @Column(name = "IdTerceroTipoFuncionalidadListas", nullable = false)
     public Integer getIdTerceroTipoFuncionalidadListas() {
         return idTerceroTipoFuncionalidadListas;
@@ -48,6 +26,16 @@ public class TercerosTiposFuncionalidadesListas {
 
     public void setIdTerceroTipoFuncionalidadListas(Integer idTerceroTipoFuncionalidadListas) {
         this.idTerceroTipoFuncionalidadListas = idTerceroTipoFuncionalidadListas;
+    }
+
+    @Basic
+    @Column(name = "Funcionalidad", nullable = true, length = 200)
+    public String getFuncionalidad() {
+        return funcionalidad;
+    }
+
+    public void setFuncionalidad(String funcionalidad) {
+        this.funcionalidad = funcionalidad;
     }
 
     @Basic
@@ -61,6 +49,16 @@ public class TercerosTiposFuncionalidadesListas {
     }
 
     @Basic
+    @Column(name = "Seccion", nullable = true, length = 50)
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    @Basic
     @Column(name = "IdSeccion", nullable = true)
     public Integer getIdSeccion() {
         return idSeccion;
@@ -68,6 +66,16 @@ public class TercerosTiposFuncionalidadesListas {
 
     public void setIdSeccion(Integer idSeccion) {
         this.idSeccion = idSeccion;
+    }
+
+    @Basic
+    @Column(name = "Control", nullable = true, length = 50)
+    public String getControl() {
+        return control;
+    }
+
+    public void setControl(String control) {
+        this.control = control;
     }
 
     @Basic
@@ -125,13 +133,17 @@ public class TercerosTiposFuncionalidadesListas {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TercerosTiposFuncionalidadesListas that = (TercerosTiposFuncionalidadesListas) o;
+        VTercerosTiposFuncionalidadesListas that = (VTercerosTiposFuncionalidadesListas) o;
 
         if (idTerceroTipoFuncionalidadListas != null ? !idTerceroTipoFuncionalidadListas.equals(that.idTerceroTipoFuncionalidadListas) : that.idTerceroTipoFuncionalidadListas != null)
             return false;
+        if (funcionalidad != null ? !funcionalidad.equals(that.funcionalidad) : that.funcionalidad != null)
+            return false;
         if (idTerceroTipoFuncionalidad != null ? !idTerceroTipoFuncionalidad.equals(that.idTerceroTipoFuncionalidad) : that.idTerceroTipoFuncionalidad != null)
             return false;
+        if (seccion != null ? !seccion.equals(that.seccion) : that.seccion != null) return false;
         if (idSeccion != null ? !idSeccion.equals(that.idSeccion) : that.idSeccion != null) return false;
+        if (control != null ? !control.equals(that.control) : that.control != null) return false;
         if (idControl != null ? !idControl.equals(that.idControl) : that.idControl != null) return false;
         if (indicadorObligatorio != null ? !indicadorObligatorio.equals(that.indicadorObligatorio) : that.indicadorObligatorio != null)
             return false;
@@ -148,8 +160,11 @@ public class TercerosTiposFuncionalidadesListas {
     @Override
     public int hashCode() {
         int result = idTerceroTipoFuncionalidadListas != null ? idTerceroTipoFuncionalidadListas.hashCode() : 0;
+        result = 31 * result + (funcionalidad != null ? funcionalidad.hashCode() : 0);
         result = 31 * result + (idTerceroTipoFuncionalidad != null ? idTerceroTipoFuncionalidad.hashCode() : 0);
+        result = 31 * result + (seccion != null ? seccion.hashCode() : 0);
         result = 31 * result + (idSeccion != null ? idSeccion.hashCode() : 0);
+        result = 31 * result + (control != null ? control.hashCode() : 0);
         result = 31 * result + (idControl != null ? idControl.hashCode() : 0);
         result = 31 * result + (indicadorObligatorio != null ? indicadorObligatorio.hashCode() : 0);
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);

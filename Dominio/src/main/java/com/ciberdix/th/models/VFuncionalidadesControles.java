@@ -17,6 +17,7 @@ public class VFuncionalidadesControles {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String padre;
     private Integer idPadre;
     private Boolean indicadorSeccion;
     private String rutaAlfresco;
@@ -132,6 +133,16 @@ public class VFuncionalidadesControles {
     }
 
     @Basic
+    @Column(name = "Padre", nullable = true, length = 50)
+    public String getPadre() {
+        return padre;
+    }
+
+    public void setPadre(String padre) {
+        this.padre = padre;
+    }
+
+    @Basic
     @Column(name = "IdPadre", nullable = true)
     public Integer getIdPadre() {
         return idPadre;
@@ -188,6 +199,7 @@ public class VFuncionalidadesControles {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (padre != null ? !padre.equals(that.padre) : that.padre != null) return false;
         if (idPadre != null ? !idPadre.equals(that.idPadre) : that.idPadre != null) return false;
         if (indicadorSeccion != null ? !indicadorSeccion.equals(that.indicadorSeccion) : that.indicadorSeccion != null)
             return false;
@@ -209,6 +221,7 @@ public class VFuncionalidadesControles {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (padre != null ? padre.hashCode() : 0);
         result = 31 * result + (idPadre != null ? idPadre.hashCode() : 0);
         result = 31 * result + (indicadorSeccion != null ? indicadorSeccion.hashCode() : 0);
         result = 31 * result + (rutaAlfresco != null ? rutaAlfresco.hashCode() : 0);

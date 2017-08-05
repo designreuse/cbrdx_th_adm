@@ -10,12 +10,14 @@ public class FuncionalidadesControles {
     private String codigo;
     private String control;
     private Integer idClasificacion;
+    private String clasificacion;
     private Integer idFuncionalidad;
     private Boolean indicadorVisible;
     private Boolean indicadorImprimir;
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private String padre;
     private Integer idPadre;
     private Boolean indicadorSeccion;
     private String rutaAlfresco;
@@ -122,5 +124,21 @@ public class FuncionalidadesControles {
 
     public void setRutaAlfresco(String rutaAlfresco) {
         this.rutaAlfresco = rutaAlfresco;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public String getPadre() {
+        return padre;
+    }
+
+    public void setPadre(String padre) {
+        this.padre = padre;
     }
 }
