@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class UtilitiesController {
 
     private static String version = "VERSION:2.0\r\n";
-    private static String prodid = "PRODID:-//Ciberdix/Aseguramos//ES\r\n";
+    private static String prodid = "PRODID:-//Ciberdix/Terceros//ES\r\n";
     private static String calBegin = "BEGIN:VCALENDAR\r\n";
     private static String calEnd = "END:VCALENDAR\r\n";
     private static String eventBegin = "BEGIN:VEVENT\r\n";
@@ -39,11 +39,11 @@ public class UtilitiesController {
             SimpleDateFormat sd1 = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
             String curTime = sd1.format(new Date(cal.getTimeInMillis()));
             String dtstamp = "DTSTAMP:" + curTime + "\r\n";
-            String organizer = "ORGANIZER;CN=Aseguramos:MAILTO:felipe.aguirre@ciberdix.com\r\n";
+            String organizer = "ORGANIZER;CN=TERCEROS:MAILTO:felipe.aguirre@ciberdix.com\r\n";
             String dtstart = "DTSTART:" + sd1.format(temp) + "\r\n";
             String dtend = "DTEND:" + sd1.format(temp.getTime() + 30 * 1000 * 60) + "\r\n";
             String summary = "SUMMARY:Cita\r\n";
-            String description = "DESCRIPTION:CREZCAMOS:Cita con " + personName + "\r\n";
+            String description = "DESCRIPTION:TERCEROS:Cita con " + personName + "\r\n";
             Path location = Paths.get("adjuntos");
             File file = File.createTempFile("temp", ".ics", location.toFile());
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
@@ -76,13 +76,13 @@ public class UtilitiesController {
                 "<body bgcolor=\"##B4E3F3\" style=\"font-family: arial, sans-serif; font-size: 100%; line-height: 160%; background-color: #ecf0f1; margin: 0; padding: 0; border: 0;\">" +
                 "<table bgcolor=\"#ecf0f1\" style=\"width: 100%; background-color: #ecf0f1; font-size: 14px;\" align=\"center\" cellpadding=\"20\" cellspacing=\"0\" border=\"0\">" +
                 "<tr><td><table align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width: 100%; max-width: 700px;\">" +
-                "<tr><td align=\"center\"><img style=\"width: 350px; margin-top: -20px;\" src=\"http://www.ciberdix.com/proyecto/gestionamos/img/logo_gestionamos.png\" alt=\"Gestionamos\"></td></tr>" +
+                "<tr><td align=\"center\"><img style=\"width: 350px; margin-top: -20px;\" src=\"http://ciberdix.com/proyecto/terceros/img/logo_terceros.png \" alt=\"Terceros\"></td></tr>" +
                 "<tr><td><div style=\"position: relative; padding: 25px;\">" +
                 Body +
                 "<hr><p style=\"margin-bottom: 10px;\">Cualquier duda comun&iacute;quese con nosotros a nuestra línea de atención: <strong>320 889 9800</strong>" +
                 " o escríbanos un correo electrónico a: <strong>servicioalcliente@crezcamos.com</strong>.</p>" +
                 "</div><div><a href=\"http://www.ciberdix.com\" style=\"display: block; background-color: #00632e; color: #ffffff; font-weight: bold; padding: 20px; text-decoration: none; text-align: center;-webkit-border-bottom-right-radius: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;\">" +
-                "<span style=\"color: #ffffff;\">2017 &copy; Gestionamos. Un producto de Ciberdix & Crezcamos - Todos los derechos reservados</span>" +
+                "<span style=\"color: #ffffff;\">2017 &copy; Terceros. Un producto de Ciberdix & Crezcamos - Todos los derechos reservados</span>" +
                 "</a></div></td></tr></table><table align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width: 100%; text-align: center; font-size: 90%; padding-top: 5px; color: #bdc3c7; max-width: 700px;\">" +
                 "<tr><td><p style=\"line-height: initial;\">En cumplimiento con lo establecido en la Ley 1581 de 2012 y en el Decreto 1377 de 2013, <a href=\"http://www.crezcamos.com\" style=\"color: #bdc3c7;\"><span style=\"color: #bdc3c7;\">Crezcamos.com</span></a> tiene el gusto de manifestarle que hemos establecido unas políticas institucionales para el tratamiento de datos personales, siguiendo los lineamientos legales y reglamentarios." +
                 "</p></td></tr></table></td></tr></table></body></html>";
@@ -100,7 +100,7 @@ public class UtilitiesController {
     }
 
     public static void sendMail(String recipients, String subject, String bodyHtml) {
-        String systemName = "Gestionamos";
+        String systemName = "Terceros";
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
         message.setAutoText(true);
@@ -118,7 +118,7 @@ public class UtilitiesController {
     }
 
     public static void sendCalendarMail(String recipients, String subject, String bodyHtml, Date programmedDate, String personName) {
-        String systemName = "Gestionamos";
+        String systemName = "Terceros";
         MandrillApi mandrillApi = new MandrillApi("X-Siym7IlILYF2O2H1w_TQ");
         MandrillMessage message = new MandrillMessage();
         message.setAutoText(true);
@@ -156,7 +156,7 @@ public class UtilitiesController {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<p style=\"text-align:center\">");
         stringBuilder.append("<a href=\"").append(frontUrl).append("/login?token=").append(token).append("\">");
-        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/Terceros/img/").append(image).append("\">");
         stringBuilder.append("</a></p>");
         return stringBuilder.toString();
     }
@@ -168,7 +168,7 @@ public class UtilitiesController {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<p style=\"text-align:center\">");
         stringBuilder.append("<a href=\"").append(publicUrl).append("/login?token=").append(token).append("\">");
-        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/gestionamos/img/").append(image).append("\">");
+        stringBuilder.append("<img src=\"http://www.ciberdix.com/proyecto/Terceros/img/").append(image).append("\">");
         stringBuilder.append("</a></p>");
         return stringBuilder.toString();
     }
