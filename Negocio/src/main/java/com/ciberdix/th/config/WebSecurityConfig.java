@@ -91,9 +91,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         Integer IdTramitado = UtilitiesController.findListItem("ListasEstadosNovedades", "TRAMIT").getIdLista();
         Integer IdActivo = UtilitiesController.findListItem("ListasEstadosTerceros", "ACTIVO").getIdLista();
         Terceros[] terceros = restTemplate.getForObject(serviceUrl + "/api/terceros", Terceros[].class);
-        List<Novedades> novedadesSistema = Arrays.stream(restTemplate.getForObject(serviceUrl + "/api/novedades", Novedades[].class)).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null).collect(Collectors.toList());
-        List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() && t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
-        List<Terceros> tercerosInhabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() && !t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
+        List<Novedades> novedadesSistema = Arrays.stream(restTemplate.getForObject(serviceUrl + "/api/novedades", Novedades[].class)).filter(t -> t.getIndicadorHabilitado() != null && t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null).collect(Collectors.toList());
+        List<Terceros> tercerosHabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() != null && t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null && t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
+        List<Terceros> tercerosInhabilitados = Arrays.stream(terceros).filter(t -> t.getIndicadorHabilitado() != null && t.getIndicadorHabilitado() && t.getIdEstadoTercero() != null && !t.getIdEstadoTercero().equals(IdActivo)).collect(Collectors.toList());
         TercerosNovedades[] novedades = restTemplate.getForObject(serviceUrl + "/api/tercerosNovedades", TercerosNovedades[].class);
         Date currentDate = new Date(System.currentTimeMillis());
         List<TercerosNovedades> novedadesList = Arrays.stream(novedades).filter(t ->

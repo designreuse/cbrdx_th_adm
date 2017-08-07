@@ -118,7 +118,7 @@ public class ExamenesMedicosRefactorController {
                     examenesMedicos.setIdTercero(idTercero);
                     examenesMedicos.setIdTipoExamenMedico(PERIO);
                     examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
-                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
+                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
                 }
             }
         }
