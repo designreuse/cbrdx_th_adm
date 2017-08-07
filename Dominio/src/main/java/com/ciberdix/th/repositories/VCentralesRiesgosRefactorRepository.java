@@ -9,4 +9,6 @@ public interface VCentralesRiesgosRefactorRepository extends CrudRepository<VCen
 
     List<VCentralesRiesgos> findByIndicadorHabilitadoIsTrue();
 
+    VCentralesRiesgos findAllByCodigo(String code);
+
 }

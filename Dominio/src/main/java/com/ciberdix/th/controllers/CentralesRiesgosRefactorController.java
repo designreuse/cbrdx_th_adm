@@ -36,6 +36,11 @@ public class CentralesRiesgosRefactorController {
         return  vCentralesRiesgosRefactorRepository.findByIndicadorHabilitadoIsTrue();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
+    VCentralesRiesgos findByCodigoIfExist(@PathVariable String code) {
+        return  vCentralesRiesgosRefactorRepository.findAllByCodigo(code);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     VCentralesRiesgos findOne(@PathVariable Integer id) {
         return vCentralesRiesgosRefactorRepository.findOne(id);

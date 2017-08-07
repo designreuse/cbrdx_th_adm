@@ -52,6 +52,16 @@ public class CentralesRiesgosRefactorController {
         return Arrays.asList(parametros);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
+    Boolean findByCodigoIfExist(@PathVariable String code) {
+        VCentralesRiesgos cr = restTemplate.getForObject(serviceUrl + "code/" + code, VCentralesRiesgos.class);
+        if(cr!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     CentralesRiesgos create(@RequestBody CentralesRiesgos obj){
         return restTemplate.postForObject(serviceUrl, obj, CentralesRiesgos.class);
