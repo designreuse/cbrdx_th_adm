@@ -39,7 +39,7 @@ public class CentralesRiesgosDatosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/centralRiesgo/{id}")
     List<VCentralesRiesgosDatos> findByIdTerceroTipo(@PathVariable Integer id) {
-        return vCentralesRiesgosDatosRefactorRepository.findAllByIdCentralRiesgoAndIdCentralRiesgo(id);
+        return vCentralesRiesgosDatosRefactorRepository.findAllByIdCentralRiesgoAndIndicadorHabilitadoIsTrue(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)

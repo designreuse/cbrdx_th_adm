@@ -9,6 +9,6 @@ public interface VCentralesRiesgosDatosRefactorRepository extends CrudRepository
 
     List<VCentralesRiesgosDatos> findAllByIndicadorHabilitadoIsTrue();
 
-    List<VCentralesRiesgosDatos> findAllByIdCentralRiesgoAndIdCentralRiesgo(Integer id);
+    List<VCentralesRiesgosDatos> findAllByIdCentralRiesgoAndIndicadorHabilitadoIsTrue(Integer id);
 
 }
