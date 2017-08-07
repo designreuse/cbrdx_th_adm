@@ -56,7 +56,9 @@ public class TercerosTiposFuncionalidadesListasRefactorController {
     TercerosTiposFuncionalidadesListas create(@RequestBody TercerosTiposFuncionalidadesListas o) {
         return TercerosTiposFuncionalidadesListasRefactorRepository.save(
                 new TercerosTiposFuncionalidadesListas(
-
+                        o.getIdTerceroTipoFuncionalidad(),
+                        o.getIdSeccion(),o.getIdControl(),o.getIndicadorObligatorio(),o.getIndicadorHabilitado(),
+                        o.getAuditoriaUsuario()
                 )
         );
     }
@@ -65,7 +67,9 @@ public class TercerosTiposFuncionalidadesListasRefactorController {
     void update(@RequestBody TercerosTiposFuncionalidadesListas o) {
         TercerosTiposFuncionalidadesListasRefactorRepository.save(
                 new TercerosTiposFuncionalidadesListas(
-
+                        o.getIdTerceroTipoFuncionalidadListas(),o.getIdTerceroTipoFuncionalidad(),
+                        o.getIdSeccion(),o.getIdControl(),o.getIndicadorObligatorio(),o.getIndicadorHabilitado(),
+                        o.getAuditoriaUsuario()
                 )
         );
     }
