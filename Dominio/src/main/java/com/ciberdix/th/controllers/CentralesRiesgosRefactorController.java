@@ -37,7 +37,7 @@ public class CentralesRiesgosRefactorController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
-    VCentralesRiesgos findByCodigoIfExist(@PathVariable String code) {
+    List<VCentralesRiesgos> findByCodigoIfExist(@PathVariable String code) {
         return  vCentralesRiesgosRefactorRepository.findAllByCodigo(code);
     }
 

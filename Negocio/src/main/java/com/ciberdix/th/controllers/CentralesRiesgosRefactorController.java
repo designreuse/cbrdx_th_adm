@@ -54,8 +54,8 @@ public class CentralesRiesgosRefactorController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/code/{code}")
     Boolean findByCodigoIfExist(@PathVariable String code) {
-        VCentralesRiesgos cr = restTemplate.getForObject(serviceUrl + "code/" + code, VCentralesRiesgos.class);
-        if(cr!=null){
+        List<VCentralesRiesgos> cr = Arrays.asList(restTemplate.getForObject(serviceUrl + "code/" + code, VCentralesRiesgos[].class));
+        if(cr.size()>0){
             return true;
         }else{
             return false;
