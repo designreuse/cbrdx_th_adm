@@ -36,7 +36,11 @@ public class VExamenesMedicos {
     private Integer idDiagnosticoCie;
     private String tipoExamenMedico;
     private Integer idTipoExamenMedico;
-
+    private String numeroDocumento;
+    private String cargo;
+    private String tipoArea;
+    private String area;
+    
     @Id
     @Column(name = "IdExamenMedico", nullable = false)
     public Integer getIdExamenMedico() {
@@ -435,5 +439,45 @@ public class VExamenesMedicos {
         result = 31 * result + (tipoExamenMedico != null ? tipoExamenMedico.hashCode() : 0);
         result = 31 * result + (idTipoExamenMedico != null ? idTipoExamenMedico.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "NumeroDocumento", nullable = true, length = 13)
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    @Basic
+    @Column(name = "Cargo", nullable = true, length = 100)
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Basic
+    @Column(name = "TipoArea", nullable = true, length = 40)
+    public String getTipoArea() {
+        return tipoArea;
+    }
+
+    public void setTipoArea(String tipoArea) {
+        this.tipoArea = tipoArea;
+    }
+
+    @Basic
+    @Column(name = "Area", nullable = true, length = 50)
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }
