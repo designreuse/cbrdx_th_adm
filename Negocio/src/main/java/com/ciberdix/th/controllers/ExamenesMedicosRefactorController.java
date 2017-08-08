@@ -90,7 +90,7 @@ public class ExamenesMedicosRefactorController {
             if (vTercerosCargos != null) {
                 VEstructuraOrganizacional vEstructuraOrganizacional = restTemplate.getForObject(baseUrl + "/api/estructuraOrganizacional/" + vTercerosCargos.getIdEstructuraOrganizacional(), VEstructuraOrganizacional.class);
                 Integer PERIO = UtilitiesController.findListItem("ListasTiposExamenesMedicos", "PERIO").getIdLista();
-                List<VInstitucionesMedicasTiposExamenes> vInstitucionesMedicasTiposExamenes = Arrays.stream(restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", VInstitucionesMedicasTiposExamenes[].class)).filter(t -> t.getIdTipoExamen().equals(PERIO)).collect(Collectors.toList());
+                List<VInstitucionesMedicasTiposExamenes> vInstitucionesMedicasTiposExamenes = Arrays.stream(restTemplate.getForObject(baseUrl + "/api/institucionesMedicasTiposExamenes", VInstitucionesMedicasTiposExamenes[].class)).filter(t -> t.getIdTipoExamen().equals(PERIO) && t.getIndicadorHabilitado()).collect(Collectors.toList());
                 List<VInstitucionesMedicasEstructurasFisicas> vInstitucionesMedicasEstructurasFisicas = Arrays.stream(restTemplate.getForObject(baseUrl + "/api/institucionesMedicasEstructurasFisicas/estructuraFisica/" + vEstructuraOrganizacional.getIdEstructuraFisica(), VInstitucionesMedicasEstructurasFisicas[].class)).filter(t -> vInstitucionesMedicasTiposExamenes.stream().anyMatch(f -> t.getIdInstitucionMedica().equals(f.getIdInstitucionMedica()))).collect(Collectors.toList());
                 VTerceros vTerceros = restTemplate.getForObject(baseUrl + "/api/vterceros/" + idTercero, VTerceros.class);
                 if (vInstitucionesMedicasEstructurasFisicas != null && !vInstitucionesMedicasEstructurasFisicas.isEmpty()) {
@@ -118,7 +118,7 @@ public class ExamenesMedicosRefactorController {
                     examenesMedicos.setIdTercero(idTercero);
                     examenesMedicos.setIdTipoExamenMedico(PERIO);
                     examenesMedicos = restTemplate.postForObject(serviceUrl, examenesMedicos, ExamenesMedicos.class);
-                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
+                    UtilitiesController.sendMail(usuarios.stream().filter(t -> t.getIdTercero() != null && t.getIdTercero().equals(idTercero)).findFirst().get().getCorreoElectronico(), "Crezcamos - Solicitud Examen Periodico", assembleNoInstitutionPeriodicBody(UtilitiesController.fullName(vTerceros, true), cargos, examenesMedicos));
                 }
             }
         }

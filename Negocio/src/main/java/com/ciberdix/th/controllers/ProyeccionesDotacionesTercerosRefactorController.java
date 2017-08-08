@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -143,7 +144,14 @@ public class ProyeccionesDotacionesTercerosRefactorController {
                 ListadoDotaciones = ListadoDotaciones + "<li>" + p.getDotacion() + "</li>";
             }
             ListadoDotaciones = ListadoDotaciones + "</ol>";
-            UtilitiesController.sendMail(terceros.getCorreoElectronico(), "Encuesta de Satisfacción", "<p>Por favor ingrese al siguiente enlace para realizar la confirmación la dotación relacionada</p>" + ListadoDotaciones + token);
+            List<Usuarios> usuarios = Arrays.asList(restTemplate.getForObject(baseUrl + "/api/usuarios", Usuarios[].class));
+            Optional<Usuarios> test = usuarios.stream().filter(t -> t.getIdTercero().equals(o.getIdTercero())).findAny();
+            if (test.isPresent()) {
+                Usuarios user = test.get();
+                UtilitiesController.sendMail(user.getCorreoElectronico(), "Encuesta de Satisfacción", "<p>Por favor ingrese al siguiente enlace para realizar la confirmación la dotación relacionada</p>" + ListadoDotaciones + token);
+            } else {
+                UtilitiesController.sendMail(terceros.getCorreoElectronico(), "Encuesta de Satisfacción", "<p>Por favor ingrese al siguiente enlace para realizar la confirmación la dotación relacionada</p>" + ListadoDotaciones + token);
+            }
         }
         restTemplate.put(serviceUrl, o);
     }
