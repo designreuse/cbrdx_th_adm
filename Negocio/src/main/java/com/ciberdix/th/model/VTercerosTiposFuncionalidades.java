@@ -12,6 +12,7 @@ public class VTercerosTiposFuncionalidades {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idFuncionalidad;
 
     public Integer getIdTerceroTipoFuncionalidad() {
         return idTerceroTipoFuncionalidad;
@@ -75,5 +76,13 @@ public class VTercerosTiposFuncionalidades {
 
     public void setAuditoriaFecha(Timestamp auditoriaFecha) {
         this.auditoriaFecha = auditoriaFecha;
+    }
+
+    public Integer getIdFuncionalidad() {
+        return idFuncionalidad;
+    }
+
+    public void setIdFuncionalidad(Integer idFuncionalidad) {
+        this.idFuncionalidad = idFuncionalidad;
     }
 }

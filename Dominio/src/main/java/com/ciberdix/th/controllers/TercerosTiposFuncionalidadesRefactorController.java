@@ -47,7 +47,7 @@ public class TercerosTiposFuncionalidadesRefactorController {
         return tercerosTiposFuncionalidadesRefactorRepository.save(
                 new TercerosTiposFuncionalidades(
                         o.getIdTipoTercero(),o.getFuncionalidad(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIdFuncionalidad()
                 )
         );
     }
@@ -57,7 +57,7 @@ public class TercerosTiposFuncionalidadesRefactorController {
         tercerosTiposFuncionalidadesRefactorRepository.save(
                 new TercerosTiposFuncionalidades(
                         o.getIdTerceroTipoFuncionalidad(),o.getIdTipoTercero(),o.getFuncionalidad(),
-                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario()
+                        o.getIndicadorHabilitado(),o.getAuditoriaUsuario(),o.getIdFuncionalidad()
                 )
         );
     }

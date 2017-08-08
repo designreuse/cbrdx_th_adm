@@ -14,6 +14,7 @@ public class VTercerosTiposFuncionalidades {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idFuncionalidad;
 
     @Id
     @Column(name = "IdTerceroTipoFuncionalidad", nullable = false)
@@ -95,6 +96,16 @@ public class VTercerosTiposFuncionalidades {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdFuncionalidad", nullable = true)
+    public Integer getIdFuncionalidad() {
+        return idFuncionalidad;
+    }
+
+    public void setIdFuncionalidad(Integer idFuncionalidad) {
+        this.idFuncionalidad = idFuncionalidad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,6 +127,8 @@ public class VTercerosTiposFuncionalidades {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idFuncionalidad != null ? !idFuncionalidad.equals(that.idFuncionalidad) : that.idFuncionalidad != null)
+            return false;
 
         return true;
     }
@@ -130,6 +143,7 @@ public class VTercerosTiposFuncionalidades {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idFuncionalidad != null ? idFuncionalidad.hashCode() : 0);
         return result;
     }
 }

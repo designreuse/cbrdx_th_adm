@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TercerosTiposFuncionalidades", schema = "dbo", catalog = "CREZCAMOS")
+@Table(name = "TercerosTiposDocumentosTerceros", schema = "dbo", catalog = "CREZCAMOS")
 public class TercerosTiposFuncionalidades {
     private Integer idTerceroTipoFuncionalidad;
     private Integer idTipoTercero;
@@ -12,25 +12,28 @@ public class TercerosTiposFuncionalidades {
     private Boolean indicadorHabilitado;
     private Integer auditoriaUsuario;
     private Timestamp auditoriaFecha;
+    private Integer idFuncionalidad;
 
     public TercerosTiposFuncionalidades() {
     }
 
-    public TercerosTiposFuncionalidades(Integer idTipoTercero, String funcionalidad, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosTiposFuncionalidades(Integer idTipoTercero, String funcionalidad, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idFuncionalidad) {
         this.idTipoTercero = idTipoTercero;
         this.funcionalidad = funcionalidad;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idFuncionalidad = idFuncionalidad;
     }
 
-    public TercerosTiposFuncionalidades(Integer idTerceroTipoFuncionalidad, Integer idTipoTercero, String funcionalidad, Boolean indicadorHabilitado, Integer auditoriaUsuario) {
+    public TercerosTiposFuncionalidades(Integer idTerceroTipoFuncionalidad, Integer idTipoTercero, String funcionalidad, Boolean indicadorHabilitado, Integer auditoriaUsuario, Integer idFuncionalidad) {
         this.idTerceroTipoFuncionalidad = idTerceroTipoFuncionalidad;
         this.idTipoTercero = idTipoTercero;
         this.funcionalidad = funcionalidad;
         this.indicadorHabilitado = indicadorHabilitado;
         this.auditoriaUsuario = auditoriaUsuario != null ? auditoriaUsuario : 1;
         this.auditoriaFecha = new Timestamp(System.currentTimeMillis());
+        this.idFuncionalidad = idFuncionalidad;
     }
 
     @Id
@@ -94,6 +97,16 @@ public class TercerosTiposFuncionalidades {
         this.auditoriaFecha = auditoriaFecha;
     }
 
+    @Basic
+    @Column(name = "IdFuncionalidad", nullable = true)
+    public Integer getIdFuncionalidad() {
+        return idFuncionalidad;
+    }
+
+    public void setIdFuncionalidad(Integer idFuncionalidad) {
+        this.idFuncionalidad = idFuncionalidad;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,6 +126,8 @@ public class TercerosTiposFuncionalidades {
             return false;
         if (auditoriaFecha != null ? !auditoriaFecha.equals(that.auditoriaFecha) : that.auditoriaFecha != null)
             return false;
+        if (idFuncionalidad != null ? !idFuncionalidad.equals(that.idFuncionalidad) : that.idFuncionalidad != null)
+            return false;
 
         return true;
     }
@@ -125,6 +140,7 @@ public class TercerosTiposFuncionalidades {
         result = 31 * result + (indicadorHabilitado != null ? indicadorHabilitado.hashCode() : 0);
         result = 31 * result + (auditoriaUsuario != null ? auditoriaUsuario.hashCode() : 0);
         result = 31 * result + (auditoriaFecha != null ? auditoriaFecha.hashCode() : 0);
+        result = 31 * result + (idFuncionalidad != null ? idFuncionalidad.hashCode() : 0);
         return result;
     }
 }
