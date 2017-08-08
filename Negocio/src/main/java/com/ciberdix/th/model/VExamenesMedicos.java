@@ -41,6 +41,10 @@ public class VExamenesMedicos {
     private Integer idDiagnosticoCie;
     private String tipoExamenMedico;
     private Integer idTipoExamenMedico;
+    private String numeroDocumento;
+    private String cargo;
+    private String tipoArea;
+    private String area;
 
     public Integer getIdExamenMedico() {
         return idExamenMedico;
@@ -280,5 +284,37 @@ public class VExamenesMedicos {
 
     public void setIdTipoExamenMedico(Integer idTipoExamenMedico) {
         this.idTipoExamenMedico = idTipoExamenMedico;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getTipoArea() {
+        return tipoArea;
+    }
+
+    public void setTipoArea(String tipoArea) {
+        this.tipoArea = tipoArea;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }
