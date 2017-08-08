@@ -55,10 +55,12 @@ public class MapaRiesgosRefactorController {
 
         ByteArrayResource contentsAsResource = null;
         try {
-            contentsAsResource = new ByteArrayResource(writeFile()) {
+            byte[] archivo = writeFile();
+            contentsAsResource = new ByteArrayResource(archivo) {
                 @Override
                 public String getFilename() {
-                    return fileName + ".xlsx";
+                    String filename = fileName + ".xlsx";
+                    return filename;
                 }
             };
         } catch (IOException e) {
@@ -68,6 +70,10 @@ public class MapaRiesgosRefactorController {
         map.add("file", contentsAsResource);
         map.add("dirpath", "/Gestionamos/Matriz de priorizacion de riesgos");
         map.add("mime-type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+        headers.add("content-length", String.valueOf(contentsAsResource.contentLength()));
+        headers.remove("content-type");
+        headers.add("content-type", "multipart/form-data; boundary=----WebKitFormBoundary3Vjy2pkEznI4KSCE");
 
         HttpEntity<?> requestEntity = new HttpEntity<Object>(map, headers);
 
